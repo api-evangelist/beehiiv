@@ -1,0 +1,29 @@
+aid: beehiiv
+url: https://raw.githubusercontent.com/api-evangelist/beehiiv/refs/heads/main/apis.yml
+name: beehiiv
+x-type: company
+description: >-
+  beehiiv is a newsletter platform offering email publishing, subscriber management, paid subscriptions, ad network, referrals, and analytics for creators and media companies.
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - Newsletter
+  - Creator
+  - Email
+  - Subscription
+  - Publishing
+created: '2026-05-08'
+modified: '2026-05-08'
+specificationVersion: '0.19'
+apis: []
+common:
+  - type: Website
+    url: https://www.beehiiv.com/
+  - type: Plans
+    url: plans/beehiiv-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/beehiiv-rate-limits.yml
+  - type: FinOps
+    url: finops/beehiiv-finops.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
