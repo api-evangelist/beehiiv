@@ -138,6 +138,20 @@ common:
   url: rate-limits/beehiiv-rate-limits.yml
 - type: FinOps
   url: finops/beehiiv-finops.yml
+- type: Integrations
+  url: https://www.beehiiv.com/integrations
+integrations:
+  - name: Take a tour
+  - name: Status Case Study
+  - name: Grit Case Study
+  - name: Pepper Case Study
+  - name: Zapier and beehiiv
+  - name: Make and beehiiv
+  - name: Build it your way
+  - name: Shaan Puri
+  - name: Founder of Milk Road
+  - name: Aine Stapleton
+  - name: Head of Growth
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
