@@ -1,7 +1,7 @@
 aid: beehiiv
 url: https://raw.githubusercontent.com/api-evangelist/beehiiv/refs/heads/main/apis.yml
 name: beehiiv
-x-type: company
+kind: company
 description: beehiiv is a newsletter platform offering email publishing, subscriber management, paid subscriptions, ad network,
   referrals, and analytics for creators and media companies.
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
