@@ -1,0 +1,193 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: API Reference — subpackage_dataDeletion
+  description: 'API Reference — subpackage_dataDeletion. 3 operations. Lead operation: Create data deletion request <Badge
+    intent="info" minimal outlined>OAuth Scope: data_deletion:write</Badge>. Self-contained Naftiko capability covering one
+    Beehiiv business surface.'
+  tags:
+  - Beehiiv
+  - subpackage_dataDeletion
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    BEEHIIV_API_KEY: BEEHIIV_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: beehiiv-subpackage-datadeletion
+    baseUri: https://api.beehiiv.com/v2
+    description: API Reference — subpackage_dataDeletion business capability. Self-contained, no shared references.
+    resources:
+    - name: publications-publicationId-data_privacy-deletion_requests
+      path: /publications/{publicationId}/data_privacy/deletion_requests
+      operations:
+      - name: create
+        method: POST
+        description: 'Create data deletion request <Badge intent="info" minimal outlined>OAuth Scope: data_deletion:write</Badge>'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: publicationId
+          in: path
+          type: string
+          description: The prefixed ID of the publication object
+          required: true
+        - name: Authorization
+          in: header
+          type: string
+          description: Bearer authentication
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: index
+        method: GET
+        description: 'List data deletion requests <Badge intent="info" minimal outlined>OAuth Scope: data_deletion:read</Badge>'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: publicationId
+          in: path
+          type: string
+          description: The prefixed ID of the publication object
+          required: true
+        - name: Authorization
+          in: header
+          type: string
+          description: Bearer authentication
+          required: true
+    - name: publications-publicationId-data_privacy-deletion_requests-id
+      path: /publications/{publicationId}/data_privacy/deletion_requests/{id}
+      operations:
+      - name: show
+        method: GET
+        description: 'Get data deletion request <Badge intent="info" minimal outlined>OAuth Scope: data_deletion:read</Badge>'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: publicationId
+          in: path
+          type: string
+          description: The prefixed ID of the publication object
+          required: true
+        - name: id
+          in: path
+          type: string
+          description: The ID of the data deletion request
+          required: true
+        - name: Authorization
+          in: header
+          type: string
+          description: Bearer authentication
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.BEEHIIV_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: beehiiv-subpackage-datadeletion-rest
+    port: 8080
+    description: REST adapter for API Reference — subpackage_dataDeletion. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/publications/{publicationid}/data-privacy/deletion-requests
+      name: publications-publicationid-data-privacy-deletion-requests
+      description: REST surface for publications-publicationId-data_privacy-deletion_requests.
+      operations:
+      - method: POST
+        name: create
+        description: 'Create data deletion request <Badge intent="info" minimal outlined>OAuth Scope: data_deletion:write</Badge>'
+        call: beehiiv-subpackage-datadeletion.create
+        with:
+          publicationId: rest.publicationId
+          Authorization: rest.Authorization
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: index
+        description: 'List data deletion requests <Badge intent="info" minimal outlined>OAuth Scope: data_deletion:read</Badge>'
+        call: beehiiv-subpackage-datadeletion.index
+        with:
+          publicationId: rest.publicationId
+          Authorization: rest.Authorization
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/publications/{publicationid}/data-privacy/deletion-requests/{id}
+      name: publications-publicationid-data-privacy-deletion-requests-id
+      description: REST surface for publications-publicationId-data_privacy-deletion_requests-id.
+      operations:
+      - method: GET
+        name: show
+        description: 'Get data deletion request <Badge intent="info" minimal outlined>OAuth Scope: data_deletion:read</Badge>'
+        call: beehiiv-subpackage-datadeletion.show
+        with:
+          publicationId: rest.publicationId
+          id: rest.id
+          Authorization: rest.Authorization
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: beehiiv-subpackage-datadeletion-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for API Reference — subpackage_dataDeletion. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: create-data-deletion-request-badge
+      description: 'Create data deletion request <Badge intent="info" minimal outlined>OAuth Scope: data_deletion:write</Badge>'
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: beehiiv-subpackage-datadeletion.create
+      with:
+        publicationId: tools.publicationId
+        Authorization: tools.Authorization
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-data-deletion-requests-badge
+      description: 'List data deletion requests <Badge intent="info" minimal outlined>OAuth Scope: data_deletion:read</Badge>'
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: beehiiv-subpackage-datadeletion.index
+      with:
+        publicationId: tools.publicationId
+        Authorization: tools.Authorization
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-data-deletion-request-badge
+      description: 'Get data deletion request <Badge intent="info" minimal outlined>OAuth Scope: data_deletion:read</Badge>'
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: beehiiv-subpackage-datadeletion.show
+      with:
+        publicationId: tools.publicationId
+        id: tools.id
+        Authorization: tools.Authorization
+      outputParameters:
+      - type: object
+        mapping: $.

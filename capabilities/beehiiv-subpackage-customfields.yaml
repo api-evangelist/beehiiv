@@ -1,0 +1,354 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: API Reference — subpackage_customFields
+  description: 'API Reference — subpackage_customFields. 6 operations. Lead operation: Create custom field <Badge intent="info"
+    minimal outlined>OAuth Scope: custom_fields:write</Badge>. Self-contained Naftiko capability covering one Beehiiv business
+    surface.'
+  tags:
+  - Beehiiv
+  - subpackage_customFields
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    BEEHIIV_API_KEY: BEEHIIV_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: beehiiv-subpackage-customfields
+    baseUri: https://api.beehiiv.com/v2
+    description: API Reference — subpackage_customFields business capability. Self-contained, no shared references.
+    resources:
+    - name: publications-publicationId-custom_fields
+      path: /publications/{publicationId}/custom_fields
+      operations:
+      - name: create
+        method: POST
+        description: 'Create custom field <Badge intent="info" minimal outlined>OAuth Scope: custom_fields:write</Badge>'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: publicationId
+          in: path
+          type: string
+          description: The prefixed ID of the publication object
+          required: true
+        - name: Authorization
+          in: header
+          type: string
+          description: Bearer authentication
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: index
+        method: GET
+        description: 'List custom fields <Badge intent="info" minimal outlined>OAuth Scope: custom_fields:read</Badge>'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: publicationId
+          in: path
+          type: string
+          description: The prefixed ID of the publication object
+          required: true
+        - name: Authorization
+          in: header
+          type: string
+          description: Bearer authentication
+          required: true
+    - name: publications-publicationId-custom_fields-id
+      path: /publications/{publicationId}/custom_fields/{id}
+      operations:
+      - name: show
+        method: GET
+        description: 'Get custom field <Badge intent="info" minimal outlined>OAuth Scope: custom_fields:read</Badge>'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: publicationId
+          in: path
+          type: string
+          description: The prefixed ID of the publication object
+          required: true
+        - name: id
+          in: path
+          type: string
+          description: The ID of the Custom Fields object
+          required: true
+        - name: Authorization
+          in: header
+          type: string
+          description: Bearer authentication
+          required: true
+      - name: put
+        method: PUT
+        description: 'Update custom field <Badge intent="info" minimal outlined>OAuth Scope: custom_fields:write</Badge>'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: publicationId
+          in: path
+          type: string
+          description: The prefixed ID of the publication object
+          required: true
+        - name: id
+          in: path
+          type: string
+          description: The ID of the Custom Fields object
+          required: true
+        - name: Authorization
+          in: header
+          type: string
+          description: Bearer authentication
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: patch
+        method: PATCH
+        description: 'Update custom field <Badge intent="info" minimal outlined>OAuth Scope: custom_fields:write</Badge>'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: publicationId
+          in: path
+          type: string
+          description: The prefixed ID of the publication object
+          required: true
+        - name: id
+          in: path
+          type: string
+          description: The ID of the Custom Fields object
+          required: true
+        - name: Authorization
+          in: header
+          type: string
+          description: Bearer authentication
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: delete
+        method: DELETE
+        description: 'Delete custom field <Badge intent="info" minimal outlined>OAuth Scope: custom_fields:write</Badge>'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: publicationId
+          in: path
+          type: string
+          description: The prefixed ID of the publication object
+          required: true
+        - name: id
+          in: path
+          type: string
+          description: The ID of the Custom Fields object
+          required: true
+        - name: Authorization
+          in: header
+          type: string
+          description: Bearer authentication
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.BEEHIIV_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: beehiiv-subpackage-customfields-rest
+    port: 8080
+    description: REST adapter for API Reference — subpackage_customFields. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/publications/{publicationid}/custom-fields
+      name: publications-publicationid-custom-fields
+      description: REST surface for publications-publicationId-custom_fields.
+      operations:
+      - method: POST
+        name: create
+        description: 'Create custom field <Badge intent="info" minimal outlined>OAuth Scope: custom_fields:write</Badge>'
+        call: beehiiv-subpackage-customfields.create
+        with:
+          publicationId: rest.publicationId
+          Authorization: rest.Authorization
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: index
+        description: 'List custom fields <Badge intent="info" minimal outlined>OAuth Scope: custom_fields:read</Badge>'
+        call: beehiiv-subpackage-customfields.index
+        with:
+          publicationId: rest.publicationId
+          Authorization: rest.Authorization
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/publications/{publicationid}/custom-fields/{id}
+      name: publications-publicationid-custom-fields-id
+      description: REST surface for publications-publicationId-custom_fields-id.
+      operations:
+      - method: GET
+        name: show
+        description: 'Get custom field <Badge intent="info" minimal outlined>OAuth Scope: custom_fields:read</Badge>'
+        call: beehiiv-subpackage-customfields.show
+        with:
+          publicationId: rest.publicationId
+          id: rest.id
+          Authorization: rest.Authorization
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: put
+        description: 'Update custom field <Badge intent="info" minimal outlined>OAuth Scope: custom_fields:write</Badge>'
+        call: beehiiv-subpackage-customfields.put
+        with:
+          publicationId: rest.publicationId
+          id: rest.id
+          Authorization: rest.Authorization
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: patch
+        description: 'Update custom field <Badge intent="info" minimal outlined>OAuth Scope: custom_fields:write</Badge>'
+        call: beehiiv-subpackage-customfields.patch
+        with:
+          publicationId: rest.publicationId
+          id: rest.id
+          Authorization: rest.Authorization
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: delete
+        description: 'Delete custom field <Badge intent="info" minimal outlined>OAuth Scope: custom_fields:write</Badge>'
+        call: beehiiv-subpackage-customfields.delete
+        with:
+          publicationId: rest.publicationId
+          id: rest.id
+          Authorization: rest.Authorization
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: beehiiv-subpackage-customfields-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for API Reference — subpackage_customFields. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: create-custom-field-badge-intent-info
+      description: 'Create custom field <Badge intent="info" minimal outlined>OAuth Scope: custom_fields:write</Badge>'
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: beehiiv-subpackage-customfields.create
+      with:
+        publicationId: tools.publicationId
+        Authorization: tools.Authorization
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-custom-fields-badge-intent-info
+      description: 'List custom fields <Badge intent="info" minimal outlined>OAuth Scope: custom_fields:read</Badge>'
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: beehiiv-subpackage-customfields.index
+      with:
+        publicationId: tools.publicationId
+        Authorization: tools.Authorization
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-custom-field-badge-intent-info
+      description: 'Get custom field <Badge intent="info" minimal outlined>OAuth Scope: custom_fields:read</Badge>'
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: beehiiv-subpackage-customfields.show
+      with:
+        publicationId: tools.publicationId
+        id: tools.id
+        Authorization: tools.Authorization
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-custom-field-badge-intent-info
+      description: 'Update custom field <Badge intent="info" minimal outlined>OAuth Scope: custom_fields:write</Badge>'
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: beehiiv-subpackage-customfields.put
+      with:
+        publicationId: tools.publicationId
+        id: tools.id
+        Authorization: tools.Authorization
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-custom-field-badge-intent-info-2
+      description: 'Update custom field <Badge intent="info" minimal outlined>OAuth Scope: custom_fields:write</Badge>'
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: beehiiv-subpackage-customfields.patch
+      with:
+        publicationId: tools.publicationId
+        id: tools.id
+        Authorization: tools.Authorization
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-custom-field-badge-intent-info
+      description: 'Delete custom field <Badge intent="info" minimal outlined>OAuth Scope: custom_fields:write</Badge>'
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: beehiiv-subpackage-customfields.delete
+      with:
+        publicationId: tools.publicationId
+        id: tools.id
+        Authorization: tools.Authorization
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -130,6 +130,8 @@ apis:
   - type: OpenAPI
     url: openapi/beehiiv-openapi.yml
 common:
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/beehiiv
 - type: Website
   url: https://www.beehiiv.com/
 - type: Plans

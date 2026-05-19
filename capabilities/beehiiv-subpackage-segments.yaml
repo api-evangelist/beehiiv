@@ -1,0 +1,498 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: API Reference — subpackage_segments
+  description: 'API Reference — subpackage_segments. 7 operations. Lead operation: Create segment. Self-contained Naftiko
+    capability covering one Beehiiv business surface.'
+  tags:
+  - Beehiiv
+  - subpackage_segments
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    BEEHIIV_API_KEY: BEEHIIV_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: beehiiv-subpackage-segments
+    baseUri: https://api.beehiiv.com/v2
+    description: API Reference — subpackage_segments business capability. Self-contained, no shared references.
+    resources:
+    - name: publications-publicationId-segments
+      path: /publications/{publicationId}/segments
+      operations:
+      - name: create
+        method: POST
+        description: Create segment
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: publicationId
+          in: path
+          type: string
+          description: The prefixed ID of the publication object
+          required: true
+        - name: Authorization
+          in: header
+          type: string
+          description: Bearer authentication
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: index
+        method: GET
+        description: 'List segments <Badge intent="info" minimal outlined>OAuth Scope: segments:read</Badge>'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: publicationId
+          in: path
+          type: string
+          description: The prefixed ID of the publication object
+          required: true
+        - name: type
+          in: query
+          type: string
+          description: Optionally filter the results by the segment's type.
+        - name: status
+          in: query
+          type: string
+          description: Optionally filter the results by the segment's status.
+        - name: limit
+          in: query
+          type: integer
+          description: A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default
+            is 10.
+        - name: page
+          in: query
+          type: integer
+          description: 'Pagination returns the results in pages. Each page contains the number of results specified by the
+            `limit` (default: 10).<br>If not specified, results 1-10 from'
+        - name: order_by
+          in: query
+          type: string
+          description: 'The field that the results are sorted by. Defaults to created<br> `created` - The time in which the
+            segment was first created.<br> `last_calculated` - The time '
+        - name: direction
+          in: query
+          type: string
+          description: The direction that the results are sorted in. Defaults to asc<br> `asc` - Ascending, sorts from smallest
+            to largest.<br> `desc` - Descending, sorts from largest
+        - name: expand[]
+          in: query
+          type: array
+          description: Optionally expand the response to include additional data. <br> `stats` - Requests the most recently
+            calculated statistics for a segment. <br> Segment stats are
+        - name: Authorization
+          in: header
+          type: string
+          description: Bearer authentication
+          required: true
+    - name: publications-publicationId-segments-segmentId
+      path: /publications/{publicationId}/segments/{segmentId}
+      operations:
+      - name: show
+        method: GET
+        description: 'Get segment <Badge intent="info" minimal outlined>OAuth Scope: segments:read</Badge>'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: publicationId
+          in: path
+          type: string
+          description: The prefixed ID of the publication object
+          required: true
+        - name: segmentId
+          in: path
+          type: string
+          description: The prefixed ID of the segment object
+          required: true
+        - name: expand[]
+          in: query
+          type: array
+          description: Optionally expand the response to include additional data. <br> `stats` - Requests the most recently
+            calculated statistics for a segment. <br> Segment stats are
+        - name: Authorization
+          in: header
+          type: string
+          description: Bearer authentication
+          required: true
+      - name: delete
+        method: DELETE
+        description: 'Delete segment <Badge intent="info" minimal outlined>OAuth Scope: segments:write</Badge>'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: publicationId
+          in: path
+          type: string
+          description: The prefixed ID of the publication object
+          required: true
+        - name: segmentId
+          in: path
+          type: string
+          description: The prefixed ID of the segment object
+          required: true
+        - name: Authorization
+          in: header
+          type: string
+          description: Bearer authentication
+          required: true
+    - name: publications-publicationId-segments-segmentId-members
+      path: /publications/{publicationId}/segments/{segmentId}/members
+      operations:
+      - name: listmembers
+        method: GET
+        description: 'List segment subscribers <Badge intent="info" minimal outlined>OAuth Scope: segments:read</Badge>'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: publicationId
+          in: path
+          type: string
+          description: The prefixed ID of the publication object
+          required: true
+        - name: segmentId
+          in: path
+          type: string
+          description: The prefixed ID of the segment object
+          required: true
+        - name: limit
+          in: query
+          type: integer
+          description: A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default
+            is 10.
+        - name: page
+          in: query
+          type: integer
+          description: 'Pagination returns the results in pages. Each page contains the number of results specified by the
+            `limit` (default: 10).<br>If not specified, results 1-10 from'
+        - name: expand[]
+          in: query
+          type: array
+          description: Optionally expand the response to include additional data. <br> `stats` - Returns statistics about
+            the subscription(s). <br> `custom_fields` - Returns custom fi
+        - name: Authorization
+          in: header
+          type: string
+          description: Bearer authentication
+          required: true
+    - name: publications-publicationId-segments-segmentId-recalculate
+      path: /publications/{publicationId}/segments/{segmentId}/recalculate
+      operations:
+      - name: recalculate
+        method: PUT
+        description: 'Recalculate segment <Badge intent="info" minimal outlined>OAuth Scope: segments:write</Badge>'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: publicationId
+          in: path
+          type: string
+          description: The prefixed ID of the publication object
+          required: true
+        - name: segmentId
+          in: path
+          type: string
+          description: The prefixed ID of the segment object
+          required: true
+        - name: Authorization
+          in: header
+          type: string
+          description: Bearer authentication
+          required: true
+    - name: publications-publicationId-segments-segmentId-results
+      path: /publications/{publicationId}/segments/{segmentId}/results
+      operations:
+      - name: expandresults
+        method: GET
+        description: 'List segment subscriber IDs <Badge intent="info" minimal outlined>OAuth Scope: segments:read</Badge>'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: publicationId
+          in: path
+          type: string
+          description: The prefixed ID of the publication object
+          required: true
+        - name: segmentId
+          in: path
+          type: string
+          description: The prefixed ID of the segment object
+          required: true
+        - name: limit
+          in: query
+          type: integer
+          description: A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default
+            is 10.
+        - name: page
+          in: query
+          type: integer
+          description: 'Pagination returns the results in pages. Each page contains the number of results specified by the
+            `limit` (default: 10).<br>If not specified, results 1-10 from'
+        - name: Authorization
+          in: header
+          type: string
+          description: Bearer authentication
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.BEEHIIV_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: beehiiv-subpackage-segments-rest
+    port: 8080
+    description: REST adapter for API Reference — subpackage_segments. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/publications/{publicationid}/segments
+      name: publications-publicationid-segments
+      description: REST surface for publications-publicationId-segments.
+      operations:
+      - method: POST
+        name: create
+        description: Create segment
+        call: beehiiv-subpackage-segments.create
+        with:
+          publicationId: rest.publicationId
+          Authorization: rest.Authorization
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: index
+        description: 'List segments <Badge intent="info" minimal outlined>OAuth Scope: segments:read</Badge>'
+        call: beehiiv-subpackage-segments.index
+        with:
+          publicationId: rest.publicationId
+          type: rest.type
+          status: rest.status
+          limit: rest.limit
+          page: rest.page
+          order_by: rest.order_by
+          direction: rest.direction
+          expand[]: rest.expand[]
+          Authorization: rest.Authorization
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/publications/{publicationid}/segments/{segmentid}
+      name: publications-publicationid-segments-segmentid
+      description: REST surface for publications-publicationId-segments-segmentId.
+      operations:
+      - method: GET
+        name: show
+        description: 'Get segment <Badge intent="info" minimal outlined>OAuth Scope: segments:read</Badge>'
+        call: beehiiv-subpackage-segments.show
+        with:
+          publicationId: rest.publicationId
+          segmentId: rest.segmentId
+          expand[]: rest.expand[]
+          Authorization: rest.Authorization
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: delete
+        description: 'Delete segment <Badge intent="info" minimal outlined>OAuth Scope: segments:write</Badge>'
+        call: beehiiv-subpackage-segments.delete
+        with:
+          publicationId: rest.publicationId
+          segmentId: rest.segmentId
+          Authorization: rest.Authorization
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/publications/{publicationid}/segments/{segmentid}/members
+      name: publications-publicationid-segments-segmentid-members
+      description: REST surface for publications-publicationId-segments-segmentId-members.
+      operations:
+      - method: GET
+        name: listmembers
+        description: 'List segment subscribers <Badge intent="info" minimal outlined>OAuth Scope: segments:read</Badge>'
+        call: beehiiv-subpackage-segments.listmembers
+        with:
+          publicationId: rest.publicationId
+          segmentId: rest.segmentId
+          limit: rest.limit
+          page: rest.page
+          expand[]: rest.expand[]
+          Authorization: rest.Authorization
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/publications/{publicationid}/segments/{segmentid}/recalculate
+      name: publications-publicationid-segments-segmentid-recalculate
+      description: REST surface for publications-publicationId-segments-segmentId-recalculate.
+      operations:
+      - method: PUT
+        name: recalculate
+        description: 'Recalculate segment <Badge intent="info" minimal outlined>OAuth Scope: segments:write</Badge>'
+        call: beehiiv-subpackage-segments.recalculate
+        with:
+          publicationId: rest.publicationId
+          segmentId: rest.segmentId
+          Authorization: rest.Authorization
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/publications/{publicationid}/segments/{segmentid}/results
+      name: publications-publicationid-segments-segmentid-results
+      description: REST surface for publications-publicationId-segments-segmentId-results.
+      operations:
+      - method: GET
+        name: expandresults
+        description: 'List segment subscriber IDs <Badge intent="info" minimal outlined>OAuth Scope: segments:read</Badge>'
+        call: beehiiv-subpackage-segments.expandresults
+        with:
+          publicationId: rest.publicationId
+          segmentId: rest.segmentId
+          limit: rest.limit
+          page: rest.page
+          Authorization: rest.Authorization
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: beehiiv-subpackage-segments-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for API Reference — subpackage_segments. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: create-segment
+      description: Create segment
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: beehiiv-subpackage-segments.create
+      with:
+        publicationId: tools.publicationId
+        Authorization: tools.Authorization
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-segments-badge-intent-info-minimal
+      description: 'List segments <Badge intent="info" minimal outlined>OAuth Scope: segments:read</Badge>'
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: beehiiv-subpackage-segments.index
+      with:
+        publicationId: tools.publicationId
+        type: tools.type
+        status: tools.status
+        limit: tools.limit
+        page: tools.page
+        order_by: tools.order_by
+        direction: tools.direction
+        expand[]: tools.expand[]
+        Authorization: tools.Authorization
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-segment-badge-intent-info-minimal
+      description: 'Get segment <Badge intent="info" minimal outlined>OAuth Scope: segments:read</Badge>'
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: beehiiv-subpackage-segments.show
+      with:
+        publicationId: tools.publicationId
+        segmentId: tools.segmentId
+        expand[]: tools.expand[]
+        Authorization: tools.Authorization
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-segment-badge-intent-info-minimal
+      description: 'Delete segment <Badge intent="info" minimal outlined>OAuth Scope: segments:write</Badge>'
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: beehiiv-subpackage-segments.delete
+      with:
+        publicationId: tools.publicationId
+        segmentId: tools.segmentId
+        Authorization: tools.Authorization
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-segment-subscribers-badge-intent-info
+      description: 'List segment subscribers <Badge intent="info" minimal outlined>OAuth Scope: segments:read</Badge>'
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: beehiiv-subpackage-segments.listmembers
+      with:
+        publicationId: tools.publicationId
+        segmentId: tools.segmentId
+        limit: tools.limit
+        page: tools.page
+        expand[]: tools.expand[]
+        Authorization: tools.Authorization
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: recalculate-segment-badge-intent-info-minimal
+      description: 'Recalculate segment <Badge intent="info" minimal outlined>OAuth Scope: segments:write</Badge>'
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: beehiiv-subpackage-segments.recalculate
+      with:
+        publicationId: tools.publicationId
+        segmentId: tools.segmentId
+        Authorization: tools.Authorization
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-segment-subscriber-ids-badge
+      description: 'List segment subscriber IDs <Badge intent="info" minimal outlined>OAuth Scope: segments:read</Badge>'
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: beehiiv-subpackage-segments.expandresults
+      with:
+        publicationId: tools.publicationId
+        segmentId: tools.segmentId
+        limit: tools.limit
+        page: tools.page
+        Authorization: tools.Authorization
+      outputParameters:
+      - type: object
+        mapping: $.

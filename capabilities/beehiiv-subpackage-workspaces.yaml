@@ -1,0 +1,136 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: API Reference — subpackage_workspaces
+  description: 'API Reference — subpackage_workspaces. 2 operations. Lead operation: Identify workspace <Badge intent="info"
+    minimal outlined>OAuth Scope: identify:read</Badge>. Self-contained Naftiko capability covering one Beehiiv business surface.'
+  tags:
+  - Beehiiv
+  - subpackage_workspaces
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    BEEHIIV_API_KEY: BEEHIIV_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: beehiiv-subpackage-workspaces
+    baseUri: https://api.beehiiv.com/v2
+    description: API Reference — subpackage_workspaces business capability. Self-contained, no shared references.
+    resources:
+    - name: workspaces-identify
+      path: /workspaces/identify
+      operations:
+      - name: identify
+        method: GET
+        description: 'Identify workspace <Badge intent="info" minimal outlined>OAuth Scope: identify:read</Badge>'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: Authorization
+          in: header
+          type: string
+          description: Bearer authentication
+          required: true
+    - name: workspaces-publications-by_subscription_email-email
+      path: /workspaces/publications/by_subscription_email/{email}
+      operations:
+      - name: publicationsbysubscriptionemail
+        method: GET
+        description: 'Get publications by subscription email <Badge intent="info" minimal outlined>OAuth Scope: publications:read</Badge>'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: email
+          in: path
+          type: string
+          description: The email address to search for subscriptions
+          required: true
+        - name: expand
+          in: query
+          type: array
+          description: Optionally expand the results by adding additional information. <br>`subscription` - Returns the full
+            Subscription object for the email address in each publicat
+        - name: Authorization
+          in: header
+          type: string
+          description: Bearer authentication
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.BEEHIIV_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: beehiiv-subpackage-workspaces-rest
+    port: 8080
+    description: REST adapter for API Reference — subpackage_workspaces. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/workspaces/identify
+      name: workspaces-identify
+      description: REST surface for workspaces-identify.
+      operations:
+      - method: GET
+        name: identify
+        description: 'Identify workspace <Badge intent="info" minimal outlined>OAuth Scope: identify:read</Badge>'
+        call: beehiiv-subpackage-workspaces.identify
+        with:
+          Authorization: rest.Authorization
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/workspaces/publications/by-subscription-email/{email}
+      name: workspaces-publications-by-subscription-email-email
+      description: REST surface for workspaces-publications-by_subscription_email-email.
+      operations:
+      - method: GET
+        name: publicationsbysubscriptionemail
+        description: 'Get publications by subscription email <Badge intent="info" minimal outlined>OAuth Scope: publications:read</Badge>'
+        call: beehiiv-subpackage-workspaces.publicationsbysubscriptionemail
+        with:
+          email: rest.email
+          expand: rest.expand
+          Authorization: rest.Authorization
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: beehiiv-subpackage-workspaces-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for API Reference — subpackage_workspaces. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: identify-workspace-badge-intent-info-minimal
+      description: 'Identify workspace <Badge intent="info" minimal outlined>OAuth Scope: identify:read</Badge>'
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: beehiiv-subpackage-workspaces.identify
+      with:
+        Authorization: tools.Authorization
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-publications-subscription-email-badge
+      description: 'Get publications by subscription email <Badge intent="info" minimal outlined>OAuth Scope: publications:read</Badge>'
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: beehiiv-subpackage-workspaces.publicationsbysubscriptionemail
+      with:
+        email: tools.email
+        expand: tools.expand
+        Authorization: tools.Authorization
+      outputParameters:
+      - type: object
+        mapping: $.

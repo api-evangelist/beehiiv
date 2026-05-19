@@ -1,0 +1,390 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: API Reference — subpackage_newsletterListSubscriptions
+  description: 'API Reference — subpackage_newsletterListSubscriptions. 5 operations. Lead operation: Create newsletter list
+    subscription <Badge intent="warning" minimal outlined>Beta</Badge> <Badge intent="info" minimal outlined>OAuth Scope:
+    newsletter_lists:write</Badge>. Self-contained Naftiko capability covering one Beehiiv business surface.'
+  tags:
+  - Beehiiv
+  - subpackage_newsletterListSubscriptions
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    BEEHIIV_API_KEY: BEEHIIV_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: beehiiv-subpackage-newsletterlistsubscriptions
+    baseUri: https://api.beehiiv.com/v2
+    description: API Reference — subpackage_newsletterListSubscriptions business capability. Self-contained, no shared references.
+    resources:
+    - name: publications-publicationId-newsletter_lists-newsletterListId-subscriptions
+      path: /publications/{publicationId}/newsletter_lists/{newsletterListId}/subscriptions
+      operations:
+      - name: create
+        method: POST
+        description: 'Create newsletter list subscription <Badge intent="warning" minimal outlined>Beta</Badge> <Badge intent="info"
+          minimal outlined>OAuth Scope: newsletter_lists:write</Badge>'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: publicationId
+          in: path
+          type: string
+          description: The prefixed ID of the publication object
+          required: true
+        - name: newsletterListId
+          in: path
+          type: string
+          description: The prefixed ID of the newsletter list object
+          required: true
+        - name: Authorization
+          in: header
+          type: string
+          description: Bearer authentication
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: index
+        method: GET
+        description: 'List newsletter list subscriptions <Badge intent="warning" minimal outlined>Beta</Badge> <Badge intent="info"
+          minimal outlined>OAuth Scope: newsletter_lists:read</Badge>'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: publicationId
+          in: path
+          type: string
+          description: The prefixed ID of the publication object
+          required: true
+        - name: newsletterListId
+          in: path
+          type: string
+          description: The prefixed ID of the newsletter list object
+          required: true
+        - name: limit
+          in: query
+          type: integer
+          description: A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default
+            is 10.
+        - name: cursor
+          in: query
+          type: string
+          description: '**Cursor-based pagination (recommended)**: Use this opaque cursor token to fetch the next page of
+            results. When provided, pagination will use cursor-based metho'
+        - name: page
+          in: query
+          type: integer
+          description: '**Offset-based pagination (deprecated)**: Page number for offset-based pagination. Please migrate
+            to cursor-based pagination using the `cursor` parameter. If no'
+        - name: direction
+          in: query
+          type: string
+          description: The direction that the results are sorted in. Defaults to asc<br> `asc` - Ascending, sorts from smallest
+            to largest.<br> `desc` - Descending, sorts from largest
+        - name: Authorization
+          in: header
+          type: string
+          description: Bearer authentication
+          required: true
+    - name: publications-publicationId-newsletter_lists-newsletterListId-subscriptions-by_su
+      path: /publications/{publicationId}/newsletter_lists/{newsletterListId}/subscriptions/by_subscription_id/{subscriptionId}
+      operations:
+      - name: updatebysubscriptionid
+        method: PATCH
+        description: 'Update newsletter list subscription by subscription ID <Badge intent="warning" minimal outlined>Beta</Badge>
+          <Badge intent="info" minimal outlined>OAuth Scope: newsletter_lists:write</Badge>'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: publicationId
+          in: path
+          type: string
+          description: The prefixed ID of the publication object
+          required: true
+        - name: newsletterListId
+          in: path
+          type: string
+          description: The prefixed ID of the newsletter list object
+          required: true
+        - name: subscriptionId
+          in: path
+          type: string
+          description: The prefixed ID of the subscription
+          required: true
+        - name: Authorization
+          in: header
+          type: string
+          description: Bearer authentication
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: publications-publicationId-newsletter_lists-newsletterListId-subscriptions-newsl
+      path: /publications/{publicationId}/newsletter_lists/{newsletterListId}/subscriptions/{newsletterListSubscriptionId}
+      operations:
+      - name: show
+        method: GET
+        description: 'Get newsletter list subscription <Badge intent="warning" minimal outlined>Beta</Badge> <Badge intent="info"
+          minimal outlined>OAuth Scope: newsletter_lists:read</Badge>'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: publicationId
+          in: path
+          type: string
+          description: The prefixed ID of the publication object
+          required: true
+        - name: newsletterListId
+          in: path
+          type: string
+          description: The prefixed ID of the newsletter list object
+          required: true
+        - name: newsletterListSubscriptionId
+          in: path
+          type: string
+          description: The prefixed ID of the newsletter list subscription object
+          required: true
+        - name: Authorization
+          in: header
+          type: string
+          description: Bearer authentication
+          required: true
+      - name: update
+        method: PATCH
+        description: 'Update newsletter list subscription <Badge intent="warning" minimal outlined>Beta</Badge> <Badge intent="info"
+          minimal outlined>OAuth Scope: newsletter_lists:write</Badge>'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: publicationId
+          in: path
+          type: string
+          description: The prefixed ID of the publication object
+          required: true
+        - name: newsletterListId
+          in: path
+          type: string
+          description: The prefixed ID of the newsletter list object
+          required: true
+        - name: newsletterListSubscriptionId
+          in: path
+          type: string
+          description: The prefixed ID of the newsletter list subscription object
+          required: true
+        - name: Authorization
+          in: header
+          type: string
+          description: Bearer authentication
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    authentication:
+      type: bearer
+      token: '{{env.BEEHIIV_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: beehiiv-subpackage-newsletterlistsubscriptions-rest
+    port: 8080
+    description: REST adapter for API Reference — subpackage_newsletterListSubscriptions. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/publications/{publicationid}/newsletter-lists/{newsletterlistid}/subscriptions
+      name: publications-publicationid-newsletter-lists-newsletterlistid-subscriptions
+      description: REST surface for publications-publicationId-newsletter_lists-newsletterListId-subscriptions.
+      operations:
+      - method: POST
+        name: create
+        description: 'Create newsletter list subscription <Badge intent="warning" minimal outlined>Beta</Badge> <Badge intent="info"
+          minimal outlined>OAuth Scope: newsletter_lists:write</Badge>'
+        call: beehiiv-subpackage-newsletterlistsubscriptions.create
+        with:
+          publicationId: rest.publicationId
+          newsletterListId: rest.newsletterListId
+          Authorization: rest.Authorization
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: index
+        description: 'List newsletter list subscriptions <Badge intent="warning" minimal outlined>Beta</Badge> <Badge intent="info"
+          minimal outlined>OAuth Scope: newsletter_lists:read</Badge>'
+        call: beehiiv-subpackage-newsletterlistsubscriptions.index
+        with:
+          publicationId: rest.publicationId
+          newsletterListId: rest.newsletterListId
+          limit: rest.limit
+          cursor: rest.cursor
+          page: rest.page
+          direction: rest.direction
+          Authorization: rest.Authorization
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/publications/{publicationid}/newsletter-lists/{newsletterlistid}/subscriptions/by-subscription-id/{subscriptionid}
+      name: publications-publicationid-newsletter-lists-newsletterlistid-subscriptions-by-su
+      description: REST surface for publications-publicationId-newsletter_lists-newsletterListId-subscriptions-by_su.
+      operations:
+      - method: PATCH
+        name: updatebysubscriptionid
+        description: 'Update newsletter list subscription by subscription ID <Badge intent="warning" minimal outlined>Beta</Badge>
+          <Badge intent="info" minimal outlined>OAuth Scope: newsletter_lists:write</Badge>'
+        call: beehiiv-subpackage-newsletterlistsubscriptions.updatebysubscriptionid
+        with:
+          publicationId: rest.publicationId
+          newsletterListId: rest.newsletterListId
+          subscriptionId: rest.subscriptionId
+          Authorization: rest.Authorization
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/publications/{publicationid}/newsletter-lists/{newsletterlistid}/subscriptions/{newsletterlistsubscriptionid}
+      name: publications-publicationid-newsletter-lists-newsletterlistid-subscriptions-newsl
+      description: REST surface for publications-publicationId-newsletter_lists-newsletterListId-subscriptions-newsl.
+      operations:
+      - method: GET
+        name: show
+        description: 'Get newsletter list subscription <Badge intent="warning" minimal outlined>Beta</Badge> <Badge intent="info"
+          minimal outlined>OAuth Scope: newsletter_lists:read</Badge>'
+        call: beehiiv-subpackage-newsletterlistsubscriptions.show
+        with:
+          publicationId: rest.publicationId
+          newsletterListId: rest.newsletterListId
+          newsletterListSubscriptionId: rest.newsletterListSubscriptionId
+          Authorization: rest.Authorization
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: update
+        description: 'Update newsletter list subscription <Badge intent="warning" minimal outlined>Beta</Badge> <Badge intent="info"
+          minimal outlined>OAuth Scope: newsletter_lists:write</Badge>'
+        call: beehiiv-subpackage-newsletterlistsubscriptions.update
+        with:
+          publicationId: rest.publicationId
+          newsletterListId: rest.newsletterListId
+          newsletterListSubscriptionId: rest.newsletterListSubscriptionId
+          Authorization: rest.Authorization
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: beehiiv-subpackage-newsletterlistsubscriptions-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for API Reference — subpackage_newsletterListSubscriptions. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: create-newsletter-list-subscription-badge
+      description: 'Create newsletter list subscription <Badge intent="warning" minimal outlined>Beta</Badge> <Badge intent="info"
+        minimal outlined>OAuth Scope: newsletter_lists:write</Badge>'
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: beehiiv-subpackage-newsletterlistsubscriptions.create
+      with:
+        publicationId: tools.publicationId
+        newsletterListId: tools.newsletterListId
+        Authorization: tools.Authorization
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-newsletter-list-subscriptions-badge
+      description: 'List newsletter list subscriptions <Badge intent="warning" minimal outlined>Beta</Badge> <Badge intent="info"
+        minimal outlined>OAuth Scope: newsletter_lists:read</Badge>'
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: beehiiv-subpackage-newsletterlistsubscriptions.index
+      with:
+        publicationId: tools.publicationId
+        newsletterListId: tools.newsletterListId
+        limit: tools.limit
+        cursor: tools.cursor
+        page: tools.page
+        direction: tools.direction
+        Authorization: tools.Authorization
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-newsletter-list-subscription-subscription
+      description: 'Update newsletter list subscription by subscription ID <Badge intent="warning" minimal outlined>Beta</Badge>
+        <Badge intent="info" minimal outlined>OAuth Scope: newsletter_lists:write</Badge>'
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: beehiiv-subpackage-newsletterlistsubscriptions.updatebysubscriptionid
+      with:
+        publicationId: tools.publicationId
+        newsletterListId: tools.newsletterListId
+        subscriptionId: tools.subscriptionId
+        Authorization: tools.Authorization
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-newsletter-list-subscription-badge
+      description: 'Get newsletter list subscription <Badge intent="warning" minimal outlined>Beta</Badge> <Badge intent="info"
+        minimal outlined>OAuth Scope: newsletter_lists:read</Badge>'
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: beehiiv-subpackage-newsletterlistsubscriptions.show
+      with:
+        publicationId: tools.publicationId
+        newsletterListId: tools.newsletterListId
+        newsletterListSubscriptionId: tools.newsletterListSubscriptionId
+        Authorization: tools.Authorization
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-newsletter-list-subscription-badge
+      description: 'Update newsletter list subscription <Badge intent="warning" minimal outlined>Beta</Badge> <Badge intent="info"
+        minimal outlined>OAuth Scope: newsletter_lists:write</Badge>'
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: beehiiv-subpackage-newsletterlistsubscriptions.update
+      with:
+        publicationId: tools.publicationId
+        newsletterListId: tools.newsletterListId
+        newsletterListSubscriptionId: tools.newsletterListSubscriptionId
+        Authorization: tools.Authorization
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

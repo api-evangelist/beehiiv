@@ -1,0 +1,102 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: API Reference — subpackage_referralProgram
+  description: 'API Reference — subpackage_referralProgram. 1 operations. Lead operation: Get referral program <Badge intent="info"
+    minimal outlined>OAuth Scope: referral_program:read</Badge>. Self-contained Naftiko capability covering one Beehiiv business
+    surface.'
+  tags:
+  - Beehiiv
+  - subpackage_referralProgram
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    BEEHIIV_API_KEY: BEEHIIV_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: beehiiv-subpackage-referralprogram
+    baseUri: https://api.beehiiv.com/v2
+    description: API Reference — subpackage_referralProgram business capability. Self-contained, no shared references.
+    resources:
+    - name: publications-publicationId-referral_program
+      path: /publications/{publicationId}/referral_program
+      operations:
+      - name: show
+        method: GET
+        description: 'Get referral program <Badge intent="info" minimal outlined>OAuth Scope: referral_program:read</Badge>'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: publicationId
+          in: path
+          type: string
+          description: The prefixed ID of the publication object
+          required: true
+        - name: limit
+          in: query
+          type: integer
+          description: A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default
+            is 10.
+        - name: page
+          in: query
+          type: integer
+          description: 'Pagination returns the results in pages. Each page contains the number of results specified by the
+            `limit` (default: 10).<br>If not specified, results 1-10 from'
+        - name: Authorization
+          in: header
+          type: string
+          description: Bearer authentication
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.BEEHIIV_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: beehiiv-subpackage-referralprogram-rest
+    port: 8080
+    description: REST adapter for API Reference — subpackage_referralProgram. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/publications/{publicationid}/referral-program
+      name: publications-publicationid-referral-program
+      description: REST surface for publications-publicationId-referral_program.
+      operations:
+      - method: GET
+        name: show
+        description: 'Get referral program <Badge intent="info" minimal outlined>OAuth Scope: referral_program:read</Badge>'
+        call: beehiiv-subpackage-referralprogram.show
+        with:
+          publicationId: rest.publicationId
+          limit: rest.limit
+          page: rest.page
+          Authorization: rest.Authorization
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: beehiiv-subpackage-referralprogram-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for API Reference — subpackage_referralProgram. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: get-referral-program-badge-intent-info
+      description: 'Get referral program <Badge intent="info" minimal outlined>OAuth Scope: referral_program:read</Badge>'
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: beehiiv-subpackage-referralprogram.show
+      with:
+        publicationId: tools.publicationId
+        limit: tools.limit
+        page: tools.page
+        Authorization: tools.Authorization
+      outputParameters:
+      - type: object
+        mapping: $.

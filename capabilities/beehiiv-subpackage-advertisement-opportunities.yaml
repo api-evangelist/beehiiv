@@ -1,0 +1,88 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: API Reference — subpackage_advertisement_opportunities
+  description: 'API Reference — subpackage_advertisement_opportunities. 1 operations. Lead operation: Get advertisement opportunities
+    <Badge intent="info" minimal outlined>OAuth Scope: posts:read</Badge>. Self-contained Naftiko capability covering one
+    Beehiiv business surface.'
+  tags:
+  - Beehiiv
+  - subpackage_advertisement_opportunities
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    BEEHIIV_API_KEY: BEEHIIV_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: beehiiv-subpackage-advertisement-opportunities
+    baseUri: https://api.beehiiv.com/v2
+    description: API Reference — subpackage_advertisement_opportunities business capability. Self-contained, no shared references.
+    resources:
+    - name: publications-publicationId-advertisement_opportunities
+      path: /publications/{publicationId}/advertisement_opportunities
+      operations:
+      - name: index
+        method: GET
+        description: 'Get advertisement opportunities <Badge intent="info" minimal outlined>OAuth Scope: posts:read</Badge>'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: publicationId
+          in: path
+          type: string
+          description: The prefixed ID of the publication object
+          required: true
+        - name: Authorization
+          in: header
+          type: string
+          description: Bearer authentication
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.BEEHIIV_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: beehiiv-subpackage-advertisement-opportunities-rest
+    port: 8080
+    description: REST adapter for API Reference — subpackage_advertisement_opportunities. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/publications/{publicationid}/advertisement-opportunities
+      name: publications-publicationid-advertisement-opportunities
+      description: REST surface for publications-publicationId-advertisement_opportunities.
+      operations:
+      - method: GET
+        name: index
+        description: 'Get advertisement opportunities <Badge intent="info" minimal outlined>OAuth Scope: posts:read</Badge>'
+        call: beehiiv-subpackage-advertisement-opportunities.index
+        with:
+          publicationId: rest.publicationId
+          Authorization: rest.Authorization
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: beehiiv-subpackage-advertisement-opportunities-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for API Reference — subpackage_advertisement_opportunities. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: get-advertisement-opportunities-badge-intent-info
+      description: 'Get advertisement opportunities <Badge intent="info" minimal outlined>OAuth Scope: posts:read</Badge>'
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: beehiiv-subpackage-advertisement-opportunities.index
+      with:
+        publicationId: tools.publicationId
+        Authorization: tools.Authorization
+      outputParameters:
+      - type: object
+        mapping: $.

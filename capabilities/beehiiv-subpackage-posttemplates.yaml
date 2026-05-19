@@ -1,0 +1,113 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: API Reference — subpackage_postTemplates
+  description: 'API Reference — subpackage_postTemplates. 1 operations. Lead operation: Get post templates. Self-contained
+    Naftiko capability covering one Beehiiv business surface.'
+  tags:
+  - Beehiiv
+  - subpackage_postTemplates
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    BEEHIIV_API_KEY: BEEHIIV_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: beehiiv-subpackage-posttemplates
+    baseUri: https://api.beehiiv.com/v2
+    description: API Reference — subpackage_postTemplates business capability. Self-contained, no shared references.
+    resources:
+    - name: publications-publicationId-post_templates
+      path: /publications/{publicationId}/post_templates
+      operations:
+      - name: index
+        method: GET
+        description: Get post templates
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: publicationId
+          in: path
+          type: string
+          description: The prefixed ID of the publication object
+          required: true
+        - name: limit
+          in: query
+          type: integer
+          description: A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default
+            is 10.
+        - name: page
+          in: query
+          type: integer
+          description: 'Pagination returns the results in pages. Each page contains the number of results specified by the
+            `limit` (default: 10).<br>If not specified, results 1-10 from'
+        - name: order
+          in: query
+          type: string
+          description: The direction of the request. Defaults to `asc`.
+        - name: order_by
+          in: query
+          type: string
+          description: The field to order by. Defaults to `created`.
+        - name: Authorization
+          in: header
+          type: string
+          description: Bearer authentication
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.BEEHIIV_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: beehiiv-subpackage-posttemplates-rest
+    port: 8080
+    description: REST adapter for API Reference — subpackage_postTemplates. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/publications/{publicationid}/post-templates
+      name: publications-publicationid-post-templates
+      description: REST surface for publications-publicationId-post_templates.
+      operations:
+      - method: GET
+        name: index
+        description: Get post templates
+        call: beehiiv-subpackage-posttemplates.index
+        with:
+          publicationId: rest.publicationId
+          limit: rest.limit
+          page: rest.page
+          order: rest.order
+          order_by: rest.order_by
+          Authorization: rest.Authorization
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: beehiiv-subpackage-posttemplates-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for API Reference — subpackage_postTemplates. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: get-post-templates
+      description: Get post templates
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: beehiiv-subpackage-posttemplates.index
+      with:
+        publicationId: tools.publicationId
+        limit: tools.limit
+        page: tools.page
+        order: tools.order
+        order_by: tools.order_by
+        Authorization: tools.Authorization
+      outputParameters:
+      - type: object
+        mapping: $.

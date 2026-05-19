@@ -1,0 +1,354 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: API Reference — subpackage_bulkSubscriptionUpdates
+  description: 'API Reference — subpackage_bulkSubscriptionUpdates. 6 operations. Lead operation: List subscription updates
+    <Badge intent="info" minimal outlined>OAuth Scope: subscriptions:read</Badge>. Self-contained Naftiko capability covering
+    one Beehiiv business surface.'
+  tags:
+  - Beehiiv
+  - subpackage_bulkSubscriptionUpdates
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    BEEHIIV_API_KEY: BEEHIIV_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: beehiiv-subpackage-bulksubscriptionupdates
+    baseUri: https://api.beehiiv.com/v2
+    description: API Reference — subpackage_bulkSubscriptionUpdates business capability. Self-contained, no shared references.
+    resources:
+    - name: publications-publicationId-bulk_subscription_updates
+      path: /publications/{publicationId}/bulk_subscription_updates
+      operations:
+      - name: index
+        method: GET
+        description: 'List subscription updates <Badge intent="info" minimal outlined>OAuth Scope: subscriptions:read</Badge>'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: publicationId
+          in: path
+          type: string
+          description: The prefixed ID of the publication object
+          required: true
+        - name: Authorization
+          in: header
+          type: string
+          description: Bearer authentication
+          required: true
+    - name: publications-publicationId-bulk_subscription_updates-id
+      path: /publications/{publicationId}/bulk_subscription_updates/{id}
+      operations:
+      - name: show
+        method: GET
+        description: 'Get subscription update <Badge intent="info" minimal outlined>OAuth Scope: subscriptions:read</Badge>'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: publicationId
+          in: path
+          type: string
+          description: The prefixed ID of the publication object
+          required: true
+        - name: id
+          in: path
+          type: string
+          description: The ID of the Subscription Update object
+          required: true
+        - name: Authorization
+          in: header
+          type: string
+          description: Bearer authentication
+          required: true
+    - name: publications-publicationId-subscriptions
+      path: /publications/{publicationId}/subscriptions
+      operations:
+      - name: putstatus
+        method: PUT
+        description: 'Update subscriptions'' status <Badge intent="info" minimal outlined>OAuth Scope: subscriptions:write</Badge>'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: publicationId
+          in: path
+          type: string
+          description: The prefixed ID of the publication object
+          required: true
+        - name: Authorization
+          in: header
+          type: string
+          description: Bearer authentication
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: patchstatus
+        method: PATCH
+        description: 'Update subscriptions'' status <Badge intent="info" minimal outlined>OAuth Scope: subscriptions:write</Badge>'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: publicationId
+          in: path
+          type: string
+          description: The prefixed ID of the publication object
+          required: true
+        - name: Authorization
+          in: header
+          type: string
+          description: Bearer authentication
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: publications-publicationId-subscriptions-bulk_actions
+      path: /publications/{publicationId}/subscriptions/bulk_actions
+      operations:
+      - name: put
+        method: PUT
+        description: 'Update subscriptions <Badge intent="info" minimal outlined>OAuth Scope: subscriptions:write</Badge>'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: publicationId
+          in: path
+          type: string
+          description: The prefixed ID of the publication object
+          required: true
+        - name: Authorization
+          in: header
+          type: string
+          description: Bearer authentication
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: patch
+        method: PATCH
+        description: 'Update subscriptions <Badge intent="info" minimal outlined>OAuth Scope: subscriptions:write</Badge>'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: publicationId
+          in: path
+          type: string
+          description: The prefixed ID of the publication object
+          required: true
+        - name: Authorization
+          in: header
+          type: string
+          description: Bearer authentication
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    authentication:
+      type: bearer
+      token: '{{env.BEEHIIV_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: beehiiv-subpackage-bulksubscriptionupdates-rest
+    port: 8080
+    description: REST adapter for API Reference — subpackage_bulkSubscriptionUpdates. One Spectral-compliant resource per
+      consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/publications/{publicationid}/bulk-subscription-updates
+      name: publications-publicationid-bulk-subscription-updates
+      description: REST surface for publications-publicationId-bulk_subscription_updates.
+      operations:
+      - method: GET
+        name: index
+        description: 'List subscription updates <Badge intent="info" minimal outlined>OAuth Scope: subscriptions:read</Badge>'
+        call: beehiiv-subpackage-bulksubscriptionupdates.index
+        with:
+          publicationId: rest.publicationId
+          Authorization: rest.Authorization
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/publications/{publicationid}/bulk-subscription-updates/{id}
+      name: publications-publicationid-bulk-subscription-updates-id
+      description: REST surface for publications-publicationId-bulk_subscription_updates-id.
+      operations:
+      - method: GET
+        name: show
+        description: 'Get subscription update <Badge intent="info" minimal outlined>OAuth Scope: subscriptions:read</Badge>'
+        call: beehiiv-subpackage-bulksubscriptionupdates.show
+        with:
+          publicationId: rest.publicationId
+          id: rest.id
+          Authorization: rest.Authorization
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/publications/{publicationid}/subscriptions
+      name: publications-publicationid-subscriptions
+      description: REST surface for publications-publicationId-subscriptions.
+      operations:
+      - method: PUT
+        name: putstatus
+        description: 'Update subscriptions'' status <Badge intent="info" minimal outlined>OAuth Scope: subscriptions:write</Badge>'
+        call: beehiiv-subpackage-bulksubscriptionupdates.putstatus
+        with:
+          publicationId: rest.publicationId
+          Authorization: rest.Authorization
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: patchstatus
+        description: 'Update subscriptions'' status <Badge intent="info" minimal outlined>OAuth Scope: subscriptions:write</Badge>'
+        call: beehiiv-subpackage-bulksubscriptionupdates.patchstatus
+        with:
+          publicationId: rest.publicationId
+          Authorization: rest.Authorization
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/publications/{publicationid}/subscriptions/bulk-actions
+      name: publications-publicationid-subscriptions-bulk-actions
+      description: REST surface for publications-publicationId-subscriptions-bulk_actions.
+      operations:
+      - method: PUT
+        name: put
+        description: 'Update subscriptions <Badge intent="info" minimal outlined>OAuth Scope: subscriptions:write</Badge>'
+        call: beehiiv-subpackage-bulksubscriptionupdates.put
+        with:
+          publicationId: rest.publicationId
+          Authorization: rest.Authorization
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: patch
+        description: 'Update subscriptions <Badge intent="info" minimal outlined>OAuth Scope: subscriptions:write</Badge>'
+        call: beehiiv-subpackage-bulksubscriptionupdates.patch
+        with:
+          publicationId: rest.publicationId
+          Authorization: rest.Authorization
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: beehiiv-subpackage-bulksubscriptionupdates-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for API Reference — subpackage_bulkSubscriptionUpdates. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: list-subscription-updates-badge-intent-info
+      description: 'List subscription updates <Badge intent="info" minimal outlined>OAuth Scope: subscriptions:read</Badge>'
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: beehiiv-subpackage-bulksubscriptionupdates.index
+      with:
+        publicationId: tools.publicationId
+        Authorization: tools.Authorization
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-subscription-update-badge-intent-info
+      description: 'Get subscription update <Badge intent="info" minimal outlined>OAuth Scope: subscriptions:read</Badge>'
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: beehiiv-subpackage-bulksubscriptionupdates.show
+      with:
+        publicationId: tools.publicationId
+        id: tools.id
+        Authorization: tools.Authorization
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-subscriptions-status-badge-intent-info
+      description: 'Update subscriptions'' status <Badge intent="info" minimal outlined>OAuth Scope: subscriptions:write</Badge>'
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: beehiiv-subpackage-bulksubscriptionupdates.putstatus
+      with:
+        publicationId: tools.publicationId
+        Authorization: tools.Authorization
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-subscriptions-status-badge-intent-info-2
+      description: 'Update subscriptions'' status <Badge intent="info" minimal outlined>OAuth Scope: subscriptions:write</Badge>'
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: beehiiv-subpackage-bulksubscriptionupdates.patchstatus
+      with:
+        publicationId: tools.publicationId
+        Authorization: tools.Authorization
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-subscriptions-badge-intent-info-minimal
+      description: 'Update subscriptions <Badge intent="info" minimal outlined>OAuth Scope: subscriptions:write</Badge>'
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: beehiiv-subpackage-bulksubscriptionupdates.put
+      with:
+        publicationId: tools.publicationId
+        Authorization: tools.Authorization
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-subscriptions-badge-intent-info-minimal-2
+      description: 'Update subscriptions <Badge intent="info" minimal outlined>OAuth Scope: subscriptions:write</Badge>'
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: beehiiv-subpackage-bulksubscriptionupdates.patch
+      with:
+        publicationId: tools.publicationId
+        Authorization: tools.Authorization
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,100 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: API Reference — subpackage_subscriptionTags
+  description: 'API Reference — subpackage_subscriptionTags. 1 operations. Lead operation: Add subscription tag <Badge intent="info"
+    minimal outlined>OAuth Scope: subscriptions:write</Badge>. Self-contained Naftiko capability covering one Beehiiv business
+    surface.'
+  tags:
+  - Beehiiv
+  - subpackage_subscriptionTags
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    BEEHIIV_API_KEY: BEEHIIV_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: beehiiv-subpackage-subscriptiontags
+    baseUri: https://api.beehiiv.com/v2
+    description: API Reference — subpackage_subscriptionTags business capability. Self-contained, no shared references.
+    resources:
+    - name: publications-publicationId-subscriptions-subscriptionId-tags
+      path: /publications/{publicationId}/subscriptions/{subscriptionId}/tags
+      operations:
+      - name: create
+        method: POST
+        description: 'Add subscription tag <Badge intent="info" minimal outlined>OAuth Scope: subscriptions:write</Badge>'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: publicationId
+          in: path
+          type: string
+          required: true
+        - name: subscriptionId
+          in: path
+          type: string
+          required: true
+        - name: Authorization
+          in: header
+          type: string
+          description: Bearer authentication
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    authentication:
+      type: bearer
+      token: '{{env.BEEHIIV_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: beehiiv-subpackage-subscriptiontags-rest
+    port: 8080
+    description: REST adapter for API Reference — subpackage_subscriptionTags. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/publications/{publicationid}/subscriptions/{subscriptionid}/tags
+      name: publications-publicationid-subscriptions-subscriptionid-tags
+      description: REST surface for publications-publicationId-subscriptions-subscriptionId-tags.
+      operations:
+      - method: POST
+        name: create
+        description: 'Add subscription tag <Badge intent="info" minimal outlined>OAuth Scope: subscriptions:write</Badge>'
+        call: beehiiv-subpackage-subscriptiontags.create
+        with:
+          publicationId: rest.publicationId
+          subscriptionId: rest.subscriptionId
+          Authorization: rest.Authorization
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: beehiiv-subpackage-subscriptiontags-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for API Reference — subpackage_subscriptionTags. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: add-subscription-tag-badge-intent-info
+      description: 'Add subscription tag <Badge intent="info" minimal outlined>OAuth Scope: subscriptions:write</Badge>'
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: beehiiv-subpackage-subscriptiontags.create
+      with:
+        publicationId: tools.publicationId
+        subscriptionId: tools.subscriptionId
+        Authorization: tools.Authorization
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
