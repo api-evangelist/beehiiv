@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/beehiiv/beehiiv-subscription-schema.json",
+  "title": "beehiiv Subscription",
+  "description": "Schema for a beehiiv newsletter subscription resource as returned and accepted by the beehiiv v2 REST API (https://api.beehiiv.com/v2). Represents a single subscriber to a publication.",
+  "type": "object",
+  "required": ["id", "email", "status", "publication_id"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Prefixed identifier of the subscription (e.g. sub_xxxxxxxxxxxx)."
+    },
+    "publication_id": {
+      "type": "string",
+      "description": "Prefixed identifier of the publication this subscription belongs to (e.g. pub_xxxxxxxxxxxx)."
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "description": "Subscriber email address."
+    },
+    "status": {
+      "type": "string",
+      "description": "Subscription status.",
+      "enum": ["active", "validating", "invalid", "pending", "inactive", "needs_attention"]
+    },
+    "created": {
+      "type": "integer",
+      "description": "Unix timestamp (seconds) when the subscription was created."
+    },
+    "subscription_tier": {
+      "type": "string",
+      "description": "Tier of the subscription; free or a paid tier identifier.",
+      "enum": ["free", "premium"]
+    },
+    "subscription_premium_tier_names": {
+      "type": "array",
+      "description": "Names of paid tiers the subscriber holds.",
+      "items": { "type": "string" }
+    },
+    "utm_source": { "type": "string", "description": "UTM source captured at subscription time." },
+    "utm_medium": { "type": "string", "description": "UTM medium captured at subscription time." },
+    "utm_campaign": { "type": "string", "description": "UTM campaign captured at subscription time." },
+    "utm_channel": { "type": "string", "description": "Channel that produced the subscription (e.g. organic, paid, referral)." },
+    "referring_site": { "type": "string", "description": "Referring URL captured at subscription time." },
+    "referral_code": { "type": "string", "description": "Referral code used at subscription time, if any." },
+    "custom_fields": {
+      "type": "array",
+      "description": "Custom field name/value pairs attached to this subscriber.",
+      "items": {
+        "type": "object",
+        "required": ["name", "value"],
+        "properties": {
+          "name": { "type": "string", "description": "Custom field name." },
+          "value": { "description": "Custom field value (string, number, boolean, or date)." }
+        }
+      }
+    },
+    "tags": {
+      "type": "array",
+      "description": "Subscriber tags.",
+      "items": { "type": "string" }
+    },
+    "stats": {
+      "type": "object",
+      "description": "Engagement statistics for the subscriber.",
+      "properties": {
+        "open_rate": { "type": "number", "description": "Lifetime email open rate (0-1)." },
+        "click_rate": { "type": "number", "description": "Lifetime click-through rate (0-1)." }
+      }
+    }
+  }
+}

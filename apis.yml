@@ -2,8 +2,9 @@ aid: beehiiv
 url: https://raw.githubusercontent.com/api-evangelist/beehiiv/refs/heads/main/apis.yml
 name: beehiiv
 kind: company
-description: beehiiv is a newsletter platform offering email publishing, subscriber management, paid subscriptions, ad network,
-  referrals, and analytics for creators and media companies.
+description: beehiiv is a newsletter publishing platform offering email publishing, subscriber management, paid subscriptions,
+  an ad network, referrals, polls, automations, segments, webhooks, and analytics for creators and media companies. Founded
+  in 2021 by former Morning Brew operators and headquartered in New York City.
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
   - Newsletter
@@ -11,114 +12,145 @@ tags:
   - Email
   - Subscription
   - Publishing
+  - Media
+  - Advertising
 created: '2026-05-08'
-modified: '2026-05-08'
+modified: '2026-05-25'
 specificationVersion: '0.19'
 apis:
   - name: beehiiv Publications API
     description: Read publication metadata and configuration.
-    humanURL: https://developers.beehiiv.com/api-reference
+    humanURL: https://developers.beehiiv.com/api-reference/publications
     baseURL: https://api.beehiiv.com/v2
     tags:
     - Publications
     properties:
     - type: Documentation
-      url: https://developers.beehiiv.com/api-reference
+      url: https://developers.beehiiv.com/api-reference/publications
     - type: OpenAPI
       url: openapi/beehiiv-openapi.yml
   - name: beehiiv Subscriptions API
-    description: Create, list and manage subscribers.
-    humanURL: https://developers.beehiiv.com/api-reference
+    description: Create, list and manage subscribers, bulk subscription operations, and per-subscriber tags.
+    humanURL: https://developers.beehiiv.com/api-reference/subscriptions
     baseURL: https://api.beehiiv.com/v2
     tags:
     - Subscribers
+    - Subscriptions
     properties:
     - type: Documentation
-      url: https://developers.beehiiv.com/api-reference
+      url: https://developers.beehiiv.com/api-reference/subscriptions
     - type: OpenAPI
       url: openapi/beehiiv-openapi.yml
+    - type: JSONSchema
+      url: json-schema/beehiiv-subscription-schema.json
   - name: beehiiv Posts API
-    description: Create, update and retrieve newsletter posts.
-    humanURL: https://developers.beehiiv.com/api-reference
+    description: Create, update, and retrieve newsletter posts; aggregate post stats; manage post templates.
+    humanURL: https://developers.beehiiv.com/api-reference/posts
     baseURL: https://api.beehiiv.com/v2
     tags:
     - Posts
     - Content
     properties:
     - type: Documentation
-      url: https://developers.beehiiv.com/api-reference
+      url: https://developers.beehiiv.com/api-reference/posts
     - type: OpenAPI
       url: openapi/beehiiv-openapi.yml
+    - type: JSONSchema
+      url: json-schema/beehiiv-post-schema.json
   - name: beehiiv Automations API
-    description: Manage and enroll subscribers in automations.
-    humanURL: https://developers.beehiiv.com/api-reference
+    description: Manage automations and enroll/track subscribers in automation journeys and emails.
+    humanURL: https://developers.beehiiv.com/api-reference/automations
     baseURL: https://api.beehiiv.com/v2
     tags:
     - Automations
+    - Journeys
     properties:
     - type: Documentation
-      url: https://developers.beehiiv.com/api-reference
+      url: https://developers.beehiiv.com/api-reference/automations
     - type: OpenAPI
       url: openapi/beehiiv-openapi.yml
   - name: beehiiv Custom Fields API
-    description: Manage custom subscriber data attributes.
-    humanURL: https://developers.beehiiv.com/api-reference
+    description: Manage custom subscriber data attributes attached to a publication.
+    humanURL: https://developers.beehiiv.com/api-reference/custom_fields
     baseURL: https://api.beehiiv.com/v2
     tags:
     - Custom Fields
     properties:
     - type: Documentation
-      url: https://developers.beehiiv.com/api-reference
+      url: https://developers.beehiiv.com/api-reference/custom_fields
     - type: OpenAPI
       url: openapi/beehiiv-openapi.yml
   - name: beehiiv Segments API
-    description: Create and manage subscriber segments.
-    humanURL: https://developers.beehiiv.com/api-reference
+    description: Create and manage subscriber segments, recalculate segment membership, and read segment members/results.
+    humanURL: https://developers.beehiiv.com/api-reference/segments
     baseURL: https://api.beehiiv.com/v2
     tags:
     - Segments
     properties:
     - type: Documentation
-      url: https://developers.beehiiv.com/api-reference
+      url: https://developers.beehiiv.com/api-reference/segments
     - type: OpenAPI
       url: openapi/beehiiv-openapi.yml
   - name: beehiiv Tiers API
-    description: Manage paid subscription tiers.
-    humanURL: https://developers.beehiiv.com/api-reference
+    description: Manage paid subscription tiers and prices for a publication.
+    humanURL: https://developers.beehiiv.com/api-reference/tiers
     baseURL: https://api.beehiiv.com/v2
     tags:
     - Tiers
     - Paid Subscriptions
     properties:
     - type: Documentation
-      url: https://developers.beehiiv.com/api-reference
+      url: https://developers.beehiiv.com/api-reference/tiers
     - type: OpenAPI
       url: openapi/beehiiv-openapi.yml
   - name: beehiiv Polls API
-    description: Manage polls and read responses.
-    humanURL: https://developers.beehiiv.com/api-reference
+    description: Manage polls and retrieve poll responses.
+    humanURL: https://developers.beehiiv.com/api-reference/polls
     baseURL: https://api.beehiiv.com/v2
     tags:
     - Polls
     properties:
     - type: Documentation
-      url: https://developers.beehiiv.com/api-reference
+      url: https://developers.beehiiv.com/api-reference/polls
     - type: OpenAPI
       url: openapi/beehiiv-openapi.yml
   - name: beehiiv Webhooks API
-    description: Subscribe to real-time platform events.
-    humanURL: https://developers.beehiiv.com/api-reference
+    description: Subscribe to real-time platform events (subscriptions, posts, polls, automations) via outbound webhooks.
+    humanURL: https://developers.beehiiv.com/api-reference/webhooks
     baseURL: https://api.beehiiv.com/v2
     tags:
     - Webhooks
     - Events
     properties:
     - type: Documentation
+      url: https://developers.beehiiv.com/api-reference/webhooks
+    - type: OpenAPI
+      url: openapi/beehiiv-openapi.yml
+  - name: beehiiv Newsletter Lists API
+    description: Manage newsletter lists and per-list subscriptions within a publication.
+    humanURL: https://developers.beehiiv.com/api-reference
+    baseURL: https://api.beehiiv.com/v2
+    tags:
+    - Lists
+    - Subscriptions
+    properties:
+    - type: Documentation
+      url: https://developers.beehiiv.com/api-reference
+    - type: OpenAPI
+      url: openapi/beehiiv-openapi.yml
+  - name: beehiiv Referral Program API
+    description: Read referral-program configuration and milestone progress for a publication.
+    humanURL: https://developers.beehiiv.com/api-reference
+    baseURL: https://api.beehiiv.com/v2
+    tags:
+    - Referrals
+    properties:
+    - type: Documentation
       url: https://developers.beehiiv.com/api-reference
     - type: OpenAPI
       url: openapi/beehiiv-openapi.yml
   - name: beehiiv OAuth2 API
-    description: OAuth2 authorization and token management for partner integrations.
+    description: OAuth2 authorization and token management for partner integrations (users/identify, workspaces/identify).
     humanURL: https://developers.beehiiv.com/api-reference
     baseURL: https://api.beehiiv.com/v2
     tags:
@@ -136,28 +168,44 @@ common:
     url: https://www.linkedin.com/company/beehiiv
   - type: Website
     url: https://www.beehiiv.com/
+  - type: Pricing
+    url: https://www.beehiiv.com/pricing
+  - type: Documentation
+    url: https://developers.beehiiv.com/
+  - type: APIReference
+    url: https://developers.beehiiv.com/api-reference
+  - type: GettingStarted
+    url: https://developers.beehiiv.com/welcome/getting-started
+  - type: RateLimiting
+    url: https://developers.beehiiv.com/welcome/rate-limiting
   - type: Plans
     url: plans/beehiiv-plans-pricing.yml
   - type: RateLimits
     url: rate-limits/beehiiv-rate-limits.yml
   - type: FinOps
     url: finops/beehiiv-finops.yml
+  - type: JSONLD
+    url: json-ld/beehiiv-context.jsonld
   - type: Integrations
     url: https://www.beehiiv.com/integrations
   - type: LLMsTxt
     url: https://developers.beehiiv.com/llms.txt
+  - type: LLMsFullTxt
+    url: https://developers.beehiiv.com/llms-full.txt
+  - type: MCPServer
+    url: https://developers.beehiiv.com/_mcp/server
+  - type: SDK
+    url: https://github.com/beehiiv/typescript-sdk
+  - type: Support
+    url: https://support.beehiiv.com/hc/en-us
 integrations:
-  - name: Take a tour
-  - name: Status Case Study
-  - name: Grit Case Study
-  - name: Pepper Case Study
-  - name: Zapier and beehiiv
-  - name: Make and beehiiv
-  - name: Build it your way
-  - name: Shaan Puri
-  - name: Founder of Milk Road
-  - name: Aine Stapleton
-  - name: Head of Growth
+  - name: Zapier
+    url: https://help.zapier.com/hc/en-us/articles/39823554109965-How-to-get-started-with-beehiiv-on-Zapier
+  - name: Make
+  - name: Google Tag Manager (beehiiv Event Tag)
+    url: https://github.com/beehiiv/gtm-beehiiv-pixel-event
+  - name: Google Tag Manager (Ad Network Pixel)
+    url: https://github.com/beehiiv/gtm-beehiiv-pixel-v2
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

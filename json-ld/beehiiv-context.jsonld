@@ -1,0 +1,90 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "@vocab": "https://schema.org/",
+    "beehiiv": "https://api.beehiiv.com/v2/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+
+    "Publication": {
+      "@id": "beehiiv:Publication",
+      "@context": {
+        "id": { "@id": "beehiiv:Publication/id", "@type": "xsd:string" },
+        "name": { "@id": "schema:name", "@type": "xsd:string" },
+        "organization_name": { "@id": "beehiiv:Publication/organizationName", "@type": "xsd:string" },
+        "referral_program_enabled": { "@id": "beehiiv:Publication/referralProgramEnabled", "@type": "xsd:boolean" },
+        "created": { "@id": "schema:dateCreated", "@type": "xsd:integer" }
+      }
+    },
+
+    "Subscription": {
+      "@id": "beehiiv:Subscription",
+      "@context": {
+        "id": { "@id": "beehiiv:Subscription/id", "@type": "xsd:string" },
+        "email": { "@id": "schema:email", "@type": "xsd:string" },
+        "status": { "@id": "beehiiv:Subscription/status", "@type": "xsd:string" },
+        "publication_id": { "@id": "beehiiv:Subscription/publicationId", "@type": "xsd:string" },
+        "subscription_tier": { "@id": "beehiiv:Subscription/tier", "@type": "xsd:string" },
+        "utm_source": { "@id": "beehiiv:Subscription/utmSource", "@type": "xsd:string" },
+        "utm_medium": { "@id": "beehiiv:Subscription/utmMedium", "@type": "xsd:string" },
+        "utm_campaign": { "@id": "beehiiv:Subscription/utmCampaign", "@type": "xsd:string" },
+        "referring_site": { "@id": "beehiiv:Subscription/referringSite", "@type": "xsd:string" },
+        "referral_code": { "@id": "beehiiv:Subscription/referralCode", "@type": "xsd:string" },
+        "tags": { "@id": "beehiiv:Subscription/tags", "@container": "@list" },
+        "created": { "@id": "schema:dateCreated", "@type": "xsd:integer" }
+      }
+    },
+
+    "Post": {
+      "@id": "beehiiv:Post",
+      "@context": {
+        "id": { "@id": "beehiiv:Post/id", "@type": "xsd:string" },
+        "publication_id": { "@id": "beehiiv:Post/publicationId", "@type": "xsd:string" },
+        "title": { "@id": "schema:headline", "@type": "xsd:string" },
+        "subtitle": { "@id": "schema:alternativeHeadline", "@type": "xsd:string" },
+        "authors": { "@id": "schema:author", "@container": "@list" },
+        "status": { "@id": "beehiiv:Post/status", "@type": "xsd:string" },
+        "publish_date": { "@id": "schema:datePublished", "@type": "xsd:integer" },
+        "slug": { "@id": "beehiiv:Post/slug", "@type": "xsd:string" },
+        "web_url": { "@id": "schema:url", "@type": "xsd:string" },
+        "audience": { "@id": "beehiiv:Post/audience", "@type": "xsd:string" },
+        "platform": { "@id": "beehiiv:Post/platform", "@type": "xsd:string" },
+        "thumbnail_url": { "@id": "schema:thumbnailUrl", "@type": "xsd:string" }
+      }
+    },
+
+    "Tier": {
+      "@id": "beehiiv:Tier",
+      "@context": {
+        "id": { "@id": "beehiiv:Tier/id", "@type": "xsd:string" },
+        "name": { "@id": "schema:name", "@type": "xsd:string" },
+        "description": { "@id": "schema:description", "@type": "xsd:string" },
+        "publication_id": { "@id": "beehiiv:Tier/publicationId", "@type": "xsd:string" },
+        "prices": { "@id": "schema:offers", "@container": "@list" }
+      }
+    },
+
+    "Segment": {
+      "@id": "beehiiv:Segment",
+      "@context": {
+        "id": { "@id": "beehiiv:Segment/id", "@type": "xsd:string" },
+        "name": { "@id": "schema:name", "@type": "xsd:string" },
+        "type": { "@id": "beehiiv:Segment/type", "@type": "xsd:string" },
+        "publication_id": { "@id": "beehiiv:Segment/publicationId", "@type": "xsd:string" },
+        "total_results": { "@id": "beehiiv:Segment/totalResults", "@type": "xsd:integer" }
+      }
+    },
+
+    "Webhook": {
+      "@id": "beehiiv:Webhook",
+      "@context": {
+        "id": { "@id": "beehiiv:Webhook/id", "@type": "xsd:string" },
+        "url": { "@id": "schema:url", "@type": "xsd:string" },
+        "event_types": { "@id": "beehiiv:Webhook/eventTypes", "@container": "@list" },
+        "publication_id": { "@id": "beehiiv:Webhook/publicationId", "@type": "xsd:string" },
+        "status": { "@id": "beehiiv:Webhook/status", "@type": "xsd:string" }
+      }
+    }
+  }
+}

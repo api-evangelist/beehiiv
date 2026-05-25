@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/beehiiv/beehiiv-post-schema.json",
+  "title": "beehiiv Post",
+  "description": "Schema for a beehiiv newsletter post resource as returned and accepted by the beehiiv v2 REST API (https://api.beehiiv.com/v2). Represents a single newsletter issue or piece of content.",
+  "type": "object",
+  "required": ["id", "publication_id", "title", "status"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Prefixed identifier of the post (e.g. post_xxxxxxxxxxxx)."
+    },
+    "publication_id": {
+      "type": "string",
+      "description": "Prefixed identifier of the publication this post belongs to."
+    },
+    "title": {
+      "type": "string",
+      "description": "Post title."
+    },
+    "subtitle": {
+      "type": "string",
+      "description": "Optional subtitle/preheader text."
+    },
+    "authors": {
+      "type": "array",
+      "description": "Author display names attached to the post.",
+      "items": { "type": "string" }
+    },
+    "created": {
+      "type": "integer",
+      "description": "Unix timestamp (seconds) when the post was created."
+    },
+    "status": {
+      "type": "string",
+      "description": "Lifecycle status of the post.",
+      "enum": ["draft", "confirmed", "archived"]
+    },
+    "publish_date": {
+      "type": "integer",
+      "description": "Unix timestamp (seconds) for the scheduled or actual publish date."
+    },
+    "displayed_date": {
+      "type": "integer",
+      "description": "Unix timestamp (seconds) that is displayed on the post."
+    },
+    "split_tested": {
+      "type": "boolean",
+      "description": "Whether the post used subject-line split testing."
+    },
+    "subject_line": { "type": "string", "description": "Email subject line." },
+    "preview_text": { "type": "string", "description": "Email preview text." },
+    "slug": { "type": "string", "description": "URL slug of the post." },
+    "thumbnail_url": { "type": "string", "format": "uri", "description": "URL of the post thumbnail image." },
+    "web_url": { "type": "string", "format": "uri", "description": "Public web URL of the post." },
+    "audience": {
+      "type": "string",
+      "description": "Distribution audience.",
+      "enum": ["free", "premium", "all"]
+    },
+    "platform": {
+      "type": "string",
+      "description": "Distribution platform.",
+      "enum": ["web", "email", "both"]
+    },
+    "content_tags": {
+      "type": "array",
+      "description": "Content tags attached to the post.",
+      "items": { "type": "string" }
+    },
+    "stats": {
+      "type": "object",
+      "description": "Engagement statistics for the post.",
+      "properties": {
+        "email": {
+          "type": "object",
+          "properties": {
+            "recipients": { "type": "integer", "description": "Number of email recipients." },
+            "delivered": { "type": "integer", "description": "Number of emails delivered." },
+            "opens": { "type": "integer", "description": "Number of opens." },
+            "unique_opens": { "type": "integer", "description": "Number of unique openers." },
+            "clicks": { "type": "integer", "description": "Number of clicks." },
+            "unique_clicks": { "type": "integer", "description": "Number of unique clickers." },
+            "unsubscribes": { "type": "integer", "description": "Number of unsubscribes from this post." },
+            "spam_reports": { "type": "integer", "description": "Number of spam reports filed against this post." }
+          }
+        },
+        "web": {
+          "type": "object",
+          "properties": {
+            "views": { "type": "integer", "description": "Number of web views." },
+            "clicks": { "type": "integer", "description": "Number of clicks on the web post." }
+          }
+        }
+      }
+    }
+  }
+}

@@ -4,8 +4,8 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: beehiiv
 providerId: beehiiv
 created: '2026-05-08'
-modified: '2026-05-08'
-reconciled: false
+modified: '2026-05-25'
+reconciled: true
 tags:
 - Newsletter
 - Creator
@@ -13,31 +13,176 @@ tags:
 - Subscription
 - Publishing
 - Plans
-description: Placeholder plans/pricing artifact for beehiiv. Replace with real published pricing once the pipeline researches
-  the provider's plans page.
-notes: "Initial scaffold \u2014 plans/pricing have not yet been reconciled against the provider's documentation."
+- Pricing
+description: Commercial plans for beehiiv's newsletter publishing platform. Four tiers (Launch, Scale, Max, Enterprise) gating subscriber counts, premium publishing features, and API surface (Send API restricted to Enterprise).
 sources:
-- https://www.beehiiv.com/
-- https://developers.beehiiv.com/
-- https://developers.beehiiv.com/api-reference
+- https://www.beehiiv.com/pricing
+- https://developers.beehiiv.com/welcome/getting-started
+- https://developers.beehiiv.com/welcome/rate-limiting
 plans:
-- id: beehiiv-default
-  name: To Be Reconciled
-  type: enterprise
-  description: Initial scaffold; replace with provider plan tiers once pricing is reconciled.
+- id: beehiiv-launch
+  name: Launch
+  type: free
+  description: Free starter tier for new newsletter publishers. Includes site, podcast, campaign analytics, custom domains, and API access (except the Send API).
   entries:
-  - label: API Access
-    name: api_access
+  - label: Monthly Price
+    name: monthly_price
     type: flat
-    metric: varies
-    limit: -1
-    timeFrame: usage
+    metric: subscription
+    limit: 1
+    timeFrame: monthly
     geo: global
     unit: 1
-    price: see https://www.beehiiv.com/
+    price: '0'
+    currency: USD
+    userMultiplied: false
+  - label: Subscriber Limit
+    name: subscribers
+    type: flat
+    metric: subscribers
+    limit: 2500
+    timeFrame: monthly
+    geo: global
+    unit: 1
+    price: 'included'
+    userMultiplied: false
+  - label: Email Sends
+    name: email_sends
+    type: flat
+    metric: sends
+    limit: -1
+    timeFrame: monthly
+    geo: global
+    unit: 1
+    price: 'included'
     userMultiplied: false
   elements:
-  - name: Pending Reconciliation
+  - name: Newsletter, website, podcast
+  - name: Custom domains
+  - name: Campaign analytics
+  - name: AI website builder
+  - name: API access (excluding Send API)
+- id: beehiiv-scale
+  name: Scale
+  type: paid
+  description: Mid-tier for growing publishers with ad/boosts network access, automations, webhooks, and paid subscriptions at 0% take rate.
+  entries:
+  - label: Monthly Price
+    name: monthly_price
+    type: flat
+    metric: subscription
+    limit: 1
+    timeFrame: monthly
+    geo: global
+    unit: 1
+    price: '43'
+    currency: USD
+    userMultiplied: false
+  - label: Annual Price
+    name: annual_price
+    type: flat
+    metric: subscription
+    limit: 1
+    timeFrame: annual
+    geo: global
+    unit: 1
+    price: '517'
+    currency: USD
+    userMultiplied: false
+  - label: Subscriber Limit
+    name: subscribers
+    type: flat
+    metric: subscribers
+    limit: 100000
+    timeFrame: monthly
+    geo: global
+    unit: 1
+    price: 'included'
+    userMultiplied: false
+  elements:
+  - name: Everything in Launch
+  - name: Ad network and boosts network
+  - name: 0% take rate on paid subscriptions
+  - name: Digital products
+  - name: Email automations
+  - name: Surveys and polls
+  - name: Advanced website analytics
+  - name: Webhooks
+  - name: 3 team seats
+  - name: Slack community access
+  - name: Human support
+- id: beehiiv-max
+  name: Max
+  type: paid
+  description: Premium tier for established publishers. Adds branding removal, sponsorship storefront, audio newsletters, RSS-to-Send, dynamic content, and up to 10 publications.
+  entries:
+  - label: Monthly Price
+    name: monthly_price
+    type: flat
+    metric: subscription
+    limit: 1
+    timeFrame: monthly
+    geo: global
+    unit: 1
+    price: '96'
+    currency: USD
+    userMultiplied: false
+  - label: Annual Price
+    name: annual_price
+    type: flat
+    metric: subscription
+    limit: 1
+    timeFrame: annual
+    geo: global
+    unit: 1
+    price: '1151'
+    currency: USD
+    userMultiplied: false
+  - label: Subscriber Limit
+    name: subscribers
+    type: flat
+    metric: subscribers
+    limit: 100000
+    timeFrame: monthly
+    geo: global
+    unit: 1
+    price: 'included'
+    userMultiplied: false
+  elements:
+  - name: Everything in Scale
+  - name: Remove beehiiv branding
+  - name: Sponsorship storefront
+  - name: Audio newsletters
+  - name: RSS to Send
+  - name: Up to 10 publications
+  - name: Unlimited team seats
+  - name: Priority support
+  - name: Getty image credits
+  - name: Dynamic content
+- id: beehiiv-enterprise
+  name: Enterprise
+  type: enterprise
+  description: Custom contracts for publishers above 100k subscribers needing Send API, dedicated IPs, SSO, and concierge onboarding.
+  entries:
+  - label: Pricing
+    name: pricing
+    type: custom
+    metric: subscription
+    limit: -1
+    timeFrame: annual
+    geo: global
+    unit: 1
+    price: contact-sales
+    userMultiplied: false
+  elements:
+  - name: Everything in Max
+  - name: Concierge onboarding
+  - name: Dedicated account manager
+  - name: Dedicated IP addresses
+  - name: Send API access
+  - name: Custom publication limits
+  - name: VIP support
+  - name: SSO
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

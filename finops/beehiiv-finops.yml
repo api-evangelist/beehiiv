@@ -4,8 +4,8 @@ schema: https://www.finops.org/framework/
 provider: beehiiv
 providerId: beehiiv
 created: '2026-05-08'
-modified: '2026-05-08'
-reconciled: false
+modified: '2026-05-25'
+reconciled: true
 tags:
 - Newsletter
 - Creator
@@ -15,12 +15,11 @@ tags:
 - FinOps
 - Cost Management
 - FOCUS
-description: FOCUS-aligned FinOps placeholder for beehiiv. Pipeline will replace with real billing details.
-notes: "Initial scaffold \u2014 billing model has not yet been reconciled."
+description: FOCUS-aligned FinOps mapping for beehiiv. Billing model is primarily flat-rate subscription (Launch, Scale, Max) with custom Enterprise contracts; pricing is gated by subscriber count, not API usage, and email sends are unlimited on all paid tiers.
 sources:
-- https://www.beehiiv.com/
-- https://developers.beehiiv.com/
-- https://developers.beehiiv.com/api-reference
+- https://www.beehiiv.com/pricing
+- https://developers.beehiiv.com/welcome/getting-started
+- https://developers.beehiiv.com/welcome/rate-limiting
 - https://focus.finops.org/focus-specification/v1-3/
 alignedWith:
   framework: FinOps Foundation Framework
@@ -29,40 +28,54 @@ alignedWith:
   dataSpecVersion: '1.3'
   dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
 publisherName: beehiiv
-serviceCategory: Newsletter
+serviceCategory: Newsletter Publishing
 billingModel:
-  pricingCategory: To Be Reconciled
+  pricingCategory: Subscription
   billingFrequency: Monthly
   billingCurrency: USD
   chargeCategories:
-  - Usage
   - Purchase
   - Adjustment
+  notes: Flat-rate monthly/annual subscription based on subscriber tier. No metered API usage charges (rate limit at 180 req/min per org). Enterprise contracts negotiated separately.
 focusColumns:
   ServiceName: beehiiv
-  ServiceCategory: Newsletter
+  ServiceCategory: Newsletter Publishing
   ProviderName: beehiiv
   PublisherName: beehiiv
   InvoiceIssuerName: beehiiv
   BillingCurrency: USD
-  ChargeCategory: Usage
+  ChargeCategory: Purchase
+  PricingCategory: Subscription
+  CommitmentDiscountCategory: Committed
 meters:
-- name: api_usage
-  description: Catch-all meter pending reconciliation.
-  unit: varies
-  aggregation: sum
+- name: subscriber_count
+  description: Active subscriber count is the gating metric for tier upgrades (2,500 free; 100,000 paid; custom Enterprise).
+  unit: subscribers
+  aggregation: max
   dimensions:
-  - account
-  - resource
+  - publication
+  - organization
+- name: publication_count
+  description: Number of publications within a workspace; up to 10 on Max, custom on Enterprise.
+  unit: publications
+  aggregation: count
+  dimensions:
+  - organization
+- name: team_seats
+  description: Number of team seats; 3 on Scale, unlimited on Max and Enterprise.
+  unit: seats
+  aggregation: count
+  dimensions:
+  - organization
 principles:
 - name: Visibility
-  description: Pull provider invoices or usage exports until a self-serve usage feed is documented.
+  description: Beehiiv invoices flat-rate subscription line items. Tag invoices with the publication ID and engineering owner in your FinOps store.
 - name: Allocation
-  description: Tag invoice line items to consuming business units in your FinOps store.
+  description: Allocate by publication or business unit. With unlimited email sends, allocation is per-publication rather than per-send.
 - name: Optimization
-  description: Levers depend on the provider's billing model; review at renewal once reconciled.
+  description: Choose annual billing for ~12-14% savings vs. monthly. Right-size on tier by reviewing the subscriber count vs. plan ceiling before renewal. Stay below 2,500 subs to remain on Launch.
 - name: Accountability
-  description: Assign a contract owner to review billing against negotiated terms.
+  description: Assign a contract owner per publication; review subscriber growth against tier ceilings monthly to anticipate upgrade timing.
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
