@@ -1,0 +1,656 @@
+asyncapi: '2.6.0'
+info:
+  title: beehiiv Webhooks
+  version: '1.0.0'
+  description: |
+    AsyncAPI 2.6 description of the beehiiv outbound webhook surface. beehiiv
+    posts JSON event payloads to a customer-configured endpoint URL when
+    selected events occur on a publication.
+
+    The set of event types modeled here is taken directly from the
+    `WebhookEventType` enum in the beehiiv OpenAPI (`openapi/beehiiv-openapi.yml`).
+    Resource shapes (Subscription, Post, NewsletterListSubscription) reuse the
+    schemas defined in the same OpenAPI; this document declares slimmer local
+    schemas with only the fields confirmed to exist in the OpenAPI so the
+    AsyncAPI file remains self-contained and free of fabrication.
+
+    Webhooks are configured via the REST API at
+    `POST /publications/{publicationId}/webhooks` (see
+    `capabilities/beehiiv-subpackage-webhooks.yaml`).
+  contact:
+    name: beehiiv Developers
+    url: https://developers.beehiiv.com/api-reference/webhooks
+  license:
+    name: Proprietary
+externalDocs:
+  description: beehiiv webhooks documentation
+  url: https://developers.beehiiv.com/api-reference/webhooks
+defaultContentType: application/json
+servers:
+  subscriber:
+    url: '{webhookUrl}'
+    protocol: https
+    description: |
+      The customer-supplied HTTPS endpoint registered through the Webhooks API.
+      beehiiv POSTs JSON event payloads to this URL.
+    variables:
+      webhookUrl:
+        description: The fully qualified HTTPS URL configured on the webhook object.
+        default: https://example.com/webhooks/beehiiv
+channels:
+  post.sent:
+    description: A post was sent to subscribers.
+    subscribe:
+      operationId: onPostSent
+      summary: Post send event delivery.
+      bindings:
+        http:
+          type: request
+          method: POST
+          bindingVersion: '0.3.0'
+      message:
+        $ref: '#/components/messages/PostSent'
+  post.updated:
+    description: A post was updated.
+    subscribe:
+      operationId: onPostUpdated
+      summary: Post update event delivery.
+      bindings:
+        http:
+          type: request
+          method: POST
+          bindingVersion: '0.3.0'
+      message:
+        $ref: '#/components/messages/PostUpdated'
+  post.scheduled:
+    description: A post was scheduled for delivery.
+    subscribe:
+      operationId: onPostScheduled
+      summary: Post scheduled event delivery.
+      bindings:
+        http:
+          type: request
+          method: POST
+          bindingVersion: '0.3.0'
+      message:
+        $ref: '#/components/messages/PostScheduled'
+  subscription.created:
+    description: A new subscription was created.
+    subscribe:
+      operationId: onSubscriptionCreated
+      summary: Subscription created event delivery.
+      bindings:
+        http:
+          type: request
+          method: POST
+          bindingVersion: '0.3.0'
+      message:
+        $ref: '#/components/messages/SubscriptionCreated'
+  subscription.confirmed:
+    description: A subscription was confirmed (double opt-in completed).
+    subscribe:
+      operationId: onSubscriptionConfirmed
+      summary: Subscription confirmed event delivery.
+      bindings:
+        http:
+          type: request
+          method: POST
+          bindingVersion: '0.3.0'
+      message:
+        $ref: '#/components/messages/SubscriptionConfirmed'
+  subscription.deleted:
+    description: A subscription was deleted.
+    subscribe:
+      operationId: onSubscriptionDeleted
+      summary: Subscription deleted event delivery.
+      bindings:
+        http:
+          type: request
+          method: POST
+          bindingVersion: '0.3.0'
+      message:
+        $ref: '#/components/messages/SubscriptionDeleted'
+  subscription.upgraded:
+    description: A subscription was upgraded to a higher (paid) tier.
+    subscribe:
+      operationId: onSubscriptionUpgraded
+      summary: Subscription upgraded event delivery.
+      bindings:
+        http:
+          type: request
+          method: POST
+          bindingVersion: '0.3.0'
+      message:
+        $ref: '#/components/messages/SubscriptionUpgraded'
+  subscription.downgraded:
+    description: A subscription was downgraded.
+    subscribe:
+      operationId: onSubscriptionDowngraded
+      summary: Subscription downgraded event delivery.
+      bindings:
+        http:
+          type: request
+          method: POST
+          bindingVersion: '0.3.0'
+      message:
+        $ref: '#/components/messages/SubscriptionDowngraded'
+  subscription.paused:
+    description: A subscription was paused.
+    subscribe:
+      operationId: onSubscriptionPaused
+      summary: Subscription paused event delivery.
+      bindings:
+        http:
+          type: request
+          method: POST
+          bindingVersion: '0.3.0'
+      message:
+        $ref: '#/components/messages/SubscriptionPaused'
+  subscription.resumed:
+    description: A subscription was resumed.
+    subscribe:
+      operationId: onSubscriptionResumed
+      summary: Subscription resumed event delivery.
+      bindings:
+        http:
+          type: request
+          method: POST
+          bindingVersion: '0.3.0'
+      message:
+        $ref: '#/components/messages/SubscriptionResumed'
+  subscription.tier.paused:
+    description: A subscription's premium tier was paused.
+    subscribe:
+      operationId: onSubscriptionTierPaused
+      summary: Subscription tier paused event delivery.
+      bindings:
+        http:
+          type: request
+          method: POST
+          bindingVersion: '0.3.0'
+      message:
+        $ref: '#/components/messages/SubscriptionTierPaused'
+  subscription.tier.resumed:
+    description: A subscription's premium tier was resumed.
+    subscribe:
+      operationId: onSubscriptionTierResumed
+      summary: Subscription tier resumed event delivery.
+      bindings:
+        http:
+          type: request
+          method: POST
+          bindingVersion: '0.3.0'
+      message:
+        $ref: '#/components/messages/SubscriptionTierResumed'
+  subscription.tier.created:
+    description: A subscription's premium tier was created.
+    subscribe:
+      operationId: onSubscriptionTierCreated
+      summary: Subscription tier created event delivery.
+      bindings:
+        http:
+          type: request
+          method: POST
+          bindingVersion: '0.3.0'
+      message:
+        $ref: '#/components/messages/SubscriptionTierCreated'
+  subscription.tier.deleted:
+    description: A subscription's premium tier was deleted.
+    subscribe:
+      operationId: onSubscriptionTierDeleted
+      summary: Subscription tier deleted event delivery.
+      bindings:
+        http:
+          type: request
+          method: POST
+          bindingVersion: '0.3.0'
+      message:
+        $ref: '#/components/messages/SubscriptionTierDeleted'
+  newsletter_list_subscription.subscribed:
+    description: A subscription was added to a newsletter list (beta).
+    subscribe:
+      operationId: onNewsletterListSubscribed
+      summary: Newsletter list subscribed event delivery.
+      bindings:
+        http:
+          type: request
+          method: POST
+          bindingVersion: '0.3.0'
+      message:
+        $ref: '#/components/messages/NewsletterListSubscribed'
+  newsletter_list_subscription.unsubscribed:
+    description: A subscription was removed from a newsletter list (beta).
+    subscribe:
+      operationId: onNewsletterListUnsubscribed
+      summary: Newsletter list unsubscribed event delivery.
+      bindings:
+        http:
+          type: request
+          method: POST
+          bindingVersion: '0.3.0'
+      message:
+        $ref: '#/components/messages/NewsletterListUnsubscribed'
+  newsletter_list_subscription.paused:
+    description: A newsletter list subscription was paused (beta).
+    subscribe:
+      operationId: onNewsletterListPaused
+      summary: Newsletter list paused event delivery.
+      bindings:
+        http:
+          type: request
+          method: POST
+          bindingVersion: '0.3.0'
+      message:
+        $ref: '#/components/messages/NewsletterListPaused'
+  newsletter_list_subscription.resumed:
+    description: A newsletter list subscription was resumed (beta).
+    subscribe:
+      operationId: onNewsletterListResumed
+      summary: Newsletter list resumed event delivery.
+      bindings:
+        http:
+          type: request
+          method: POST
+          bindingVersion: '0.3.0'
+      message:
+        $ref: '#/components/messages/NewsletterListResumed'
+  survey.response_submitted:
+    description: A survey response was submitted.
+    subscribe:
+      operationId: onSurveyResponseSubmitted
+      summary: Survey response submitted event delivery.
+      bindings:
+        http:
+          type: request
+          method: POST
+          bindingVersion: '0.3.0'
+      message:
+        $ref: '#/components/messages/SurveyResponseSubmitted'
+components:
+  messages:
+    PostSent:
+      name: post.sent
+      title: Post sent
+      summary: A post was sent to subscribers.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/PostEventEnvelope'
+    PostUpdated:
+      name: post.updated
+      title: Post updated
+      summary: A post was updated.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/PostEventEnvelope'
+    PostScheduled:
+      name: post.scheduled
+      title: Post scheduled
+      summary: A post was scheduled.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/PostEventEnvelope'
+    SubscriptionCreated:
+      name: subscription.created
+      title: Subscription created
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/SubscriptionEventEnvelope'
+    SubscriptionConfirmed:
+      name: subscription.confirmed
+      title: Subscription confirmed
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/SubscriptionEventEnvelope'
+    SubscriptionDeleted:
+      name: subscription.deleted
+      title: Subscription deleted
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/SubscriptionEventEnvelope'
+    SubscriptionUpgraded:
+      name: subscription.upgraded
+      title: Subscription upgraded
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/SubscriptionEventEnvelope'
+    SubscriptionDowngraded:
+      name: subscription.downgraded
+      title: Subscription downgraded
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/SubscriptionEventEnvelope'
+    SubscriptionPaused:
+      name: subscription.paused
+      title: Subscription paused
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/SubscriptionEventEnvelope'
+    SubscriptionResumed:
+      name: subscription.resumed
+      title: Subscription resumed
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/SubscriptionEventEnvelope'
+    SubscriptionTierPaused:
+      name: subscription.tier.paused
+      title: Subscription tier paused
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/SubscriptionEventEnvelope'
+    SubscriptionTierResumed:
+      name: subscription.tier.resumed
+      title: Subscription tier resumed
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/SubscriptionEventEnvelope'
+    SubscriptionTierCreated:
+      name: subscription.tier.created
+      title: Subscription tier created
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/SubscriptionEventEnvelope'
+    SubscriptionTierDeleted:
+      name: subscription.tier.deleted
+      title: Subscription tier deleted
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/SubscriptionEventEnvelope'
+    NewsletterListSubscribed:
+      name: newsletter_list_subscription.subscribed
+      title: Newsletter list subscribed
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/NewsletterListSubscriptionEventEnvelope'
+    NewsletterListUnsubscribed:
+      name: newsletter_list_subscription.unsubscribed
+      title: Newsletter list unsubscribed
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/NewsletterListSubscriptionEventEnvelope'
+    NewsletterListPaused:
+      name: newsletter_list_subscription.paused
+      title: Newsletter list paused
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/NewsletterListSubscriptionEventEnvelope'
+    NewsletterListResumed:
+      name: newsletter_list_subscription.resumed
+      title: Newsletter list resumed
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/NewsletterListSubscriptionEventEnvelope'
+    SurveyResponseSubmitted:
+      name: survey.response_submitted
+      title: Survey response submitted
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/GenericEventEnvelope'
+  schemas:
+    WebhookEventType:
+      type: string
+      description: |
+        Enumeration of webhook event types supported by beehiiv. Source:
+        `type_webhooks:WebhookEventType` in openapi/beehiiv-openapi.yml.
+      enum:
+        - post.sent
+        - post.updated
+        - post.scheduled
+        - subscription.confirmed
+        - subscription.created
+        - subscription.deleted
+        - subscription.upgraded
+        - subscription.downgraded
+        - subscription.paused
+        - subscription.resumed
+        - subscription.tier.paused
+        - subscription.tier.resumed
+        - subscription.tier.created
+        - subscription.tier.deleted
+        - newsletter_list_subscription.subscribed
+        - newsletter_list_subscription.unsubscribed
+        - newsletter_list_subscription.paused
+        - newsletter_list_subscription.resumed
+        - survey.response_submitted
+    EventEnvelopeBase:
+      type: object
+      description: Common envelope fields shared by all beehiiv webhook events.
+      properties:
+        event_type:
+          $ref: '#/components/schemas/WebhookEventType'
+      required:
+        - event_type
+    SubscriptionEventEnvelope:
+      allOf:
+        - $ref: '#/components/schemas/EventEnvelopeBase'
+        - type: object
+          properties:
+            data:
+              $ref: '#/components/schemas/Subscription'
+          required:
+            - data
+    PostEventEnvelope:
+      allOf:
+        - $ref: '#/components/schemas/EventEnvelopeBase'
+        - type: object
+          properties:
+            data:
+              $ref: '#/components/schemas/Post'
+          required:
+            - data
+    NewsletterListSubscriptionEventEnvelope:
+      allOf:
+        - $ref: '#/components/schemas/EventEnvelopeBase'
+        - type: object
+          properties:
+            data:
+              $ref: '#/components/schemas/NewsletterListSubscriptionInfo'
+          required:
+            - data
+    GenericEventEnvelope:
+      allOf:
+        - $ref: '#/components/schemas/EventEnvelopeBase'
+        - type: object
+          description: |
+            Envelope used for event types whose payload shape is not exposed
+            through the beehiiv OpenAPI. The `data` object is included as
+            received from beehiiv; no fields are asserted here.
+          properties:
+            data:
+              type: object
+              additionalProperties: true
+    Subscription:
+      type: object
+      description: |
+        Subscription resource. Mirrors `type_:Subscription` in
+        openapi/beehiiv-openapi.yml.
+      properties:
+        id:
+          type: string
+          description: The prefixed subscription id.
+        email:
+          type: string
+          format: email
+        status:
+          type: string
+          description: |
+            Subscription status. `validating` - email being validated.
+            `invalid` - email is invalid. `pending` - awaiting double opt-in.
+            `active` - active subscription. `inactive` - inactive subscription.
+            `needs_attention` - requires approval or denial.
+          enum:
+            - validating
+            - invalid
+            - pending
+            - active
+            - inactive
+            - needs_attention
+        created:
+          type: integer
+          description: Creation time, Unix epoch seconds.
+        subscription_tier:
+          type: string
+          description: The current tier of the subscription.
+        subscription_premium_tier_names:
+          type: array
+          items:
+            type: string
+          description: Current premium tier names for the subscription.
+        utm_source:
+          type: string
+        utm_medium:
+          type: string
+        utm_channel:
+          type: string
+        utm_campaign:
+          type: string
+        utm_term:
+          type: string
+        utm_content:
+          type: string
+        referring_site:
+          type: string
+        referral_code:
+          type: string
+      required:
+        - id
+        - email
+        - status
+        - created
+        - subscription_tier
+        - subscription_premium_tier_names
+        - utm_source
+        - utm_medium
+        - utm_channel
+        - utm_campaign
+        - utm_term
+        - utm_content
+        - referring_site
+        - referral_code
+    Post:
+      type: object
+      description: |
+        Post resource. Mirrors `type_:Post` in openapi/beehiiv-openapi.yml.
+      properties:
+        id:
+          type: string
+          description: The prefixed post id.
+        subtitle:
+          type: string
+        title:
+          type: string
+        authors:
+          type: array
+          items:
+            type: string
+        created:
+          type: integer
+          description: Creation time, Unix epoch seconds.
+        status:
+          type: string
+          enum:
+            - draft
+            - confirmed
+            - archived
+          description: |
+            `draft` - not scheduled. `confirmed` - active after `publish_date`.
+            `archived` - no longer active.
+        publish_date:
+          type: integer
+          description: Scheduled publish time, Unix epoch seconds.
+        displayed_date:
+          type: integer
+        split_tested:
+          type: boolean
+        subject_line:
+          type: string
+        preview_text:
+          type: string
+        slug:
+          type: string
+        thumbnail_url:
+          type: string
+        web_url:
+          type: string
+        audience:
+          type: string
+          enum:
+            - free
+            - premium
+            - both
+        platform:
+          type: string
+          enum:
+            - web
+            - email
+            - both
+        content_tags:
+          type: array
+          items:
+            type: string
+        meta_default_description:
+          type: string
+        meta_default_title:
+          type: string
+        newsletter_list_id:
+          type: string
+        hidden_from_feed:
+          type: boolean
+        enforce_gated_content:
+          type: boolean
+        email_capture_popup:
+          type: boolean
+      required:
+        - id
+        - subtitle
+        - title
+        - authors
+        - created
+        - status
+        - split_tested
+        - subject_line
+        - preview_text
+        - slug
+        - thumbnail_url
+        - web_url
+        - audience
+        - platform
+        - content_tags
+        - hidden_from_feed
+        - enforce_gated_content
+        - email_capture_popup
+    NewsletterListSubscriptionInfo:
+      type: object
+      description: |
+        Newsletter list subscription resource. Mirrors
+        `type_newsletterListSubscriptions:NewsletterListSubscriptionInfo` in
+        openapi/beehiiv-openapi.yml.
+      properties:
+        id:
+          type: string
+          description: The prefixed newsletter list subscription id.
+        newsletter_list_id:
+          type: string
+        subscription_id:
+          type: string
+        status:
+          type: string
+          enum:
+            - pending
+            - active
+            - inactive
+            - paused
+        subscribed_at:
+          type: integer
+          description: Activation time, Unix epoch seconds.
+        unsubscribed_at:
+          type: integer
+          description: Deactivation time, Unix epoch seconds.
+        created_at:
+          type: integer
+          description: Creation time, Unix epoch seconds.
+      required:
+        - id
+        - newsletter_list_id
+        - subscription_id
+        - status
+        - created_at

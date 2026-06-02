@@ -15,7 +15,7 @@ tags:
   - Media
   - Advertising
 created: '2026-05-08'
-modified: '2026-05-25'
+modified: '2026-05-30'
 specificationVersion: '0.19'
 apis:
   - name: beehiiv Publications API
@@ -126,6 +126,8 @@ apis:
       url: https://developers.beehiiv.com/api-reference/webhooks
     - type: OpenAPI
       url: openapi/beehiiv-openapi.yml
+    - type: AsyncAPI
+      url: asyncapi/beehiiv-asyncapi.yml
   - name: beehiiv Newsletter Lists API
     description: Manage newsletter lists and per-list subscriptions within a publication.
     humanURL: https://developers.beehiiv.com/api-reference
