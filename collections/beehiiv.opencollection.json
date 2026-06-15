@@ -1,0 +1,3154 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Reference",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "subpackage_advertisement_opportunities",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get advertisement opportunities <Badge intent=\"info\" minimal outlined>OAuth Scope: posts:read</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/advertisement_opportunities",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of accepted advertisement opportunities for the publication."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "subpackage_authors",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List authors",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/authors",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).<br>If not specified, results 1-10 from page 1 will be returned."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Optionally filter authors by full name or first name (case-insensitive)."
+              }
+            ]
+          },
+          "docs": "Retrieve a list of authors available for the publication."
+        },
+        {
+          "info": {
+            "name": "Get author",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/authors/:authorId",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              },
+              {
+                "name": "authorId",
+                "value": "",
+                "type": "path",
+                "description": "The author identifier. This accepts author UUID, full name, or first name."
+              }
+            ]
+          },
+          "docs": "Retrieve a single author from a publication."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "subpackage_automationJourneys",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List automation journeys <Badge intent=\"info\" minimal outlined>OAuth Scope: automations:read</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/automations/:automationId/journeys",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              },
+              {
+                "name": "automationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the automation object"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Optionally filter the results by the automation journey's status."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10)."
+              }
+            ]
+          },
+          "docs": "Retrieve a list of automation journeys that have occurred within a specific automation."
+        },
+        {
+          "info": {
+            "name": "Add subscription to an automation <Badge intent=\"info\" minimal outlined>OAuth Scope: automations:write</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/automations/:automationId/journeys",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              },
+              {
+                "name": "automationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the automation object"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add an existing subscription to an automation flow. Requires the automation to have an active *Add by API* trigger. The specified `email` or `subscription_id` will be matched against your existing subscribers. If an existing subscriber is found, they will be enrolled immediately.\nLooking to enroll new subscribers? Use the **[Create Subscription](/api-reference/subscriptions/create)** endpoint instead and specify the `automation_ids` param."
+        },
+        {
+          "info": {
+            "name": "Get automation journey <Badge intent=\"info\" minimal outlined>OAuth Scope: automations:read</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/automations/:automationId/journeys/:automationJourneyId",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              },
+              {
+                "name": "automationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the automation object"
+              },
+              {
+                "name": "automationJourneyId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed automation journey id"
+              }
+            ]
+          },
+          "docs": "Retrieve a single automation journey by ID."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "subpackage_automations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List automations <Badge intent=\"info\" minimal outlined>OAuth Scope: automations:read</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/automations",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              },
+              {
+                "name": "expand[]",
+                "value": "",
+                "type": "query",
+                "description": "Optional list of expandable objects."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).<br>If not specified, results 1-10 from page 1 will be returned."
+              }
+            ]
+          },
+          "docs": "Retrieve automations for a publication."
+        },
+        {
+          "info": {
+            "name": "Get automation <Badge intent=\"info\" minimal outlined>OAuth Scope: automations:read</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/automations/:automationId",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              },
+              {
+                "name": "automationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the automation object"
+              },
+              {
+                "name": "expand[]",
+                "value": "",
+                "type": "query",
+                "description": "Optional list of expandable objects."
+              }
+            ]
+          },
+          "docs": "Retrieve a single automation for a publication."
+        },
+        {
+          "info": {
+            "name": "List automation emails",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/automations/:automationId/emails",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              },
+              {
+                "name": "automationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the automation object"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10."
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "**Cursor-based pagination (recommended)**: Use this opaque cursor token to fetch the next page of results. Obtain it from the `next_cursor` field of a previous response."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "**Deprecated**: Use `cursor` instead. Pagination returns the results in pages. Limited to 100 pages maximum."
+              }
+            ]
+          },
+          "docs": "Retrieve all emails belonging to a specific automation, including engagement statistics for each email."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "subpackage_bulk_subscriptions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Bulk create subscription <Badge intent=\"info\" minimal outlined>OAuth Scope: subscriptions:write</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/bulk_subscriptions",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create new subscriptions for a publication."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "subpackage_bulkSubscriptionUpdates",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List subscription updates <Badge intent=\"info\" minimal outlined>OAuth Scope: subscriptions:read</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/bulk_subscription_updates",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              }
+            ]
+          },
+          "docs": "Returns a list of Subscription Update objects for a publication."
+        },
+        {
+          "info": {
+            "name": "Get subscription update <Badge intent=\"info\" minimal outlined>OAuth Scope: subscriptions:read</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/bulk_subscription_updates/:id",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the Subscription Update object"
+              }
+            ]
+          },
+          "docs": "Returns a single Subscription Update object for a publication."
+        },
+        {
+          "info": {
+            "name": "Update subscriptions <Badge intent=\"info\" minimal outlined>OAuth Scope: subscriptions:write</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/subscriptions/bulk_actions",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Bulk update multiple subscriptions fields, including status, custom fields, and tiers."
+        },
+        {
+          "info": {
+            "name": "Update subscriptions <Badge intent=\"info\" minimal outlined>OAuth Scope: subscriptions:write</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/subscriptions/bulk_actions",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Bulk update multiple subscriptions fields, including status, custom fields, and tiers."
+        },
+        {
+          "info": {
+            "name": "Update subscriptions' status <Badge intent=\"info\" minimal outlined>OAuth Scope: subscriptions:write</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/subscriptions",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Bulk update subscriptions' status."
+        },
+        {
+          "info": {
+            "name": "Update subscriptions' status <Badge intent=\"info\" minimal outlined>OAuth Scope: subscriptions:write</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/subscriptions",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Bulk update subscriptions' status."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "subpackage_subscriptions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List subscriptions <Badge intent=\"info\" minimal outlined>OAuth Scope: subscriptions:read</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/subscriptions",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              },
+              {
+                "name": "expand[]",
+                "value": "",
+                "type": "query",
+                "description": "Optional list of expandable objects.<br>`subscription_premium_tiers ` - Returns an array of tiers the subscription is associated with.<br>`referrals` - Returns an array of subscriptions with limited data - `id`, `email`, and `status`. These are the subscriptions that were referred by this subscription.<br>`stats` - Returns statistics about the subscription(s).<br>`custom_fields` - Returns an array of custom field values that have been set on the subscription. <br>`newsletter_lists` - Returns an array of newsletter list prefixed IDs the subscription is actively subscribed to."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Optionally filter the results by a status"
+              },
+              {
+                "name": "tier",
+                "value": "",
+                "type": "query",
+                "description": "Optionally filter the results by a their tier"
+              },
+              {
+                "name": "premium_tiers[]",
+                "value": "",
+                "type": "query",
+                "description": "Optionally filter the results by one or multiple premium tiers"
+              },
+              {
+                "name": "premium_tier_ids[]",
+                "value": "",
+                "type": "query",
+                "description": "Optionally filter the results by one or multiple premium tier ids"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10."
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "**Cursor-based pagination (recommended)**: Use this opaque cursor token to fetch the next page of results. When provided, pagination will use cursor-based method which is more efficient and consistent than offset-based pagination. See the [Pagination Guide](/welcome/pagination) for more details."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "**Offset-based pagination (deprecated)**: Page number for offset-based pagination. This method is deprecated and limited to 100 pages maximum. Please migrate to cursor-based pagination using the `cursor` parameter. If not specified, results 1-10 from page 1 will be returned. See the [Pagination Guide](/welcome/pagination) for migration guidance."
+              },
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "Optional email address to find a subscription.<br>This param must be an exact match and is case insensitive."
+              },
+              {
+                "name": "order_by",
+                "value": "",
+                "type": "query",
+                "description": "The field that the results are sorted by. Defaults to created<br> `created` - The time in which the subscription was first created.<br>"
+              },
+              {
+                "name": "direction",
+                "value": "",
+                "type": "query",
+                "description": "The direction that the results are sorted in. Defaults to asc<br> `asc` - Ascending, sorts from smallest to largest.<br> `desc` - Descending, sorts from largest to smallest."
+              },
+              {
+                "name": "creation_date",
+                "value": "",
+                "type": "query",
+                "description": "Optional date entry (in the format YYYY/MM/DD) that filters returned subscriptions by their creation date."
+              }
+            ]
+          },
+          "docs": "Retrieve all subscriptions belonging to a specific publication.\n\n<Info> **New**: This endpoint now supports cursor-based pagination for better performance and consistency. Use the `cursor` parameter instead of `page` for new integrations. </Info>\n<Warning> **Deprecation Notice**: Offset-based pagination (using `page` parameter) is deprecated and limited to 100 pages maximum. Please migrate to cursor-based pagination. See our [Pagination Guide](/welcome/pagination) for details. </Warning>"
+        },
+        {
+          "info": {
+            "name": "Create subscription <Badge intent=\"info\" minimal outlined>OAuth Scope: subscriptions:write</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/subscriptions",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create new subscriptions for a publication."
+        },
+        {
+          "info": {
+            "name": "Get subscription by email <Badge intent=\"info\" minimal outlined>OAuth Scope: subscriptions:read</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/subscriptions/by_email/:email",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              },
+              {
+                "name": "email",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the subscriber object"
+              },
+              {
+                "name": "expand[]",
+                "value": "",
+                "type": "query",
+                "description": "Optional list of expandable objects.<br>`subscription_premium_tiers ` - Returns an array of tiers the subscription is associated with.<br>`referrals` - Returns an array of subscriptions with limited data - `id`, `email`, and `status`. These are the subscriptions that were referred by this subscription.<br>`stats` - Returns statistics about the subscription(s).<br>`custom_fields` - Returns an array of custom field values that have been set on the subscription. <br>`tags` - Returns an array of tags that have been set on the subscription.<br>`newsletter_lists` - Returns an array of newsletter list prefixed IDs the subscription is actively subscribed to."
+              }
+            ]
+          },
+          "docs": "<Info>Please note that this endpoint requires the email to be URL encoded. Please reference your language's documentation for the correct method of encoding.</Info> Retrieve a single subscription belonging to a specific email address in a specific publication."
+        },
+        {
+          "info": {
+            "name": "Update subscription by email <Badge intent=\"info\" minimal outlined>OAuth Scope: subscriptions:write</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/subscriptions/by_email/:email",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              },
+              {
+                "name": "email",
+                "value": "",
+                "type": "path",
+                "description": "The email of the subscription object"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a single subscription by email."
+        },
+        {
+          "info": {
+            "name": "Get subscription by ID <Badge intent=\"info\" minimal outlined>OAuth Scope: subscriptions:read</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/subscriptions/:subscriptionId",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              },
+              {
+                "name": "subscriptionId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the subscription object"
+              },
+              {
+                "name": "expand[]",
+                "value": "",
+                "type": "query",
+                "description": "Optional list of expandable objects.<br>`subscription_premium_tiers` - Returns an array of tiers the subscription is associated with.<br>`referrals` - Returns an array of subscriptions with limited data - `id`, `email`, and `status`. These are the subscriptions that were referred by this subscription.<br>`stats` - Returns statistics about the subscription(s).<br>`custom_fields` - Returns an array of custom field values that have been set on the subscription. <br>`tags` - Returns an array of tags that have been set on the subscription.<br>`newsletter_lists` - Returns an array of newsletter list prefixed IDs the subscription is actively subscribed to."
+              }
+            ]
+          },
+          "docs": "<Info>In previous versions of the API, another endpoint existed to retrieve a subscription by the subscriber ID. This endpoint is now deprecated and will be removed in a future version of the API. Please use this endpoint instead. The subscription ID can be found by exporting a list of subscriptions either via the `Settings > Publications > Export Data` or by exporting a CSV in a segment.</Info> Retrieve a single subscription belonging to a specific publication."
+        },
+        {
+          "info": {
+            "name": "Update subscription by ID <Badge intent=\"info\" minimal outlined>OAuth Scope: subscriptions:write</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/subscriptions/:subscriptionId",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              },
+              {
+                "name": "subscriptionId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the subscription object"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a single subscription."
+        },
+        {
+          "info": {
+            "name": "Update subscription by ID <Badge intent=\"info\" minimal outlined>OAuth Scope: subscriptions:write</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/subscriptions/:subscriptionId",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              },
+              {
+                "name": "subscriptionId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the subscription object"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a single subscription."
+        },
+        {
+          "info": {
+            "name": "Delete subscription <Badge intent=\"info\" minimal outlined>OAuth Scope: subscriptions:write</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/subscriptions/:subscriptionId",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              },
+              {
+                "name": "subscriptionId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the subscription object"
+              }
+            ]
+          },
+          "docs": "<Warning>This cannot be undone. All data associated with the subscription will also be deleted. We recommend unsubscribing when possible instead of deleting. If a premium subscription is deleted they will no longer be billed.</Warning> Deletes a subscription."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "subpackage_conditionSets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List condition sets <Badge intent=\"info\" minimal outlined>OAuth Scope: condition_sets:read</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/condition_sets",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10."
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "**Cursor-based pagination (recommended)**: Use this opaque cursor token to fetch the next page of results. When provided, pagination will use cursor-based method which is more efficient and consistent than offset-based pagination."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "**Offset-based pagination (deprecated)**: Page number for offset-based pagination. Please migrate to cursor-based pagination using the `cursor` parameter. If not specified, results 1-10 from page 1 will be returned."
+              },
+              {
+                "name": "purpose",
+                "value": "",
+                "type": "query",
+                "description": "Filter condition sets by purpose. When not specified, all active condition sets are returned."
+              }
+            ]
+          },
+          "docs": "Retrieve all active condition sets for a publication. Condition sets define reusable audience segments for targeting content to specific subscribers. Use the `purpose` parameter to filter by a specific use case."
+        },
+        {
+          "info": {
+            "name": "Get condition set <Badge intent=\"info\" minimal outlined>OAuth Scope: condition_sets:read</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/condition_sets/:conditionSetId",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              },
+              {
+                "name": "conditionSetId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the condition set object"
+              },
+              {
+                "name": "expand[]",
+                "value": "",
+                "type": "query",
+                "description": "Optionally expand the response to include additional data.<br> `stats` - Calculates and returns the active subscriber count for this condition set synchronously."
+              }
+            ]
+          },
+          "docs": "Retrieve a single active dynamic content condition set for a publication. Use `expand[]=stats` to calculate and return the active subscriber count synchronously."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "subpackage_customFields",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List custom fields <Badge intent=\"info\" minimal outlined>OAuth Scope: custom_fields:read</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/custom_fields",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              }
+            ]
+          },
+          "docs": "List all custom fields on a publication."
+        },
+        {
+          "info": {
+            "name": "Create custom field <Badge intent=\"info\" minimal outlined>OAuth Scope: custom_fields:write</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/custom_fields",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a custom field on a publication, for use in subscriptions."
+        },
+        {
+          "info": {
+            "name": "Get custom field <Badge intent=\"info\" minimal outlined>OAuth Scope: custom_fields:read</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/custom_fields/:id",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the Custom Fields object"
+              }
+            ]
+          },
+          "docs": "View a specific custom field on a publication."
+        },
+        {
+          "info": {
+            "name": "Update custom field <Badge intent=\"info\" minimal outlined>OAuth Scope: custom_fields:write</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/custom_fields/:id",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the Custom Fields object"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a custom field on a publication."
+        },
+        {
+          "info": {
+            "name": "Update custom field <Badge intent=\"info\" minimal outlined>OAuth Scope: custom_fields:write</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/custom_fields/:id",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the Custom Fields object"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a custom field on a publication."
+        },
+        {
+          "info": {
+            "name": "Delete custom field <Badge intent=\"info\" minimal outlined>OAuth Scope: custom_fields:write</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/custom_fields/:id",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the Custom Fields object"
+              }
+            ]
+          },
+          "docs": "Delete a custom field from a publication."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "subpackage_dataDeletion",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List data deletion requests <Badge intent=\"info\" minimal outlined>OAuth Scope: data_deletion:read</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/data_privacy/deletion_requests",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              }
+            ]
+          },
+          "docs": "<Warning>This is a gated feature that requires enablement. Contact support to enable Data Deletion API access for your organization.</Warning>\n\nList all data deletion requests for your organization."
+        },
+        {
+          "info": {
+            "name": "Create data deletion request <Badge intent=\"info\" minimal outlined>OAuth Scope: data_deletion:write</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/data_privacy/deletion_requests",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "<Warning>This is a gated feature that requires enablement. Contact support to enable Data Deletion API access for your organization.</Warning>\n\nCreates a data deletion request for a subscriber within your organization. The subscriber's data will be redacted from all publications in the organization after a 14-day safety delay. This action cannot be undone once processing begins."
+        },
+        {
+          "info": {
+            "name": "Get data deletion request <Badge intent=\"info\" minimal outlined>OAuth Scope: data_deletion:read</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/data_privacy/deletion_requests/:id",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the data deletion request"
+              }
+            ]
+          },
+          "docs": "<Warning>This is a gated feature that requires enablement. Contact support to enable Data Deletion API access for your organization.</Warning>\n\nRetrieve the details and current status of a specific data deletion request."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "subpackage_engagements",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get publication engagements <Badge intent=\"info\" minimal outlined>OAuth Scope: publications:read</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/engagements",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "start_date",
+                "value": "",
+                "type": "query",
+                "description": "The starting date for the engagement metrics in `YYYY-MM-DD` format. Defaults to 1 day ago if not provided."
+              },
+              {
+                "name": "number_of_days",
+                "value": "",
+                "type": "query",
+                "description": "The number of days to return engagement metrics for, starting from `start_date`. Must be between 1 and 31. Defaults to `1` if not provided."
+              },
+              {
+                "name": "granularity",
+                "value": "",
+                "type": "query",
+                "description": "The granularity at which to report the engagement metrics. Defaults to `day` if not provided."
+              },
+              {
+                "name": "email_type",
+                "value": "",
+                "type": "query",
+                "description": "Filter engagement metrics by email type. If omitted, all email engagement is included.<br> `post`: Only post emails.<br> `message`: Only automated and system-generated emails."
+              },
+              {
+                "name": "direction",
+                "value": "",
+                "type": "query",
+                "description": "The direction that the results are sorted in. Defaults to `asc`.<br> `asc`: Oldest to newest<br> `desc`: Newest to oldest"
+              }
+            ]
+          },
+          "docs": "Retrieve email engagement metrics for a specific publication over a defined date range and granularity.<br><br> By default, the endpoint returns metrics for the past day, aggregated daily. The max number of days allowed is 31. All dates and times are in UTC."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "subpackage_newsletterLists",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List newsletter lists <Badge intent=\"warning\" minimal outlined>Beta</Badge> <Badge intent=\"info\" minimal outlined>OAuth Scope: newsletter_lists:read</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/newsletter_lists",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).<br>If not specified, results 1-10 from page 1 will be returned."
+              },
+              {
+                "name": "direction",
+                "value": "",
+                "type": "query",
+                "description": "The direction that the results are sorted in. Defaults to asc<br> `asc` - Ascending, sorts from smallest to largest.<br> `desc` - Descending, sorts from largest to smallest."
+              }
+            ]
+          },
+          "docs": "<Note title=\"Currently in beta\" icon=\"b\">\n  Newsletter Lists is currently in beta, the API is subject to change.\n</Note>\nList all newsletter lists for a publication."
+        },
+        {
+          "info": {
+            "name": "Get newsletter list <Badge intent=\"warning\" minimal outlined>Beta</Badge> <Badge intent=\"info\" minimal outlined>OAuth Scope: newsletter_lists:read</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/newsletter_lists/:newsletterListId",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              },
+              {
+                "name": "newsletterListId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the newsletter list object"
+              }
+            ]
+          },
+          "docs": "<Note title=\"Currently in beta\" icon=\"b\">\n  Newsletter Lists is currently in beta, the API is subject to change.\n</Note>\nRetrieve a single newsletter list belonging to a specific publication."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "subpackage_newsletterListSubscriptions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List newsletter list subscriptions <Badge intent=\"warning\" minimal outlined>Beta</Badge> <Badge intent=\"info\" minimal outlined>OAuth Scope: newsletter_lists:read</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/newsletter_lists/:newsletterListId/subscriptions",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              },
+              {
+                "name": "newsletterListId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the newsletter list object"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10."
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "**Cursor-based pagination (recommended)**: Use this opaque cursor token to fetch the next page of results. When provided, pagination will use cursor-based method which is more efficient and consistent than offset-based pagination."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "**Offset-based pagination (deprecated)**: Page number for offset-based pagination. Please migrate to cursor-based pagination using the `cursor` parameter. If not specified, results 1-10 from page 1 will be returned."
+              },
+              {
+                "name": "direction",
+                "value": "",
+                "type": "query",
+                "description": "The direction that the results are sorted in. Defaults to asc<br> `asc` - Ascending, sorts from smallest to largest.<br> `desc` - Descending, sorts from largest to smallest."
+              }
+            ]
+          },
+          "docs": "<Note title=\"Currently in beta\" icon=\"b\">\n  Newsletter Lists is currently in beta, the API is subject to change.\n</Note>\nList all subscriptions for a newsletter list."
+        },
+        {
+          "info": {
+            "name": "Create newsletter list subscription <Badge intent=\"warning\" minimal outlined>Beta</Badge> <Badge intent=\"info\" minimal outlined>OAuth Scope: newsletter_lists:write</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/newsletter_lists/:newsletterListId/subscriptions",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              },
+              {
+                "name": "newsletterListId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the newsletter list object"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "<Note title=\"Currently in beta\" icon=\"b\">\n  Newsletter Lists is currently in beta, the API is subject to change.\n</Note>\nSubscribe a subscription to a newsletter list. Accepts either a subscription_id or email to identify the subscription."
+        },
+        {
+          "info": {
+            "name": "Get newsletter list subscription <Badge intent=\"warning\" minimal outlined>Beta</Badge> <Badge intent=\"info\" minimal outlined>OAuth Scope: newsletter_lists:read</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/newsletter_lists/:newsletterListId/subscriptions/:newsletterListSubscriptionId",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              },
+              {
+                "name": "newsletterListId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the newsletter list object"
+              },
+              {
+                "name": "newsletterListSubscriptionId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the newsletter list subscription object"
+              }
+            ]
+          },
+          "docs": "<Note title=\"Currently in beta\" icon=\"b\">\n  Newsletter Lists is currently in beta, the API is subject to change.\n</Note>\nRetrieve a single newsletter list subscription."
+        },
+        {
+          "info": {
+            "name": "Update newsletter list subscription <Badge intent=\"warning\" minimal outlined>Beta</Badge> <Badge intent=\"info\" minimal outlined>OAuth Scope: newsletter_lists:write</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/newsletter_lists/:newsletterListId/subscriptions/:newsletterListSubscriptionId",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              },
+              {
+                "name": "newsletterListId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the newsletter list object"
+              },
+              {
+                "name": "newsletterListSubscriptionId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the newsletter list subscription object"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "<Note title=\"Currently in beta\" icon=\"b\">\n  Newsletter Lists is currently in beta, the API is subject to change.\n</Note>\nUpdate a newsletter list subscription. Currently supports unsubscribing a subscription from a newsletter list."
+        },
+        {
+          "info": {
+            "name": "Update newsletter list subscription by subscription ID <Badge intent=\"warning\" minimal outlined>Beta</Badge> <Badge intent=\"info\" minimal outlined>OAuth Scope: newsletter_lists:write</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/newsletter_lists/:newsletterListId/subscriptions/by_subscription_id/:subscriptionId",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              },
+              {
+                "name": "newsletterListId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the newsletter list object"
+              },
+              {
+                "name": "subscriptionId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the subscription"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "<Note title=\"Currently in beta\" icon=\"b\">\n  Newsletter Lists is currently in beta, the API is subject to change.\n</Note>\nUpdate a newsletter list subscription by subscription ID. An alternative to the update endpoint when you don't have the newsletter list subscription ID. Accepts either a subscription_id or email to identify the subscription. Currently supports unsubscribing a subscription from a newsletter list."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "subpackage_oauth_users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Identify user <Badge intent=\"info\" minimal outlined>OAuth Scope: identify:read</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.beehiiv.com/v2/users/identify",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Retrieve information about the user who authorized the OAuth access token."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "subpackage_polls",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List polls <Badge intent=\"info\" minimal outlined>OAuth Scope: polls:read</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/polls",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10."
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "**Cursor-based pagination (recommended)**: Use this opaque cursor token to fetch the next page of results. When provided, pagination will use cursor-based method which is more efficient and consistent than offset-based pagination."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "**Offset-based pagination (deprecated)**: Page number for offset-based pagination. Please migrate to cursor-based pagination using the `cursor` parameter. If not specified, results 1-10 from page 1 will be returned."
+              },
+              {
+                "name": "order_by",
+                "value": "",
+                "type": "query",
+                "description": "The field that the results are sorted by. Defaults to created.<br> `created` - The time the poll was created.<br> `name` - The name of the poll."
+              },
+              {
+                "name": "direction",
+                "value": "",
+                "type": "query",
+                "description": "The direction that the results are sorted in. Defaults to asc.<br> `asc` - Ascending, sorts from smallest to largest.<br> `desc` - Descending, sorts from largest to smallest."
+              },
+              {
+                "name": "expand[]",
+                "value": "",
+                "type": "query",
+                "description": "Optionally expand the response to include additional data.<br> `stats` - Returns aggregate vote counts per choice and total completions.<br> `poll_responses` - Returns up to 10 most recent subscriber responses. Use /polls/{pollId}/responses for paginated access to all responses.<br> `trivia_answer` - Returns the correct answer for trivia-type polls."
+              },
+              {
+                "name": "post_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter to only return polls that were embedded in the specified post. Accepts a prefixed post ID (e.g. `post_abc123`)."
+              }
+            ]
+          },
+          "docs": "Retrieve all polls belonging to a specific publication. Poll choices are always included. Use `expand[]=stats` to include aggregate vote counts per choice."
+        },
+        {
+          "info": {
+            "name": "Get poll <Badge intent=\"info\" minimal outlined>OAuth Scope: polls:read</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/polls/:pollId",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              },
+              {
+                "name": "pollId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the poll object"
+              },
+              {
+                "name": "expand[]",
+                "value": "",
+                "type": "query",
+                "description": "Optionally expand the response to include additional data.<br> `stats` - Returns aggregate vote counts per choice and total completions.<br> `poll_responses` - Returns up to 10 most recent subscriber responses. Use /polls/{pollId}/responses for paginated access to all responses.<br> `trivia_answer` - Returns the correct answer for trivia-type polls."
+              }
+            ]
+          },
+          "docs": "Retrieve detailed information about a specific poll belonging to a publication. Use `expand[]=stats` for aggregate vote counts, or `expand[]=poll_responses` for individual subscriber responses."
+        },
+        {
+          "info": {
+            "name": "List poll responses <Badge intent=\"info\" minimal outlined>OAuth Scope: polls:read</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/polls/:pollId/responses",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              },
+              {
+                "name": "pollId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the poll object"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10."
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "**Cursor-based pagination (recommended)**: Use this opaque cursor token to fetch the next page of results."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "**Offset-based pagination (deprecated)**: Page number for offset-based pagination."
+              },
+              {
+                "name": "order_by",
+                "value": "",
+                "type": "query",
+                "description": "The field that the results are sorted by. Defaults to created."
+              },
+              {
+                "name": "direction",
+                "value": "",
+                "type": "query",
+                "description": "The direction that the results are sorted in. Defaults to asc.<br> `asc` - Ascending, sorts from smallest to largest.<br> `desc` - Descending, sorts from largest to smallest."
+              },
+              {
+                "name": "expand[]",
+                "value": "",
+                "type": "query",
+                "description": "Optionally expand the response to include additional data.<br> `post` - Returns the post title and publication date for the post where each response was collected."
+              },
+              {
+                "name": "post_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter to only return responses collected via the specified post. Accepts a prefixed post ID (e.g. `post_abc123`)."
+              }
+            ]
+          },
+          "docs": "Retrieve all individual subscriber responses for a specific poll with cursor-based pagination. Use this endpoint for large datasets instead of the `expand[]=poll_responses` parameter on the poll show endpoint."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "subpackage_posts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List posts <Badge intent=\"info\" minimal outlined>OAuth Scope: posts:read</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/posts",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              },
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query",
+                "description": "Optionally expand the results by adding additional information. <br>`stats` - Adds statistics about the post(s). <br>`free_web_content` - Adds the web HTML rendered to a free reader. <br>`free_email_content` - Adds the email HTML rendered to a free reader. <br>`free_rss_content` - Adds the RSS feed HTML. <br>`premium_web_content` - Adds the web HTML rendered to a premium reader. <br>`premium_email_content` - Adds the email HTML rendered to a premium reader."
+              },
+              {
+                "name": "audience",
+                "value": "",
+                "type": "query",
+                "description": "Optionally filter the results by audience"
+              },
+              {
+                "name": "platform",
+                "value": "",
+                "type": "query",
+                "description": "Optionally filter the results by platform.<br>`web` - Posts only published to web.<br>`email` - Posts only published to email.<br>`both` - Posts published to email and web.<br>`all` - Does not restrict results by platform."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Optionally filter the results by the status of the post.<br>`draft` - not been scheduled.<br>`confirmed` - The post will be active after the `scheduled_at`.<br>`archived` - The post is no longer active.<br>`all` - Does not restrict results by status."
+              },
+              {
+                "name": "content_tags[]",
+                "value": "",
+                "type": "query",
+                "description": "Optionally filter posts by content_tags. Adding a content tag will return any post with that content tag associated to it.<br><br><b>Example</b>: Filtering for `content_tags: [\"sales\",\"closing\"]` will return results of posts that have *either* `sales` or `closing` content_tags."
+              },
+              {
+                "name": "slugs[]",
+                "value": "",
+                "type": "query",
+                "description": "Optionally filter posts by their slugs. Adding a slug will return any post with that exact slug associated to it.<br><br><b>Example:</b> Filtering for `slugs: [\"my-first-post\",\"another-post\"]` will return results of posts that have *either* `my-first-post` or `another-post` as their slug."
+              },
+              {
+                "name": "authors[]",
+                "value": "",
+                "type": "query",
+                "description": "Optionally filter posts by their authors. Adding an author name will return any post with that author associated to it (case-insensitive).<br><br><b>Example:</b> Filtering for `authors: [\"John Doe\",\"Jane Smith\"]` will return results of posts that have *either* John Doe or Jane Smith as authors."
+              },
+              {
+                "name": "premium_tiers",
+                "value": "",
+                "type": "query",
+                "description": "Optionally filter posts by audience based on premium tiers.<br> This takes in an array of Display Names of the premium tiers.<br> It will also scope any expanded content output to the specified premium tiers.<br> Note: This is case insensitive."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).<br>If not specified, results 1-10 from page 1 will be returned."
+              },
+              {
+                "name": "order_by",
+                "value": "",
+                "type": "query",
+                "description": "The field that the results are sorted by. Defaults to created<br> `created` - The time in which the post was first created.<br> `publish_date` - The time the post was set to be published.<br> `displayed_date` - The time displayed in place of the `publish_date`. If no `displayed_date` was set, it will default to the `publish_date`"
+              },
+              {
+                "name": "direction",
+                "value": "",
+                "type": "query",
+                "description": "The direction that the results are sorted in. Defaults to asc<br> `asc` - Ascending, sorts from smallest to largest.<br> `desc` - Descending, sorts from largest to smallest."
+              },
+              {
+                "name": "hidden_from_feed",
+                "value": "",
+                "type": "query",
+                "description": "Optionally filter the results by the `hidden_from_feed` attribute of the post.<br>`all` - Does not restrict results by `hidden_from_feed`.<br>`true` - Only return posts hidden from the feed.<br>`false` - Only return posts that are visible on the feed."
+              }
+            ]
+          },
+          "docs": "Retrieve all posts belonging to a specific publication"
+        },
+        {
+          "info": {
+            "name": "Create post <Badge intent=\"info\" minimal outlined>OAuth Scope: posts:write</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/posts",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "<Note title=\"Currently in beta\" icon=\"b\">\n  This feature is currently in beta, the API is subject to change, and available only to Enterprise users.<br/><br/>To inquire about Enterprise pricing,\n  please visit our <a href=\"https://www.beehiiv.com/enterprise\">Enterprise page</a>.\n</Note>\nCreate a post for a specific publication. For a detailed walkthrough including setup, testing workflows, and working with custom HTML and templates, see the <a href=\"https://www.beehiiv.com/support/article/367591"
+        },
+        {
+          "info": {
+            "name": "Get post <Badge intent=\"info\" minimal outlined>OAuth Scope: posts:read</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/posts/:postId",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              },
+              {
+                "name": "postId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the post object"
+              },
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query",
+                "description": "Optionally expand the results by adding additional information. <br>`stats` - Adds statistics about the post(s). <br>`free_web_content` - Adds the web HTML rendered to a free reader. <br>`free_email_content` - Adds the email HTML rendered to a free reader. <br>`free_rss_content` - Adds the RSS feed HTML. <br>`premium_web_content` - Adds the web HTML rendered to a premium reader. <br>`premium_email_content` - Adds the email HTML rendered to a premium reader."
+              },
+              {
+                "name": "premium_tiers",
+                "value": "",
+                "type": "query",
+                "description": "Scope any expanded content output to the specified premium tiers.<br> This takes in an array of Display Names of the premium tiers.<br> Note: This is case insensitive."
+              }
+            ]
+          },
+          "docs": "Retrieve a single Post belonging to a specific publication"
+        },
+        {
+          "info": {
+            "name": "Update post <Badge intent=\"info\" minimal outlined>OAuth Scope: posts:write</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/posts/:postId",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              },
+              {
+                "name": "postId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the post to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "<Note title=\"Currently in beta\" icon=\"b\">\n  This feature is currently in beta, the API is subject to change, and available only to Enterprise users.<br/><br/>To inquire about Enterprise pricing,\n  please visit our <a href=\"https://www.beehiiv.com/enterprise\">Enterprise page</a>.\n</Note>\nUpdate an existing post for a specific publication. Only the fields provided in the request body will be updated — all other fields remain unchanged. For a detailed walkthrough of content methods and working with"
+        },
+        {
+          "info": {
+            "name": "Delete post <Badge intent=\"info\" minimal outlined>OAuth Scope: posts:write</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/posts/:postId",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              },
+              {
+                "name": "postId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the post object"
+              }
+            ]
+          },
+          "docs": "Delete or Archive a post. Any post that has been confirmed will have it's status changed to `archived`. Posts in the `draft` status will be permanently deleted."
+        },
+        {
+          "info": {
+            "name": "Get aggregate stats <Badge intent=\"info\" minimal outlined>OAuth Scope: posts:read</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/posts/aggregate_stats",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              },
+              {
+                "name": "audience",
+                "value": "",
+                "type": "query",
+                "description": "Optionally filter the results by audience"
+              },
+              {
+                "name": "platform",
+                "value": "",
+                "type": "query",
+                "description": "Optionally filter the results by platform.<br>`web` - Posts only published to web.<br>`email` - Posts only published to email.<br>`both` - Posts published to email and web.<br>`all` - Does not restrict results by platform."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Optionally filter the results by the status of the post.<br>`draft` - not been scheduled.<br>`confirmed` - The post will be active after the `scheduled_at`.<br>`archived` - The post is no longer active.<br>`all` - Does not restrict results by status."
+              },
+              {
+                "name": "content_tags[]",
+                "value": "",
+                "type": "query",
+                "description": "Optionally filter posts by content_tags. Adding a content tag will return any post with that content tag associated to it.<br>Example: Filtering for `content_tags: [\"sales\",\"closing\"]` will return results of posts that have *either* sales or closing content_tags."
+              },
+              {
+                "name": "authors[]",
+                "value": "",
+                "type": "query",
+                "description": "Optionally filter posts by their authors. Adding an author name will return any post with that author associated to it (case-insensitive).<br><br><b>Example:</b> Filtering for `authors: [\"John Doe\",\"Jane Smith\"]` will return results of posts that have *either* John Doe or Jane Smith as authors."
+              },
+              {
+                "name": "hidden_from_feed",
+                "value": "",
+                "type": "query",
+                "description": "Optionally filter the results by the `hidden_from_feed` attribute of the post.<br>`all` - Does not restrict results by `hidden_from_feed`.<br>`true` - Only return posts hidden from the feed.<br>`false` - Only return posts that are visible on the feed."
+              }
+            ]
+          },
+          "docs": "Retrieve aggregate stats for all posts"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "subpackage_postTemplates",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get post templates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/post_templates",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).<br>If not specified, results 1-10 from page 1 will be returned."
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "The direction of the request. Defaults to `asc`."
+              },
+              {
+                "name": "order_by",
+                "value": "",
+                "type": "query",
+                "description": "The field to order by. Defaults to `created`."
+              }
+            ]
+          },
+          "docs": "Retrieve a list of post templates available for the publication."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "subpackage_publications",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List publications <Badge intent=\"info\" minimal outlined>OAuth Scope: publications:read</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.beehiiv.com/v2/publications",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query",
+                "description": "Optionally expand the results by adding additional information like subscription counts and engagement stats."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).<br>If not specified, results 1-10 from page 1 will be returned."
+              },
+              {
+                "name": "direction",
+                "value": "",
+                "type": "query",
+                "description": "The direction that the results are sorted in. Defaults to asc<br> `asc` - Ascending, sorts from smallest to largest.<br> `desc` - Descending, sorts from largest to smallest."
+              },
+              {
+                "name": "order_by",
+                "value": "",
+                "type": "query",
+                "description": "The field that the results are sorted by. Defaults to created<br> `created` - The time in which the publication was first created.<br> `name` - The name of the publication."
+              }
+            ]
+          },
+          "docs": "Retrieve all publications associated with your API key."
+        },
+        {
+          "info": {
+            "name": "Get publication <Badge intent=\"info\" minimal outlined>OAuth Scope: publications:read</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              },
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query",
+                "description": "Optionally expand the results by adding additional information like subscription counts and engagement stats."
+              }
+            ]
+          },
+          "docs": "Retrieve a single publication"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "subpackage_referralProgram",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get referral program <Badge intent=\"info\" minimal outlined>OAuth Scope: referral_program:read</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/referral_program",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).<br>If not specified, results 1-10 from page 1 will be returned."
+              }
+            ]
+          },
+          "docs": "Retrieve details about the publication's referral program, including milestones and rewards."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "subpackage_segments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List segments <Badge intent=\"info\" minimal outlined>OAuth Scope: segments:read</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/segments",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Optionally filter the results by the segment's type."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Optionally filter the results by the segment's status."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).<br>If not specified, results 1-10 from page 1 will be returned."
+              },
+              {
+                "name": "order_by",
+                "value": "",
+                "type": "query",
+                "description": "The field that the results are sorted by. Defaults to created<br> `created` - The time in which the segment was first created.<br> `last_calculated` - The time that the segment last completed calculation. Measured in seconds since the Unix epoch."
+              },
+              {
+                "name": "direction",
+                "value": "",
+                "type": "query",
+                "description": "The direction that the results are sorted in. Defaults to asc<br> `asc` - Ascending, sorts from smallest to largest.<br> `desc` - Descending, sorts from largest to smallest."
+              },
+              {
+                "name": "expand[]",
+                "value": "",
+                "type": "query",
+                "description": "Optionally expand the response to include additional data. <br> `stats` - Requests the most recently calculated statistics for a segment. <br> Segment stats are recalculated once daily around 7 a.m. UTC for dynamic segments, but can be manually recalculated at any time in the dashboard. Manual and static segments only calculate once upon upload or creation."
+              }
+            ]
+          },
+          "docs": "Retrieve information about all segments belonging to a specific publication"
+        },
+        {
+          "info": {
+            "name": "Create segment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/segments",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new segment.<br><br> **Manual segments** — Use `subscriptions` or `emails` input to create a segment from an explicit list of subscription IDs or email addresses. The segment is processed synchronously and returns with `status: completed`. Net new email addresses will be ignored; create subscriptions using the `Create Subscription` endpoint.<br><br> **Dynamic segments** — Use `custom_fields` input to create a segment that filters subscribers by custom field values. The segment is proces"
+        },
+        {
+          "info": {
+            "name": "Get segment <Badge intent=\"info\" minimal outlined>OAuth Scope: segments:read</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/segments/:segmentId",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              },
+              {
+                "name": "segmentId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the segment object"
+              },
+              {
+                "name": "expand[]",
+                "value": "",
+                "type": "query",
+                "description": "Optionally expand the response to include additional data. <br> `stats` - Requests the most recently calculated statistics for a segment. <br> Segment stats are recalculated once daily around 7 a.m. UTC for dynamic segments, but can be manually recalculated at any time in the dashboard. Manual and static segments only calculate once upon upload or creation."
+              }
+            ]
+          },
+          "docs": "Retrieve information about a specific segment belonging to a publication"
+        },
+        {
+          "info": {
+            "name": "Delete segment <Badge intent=\"info\" minimal outlined>OAuth Scope: segments:write</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/segments/:segmentId",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              },
+              {
+                "name": "segmentId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the segment object"
+              }
+            ]
+          },
+          "docs": "Delete a segment. Deleting the segment does not effect the subscriptions in the segment."
+        },
+        {
+          "info": {
+            "name": "Recalculate segment <Badge intent=\"info\" minimal outlined>OAuth Scope: segments:write</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/segments/:segmentId/recalculate",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              },
+              {
+                "name": "segmentId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the segment object"
+              }
+            ]
+          },
+          "docs": "Recalculates a specific segment belonging to a publication"
+        },
+        {
+          "info": {
+            "name": "List segment subscribers <Badge intent=\"info\" minimal outlined>OAuth Scope: segments:read</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/segments/:segmentId/members",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              },
+              {
+                "name": "segmentId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the segment object"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).<br>If not specified, results 1-10 from page 1 will be returned."
+              },
+              {
+                "name": "expand[]",
+                "value": "",
+                "type": "query",
+                "description": "Optionally expand the response to include additional data. <br> `stats` - Returns statistics about the subscription(s). <br> `custom_fields` - Returns custom field values set on the subscription. <br> `referrals` - Returns referrals made by the subscription. <br> `tags` - Returns tags associated with the subscription. <br> `subscription_premium_tiers` - Returns premium tier(s) the subscription is subscribed to."
+              }
+            ]
+          },
+          "docs": "List all members in a segment with full subscription data. Each member is returned as a subscription  object containing complete subscriber information and their subscription details.  Supports optional expansions for stats, custom fields, tags, referrals, and premium tiers.\n**Use this endpoint when you need detailed subscriber information.** If you only need subscriber IDs, use `/segments/{segmentId}/results` for a lighter-weight response."
+        },
+        {
+          "info": {
+            "name": "List segment subscriber IDs <Badge intent=\"info\" minimal outlined>OAuth Scope: segments:read</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/segments/:segmentId/results",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              },
+              {
+                "name": "segmentId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the segment object"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).<br>If not specified, results 1-10 from page 1 will be returned."
+              }
+            ]
+          },
+          "docs": "List subscriber IDs for a segment. Returns a lightweight array of subscription IDs only, without additional subscriber details.\n**Use this endpoint when you only need subscriber IDs** (e.g., for counting, ID-based lookups, or  integrations with external systems). If you need full subscriber details (email, status, custom fields, etc.), use `/segments/{segmentId}/members` instead."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "subpackage_subscriptionTags",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Add subscription tag <Badge intent=\"info\" minimal outlined>OAuth Scope: subscriptions:write</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/subscriptions/:subscriptionId/tags",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "subscriptionId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Adds tags to a subscription. If the tag does not exist on the publication, it will be created automatically."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "subpackage_tiers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List tiers <Badge intent=\"info\" minimal outlined>OAuth Scope: tiers:read</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/tiers",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              },
+              {
+                "name": "expand[]",
+                "value": "",
+                "type": "query",
+                "description": "Optional list of expandable objects.<br>`stats` - Returns statistics about the tier(s).<br>`prices` - Returns prices for the tier(s)."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).<br>If not specified, results 1-10 from page 1 will be returned."
+              },
+              {
+                "name": "direction",
+                "value": "",
+                "type": "query",
+                "description": "The direction that the results are sorted in. Defaults to asc<br> `asc` - Ascending, sorts from smallest to largest.<br> `desc` - Descending, sorts from largest to smallest."
+              }
+            ]
+          },
+          "docs": "Retrieve all tiers belonging to a specific publication"
+        },
+        {
+          "info": {
+            "name": "Create a tier <Badge intent=\"info\" minimal outlined>OAuth Scope: tiers:write</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/tiers",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new tier for a publication."
+        },
+        {
+          "info": {
+            "name": "Get tier <Badge intent=\"info\" minimal outlined>OAuth Scope: tiers:read</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/tiers/:tierId",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              },
+              {
+                "name": "tierId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the tier object"
+              },
+              {
+                "name": "expand[]",
+                "value": "",
+                "type": "query",
+                "description": "Optional list of expandable objects.<br>`stats` - Returns statistics about the tier(s).<br>`prices` - Returns prices for the tier(s)."
+              }
+            ]
+          },
+          "docs": "Retrieve a single tier belonging to a specific publication"
+        },
+        {
+          "info": {
+            "name": "Update a tier <Badge intent=\"info\" minimal outlined>OAuth Scope: tiers:write</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/tiers/:tierId",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              },
+              {
+                "name": "tierId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the tier object"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing tier belonging to a specific publication"
+        },
+        {
+          "info": {
+            "name": "Update a tier <Badge intent=\"info\" minimal outlined>OAuth Scope: tiers:write</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/tiers/:tierId",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              },
+              {
+                "name": "tierId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the tier object"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing tier belonging to a specific publication"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "subpackage_webhooks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List webhooks <Badge intent=\"info\" minimal outlined>OAuth Scope: webhooks:read</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/webhooks",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10."
+              }
+            ]
+          },
+          "docs": "Retrieve all webhooks belonging to a specific publication."
+        },
+        {
+          "info": {
+            "name": "Create a webhook <Badge intent=\"info\" minimal outlined>OAuth Scope: webhooks:write</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/webhooks",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new webhook for a given publication."
+        },
+        {
+          "info": {
+            "name": "Get webhook <Badge intent=\"info\" minimal outlined>OAuth Scope: webhooks:read</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/webhooks/:endpointId",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              },
+              {
+                "name": "endpointId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the webhook object"
+              }
+            ]
+          },
+          "docs": "Retrieve a specific webhook belonging to a publication."
+        },
+        {
+          "info": {
+            "name": "Update webhook <Badge intent=\"info\" minimal outlined>OAuth Scope: webhooks:write</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/webhooks/:endpointId",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              },
+              {
+                "name": "endpointId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the webhook object"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a webhook subscription for a publication."
+        },
+        {
+          "info": {
+            "name": "Delete a webhook <Badge intent=\"info\" minimal outlined>OAuth Scope: webhooks:write</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/webhooks/:endpointId",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              },
+              {
+                "name": "endpointId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the webhook object"
+              }
+            ]
+          },
+          "docs": "Delete a webhook subscription from a publication."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "subpackage_workspaces",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Identify workspace <Badge intent=\"info\" minimal outlined>OAuth Scope: identify:read</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.beehiiv.com/v2/workspaces/identify",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Retrieve information about the workspace the OAuth or API token is associated with."
+        },
+        {
+          "info": {
+            "name": "Get publications by subscription email <Badge intent=\"info\" minimal outlined>OAuth Scope: publications:read</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.beehiiv.com/v2/workspaces/publications/by_subscription_email/:email",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "path",
+                "description": "The email address to search for subscriptions"
+              },
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query",
+                "description": "Optionally expand the results by adding additional information. <br>`subscription` - Returns the full Subscription object for the email address in each publication. <br>`publication` - Returns the full Publication object instead of just ID and name. <br>`subscription_custom_fields` - Returns custom field values nested within the subscription object. (Returns the subscription object regardless of whether `subscription` is requested.)"
+              }
+            ]
+          },
+          "docs": "Retrieve all publications in the workspace that have a subscription for the specified email address. The workspace is determined by the provided API key."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
