@@ -5,7 +5,7 @@ kind: company
 description: beehiiv is a newsletter publishing platform offering email publishing, subscriber management, paid subscriptions,
   an ad network, referrals, polls, automations, segments, webhooks, and analytics for creators and media companies. Founded
   in 2021 by former Morning Brew operators and headquartered in New York City.
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
   - Newsletter
   - Creator
