@@ -190,13 +190,13 @@ common:
     url: json-ld/beehiiv-context.jsonld
   - type: Integrations
     url: https://www.beehiiv.com/integrations
-  - type: LLMsTxt
+  - type: LlmsText
     url: https://developers.beehiiv.com/llms.txt
-  - type: LLMsFullTxt
+  - type: LlmsText
     url: https://developers.beehiiv.com/llms-full.txt
   - type: MCPServer
     url: https://developers.beehiiv.com/_mcp/server
-  - type: SDK
+  - type: SDKs
     url: https://github.com/beehiiv/typescript-sdk
   - type: Support
     url: https://support.beehiiv.com/hc/en-us
