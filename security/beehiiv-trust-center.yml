@@ -1,0 +1,17 @@
+generated: '2026-07-11'
+method: searched
+probe: true
+source: https://security.beehiiv.com/
+url: https://security.beehiiv.com/
+certifications:
+- SOC 2
+- HIPAA
+- GDPR
+evidence:
+- source: https://security.beehiiv.com/
+  keywords:
+  - soc 2
+  - hipaa
+  - trust center
+  - compliance certification
+  - gdpr

@@ -164,6 +164,12 @@ apis:
     - type: OpenAPI
       url: openapi/beehiiv-openapi.yml
 common:
+  - type: TrustCenter
+    url: security/beehiiv-trust-center.yml
+  - type: DomainSecurity
+    url: security/beehiiv-domain-security.yml
+  - type: Authentication
+    url: authentication/beehiiv-authentication.yml
   - type: GitHubOrganization
     url: https://github.com/beehiiv
   - type: LinkedIn
@@ -200,6 +206,8 @@ common:
     url: https://github.com/beehiiv/typescript-sdk
   - type: Support
     url: https://support.beehiiv.com/hc/en-us
+  - url: https://www.beehiiv.com/blog
+    type: Blog
 integrations:
   - name: Zapier
     url: https://help.zapier.com/hc/en-us/articles/39823554109965-How-to-get-started-with-beehiiv-on-Zapier
