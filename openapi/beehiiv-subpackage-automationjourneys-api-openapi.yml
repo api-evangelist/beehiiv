@@ -1,0 +1,358 @@
+openapi: 3.1.0
+info:
+  title: API Reference subpackage_advertisement_opportunities subpackage_automationJourneys API
+  version: 1.0.0
+servers:
+- url: https://api.beehiiv.com/v2
+tags:
+- name: subpackage_automationJourneys
+paths:
+  /publications/{publicationId}/automations/{automationId}/journeys:
+    post:
+      operationId: create
+      summary: 'Add subscription to an automation <Badge intent="info" minimal outlined>OAuth Scope: automations:write</Badge>'
+      description: 'Add an existing subscription to an automation flow. Requires the automation to have an active *Add by API* trigger. The specified `email` or `subscription_id` will be matched against your existing subscribers. If an existing subscriber is found, they will be enrolled immediately.
+
+        Looking to enroll new subscribers? Use the **[Create Subscription](/api-reference/subscriptions/create)** endpoint instead and specify the `automation_ids` param.'
+      tags:
+      - subpackage_automationJourneys
+      parameters:
+      - name: publicationId
+        in: path
+        description: The prefixed ID of the publication object
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids:PublicationId'
+      - name: automationId
+        in: path
+        description: The prefixed ID of the automation object
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids:AutomationId'
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_automationJourneys:AutomationJourneysResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_:Error'
+        '404':
+          description: Resource Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_:Error'
+        '429':
+          description: Rate Limit Exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_:Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_:Error'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: The email address associated with the subscription.
+                subscription_id:
+                  $ref: '#/components/schemas/type_ids:SubscriptionId'
+                double_opt_override:
+                  $ref: '#/components/schemas/type_:DoubleOptOverride'
+                  description: 'Override the publication''s default double opt-in settings for this subscription. Possible values are:
+
+                    - "on" — The subscriber will receive a double opt-in confirmation email and will need to confirm their subscription prior to being marked as active.
+
+                    - "off" — The subscriber will be marked as active immediately and will not receive a double opt-in confirmation email.
+
+                    - "not_set" — The publication''s default double opt-in settings will be applied to this subscription.'
+    get:
+      operationId: index
+      summary: 'List automation journeys <Badge intent="info" minimal outlined>OAuth Scope: automations:read</Badge>'
+      description: Retrieve a list of automation journeys that have occurred within a specific automation.
+      tags:
+      - subpackage_automationJourneys
+      parameters:
+      - name: publicationId
+        in: path
+        description: The prefixed ID of the publication object
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids:PublicationId'
+      - name: automationId
+        in: path
+        description: The prefixed ID of the automation object
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids:AutomationId'
+      - name: status
+        in: query
+        description: Optionally filter the results by the automation journey's status.
+        required: false
+        schema:
+          $ref: '#/components/schemas/type_automationJourneys:AutomationJourneysGetRequestStatus'
+      - name: limit
+        in: query
+        description: A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.
+        required: false
+        schema:
+          type: integer
+      - name: page
+        in: query
+        description: 'Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).'
+        required: false
+        schema:
+          type: integer
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_automationJourneys:AutomationJourneysIndexResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_:Error'
+        '404':
+          description: Resource Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_:Error'
+        '429':
+          description: Rate Limit Exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_:Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_:Error'
+  /publications/{publicationId}/automations/{automationId}/journeys/{automationJourneyId}:
+    get:
+      operationId: show
+      summary: 'Get automation journey <Badge intent="info" minimal outlined>OAuth Scope: automations:read</Badge>'
+      description: Retrieve a single automation journey by ID.
+      tags:
+      - subpackage_automationJourneys
+      parameters:
+      - name: publicationId
+        in: path
+        description: The prefixed ID of the publication object
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids:PublicationId'
+      - name: automationId
+        in: path
+        description: The prefixed ID of the automation object
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids:AutomationId'
+      - name: automationJourneyId
+        in: path
+        description: The prefixed automation journey id
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids:AutomationJourneyId'
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_automationJourneys:AutomationJourneysResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_:Error'
+        '404':
+          description: Resource Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_:Error'
+        '429':
+          description: Rate Limit Exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_:Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_:Error'
+components:
+  schemas:
+    type_automationJourneys:AutomationJourneysIndexResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/type_:AutomationJourney'
+        limit:
+          type: integer
+          description: The limit placed on the results. If no limit was specified in the request, this defaults to 10.
+        page:
+          type: integer
+          default: 1
+          description: The page number the results are from. If no page was specified in the request, this defaults to page 1.
+        total_results:
+          type: integer
+          description: The total number of results from all pages.
+        total_pages:
+          type: integer
+          description: The total number of pages.
+      required:
+      - data
+      - limit
+      - page
+      - total_results
+      - total_pages
+      title: AutomationJourneysIndexResponse
+    type_automationJourneys:AutomationJourneysGetRequestStatus:
+      type: string
+      enum:
+      - in_progress
+      - completed
+      - exited_early
+      - all
+      default: all
+      title: AutomationJourneysGetRequestStatus
+    type_:DoubleOptOverride:
+      type: string
+      description: Override publication double-opt settings for this subscription.
+      title: DoubleOptOverride
+    type_ids:PublicationId:
+      type: string
+      description: The prefixed ID of the publication.
+      title: PublicationId
+    type_:Error:
+      type: object
+      properties:
+        status:
+          type: integer
+        statusText:
+          type: string
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/type_:ErrorDetail'
+      required:
+      - status
+      - statusText
+      - errors
+      description: The top level error response.
+      title: Error
+    type_:AutomationJourneyStatus:
+      type: string
+      enum:
+      - in_progress
+      - completed
+      - exited_early
+      - manually_removed
+      title: AutomationJourneyStatus
+    type_ids:AutomationId:
+      type: string
+      description: The prefixed ID of the automation.
+      title: AutomationId
+    type_:ErrorDetail:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+      required:
+      - message
+      - code
+      title: ErrorDetail
+    type_automationJourneys:AutomationJourneysResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/type_:AutomationJourney'
+      required:
+      - data
+      title: AutomationJourneysResponse
+    type_:AutomationJourney:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/type_ids:AutomationJourneyId'
+          description: The prefixed automation journey id
+        automation_id:
+          $ref: '#/components/schemas/type_ids:AutomationId'
+          description: The prefixed automation id
+        subscription_id:
+          $ref: '#/components/schemas/type_ids:SubscriptionId'
+        email:
+          type: string
+        status:
+          $ref: '#/components/schemas/type_:AutomationJourneyStatus'
+        started_at:
+          type: integer
+          description: The time that the subscriber started their flow through the automation. Measured in seconds since the Unix epoch.
+        completed_at:
+          type: integer
+          description: The time that the subscriber finished their flow through the automation. Measured in seconds since the Unix epoch.
+      required:
+      - id
+      - automation_id
+      - status
+      description: A subscribers' journey through an automation flow.
+      title: AutomationJourney
+    type_ids:SubscriptionId:
+      type: string
+      description: The prefixed ID of the subscription.
+      title: SubscriptionId
+    type_ids:AutomationJourneyId:
+      type: string
+      description: The prefixed ID of the automation journey.
+      title: AutomationJourneyId
+  securitySchemes:
+    BearerAuthScheme:
+      type: http
+      scheme: bearer

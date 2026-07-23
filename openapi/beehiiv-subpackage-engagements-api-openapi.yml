@@ -1,0 +1,219 @@
+openapi: 3.1.0
+info:
+  title: API Reference subpackage_advertisement_opportunities subpackage_engagements API
+  version: 1.0.0
+servers:
+- url: https://api.beehiiv.com/v2
+tags:
+- name: subpackage_engagements
+paths:
+  /publications/{publicationId}/engagements:
+    get:
+      operationId: index
+      summary: 'Get publication engagements <Badge intent="info" minimal outlined>OAuth Scope: publications:read</Badge>'
+      description: Retrieve email engagement metrics for a specific publication over a defined date range and granularity.<br><br> By default, the endpoint returns metrics for the past day, aggregated daily. The max number of days allowed is 31. All dates and times are in UTC.
+      tags:
+      - subpackage_engagements
+      parameters:
+      - name: publicationId
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids:PublicationId'
+      - name: start_date
+        in: query
+        description: The starting date for the engagement metrics in `YYYY-MM-DD` format. Defaults to 1 day ago if not provided.
+        required: false
+        schema:
+          type: string
+          format: date
+      - name: number_of_days
+        in: query
+        description: The number of days to return engagement metrics for, starting from `start_date`. Must be between 1 and 31. Defaults to `1` if not provided.
+        required: false
+        schema:
+          $ref: '#/components/schemas/type_engagements:NumberOfDays'
+      - name: granularity
+        in: query
+        description: The granularity at which to report the engagement metrics. Defaults to `day` if not provided.
+        required: false
+        schema:
+          $ref: '#/components/schemas/type_engagements:PublicationEngagementGranularity'
+      - name: email_type
+        in: query
+        description: 'Filter engagement metrics by email type. If omitted, all email engagement is included.<br> `post`: Only post emails.<br> `message`: Only automated and system-generated emails.'
+        required: false
+        schema:
+          $ref: '#/components/schemas/type_engagements:PublicationEngagementEmailType'
+      - name: direction
+        in: query
+        description: 'The direction that the results are sorted in. Defaults to `asc`.<br> `asc`: Oldest to newest<br> `desc`: Newest to oldest'
+        required: false
+        schema:
+          $ref: '#/components/schemas/type_:RequestDirection'
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_engagements:PublicationEngagementsResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_:Error'
+        '404':
+          description: Resource Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_:Error'
+        '429':
+          description: Rate Limit Exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_:Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_:Error'
+components:
+  schemas:
+    type_engagements:PublicationEngagementMetrics:
+      type: object
+      properties:
+        date:
+          type: string
+          format: date
+          description: 'The starting date of the period for which the engagement metrics are reported based on the selected granularity.<br><br> `day` granularity: The specific day.<br> `week` granularity: The Monday of the week.<br> `month` granularity: The first day of the month.'
+        total_opens:
+          type: integer
+          description: The total number of times emails were opened during the period.
+        unique_opens:
+          type: integer
+          description: The number of unique subscribers who opened emails during the period.
+        total_clicks:
+          type: integer
+          description: The total number of times links were clicked during the period.
+        total_verified_clicks:
+          type: integer
+          description: The total number of times links were clicked, during the period, as <a href="https://www.beehiiv.com/support/article/28404633659159-introducing-verified-clicks-accurate-email-engagement-metrics?srsltid=AfmBOoregRzZ1N6bcwITVRA-Lo6NE06y6xNwb7WO85Gv0mrWMij-yFgb">verified by our system</a>.
+        unique_clicks:
+          type: integer
+          description: The number of unique subscribers who clicked links during the period.
+        unique_verified_clicks:
+          type: integer
+          description: The number of times links were clicked by unique subscribers, during the period, as <a href="https://www.beehiiv.com/support/article/28404633659159-introducing-verified-clicks-accurate-email-engagement-metrics?srsltid=AfmBOoregRzZ1N6bcwITVRA-Lo6NE06y6xNwb7WO85Gv0mrWMij-yFgb">verified by our system</a>.
+      required:
+      - date
+      - total_opens
+      - unique_opens
+      - total_clicks
+      - total_verified_clicks
+      - unique_clicks
+      - unique_verified_clicks
+      title: PublicationEngagementMetrics
+    type_ids:PublicationId:
+      type: string
+      description: The prefixed ID of the publication.
+      title: PublicationId
+    type_:Error:
+      type: object
+      properties:
+        status:
+          type: integer
+        statusText:
+          type: string
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/type_:ErrorDetail'
+      required:
+      - status
+      - statusText
+      - errors
+      description: The top level error response.
+      title: Error
+    type_engagements:PublicationEngagementEmailType:
+      type: string
+      enum:
+      - all
+      - post
+      - message
+      title: PublicationEngagementEmailType
+    type_engagements:NumberOfDays:
+      type: integer
+      title: NumberOfDays
+    type_:ErrorDetail:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+      required:
+      - message
+      - code
+      title: ErrorDetail
+    type_:RequestDirection:
+      type: string
+      enum:
+      - asc
+      - desc
+      default: asc
+      description: The direction of the request. Defaults to `asc`.
+      title: RequestDirection
+    type_engagements:PublicationEngagementsResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/type_engagements:PublicationEngagementMetrics'
+          description: The list of engagement metrics for the publication within the specified date range and granularity. Returns an empty list if there is no engagement data for the specified period.
+        publication_id:
+          $ref: '#/components/schemas/type_ids:PublicationId'
+          description: The unique identifier of the publication. Passed as a path parameter in the request.
+        granularity:
+          $ref: '#/components/schemas/type_engagements:PublicationEngagementGranularity'
+          description: The granularity at which the engagement metrics are reported.
+        email_type:
+          $ref: '#/components/schemas/type_engagements:PublicationEngagementEmailType'
+          description: The email type filter applied to the engagement metrics. Defaults to `all`.
+        start_date:
+          type: string
+          format: date
+          description: The starting date of the engagement metrics.
+        number_of_days:
+          $ref: '#/components/schemas/type_engagements:NumberOfDays'
+          description: The number of days of engagement metrics returned.
+      required:
+      - data
+      - publication_id
+      - granularity
+      - email_type
+      - start_date
+      - number_of_days
+      title: PublicationEngagementsResponse
+    type_engagements:PublicationEngagementGranularity:
+      type: string
+      enum:
+      - day
+      - week
+      - month
+      title: PublicationEngagementGranularity
+  securitySchemes:
+    BearerAuthScheme:
+      type: http
+      scheme: bearer

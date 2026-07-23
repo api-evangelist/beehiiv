@@ -1,0 +1,470 @@
+openapi: 3.1.0
+info:
+  title: API Reference subpackage_advertisement_opportunities subpackage_customFields API
+  version: 1.0.0
+servers:
+- url: https://api.beehiiv.com/v2
+tags:
+- name: subpackage_customFields
+paths:
+  /publications/{publicationId}/custom_fields:
+    post:
+      operationId: create
+      summary: 'Create custom field <Badge intent="info" minimal outlined>OAuth Scope: custom_fields:write</Badge>'
+      description: Create a custom field on a publication, for use in subscriptions.
+      tags:
+      - subpackage_customFields
+      parameters:
+      - name: publicationId
+        in: path
+        description: The prefixed ID of the publication object
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids:PublicationId'
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_customFields:CustomFieldResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_:Error'
+        '404':
+          description: Resource Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_:Error'
+        '429':
+          description: Rate Limit Exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_:Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_:Error'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                kind:
+                  $ref: '#/components/schemas/type_:CustomFieldType'
+                display:
+                  type: string
+              required:
+              - kind
+              - display
+    get:
+      operationId: index
+      summary: 'List custom fields <Badge intent="info" minimal outlined>OAuth Scope: custom_fields:read</Badge>'
+      description: List all custom fields on a publication.
+      tags:
+      - subpackage_customFields
+      parameters:
+      - name: publicationId
+        in: path
+        description: The prefixed ID of the publication object
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids:PublicationId'
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_customFields:CustomFieldIndexResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_:Error'
+        '404':
+          description: Resource Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_:Error'
+        '429':
+          description: Rate Limit Exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_:Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_:Error'
+  /publications/{publicationId}/custom_fields/{id}:
+    get:
+      operationId: show
+      summary: 'Get custom field <Badge intent="info" minimal outlined>OAuth Scope: custom_fields:read</Badge>'
+      description: View a specific custom field on a publication.
+      tags:
+      - subpackage_customFields
+      parameters:
+      - name: publicationId
+        in: path
+        description: The prefixed ID of the publication object
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids:PublicationId'
+      - name: id
+        in: path
+        description: The ID of the Custom Fields object
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_customFields:CustomFieldResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_:Error'
+        '404':
+          description: Resource Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_:Error'
+        '429':
+          description: Rate Limit Exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_:Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_:Error'
+    put:
+      operationId: put
+      summary: 'Update custom field <Badge intent="info" minimal outlined>OAuth Scope: custom_fields:write</Badge>'
+      description: Update a custom field on a publication.
+      tags:
+      - subpackage_customFields
+      parameters:
+      - name: publicationId
+        in: path
+        description: The prefixed ID of the publication object
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids:PublicationId'
+      - name: id
+        in: path
+        description: The ID of the Custom Fields object
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_customFields:CustomFieldResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_:Error'
+        '404':
+          description: Resource Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_:Error'
+        '429':
+          description: Rate Limit Exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_:Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_:Error'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                display:
+                  type: string
+    patch:
+      operationId: patch
+      summary: 'Update custom field <Badge intent="info" minimal outlined>OAuth Scope: custom_fields:write</Badge>'
+      description: Update a custom field on a publication.
+      tags:
+      - subpackage_customFields
+      parameters:
+      - name: publicationId
+        in: path
+        description: The prefixed ID of the publication object
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids:PublicationId'
+      - name: id
+        in: path
+        description: The ID of the Custom Fields object
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_customFields:CustomFieldsPatchResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_:Error'
+        '404':
+          description: Resource Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_:Error'
+        '429':
+          description: Rate Limit Exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_:Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_:Error'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                display:
+                  type: string
+    delete:
+      operationId: delete
+      summary: 'Delete custom field <Badge intent="info" minimal outlined>OAuth Scope: custom_fields:write</Badge>'
+      description: Delete a custom field from a publication.
+      tags:
+      - subpackage_customFields
+      parameters:
+      - name: publicationId
+        in: path
+        description: The prefixed ID of the publication object
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids:PublicationId'
+      - name: id
+        in: path
+        description: The ID of the Custom Fields object
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_customFields:CustomFieldsDeleteResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_:Error'
+        '404':
+          description: Resource Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_:Error'
+        '429':
+          description: Rate Limit Exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_:Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_:Error'
+components:
+  schemas:
+    type_customFields:CustomFieldsDeleteResponse:
+      type: object
+      properties:
+        message:
+          type: string
+      title: CustomFieldsDeleteResponse
+    type_ids:PublicationId:
+      type: string
+      description: The prefixed ID of the publication.
+      title: PublicationId
+    type_customFields:CustomFieldInfo:
+      type: object
+      properties:
+        id:
+          type: string
+        kind:
+          $ref: '#/components/schemas/type_:CustomFieldType'
+        display:
+          type: string
+        created:
+          type: integer
+        options:
+          type: array
+          items:
+            type: string
+          description: Array of option values. Only included when kind is "list".
+      title: CustomFieldInfo
+    type_:CustomFieldType:
+      type: string
+      enum:
+      - string
+      - integer
+      - boolean
+      - date
+      - datetime
+      - list
+      - double
+      description: The type of value being stored in the custom field.
+      title: CustomFieldType
+    type_customFields:CustomFieldResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/type_customFields:CustomFieldInfo'
+      title: CustomFieldResponse
+    type_:Error:
+      type: object
+      properties:
+        status:
+          type: integer
+        statusText:
+          type: string
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/type_:ErrorDetail'
+      required:
+      - status
+      - statusText
+      - errors
+      description: The top level error response.
+      title: Error
+    type_customFields:CustomFieldIndexResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/type_customFields:CustomFieldInfo'
+        limit:
+          type: integer
+          description: The limit placed on the results. If no limit was specified in the request, this defaults to 10.
+        page:
+          type: integer
+          default: 1
+          description: The page number the results are from. If no page was specified in the request, this defaults to page 1.
+        total_results:
+          type: integer
+          description: The total number of results from all pages.
+        total_pages:
+          type: integer
+          description: The total number of pages.
+      title: CustomFieldIndexResponse
+    type_:ErrorDetail:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+      required:
+      - message
+      - code
+      title: ErrorDetail
+    type_customFields:CustomFieldsPatchResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/type_customFields:CustomFieldInfo'
+      title: CustomFieldsPatchResponse
+  securitySchemes:
+    BearerAuthScheme:
+      type: http
+      scheme: bearer

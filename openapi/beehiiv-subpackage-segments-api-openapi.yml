@@ -1,0 +1,1078 @@
+openapi: 3.1.0
+info:
+  title: API Reference subpackage_advertisement_opportunities subpackage_segments API
+  version: 1.0.0
+servers:
+- url: https://api.beehiiv.com/v2
+tags:
+- name: subpackage_segments
+paths:
+  /publications/{publicationId}/segments:
+    post:
+      operationId: create
+      summary: Create segment
+      description: 'Create a new segment.<br><br> **Manual segments** — Use `subscriptions` or `emails` input to create a segment from an explicit list of subscription IDs or email addresses. The segment is processed synchronously and returns with `status: completed`. Net new email addresses will be ignored; create subscriptions using the `Create Subscription` endpoint.<br><br> **Dynamic segments** — Use `custom_fields` input to create a segment that filters subscribers by custom field values. The segment is processed asynchronously and returns with `status: pending`. Results will be available in the `List Segment Subscribers` endpoint after processing is complete.'
+      tags:
+      - subpackage_segments
+      parameters:
+      - name: publicationId
+        in: path
+        description: The prefixed ID of the publication object
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids:PublicationId'
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_segments:SegmentShowResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_:Error'
+        '404':
+          description: Resource Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_:Error'
+        '429':
+          description: Rate Limit Exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_:Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_:Error'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: A unique name for the segment that does not already exist in the publication.
+                input:
+                  $ref: '#/components/schemas/type_segments:SegmentSubscriptionInput'
+              required:
+              - name
+              - input
+    get:
+      operationId: index
+      summary: 'List segments <Badge intent="info" minimal outlined>OAuth Scope: segments:read</Badge>'
+      description: Retrieve information about all segments belonging to a specific publication
+      tags:
+      - subpackage_segments
+      parameters:
+      - name: publicationId
+        in: path
+        description: The prefixed ID of the publication object
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids:PublicationId'
+      - name: type
+        in: query
+        description: Optionally filter the results by the segment's type.
+        required: false
+        schema:
+          $ref: '#/components/schemas/type_:SegmentType'
+      - name: status
+        in: query
+        description: Optionally filter the results by the segment's status.
+        required: false
+        schema:
+          $ref: '#/components/schemas/type_segments:SegmentRequestStatus'
+      - name: limit
+        in: query
+        description: A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.
+        required: false
+        schema:
+          type: integer
+      - name: page
+        in: query
+        description: 'Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).<br>If not specified, results 1-10 from page 1 will be returned.'
+        required: false
+        schema:
+          type: integer
+      - name: order_by
+        in: query
+        description: The field that the results are sorted by. Defaults to created<br> `created` - The time in which the segment was first created.<br> `last_calculated` - The time that the segment last completed calculation. Measured in seconds since the Unix epoch.
+        required: false
+        schema:
+          $ref: '#/components/schemas/type_segments:SegmentOrderBy'
+      - name: direction
+        in: query
+        description: The direction that the results are sorted in. Defaults to asc<br> `asc` - Ascending, sorts from smallest to largest.<br> `desc` - Descending, sorts from largest to smallest.
+        required: false
+        schema:
+          $ref: '#/components/schemas/type_:RequestDirection'
+      - name: expand[]
+        in: query
+        description: Optionally expand the response to include additional data. <br> `stats` - Requests the most recently calculated statistics for a segment. <br> Segment stats are recalculated once daily around 7 a.m. UTC for dynamic segments, but can be manually recalculated at any time in the dashboard. Manual and static segments only calculate once upon upload or creation.
+        required: false
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/type_segments:SegmentsExpandItems'
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_segments:SegmentsListResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_:Error'
+        '404':
+          description: Resource Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_:Error'
+        '429':
+          description: Rate Limit Exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_:Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_:Error'
+  /publications/{publicationId}/segments/{segmentId}:
+    get:
+      operationId: show
+      summary: 'Get segment <Badge intent="info" minimal outlined>OAuth Scope: segments:read</Badge>'
+      description: Retrieve information about a specific segment belonging to a publication
+      tags:
+      - subpackage_segments
+      parameters:
+      - name: publicationId
+        in: path
+        description: The prefixed ID of the publication object
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids:PublicationId'
+      - name: segmentId
+        in: path
+        description: The prefixed ID of the segment object
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids:SegmentId'
+      - name: expand[]
+        in: query
+        description: Optionally expand the response to include additional data. <br> `stats` - Requests the most recently calculated statistics for a segment. <br> Segment stats are recalculated once daily around 7 a.m. UTC for dynamic segments, but can be manually recalculated at any time in the dashboard. Manual and static segments only calculate once upon upload or creation.
+        required: false
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/type_segments:SegmentsExpandItems'
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_segments:SegmentShowResponse'
+        '404':
+          description: Resource Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_:Error'
+        '429':
+          description: Rate Limit Exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_:Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_:Error'
+    delete:
+      operationId: delete
+      summary: 'Delete segment <Badge intent="info" minimal outlined>OAuth Scope: segments:write</Badge>'
+      description: Delete a segment. Deleting the segment does not effect the subscriptions in the segment.
+      tags:
+      - subpackage_segments
+      parameters:
+      - name: publicationId
+        in: path
+        description: The prefixed ID of the publication object
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids:PublicationId'
+      - name: segmentId
+        in: path
+        description: The prefixed ID of the segment object
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids:SegmentId'
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_segments:SegmentDeleteResponse'
+        '404':
+          description: Resource Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_:Error'
+        '429':
+          description: Rate Limit Exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_:Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_:Error'
+  /publications/{publicationId}/segments/{segmentId}/recalculate:
+    put:
+      operationId: recalculate
+      summary: 'Recalculate segment <Badge intent="info" minimal outlined>OAuth Scope: segments:write</Badge>'
+      description: Recalculates a specific segment belonging to a publication
+      tags:
+      - subpackage_segments
+      parameters:
+      - name: publicationId
+        in: path
+        description: The prefixed ID of the publication object
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids:PublicationId'
+      - name: segmentId
+        in: path
+        description: The prefixed ID of the segment object
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids:SegmentId'
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_segments:SegmentRecalculateResponse'
+        '404':
+          description: Resource Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_:Error'
+        '422':
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_:Error'
+        '429':
+          description: Rate Limit Exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_:Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_:Error'
+  /publications/{publicationId}/segments/{segmentId}/members:
+    get:
+      operationId: list-members
+      summary: 'List segment subscribers <Badge intent="info" minimal outlined>OAuth Scope: segments:read</Badge>'
+      description: 'List all members in a segment with full subscription data. Each member is returned as a subscription  object containing complete subscriber information and their subscription details.  Supports optional expansions for stats, custom fields, tags, referrals, and premium tiers.
+
+        **Use this endpoint when you need detailed subscriber information.** If you only need subscriber IDs, use `/segments/{segmentId}/results` for a lighter-weight response.'
+      tags:
+      - subpackage_segments
+      parameters:
+      - name: publicationId
+        in: path
+        description: The prefixed ID of the publication object
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids:PublicationId'
+      - name: segmentId
+        in: path
+        description: The prefixed ID of the segment object
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids:SegmentId'
+      - name: limit
+        in: query
+        description: A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.
+        required: false
+        schema:
+          type: integer
+      - name: page
+        in: query
+        description: 'Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).<br>If not specified, results 1-10 from page 1 will be returned.'
+        required: false
+        schema:
+          type: integer
+      - name: expand[]
+        in: query
+        description: Optionally expand the response to include additional data. <br> `stats` - Returns statistics about the subscription(s). <br> `custom_fields` - Returns custom field values set on the subscription. <br> `referrals` - Returns referrals made by the subscription. <br> `tags` - Returns tags associated with the subscription. <br> `subscription_premium_tiers` - Returns premium tier(s) the subscription is subscribed to.
+        required: false
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/type_segments:SegmentMembersExpandItems'
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_segments:SegmentMembersResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_:Error'
+        '404':
+          description: Resource Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_:Error'
+        '429':
+          description: Rate Limit Exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_:Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_:Error'
+  /publications/{publicationId}/segments/{segmentId}/results:
+    get:
+      operationId: expand-results
+      summary: 'List segment subscriber IDs <Badge intent="info" minimal outlined>OAuth Scope: segments:read</Badge>'
+      description: 'List subscriber IDs for a segment. Returns a lightweight array of subscription IDs only, without additional subscriber details.
+
+        **Use this endpoint when you only need subscriber IDs** (e.g., for counting, ID-based lookups, or  integrations with external systems). If you need full subscriber details (email, status, custom fields, etc.), use `/segments/{segmentId}/members` instead.'
+      tags:
+      - subpackage_segments
+      parameters:
+      - name: publicationId
+        in: path
+        description: The prefixed ID of the publication object
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids:PublicationId'
+      - name: segmentId
+        in: path
+        description: The prefixed ID of the segment object
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids:SegmentId'
+      - name: limit
+        in: query
+        description: A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.
+        required: false
+        schema:
+          type: integer
+      - name: page
+        in: query
+        description: 'Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).<br>If not specified, results 1-10 from page 1 will be returned.'
+        required: false
+        schema:
+          type: integer
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_segments:SegmentsGetResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_:Error'
+        '404':
+          description: Resource Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_:Error'
+        '429':
+          description: Rate Limit Exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_:Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_:Error'
+components:
+  schemas:
+    type_:SubscriptionExpandedSubscriptionTier:
+      type: string
+      enum:
+      - free
+      - premium
+      description: The current tier of the subscription.
+      title: SubscriptionExpandedSubscriptionTier
+    type_:SubscriptionTags:
+      type: array
+      items:
+        type: string
+      description: 'Optional list of tags for a subscription. Retrievable by including `expand: [tags]` in the request body.
+
+        Max limit of 100 unique tags per publication.'
+      title: SubscriptionTags
+    type_:SubscriptionTierList:
+      type: array
+      items:
+        $ref: '#/components/schemas/type_:SubscriptionTierInfo'
+      description: 'Optional list of tiers for a subscription. Retrievable by including `expand: [subscription_premium_tiers]` in the request body.'
+      title: SubscriptionTierList
+    type_segments:SegmentDeleteResponse:
+      type: object
+      properties:
+        message:
+          type: string
+      title: SegmentDeleteResponse
+    type_segments:CustomFieldsLogicalOperator:
+      type: string
+      enum:
+      - and
+      - or
+      title: CustomFieldsLogicalOperator
+    type_:SubscriptionExpandedStatus:
+      type: string
+      enum:
+      - validating
+      - invalid
+      - pending
+      - active
+      - inactive
+      - needs_attention
+      - paused
+      description: The status of the subscription.<br>`validating` - The email address is being validated.<br>`invalid` - The email address is invalid.<br>`pending` - The email address is valid, but the subscription is pending double opt-in.<br>`active` - The email was valid and the subscription is active.<br>`inactive` - The subscription was made inactive, possibly due to an unsubscribe.<br>`needs_attention` - The subscription requires approval or denial.<br>`paused` - The subscriber has paused their subscription.
+      title: SubscriptionExpandedStatus
+    type_segments:SegmentMembersExpandItems:
+      type: string
+      enum:
+      - stats
+      - custom_fields
+      - referrals
+      - tags
+      - subscription_premium_tiers
+      title: SegmentMembersExpandItems
+    type_:SubscriptionExpandedUtmChannel:
+      type: string
+      enum:
+      - ''
+      - website
+      - import
+      - embed
+      - api
+      - referral
+      - recommendation
+      - magic_link
+      - boost
+      - boost_send
+      - boost_direct_link
+      - integration
+      - product
+      description: The acquisition channel
+      title: SubscriptionExpandedUtmChannel
+    type_segments:SegmentSubscriptionInput:
+      oneOf:
+      - type: object
+        properties:
+          type:
+            type: string
+            enum:
+            - subscriptions
+            description: 'Discriminator value: subscriptions'
+          subscriptions:
+            type: array
+            items:
+              $ref: '#/components/schemas/type_ids:SubscriptionId'
+        required:
+        - type
+        - subscriptions
+      - type: object
+        properties:
+          type:
+            type: string
+            enum:
+            - emails
+            description: 'Discriminator value: emails'
+          emails:
+            type: array
+            items:
+              type: string
+        required:
+        - type
+        - emails
+      - type: object
+        properties:
+          type:
+            type: string
+            enum:
+            - custom_fields
+            description: 'Discriminator value: custom_fields'
+          operator:
+            $ref: '#/components/schemas/type_segments:CustomFieldsLogicalOperator'
+            description: The logical operator used to combine multiple custom field filters. Defaults to `and` if not specified.
+          custom_fields:
+            type: array
+            items:
+              $ref: '#/components/schemas/type_segments:CustomFieldFilter'
+        required:
+        - type
+        - custom_fields
+      discriminator:
+        propertyName: type
+      description: Input for segment creation. Use `subscriptions` or `emails` to create a manual segment from explicit lists, or `custom_fields` to create a dynamic segment filtered by custom field values.
+      title: SegmentSubscriptionInput
+    type_:RequestDirection:
+      type: string
+      enum:
+      - asc
+      - desc
+      default: asc
+      description: The direction of the request. Defaults to `asc`.
+      title: RequestDirection
+    type_:CustomField:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the existing custom field
+        kind:
+          $ref: '#/components/schemas/type_:CustomFieldType'
+          description: The type of value being stored in the custom field.
+        value:
+          $ref: '#/components/schemas/type_:CustomFieldDataType'
+          description: The value stored for the subscription
+      title: CustomField
+    type_segments:SegmentsExpandItems:
+      type: string
+      enum:
+      - stats
+      title: SegmentsExpandItems
+    type_:SubscriptionStats:
+      type: object
+      properties:
+        emails_received:
+          type: integer
+          description: The total number of emails that have been sent to this subscriber
+        open_rate:
+          type: number
+          format: double
+          description: The percentage of emails that the subscriber has opened
+        click_through_rate:
+          type: number
+          format: double
+          description: The percentage of emails that the subscriber has clicked a link in
+      description: 'Optional list of stats for a subscription. Retrievable by including `expand: [stats]` in the request body.'
+      title: SubscriptionStats
+    type_:SubscriptionCustomFieldList:
+      type: array
+      items:
+        $ref: '#/components/schemas/type_:CustomField'
+      description: 'Optional list of custom fields for a subscription. Retrievable by including `expand: [custom_field]` in the request body.'
+      title: SubscriptionCustomFieldList
+    type_segments:SegmentRecalculateResponse:
+      type: object
+      properties:
+        message:
+          type: string
+      title: SegmentRecalculateResponse
+    type_segments:SegmentMembersResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/type_:Subscription'
+        limit:
+          type: integer
+          description: The limit placed on the results. If no limit was specified in the request,this defaults to 10.
+        page:
+          type: integer
+          default: 1
+          description: The page number the results are from. If no page was specified in the request, this defaults to page 1.
+        total_results:
+          type: integer
+          description: The total number of results from all pages.
+        total_pages:
+          type: integer
+          description: The total number of pages.
+      required:
+      - data
+      - limit
+      - page
+      - total_results
+      - total_pages
+      title: SegmentMembersResponse
+    type_:ErrorDetail:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+      required:
+      - message
+      - code
+      title: ErrorDetail
+    type_segments:SegmentOrderBy:
+      type: string
+      enum:
+      - created
+      - last_calculated
+      default: created
+      title: SegmentOrderBy
+    type_:CustomFieldDataType:
+      oneOf:
+      - type: string
+      - type: number
+        format: double
+      - type: boolean
+      - type: array
+        items:
+          type: string
+      title: CustomFieldDataType
+    type_ids:SegmentId:
+      type: string
+      description: The prefixed ID of the segment.
+      title: SegmentId
+    type_segments:SegmentsListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/type_:Segment'
+          description: An array of all segments.
+        limit:
+          type: integer
+          description: The limit placed on the results. If no limit was specified in the request,this defaults to 10.
+        page:
+          type: integer
+          default: 1
+          description: The page number the results are from. If no page was specified in the request, this defaults to page 1.
+        total_results:
+          type: integer
+          description: The total number of results from all pages.
+        total_pages:
+          type: integer
+          description: The total number of pages.
+      required:
+      - data
+      - limit
+      - page
+      - total_results
+      - total_pages
+      title: SegmentsListResponse
+    type_:Segment:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/type_ids:SegmentId'
+          description: The prefixed ID of the segment.
+        name:
+          type: string
+          description: The name of the segment.
+        type:
+          $ref: '#/components/schemas/type_:SegmentType'
+          description: The type of segment.<br>`dynamic` - The segment is recalculated at set intervals.<br>`static` - The segment is calculated once at creation.<br>`manual` - The segment is not calculated at all. The results are created via CSV.
+        last_calculated:
+          type: integer
+          description: The time the Segment was last calculated. Measured in seconds since the Unix epoch
+        total_results:
+          type: integer
+          description: The total number of subscriptions that belong in the segment from the last calculation.
+        status:
+          $ref: '#/components/schemas/type_:SegmentStatus'
+          description: The status of the segment's most recent calculation.<br>`pending` - The segment has not been calculated yet.<br>`processing` - The calculation is in progress, and has not completed.<br>`completed` - The calculation was successful.<br>`failed` - Something went wrong during the calculation.
+        active:
+          type: boolean
+          description: Dynamic segments are marked inactive if they haven't been used in a specific period of time. Inactive segments will not automatically be recalculated.
+        stats:
+          $ref: '#/components/schemas/type_:SegmentStats'
+      required:
+      - id
+      - name
+      - type
+      - total_results
+      - status
+      - active
+      description: The segment object. To expand results, see the results endpoint.
+      title: Segment
+    type_:Subscription:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/type_ids:SubscriptionId'
+          description: The prefixed subscription id
+        email:
+          type: string
+          format: email
+        status:
+          $ref: '#/components/schemas/type_:SubscriptionExpandedStatus'
+          description: The status of the subscription.<br>`validating` - The email address is being validated.<br>`invalid` - The email address is invalid.<br>`pending` - The email address is valid, but the subscription is pending double opt-in.<br>`active` - The email was valid and the subscription is active.<br>`inactive` - The subscription was made inactive, possibly due to an unsubscribe.<br>`needs_attention` - The subscription requires approval or denial.
+        created:
+          type: integer
+          description: The date the subscription was created. Measured in seconds since the Unix epoch
+        subscription_tier:
+          $ref: '#/components/schemas/type_:SubscriptionExpandedSubscriptionTier'
+          description: The current tier of the subscription.
+        subscription_premium_tier_names:
+          type: array
+          items:
+            type: string
+          description: The current premium tiers of the subscription. Empty if the subscriber is not associated with any premium tiers.
+        utm_source:
+          type: string
+          description: The acquisition source; where the subscriber came from
+        utm_medium:
+          type: string
+          description: The acquisition medium; how the subscriber got to your publication
+        utm_channel:
+          $ref: '#/components/schemas/type_:SubscriptionExpandedUtmChannel'
+          description: The acquisition channel
+        utm_campaign:
+          type: string
+          description: The acquisition campaign
+        utm_term:
+          type: string
+          description: The acquisition term; typically the keyword or search term
+        utm_content:
+          type: string
+          description: The acquisition content; typically used for A/B testing or ad variations
+        referring_site:
+          type: string
+          description: The website that the subscriber was referred from
+        referral_code:
+          type: string
+          description: The code associated to this subscriber to refer others. When a new subscription is created with this referral code, credit for the referral goes to this subscription.
+        subscription_premium_tiers:
+          $ref: '#/components/schemas/type_:SubscriptionTierList'
+        custom_fields:
+          $ref: '#/components/schemas/type_:SubscriptionCustomFieldList'
+        tags:
+          $ref: '#/components/schemas/type_:SubscriptionTags'
+        stats:
+          $ref: '#/components/schemas/type_:SubscriptionStats'
+        newsletter_list_ids:
+          type: array
+          items:
+            type: string
+          description: The prefixed IDs of the newsletter lists this subscription is actively subscribed to. Requires `expand[]=newsletter_lists`. <Badge intent="warning" minimal outlined>Beta</Badge>
+      required:
+      - id
+      - email
+      - status
+      - created
+      - subscription_tier
+      - subscription_premium_tier_names
+      - utm_source
+      - utm_medium
+      - utm_channel
+      - utm_campaign
+      - utm_term
+      - utm_content
+      - referring_site
+      - referral_code
+      description: The subscription object
+      title: Subscription
+    type_ids:PublicationId:
+      type: string
+      description: The prefixed ID of the publication.
+      title: PublicationId
+    type_:CustomFieldType:
+      type: string
+      enum:
+      - string
+      - integer
+      - boolean
+      - date
+      - datetime
+      - list
+      - double
+      description: The type of value being stored in the custom field.
+      title: CustomFieldType
+    type_:SubscriptionTierInfoStatus:
+      type: string
+      enum:
+      - active
+      - archived
+      description: Returns whether or not the tier has any active prices.
+      title: SubscriptionTierInfoStatus
+    type_segments:SegmentRequestStatus:
+      type: string
+      enum:
+      - pending
+      - processing
+      - completed
+      - failed
+      - all
+      default: all
+      title: SegmentRequestStatus
+    type_ids:SubscriptionId:
+      type: string
+      description: The prefixed ID of the subscription.
+      title: SubscriptionId
+    type_:SubscriptionTierInfo:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/type_ids:TierId'
+        name:
+          type: string
+        status:
+          $ref: '#/components/schemas/type_:SubscriptionTierInfoStatus'
+          description: Returns whether or not the tier has any active prices.
+      required:
+      - id
+      - name
+      - status
+      title: SubscriptionTierInfo
+    type_:SegmentType:
+      type: string
+      enum:
+      - dynamic
+      - static
+      - manual
+      - all
+      default: all
+      description: The type of segment.<br>`dynamic` - The segment is recalculated at set intervals.<br>`static` - The segment is calculated once at creation.<br>`manual` - The segment is not calculated at all. The results are created via CSV.
+      title: SegmentType
+    type_:Error:
+      type: object
+      properties:
+        status:
+          type: integer
+        statusText:
+          type: string
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/type_:ErrorDetail'
+      required:
+      - status
+      - statusText
+      - errors
+      description: The top level error response.
+      title: Error
+    type_:SegmentStatus:
+      type: string
+      enum:
+      - pending
+      - processing
+      - completed
+      - failed
+      description: The status of the segment's most recent calculation.<br>`pending` - The segment has not been calculated yet.<br>`processing` - The calculation is in progress, and has not completed.<br>`completed` - The calculation was successful.<br>`failed` - Something went wrong during the calculation.
+      title: SegmentStatus
+    type_segments:SegmentsGetResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            type: string
+          description: An array of subscription ids
+        limit:
+          type: integer
+          description: The limit placed on the results. If no limit was specified in the request,this defaults to 10.
+        page:
+          type: integer
+          default: 1
+          description: The page number the results are from. If no page was specified in the request, this defaults to page 1.
+        total_results:
+          type: integer
+          description: The total number of results from all pages.
+        total_pages:
+          type: integer
+          description: The total number of pages.
+      required:
+      - data
+      - limit
+      - page
+      - total_results
+      - total_pages
+      title: SegmentsGetResponse
+    type_ids:TierId:
+      type: string
+      description: The prefixed ID of the tier.
+      title: TierId
+    type_segments:CustomFieldFilter:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The display name of the custom field (case-insensitive match). Must be an existing custom field on the publication.
+        operator:
+          type: string
+          description: The comparison operator for the filter (e.g., `equal`, `not_equal`, `contains`, `exists`, `does_not_exist`). Available operators depend on the custom field's type.
+        value:
+          type: string
+          description: The value to compare against. Required for all operators except `exists` and `does_not_exist`.
+      required:
+      - name
+      - operator
+      description: A single custom field filter condition.
+      title: CustomFieldFilter
+    type_:SegmentStats:
+      type: object
+      properties:
+        open_rate:
+          type: number
+          format: double
+          description: The average open rate of the subscribers in the segment.
+        total_sent:
+          type: integer
+          description: The total number of emails sent to the subscribers in the segment.
+        percentage_premium_subscribers:
+          type: number
+          format: double
+          description: The percentage of subscribers in this segment who are premium in any tier.
+        percentage_subscribers_with_referrals:
+          type: number
+          format: double
+          description: The percentage of subscribers in this segment who have referred at least one other subscriber.
+        unique_emails_clicked:
+          type: integer
+          description: The total number of unique emails clicked by subscribers in the segment.
+        total_delivered:
+          type: integer
+          description: The total number of emails delivered to subscribers in the segment.
+        total_referrals:
+          type: integer
+          description: The total number of referrals from subscribers in the segment.
+        unsubscribed_rate:
+          type: number
+          format: double
+          description: The percentage of subscribers in this segment who have unsubscribed.
+        total_subscribers:
+          type: integer
+          description: The total number of subscribers in the segment.
+        clickthrough_rate:
+          type: number
+          format: double
+          description: The average clickthrough rate of the subscribers in the segment.
+        unsubscribed_count:
+          type: integer
+          description: The total number of subscribers in the segment who are unsubscribed.
+        unique_emails_opened:
+          type: integer
+          description: The total number of unique emails opened by subscribers in the segment.
+        premium_subscribers:
+          type: integer
+          description: The total number of premium subscribers in the segment.
+        average_referrals_per_subscriber:
+          type: number
+          format: double
+          description: The average number of referrals per subscriber in the segment.
+      required:
+      - open_rate
+      - total_sent
+      - percentage_premium_subscribers
+      - percentage_subscribers_with_referrals
+      - unique_emails_clicked
+      - total_delivered
+      - total_referrals
+      - unsubscribed_rate
+      - total_subscribers
+      - clickthrough_rate
+      - unsubscribed_count
+      - unique_emails_opened
+      - premium_subscribers
+      - average_referrals_per_subscriber
+      title: SegmentStats
+    type_segments:SegmentShowResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/type_:Segment'
+      required:
+      - data
+      title: SegmentShowResponse
+  securitySchemes:
+    BearerAuthScheme:
+      type: http
+      scheme: bearer
