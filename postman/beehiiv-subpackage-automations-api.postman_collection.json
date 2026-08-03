@@ -1,0 +1,1153 @@
+{
+  "info": {
+    "_postman_id": "de30a705-b2bd-407a-8294-08549e24d5ab",
+    "name": "API Reference subpackage_advertisement_opportunities subpackage_automations API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:12:04.000Z",
+    "updatedAt": "2026-07-28T01:12:05.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-de30a705-b2bd-407a-8294-08549e24d5ab"
+  },
+  "item": [
+    {
+      "name": "publications",
+      "item": [
+        {
+          "name": "{publicationId}",
+          "item": [
+            {
+              "name": "automations",
+              "item": [
+                {
+                  "name": "{automationId}",
+                  "item": [
+                    {
+                      "name": "emails",
+                      "item": [
+                        {
+                          "name": "List automation emails",
+                          "id": "9dfa28e1-4736-43ff-89fb-0f4e49b79c54",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/automations/:automationId/emails?limit=<integer>&cursor=<string>&page=<integer>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "automations",
+                                ":automationId",
+                                "emails"
+                              ],
+                              "query": [
+                                {
+                                  "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                                  "key": "limit",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "**Cursor-based pagination (recommended)**: Use this opaque cursor token to fetch the next page of results. Obtain it from the `next_cursor` field of a previous response.",
+                                  "key": "cursor",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "**Deprecated**: Use `cursor` instead. Pagination returns the results in pages. Limited to 100 pages maximum.",
+                                  "key": "page",
+                                  "value": "<integer>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "id": "531a1ae1-990e-4a9c-89a5-fb44626a1f16",
+                                  "key": "publicationId",
+                                  "value": "<string>",
+                                  "description": "(Required) The prefixed ID of the publication object"
+                                },
+                                {
+                                  "id": "8c7772fb-145a-4ae8-9242-c73d1df9bb49",
+                                  "key": "automationId",
+                                  "value": "<string>",
+                                  "description": "(Required) The prefixed ID of the automation object"
+                                }
+                              ]
+                            },
+                            "description": "Retrieve all emails belonging to a specific automation, including engagement statistics for each email."
+                          },
+                          "response": [
+                            {
+                              "id": "4166884a-e5c5-44ed-b986-569c4103811d",
+                              "name": "OK",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/publications/:publicationId/automations/:automationId/emails?limit=<integer>&cursor=<string>&page=<integer>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "publications",
+                                    ":publicationId",
+                                    "automations",
+                                    ":automationId",
+                                    "emails"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                                      "key": "limit",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "**Cursor-based pagination (recommended)**: Use this opaque cursor token to fetch the next page of results. Obtain it from the `next_cursor` field of a previous response.",
+                                      "key": "cursor",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "**Deprecated**: Use `cursor` instead. Pagination returns the results in pages. Limited to 100 pages maximum.",
+                                      "key": "page",
+                                      "value": "<integer>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "publicationId"
+                                    },
+                                    {
+                                      "key": "automationId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"automation_step_id\": \"<string>\",\n      \"subject_line\": \"<string>\",\n      \"preview_text\": \"<string>\",\n      \"status\": \"<string>\",\n      \"created_at\": \"<integer>\",\n      \"first_sent_at\": \"<integer>\",\n      \"last_sent_at\": \"<integer>\",\n      \"stats\": {\n        \"email\": {\n          \"recipients\": 0,\n          \"delivered\": 0,\n          \"opens\": 0,\n          \"unique_opens\": 0,\n          \"open_rate\": \"<double>\",\n          \"clicks\": 0,\n          \"unique_clicks\": 0,\n          \"click_rate\": \"<double>\",\n          \"unsubscribes\": 0,\n          \"spam_reports\": 0\n        },\n        \"clicks\": [\n          {\n            \"url\": \"<string>\",\n            \"total_clicks\": \"<integer>\",\n            \"total_unique_clicks\": \"<integer>\",\n            \"total_click_through_rate\": \"<double>\"\n          },\n          {\n            \"url\": \"<string>\",\n            \"total_clicks\": \"<integer>\",\n            \"total_unique_clicks\": \"<integer>\",\n            \"total_click_through_rate\": \"<double>\"\n          }\n        ]\n      }\n    },\n    {\n      \"id\": \"<string>\",\n      \"automation_step_id\": \"<string>\",\n      \"subject_line\": \"<string>\",\n      \"preview_text\": \"<string>\",\n      \"status\": \"<string>\",\n      \"created_at\": \"<integer>\",\n      \"first_sent_at\": \"<integer>\",\n      \"last_sent_at\": \"<integer>\",\n      \"stats\": {\n        \"email\": {\n          \"recipients\": 0,\n          \"delivered\": 0,\n          \"opens\": 0,\n          \"unique_opens\": 0,\n          \"open_rate\": \"<double>\",\n          \"clicks\": 0,\n          \"unique_clicks\": 0,\n          \"click_rate\": \"<double>\",\n          \"unsubscribes\": 0,\n          \"spam_reports\": 0\n        },\n        \"clicks\": [\n          {\n            \"url\": \"<string>\",\n            \"total_clicks\": \"<integer>\",\n            \"total_unique_clicks\": \"<integer>\",\n            \"total_click_through_rate\": \"<double>\"\n          },\n          {\n            \"url\": \"<string>\",\n            \"total_clicks\": \"<integer>\",\n            \"total_unique_clicks\": \"<integer>\",\n            \"total_click_through_rate\": \"<double>\"\n          }\n        ]\n      }\n    }\n  ],\n  \"limit\": \"<integer>\",\n  \"has_more\": \"<boolean>\",\n  \"next_cursor\": \"<string>\",\n  \"page\": 1,\n  \"total_results\": \"<integer>\",\n  \"total_pages\": \"<integer>\"\n}",
+                              "createdAt": "2026-07-28T01:12:05.000Z",
+                              "updatedAt": "2026-07-28T01:12:05.000Z",
+                              "uid": "35240-4166884a-e5c5-44ed-b986-569c4103811d"
+                            },
+                            {
+                              "id": "29011078-98c1-4c8c-b113-7879586a761a",
+                              "name": "Bad Request",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/publications/:publicationId/automations/:automationId/emails?limit=<integer>&cursor=<string>&page=<integer>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "publications",
+                                    ":publicationId",
+                                    "automations",
+                                    ":automationId",
+                                    "emails"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                                      "key": "limit",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "**Cursor-based pagination (recommended)**: Use this opaque cursor token to fetch the next page of results. Obtain it from the `next_cursor` field of a previous response.",
+                                      "key": "cursor",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "**Deprecated**: Use `cursor` instead. Pagination returns the results in pages. Limited to 100 pages maximum.",
+                                      "key": "page",
+                                      "value": "<integer>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "publicationId"
+                                    },
+                                    {
+                                      "key": "automationId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T01:12:05.000Z",
+                              "updatedAt": "2026-07-28T01:12:05.000Z",
+                              "uid": "35240-29011078-98c1-4c8c-b113-7879586a761a"
+                            },
+                            {
+                              "id": "86bd607c-86b2-4872-ab4c-a451a01469f1",
+                              "name": "Resource Not Found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/publications/:publicationId/automations/:automationId/emails?limit=<integer>&cursor=<string>&page=<integer>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "publications",
+                                    ":publicationId",
+                                    "automations",
+                                    ":automationId",
+                                    "emails"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                                      "key": "limit",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "**Cursor-based pagination (recommended)**: Use this opaque cursor token to fetch the next page of results. Obtain it from the `next_cursor` field of a previous response.",
+                                      "key": "cursor",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "**Deprecated**: Use `cursor` instead. Pagination returns the results in pages. Limited to 100 pages maximum.",
+                                      "key": "page",
+                                      "value": "<integer>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "publicationId"
+                                    },
+                                    {
+                                      "key": "automationId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T01:12:05.000Z",
+                              "updatedAt": "2026-07-28T01:12:05.000Z",
+                              "uid": "35240-86bd607c-86b2-4872-ab4c-a451a01469f1"
+                            },
+                            {
+                              "id": "b17fca1b-a63c-4f76-8784-0c9e2ae7abbe",
+                              "name": "Rate Limit Exceeded",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/publications/:publicationId/automations/:automationId/emails?limit=<integer>&cursor=<string>&page=<integer>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "publications",
+                                    ":publicationId",
+                                    "automations",
+                                    ":automationId",
+                                    "emails"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                                      "key": "limit",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "**Cursor-based pagination (recommended)**: Use this opaque cursor token to fetch the next page of results. Obtain it from the `next_cursor` field of a previous response.",
+                                      "key": "cursor",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "**Deprecated**: Use `cursor` instead. Pagination returns the results in pages. Limited to 100 pages maximum.",
+                                      "key": "page",
+                                      "value": "<integer>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "publicationId"
+                                    },
+                                    {
+                                      "key": "automationId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Too Many Requests",
+                              "code": 429,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T01:12:05.000Z",
+                              "updatedAt": "2026-07-28T01:12:05.000Z",
+                              "uid": "35240-b17fca1b-a63c-4f76-8784-0c9e2ae7abbe"
+                            },
+                            {
+                              "id": "eda7f43c-cf3b-4a2a-822b-9efc9e38549d",
+                              "name": "Internal Server Error",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/publications/:publicationId/automations/:automationId/emails?limit=<integer>&cursor=<string>&page=<integer>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "publications",
+                                    ":publicationId",
+                                    "automations",
+                                    ":automationId",
+                                    "emails"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                                      "key": "limit",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "**Cursor-based pagination (recommended)**: Use this opaque cursor token to fetch the next page of results. Obtain it from the `next_cursor` field of a previous response.",
+                                      "key": "cursor",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "**Deprecated**: Use `cursor` instead. Pagination returns the results in pages. Limited to 100 pages maximum.",
+                                      "key": "page",
+                                      "value": "<integer>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "publicationId"
+                                    },
+                                    {
+                                      "key": "automationId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T01:12:05.000Z",
+                              "updatedAt": "2026-07-28T01:12:05.000Z",
+                              "uid": "35240-eda7f43c-cf3b-4a2a-822b-9efc9e38549d"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T01:12:05.000Z",
+                          "updatedAt": "2026-07-28T01:12:05.000Z",
+                          "uid": "35240-9dfa28e1-4736-43ff-89fb-0f4e49b79c54"
+                        }
+                      ],
+                      "id": "721fbc95-477d-456c-97db-6b9b1be05164",
+                      "createdAt": "2026-07-28T01:12:05.000Z",
+                      "updatedAt": "2026-07-28T01:12:05.000Z",
+                      "uid": "35240-721fbc95-477d-456c-97db-6b9b1be05164"
+                    },
+                    {
+                      "name": "Get automation <Badge intent=\"info\" minimal outlined>OAuth Scope: automations:read</Badge>",
+                      "id": "fd622d36-b15b-4716-bdb1-5bda6ee64add",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/automations/:automationId?expand[]=stats",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "automations",
+                            ":automationId"
+                          ],
+                          "query": [
+                            {
+                              "description": "Optional list of expandable objects.",
+                              "key": "expand[]",
+                              "value": "stats"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "ba3a7814-d60f-4950-b203-79ed0c629f7a",
+                              "key": "publicationId",
+                              "value": "<string>",
+                              "description": "(Required) The prefixed ID of the publication object"
+                            },
+                            {
+                              "id": "955aafc9-0d85-4ea4-a4a6-c33ae9798ff4",
+                              "key": "automationId",
+                              "value": "<string>",
+                              "description": "(Required) The prefixed ID of the automation object"
+                            }
+                          ]
+                        },
+                        "description": "Retrieve a single automation for a publication."
+                      },
+                      "response": [
+                        {
+                          "id": "de8b4536-88ab-4734-8276-bd37be3ccaf0",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/automations/:automationId?expand[]=stats",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "automations",
+                                ":automationId"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Optional list of expandable objects.",
+                                  "key": "expand[]",
+                                  "value": "stats"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "automationId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"data\": {\n    \"id\": \"<string>\",\n    \"status\": \"live\",\n    \"name\": \"<string>\",\n    \"trigger_events\": [\n      \"segment_action\",\n      \"signup\"\n    ],\n    \"description\": \"<string>\",\n    \"stats\": {\n      \"journeys\": {\n        \"running\": 0,\n        \"completed\": 0,\n        \"total\": 0\n      },\n      \"email\": {\n        \"recipients\": 0,\n        \"delivered\": 0,\n        \"opens\": 0,\n        \"unique_opens\": 0,\n        \"open_rate\": \"<double>\",\n        \"clicks\": 0,\n        \"unique_clicks\": 0,\n        \"click_rate\": \"<double>\",\n        \"unsubscribes\": 0,\n        \"spam_reports\": 0\n      }\n    }\n  }\n}",
+                          "createdAt": "2026-07-28T01:12:05.000Z",
+                          "updatedAt": "2026-07-28T01:12:05.000Z",
+                          "uid": "35240-de8b4536-88ab-4734-8276-bd37be3ccaf0"
+                        },
+                        {
+                          "id": "cb179240-2eb0-4564-968c-18796fc8b440",
+                          "name": "Bad Request",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/automations/:automationId?expand[]=stats",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "automations",
+                                ":automationId"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Optional list of expandable objects.",
+                                  "key": "expand[]",
+                                  "value": "stats"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "automationId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:12:05.000Z",
+                          "updatedAt": "2026-07-28T01:12:05.000Z",
+                          "uid": "35240-cb179240-2eb0-4564-968c-18796fc8b440"
+                        },
+                        {
+                          "id": "0e30b838-0b12-428f-9f08-90237e460f77",
+                          "name": "Resource Not Found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/automations/:automationId?expand[]=stats",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "automations",
+                                ":automationId"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Optional list of expandable objects.",
+                                  "key": "expand[]",
+                                  "value": "stats"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "automationId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:12:05.000Z",
+                          "updatedAt": "2026-07-28T01:12:05.000Z",
+                          "uid": "35240-0e30b838-0b12-428f-9f08-90237e460f77"
+                        },
+                        {
+                          "id": "cbc183b2-be99-4a18-a041-05bb7c572bc4",
+                          "name": "Rate Limit Exceeded",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/automations/:automationId?expand[]=stats",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "automations",
+                                ":automationId"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Optional list of expandable objects.",
+                                  "key": "expand[]",
+                                  "value": "stats"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "automationId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:12:05.000Z",
+                          "updatedAt": "2026-07-28T01:12:05.000Z",
+                          "uid": "35240-cbc183b2-be99-4a18-a041-05bb7c572bc4"
+                        },
+                        {
+                          "id": "c95bbc88-fad5-4570-9a92-04b3641c89f1",
+                          "name": "Internal Server Error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/automations/:automationId?expand[]=stats",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "automations",
+                                ":automationId"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Optional list of expandable objects.",
+                                  "key": "expand[]",
+                                  "value": "stats"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "automationId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:12:05.000Z",
+                          "updatedAt": "2026-07-28T01:12:05.000Z",
+                          "uid": "35240-c95bbc88-fad5-4570-9a92-04b3641c89f1"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:12:05.000Z",
+                      "updatedAt": "2026-07-28T01:12:05.000Z",
+                      "uid": "35240-fd622d36-b15b-4716-bdb1-5bda6ee64add"
+                    }
+                  ],
+                  "id": "fa00b4e6-cb29-4733-9353-371506434b5f",
+                  "createdAt": "2026-07-28T01:12:05.000Z",
+                  "updatedAt": "2026-07-28T01:12:05.000Z",
+                  "uid": "35240-fa00b4e6-cb29-4733-9353-371506434b5f"
+                },
+                {
+                  "name": "List automations <Badge intent=\"info\" minimal outlined>OAuth Scope: automations:read</Badge>",
+                  "id": "d1bf0848-54c3-4217-b673-3cdced7c69f6",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/publications/:publicationId/automations?expand[]=stats&limit=<integer>&page=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "publications",
+                        ":publicationId",
+                        "automations"
+                      ],
+                      "query": [
+                        {
+                          "description": "Optional list of expandable objects.",
+                          "key": "expand[]",
+                          "value": "stats"
+                        },
+                        {
+                          "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                          "key": "limit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).<br>If not specified, results 1-10 from page 1 will be returned.",
+                          "key": "page",
+                          "value": "<integer>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "cdba8788-dd81-4a1f-a019-dae00433755d",
+                          "key": "publicationId",
+                          "value": "<string>",
+                          "description": "(Required) The prefixed ID of the publication object"
+                        }
+                      ]
+                    },
+                    "description": "Retrieve automations for a publication."
+                  },
+                  "response": [
+                    {
+                      "id": "387e7f57-63c3-46fa-ac0c-70ccfc37ac3d",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/automations?expand[]=stats&limit=<integer>&page=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "automations"
+                          ],
+                          "query": [
+                            {
+                              "description": "Optional list of expandable objects.",
+                              "key": "expand[]",
+                              "value": "stats"
+                            },
+                            {
+                              "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).<br>If not specified, results 1-10 from page 1 will be returned.",
+                              "key": "page",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"status\": \"draft\",\n      \"name\": \"<string>\",\n      \"trigger_events\": [\n        \"api\",\n        \"api\"\n      ],\n      \"description\": \"<string>\",\n      \"stats\": {\n        \"journeys\": {\n          \"running\": 0,\n          \"completed\": 0,\n          \"total\": 0\n        },\n        \"email\": {\n          \"recipients\": 0,\n          \"delivered\": 0,\n          \"opens\": 0,\n          \"unique_opens\": 0,\n          \"open_rate\": \"<double>\",\n          \"clicks\": 0,\n          \"unique_clicks\": 0,\n          \"click_rate\": \"<double>\",\n          \"unsubscribes\": 0,\n          \"spam_reports\": 0\n        }\n      }\n    },\n    {\n      \"id\": \"<string>\",\n      \"status\": \"finishing\",\n      \"name\": \"<string>\",\n      \"trigger_events\": [\n        \"form_submission\",\n        \"referral_action\"\n      ],\n      \"description\": \"<string>\",\n      \"stats\": {\n        \"journeys\": {\n          \"running\": 0,\n          \"completed\": 0,\n          \"total\": 0\n        },\n        \"email\": {\n          \"recipients\": 0,\n          \"delivered\": 0,\n          \"opens\": 0,\n          \"unique_opens\": 0,\n          \"open_rate\": \"<double>\",\n          \"clicks\": 0,\n          \"unique_clicks\": 0,\n          \"click_rate\": \"<double>\",\n          \"unsubscribes\": 0,\n          \"spam_reports\": 0\n        }\n      }\n    }\n  ],\n  \"limit\": \"<integer>\",\n  \"page\": 1,\n  \"total_results\": \"<integer>\",\n  \"total_pages\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:12:05.000Z",
+                      "updatedAt": "2026-07-28T01:12:05.000Z",
+                      "uid": "35240-387e7f57-63c3-46fa-ac0c-70ccfc37ac3d"
+                    },
+                    {
+                      "id": "873c9447-92a5-4fff-916b-702ee1a6eae7",
+                      "name": "Bad Request",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/automations?expand[]=stats&limit=<integer>&page=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "automations"
+                          ],
+                          "query": [
+                            {
+                              "description": "Optional list of expandable objects.",
+                              "key": "expand[]",
+                              "value": "stats"
+                            },
+                            {
+                              "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).<br>If not specified, results 1-10 from page 1 will be returned.",
+                              "key": "page",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:12:05.000Z",
+                      "updatedAt": "2026-07-28T01:12:05.000Z",
+                      "uid": "35240-873c9447-92a5-4fff-916b-702ee1a6eae7"
+                    },
+                    {
+                      "id": "8e8be513-19c3-44e8-a545-d962a91f8a02",
+                      "name": "Resource Not Found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/automations?expand[]=stats&limit=<integer>&page=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "automations"
+                          ],
+                          "query": [
+                            {
+                              "description": "Optional list of expandable objects.",
+                              "key": "expand[]",
+                              "value": "stats"
+                            },
+                            {
+                              "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).<br>If not specified, results 1-10 from page 1 will be returned.",
+                              "key": "page",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:12:05.000Z",
+                      "updatedAt": "2026-07-28T01:12:05.000Z",
+                      "uid": "35240-8e8be513-19c3-44e8-a545-d962a91f8a02"
+                    },
+                    {
+                      "id": "81d45631-b88c-4a98-8066-ec760f0f83da",
+                      "name": "Rate Limit Exceeded",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/automations?expand[]=stats&limit=<integer>&page=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "automations"
+                          ],
+                          "query": [
+                            {
+                              "description": "Optional list of expandable objects.",
+                              "key": "expand[]",
+                              "value": "stats"
+                            },
+                            {
+                              "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).<br>If not specified, results 1-10 from page 1 will be returned.",
+                              "key": "page",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:12:05.000Z",
+                      "updatedAt": "2026-07-28T01:12:05.000Z",
+                      "uid": "35240-81d45631-b88c-4a98-8066-ec760f0f83da"
+                    },
+                    {
+                      "id": "f43d5233-34fc-473b-8601-8e34bc2c1e17",
+                      "name": "Internal Server Error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/automations?expand[]=stats&limit=<integer>&page=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "automations"
+                          ],
+                          "query": [
+                            {
+                              "description": "Optional list of expandable objects.",
+                              "key": "expand[]",
+                              "value": "stats"
+                            },
+                            {
+                              "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).<br>If not specified, results 1-10 from page 1 will be returned.",
+                              "key": "page",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:12:05.000Z",
+                      "updatedAt": "2026-07-28T01:12:05.000Z",
+                      "uid": "35240-f43d5233-34fc-473b-8601-8e34bc2c1e17"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:12:05.000Z",
+                  "updatedAt": "2026-07-28T01:12:05.000Z",
+                  "uid": "35240-d1bf0848-54c3-4217-b673-3cdced7c69f6"
+                }
+              ],
+              "id": "16951655-cf70-4258-94f0-651841ec8b1e",
+              "createdAt": "2026-07-28T01:12:05.000Z",
+              "updatedAt": "2026-07-28T01:12:05.000Z",
+              "uid": "35240-16951655-cf70-4258-94f0-651841ec8b1e"
+            }
+          ],
+          "id": "3eafe793-fbe9-4c8e-8f1c-ec4ea85b9508",
+          "createdAt": "2026-07-28T01:12:05.000Z",
+          "updatedAt": "2026-07-28T01:12:05.000Z",
+          "uid": "35240-3eafe793-fbe9-4c8e-8f1c-ec4ea85b9508"
+        }
+      ],
+      "id": "a5295fa6-01bd-45a8-a103-222a301a4103",
+      "createdAt": "2026-07-28T01:12:05.000Z",
+      "updatedAt": "2026-07-28T01:12:05.000Z",
+      "uid": "35240-a5295fa6-01bd-45a8-a103-222a301a4103"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.beehiiv.com/v2"
+    }
+  ]
+}

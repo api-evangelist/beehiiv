@@ -1,0 +1,3127 @@
+{
+  "info": {
+    "_postman_id": "99284d03-c86e-48b1-a7de-602fae8218cb",
+    "name": "API Reference subpackage_advertisement_opportunities subpackage_subscriptions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:13:11.000Z",
+    "updatedAt": "2026-07-28T01:13:11.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-99284d03-c86e-48b1-a7de-602fae8218cb"
+  },
+  "item": [
+    {
+      "name": "publications",
+      "item": [
+        {
+          "name": "{publicationId}",
+          "item": [
+            {
+              "name": "subscriptions",
+              "item": [
+                {
+                  "name": "by_email",
+                  "item": [
+                    {
+                      "name": "{email}",
+                      "item": [
+                        {
+                          "name": "Get subscription by email <Badge intent=\"info\" minimal outlined>OAuth Scope: subscriptions:read</Badge>",
+                          "id": "351eddbf-242e-4afe-85e1-35cae90eefcf",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/subscriptions/by_email/:email?expand[]=referrals",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "subscriptions",
+                                "by_email",
+                                ":email"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Optional list of expandable objects.<br>`subscription_premium_tiers ` - Returns an array of tiers the subscription is associated with.<br>`referrals` - Returns an array of subscriptions with limited data - `id`, `email`, and `status`. These are the subscriptions that were referred by this subscription.<br>`stats` - Returns statistics about the subscription(s).<br>`custom_fields` - Returns an array of custom field values that have been set on the subscription. <br>`tags` - Returns an array of tags that have been set on the subscription.<br>`newsletter_lists` - Returns an array of newsletter list prefixed IDs the subscription is actively subscribed to.",
+                                  "key": "expand[]",
+                                  "value": "referrals"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "id": "7187b815-1f94-43f9-ae90-005e502b0b1c",
+                                  "key": "publicationId",
+                                  "value": "<string>",
+                                  "description": "(Required) The prefixed ID of the publication object"
+                                },
+                                {
+                                  "id": "0e1520fa-701b-470e-9f8b-afd4cf745ba8",
+                                  "key": "email",
+                                  "value": "<string>",
+                                  "description": "(Required) The ID of the subscriber object"
+                                }
+                              ]
+                            },
+                            "description": "<Info>Please note that this endpoint requires the email to be URL encoded. Please reference your language's documentation for the correct method of encoding.</Info> Retrieve a single subscription belonging to a specific email address in a specific publication."
+                          },
+                          "response": [
+                            {
+                              "id": "c792c1ea-eaba-4419-9ffd-7af68488fd63",
+                              "name": "OK",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/publications/:publicationId/subscriptions/by_email/:email?expand[]=referrals",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "publications",
+                                    ":publicationId",
+                                    "subscriptions",
+                                    "by_email",
+                                    ":email"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Optional list of expandable objects.<br>`subscription_premium_tiers ` - Returns an array of tiers the subscription is associated with.<br>`referrals` - Returns an array of subscriptions with limited data - `id`, `email`, and `status`. These are the subscriptions that were referred by this subscription.<br>`stats` - Returns statistics about the subscription(s).<br>`custom_fields` - Returns an array of custom field values that have been set on the subscription. <br>`tags` - Returns an array of tags that have been set on the subscription.<br>`newsletter_lists` - Returns an array of newsletter list prefixed IDs the subscription is actively subscribed to.",
+                                      "key": "expand[]",
+                                      "value": "referrals"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "publicationId"
+                                    },
+                                    {
+                                      "key": "email"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"data\": {\n    \"id\": \"<string>\",\n    \"email\": \"<email>\",\n    \"status\": \"invalid\",\n    \"created\": \"<integer>\",\n    \"subscription_tier\": \"premium\",\n    \"subscription_premium_tier_names\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"utm_source\": \"<string>\",\n    \"utm_medium\": \"<string>\",\n    \"utm_channel\": \"recommendation\",\n    \"utm_campaign\": \"<string>\",\n    \"utm_term\": \"<string>\",\n    \"utm_content\": \"<string>\",\n    \"referring_site\": \"<string>\",\n    \"referral_code\": \"<string>\",\n    \"subscription_premium_tiers\": [\n      {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"status\": \"archived\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"status\": \"active\"\n      }\n    ],\n    \"custom_fields\": [\n      {\n        \"name\": \"<string>\",\n        \"kind\": \"datetime\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"kind\": \"string\",\n        \"value\": \"<string>\"\n      }\n    ],\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"stats\": {\n      \"emails_received\": \"<integer>\",\n      \"open_rate\": \"<double>\",\n      \"click_through_rate\": \"<double>\"\n    },\n    \"newsletter_list_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                              "createdAt": "2026-07-28T01:13:12.000Z",
+                              "updatedAt": "2026-07-28T01:13:12.000Z",
+                              "uid": "35240-c792c1ea-eaba-4419-9ffd-7af68488fd63"
+                            },
+                            {
+                              "id": "b1e6cdaa-ed0b-4968-9a2b-9b34e0258ce5",
+                              "name": "Bad Request",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/publications/:publicationId/subscriptions/by_email/:email?expand[]=referrals",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "publications",
+                                    ":publicationId",
+                                    "subscriptions",
+                                    "by_email",
+                                    ":email"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Optional list of expandable objects.<br>`subscription_premium_tiers ` - Returns an array of tiers the subscription is associated with.<br>`referrals` - Returns an array of subscriptions with limited data - `id`, `email`, and `status`. These are the subscriptions that were referred by this subscription.<br>`stats` - Returns statistics about the subscription(s).<br>`custom_fields` - Returns an array of custom field values that have been set on the subscription. <br>`tags` - Returns an array of tags that have been set on the subscription.<br>`newsletter_lists` - Returns an array of newsletter list prefixed IDs the subscription is actively subscribed to.",
+                                      "key": "expand[]",
+                                      "value": "referrals"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "publicationId"
+                                    },
+                                    {
+                                      "key": "email"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T01:13:12.000Z",
+                              "updatedAt": "2026-07-28T01:13:12.000Z",
+                              "uid": "35240-b1e6cdaa-ed0b-4968-9a2b-9b34e0258ce5"
+                            },
+                            {
+                              "id": "c7cfad25-abce-4fc5-8ea0-6927fd5679ea",
+                              "name": "Resource Not Found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/publications/:publicationId/subscriptions/by_email/:email?expand[]=referrals",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "publications",
+                                    ":publicationId",
+                                    "subscriptions",
+                                    "by_email",
+                                    ":email"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Optional list of expandable objects.<br>`subscription_premium_tiers ` - Returns an array of tiers the subscription is associated with.<br>`referrals` - Returns an array of subscriptions with limited data - `id`, `email`, and `status`. These are the subscriptions that were referred by this subscription.<br>`stats` - Returns statistics about the subscription(s).<br>`custom_fields` - Returns an array of custom field values that have been set on the subscription. <br>`tags` - Returns an array of tags that have been set on the subscription.<br>`newsletter_lists` - Returns an array of newsletter list prefixed IDs the subscription is actively subscribed to.",
+                                      "key": "expand[]",
+                                      "value": "referrals"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "publicationId"
+                                    },
+                                    {
+                                      "key": "email"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T01:13:12.000Z",
+                              "updatedAt": "2026-07-28T01:13:12.000Z",
+                              "uid": "35240-c7cfad25-abce-4fc5-8ea0-6927fd5679ea"
+                            },
+                            {
+                              "id": "4b2369d3-1fba-4a21-91f5-5a6f346af0d7",
+                              "name": "Rate Limit Exceeded",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/publications/:publicationId/subscriptions/by_email/:email?expand[]=referrals",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "publications",
+                                    ":publicationId",
+                                    "subscriptions",
+                                    "by_email",
+                                    ":email"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Optional list of expandable objects.<br>`subscription_premium_tiers ` - Returns an array of tiers the subscription is associated with.<br>`referrals` - Returns an array of subscriptions with limited data - `id`, `email`, and `status`. These are the subscriptions that were referred by this subscription.<br>`stats` - Returns statistics about the subscription(s).<br>`custom_fields` - Returns an array of custom field values that have been set on the subscription. <br>`tags` - Returns an array of tags that have been set on the subscription.<br>`newsletter_lists` - Returns an array of newsletter list prefixed IDs the subscription is actively subscribed to.",
+                                      "key": "expand[]",
+                                      "value": "referrals"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "publicationId"
+                                    },
+                                    {
+                                      "key": "email"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Too Many Requests",
+                              "code": 429,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T01:13:12.000Z",
+                              "updatedAt": "2026-07-28T01:13:12.000Z",
+                              "uid": "35240-4b2369d3-1fba-4a21-91f5-5a6f346af0d7"
+                            },
+                            {
+                              "id": "e52209c2-d685-4f89-8b2c-69e341aab6f7",
+                              "name": "Internal Server Error",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/publications/:publicationId/subscriptions/by_email/:email?expand[]=referrals",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "publications",
+                                    ":publicationId",
+                                    "subscriptions",
+                                    "by_email",
+                                    ":email"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Optional list of expandable objects.<br>`subscription_premium_tiers ` - Returns an array of tiers the subscription is associated with.<br>`referrals` - Returns an array of subscriptions with limited data - `id`, `email`, and `status`. These are the subscriptions that were referred by this subscription.<br>`stats` - Returns statistics about the subscription(s).<br>`custom_fields` - Returns an array of custom field values that have been set on the subscription. <br>`tags` - Returns an array of tags that have been set on the subscription.<br>`newsletter_lists` - Returns an array of newsletter list prefixed IDs the subscription is actively subscribed to.",
+                                      "key": "expand[]",
+                                      "value": "referrals"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "publicationId"
+                                    },
+                                    {
+                                      "key": "email"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T01:13:12.000Z",
+                              "updatedAt": "2026-07-28T01:13:12.000Z",
+                              "uid": "35240-e52209c2-d685-4f89-8b2c-69e341aab6f7"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T01:13:12.000Z",
+                          "updatedAt": "2026-07-28T01:13:12.000Z",
+                          "uid": "35240-351eddbf-242e-4afe-85e1-35cae90eefcf"
+                        },
+                        {
+                          "name": "Update subscription by email <Badge intent=\"info\" minimal outlined>OAuth Scope: subscriptions:write</Badge>",
+                          "id": "83de2e9b-fc3b-4fc9-8fff-937c5c37661e",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"email\": \"<string>\",\n  \"tier\": \"free\",\n  \"premium_tier_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"premium_tiers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"stripe_customer_id\": \"<string>\",\n  \"unsubscribe\": \"<boolean>\",\n  \"custom_fields\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\",\n      \"delete\": \"<boolean>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\",\n      \"delete\": \"<boolean>\"\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/subscriptions/by_email/:email",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "subscriptions",
+                                "by_email",
+                                ":email"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "86556486-2d21-41dc-a3fb-8c116ab6e782",
+                                  "key": "publicationId",
+                                  "value": "<string>",
+                                  "description": "(Required) The prefixed ID of the publication object"
+                                },
+                                {
+                                  "id": "2ac01e82-430b-4156-b8a6-b2566a2b205d",
+                                  "key": "email",
+                                  "value": "<string>",
+                                  "description": "(Required) The email of the subscription object"
+                                }
+                              ]
+                            },
+                            "description": "Update a single subscription by email."
+                          },
+                          "response": [
+                            {
+                              "id": "e09d354a-7fe7-4de0-9a72-c67cda35ad34",
+                              "name": "OK",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"email\": \"<string>\",\n  \"tier\": \"free\",\n  \"premium_tier_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"premium_tiers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"stripe_customer_id\": \"<string>\",\n  \"unsubscribe\": \"<boolean>\",\n  \"custom_fields\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\",\n      \"delete\": \"<boolean>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\",\n      \"delete\": \"<boolean>\"\n    }\n  ]\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/publications/:publicationId/subscriptions/by_email/:email",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "publications",
+                                    ":publicationId",
+                                    "subscriptions",
+                                    "by_email",
+                                    ":email"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "publicationId"
+                                    },
+                                    {
+                                      "key": "email"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"data\": {\n    \"id\": \"<string>\",\n    \"email\": \"<email>\",\n    \"status\": \"invalid\",\n    \"created\": \"<integer>\",\n    \"subscription_tier\": \"premium\",\n    \"subscription_premium_tier_names\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"utm_source\": \"<string>\",\n    \"utm_medium\": \"<string>\",\n    \"utm_channel\": \"recommendation\",\n    \"utm_campaign\": \"<string>\",\n    \"utm_term\": \"<string>\",\n    \"utm_content\": \"<string>\",\n    \"referring_site\": \"<string>\",\n    \"referral_code\": \"<string>\",\n    \"subscription_premium_tiers\": [\n      {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"status\": \"archived\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"status\": \"active\"\n      }\n    ],\n    \"custom_fields\": [\n      {\n        \"name\": \"<string>\",\n        \"kind\": \"datetime\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"kind\": \"string\",\n        \"value\": \"<string>\"\n      }\n    ],\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"stats\": {\n      \"emails_received\": \"<integer>\",\n      \"open_rate\": \"<double>\",\n      \"click_through_rate\": \"<double>\"\n    },\n    \"newsletter_list_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                              "createdAt": "2026-07-28T01:13:12.000Z",
+                              "updatedAt": "2026-07-28T01:13:12.000Z",
+                              "uid": "35240-e09d354a-7fe7-4de0-9a72-c67cda35ad34"
+                            },
+                            {
+                              "id": "b628e473-1341-47d5-b2a0-0f3f880f2c6b",
+                              "name": "Bad Request",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"email\": \"<string>\",\n  \"tier\": \"free\",\n  \"premium_tier_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"premium_tiers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"stripe_customer_id\": \"<string>\",\n  \"unsubscribe\": \"<boolean>\",\n  \"custom_fields\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\",\n      \"delete\": \"<boolean>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\",\n      \"delete\": \"<boolean>\"\n    }\n  ]\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/publications/:publicationId/subscriptions/by_email/:email",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "publications",
+                                    ":publicationId",
+                                    "subscriptions",
+                                    "by_email",
+                                    ":email"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "publicationId"
+                                    },
+                                    {
+                                      "key": "email"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T01:13:12.000Z",
+                              "updatedAt": "2026-07-28T01:13:12.000Z",
+                              "uid": "35240-b628e473-1341-47d5-b2a0-0f3f880f2c6b"
+                            },
+                            {
+                              "id": "74af0bce-e089-4577-9c79-91710a1cec2c",
+                              "name": "Resource Not Found",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"email\": \"<string>\",\n  \"tier\": \"free\",\n  \"premium_tier_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"premium_tiers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"stripe_customer_id\": \"<string>\",\n  \"unsubscribe\": \"<boolean>\",\n  \"custom_fields\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\",\n      \"delete\": \"<boolean>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\",\n      \"delete\": \"<boolean>\"\n    }\n  ]\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/publications/:publicationId/subscriptions/by_email/:email",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "publications",
+                                    ":publicationId",
+                                    "subscriptions",
+                                    "by_email",
+                                    ":email"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "publicationId"
+                                    },
+                                    {
+                                      "key": "email"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T01:13:12.000Z",
+                              "updatedAt": "2026-07-28T01:13:12.000Z",
+                              "uid": "35240-74af0bce-e089-4577-9c79-91710a1cec2c"
+                            },
+                            {
+                              "id": "69ab314c-d3d2-447e-acb7-355618568eba",
+                              "name": "Rate Limit Exceeded",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"email\": \"<string>\",\n  \"tier\": \"free\",\n  \"premium_tier_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"premium_tiers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"stripe_customer_id\": \"<string>\",\n  \"unsubscribe\": \"<boolean>\",\n  \"custom_fields\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\",\n      \"delete\": \"<boolean>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\",\n      \"delete\": \"<boolean>\"\n    }\n  ]\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/publications/:publicationId/subscriptions/by_email/:email",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "publications",
+                                    ":publicationId",
+                                    "subscriptions",
+                                    "by_email",
+                                    ":email"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "publicationId"
+                                    },
+                                    {
+                                      "key": "email"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Too Many Requests",
+                              "code": 429,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T01:13:12.000Z",
+                              "updatedAt": "2026-07-28T01:13:12.000Z",
+                              "uid": "35240-69ab314c-d3d2-447e-acb7-355618568eba"
+                            },
+                            {
+                              "id": "c946e9de-3db1-4234-8bfd-36117cb2509e",
+                              "name": "Internal Server Error",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"email\": \"<string>\",\n  \"tier\": \"free\",\n  \"premium_tier_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"premium_tiers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"stripe_customer_id\": \"<string>\",\n  \"unsubscribe\": \"<boolean>\",\n  \"custom_fields\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\",\n      \"delete\": \"<boolean>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\",\n      \"delete\": \"<boolean>\"\n    }\n  ]\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/publications/:publicationId/subscriptions/by_email/:email",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "publications",
+                                    ":publicationId",
+                                    "subscriptions",
+                                    "by_email",
+                                    ":email"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "publicationId"
+                                    },
+                                    {
+                                      "key": "email"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T01:13:12.000Z",
+                              "updatedAt": "2026-07-28T01:13:12.000Z",
+                              "uid": "35240-c946e9de-3db1-4234-8bfd-36117cb2509e"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T01:13:12.000Z",
+                          "updatedAt": "2026-07-28T01:13:12.000Z",
+                          "uid": "35240-83de2e9b-fc3b-4fc9-8fff-937c5c37661e"
+                        }
+                      ],
+                      "id": "e928e14f-838e-4b51-97c4-1dd59c47c5c9",
+                      "createdAt": "2026-07-28T01:13:11.000Z",
+                      "updatedAt": "2026-07-28T01:13:11.000Z",
+                      "uid": "35240-e928e14f-838e-4b51-97c4-1dd59c47c5c9"
+                    }
+                  ],
+                  "id": "72e871c5-6747-42f0-ab41-6e0405d0aafd",
+                  "createdAt": "2026-07-28T01:13:11.000Z",
+                  "updatedAt": "2026-07-28T01:13:11.000Z",
+                  "uid": "35240-72e871c5-6747-42f0-ab41-6e0405d0aafd"
+                },
+                {
+                  "name": "{subscriptionId}",
+                  "item": [
+                    {
+                      "name": "Get subscription by ID <Badge intent=\"info\" minimal outlined>OAuth Scope: subscriptions:read</Badge>",
+                      "id": "2c1944d2-11be-42e5-b69d-196d4aa2273e",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/subscriptions/:subscriptionId?expand[]=referrals",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "subscriptions",
+                            ":subscriptionId"
+                          ],
+                          "query": [
+                            {
+                              "description": "Optional list of expandable objects.<br>`subscription_premium_tiers` - Returns an array of tiers the subscription is associated with.<br>`referrals` - Returns an array of subscriptions with limited data - `id`, `email`, and `status`. These are the subscriptions that were referred by this subscription.<br>`stats` - Returns statistics about the subscription(s).<br>`custom_fields` - Returns an array of custom field values that have been set on the subscription. <br>`tags` - Returns an array of tags that have been set on the subscription.<br>`newsletter_lists` - Returns an array of newsletter list prefixed IDs the subscription is actively subscribed to.",
+                              "key": "expand[]",
+                              "value": "referrals"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "d429790c-4435-4397-a79b-858d8cdd13c5",
+                              "key": "publicationId",
+                              "value": "<string>",
+                              "description": "(Required) The prefixed ID of the publication object"
+                            },
+                            {
+                              "id": "e0c4a827-590a-41c9-9bd1-26f1093ceda3",
+                              "key": "subscriptionId",
+                              "value": "<string>",
+                              "description": "(Required) The prefixed ID of the subscription object"
+                            }
+                          ]
+                        },
+                        "description": "<Info>In previous versions of the API, another endpoint existed to retrieve a subscription by the subscriber ID. This endpoint is now deprecated and will be removed in a future version of the API. Please use this endpoint instead. The subscription ID can be found by exporting a list of subscriptions either via the `Settings > Publications > Export Data` or by exporting a CSV in a segment.</Info> Retrieve a single subscription belonging to a specific publication."
+                      },
+                      "response": [
+                        {
+                          "id": "80047668-7af1-4e50-9b1c-480f9c1b9019",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/subscriptions/:subscriptionId?expand[]=referrals",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "subscriptions",
+                                ":subscriptionId"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Optional list of expandable objects.<br>`subscription_premium_tiers` - Returns an array of tiers the subscription is associated with.<br>`referrals` - Returns an array of subscriptions with limited data - `id`, `email`, and `status`. These are the subscriptions that were referred by this subscription.<br>`stats` - Returns statistics about the subscription(s).<br>`custom_fields` - Returns an array of custom field values that have been set on the subscription. <br>`tags` - Returns an array of tags that have been set on the subscription.<br>`newsletter_lists` - Returns an array of newsletter list prefixed IDs the subscription is actively subscribed to.",
+                                  "key": "expand[]",
+                                  "value": "referrals"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "subscriptionId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"data\": {\n    \"id\": \"<string>\",\n    \"email\": \"<email>\",\n    \"status\": \"invalid\",\n    \"created\": \"<integer>\",\n    \"subscription_tier\": \"premium\",\n    \"subscription_premium_tier_names\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"utm_source\": \"<string>\",\n    \"utm_medium\": \"<string>\",\n    \"utm_channel\": \"recommendation\",\n    \"utm_campaign\": \"<string>\",\n    \"utm_term\": \"<string>\",\n    \"utm_content\": \"<string>\",\n    \"referring_site\": \"<string>\",\n    \"referral_code\": \"<string>\",\n    \"subscription_premium_tiers\": [\n      {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"status\": \"archived\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"status\": \"active\"\n      }\n    ],\n    \"custom_fields\": [\n      {\n        \"name\": \"<string>\",\n        \"kind\": \"datetime\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"kind\": \"string\",\n        \"value\": \"<string>\"\n      }\n    ],\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"stats\": {\n      \"emails_received\": \"<integer>\",\n      \"open_rate\": \"<double>\",\n      \"click_through_rate\": \"<double>\"\n    },\n    \"newsletter_list_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                          "createdAt": "2026-07-28T01:13:12.000Z",
+                          "updatedAt": "2026-07-28T01:13:12.000Z",
+                          "uid": "35240-80047668-7af1-4e50-9b1c-480f9c1b9019"
+                        },
+                        {
+                          "id": "a8b8f190-1e7a-4064-805d-208864c1c9fc",
+                          "name": "Bad Request",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/subscriptions/:subscriptionId?expand[]=referrals",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "subscriptions",
+                                ":subscriptionId"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Optional list of expandable objects.<br>`subscription_premium_tiers` - Returns an array of tiers the subscription is associated with.<br>`referrals` - Returns an array of subscriptions with limited data - `id`, `email`, and `status`. These are the subscriptions that were referred by this subscription.<br>`stats` - Returns statistics about the subscription(s).<br>`custom_fields` - Returns an array of custom field values that have been set on the subscription. <br>`tags` - Returns an array of tags that have been set on the subscription.<br>`newsletter_lists` - Returns an array of newsletter list prefixed IDs the subscription is actively subscribed to.",
+                                  "key": "expand[]",
+                                  "value": "referrals"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "subscriptionId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:13:12.000Z",
+                          "updatedAt": "2026-07-28T01:13:12.000Z",
+                          "uid": "35240-a8b8f190-1e7a-4064-805d-208864c1c9fc"
+                        },
+                        {
+                          "id": "f3308685-033f-4df1-b0e1-27deb747a5f7",
+                          "name": "Resource Not Found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/subscriptions/:subscriptionId?expand[]=referrals",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "subscriptions",
+                                ":subscriptionId"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Optional list of expandable objects.<br>`subscription_premium_tiers` - Returns an array of tiers the subscription is associated with.<br>`referrals` - Returns an array of subscriptions with limited data - `id`, `email`, and `status`. These are the subscriptions that were referred by this subscription.<br>`stats` - Returns statistics about the subscription(s).<br>`custom_fields` - Returns an array of custom field values that have been set on the subscription. <br>`tags` - Returns an array of tags that have been set on the subscription.<br>`newsletter_lists` - Returns an array of newsletter list prefixed IDs the subscription is actively subscribed to.",
+                                  "key": "expand[]",
+                                  "value": "referrals"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "subscriptionId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:13:12.000Z",
+                          "updatedAt": "2026-07-28T01:13:12.000Z",
+                          "uid": "35240-f3308685-033f-4df1-b0e1-27deb747a5f7"
+                        },
+                        {
+                          "id": "3906bce2-367a-4ef6-b376-74988f801d1f",
+                          "name": "Rate Limit Exceeded",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/subscriptions/:subscriptionId?expand[]=referrals",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "subscriptions",
+                                ":subscriptionId"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Optional list of expandable objects.<br>`subscription_premium_tiers` - Returns an array of tiers the subscription is associated with.<br>`referrals` - Returns an array of subscriptions with limited data - `id`, `email`, and `status`. These are the subscriptions that were referred by this subscription.<br>`stats` - Returns statistics about the subscription(s).<br>`custom_fields` - Returns an array of custom field values that have been set on the subscription. <br>`tags` - Returns an array of tags that have been set on the subscription.<br>`newsletter_lists` - Returns an array of newsletter list prefixed IDs the subscription is actively subscribed to.",
+                                  "key": "expand[]",
+                                  "value": "referrals"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "subscriptionId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:13:12.000Z",
+                          "updatedAt": "2026-07-28T01:13:12.000Z",
+                          "uid": "35240-3906bce2-367a-4ef6-b376-74988f801d1f"
+                        },
+                        {
+                          "id": "12c70bba-9f6d-47aa-b83d-ace82b38794f",
+                          "name": "Internal Server Error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/subscriptions/:subscriptionId?expand[]=referrals",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "subscriptions",
+                                ":subscriptionId"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Optional list of expandable objects.<br>`subscription_premium_tiers` - Returns an array of tiers the subscription is associated with.<br>`referrals` - Returns an array of subscriptions with limited data - `id`, `email`, and `status`. These are the subscriptions that were referred by this subscription.<br>`stats` - Returns statistics about the subscription(s).<br>`custom_fields` - Returns an array of custom field values that have been set on the subscription. <br>`tags` - Returns an array of tags that have been set on the subscription.<br>`newsletter_lists` - Returns an array of newsletter list prefixed IDs the subscription is actively subscribed to.",
+                                  "key": "expand[]",
+                                  "value": "referrals"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "subscriptionId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:13:12.000Z",
+                          "updatedAt": "2026-07-28T01:13:12.000Z",
+                          "uid": "35240-12c70bba-9f6d-47aa-b83d-ace82b38794f"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:13:12.000Z",
+                      "updatedAt": "2026-07-28T01:13:12.000Z",
+                      "uid": "35240-2c1944d2-11be-42e5-b69d-196d4aa2273e"
+                    },
+                    {
+                      "name": "Update subscription by ID <Badge intent=\"info\" minimal outlined>OAuth Scope: subscriptions:write</Badge>",
+                      "id": "32d88bcf-d636-4bb3-9c96-f97c7d386d28",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"tier\": \"premium\",\n  \"premium_tier_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"premium_tiers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"email\": \"<string>\",\n  \"stripe_customer_id\": \"<string>\",\n  \"unsubscribe\": \"<boolean>\",\n  \"custom_fields\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\",\n      \"delete\": \"<boolean>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\",\n      \"delete\": \"<boolean>\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/subscriptions/:subscriptionId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "subscriptions",
+                            ":subscriptionId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "d6d853b5-b39c-4ef7-b893-bc11ce76c5f5",
+                              "key": "publicationId",
+                              "value": "<string>",
+                              "description": "(Required) The prefixed ID of the publication object"
+                            },
+                            {
+                              "id": "130b64e6-2705-461b-b750-765ed9df8742",
+                              "key": "subscriptionId",
+                              "value": "<string>",
+                              "description": "(Required) The prefixed ID of the subscription object"
+                            }
+                          ]
+                        },
+                        "description": "Update a single subscription."
+                      },
+                      "response": [
+                        {
+                          "id": "84dc1ec8-eb46-433d-a32c-01ffd67d81d3",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"tier\": \"premium\",\n  \"premium_tier_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"premium_tiers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"email\": \"<string>\",\n  \"stripe_customer_id\": \"<string>\",\n  \"unsubscribe\": \"<boolean>\",\n  \"custom_fields\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\",\n      \"delete\": \"<boolean>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\",\n      \"delete\": \"<boolean>\"\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/subscriptions/:subscriptionId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "subscriptions",
+                                ":subscriptionId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "subscriptionId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"data\": {\n    \"id\": \"<string>\",\n    \"email\": \"<email>\",\n    \"status\": \"invalid\",\n    \"created\": \"<integer>\",\n    \"subscription_tier\": \"premium\",\n    \"subscription_premium_tier_names\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"utm_source\": \"<string>\",\n    \"utm_medium\": \"<string>\",\n    \"utm_channel\": \"recommendation\",\n    \"utm_campaign\": \"<string>\",\n    \"utm_term\": \"<string>\",\n    \"utm_content\": \"<string>\",\n    \"referring_site\": \"<string>\",\n    \"referral_code\": \"<string>\",\n    \"subscription_premium_tiers\": [\n      {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"status\": \"archived\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"status\": \"active\"\n      }\n    ],\n    \"custom_fields\": [\n      {\n        \"name\": \"<string>\",\n        \"kind\": \"datetime\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"kind\": \"string\",\n        \"value\": \"<string>\"\n      }\n    ],\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"stats\": {\n      \"emails_received\": \"<integer>\",\n      \"open_rate\": \"<double>\",\n      \"click_through_rate\": \"<double>\"\n    },\n    \"newsletter_list_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                          "createdAt": "2026-07-28T01:13:12.000Z",
+                          "updatedAt": "2026-07-28T01:13:12.000Z",
+                          "uid": "35240-84dc1ec8-eb46-433d-a32c-01ffd67d81d3"
+                        },
+                        {
+                          "id": "fdf7268c-3d59-4183-8a36-2a2f72fa9ced",
+                          "name": "Bad Request",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"tier\": \"premium\",\n  \"premium_tier_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"premium_tiers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"email\": \"<string>\",\n  \"stripe_customer_id\": \"<string>\",\n  \"unsubscribe\": \"<boolean>\",\n  \"custom_fields\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\",\n      \"delete\": \"<boolean>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\",\n      \"delete\": \"<boolean>\"\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/subscriptions/:subscriptionId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "subscriptions",
+                                ":subscriptionId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "subscriptionId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:13:12.000Z",
+                          "updatedAt": "2026-07-28T01:13:12.000Z",
+                          "uid": "35240-fdf7268c-3d59-4183-8a36-2a2f72fa9ced"
+                        },
+                        {
+                          "id": "af12a211-3aa0-4f9b-9a7b-2f6cf422c3d8",
+                          "name": "Resource Not Found",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"tier\": \"premium\",\n  \"premium_tier_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"premium_tiers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"email\": \"<string>\",\n  \"stripe_customer_id\": \"<string>\",\n  \"unsubscribe\": \"<boolean>\",\n  \"custom_fields\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\",\n      \"delete\": \"<boolean>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\",\n      \"delete\": \"<boolean>\"\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/subscriptions/:subscriptionId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "subscriptions",
+                                ":subscriptionId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "subscriptionId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:13:12.000Z",
+                          "updatedAt": "2026-07-28T01:13:12.000Z",
+                          "uid": "35240-af12a211-3aa0-4f9b-9a7b-2f6cf422c3d8"
+                        },
+                        {
+                          "id": "2898f18c-0c32-4692-9639-ac12cdd65b48",
+                          "name": "Rate Limit Exceeded",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"tier\": \"premium\",\n  \"premium_tier_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"premium_tiers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"email\": \"<string>\",\n  \"stripe_customer_id\": \"<string>\",\n  \"unsubscribe\": \"<boolean>\",\n  \"custom_fields\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\",\n      \"delete\": \"<boolean>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\",\n      \"delete\": \"<boolean>\"\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/subscriptions/:subscriptionId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "subscriptions",
+                                ":subscriptionId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "subscriptionId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:13:12.000Z",
+                          "updatedAt": "2026-07-28T01:13:12.000Z",
+                          "uid": "35240-2898f18c-0c32-4692-9639-ac12cdd65b48"
+                        },
+                        {
+                          "id": "d37e6458-5fe6-49ec-80db-90d419cf86a6",
+                          "name": "Internal Server Error",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"tier\": \"premium\",\n  \"premium_tier_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"premium_tiers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"email\": \"<string>\",\n  \"stripe_customer_id\": \"<string>\",\n  \"unsubscribe\": \"<boolean>\",\n  \"custom_fields\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\",\n      \"delete\": \"<boolean>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\",\n      \"delete\": \"<boolean>\"\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/subscriptions/:subscriptionId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "subscriptions",
+                                ":subscriptionId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "subscriptionId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:13:12.000Z",
+                          "updatedAt": "2026-07-28T01:13:12.000Z",
+                          "uid": "35240-d37e6458-5fe6-49ec-80db-90d419cf86a6"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:13:12.000Z",
+                      "updatedAt": "2026-07-28T01:13:12.000Z",
+                      "uid": "35240-32d88bcf-d636-4bb3-9c96-f97c7d386d28"
+                    },
+                    {
+                      "name": "Update subscription by ID <Badge intent=\"info\" minimal outlined>OAuth Scope: subscriptions:write</Badge>",
+                      "id": "1943eb7f-fd25-42c3-a49c-7cc8a7832060",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"email\": \"<string>\",\n  \"tier\": \"free\",\n  \"premium_tier_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"premium_tiers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"stripe_customer_id\": \"<string>\",\n  \"unsubscribe\": \"<boolean>\",\n  \"custom_fields\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\",\n      \"delete\": \"<boolean>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\",\n      \"delete\": \"<boolean>\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/subscriptions/:subscriptionId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "subscriptions",
+                            ":subscriptionId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "5c83cf04-9c76-4e14-8417-e8133f58c44b",
+                              "key": "publicationId",
+                              "value": "<string>",
+                              "description": "(Required) The prefixed ID of the publication object"
+                            },
+                            {
+                              "id": "eb83a743-7ed1-4ad9-81a2-1bddafbd493a",
+                              "key": "subscriptionId",
+                              "value": "<string>",
+                              "description": "(Required) The prefixed ID of the subscription object"
+                            }
+                          ]
+                        },
+                        "description": "Update a single subscription."
+                      },
+                      "response": [
+                        {
+                          "id": "4200ed77-6a77-4b56-b559-44121d965546",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"email\": \"<string>\",\n  \"tier\": \"free\",\n  \"premium_tier_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"premium_tiers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"stripe_customer_id\": \"<string>\",\n  \"unsubscribe\": \"<boolean>\",\n  \"custom_fields\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\",\n      \"delete\": \"<boolean>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\",\n      \"delete\": \"<boolean>\"\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/subscriptions/:subscriptionId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "subscriptions",
+                                ":subscriptionId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "subscriptionId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"data\": {\n    \"id\": \"<string>\",\n    \"email\": \"<email>\",\n    \"status\": \"invalid\",\n    \"created\": \"<integer>\",\n    \"subscription_tier\": \"premium\",\n    \"subscription_premium_tier_names\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"utm_source\": \"<string>\",\n    \"utm_medium\": \"<string>\",\n    \"utm_channel\": \"recommendation\",\n    \"utm_campaign\": \"<string>\",\n    \"utm_term\": \"<string>\",\n    \"utm_content\": \"<string>\",\n    \"referring_site\": \"<string>\",\n    \"referral_code\": \"<string>\",\n    \"subscription_premium_tiers\": [\n      {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"status\": \"archived\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"status\": \"active\"\n      }\n    ],\n    \"custom_fields\": [\n      {\n        \"name\": \"<string>\",\n        \"kind\": \"datetime\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"kind\": \"string\",\n        \"value\": \"<string>\"\n      }\n    ],\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"stats\": {\n      \"emails_received\": \"<integer>\",\n      \"open_rate\": \"<double>\",\n      \"click_through_rate\": \"<double>\"\n    },\n    \"newsletter_list_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                          "createdAt": "2026-07-28T01:13:12.000Z",
+                          "updatedAt": "2026-07-28T01:13:12.000Z",
+                          "uid": "35240-4200ed77-6a77-4b56-b559-44121d965546"
+                        },
+                        {
+                          "id": "d3bfccbf-0dff-4ace-bbf0-2a64fdef6729",
+                          "name": "Bad Request",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"email\": \"<string>\",\n  \"tier\": \"free\",\n  \"premium_tier_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"premium_tiers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"stripe_customer_id\": \"<string>\",\n  \"unsubscribe\": \"<boolean>\",\n  \"custom_fields\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\",\n      \"delete\": \"<boolean>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\",\n      \"delete\": \"<boolean>\"\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/subscriptions/:subscriptionId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "subscriptions",
+                                ":subscriptionId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "subscriptionId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:13:12.000Z",
+                          "updatedAt": "2026-07-28T01:13:12.000Z",
+                          "uid": "35240-d3bfccbf-0dff-4ace-bbf0-2a64fdef6729"
+                        },
+                        {
+                          "id": "0f79c51a-1898-4677-99f7-673327a7278f",
+                          "name": "Resource Not Found",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"email\": \"<string>\",\n  \"tier\": \"free\",\n  \"premium_tier_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"premium_tiers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"stripe_customer_id\": \"<string>\",\n  \"unsubscribe\": \"<boolean>\",\n  \"custom_fields\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\",\n      \"delete\": \"<boolean>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\",\n      \"delete\": \"<boolean>\"\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/subscriptions/:subscriptionId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "subscriptions",
+                                ":subscriptionId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "subscriptionId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:13:12.000Z",
+                          "updatedAt": "2026-07-28T01:13:12.000Z",
+                          "uid": "35240-0f79c51a-1898-4677-99f7-673327a7278f"
+                        },
+                        {
+                          "id": "f93e2536-ec46-4ff2-ae9c-4eb98deb4237",
+                          "name": "Rate Limit Exceeded",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"email\": \"<string>\",\n  \"tier\": \"free\",\n  \"premium_tier_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"premium_tiers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"stripe_customer_id\": \"<string>\",\n  \"unsubscribe\": \"<boolean>\",\n  \"custom_fields\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\",\n      \"delete\": \"<boolean>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\",\n      \"delete\": \"<boolean>\"\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/subscriptions/:subscriptionId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "subscriptions",
+                                ":subscriptionId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "subscriptionId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:13:12.000Z",
+                          "updatedAt": "2026-07-28T01:13:12.000Z",
+                          "uid": "35240-f93e2536-ec46-4ff2-ae9c-4eb98deb4237"
+                        },
+                        {
+                          "id": "9c382bde-3a04-4ad7-82d5-f0e32a9b70b3",
+                          "name": "Internal Server Error",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"email\": \"<string>\",\n  \"tier\": \"free\",\n  \"premium_tier_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"premium_tiers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"stripe_customer_id\": \"<string>\",\n  \"unsubscribe\": \"<boolean>\",\n  \"custom_fields\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\",\n      \"delete\": \"<boolean>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\",\n      \"delete\": \"<boolean>\"\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/subscriptions/:subscriptionId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "subscriptions",
+                                ":subscriptionId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "subscriptionId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:13:12.000Z",
+                          "updatedAt": "2026-07-28T01:13:12.000Z",
+                          "uid": "35240-9c382bde-3a04-4ad7-82d5-f0e32a9b70b3"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:13:12.000Z",
+                      "updatedAt": "2026-07-28T01:13:12.000Z",
+                      "uid": "35240-1943eb7f-fd25-42c3-a49c-7cc8a7832060"
+                    },
+                    {
+                      "name": "Delete subscription <Badge intent=\"info\" minimal outlined>OAuth Scope: subscriptions:write</Badge>",
+                      "id": "20aca3a9-51d4-4a7e-bc58-ef8125d070fd",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/subscriptions/:subscriptionId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "subscriptions",
+                            ":subscriptionId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "2673c105-d846-4458-8085-cd73b5159f2d",
+                              "key": "publicationId",
+                              "value": "<string>",
+                              "description": "(Required) The prefixed ID of the publication object"
+                            },
+                            {
+                              "id": "39442215-84a4-42c7-a3eb-7df50e7e04d7",
+                              "key": "subscriptionId",
+                              "value": "<string>",
+                              "description": "(Required) The prefixed ID of the subscription object"
+                            }
+                          ]
+                        },
+                        "description": "<Warning>This cannot be undone. All data associated with the subscription will also be deleted. We recommend unsubscribing when possible instead of deleting. If a premium subscription is deleted they will no longer be billed.</Warning> Deletes a subscription."
+                      },
+                      "response": [
+                        {
+                          "id": "897e3d6c-81e0-4eb9-84f6-7550b6bebdc7",
+                          "name": "No Content",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/subscriptions/:subscriptionId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "subscriptions",
+                                ":subscriptionId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "subscriptionId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T01:13:12.000Z",
+                          "updatedAt": "2026-07-28T01:13:12.000Z",
+                          "uid": "35240-897e3d6c-81e0-4eb9-84f6-7550b6bebdc7"
+                        },
+                        {
+                          "id": "735473cf-2c44-414e-a881-000548abc6ee",
+                          "name": "Bad Request",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/subscriptions/:subscriptionId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "subscriptions",
+                                ":subscriptionId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "subscriptionId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:13:12.000Z",
+                          "updatedAt": "2026-07-28T01:13:12.000Z",
+                          "uid": "35240-735473cf-2c44-414e-a881-000548abc6ee"
+                        },
+                        {
+                          "id": "fa7b15be-fb5c-4239-9a73-b10d71eac51e",
+                          "name": "Resource Not Found",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/subscriptions/:subscriptionId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "subscriptions",
+                                ":subscriptionId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "subscriptionId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:13:12.000Z",
+                          "updatedAt": "2026-07-28T01:13:12.000Z",
+                          "uid": "35240-fa7b15be-fb5c-4239-9a73-b10d71eac51e"
+                        },
+                        {
+                          "id": "ec86159d-d598-48b1-9c60-6c4e3e85ab37",
+                          "name": "Rate Limit Exceeded",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/subscriptions/:subscriptionId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "subscriptions",
+                                ":subscriptionId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "subscriptionId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:13:12.000Z",
+                          "updatedAt": "2026-07-28T01:13:12.000Z",
+                          "uid": "35240-ec86159d-d598-48b1-9c60-6c4e3e85ab37"
+                        },
+                        {
+                          "id": "a1afd8fa-d146-484f-8f3a-b7c61051340c",
+                          "name": "Internal Server Error",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/subscriptions/:subscriptionId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "subscriptions",
+                                ":subscriptionId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "subscriptionId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:13:12.000Z",
+                          "updatedAt": "2026-07-28T01:13:12.000Z",
+                          "uid": "35240-a1afd8fa-d146-484f-8f3a-b7c61051340c"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:13:12.000Z",
+                      "updatedAt": "2026-07-28T01:13:12.000Z",
+                      "uid": "35240-20aca3a9-51d4-4a7e-bc58-ef8125d070fd"
+                    }
+                  ],
+                  "id": "baa2f2d1-95df-46f0-b5a8-afc558bcf798",
+                  "createdAt": "2026-07-28T01:13:11.000Z",
+                  "updatedAt": "2026-07-28T01:13:11.000Z",
+                  "uid": "35240-baa2f2d1-95df-46f0-b5a8-afc558bcf798"
+                },
+                {
+                  "name": "Create subscription <Badge intent=\"info\" minimal outlined>OAuth Scope: subscriptions:write</Badge>",
+                  "id": "66f48225-0e22-4f5e-81a2-2079061e7552",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"email\": \"<string>\",\n  \"reactivate_existing\": false,\n  \"send_welcome_email\": false,\n  \"utm_source\": \"<string>\",\n  \"utm_medium\": \"<string>\",\n  \"utm_campaign\": \"<string>\",\n  \"utm_term\": \"<string>\",\n  \"utm_content\": \"<string>\",\n  \"referring_site\": \"<string>\",\n  \"referral_code\": \"<string>\",\n  \"custom_fields\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"double_opt_override\": \"<string>\",\n  \"tier\": \"premium\",\n  \"premium_tiers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"premium_tier_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"stripe_customer_id\": \"<string>\",\n  \"automation_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"newsletter_list_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"skip_newsletter_list_auto_subscribe\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/publications/:publicationId/subscriptions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "publications",
+                        ":publicationId",
+                        "subscriptions"
+                      ],
+                      "variable": [
+                        {
+                          "id": "29e4fdcf-3377-4e27-9371-5306654648cf",
+                          "key": "publicationId",
+                          "value": "<string>",
+                          "description": "(Required) The prefixed ID of the publication object"
+                        }
+                      ]
+                    },
+                    "description": "Create new subscriptions for a publication."
+                  },
+                  "response": [
+                    {
+                      "id": "4c391076-7be3-4d4c-a8df-0755c95d8e50",
+                      "name": "Subscription created",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"email\": \"<string>\",\n  \"reactivate_existing\": false,\n  \"send_welcome_email\": false,\n  \"utm_source\": \"<string>\",\n  \"utm_medium\": \"<string>\",\n  \"utm_campaign\": \"<string>\",\n  \"utm_term\": \"<string>\",\n  \"utm_content\": \"<string>\",\n  \"referring_site\": \"<string>\",\n  \"referral_code\": \"<string>\",\n  \"custom_fields\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"double_opt_override\": \"<string>\",\n  \"tier\": \"premium\",\n  \"premium_tiers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"premium_tier_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"stripe_customer_id\": \"<string>\",\n  \"automation_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"newsletter_list_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"skip_newsletter_list_auto_subscribe\": \"<boolean>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/subscriptions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "subscriptions"
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"data\": {\n    \"id\": \"<string>\",\n    \"email\": \"<email>\",\n    \"status\": \"invalid\",\n    \"created\": \"<integer>\",\n    \"subscription_tier\": \"premium\",\n    \"subscription_premium_tier_names\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"utm_source\": \"<string>\",\n    \"utm_medium\": \"<string>\",\n    \"utm_channel\": \"recommendation\",\n    \"utm_campaign\": \"<string>\",\n    \"utm_term\": \"<string>\",\n    \"utm_content\": \"<string>\",\n    \"referring_site\": \"<string>\",\n    \"referral_code\": \"<string>\",\n    \"subscription_premium_tiers\": [\n      {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"status\": \"archived\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"status\": \"active\"\n      }\n    ],\n    \"custom_fields\": [\n      {\n        \"name\": \"<string>\",\n        \"kind\": \"datetime\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"kind\": \"string\",\n        \"value\": \"<string>\"\n      }\n    ],\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"stats\": {\n      \"emails_received\": \"<integer>\",\n      \"open_rate\": \"<double>\",\n      \"click_through_rate\": \"<double>\"\n    },\n    \"newsletter_list_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T01:13:12.000Z",
+                      "updatedAt": "2026-07-28T01:13:12.000Z",
+                      "uid": "35240-4c391076-7be3-4d4c-a8df-0755c95d8e50"
+                    },
+                    {
+                      "id": "64723cd2-8531-4420-837c-2a24f1ea03a2",
+                      "name": "Bad Request",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"email\": \"<string>\",\n  \"reactivate_existing\": false,\n  \"send_welcome_email\": false,\n  \"utm_source\": \"<string>\",\n  \"utm_medium\": \"<string>\",\n  \"utm_campaign\": \"<string>\",\n  \"utm_term\": \"<string>\",\n  \"utm_content\": \"<string>\",\n  \"referring_site\": \"<string>\",\n  \"referral_code\": \"<string>\",\n  \"custom_fields\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"double_opt_override\": \"<string>\",\n  \"tier\": \"premium\",\n  \"premium_tiers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"premium_tier_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"stripe_customer_id\": \"<string>\",\n  \"automation_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"newsletter_list_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"skip_newsletter_list_auto_subscribe\": \"<boolean>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/subscriptions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "subscriptions"
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:13:12.000Z",
+                      "updatedAt": "2026-07-28T01:13:12.000Z",
+                      "uid": "35240-64723cd2-8531-4420-837c-2a24f1ea03a2"
+                    },
+                    {
+                      "id": "91f2d58d-8415-4395-b24b-dd18db728aee",
+                      "name": "Resource Not Found",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"email\": \"<string>\",\n  \"reactivate_existing\": false,\n  \"send_welcome_email\": false,\n  \"utm_source\": \"<string>\",\n  \"utm_medium\": \"<string>\",\n  \"utm_campaign\": \"<string>\",\n  \"utm_term\": \"<string>\",\n  \"utm_content\": \"<string>\",\n  \"referring_site\": \"<string>\",\n  \"referral_code\": \"<string>\",\n  \"custom_fields\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"double_opt_override\": \"<string>\",\n  \"tier\": \"premium\",\n  \"premium_tiers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"premium_tier_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"stripe_customer_id\": \"<string>\",\n  \"automation_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"newsletter_list_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"skip_newsletter_list_auto_subscribe\": \"<boolean>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/subscriptions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "subscriptions"
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:13:12.000Z",
+                      "updatedAt": "2026-07-28T01:13:12.000Z",
+                      "uid": "35240-91f2d58d-8415-4395-b24b-dd18db728aee"
+                    },
+                    {
+                      "id": "7ba89ee8-5057-412f-8281-4505c7ea4ea4",
+                      "name": "Rate Limit Exceeded",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"email\": \"<string>\",\n  \"reactivate_existing\": false,\n  \"send_welcome_email\": false,\n  \"utm_source\": \"<string>\",\n  \"utm_medium\": \"<string>\",\n  \"utm_campaign\": \"<string>\",\n  \"utm_term\": \"<string>\",\n  \"utm_content\": \"<string>\",\n  \"referring_site\": \"<string>\",\n  \"referral_code\": \"<string>\",\n  \"custom_fields\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"double_opt_override\": \"<string>\",\n  \"tier\": \"premium\",\n  \"premium_tiers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"premium_tier_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"stripe_customer_id\": \"<string>\",\n  \"automation_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"newsletter_list_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"skip_newsletter_list_auto_subscribe\": \"<boolean>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/subscriptions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "subscriptions"
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:13:12.000Z",
+                      "updatedAt": "2026-07-28T01:13:12.000Z",
+                      "uid": "35240-7ba89ee8-5057-412f-8281-4505c7ea4ea4"
+                    },
+                    {
+                      "id": "dd738b0f-f81c-45d5-ac74-7f230b7f29b4",
+                      "name": "Internal Server Error",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"email\": \"<string>\",\n  \"reactivate_existing\": false,\n  \"send_welcome_email\": false,\n  \"utm_source\": \"<string>\",\n  \"utm_medium\": \"<string>\",\n  \"utm_campaign\": \"<string>\",\n  \"utm_term\": \"<string>\",\n  \"utm_content\": \"<string>\",\n  \"referring_site\": \"<string>\",\n  \"referral_code\": \"<string>\",\n  \"custom_fields\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"double_opt_override\": \"<string>\",\n  \"tier\": \"premium\",\n  \"premium_tiers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"premium_tier_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"stripe_customer_id\": \"<string>\",\n  \"automation_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"newsletter_list_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"skip_newsletter_list_auto_subscribe\": \"<boolean>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/subscriptions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "subscriptions"
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:13:12.000Z",
+                      "updatedAt": "2026-07-28T01:13:12.000Z",
+                      "uid": "35240-dd738b0f-f81c-45d5-ac74-7f230b7f29b4"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:13:12.000Z",
+                  "updatedAt": "2026-07-28T01:13:12.000Z",
+                  "uid": "35240-66f48225-0e22-4f5e-81a2-2079061e7552"
+                },
+                {
+                  "name": "List subscriptions <Badge intent=\"info\" minimal outlined>OAuth Scope: subscriptions:read</Badge>",
+                  "id": "518dbe9b-addd-4700-ab2b-a78792a837c5",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/publications/:publicationId/subscriptions?expand[]=stats&status=all&tier=all&premium_tiers[]=<string>&premium_tier_ids[]=<string>&limit=<integer>&cursor=<string>&page=<integer>&email=<string>&order_by=created&direction=asc&creation_date=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "publications",
+                        ":publicationId",
+                        "subscriptions"
+                      ],
+                      "query": [
+                        {
+                          "description": "Optional list of expandable objects.<br>`subscription_premium_tiers ` - Returns an array of tiers the subscription is associated with.<br>`referrals` - Returns an array of subscriptions with limited data - `id`, `email`, and `status`. These are the subscriptions that were referred by this subscription.<br>`stats` - Returns statistics about the subscription(s).<br>`custom_fields` - Returns an array of custom field values that have been set on the subscription. <br>`newsletter_lists` - Returns an array of newsletter list prefixed IDs the subscription is actively subscribed to.",
+                          "key": "expand[]",
+                          "value": "stats"
+                        },
+                        {
+                          "description": "Optionally filter the results by a status",
+                          "key": "status",
+                          "value": "all"
+                        },
+                        {
+                          "description": "Optionally filter the results by a their tier",
+                          "key": "tier",
+                          "value": "all"
+                        },
+                        {
+                          "description": "Optionally filter the results by one or multiple premium tiers",
+                          "key": "premium_tiers[]",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Optionally filter the results by one or multiple premium tier ids",
+                          "key": "premium_tier_ids[]",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                          "key": "limit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "**Cursor-based pagination (recommended)**: Use this opaque cursor token to fetch the next page of results. When provided, pagination will use cursor-based method which is more efficient and consistent than offset-based pagination. See the [Pagination Guide](/welcome/pagination) for more details.",
+                          "key": "cursor",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "**Offset-based pagination (deprecated)**: Page number for offset-based pagination. This method is deprecated and limited to 100 pages maximum. Please migrate to cursor-based pagination using the `cursor` parameter. If not specified, results 1-10 from page 1 will be returned. See the [Pagination Guide](/welcome/pagination) for migration guidance.",
+                          "key": "page",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Optional email address to find a subscription.<br>This param must be an exact match and is case insensitive.",
+                          "key": "email",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The field that the results are sorted by. Defaults to created<br> `created` - The time in which the subscription was first created.<br>",
+                          "key": "order_by",
+                          "value": "created"
+                        },
+                        {
+                          "description": "The direction that the results are sorted in. Defaults to asc<br> `asc` - Ascending, sorts from smallest to largest.<br> `desc` - Descending, sorts from largest to smallest.",
+                          "key": "direction",
+                          "value": "asc"
+                        },
+                        {
+                          "description": "Optional date entry (in the format YYYY/MM/DD) that filters returned subscriptions by their creation date.",
+                          "key": "creation_date",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "10aa9d37-c3ca-48ba-8d50-a6abe8320644",
+                          "key": "publicationId",
+                          "value": "<string>",
+                          "description": "(Required) The prefixed ID of the publication object"
+                        }
+                      ]
+                    },
+                    "description": "Retrieve all subscriptions belonging to a specific publication.\n\n<Info> **New**: This endpoint now supports cursor-based pagination for better performance and consistency. Use the `cursor` parameter instead of `page` for new integrations. </Info>\n<Warning> **Deprecation Notice**: Offset-based pagination (using `page` parameter) is deprecated and limited to 100 pages maximum. Please migrate to cursor-based pagination. See our [Pagination Guide](/welcome/pagination) for details. </Warning>"
+                  },
+                  "response": [
+                    {
+                      "id": "144869f6-bc98-4aa9-955b-0783bba2e4dc",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/subscriptions?expand[]=stats&status=all&tier=all&premium_tiers[]=<string>&premium_tier_ids[]=<string>&limit=<integer>&cursor=<string>&page=<integer>&email=<string>&order_by=created&direction=asc&creation_date=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "subscriptions"
+                          ],
+                          "query": [
+                            {
+                              "description": "Optional list of expandable objects.<br>`subscription_premium_tiers ` - Returns an array of tiers the subscription is associated with.<br>`referrals` - Returns an array of subscriptions with limited data - `id`, `email`, and `status`. These are the subscriptions that were referred by this subscription.<br>`stats` - Returns statistics about the subscription(s).<br>`custom_fields` - Returns an array of custom field values that have been set on the subscription. <br>`newsletter_lists` - Returns an array of newsletter list prefixed IDs the subscription is actively subscribed to.",
+                              "key": "expand[]",
+                              "value": "stats"
+                            },
+                            {
+                              "description": "Optionally filter the results by a status",
+                              "key": "status",
+                              "value": "all"
+                            },
+                            {
+                              "description": "Optionally filter the results by a their tier",
+                              "key": "tier",
+                              "value": "all"
+                            },
+                            {
+                              "description": "Optionally filter the results by one or multiple premium tiers",
+                              "key": "premium_tiers[]",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Optionally filter the results by one or multiple premium tier ids",
+                              "key": "premium_tier_ids[]",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "**Cursor-based pagination (recommended)**: Use this opaque cursor token to fetch the next page of results. When provided, pagination will use cursor-based method which is more efficient and consistent than offset-based pagination. See the [Pagination Guide](/welcome/pagination) for more details.",
+                              "key": "cursor",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "**Offset-based pagination (deprecated)**: Page number for offset-based pagination. This method is deprecated and limited to 100 pages maximum. Please migrate to cursor-based pagination using the `cursor` parameter. If not specified, results 1-10 from page 1 will be returned. See the [Pagination Guide](/welcome/pagination) for migration guidance.",
+                              "key": "page",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Optional email address to find a subscription.<br>This param must be an exact match and is case insensitive.",
+                              "key": "email",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The field that the results are sorted by. Defaults to created<br> `created` - The time in which the subscription was first created.<br>",
+                              "key": "order_by",
+                              "value": "created"
+                            },
+                            {
+                              "description": "The direction that the results are sorted in. Defaults to asc<br> `asc` - Ascending, sorts from smallest to largest.<br> `desc` - Descending, sorts from largest to smallest.",
+                              "key": "direction",
+                              "value": "asc"
+                            },
+                            {
+                              "description": "Optional date entry (in the format YYYY/MM/DD) that filters returned subscriptions by their creation date.",
+                              "key": "creation_date",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"email\": \"<email>\",\n      \"status\": \"pending\",\n      \"created\": \"<integer>\",\n      \"subscription_tier\": \"free\",\n      \"subscription_premium_tier_names\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"utm_source\": \"<string>\",\n      \"utm_medium\": \"<string>\",\n      \"utm_channel\": \"product\",\n      \"utm_campaign\": \"<string>\",\n      \"utm_term\": \"<string>\",\n      \"utm_content\": \"<string>\",\n      \"referring_site\": \"<string>\",\n      \"referral_code\": \"<string>\",\n      \"subscription_premium_tiers\": [\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"status\": \"archived\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"status\": \"active\"\n        }\n      ],\n      \"custom_fields\": [\n        {\n          \"name\": \"<string>\",\n          \"kind\": \"datetime\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"kind\": \"date\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"tags\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"stats\": {\n        \"emails_received\": \"<integer>\",\n        \"open_rate\": \"<double>\",\n        \"click_through_rate\": \"<double>\"\n      },\n      \"newsletter_list_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"email\": \"<email>\",\n      \"status\": \"invalid\",\n      \"created\": \"<integer>\",\n      \"subscription_tier\": \"premium\",\n      \"subscription_premium_tier_names\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"utm_source\": \"<string>\",\n      \"utm_medium\": \"<string>\",\n      \"utm_channel\": \"\",\n      \"utm_campaign\": \"<string>\",\n      \"utm_term\": \"<string>\",\n      \"utm_content\": \"<string>\",\n      \"referring_site\": \"<string>\",\n      \"referral_code\": \"<string>\",\n      \"subscription_premium_tiers\": [\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"status\": \"active\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"status\": \"archived\"\n        }\n      ],\n      \"custom_fields\": [\n        {\n          \"name\": \"<string>\",\n          \"kind\": \"double\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"kind\": \"datetime\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"tags\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"stats\": {\n        \"emails_received\": \"<integer>\",\n        \"open_rate\": \"<double>\",\n        \"click_through_rate\": \"<double>\"\n      },\n      \"newsletter_list_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"limit\": \"<integer>\",\n  \"page\": 1,\n  \"total_pages\": \"<integer>\",\n  \"has_more\": \"<boolean>\",\n  \"next_cursor\": \"<string>\",\n  \"total_results\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:13:12.000Z",
+                      "updatedAt": "2026-07-28T01:13:12.000Z",
+                      "uid": "35240-144869f6-bc98-4aa9-955b-0783bba2e4dc"
+                    },
+                    {
+                      "id": "65aadf00-e5ee-4e9c-a091-9456c75bbeda",
+                      "name": "Bad Request",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/subscriptions?expand[]=stats&status=all&tier=all&premium_tiers[]=<string>&premium_tier_ids[]=<string>&limit=<integer>&cursor=<string>&page=<integer>&email=<string>&order_by=created&direction=asc&creation_date=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "subscriptions"
+                          ],
+                          "query": [
+                            {
+                              "description": "Optional list of expandable objects.<br>`subscription_premium_tiers ` - Returns an array of tiers the subscription is associated with.<br>`referrals` - Returns an array of subscriptions with limited data - `id`, `email`, and `status`. These are the subscriptions that were referred by this subscription.<br>`stats` - Returns statistics about the subscription(s).<br>`custom_fields` - Returns an array of custom field values that have been set on the subscription. <br>`newsletter_lists` - Returns an array of newsletter list prefixed IDs the subscription is actively subscribed to.",
+                              "key": "expand[]",
+                              "value": "stats"
+                            },
+                            {
+                              "description": "Optionally filter the results by a status",
+                              "key": "status",
+                              "value": "all"
+                            },
+                            {
+                              "description": "Optionally filter the results by a their tier",
+                              "key": "tier",
+                              "value": "all"
+                            },
+                            {
+                              "description": "Optionally filter the results by one or multiple premium tiers",
+                              "key": "premium_tiers[]",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Optionally filter the results by one or multiple premium tier ids",
+                              "key": "premium_tier_ids[]",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "**Cursor-based pagination (recommended)**: Use this opaque cursor token to fetch the next page of results. When provided, pagination will use cursor-based method which is more efficient and consistent than offset-based pagination. See the [Pagination Guide](/welcome/pagination) for more details.",
+                              "key": "cursor",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "**Offset-based pagination (deprecated)**: Page number for offset-based pagination. This method is deprecated and limited to 100 pages maximum. Please migrate to cursor-based pagination using the `cursor` parameter. If not specified, results 1-10 from page 1 will be returned. See the [Pagination Guide](/welcome/pagination) for migration guidance.",
+                              "key": "page",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Optional email address to find a subscription.<br>This param must be an exact match and is case insensitive.",
+                              "key": "email",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The field that the results are sorted by. Defaults to created<br> `created` - The time in which the subscription was first created.<br>",
+                              "key": "order_by",
+                              "value": "created"
+                            },
+                            {
+                              "description": "The direction that the results are sorted in. Defaults to asc<br> `asc` - Ascending, sorts from smallest to largest.<br> `desc` - Descending, sorts from largest to smallest.",
+                              "key": "direction",
+                              "value": "asc"
+                            },
+                            {
+                              "description": "Optional date entry (in the format YYYY/MM/DD) that filters returned subscriptions by their creation date.",
+                              "key": "creation_date",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:13:12.000Z",
+                      "updatedAt": "2026-07-28T01:13:12.000Z",
+                      "uid": "35240-65aadf00-e5ee-4e9c-a091-9456c75bbeda"
+                    },
+                    {
+                      "id": "e7b2d115-d72c-46be-bc46-24c3caf7537b",
+                      "name": "Resource Not Found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/subscriptions?expand[]=stats&status=all&tier=all&premium_tiers[]=<string>&premium_tier_ids[]=<string>&limit=<integer>&cursor=<string>&page=<integer>&email=<string>&order_by=created&direction=asc&creation_date=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "subscriptions"
+                          ],
+                          "query": [
+                            {
+                              "description": "Optional list of expandable objects.<br>`subscription_premium_tiers ` - Returns an array of tiers the subscription is associated with.<br>`referrals` - Returns an array of subscriptions with limited data - `id`, `email`, and `status`. These are the subscriptions that were referred by this subscription.<br>`stats` - Returns statistics about the subscription(s).<br>`custom_fields` - Returns an array of custom field values that have been set on the subscription. <br>`newsletter_lists` - Returns an array of newsletter list prefixed IDs the subscription is actively subscribed to.",
+                              "key": "expand[]",
+                              "value": "stats"
+                            },
+                            {
+                              "description": "Optionally filter the results by a status",
+                              "key": "status",
+                              "value": "all"
+                            },
+                            {
+                              "description": "Optionally filter the results by a their tier",
+                              "key": "tier",
+                              "value": "all"
+                            },
+                            {
+                              "description": "Optionally filter the results by one or multiple premium tiers",
+                              "key": "premium_tiers[]",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Optionally filter the results by one or multiple premium tier ids",
+                              "key": "premium_tier_ids[]",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "**Cursor-based pagination (recommended)**: Use this opaque cursor token to fetch the next page of results. When provided, pagination will use cursor-based method which is more efficient and consistent than offset-based pagination. See the [Pagination Guide](/welcome/pagination) for more details.",
+                              "key": "cursor",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "**Offset-based pagination (deprecated)**: Page number for offset-based pagination. This method is deprecated and limited to 100 pages maximum. Please migrate to cursor-based pagination using the `cursor` parameter. If not specified, results 1-10 from page 1 will be returned. See the [Pagination Guide](/welcome/pagination) for migration guidance.",
+                              "key": "page",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Optional email address to find a subscription.<br>This param must be an exact match and is case insensitive.",
+                              "key": "email",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The field that the results are sorted by. Defaults to created<br> `created` - The time in which the subscription was first created.<br>",
+                              "key": "order_by",
+                              "value": "created"
+                            },
+                            {
+                              "description": "The direction that the results are sorted in. Defaults to asc<br> `asc` - Ascending, sorts from smallest to largest.<br> `desc` - Descending, sorts from largest to smallest.",
+                              "key": "direction",
+                              "value": "asc"
+                            },
+                            {
+                              "description": "Optional date entry (in the format YYYY/MM/DD) that filters returned subscriptions by their creation date.",
+                              "key": "creation_date",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:13:12.000Z",
+                      "updatedAt": "2026-07-28T01:13:12.000Z",
+                      "uid": "35240-e7b2d115-d72c-46be-bc46-24c3caf7537b"
+                    },
+                    {
+                      "id": "f79c4041-6bb6-470f-a733-7834c2f9b130",
+                      "name": "Rate Limit Exceeded",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/subscriptions?expand[]=stats&status=all&tier=all&premium_tiers[]=<string>&premium_tier_ids[]=<string>&limit=<integer>&cursor=<string>&page=<integer>&email=<string>&order_by=created&direction=asc&creation_date=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "subscriptions"
+                          ],
+                          "query": [
+                            {
+                              "description": "Optional list of expandable objects.<br>`subscription_premium_tiers ` - Returns an array of tiers the subscription is associated with.<br>`referrals` - Returns an array of subscriptions with limited data - `id`, `email`, and `status`. These are the subscriptions that were referred by this subscription.<br>`stats` - Returns statistics about the subscription(s).<br>`custom_fields` - Returns an array of custom field values that have been set on the subscription. <br>`newsletter_lists` - Returns an array of newsletter list prefixed IDs the subscription is actively subscribed to.",
+                              "key": "expand[]",
+                              "value": "stats"
+                            },
+                            {
+                              "description": "Optionally filter the results by a status",
+                              "key": "status",
+                              "value": "all"
+                            },
+                            {
+                              "description": "Optionally filter the results by a their tier",
+                              "key": "tier",
+                              "value": "all"
+                            },
+                            {
+                              "description": "Optionally filter the results by one or multiple premium tiers",
+                              "key": "premium_tiers[]",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Optionally filter the results by one or multiple premium tier ids",
+                              "key": "premium_tier_ids[]",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "**Cursor-based pagination (recommended)**: Use this opaque cursor token to fetch the next page of results. When provided, pagination will use cursor-based method which is more efficient and consistent than offset-based pagination. See the [Pagination Guide](/welcome/pagination) for more details.",
+                              "key": "cursor",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "**Offset-based pagination (deprecated)**: Page number for offset-based pagination. This method is deprecated and limited to 100 pages maximum. Please migrate to cursor-based pagination using the `cursor` parameter. If not specified, results 1-10 from page 1 will be returned. See the [Pagination Guide](/welcome/pagination) for migration guidance.",
+                              "key": "page",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Optional email address to find a subscription.<br>This param must be an exact match and is case insensitive.",
+                              "key": "email",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The field that the results are sorted by. Defaults to created<br> `created` - The time in which the subscription was first created.<br>",
+                              "key": "order_by",
+                              "value": "created"
+                            },
+                            {
+                              "description": "The direction that the results are sorted in. Defaults to asc<br> `asc` - Ascending, sorts from smallest to largest.<br> `desc` - Descending, sorts from largest to smallest.",
+                              "key": "direction",
+                              "value": "asc"
+                            },
+                            {
+                              "description": "Optional date entry (in the format YYYY/MM/DD) that filters returned subscriptions by their creation date.",
+                              "key": "creation_date",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:13:12.000Z",
+                      "updatedAt": "2026-07-28T01:13:12.000Z",
+                      "uid": "35240-f79c4041-6bb6-470f-a733-7834c2f9b130"
+                    },
+                    {
+                      "id": "baffa04f-6c55-4374-b7b5-245541160582",
+                      "name": "Internal Server Error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/subscriptions?expand[]=stats&status=all&tier=all&premium_tiers[]=<string>&premium_tier_ids[]=<string>&limit=<integer>&cursor=<string>&page=<integer>&email=<string>&order_by=created&direction=asc&creation_date=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "subscriptions"
+                          ],
+                          "query": [
+                            {
+                              "description": "Optional list of expandable objects.<br>`subscription_premium_tiers ` - Returns an array of tiers the subscription is associated with.<br>`referrals` - Returns an array of subscriptions with limited data - `id`, `email`, and `status`. These are the subscriptions that were referred by this subscription.<br>`stats` - Returns statistics about the subscription(s).<br>`custom_fields` - Returns an array of custom field values that have been set on the subscription. <br>`newsletter_lists` - Returns an array of newsletter list prefixed IDs the subscription is actively subscribed to.",
+                              "key": "expand[]",
+                              "value": "stats"
+                            },
+                            {
+                              "description": "Optionally filter the results by a status",
+                              "key": "status",
+                              "value": "all"
+                            },
+                            {
+                              "description": "Optionally filter the results by a their tier",
+                              "key": "tier",
+                              "value": "all"
+                            },
+                            {
+                              "description": "Optionally filter the results by one or multiple premium tiers",
+                              "key": "premium_tiers[]",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Optionally filter the results by one or multiple premium tier ids",
+                              "key": "premium_tier_ids[]",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "**Cursor-based pagination (recommended)**: Use this opaque cursor token to fetch the next page of results. When provided, pagination will use cursor-based method which is more efficient and consistent than offset-based pagination. See the [Pagination Guide](/welcome/pagination) for more details.",
+                              "key": "cursor",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "**Offset-based pagination (deprecated)**: Page number for offset-based pagination. This method is deprecated and limited to 100 pages maximum. Please migrate to cursor-based pagination using the `cursor` parameter. If not specified, results 1-10 from page 1 will be returned. See the [Pagination Guide](/welcome/pagination) for migration guidance.",
+                              "key": "page",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Optional email address to find a subscription.<br>This param must be an exact match and is case insensitive.",
+                              "key": "email",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The field that the results are sorted by. Defaults to created<br> `created` - The time in which the subscription was first created.<br>",
+                              "key": "order_by",
+                              "value": "created"
+                            },
+                            {
+                              "description": "The direction that the results are sorted in. Defaults to asc<br> `asc` - Ascending, sorts from smallest to largest.<br> `desc` - Descending, sorts from largest to smallest.",
+                              "key": "direction",
+                              "value": "asc"
+                            },
+                            {
+                              "description": "Optional date entry (in the format YYYY/MM/DD) that filters returned subscriptions by their creation date.",
+                              "key": "creation_date",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:13:12.000Z",
+                      "updatedAt": "2026-07-28T01:13:12.000Z",
+                      "uid": "35240-baffa04f-6c55-4374-b7b5-245541160582"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:13:12.000Z",
+                  "updatedAt": "2026-07-28T01:13:12.000Z",
+                  "uid": "35240-518dbe9b-addd-4700-ab2b-a78792a837c5"
+                }
+              ],
+              "id": "109ae7f0-7e62-4c21-a5e2-51da29ab192f",
+              "createdAt": "2026-07-28T01:13:11.000Z",
+              "updatedAt": "2026-07-28T01:13:11.000Z",
+              "uid": "35240-109ae7f0-7e62-4c21-a5e2-51da29ab192f"
+            }
+          ],
+          "id": "af914b42-5e80-43ad-ad9c-e24215bc3f6f",
+          "createdAt": "2026-07-28T01:13:11.000Z",
+          "updatedAt": "2026-07-28T01:13:11.000Z",
+          "uid": "35240-af914b42-5e80-43ad-ad9c-e24215bc3f6f"
+        }
+      ],
+      "id": "3c136157-9721-4d23-bb69-7d6a2eb853c6",
+      "createdAt": "2026-07-28T01:13:11.000Z",
+      "updatedAt": "2026-07-28T01:13:11.000Z",
+      "uid": "35240-3c136157-9721-4d23-bb69-7d6a2eb853c6"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.beehiiv.com/v2"
+    }
+  ]
+}

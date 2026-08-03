@@ -1,0 +1,1699 @@
+{
+  "info": {
+    "_postman_id": "62beb00c-deed-4304-ad79-9fd94ed3f46a",
+    "name": "API Reference subpackage_advertisement_opportunities subpackage_webhooks API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:13:23.000Z",
+    "updatedAt": "2026-07-28T01:13:23.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-62beb00c-deed-4304-ad79-9fd94ed3f46a"
+  },
+  "item": [
+    {
+      "name": "publications",
+      "item": [
+        {
+          "name": "{publicationId}",
+          "item": [
+            {
+              "name": "webhooks",
+              "item": [
+                {
+                  "name": "{endpointId}",
+                  "item": [
+                    {
+                      "name": "Get webhook <Badge intent=\"info\" minimal outlined>OAuth Scope: webhooks:read</Badge>",
+                      "id": "f2bbe76e-b74c-42a9-a618-13bfaecf5f8d",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/webhooks/:endpointId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "webhooks",
+                            ":endpointId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "5c1cd22e-50e3-4fd7-9a31-312d92142709",
+                              "key": "publicationId",
+                              "value": "<string>",
+                              "description": "(Required) The prefixed ID of the publication object"
+                            },
+                            {
+                              "id": "ea36c837-b602-47b6-b8fb-30b1c52dcd4c",
+                              "key": "endpointId",
+                              "value": "<string>",
+                              "description": "(Required) The prefixed ID of the webhook object"
+                            }
+                          ]
+                        },
+                        "description": "Retrieve a specific webhook belonging to a publication."
+                      },
+                      "response": [
+                        {
+                          "id": "04d1e8a8-8215-4d44-9920-cd88df85fe43",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/webhooks/:endpointId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "webhooks",
+                                ":endpointId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "endpointId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"data\": {\n    \"id\": \"<string>\",\n    \"url\": \"<uri>\",\n    \"created\": \"<integer>\",\n    \"updated\": \"<integer>\",\n    \"event_types\": [\n      \"subscription.resumed\",\n      \"newsletter_list_subscription.resumed\"\n    ],\n    \"description\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T01:13:23.000Z",
+                          "updatedAt": "2026-07-28T01:13:23.000Z",
+                          "uid": "35240-04d1e8a8-8215-4d44-9920-cd88df85fe43"
+                        },
+                        {
+                          "id": "5a9e2091-6f2c-4d00-95db-6a10cf877a55",
+                          "name": "Bad Request",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/webhooks/:endpointId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "webhooks",
+                                ":endpointId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "endpointId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:13:23.000Z",
+                          "updatedAt": "2026-07-28T01:13:23.000Z",
+                          "uid": "35240-5a9e2091-6f2c-4d00-95db-6a10cf877a55"
+                        },
+                        {
+                          "id": "f6dbe9d6-8f74-4ccb-b300-2e3e4961b267",
+                          "name": "Resource Not Found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/webhooks/:endpointId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "webhooks",
+                                ":endpointId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "endpointId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:13:23.000Z",
+                          "updatedAt": "2026-07-28T01:13:23.000Z",
+                          "uid": "35240-f6dbe9d6-8f74-4ccb-b300-2e3e4961b267"
+                        },
+                        {
+                          "id": "e482d75e-969b-4969-bc06-f913e19faad4",
+                          "name": "Unprocessable Entity",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/webhooks/:endpointId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "webhooks",
+                                ":endpointId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "endpointId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                          "code": 422,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:13:23.000Z",
+                          "updatedAt": "2026-07-28T01:13:23.000Z",
+                          "uid": "35240-e482d75e-969b-4969-bc06-f913e19faad4"
+                        },
+                        {
+                          "id": "c3def430-0221-45ff-ac65-741a1b0bf170",
+                          "name": "Rate Limit Exceeded",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/webhooks/:endpointId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "webhooks",
+                                ":endpointId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "endpointId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:13:23.000Z",
+                          "updatedAt": "2026-07-28T01:13:23.000Z",
+                          "uid": "35240-c3def430-0221-45ff-ac65-741a1b0bf170"
+                        },
+                        {
+                          "id": "c54d3560-bb6a-48bd-834b-397ff9fcea69",
+                          "name": "Internal Server Error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/webhooks/:endpointId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "webhooks",
+                                ":endpointId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "endpointId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:13:23.000Z",
+                          "updatedAt": "2026-07-28T01:13:23.000Z",
+                          "uid": "35240-c54d3560-bb6a-48bd-834b-397ff9fcea69"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:13:23.000Z",
+                      "updatedAt": "2026-07-28T01:13:23.000Z",
+                      "uid": "35240-f2bbe76e-b74c-42a9-a618-13bfaecf5f8d"
+                    },
+                    {
+                      "name": "Update webhook <Badge intent=\"info\" minimal outlined>OAuth Scope: webhooks:write</Badge>",
+                      "id": "8f4877d9-c530-4579-aeca-28642235dbf2",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"event_types\": [\n    \"subscription.paused\",\n    \"subscription.upgraded\"\n  ],\n  \"description\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/webhooks/:endpointId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "webhooks",
+                            ":endpointId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "ef73d202-6d31-4ee8-a564-9c5ee5ca7566",
+                              "key": "publicationId",
+                              "value": "<string>",
+                              "description": "(Required) The prefixed ID of the publication object"
+                            },
+                            {
+                              "id": "fcd21a3b-fb13-4515-ac8f-a8fe6a6d75e3",
+                              "key": "endpointId",
+                              "value": "<string>",
+                              "description": "(Required) The prefixed ID of the webhook object"
+                            }
+                          ]
+                        },
+                        "description": "Update a webhook subscription for a publication."
+                      },
+                      "response": [
+                        {
+                          "id": "41414824-34ed-415d-b305-695cf7e1646f",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"event_types\": [\n    \"subscription.paused\",\n    \"subscription.upgraded\"\n  ],\n  \"description\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/webhooks/:endpointId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "webhooks",
+                                ":endpointId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "endpointId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"data\": {\n    \"id\": \"<string>\",\n    \"url\": \"<uri>\",\n    \"created\": \"<integer>\",\n    \"updated\": \"<integer>\",\n    \"event_types\": [\n      \"subscription.resumed\",\n      \"newsletter_list_subscription.resumed\"\n    ],\n    \"description\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T01:13:23.000Z",
+                          "updatedAt": "2026-07-28T01:13:23.000Z",
+                          "uid": "35240-41414824-34ed-415d-b305-695cf7e1646f"
+                        },
+                        {
+                          "id": "bc04a1ff-24aa-46d3-bc6a-bb03eb0ecbd7",
+                          "name": "Bad Request",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"event_types\": [\n    \"subscription.paused\",\n    \"subscription.upgraded\"\n  ],\n  \"description\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/webhooks/:endpointId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "webhooks",
+                                ":endpointId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "endpointId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:13:23.000Z",
+                          "updatedAt": "2026-07-28T01:13:23.000Z",
+                          "uid": "35240-bc04a1ff-24aa-46d3-bc6a-bb03eb0ecbd7"
+                        },
+                        {
+                          "id": "b149f3d5-e2e1-4310-ba4d-811dbd8a5c29",
+                          "name": "Resource Not Found",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"event_types\": [\n    \"subscription.paused\",\n    \"subscription.upgraded\"\n  ],\n  \"description\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/webhooks/:endpointId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "webhooks",
+                                ":endpointId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "endpointId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:13:23.000Z",
+                          "updatedAt": "2026-07-28T01:13:23.000Z",
+                          "uid": "35240-b149f3d5-e2e1-4310-ba4d-811dbd8a5c29"
+                        },
+                        {
+                          "id": "79904410-0c20-4b91-a517-994d6dbc9aef",
+                          "name": "Rate Limit Exceeded",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"event_types\": [\n    \"subscription.paused\",\n    \"subscription.upgraded\"\n  ],\n  \"description\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/webhooks/:endpointId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "webhooks",
+                                ":endpointId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "endpointId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:13:23.000Z",
+                          "updatedAt": "2026-07-28T01:13:23.000Z",
+                          "uid": "35240-79904410-0c20-4b91-a517-994d6dbc9aef"
+                        },
+                        {
+                          "id": "c405eeca-4a78-4411-84d5-0d737f0e3f22",
+                          "name": "Internal Server Error",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"event_types\": [\n    \"subscription.paused\",\n    \"subscription.upgraded\"\n  ],\n  \"description\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/webhooks/:endpointId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "webhooks",
+                                ":endpointId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "endpointId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:13:23.000Z",
+                          "updatedAt": "2026-07-28T01:13:23.000Z",
+                          "uid": "35240-c405eeca-4a78-4411-84d5-0d737f0e3f22"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:13:23.000Z",
+                      "updatedAt": "2026-07-28T01:13:23.000Z",
+                      "uid": "35240-8f4877d9-c530-4579-aeca-28642235dbf2"
+                    },
+                    {
+                      "name": "Delete a webhook <Badge intent=\"info\" minimal outlined>OAuth Scope: webhooks:write</Badge>",
+                      "id": "c3d8ab15-1d27-4c38-b651-97d25d323e52",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/webhooks/:endpointId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "webhooks",
+                            ":endpointId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "8317eb75-3e7e-41cb-89b0-dbc01e5a1806",
+                              "key": "publicationId",
+                              "value": "<string>",
+                              "description": "(Required) The prefixed ID of the publication object"
+                            },
+                            {
+                              "id": "9a47f410-7805-4106-8be6-6e055360aca9",
+                              "key": "endpointId",
+                              "value": "<string>",
+                              "description": "(Required) The prefixed ID of the webhook object"
+                            }
+                          ]
+                        },
+                        "description": "Delete a webhook subscription from a publication."
+                      },
+                      "response": [
+                        {
+                          "id": "33a1d7a1-5f1b-4fd1-9225-58dc8551d9b9",
+                          "name": "No Content",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/webhooks/:endpointId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "webhooks",
+                                ":endpointId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "endpointId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T01:13:23.000Z",
+                          "updatedAt": "2026-07-28T01:13:23.000Z",
+                          "uid": "35240-33a1d7a1-5f1b-4fd1-9225-58dc8551d9b9"
+                        },
+                        {
+                          "id": "84f4ca90-54cf-4edd-b0b0-8e70d89b258d",
+                          "name": "Bad Request",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/webhooks/:endpointId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "webhooks",
+                                ":endpointId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "endpointId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:13:23.000Z",
+                          "updatedAt": "2026-07-28T01:13:23.000Z",
+                          "uid": "35240-84f4ca90-54cf-4edd-b0b0-8e70d89b258d"
+                        },
+                        {
+                          "id": "0e8efce7-5cd1-45a6-beff-7a7b74a7eacf",
+                          "name": "Resource Not Found",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/webhooks/:endpointId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "webhooks",
+                                ":endpointId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "endpointId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:13:23.000Z",
+                          "updatedAt": "2026-07-28T01:13:23.000Z",
+                          "uid": "35240-0e8efce7-5cd1-45a6-beff-7a7b74a7eacf"
+                        },
+                        {
+                          "id": "7ae0b7c3-1b5e-4ca4-b413-46de2937e5a4",
+                          "name": "Rate Limit Exceeded",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/webhooks/:endpointId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "webhooks",
+                                ":endpointId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "endpointId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:13:23.000Z",
+                          "updatedAt": "2026-07-28T01:13:23.000Z",
+                          "uid": "35240-7ae0b7c3-1b5e-4ca4-b413-46de2937e5a4"
+                        },
+                        {
+                          "id": "650acfbc-d811-4204-b352-7e835b210b6e",
+                          "name": "Internal Server Error",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/webhooks/:endpointId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "webhooks",
+                                ":endpointId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "endpointId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:13:23.000Z",
+                          "updatedAt": "2026-07-28T01:13:23.000Z",
+                          "uid": "35240-650acfbc-d811-4204-b352-7e835b210b6e"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:13:23.000Z",
+                      "updatedAt": "2026-07-28T01:13:23.000Z",
+                      "uid": "35240-c3d8ab15-1d27-4c38-b651-97d25d323e52"
+                    }
+                  ],
+                  "id": "9b0ac786-8b64-4e64-baa1-faed4647d48f",
+                  "createdAt": "2026-07-28T01:13:23.000Z",
+                  "updatedAt": "2026-07-28T01:13:23.000Z",
+                  "uid": "35240-9b0ac786-8b64-4e64-baa1-faed4647d48f"
+                },
+                {
+                  "name": "Create a webhook <Badge intent=\"info\" minimal outlined>OAuth Scope: webhooks:write</Badge>",
+                  "id": "1d1e498d-4c36-4ee4-9cfe-2204e5095527",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"url\": \"<uri>\",\n  \"event_types\": [\n    \"subscription.deleted\",\n    \"post.updated\"\n  ],\n  \"description\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/publications/:publicationId/webhooks",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "publications",
+                        ":publicationId",
+                        "webhooks"
+                      ],
+                      "variable": [
+                        {
+                          "id": "0bc9fac0-27b9-4ac8-b0bc-779e3e14b1d0",
+                          "key": "publicationId",
+                          "value": "<string>",
+                          "description": "(Required) The prefixed ID of the publication object"
+                        }
+                      ]
+                    },
+                    "description": "Create a new webhook for a given publication."
+                  },
+                  "response": [
+                    {
+                      "id": "8ae34ebf-fcd7-4f9e-a0c2-784672e86163",
+                      "name": "Webhook created",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"url\": \"<uri>\",\n  \"event_types\": [\n    \"subscription.deleted\",\n    \"post.updated\"\n  ],\n  \"description\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/webhooks",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "webhooks"
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"data\": {\n    \"id\": \"<string>\",\n    \"url\": \"<uri>\",\n    \"created\": \"<integer>\",\n    \"updated\": \"<integer>\",\n    \"event_types\": [\n      \"subscription.resumed\",\n      \"newsletter_list_subscription.resumed\"\n    ],\n    \"description\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:13:23.000Z",
+                      "updatedAt": "2026-07-28T01:13:23.000Z",
+                      "uid": "35240-8ae34ebf-fcd7-4f9e-a0c2-784672e86163"
+                    },
+                    {
+                      "id": "ced326f9-4fae-4527-bf4f-212de279da55",
+                      "name": "Bad Request",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"url\": \"<uri>\",\n  \"event_types\": [\n    \"subscription.deleted\",\n    \"post.updated\"\n  ],\n  \"description\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/webhooks",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "webhooks"
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:13:23.000Z",
+                      "updatedAt": "2026-07-28T01:13:23.000Z",
+                      "uid": "35240-ced326f9-4fae-4527-bf4f-212de279da55"
+                    },
+                    {
+                      "id": "4dc2cefe-ee46-400c-ad67-7e985e03ce54",
+                      "name": "Resource Not Found",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"url\": \"<uri>\",\n  \"event_types\": [\n    \"subscription.deleted\",\n    \"post.updated\"\n  ],\n  \"description\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/webhooks",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "webhooks"
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:13:23.000Z",
+                      "updatedAt": "2026-07-28T01:13:23.000Z",
+                      "uid": "35240-4dc2cefe-ee46-400c-ad67-7e985e03ce54"
+                    },
+                    {
+                      "id": "4d4acf4e-3d0e-4e6e-ab42-24346b8dbd5d",
+                      "name": "Rate Limit Exceeded",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"url\": \"<uri>\",\n  \"event_types\": [\n    \"subscription.deleted\",\n    \"post.updated\"\n  ],\n  \"description\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/webhooks",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "webhooks"
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:13:23.000Z",
+                      "updatedAt": "2026-07-28T01:13:23.000Z",
+                      "uid": "35240-4d4acf4e-3d0e-4e6e-ab42-24346b8dbd5d"
+                    },
+                    {
+                      "id": "8ecc4d24-f264-4bcc-b0e1-bb974b8845ca",
+                      "name": "Internal Server Error",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"url\": \"<uri>\",\n  \"event_types\": [\n    \"subscription.deleted\",\n    \"post.updated\"\n  ],\n  \"description\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/webhooks",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "webhooks"
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:13:23.000Z",
+                      "updatedAt": "2026-07-28T01:13:23.000Z",
+                      "uid": "35240-8ecc4d24-f264-4bcc-b0e1-bb974b8845ca"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:13:23.000Z",
+                  "updatedAt": "2026-07-28T01:13:23.000Z",
+                  "uid": "35240-1d1e498d-4c36-4ee4-9cfe-2204e5095527"
+                },
+                {
+                  "name": "List webhooks <Badge intent=\"info\" minimal outlined>OAuth Scope: webhooks:read</Badge>",
+                  "id": "e268d6f4-93d6-403c-879b-20a9cb412e2f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/publications/:publicationId/webhooks?limit=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "publications",
+                        ":publicationId",
+                        "webhooks"
+                      ],
+                      "query": [
+                        {
+                          "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                          "key": "limit",
+                          "value": "<integer>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "a44ee220-3301-4675-97ec-1b889b58e5af",
+                          "key": "publicationId",
+                          "value": "<string>",
+                          "description": "(Required) The prefixed ID of the publication object"
+                        }
+                      ]
+                    },
+                    "description": "Retrieve all webhooks belonging to a specific publication."
+                  },
+                  "response": [
+                    {
+                      "id": "dd568c05-c5df-4cc4-8351-7831dfc7a8b1",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/webhooks?limit=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "webhooks"
+                          ],
+                          "query": [
+                            {
+                              "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                              "key": "limit",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"url\": \"<uri>\",\n      \"created\": \"<integer>\",\n      \"updated\": \"<integer>\",\n      \"event_types\": [\n        \"subscription.tier.created\",\n        \"subscription.created\"\n      ],\n      \"description\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"url\": \"<uri>\",\n      \"created\": \"<integer>\",\n      \"updated\": \"<integer>\",\n      \"event_types\": [\n        \"survey.response_submitted\",\n        \"subscription.tier.deleted\"\n      ],\n      \"description\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:13:23.000Z",
+                      "updatedAt": "2026-07-28T01:13:23.000Z",
+                      "uid": "35240-dd568c05-c5df-4cc4-8351-7831dfc7a8b1"
+                    },
+                    {
+                      "id": "dbf0510c-d95c-4516-ac09-841e5650cd87",
+                      "name": "Bad Request",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/webhooks?limit=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "webhooks"
+                          ],
+                          "query": [
+                            {
+                              "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                              "key": "limit",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:13:23.000Z",
+                      "updatedAt": "2026-07-28T01:13:23.000Z",
+                      "uid": "35240-dbf0510c-d95c-4516-ac09-841e5650cd87"
+                    },
+                    {
+                      "id": "8bca0ff7-2016-47dc-b43c-15974d42abd7",
+                      "name": "Resource Not Found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/webhooks?limit=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "webhooks"
+                          ],
+                          "query": [
+                            {
+                              "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                              "key": "limit",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:13:23.000Z",
+                      "updatedAt": "2026-07-28T01:13:23.000Z",
+                      "uid": "35240-8bca0ff7-2016-47dc-b43c-15974d42abd7"
+                    },
+                    {
+                      "id": "66c3af23-b33c-4b45-aa03-2d62ba05ef4a",
+                      "name": "Rate Limit Exceeded",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/webhooks?limit=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "webhooks"
+                          ],
+                          "query": [
+                            {
+                              "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                              "key": "limit",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:13:23.000Z",
+                      "updatedAt": "2026-07-28T01:13:23.000Z",
+                      "uid": "35240-66c3af23-b33c-4b45-aa03-2d62ba05ef4a"
+                    },
+                    {
+                      "id": "d296088d-0de6-41c2-9ebd-41c1e1545a73",
+                      "name": "Internal Server Error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/webhooks?limit=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "webhooks"
+                          ],
+                          "query": [
+                            {
+                              "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                              "key": "limit",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:13:23.000Z",
+                      "updatedAt": "2026-07-28T01:13:23.000Z",
+                      "uid": "35240-d296088d-0de6-41c2-9ebd-41c1e1545a73"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:13:23.000Z",
+                  "updatedAt": "2026-07-28T01:13:23.000Z",
+                  "uid": "35240-e268d6f4-93d6-403c-879b-20a9cb412e2f"
+                }
+              ],
+              "id": "46ce3de2-4c18-432e-8552-9eb03e42600c",
+              "createdAt": "2026-07-28T01:13:23.000Z",
+              "updatedAt": "2026-07-28T01:13:23.000Z",
+              "uid": "35240-46ce3de2-4c18-432e-8552-9eb03e42600c"
+            }
+          ],
+          "id": "97c46391-2727-4a89-bfd0-f6711d189565",
+          "createdAt": "2026-07-28T01:13:23.000Z",
+          "updatedAt": "2026-07-28T01:13:23.000Z",
+          "uid": "35240-97c46391-2727-4a89-bfd0-f6711d189565"
+        }
+      ],
+      "id": "c874d72b-92de-4352-864e-005e7348c1cc",
+      "createdAt": "2026-07-28T01:13:23.000Z",
+      "updatedAt": "2026-07-28T01:13:23.000Z",
+      "uid": "35240-c874d72b-92de-4352-864e-005e7348c1cc"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.beehiiv.com/v2"
+    }
+  ]
+}

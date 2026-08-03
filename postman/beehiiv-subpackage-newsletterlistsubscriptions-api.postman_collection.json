@@ -1,0 +1,2230 @@
+{
+  "info": {
+    "_postman_id": "5cf01e5f-603f-40a4-ae50-34e6cfb4ccb2",
+    "name": "API Reference subpackage_advertisement_opportunities subpackage_newsletterListSubscriptions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:12:46.000Z",
+    "updatedAt": "2026-07-28T01:12:47.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-5cf01e5f-603f-40a4-ae50-34e6cfb4ccb2"
+  },
+  "item": [
+    {
+      "name": "publications",
+      "item": [
+        {
+          "name": "{publicationId}",
+          "item": [
+            {
+              "name": "newsletter_lists",
+              "item": [
+                {
+                  "name": "{newsletterListId}",
+                  "item": [
+                    {
+                      "name": "subscriptions",
+                      "item": [
+                        {
+                          "name": "{newsletterListSubscriptionId}",
+                          "item": [
+                            {
+                              "name": "Get newsletter list subscription <Badge intent=\"warning\" minimal outlined>Beta</Badge> <Badge intent=\"info\" minimal outlined>OAuth Scope: newsletter_lists:read</Badge>",
+                              "id": "96821b1e-6ac6-4a65-a9d0-58207f5b0126",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/publications/:publicationId/newsletter_lists/:newsletterListId/subscriptions/:newsletterListSubscriptionId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "publications",
+                                    ":publicationId",
+                                    "newsletter_lists",
+                                    ":newsletterListId",
+                                    "subscriptions",
+                                    ":newsletterListSubscriptionId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "4299b694-3f94-4ae1-9e75-1c66e977a855",
+                                      "key": "publicationId",
+                                      "value": "<string>",
+                                      "description": "(Required) The prefixed ID of the publication object"
+                                    },
+                                    {
+                                      "id": "e79d49d7-c9a3-4c02-b5cf-bf37261376cb",
+                                      "key": "newsletterListId",
+                                      "value": "<string>",
+                                      "description": "(Required) The prefixed ID of the newsletter list object"
+                                    },
+                                    {
+                                      "id": "02dde0c6-a693-49c5-85c9-88426ebd7fd0",
+                                      "key": "newsletterListSubscriptionId",
+                                      "value": "<string>",
+                                      "description": "(Required) The prefixed ID of the newsletter list subscription object"
+                                    }
+                                  ]
+                                },
+                                "description": "<Note title=\"Currently in beta\" icon=\"b\">\n  Newsletter Lists is currently in beta, the API is subject to change.\n</Note>\nRetrieve a single newsletter list subscription."
+                              },
+                              "response": [
+                                {
+                                  "id": "407ceaf8-ea38-46c6-a7d3-1b5ac42b554b",
+                                  "name": "OK",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/publications/:publicationId/newsletter_lists/:newsletterListId/subscriptions/:newsletterListSubscriptionId",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "publications",
+                                        ":publicationId",
+                                        "newsletter_lists",
+                                        ":newsletterListId",
+                                        "subscriptions",
+                                        ":newsletterListSubscriptionId"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "publicationId"
+                                        },
+                                        {
+                                          "key": "newsletterListId"
+                                        },
+                                        {
+                                          "key": "newsletterListSubscriptionId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"data\": {\n    \"id\": \"<string>\",\n    \"newsletter_list_id\": \"<string>\",\n    \"subscription_id\": \"<string>\",\n    \"status\": \"pending\",\n    \"created_at\": \"<integer>\",\n    \"subscribed_at\": \"<integer>\",\n    \"unsubscribed_at\": \"<integer>\"\n  }\n}",
+                                  "createdAt": "2026-07-28T01:12:47.000Z",
+                                  "updatedAt": "2026-07-28T01:12:47.000Z",
+                                  "uid": "35240-407ceaf8-ea38-46c6-a7d3-1b5ac42b554b"
+                                },
+                                {
+                                  "id": "85e868f5-b1a4-4ca4-a034-be1c33bbc5af",
+                                  "name": "Bad Request",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/publications/:publicationId/newsletter_lists/:newsletterListId/subscriptions/:newsletterListSubscriptionId",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "publications",
+                                        ":publicationId",
+                                        "newsletter_lists",
+                                        ":newsletterListId",
+                                        "subscriptions",
+                                        ":newsletterListSubscriptionId"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "publicationId"
+                                        },
+                                        {
+                                          "key": "newsletterListId"
+                                        },
+                                        {
+                                          "key": "newsletterListSubscriptionId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Bad Request",
+                                  "code": 400,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                                  "createdAt": "2026-07-28T01:12:47.000Z",
+                                  "updatedAt": "2026-07-28T01:12:47.000Z",
+                                  "uid": "35240-85e868f5-b1a4-4ca4-a034-be1c33bbc5af"
+                                },
+                                {
+                                  "id": "6e6522ae-7bef-4788-a38c-486d649d1de9",
+                                  "name": "Resource Not Found",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/publications/:publicationId/newsletter_lists/:newsletterListId/subscriptions/:newsletterListSubscriptionId",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "publications",
+                                        ":publicationId",
+                                        "newsletter_lists",
+                                        ":newsletterListId",
+                                        "subscriptions",
+                                        ":newsletterListSubscriptionId"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "publicationId"
+                                        },
+                                        {
+                                          "key": "newsletterListId"
+                                        },
+                                        {
+                                          "key": "newsletterListSubscriptionId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Not Found",
+                                  "code": 404,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                                  "createdAt": "2026-07-28T01:12:47.000Z",
+                                  "updatedAt": "2026-07-28T01:12:47.000Z",
+                                  "uid": "35240-6e6522ae-7bef-4788-a38c-486d649d1de9"
+                                },
+                                {
+                                  "id": "6ffc3eb2-6ee9-4900-863f-8da206969e4c",
+                                  "name": "Rate Limit Exceeded",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/publications/:publicationId/newsletter_lists/:newsletterListId/subscriptions/:newsletterListSubscriptionId",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "publications",
+                                        ":publicationId",
+                                        "newsletter_lists",
+                                        ":newsletterListId",
+                                        "subscriptions",
+                                        ":newsletterListSubscriptionId"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "publicationId"
+                                        },
+                                        {
+                                          "key": "newsletterListId"
+                                        },
+                                        {
+                                          "key": "newsletterListSubscriptionId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Too Many Requests",
+                                  "code": 429,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                                  "createdAt": "2026-07-28T01:12:47.000Z",
+                                  "updatedAt": "2026-07-28T01:12:47.000Z",
+                                  "uid": "35240-6ffc3eb2-6ee9-4900-863f-8da206969e4c"
+                                },
+                                {
+                                  "id": "996cb9ea-cafe-4207-ac57-c3b5e2e5081a",
+                                  "name": "Internal Server Error",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/publications/:publicationId/newsletter_lists/:newsletterListId/subscriptions/:newsletterListSubscriptionId",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "publications",
+                                        ":publicationId",
+                                        "newsletter_lists",
+                                        ":newsletterListId",
+                                        "subscriptions",
+                                        ":newsletterListSubscriptionId"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "publicationId"
+                                        },
+                                        {
+                                          "key": "newsletterListId"
+                                        },
+                                        {
+                                          "key": "newsletterListSubscriptionId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Internal Server Error",
+                                  "code": 500,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                                  "createdAt": "2026-07-28T01:12:47.000Z",
+                                  "updatedAt": "2026-07-28T01:12:47.000Z",
+                                  "uid": "35240-996cb9ea-cafe-4207-ac57-c3b5e2e5081a"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T01:12:47.000Z",
+                              "updatedAt": "2026-07-28T01:12:47.000Z",
+                              "uid": "35240-96821b1e-6ac6-4a65-a9d0-58207f5b0126"
+                            },
+                            {
+                              "name": "Update newsletter list subscription <Badge intent=\"warning\" minimal outlined>Beta</Badge> <Badge intent=\"info\" minimal outlined>OAuth Scope: newsletter_lists:write</Badge>",
+                              "id": "d21aae9e-f482-4317-922b-b22cccd2c207",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"unsubscribe\": \"<boolean>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/publications/:publicationId/newsletter_lists/:newsletterListId/subscriptions/:newsletterListSubscriptionId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "publications",
+                                    ":publicationId",
+                                    "newsletter_lists",
+                                    ":newsletterListId",
+                                    "subscriptions",
+                                    ":newsletterListSubscriptionId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "febe3086-b63a-4125-a469-f719c4b1a771",
+                                      "key": "publicationId",
+                                      "value": "<string>",
+                                      "description": "(Required) The prefixed ID of the publication object"
+                                    },
+                                    {
+                                      "id": "8935a04b-bbd8-4510-8170-6621d7b4f377",
+                                      "key": "newsletterListId",
+                                      "value": "<string>",
+                                      "description": "(Required) The prefixed ID of the newsletter list object"
+                                    },
+                                    {
+                                      "id": "fd56b29d-7eac-4674-aac8-3fca572f758f",
+                                      "key": "newsletterListSubscriptionId",
+                                      "value": "<string>",
+                                      "description": "(Required) The prefixed ID of the newsletter list subscription object"
+                                    }
+                                  ]
+                                },
+                                "description": "<Note title=\"Currently in beta\" icon=\"b\">\n  Newsletter Lists is currently in beta, the API is subject to change.\n</Note>\nUpdate a newsletter list subscription. Currently supports unsubscribing a subscription from a newsletter list."
+                              },
+                              "response": [
+                                {
+                                  "id": "755b6aa4-5f6f-411e-ade7-4414162f0cae",
+                                  "name": "OK",
+                                  "originalRequest": {
+                                    "method": "PATCH",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"unsubscribe\": \"<boolean>\"\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/publications/:publicationId/newsletter_lists/:newsletterListId/subscriptions/:newsletterListSubscriptionId",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "publications",
+                                        ":publicationId",
+                                        "newsletter_lists",
+                                        ":newsletterListId",
+                                        "subscriptions",
+                                        ":newsletterListSubscriptionId"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "publicationId"
+                                        },
+                                        {
+                                          "key": "newsletterListId"
+                                        },
+                                        {
+                                          "key": "newsletterListSubscriptionId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"data\": {\n    \"id\": \"<string>\",\n    \"newsletter_list_id\": \"<string>\",\n    \"subscription_id\": \"<string>\",\n    \"status\": \"pending\",\n    \"created_at\": \"<integer>\",\n    \"subscribed_at\": \"<integer>\",\n    \"unsubscribed_at\": \"<integer>\"\n  }\n}",
+                                  "createdAt": "2026-07-28T01:12:47.000Z",
+                                  "updatedAt": "2026-07-28T01:12:47.000Z",
+                                  "uid": "35240-755b6aa4-5f6f-411e-ade7-4414162f0cae"
+                                },
+                                {
+                                  "id": "fc8cb8d3-0213-462c-a5d7-8b6b644f6553",
+                                  "name": "Bad Request",
+                                  "originalRequest": {
+                                    "method": "PATCH",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"unsubscribe\": \"<boolean>\"\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/publications/:publicationId/newsletter_lists/:newsletterListId/subscriptions/:newsletterListSubscriptionId",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "publications",
+                                        ":publicationId",
+                                        "newsletter_lists",
+                                        ":newsletterListId",
+                                        "subscriptions",
+                                        ":newsletterListSubscriptionId"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "publicationId"
+                                        },
+                                        {
+                                          "key": "newsletterListId"
+                                        },
+                                        {
+                                          "key": "newsletterListSubscriptionId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Bad Request",
+                                  "code": 400,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                                  "createdAt": "2026-07-28T01:12:47.000Z",
+                                  "updatedAt": "2026-07-28T01:12:47.000Z",
+                                  "uid": "35240-fc8cb8d3-0213-462c-a5d7-8b6b644f6553"
+                                },
+                                {
+                                  "id": "72128aa2-dbaa-4730-a0bd-d96ce0b9a3b7",
+                                  "name": "Resource Not Found",
+                                  "originalRequest": {
+                                    "method": "PATCH",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"unsubscribe\": \"<boolean>\"\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/publications/:publicationId/newsletter_lists/:newsletterListId/subscriptions/:newsletterListSubscriptionId",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "publications",
+                                        ":publicationId",
+                                        "newsletter_lists",
+                                        ":newsletterListId",
+                                        "subscriptions",
+                                        ":newsletterListSubscriptionId"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "publicationId"
+                                        },
+                                        {
+                                          "key": "newsletterListId"
+                                        },
+                                        {
+                                          "key": "newsletterListSubscriptionId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Not Found",
+                                  "code": 404,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                                  "createdAt": "2026-07-28T01:12:47.000Z",
+                                  "updatedAt": "2026-07-28T01:12:47.000Z",
+                                  "uid": "35240-72128aa2-dbaa-4730-a0bd-d96ce0b9a3b7"
+                                },
+                                {
+                                  "id": "8aa85e95-06b4-4a8d-a57e-e3960de682e1",
+                                  "name": "Unprocessable Entity",
+                                  "originalRequest": {
+                                    "method": "PATCH",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"unsubscribe\": \"<boolean>\"\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/publications/:publicationId/newsletter_lists/:newsletterListId/subscriptions/:newsletterListSubscriptionId",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "publications",
+                                        ":publicationId",
+                                        "newsletter_lists",
+                                        ":newsletterListId",
+                                        "subscriptions",
+                                        ":newsletterListSubscriptionId"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "publicationId"
+                                        },
+                                        {
+                                          "key": "newsletterListId"
+                                        },
+                                        {
+                                          "key": "newsletterListSubscriptionId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                                  "code": 422,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                                  "createdAt": "2026-07-28T01:12:47.000Z",
+                                  "updatedAt": "2026-07-28T01:12:47.000Z",
+                                  "uid": "35240-8aa85e95-06b4-4a8d-a57e-e3960de682e1"
+                                },
+                                {
+                                  "id": "2d2756fb-1b9a-4ec2-beca-99e96ec688bb",
+                                  "name": "Rate Limit Exceeded",
+                                  "originalRequest": {
+                                    "method": "PATCH",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"unsubscribe\": \"<boolean>\"\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/publications/:publicationId/newsletter_lists/:newsletterListId/subscriptions/:newsletterListSubscriptionId",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "publications",
+                                        ":publicationId",
+                                        "newsletter_lists",
+                                        ":newsletterListId",
+                                        "subscriptions",
+                                        ":newsletterListSubscriptionId"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "publicationId"
+                                        },
+                                        {
+                                          "key": "newsletterListId"
+                                        },
+                                        {
+                                          "key": "newsletterListSubscriptionId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Too Many Requests",
+                                  "code": 429,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                                  "createdAt": "2026-07-28T01:12:47.000Z",
+                                  "updatedAt": "2026-07-28T01:12:47.000Z",
+                                  "uid": "35240-2d2756fb-1b9a-4ec2-beca-99e96ec688bb"
+                                },
+                                {
+                                  "id": "082e1956-ab36-4f99-af64-a6e6691a990c",
+                                  "name": "Internal Server Error",
+                                  "originalRequest": {
+                                    "method": "PATCH",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"unsubscribe\": \"<boolean>\"\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/publications/:publicationId/newsletter_lists/:newsletterListId/subscriptions/:newsletterListSubscriptionId",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "publications",
+                                        ":publicationId",
+                                        "newsletter_lists",
+                                        ":newsletterListId",
+                                        "subscriptions",
+                                        ":newsletterListSubscriptionId"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "publicationId"
+                                        },
+                                        {
+                                          "key": "newsletterListId"
+                                        },
+                                        {
+                                          "key": "newsletterListSubscriptionId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Internal Server Error",
+                                  "code": 500,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                                  "createdAt": "2026-07-28T01:12:47.000Z",
+                                  "updatedAt": "2026-07-28T01:12:47.000Z",
+                                  "uid": "35240-082e1956-ab36-4f99-af64-a6e6691a990c"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T01:12:47.000Z",
+                              "updatedAt": "2026-07-28T01:12:47.000Z",
+                              "uid": "35240-d21aae9e-f482-4317-922b-b22cccd2c207"
+                            }
+                          ],
+                          "id": "2a1d2287-646a-4a0c-8405-e4ceb868790e",
+                          "createdAt": "2026-07-28T01:12:47.000Z",
+                          "updatedAt": "2026-07-28T01:12:47.000Z",
+                          "uid": "35240-2a1d2287-646a-4a0c-8405-e4ceb868790e"
+                        },
+                        {
+                          "name": "by_subscription_id",
+                          "item": [
+                            {
+                              "name": "{subscriptionId}",
+                              "item": [
+                                {
+                                  "name": "Update newsletter list subscription by subscription ID <Badge intent=\"warning\" minimal outlined>Beta</Badge> <Badge intent=\"info\" minimal outlined>OAuth Scope: newsletter_lists:write</Badge>",
+                                  "id": "244f06db-6690-44c2-bcaf-511f2e5cf283",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "PATCH",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"unsubscribe\": \"<boolean>\"\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/publications/:publicationId/newsletter_lists/:newsletterListId/subscriptions/by_subscription_id/:subscriptionId",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "publications",
+                                        ":publicationId",
+                                        "newsletter_lists",
+                                        ":newsletterListId",
+                                        "subscriptions",
+                                        "by_subscription_id",
+                                        ":subscriptionId"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "9e501374-ef28-4689-bead-4ef2f03530ab",
+                                          "key": "publicationId",
+                                          "value": "<string>",
+                                          "description": "(Required) The prefixed ID of the publication object"
+                                        },
+                                        {
+                                          "id": "d0e9fdcd-076b-4a54-8468-6eacd25147ec",
+                                          "key": "newsletterListId",
+                                          "value": "<string>",
+                                          "description": "(Required) The prefixed ID of the newsletter list object"
+                                        },
+                                        {
+                                          "id": "381747ce-d52b-4256-b95d-df04086ca5d7",
+                                          "key": "subscriptionId",
+                                          "value": "<string>",
+                                          "description": "(Required) The prefixed ID of the subscription"
+                                        }
+                                      ]
+                                    },
+                                    "description": "<Note title=\"Currently in beta\" icon=\"b\">\n  Newsletter Lists is currently in beta, the API is subject to change.\n</Note>\nUpdate a newsletter list subscription by subscription ID. An alternative to the update endpoint when you don't have the newsletter list subscription ID. Accepts either a subscription_id or email to identify the subscription. Currently supports unsubscribing a subscription from a newsletter list."
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "09977752-5186-4b94-a190-39e787d39291",
+                                      "name": "OK",
+                                      "originalRequest": {
+                                        "method": "PATCH",
+                                        "header": [
+                                          {
+                                            "key": "Content-Type",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          }
+                                        ],
+                                        "body": {
+                                          "mode": "raw",
+                                          "raw": "{\n  \"unsubscribe\": \"<boolean>\"\n}",
+                                          "options": {
+                                            "raw": {
+                                              "headerFamily": "json",
+                                              "language": "json"
+                                            }
+                                          }
+                                        },
+                                        "url": {
+                                          "raw": "{{baseUrl}}/publications/:publicationId/newsletter_lists/:newsletterListId/subscriptions/by_subscription_id/:subscriptionId",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "publications",
+                                            ":publicationId",
+                                            "newsletter_lists",
+                                            ":newsletterListId",
+                                            "subscriptions",
+                                            "by_subscription_id",
+                                            ":subscriptionId"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "publicationId"
+                                            },
+                                            {
+                                              "key": "newsletterListId"
+                                            },
+                                            {
+                                              "key": "subscriptionId"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"data\": {\n    \"id\": \"<string>\",\n    \"newsletter_list_id\": \"<string>\",\n    \"subscription_id\": \"<string>\",\n    \"status\": \"pending\",\n    \"created_at\": \"<integer>\",\n    \"subscribed_at\": \"<integer>\",\n    \"unsubscribed_at\": \"<integer>\"\n  }\n}",
+                                      "createdAt": "2026-07-28T01:12:47.000Z",
+                                      "updatedAt": "2026-07-28T01:12:47.000Z",
+                                      "uid": "35240-09977752-5186-4b94-a190-39e787d39291"
+                                    },
+                                    {
+                                      "id": "5ec95086-a09e-42d7-a998-1b912e068540",
+                                      "name": "Bad Request",
+                                      "originalRequest": {
+                                        "method": "PATCH",
+                                        "header": [
+                                          {
+                                            "key": "Content-Type",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          }
+                                        ],
+                                        "body": {
+                                          "mode": "raw",
+                                          "raw": "{\n  \"unsubscribe\": \"<boolean>\"\n}",
+                                          "options": {
+                                            "raw": {
+                                              "headerFamily": "json",
+                                              "language": "json"
+                                            }
+                                          }
+                                        },
+                                        "url": {
+                                          "raw": "{{baseUrl}}/publications/:publicationId/newsletter_lists/:newsletterListId/subscriptions/by_subscription_id/:subscriptionId",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "publications",
+                                            ":publicationId",
+                                            "newsletter_lists",
+                                            ":newsletterListId",
+                                            "subscriptions",
+                                            "by_subscription_id",
+                                            ":subscriptionId"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "publicationId"
+                                            },
+                                            {
+                                              "key": "newsletterListId"
+                                            },
+                                            {
+                                              "key": "subscriptionId"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Bad Request",
+                                      "code": 400,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                                      "createdAt": "2026-07-28T01:12:47.000Z",
+                                      "updatedAt": "2026-07-28T01:12:47.000Z",
+                                      "uid": "35240-5ec95086-a09e-42d7-a998-1b912e068540"
+                                    },
+                                    {
+                                      "id": "7fc99b78-449f-414e-95a3-2b028269dfee",
+                                      "name": "Resource Not Found",
+                                      "originalRequest": {
+                                        "method": "PATCH",
+                                        "header": [
+                                          {
+                                            "key": "Content-Type",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          }
+                                        ],
+                                        "body": {
+                                          "mode": "raw",
+                                          "raw": "{\n  \"unsubscribe\": \"<boolean>\"\n}",
+                                          "options": {
+                                            "raw": {
+                                              "headerFamily": "json",
+                                              "language": "json"
+                                            }
+                                          }
+                                        },
+                                        "url": {
+                                          "raw": "{{baseUrl}}/publications/:publicationId/newsletter_lists/:newsletterListId/subscriptions/by_subscription_id/:subscriptionId",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "publications",
+                                            ":publicationId",
+                                            "newsletter_lists",
+                                            ":newsletterListId",
+                                            "subscriptions",
+                                            "by_subscription_id",
+                                            ":subscriptionId"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "publicationId"
+                                            },
+                                            {
+                                              "key": "newsletterListId"
+                                            },
+                                            {
+                                              "key": "subscriptionId"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Not Found",
+                                      "code": 404,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                                      "createdAt": "2026-07-28T01:12:47.000Z",
+                                      "updatedAt": "2026-07-28T01:12:47.000Z",
+                                      "uid": "35240-7fc99b78-449f-414e-95a3-2b028269dfee"
+                                    },
+                                    {
+                                      "id": "57f644be-6cdc-4fe6-a26e-3af919cb7db3",
+                                      "name": "Unprocessable Entity",
+                                      "originalRequest": {
+                                        "method": "PATCH",
+                                        "header": [
+                                          {
+                                            "key": "Content-Type",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          }
+                                        ],
+                                        "body": {
+                                          "mode": "raw",
+                                          "raw": "{\n  \"unsubscribe\": \"<boolean>\"\n}",
+                                          "options": {
+                                            "raw": {
+                                              "headerFamily": "json",
+                                              "language": "json"
+                                            }
+                                          }
+                                        },
+                                        "url": {
+                                          "raw": "{{baseUrl}}/publications/:publicationId/newsletter_lists/:newsletterListId/subscriptions/by_subscription_id/:subscriptionId",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "publications",
+                                            ":publicationId",
+                                            "newsletter_lists",
+                                            ":newsletterListId",
+                                            "subscriptions",
+                                            "by_subscription_id",
+                                            ":subscriptionId"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "publicationId"
+                                            },
+                                            {
+                                              "key": "newsletterListId"
+                                            },
+                                            {
+                                              "key": "subscriptionId"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                                      "code": 422,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                                      "createdAt": "2026-07-28T01:12:47.000Z",
+                                      "updatedAt": "2026-07-28T01:12:47.000Z",
+                                      "uid": "35240-57f644be-6cdc-4fe6-a26e-3af919cb7db3"
+                                    },
+                                    {
+                                      "id": "5f03b48c-4fbb-4dea-aed3-54476de85fd5",
+                                      "name": "Rate Limit Exceeded",
+                                      "originalRequest": {
+                                        "method": "PATCH",
+                                        "header": [
+                                          {
+                                            "key": "Content-Type",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          }
+                                        ],
+                                        "body": {
+                                          "mode": "raw",
+                                          "raw": "{\n  \"unsubscribe\": \"<boolean>\"\n}",
+                                          "options": {
+                                            "raw": {
+                                              "headerFamily": "json",
+                                              "language": "json"
+                                            }
+                                          }
+                                        },
+                                        "url": {
+                                          "raw": "{{baseUrl}}/publications/:publicationId/newsletter_lists/:newsletterListId/subscriptions/by_subscription_id/:subscriptionId",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "publications",
+                                            ":publicationId",
+                                            "newsletter_lists",
+                                            ":newsletterListId",
+                                            "subscriptions",
+                                            "by_subscription_id",
+                                            ":subscriptionId"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "publicationId"
+                                            },
+                                            {
+                                              "key": "newsletterListId"
+                                            },
+                                            {
+                                              "key": "subscriptionId"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Too Many Requests",
+                                      "code": 429,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                                      "createdAt": "2026-07-28T01:12:47.000Z",
+                                      "updatedAt": "2026-07-28T01:12:47.000Z",
+                                      "uid": "35240-5f03b48c-4fbb-4dea-aed3-54476de85fd5"
+                                    },
+                                    {
+                                      "id": "2279875d-34a0-4a5a-90b2-080d56989720",
+                                      "name": "Internal Server Error",
+                                      "originalRequest": {
+                                        "method": "PATCH",
+                                        "header": [
+                                          {
+                                            "key": "Content-Type",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          }
+                                        ],
+                                        "body": {
+                                          "mode": "raw",
+                                          "raw": "{\n  \"unsubscribe\": \"<boolean>\"\n}",
+                                          "options": {
+                                            "raw": {
+                                              "headerFamily": "json",
+                                              "language": "json"
+                                            }
+                                          }
+                                        },
+                                        "url": {
+                                          "raw": "{{baseUrl}}/publications/:publicationId/newsletter_lists/:newsletterListId/subscriptions/by_subscription_id/:subscriptionId",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "publications",
+                                            ":publicationId",
+                                            "newsletter_lists",
+                                            ":newsletterListId",
+                                            "subscriptions",
+                                            "by_subscription_id",
+                                            ":subscriptionId"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "publicationId"
+                                            },
+                                            {
+                                              "key": "newsletterListId"
+                                            },
+                                            {
+                                              "key": "subscriptionId"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Internal Server Error",
+                                      "code": 500,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                                      "createdAt": "2026-07-28T01:12:47.000Z",
+                                      "updatedAt": "2026-07-28T01:12:47.000Z",
+                                      "uid": "35240-2279875d-34a0-4a5a-90b2-080d56989720"
+                                    }
+                                  ],
+                                  "createdAt": "2026-07-28T01:12:47.000Z",
+                                  "updatedAt": "2026-07-28T01:12:47.000Z",
+                                  "uid": "35240-244f06db-6690-44c2-bcaf-511f2e5cf283"
+                                }
+                              ],
+                              "id": "85357ac0-e2fb-47ce-8df4-fdf271165fea",
+                              "createdAt": "2026-07-28T01:12:47.000Z",
+                              "updatedAt": "2026-07-28T01:12:47.000Z",
+                              "uid": "35240-85357ac0-e2fb-47ce-8df4-fdf271165fea"
+                            }
+                          ],
+                          "id": "a2e9c8ce-492b-4f04-abda-f0395f78fc76",
+                          "createdAt": "2026-07-28T01:12:47.000Z",
+                          "updatedAt": "2026-07-28T01:12:47.000Z",
+                          "uid": "35240-a2e9c8ce-492b-4f04-abda-f0395f78fc76"
+                        },
+                        {
+                          "name": "Create newsletter list subscription <Badge intent=\"warning\" minimal outlined>Beta</Badge> <Badge intent=\"info\" minimal outlined>OAuth Scope: newsletter_lists:write</Badge>",
+                          "id": "79afc07d-968c-4586-b6a7-ff1ae0367f2e",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"subscription_id\": \"<string>\",\n  \"email\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/newsletter_lists/:newsletterListId/subscriptions",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "newsletter_lists",
+                                ":newsletterListId",
+                                "subscriptions"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "6ecc0a30-a409-473e-81e4-c1276f3ea9a7",
+                                  "key": "publicationId",
+                                  "value": "<string>",
+                                  "description": "(Required) The prefixed ID of the publication object"
+                                },
+                                {
+                                  "id": "3ae230e4-3e6e-4bc2-8458-b1a94e886bca",
+                                  "key": "newsletterListId",
+                                  "value": "<string>",
+                                  "description": "(Required) The prefixed ID of the newsletter list object"
+                                }
+                              ]
+                            },
+                            "description": "<Note title=\"Currently in beta\" icon=\"b\">\n  Newsletter Lists is currently in beta, the API is subject to change.\n</Note>\nSubscribe a subscription to a newsletter list. Accepts either a subscription_id or email to identify the subscription."
+                          },
+                          "response": [
+                            {
+                              "id": "33ce5a89-6849-4c22-b0eb-26127b3ee94b",
+                              "name": "Created",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"subscription_id\": \"<string>\",\n  \"email\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/publications/:publicationId/newsletter_lists/:newsletterListId/subscriptions",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "publications",
+                                    ":publicationId",
+                                    "newsletter_lists",
+                                    ":newsletterListId",
+                                    "subscriptions"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "publicationId"
+                                    },
+                                    {
+                                      "key": "newsletterListId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"data\": {\n    \"id\": \"<string>\",\n    \"newsletter_list_id\": \"<string>\",\n    \"subscription_id\": \"<string>\",\n    \"status\": \"pending\",\n    \"created_at\": \"<integer>\",\n    \"subscribed_at\": \"<integer>\",\n    \"unsubscribed_at\": \"<integer>\"\n  }\n}",
+                              "createdAt": "2026-07-28T01:12:47.000Z",
+                              "updatedAt": "2026-07-28T01:12:47.000Z",
+                              "uid": "35240-33ce5a89-6849-4c22-b0eb-26127b3ee94b"
+                            },
+                            {
+                              "id": "4d7256ca-db4e-4269-8f81-9214140210b6",
+                              "name": "Bad Request",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"subscription_id\": \"<string>\",\n  \"email\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/publications/:publicationId/newsletter_lists/:newsletterListId/subscriptions",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "publications",
+                                    ":publicationId",
+                                    "newsletter_lists",
+                                    ":newsletterListId",
+                                    "subscriptions"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "publicationId"
+                                    },
+                                    {
+                                      "key": "newsletterListId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T01:12:47.000Z",
+                              "updatedAt": "2026-07-28T01:12:47.000Z",
+                              "uid": "35240-4d7256ca-db4e-4269-8f81-9214140210b6"
+                            },
+                            {
+                              "id": "a0d1ee0b-a891-4a01-92e8-99675f800eba",
+                              "name": "Resource Not Found",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"subscription_id\": \"<string>\",\n  \"email\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/publications/:publicationId/newsletter_lists/:newsletterListId/subscriptions",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "publications",
+                                    ":publicationId",
+                                    "newsletter_lists",
+                                    ":newsletterListId",
+                                    "subscriptions"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "publicationId"
+                                    },
+                                    {
+                                      "key": "newsletterListId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T01:12:47.000Z",
+                              "updatedAt": "2026-07-28T01:12:47.000Z",
+                              "uid": "35240-a0d1ee0b-a891-4a01-92e8-99675f800eba"
+                            },
+                            {
+                              "id": "3978da1c-dfa8-40fc-a18a-96582ba056bf",
+                              "name": "Unprocessable Entity",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"subscription_id\": \"<string>\",\n  \"email\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/publications/:publicationId/newsletter_lists/:newsletterListId/subscriptions",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "publications",
+                                    ":publicationId",
+                                    "newsletter_lists",
+                                    ":newsletterListId",
+                                    "subscriptions"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "publicationId"
+                                    },
+                                    {
+                                      "key": "newsletterListId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                              "code": 422,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T01:12:47.000Z",
+                              "updatedAt": "2026-07-28T01:12:47.000Z",
+                              "uid": "35240-3978da1c-dfa8-40fc-a18a-96582ba056bf"
+                            },
+                            {
+                              "id": "7dde9fab-3519-4c7c-9963-8b279e281d18",
+                              "name": "Rate Limit Exceeded",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"subscription_id\": \"<string>\",\n  \"email\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/publications/:publicationId/newsletter_lists/:newsletterListId/subscriptions",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "publications",
+                                    ":publicationId",
+                                    "newsletter_lists",
+                                    ":newsletterListId",
+                                    "subscriptions"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "publicationId"
+                                    },
+                                    {
+                                      "key": "newsletterListId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Too Many Requests",
+                              "code": 429,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T01:12:47.000Z",
+                              "updatedAt": "2026-07-28T01:12:47.000Z",
+                              "uid": "35240-7dde9fab-3519-4c7c-9963-8b279e281d18"
+                            },
+                            {
+                              "id": "3c779a8a-6024-499f-9ea1-10ea78d7bcbe",
+                              "name": "Internal Server Error",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"subscription_id\": \"<string>\",\n  \"email\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/publications/:publicationId/newsletter_lists/:newsletterListId/subscriptions",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "publications",
+                                    ":publicationId",
+                                    "newsletter_lists",
+                                    ":newsletterListId",
+                                    "subscriptions"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "publicationId"
+                                    },
+                                    {
+                                      "key": "newsletterListId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T01:12:47.000Z",
+                              "updatedAt": "2026-07-28T01:12:47.000Z",
+                              "uid": "35240-3c779a8a-6024-499f-9ea1-10ea78d7bcbe"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T01:12:47.000Z",
+                          "updatedAt": "2026-07-28T01:12:47.000Z",
+                          "uid": "35240-79afc07d-968c-4586-b6a7-ff1ae0367f2e"
+                        },
+                        {
+                          "name": "List newsletter list subscriptions <Badge intent=\"warning\" minimal outlined>Beta</Badge> <Badge intent=\"info\" minimal outlined>OAuth Scope: newsletter_lists:read</Badge>",
+                          "id": "cfee4395-61fa-4e0d-8235-5caed5cf5536",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/newsletter_lists/:newsletterListId/subscriptions?limit=<integer>&cursor=<string>&page=<integer>&direction=asc",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "newsletter_lists",
+                                ":newsletterListId",
+                                "subscriptions"
+                              ],
+                              "query": [
+                                {
+                                  "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                                  "key": "limit",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "**Cursor-based pagination (recommended)**: Use this opaque cursor token to fetch the next page of results. When provided, pagination will use cursor-based method which is more efficient and consistent than offset-based pagination.",
+                                  "key": "cursor",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "**Offset-based pagination (deprecated)**: Page number for offset-based pagination. Please migrate to cursor-based pagination using the `cursor` parameter. If not specified, results 1-10 from page 1 will be returned.",
+                                  "key": "page",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "The direction that the results are sorted in. Defaults to asc<br> `asc` - Ascending, sorts from smallest to largest.<br> `desc` - Descending, sorts from largest to smallest.",
+                                  "key": "direction",
+                                  "value": "asc"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "id": "03deac17-e138-4a1d-a7c8-25d3735b0565",
+                                  "key": "publicationId",
+                                  "value": "<string>",
+                                  "description": "(Required) The prefixed ID of the publication object"
+                                },
+                                {
+                                  "id": "09dbbb37-c683-4051-87de-a81574f45bcb",
+                                  "key": "newsletterListId",
+                                  "value": "<string>",
+                                  "description": "(Required) The prefixed ID of the newsletter list object"
+                                }
+                              ]
+                            },
+                            "description": "<Note title=\"Currently in beta\" icon=\"b\">\n  Newsletter Lists is currently in beta, the API is subject to change.\n</Note>\nList all subscriptions for a newsletter list."
+                          },
+                          "response": [
+                            {
+                              "id": "6c1ecd19-3f22-44b0-9a44-45f46fe405e6",
+                              "name": "OK",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/publications/:publicationId/newsletter_lists/:newsletterListId/subscriptions?limit=<integer>&cursor=<string>&page=<integer>&direction=asc",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "publications",
+                                    ":publicationId",
+                                    "newsletter_lists",
+                                    ":newsletterListId",
+                                    "subscriptions"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                                      "key": "limit",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "**Cursor-based pagination (recommended)**: Use this opaque cursor token to fetch the next page of results. When provided, pagination will use cursor-based method which is more efficient and consistent than offset-based pagination.",
+                                      "key": "cursor",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "**Offset-based pagination (deprecated)**: Page number for offset-based pagination. Please migrate to cursor-based pagination using the `cursor` parameter. If not specified, results 1-10 from page 1 will be returned.",
+                                      "key": "page",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "The direction that the results are sorted in. Defaults to asc<br> `asc` - Ascending, sorts from smallest to largest.<br> `desc` - Descending, sorts from largest to smallest.",
+                                      "key": "direction",
+                                      "value": "asc"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "publicationId"
+                                    },
+                                    {
+                                      "key": "newsletterListId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"newsletter_list_id\": \"<string>\",\n      \"subscription_id\": \"<string>\",\n      \"status\": \"active\",\n      \"created_at\": \"<integer>\",\n      \"subscribed_at\": \"<integer>\",\n      \"unsubscribed_at\": \"<integer>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"newsletter_list_id\": \"<string>\",\n      \"subscription_id\": \"<string>\",\n      \"status\": \"active\",\n      \"created_at\": \"<integer>\",\n      \"subscribed_at\": \"<integer>\",\n      \"unsubscribed_at\": \"<integer>\"\n    }\n  ],\n  \"limit\": \"<integer>\",\n  \"has_more\": \"<boolean>\",\n  \"next_cursor\": \"<string>\",\n  \"total_results\": \"<integer>\"\n}",
+                              "createdAt": "2026-07-28T01:12:47.000Z",
+                              "updatedAt": "2026-07-28T01:12:47.000Z",
+                              "uid": "35240-6c1ecd19-3f22-44b0-9a44-45f46fe405e6"
+                            },
+                            {
+                              "id": "069291eb-f507-4e0e-a84b-df8443007222",
+                              "name": "Bad Request",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/publications/:publicationId/newsletter_lists/:newsletterListId/subscriptions?limit=<integer>&cursor=<string>&page=<integer>&direction=asc",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "publications",
+                                    ":publicationId",
+                                    "newsletter_lists",
+                                    ":newsletterListId",
+                                    "subscriptions"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                                      "key": "limit",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "**Cursor-based pagination (recommended)**: Use this opaque cursor token to fetch the next page of results. When provided, pagination will use cursor-based method which is more efficient and consistent than offset-based pagination.",
+                                      "key": "cursor",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "**Offset-based pagination (deprecated)**: Page number for offset-based pagination. Please migrate to cursor-based pagination using the `cursor` parameter. If not specified, results 1-10 from page 1 will be returned.",
+                                      "key": "page",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "The direction that the results are sorted in. Defaults to asc<br> `asc` - Ascending, sorts from smallest to largest.<br> `desc` - Descending, sorts from largest to smallest.",
+                                      "key": "direction",
+                                      "value": "asc"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "publicationId"
+                                    },
+                                    {
+                                      "key": "newsletterListId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T01:12:47.000Z",
+                              "updatedAt": "2026-07-28T01:12:47.000Z",
+                              "uid": "35240-069291eb-f507-4e0e-a84b-df8443007222"
+                            },
+                            {
+                              "id": "ae571879-4399-4b61-acda-74f3f225bd05",
+                              "name": "Resource Not Found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/publications/:publicationId/newsletter_lists/:newsletterListId/subscriptions?limit=<integer>&cursor=<string>&page=<integer>&direction=asc",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "publications",
+                                    ":publicationId",
+                                    "newsletter_lists",
+                                    ":newsletterListId",
+                                    "subscriptions"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                                      "key": "limit",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "**Cursor-based pagination (recommended)**: Use this opaque cursor token to fetch the next page of results. When provided, pagination will use cursor-based method which is more efficient and consistent than offset-based pagination.",
+                                      "key": "cursor",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "**Offset-based pagination (deprecated)**: Page number for offset-based pagination. Please migrate to cursor-based pagination using the `cursor` parameter. If not specified, results 1-10 from page 1 will be returned.",
+                                      "key": "page",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "The direction that the results are sorted in. Defaults to asc<br> `asc` - Ascending, sorts from smallest to largest.<br> `desc` - Descending, sorts from largest to smallest.",
+                                      "key": "direction",
+                                      "value": "asc"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "publicationId"
+                                    },
+                                    {
+                                      "key": "newsletterListId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T01:12:47.000Z",
+                              "updatedAt": "2026-07-28T01:12:47.000Z",
+                              "uid": "35240-ae571879-4399-4b61-acda-74f3f225bd05"
+                            },
+                            {
+                              "id": "08365c75-b600-49f7-9032-6a1159aa3efc",
+                              "name": "Rate Limit Exceeded",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/publications/:publicationId/newsletter_lists/:newsletterListId/subscriptions?limit=<integer>&cursor=<string>&page=<integer>&direction=asc",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "publications",
+                                    ":publicationId",
+                                    "newsletter_lists",
+                                    ":newsletterListId",
+                                    "subscriptions"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                                      "key": "limit",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "**Cursor-based pagination (recommended)**: Use this opaque cursor token to fetch the next page of results. When provided, pagination will use cursor-based method which is more efficient and consistent than offset-based pagination.",
+                                      "key": "cursor",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "**Offset-based pagination (deprecated)**: Page number for offset-based pagination. Please migrate to cursor-based pagination using the `cursor` parameter. If not specified, results 1-10 from page 1 will be returned.",
+                                      "key": "page",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "The direction that the results are sorted in. Defaults to asc<br> `asc` - Ascending, sorts from smallest to largest.<br> `desc` - Descending, sorts from largest to smallest.",
+                                      "key": "direction",
+                                      "value": "asc"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "publicationId"
+                                    },
+                                    {
+                                      "key": "newsletterListId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Too Many Requests",
+                              "code": 429,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T01:12:47.000Z",
+                              "updatedAt": "2026-07-28T01:12:47.000Z",
+                              "uid": "35240-08365c75-b600-49f7-9032-6a1159aa3efc"
+                            },
+                            {
+                              "id": "fd43ed29-3d48-428d-8a43-ed709a1304d4",
+                              "name": "Internal Server Error",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/publications/:publicationId/newsletter_lists/:newsletterListId/subscriptions?limit=<integer>&cursor=<string>&page=<integer>&direction=asc",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "publications",
+                                    ":publicationId",
+                                    "newsletter_lists",
+                                    ":newsletterListId",
+                                    "subscriptions"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                                      "key": "limit",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "**Cursor-based pagination (recommended)**: Use this opaque cursor token to fetch the next page of results. When provided, pagination will use cursor-based method which is more efficient and consistent than offset-based pagination.",
+                                      "key": "cursor",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "**Offset-based pagination (deprecated)**: Page number for offset-based pagination. Please migrate to cursor-based pagination using the `cursor` parameter. If not specified, results 1-10 from page 1 will be returned.",
+                                      "key": "page",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "The direction that the results are sorted in. Defaults to asc<br> `asc` - Ascending, sorts from smallest to largest.<br> `desc` - Descending, sorts from largest to smallest.",
+                                      "key": "direction",
+                                      "value": "asc"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "publicationId"
+                                    },
+                                    {
+                                      "key": "newsletterListId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T01:12:47.000Z",
+                              "updatedAt": "2026-07-28T01:12:47.000Z",
+                              "uid": "35240-fd43ed29-3d48-428d-8a43-ed709a1304d4"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T01:12:47.000Z",
+                          "updatedAt": "2026-07-28T01:12:47.000Z",
+                          "uid": "35240-cfee4395-61fa-4e0d-8235-5caed5cf5536"
+                        }
+                      ],
+                      "id": "4b8d3324-a58b-4226-b45a-185f129fc201",
+                      "createdAt": "2026-07-28T01:12:47.000Z",
+                      "updatedAt": "2026-07-28T01:12:47.000Z",
+                      "uid": "35240-4b8d3324-a58b-4226-b45a-185f129fc201"
+                    }
+                  ],
+                  "id": "8bd8a413-efb8-4037-9bc0-d40a3aaa5b17",
+                  "createdAt": "2026-07-28T01:12:47.000Z",
+                  "updatedAt": "2026-07-28T01:12:47.000Z",
+                  "uid": "35240-8bd8a413-efb8-4037-9bc0-d40a3aaa5b17"
+                }
+              ],
+              "id": "e090131a-6f6b-4df0-b0c1-424f95306f85",
+              "createdAt": "2026-07-28T01:12:47.000Z",
+              "updatedAt": "2026-07-28T01:12:47.000Z",
+              "uid": "35240-e090131a-6f6b-4df0-b0c1-424f95306f85"
+            }
+          ],
+          "id": "3aacd042-cc80-428e-99fb-dd740413ffd7",
+          "createdAt": "2026-07-28T01:12:47.000Z",
+          "updatedAt": "2026-07-28T01:12:47.000Z",
+          "uid": "35240-3aacd042-cc80-428e-99fb-dd740413ffd7"
+        }
+      ],
+      "id": "aa7533e0-35cd-45bf-a496-5e4fcaf630e1",
+      "createdAt": "2026-07-28T01:12:47.000Z",
+      "updatedAt": "2026-07-28T01:12:47.000Z",
+      "uid": "35240-aa7533e0-35cd-45bf-a496-5e4fcaf630e1"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.beehiiv.com/v2"
+    }
+  ]
+}

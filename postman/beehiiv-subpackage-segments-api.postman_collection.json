@@ -1,0 +1,2496 @@
+{
+  "info": {
+    "_postman_id": "61c7a902-365b-43b3-b1ce-cdef64a8afa3",
+    "name": "API Reference subpackage_advertisement_opportunities subpackage_segments API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:13:05.000Z",
+    "updatedAt": "2026-07-28T01:13:05.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-61c7a902-365b-43b3-b1ce-cdef64a8afa3"
+  },
+  "item": [
+    {
+      "name": "publications",
+      "item": [
+        {
+          "name": "{publicationId}",
+          "item": [
+            {
+              "name": "segments",
+              "item": [
+                {
+                  "name": "{segmentId}",
+                  "item": [
+                    {
+                      "name": "recalculate",
+                      "item": [
+                        {
+                          "name": "Recalculate segment <Badge intent=\"info\" minimal outlined>OAuth Scope: segments:write</Badge>",
+                          "id": "f27eb3bc-41f8-4fae-bac8-3daaf9f92bc6",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/segments/:segmentId/recalculate",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "segments",
+                                ":segmentId",
+                                "recalculate"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "abc48503-74ee-4638-adf6-9f0a68483303",
+                                  "key": "publicationId",
+                                  "value": "<string>",
+                                  "description": "(Required) The prefixed ID of the publication object"
+                                },
+                                {
+                                  "id": "286371a9-7ca1-4304-bb49-c334245aaa42",
+                                  "key": "segmentId",
+                                  "value": "<string>",
+                                  "description": "(Required) The prefixed ID of the segment object"
+                                }
+                              ]
+                            },
+                            "description": "Recalculates a specific segment belonging to a publication"
+                          },
+                          "response": [
+                            {
+                              "id": "87ad658f-acb2-4431-b6b6-8d8c7908552b",
+                              "name": "OK",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/publications/:publicationId/segments/:segmentId/recalculate",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "publications",
+                                    ":publicationId",
+                                    "segments",
+                                    ":segmentId",
+                                    "recalculate"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "publicationId"
+                                    },
+                                    {
+                                      "key": "segmentId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T01:13:06.000Z",
+                              "updatedAt": "2026-07-28T01:13:06.000Z",
+                              "uid": "35240-87ad658f-acb2-4431-b6b6-8d8c7908552b"
+                            },
+                            {
+                              "id": "73d43ae9-f491-45e8-aadb-cf5527604448",
+                              "name": "Resource Not Found",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/publications/:publicationId/segments/:segmentId/recalculate",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "publications",
+                                    ":publicationId",
+                                    "segments",
+                                    ":segmentId",
+                                    "recalculate"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "publicationId"
+                                    },
+                                    {
+                                      "key": "segmentId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T01:13:06.000Z",
+                              "updatedAt": "2026-07-28T01:13:06.000Z",
+                              "uid": "35240-73d43ae9-f491-45e8-aadb-cf5527604448"
+                            },
+                            {
+                              "id": "74a03a58-6fc6-4731-b88a-9649f7e9f600",
+                              "name": "Unprocessable Entity",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/publications/:publicationId/segments/:segmentId/recalculate",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "publications",
+                                    ":publicationId",
+                                    "segments",
+                                    ":segmentId",
+                                    "recalculate"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "publicationId"
+                                    },
+                                    {
+                                      "key": "segmentId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                              "code": 422,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T01:13:06.000Z",
+                              "updatedAt": "2026-07-28T01:13:06.000Z",
+                              "uid": "35240-74a03a58-6fc6-4731-b88a-9649f7e9f600"
+                            },
+                            {
+                              "id": "b36ec1b4-72ac-4082-bf76-3e7010b2ec7c",
+                              "name": "Rate Limit Exceeded",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/publications/:publicationId/segments/:segmentId/recalculate",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "publications",
+                                    ":publicationId",
+                                    "segments",
+                                    ":segmentId",
+                                    "recalculate"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "publicationId"
+                                    },
+                                    {
+                                      "key": "segmentId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Too Many Requests",
+                              "code": 429,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T01:13:06.000Z",
+                              "updatedAt": "2026-07-28T01:13:06.000Z",
+                              "uid": "35240-b36ec1b4-72ac-4082-bf76-3e7010b2ec7c"
+                            },
+                            {
+                              "id": "d40c7d0b-127d-4543-93c8-856ff7ba7d65",
+                              "name": "Internal Server Error",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/publications/:publicationId/segments/:segmentId/recalculate",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "publications",
+                                    ":publicationId",
+                                    "segments",
+                                    ":segmentId",
+                                    "recalculate"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "publicationId"
+                                    },
+                                    {
+                                      "key": "segmentId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T01:13:06.000Z",
+                              "updatedAt": "2026-07-28T01:13:06.000Z",
+                              "uid": "35240-d40c7d0b-127d-4543-93c8-856ff7ba7d65"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T01:13:06.000Z",
+                          "updatedAt": "2026-07-28T01:13:06.000Z",
+                          "uid": "35240-f27eb3bc-41f8-4fae-bac8-3daaf9f92bc6"
+                        }
+                      ],
+                      "id": "9f296ea2-750d-43a7-937e-41744584c33a",
+                      "createdAt": "2026-07-28T01:13:06.000Z",
+                      "updatedAt": "2026-07-28T01:13:06.000Z",
+                      "uid": "35240-9f296ea2-750d-43a7-937e-41744584c33a"
+                    },
+                    {
+                      "name": "members",
+                      "item": [
+                        {
+                          "name": "List segment subscribers <Badge intent=\"info\" minimal outlined>OAuth Scope: segments:read</Badge>",
+                          "id": "906ee29a-663d-4e2c-9721-941cbfb5d63c",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/segments/:segmentId/members?limit=<integer>&page=<integer>&expand[]=stats&expand[]=referrals",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "segments",
+                                ":segmentId",
+                                "members"
+                              ],
+                              "query": [
+                                {
+                                  "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                                  "key": "limit",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).<br>If not specified, results 1-10 from page 1 will be returned.",
+                                  "key": "page",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "Optionally expand the response to include additional data. <br> `stats` - Returns statistics about the subscription(s). <br> `custom_fields` - Returns custom field values set on the subscription. <br> `referrals` - Returns referrals made by the subscription. <br> `tags` - Returns tags associated with the subscription. <br> `subscription_premium_tiers` - Returns premium tier(s) the subscription is subscribed to.",
+                                  "key": "expand[]",
+                                  "value": "stats"
+                                },
+                                {
+                                  "description": "Optionally expand the response to include additional data. <br> `stats` - Returns statistics about the subscription(s). <br> `custom_fields` - Returns custom field values set on the subscription. <br> `referrals` - Returns referrals made by the subscription. <br> `tags` - Returns tags associated with the subscription. <br> `subscription_premium_tiers` - Returns premium tier(s) the subscription is subscribed to.",
+                                  "key": "expand[]",
+                                  "value": "referrals"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "id": "add1a75c-e0c7-4bbf-be72-87476335856b",
+                                  "key": "publicationId",
+                                  "value": "<string>",
+                                  "description": "(Required) The prefixed ID of the publication object"
+                                },
+                                {
+                                  "id": "d9fe0cf2-4f29-45d7-8400-df2f44e73c47",
+                                  "key": "segmentId",
+                                  "value": "<string>",
+                                  "description": "(Required) The prefixed ID of the segment object"
+                                }
+                              ]
+                            },
+                            "description": "List all members in a segment with full subscription data. Each member is returned as a subscription  object containing complete subscriber information and their subscription details.  Supports optional expansions for stats, custom fields, tags, referrals, and premium tiers.\n**Use this endpoint when you need detailed subscriber information.** If you only need subscriber IDs, use `/segments/{segmentId}/results` for a lighter-weight response."
+                          },
+                          "response": [
+                            {
+                              "id": "b25cc140-464d-4bea-83f9-d3775b71b0b6",
+                              "name": "OK",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/publications/:publicationId/segments/:segmentId/members?limit=<integer>&page=<integer>&expand[]=referrals",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "publications",
+                                    ":publicationId",
+                                    "segments",
+                                    ":segmentId",
+                                    "members"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                                      "key": "limit",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).<br>If not specified, results 1-10 from page 1 will be returned.",
+                                      "key": "page",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "Optionally expand the response to include additional data. <br> `stats` - Returns statistics about the subscription(s). <br> `custom_fields` - Returns custom field values set on the subscription. <br> `referrals` - Returns referrals made by the subscription. <br> `tags` - Returns tags associated with the subscription. <br> `subscription_premium_tiers` - Returns premium tier(s) the subscription is subscribed to.",
+                                      "key": "expand[]",
+                                      "value": "referrals"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "publicationId"
+                                    },
+                                    {
+                                      "key": "segmentId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"email\": \"<email>\",\n      \"status\": \"needs_attention\",\n      \"created\": \"<integer>\",\n      \"subscription_tier\": \"free\",\n      \"subscription_premium_tier_names\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"utm_source\": \"<string>\",\n      \"utm_medium\": \"<string>\",\n      \"utm_channel\": \"\",\n      \"utm_campaign\": \"<string>\",\n      \"utm_term\": \"<string>\",\n      \"utm_content\": \"<string>\",\n      \"referring_site\": \"<string>\",\n      \"referral_code\": \"<string>\",\n      \"subscription_premium_tiers\": [\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"status\": \"active\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"status\": \"archived\"\n        }\n      ],\n      \"custom_fields\": [\n        {\n          \"name\": \"<string>\",\n          \"kind\": \"datetime\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"kind\": \"string\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"tags\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"stats\": {\n        \"emails_received\": \"<integer>\",\n        \"open_rate\": \"<double>\",\n        \"click_through_rate\": \"<double>\"\n      },\n      \"newsletter_list_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"email\": \"<email>\",\n      \"status\": \"needs_attention\",\n      \"created\": \"<integer>\",\n      \"subscription_tier\": \"free\",\n      \"subscription_premium_tier_names\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"utm_source\": \"<string>\",\n      \"utm_medium\": \"<string>\",\n      \"utm_channel\": \"boost_direct_link\",\n      \"utm_campaign\": \"<string>\",\n      \"utm_term\": \"<string>\",\n      \"utm_content\": \"<string>\",\n      \"referring_site\": \"<string>\",\n      \"referral_code\": \"<string>\",\n      \"subscription_premium_tiers\": [\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"status\": \"active\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"status\": \"active\"\n        }\n      ],\n      \"custom_fields\": [\n        {\n          \"name\": \"<string>\",\n          \"kind\": \"boolean\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"kind\": \"date\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"tags\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"stats\": {\n        \"emails_received\": \"<integer>\",\n        \"open_rate\": \"<double>\",\n        \"click_through_rate\": \"<double>\"\n      },\n      \"newsletter_list_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"limit\": \"<integer>\",\n  \"page\": 1,\n  \"total_results\": \"<integer>\",\n  \"total_pages\": \"<integer>\"\n}",
+                              "createdAt": "2026-07-28T01:13:06.000Z",
+                              "updatedAt": "2026-07-28T01:13:06.000Z",
+                              "uid": "35240-b25cc140-464d-4bea-83f9-d3775b71b0b6"
+                            },
+                            {
+                              "id": "314ef4b0-d8ae-4b9f-8b95-a742d1e2e259",
+                              "name": "Bad Request",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/publications/:publicationId/segments/:segmentId/members?limit=<integer>&page=<integer>&expand[]=referrals",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "publications",
+                                    ":publicationId",
+                                    "segments",
+                                    ":segmentId",
+                                    "members"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                                      "key": "limit",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).<br>If not specified, results 1-10 from page 1 will be returned.",
+                                      "key": "page",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "Optionally expand the response to include additional data. <br> `stats` - Returns statistics about the subscription(s). <br> `custom_fields` - Returns custom field values set on the subscription. <br> `referrals` - Returns referrals made by the subscription. <br> `tags` - Returns tags associated with the subscription. <br> `subscription_premium_tiers` - Returns premium tier(s) the subscription is subscribed to.",
+                                      "key": "expand[]",
+                                      "value": "referrals"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "publicationId"
+                                    },
+                                    {
+                                      "key": "segmentId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T01:13:06.000Z",
+                              "updatedAt": "2026-07-28T01:13:06.000Z",
+                              "uid": "35240-314ef4b0-d8ae-4b9f-8b95-a742d1e2e259"
+                            },
+                            {
+                              "id": "13507dba-074f-4d5a-84d5-e5cc1db6f6fc",
+                              "name": "Resource Not Found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/publications/:publicationId/segments/:segmentId/members?limit=<integer>&page=<integer>&expand[]=referrals",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "publications",
+                                    ":publicationId",
+                                    "segments",
+                                    ":segmentId",
+                                    "members"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                                      "key": "limit",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).<br>If not specified, results 1-10 from page 1 will be returned.",
+                                      "key": "page",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "Optionally expand the response to include additional data. <br> `stats` - Returns statistics about the subscription(s). <br> `custom_fields` - Returns custom field values set on the subscription. <br> `referrals` - Returns referrals made by the subscription. <br> `tags` - Returns tags associated with the subscription. <br> `subscription_premium_tiers` - Returns premium tier(s) the subscription is subscribed to.",
+                                      "key": "expand[]",
+                                      "value": "referrals"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "publicationId"
+                                    },
+                                    {
+                                      "key": "segmentId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T01:13:06.000Z",
+                              "updatedAt": "2026-07-28T01:13:06.000Z",
+                              "uid": "35240-13507dba-074f-4d5a-84d5-e5cc1db6f6fc"
+                            },
+                            {
+                              "id": "aa2e6206-6d8e-4896-a32c-3b229d3da445",
+                              "name": "Rate Limit Exceeded",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/publications/:publicationId/segments/:segmentId/members?limit=<integer>&page=<integer>&expand[]=referrals",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "publications",
+                                    ":publicationId",
+                                    "segments",
+                                    ":segmentId",
+                                    "members"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                                      "key": "limit",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).<br>If not specified, results 1-10 from page 1 will be returned.",
+                                      "key": "page",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "Optionally expand the response to include additional data. <br> `stats` - Returns statistics about the subscription(s). <br> `custom_fields` - Returns custom field values set on the subscription. <br> `referrals` - Returns referrals made by the subscription. <br> `tags` - Returns tags associated with the subscription. <br> `subscription_premium_tiers` - Returns premium tier(s) the subscription is subscribed to.",
+                                      "key": "expand[]",
+                                      "value": "referrals"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "publicationId"
+                                    },
+                                    {
+                                      "key": "segmentId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Too Many Requests",
+                              "code": 429,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T01:13:06.000Z",
+                              "updatedAt": "2026-07-28T01:13:06.000Z",
+                              "uid": "35240-aa2e6206-6d8e-4896-a32c-3b229d3da445"
+                            },
+                            {
+                              "id": "e5994baf-f524-45ce-bbac-cef5afe639de",
+                              "name": "Internal Server Error",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/publications/:publicationId/segments/:segmentId/members?limit=<integer>&page=<integer>&expand[]=referrals",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "publications",
+                                    ":publicationId",
+                                    "segments",
+                                    ":segmentId",
+                                    "members"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                                      "key": "limit",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).<br>If not specified, results 1-10 from page 1 will be returned.",
+                                      "key": "page",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "Optionally expand the response to include additional data. <br> `stats` - Returns statistics about the subscription(s). <br> `custom_fields` - Returns custom field values set on the subscription. <br> `referrals` - Returns referrals made by the subscription. <br> `tags` - Returns tags associated with the subscription. <br> `subscription_premium_tiers` - Returns premium tier(s) the subscription is subscribed to.",
+                                      "key": "expand[]",
+                                      "value": "referrals"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "publicationId"
+                                    },
+                                    {
+                                      "key": "segmentId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T01:13:06.000Z",
+                              "updatedAt": "2026-07-28T01:13:06.000Z",
+                              "uid": "35240-e5994baf-f524-45ce-bbac-cef5afe639de"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T01:13:06.000Z",
+                          "updatedAt": "2026-07-28T01:13:06.000Z",
+                          "uid": "35240-906ee29a-663d-4e2c-9721-941cbfb5d63c"
+                        }
+                      ],
+                      "id": "12f8f6d3-e65b-4d52-bf25-efeab507f87c",
+                      "createdAt": "2026-07-28T01:13:06.000Z",
+                      "updatedAt": "2026-07-28T01:13:06.000Z",
+                      "uid": "35240-12f8f6d3-e65b-4d52-bf25-efeab507f87c"
+                    },
+                    {
+                      "name": "results",
+                      "item": [
+                        {
+                          "name": "List segment subscriber IDs <Badge intent=\"info\" minimal outlined>OAuth Scope: segments:read</Badge>",
+                          "id": "229a011c-b16d-447a-8000-60bbc73d7bd5",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/segments/:segmentId/results?limit=<integer>&page=<integer>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "segments",
+                                ":segmentId",
+                                "results"
+                              ],
+                              "query": [
+                                {
+                                  "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                                  "key": "limit",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).<br>If not specified, results 1-10 from page 1 will be returned.",
+                                  "key": "page",
+                                  "value": "<integer>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "id": "4fc0cdc2-e7a7-42bc-a86a-1d188690e98b",
+                                  "key": "publicationId",
+                                  "value": "<string>",
+                                  "description": "(Required) The prefixed ID of the publication object"
+                                },
+                                {
+                                  "id": "104fda60-8990-47db-8562-025ac01a99ed",
+                                  "key": "segmentId",
+                                  "value": "<string>",
+                                  "description": "(Required) The prefixed ID of the segment object"
+                                }
+                              ]
+                            },
+                            "description": "List subscriber IDs for a segment. Returns a lightweight array of subscription IDs only, without additional subscriber details.\n**Use this endpoint when you only need subscriber IDs** (e.g., for counting, ID-based lookups, or  integrations with external systems). If you need full subscriber details (email, status, custom fields, etc.), use `/segments/{segmentId}/members` instead."
+                          },
+                          "response": [
+                            {
+                              "id": "ab29b4e9-97e9-44e2-bbcc-1399af60799c",
+                              "name": "OK",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/publications/:publicationId/segments/:segmentId/results?limit=<integer>&page=<integer>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "publications",
+                                    ":publicationId",
+                                    "segments",
+                                    ":segmentId",
+                                    "results"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                                      "key": "limit",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).<br>If not specified, results 1-10 from page 1 will be returned.",
+                                      "key": "page",
+                                      "value": "<integer>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "publicationId"
+                                    },
+                                    {
+                                      "key": "segmentId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"data\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"limit\": \"<integer>\",\n  \"page\": 1,\n  \"total_results\": \"<integer>\",\n  \"total_pages\": \"<integer>\"\n}",
+                              "createdAt": "2026-07-28T01:13:06.000Z",
+                              "updatedAt": "2026-07-28T01:13:06.000Z",
+                              "uid": "35240-ab29b4e9-97e9-44e2-bbcc-1399af60799c"
+                            },
+                            {
+                              "id": "a67c83cc-4187-40ab-ab9e-2fe7805f7ebe",
+                              "name": "Bad Request",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/publications/:publicationId/segments/:segmentId/results?limit=<integer>&page=<integer>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "publications",
+                                    ":publicationId",
+                                    "segments",
+                                    ":segmentId",
+                                    "results"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                                      "key": "limit",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).<br>If not specified, results 1-10 from page 1 will be returned.",
+                                      "key": "page",
+                                      "value": "<integer>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "publicationId"
+                                    },
+                                    {
+                                      "key": "segmentId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T01:13:06.000Z",
+                              "updatedAt": "2026-07-28T01:13:06.000Z",
+                              "uid": "35240-a67c83cc-4187-40ab-ab9e-2fe7805f7ebe"
+                            },
+                            {
+                              "id": "37250f66-76ad-43b8-a78a-a6a6e628c3e2",
+                              "name": "Resource Not Found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/publications/:publicationId/segments/:segmentId/results?limit=<integer>&page=<integer>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "publications",
+                                    ":publicationId",
+                                    "segments",
+                                    ":segmentId",
+                                    "results"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                                      "key": "limit",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).<br>If not specified, results 1-10 from page 1 will be returned.",
+                                      "key": "page",
+                                      "value": "<integer>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "publicationId"
+                                    },
+                                    {
+                                      "key": "segmentId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T01:13:06.000Z",
+                              "updatedAt": "2026-07-28T01:13:06.000Z",
+                              "uid": "35240-37250f66-76ad-43b8-a78a-a6a6e628c3e2"
+                            },
+                            {
+                              "id": "b85f5777-3de5-4981-b505-3aef998918e7",
+                              "name": "Rate Limit Exceeded",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/publications/:publicationId/segments/:segmentId/results?limit=<integer>&page=<integer>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "publications",
+                                    ":publicationId",
+                                    "segments",
+                                    ":segmentId",
+                                    "results"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                                      "key": "limit",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).<br>If not specified, results 1-10 from page 1 will be returned.",
+                                      "key": "page",
+                                      "value": "<integer>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "publicationId"
+                                    },
+                                    {
+                                      "key": "segmentId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Too Many Requests",
+                              "code": 429,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T01:13:06.000Z",
+                              "updatedAt": "2026-07-28T01:13:06.000Z",
+                              "uid": "35240-b85f5777-3de5-4981-b505-3aef998918e7"
+                            },
+                            {
+                              "id": "a58cecd6-da60-46b6-ac16-35f4e824bf14",
+                              "name": "Internal Server Error",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/publications/:publicationId/segments/:segmentId/results?limit=<integer>&page=<integer>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "publications",
+                                    ":publicationId",
+                                    "segments",
+                                    ":segmentId",
+                                    "results"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                                      "key": "limit",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).<br>If not specified, results 1-10 from page 1 will be returned.",
+                                      "key": "page",
+                                      "value": "<integer>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "publicationId"
+                                    },
+                                    {
+                                      "key": "segmentId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T01:13:06.000Z",
+                              "updatedAt": "2026-07-28T01:13:06.000Z",
+                              "uid": "35240-a58cecd6-da60-46b6-ac16-35f4e824bf14"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T01:13:06.000Z",
+                          "updatedAt": "2026-07-28T01:13:06.000Z",
+                          "uid": "35240-229a011c-b16d-447a-8000-60bbc73d7bd5"
+                        }
+                      ],
+                      "id": "c4ea6004-8657-4e8e-b530-9aeda59dc49a",
+                      "createdAt": "2026-07-28T01:13:06.000Z",
+                      "updatedAt": "2026-07-28T01:13:06.000Z",
+                      "uid": "35240-c4ea6004-8657-4e8e-b530-9aeda59dc49a"
+                    },
+                    {
+                      "name": "Get segment <Badge intent=\"info\" minimal outlined>OAuth Scope: segments:read</Badge>",
+                      "id": "64b87c56-4718-4499-bf8c-d5d2caa07d3f",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/segments/:segmentId?expand[]=stats&expand[]=stats",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "segments",
+                            ":segmentId"
+                          ],
+                          "query": [
+                            {
+                              "description": "Optionally expand the response to include additional data. <br> `stats` - Requests the most recently calculated statistics for a segment. <br> Segment stats are recalculated once daily around 7 a.m. UTC for dynamic segments, but can be manually recalculated at any time in the dashboard. Manual and static segments only calculate once upon upload or creation.",
+                              "key": "expand[]",
+                              "value": "stats"
+                            },
+                            {
+                              "description": "Optionally expand the response to include additional data. <br> `stats` - Requests the most recently calculated statistics for a segment. <br> Segment stats are recalculated once daily around 7 a.m. UTC for dynamic segments, but can be manually recalculated at any time in the dashboard. Manual and static segments only calculate once upon upload or creation.",
+                              "key": "expand[]",
+                              "value": "stats"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "21a7005e-9093-4641-96e9-7d0a4e219e58",
+                              "key": "publicationId",
+                              "value": "<string>",
+                              "description": "(Required) The prefixed ID of the publication object"
+                            },
+                            {
+                              "id": "4d13c942-ab82-4204-a64a-41036797df09",
+                              "key": "segmentId",
+                              "value": "<string>",
+                              "description": "(Required) The prefixed ID of the segment object"
+                            }
+                          ]
+                        },
+                        "description": "Retrieve information about a specific segment belonging to a publication"
+                      },
+                      "response": [
+                        {
+                          "id": "235ec43b-7a26-47e5-b46d-04471108f74e",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/segments/:segmentId?expand[]=stats",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "segments",
+                                ":segmentId"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Optionally expand the response to include additional data. <br> `stats` - Requests the most recently calculated statistics for a segment. <br> Segment stats are recalculated once daily around 7 a.m. UTC for dynamic segments, but can be manually recalculated at any time in the dashboard. Manual and static segments only calculate once upon upload or creation.",
+                                  "key": "expand[]",
+                                  "value": "stats"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "segmentId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"data\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"type\": \"all\",\n    \"total_results\": \"<integer>\",\n    \"status\": \"processing\",\n    \"active\": \"<boolean>\",\n    \"last_calculated\": \"<integer>\",\n    \"stats\": {\n      \"open_rate\": \"<double>\",\n      \"total_sent\": \"<integer>\",\n      \"percentage_premium_subscribers\": \"<double>\",\n      \"percentage_subscribers_with_referrals\": \"<double>\",\n      \"unique_emails_clicked\": \"<integer>\",\n      \"total_delivered\": \"<integer>\",\n      \"total_referrals\": \"<integer>\",\n      \"unsubscribed_rate\": \"<double>\",\n      \"total_subscribers\": \"<integer>\",\n      \"clickthrough_rate\": \"<double>\",\n      \"unsubscribed_count\": \"<integer>\",\n      \"unique_emails_opened\": \"<integer>\",\n      \"premium_subscribers\": \"<integer>\",\n      \"average_referrals_per_subscriber\": \"<double>\"\n    }\n  }\n}",
+                          "createdAt": "2026-07-28T01:13:06.000Z",
+                          "updatedAt": "2026-07-28T01:13:06.000Z",
+                          "uid": "35240-235ec43b-7a26-47e5-b46d-04471108f74e"
+                        },
+                        {
+                          "id": "8ff33bc2-47b7-4a33-95ca-56d4512f36fd",
+                          "name": "Resource Not Found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/segments/:segmentId?expand[]=stats",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "segments",
+                                ":segmentId"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Optionally expand the response to include additional data. <br> `stats` - Requests the most recently calculated statistics for a segment. <br> Segment stats are recalculated once daily around 7 a.m. UTC for dynamic segments, but can be manually recalculated at any time in the dashboard. Manual and static segments only calculate once upon upload or creation.",
+                                  "key": "expand[]",
+                                  "value": "stats"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "segmentId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:13:06.000Z",
+                          "updatedAt": "2026-07-28T01:13:06.000Z",
+                          "uid": "35240-8ff33bc2-47b7-4a33-95ca-56d4512f36fd"
+                        },
+                        {
+                          "id": "763141ee-a434-4885-9ffd-80b132a6bf7a",
+                          "name": "Rate Limit Exceeded",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/segments/:segmentId?expand[]=stats",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "segments",
+                                ":segmentId"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Optionally expand the response to include additional data. <br> `stats` - Requests the most recently calculated statistics for a segment. <br> Segment stats are recalculated once daily around 7 a.m. UTC for dynamic segments, but can be manually recalculated at any time in the dashboard. Manual and static segments only calculate once upon upload or creation.",
+                                  "key": "expand[]",
+                                  "value": "stats"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "segmentId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:13:06.000Z",
+                          "updatedAt": "2026-07-28T01:13:06.000Z",
+                          "uid": "35240-763141ee-a434-4885-9ffd-80b132a6bf7a"
+                        },
+                        {
+                          "id": "060f7ee9-8f79-4374-8fcf-751825855f3b",
+                          "name": "Internal Server Error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/segments/:segmentId?expand[]=stats",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "segments",
+                                ":segmentId"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Optionally expand the response to include additional data. <br> `stats` - Requests the most recently calculated statistics for a segment. <br> Segment stats are recalculated once daily around 7 a.m. UTC for dynamic segments, but can be manually recalculated at any time in the dashboard. Manual and static segments only calculate once upon upload or creation.",
+                                  "key": "expand[]",
+                                  "value": "stats"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "segmentId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:13:06.000Z",
+                          "updatedAt": "2026-07-28T01:13:06.000Z",
+                          "uid": "35240-060f7ee9-8f79-4374-8fcf-751825855f3b"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:13:06.000Z",
+                      "updatedAt": "2026-07-28T01:13:06.000Z",
+                      "uid": "35240-64b87c56-4718-4499-bf8c-d5d2caa07d3f"
+                    },
+                    {
+                      "name": "Delete segment <Badge intent=\"info\" minimal outlined>OAuth Scope: segments:write</Badge>",
+                      "id": "df2a2cc5-7c48-4454-a7d8-f6241a249205",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/segments/:segmentId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "segments",
+                            ":segmentId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "2190b9e4-0192-4ec7-8d9b-55b0336f2583",
+                              "key": "publicationId",
+                              "value": "<string>",
+                              "description": "(Required) The prefixed ID of the publication object"
+                            },
+                            {
+                              "id": "c27c0244-31a2-4bdc-9053-6f8480f09fd2",
+                              "key": "segmentId",
+                              "value": "<string>",
+                              "description": "(Required) The prefixed ID of the segment object"
+                            }
+                          ]
+                        },
+                        "description": "Delete a segment. Deleting the segment does not effect the subscriptions in the segment."
+                      },
+                      "response": [
+                        {
+                          "id": "0d4020d6-4ba4-4ef5-9e9b-6e01a88f4048",
+                          "name": "No Content",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/segments/:segmentId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "segments",
+                                ":segmentId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "segmentId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T01:13:06.000Z",
+                          "updatedAt": "2026-07-28T01:13:06.000Z",
+                          "uid": "35240-0d4020d6-4ba4-4ef5-9e9b-6e01a88f4048"
+                        },
+                        {
+                          "id": "9378dfe3-d7db-4dc9-a289-54eb17b8538c",
+                          "name": "Resource Not Found",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/segments/:segmentId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "segments",
+                                ":segmentId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "segmentId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:13:06.000Z",
+                          "updatedAt": "2026-07-28T01:13:06.000Z",
+                          "uid": "35240-9378dfe3-d7db-4dc9-a289-54eb17b8538c"
+                        },
+                        {
+                          "id": "8b68cd41-a1e9-4f93-91aa-88193f51a742",
+                          "name": "Rate Limit Exceeded",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/segments/:segmentId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "segments",
+                                ":segmentId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "segmentId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:13:06.000Z",
+                          "updatedAt": "2026-07-28T01:13:06.000Z",
+                          "uid": "35240-8b68cd41-a1e9-4f93-91aa-88193f51a742"
+                        },
+                        {
+                          "id": "cc116143-cce0-455a-b97a-8f1ca51cb2e1",
+                          "name": "Internal Server Error",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/segments/:segmentId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "segments",
+                                ":segmentId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "segmentId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:13:06.000Z",
+                          "updatedAt": "2026-07-28T01:13:06.000Z",
+                          "uid": "35240-cc116143-cce0-455a-b97a-8f1ca51cb2e1"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:13:06.000Z",
+                      "updatedAt": "2026-07-28T01:13:06.000Z",
+                      "uid": "35240-df2a2cc5-7c48-4454-a7d8-f6241a249205"
+                    }
+                  ],
+                  "id": "1b4a4017-13dd-4ccd-8b96-fac21eff1cca",
+                  "createdAt": "2026-07-28T01:13:06.000Z",
+                  "updatedAt": "2026-07-28T01:13:06.000Z",
+                  "uid": "35240-1b4a4017-13dd-4ccd-8b96-fac21eff1cca"
+                },
+                {
+                  "name": "Create segment",
+                  "id": "0f8bbd31-7d4a-43a8-9463-7bef2c4a0693",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"input\": {\n    \"type\": \"subscriptions\",\n    \"subscriptions\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/publications/:publicationId/segments",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "publications",
+                        ":publicationId",
+                        "segments"
+                      ],
+                      "variable": [
+                        {
+                          "id": "8a60aa8e-3ccd-4ca3-94d2-16a747a60ab2",
+                          "key": "publicationId",
+                          "value": "<string>",
+                          "description": "(Required) The prefixed ID of the publication object"
+                        }
+                      ]
+                    },
+                    "description": "Create a new segment.<br><br> **Manual segments** \u2014 Use `subscriptions` or `emails` input to create a segment from an explicit list of subscription IDs or email addresses. The segment is processed synchronously and returns with `status: completed`. Net new email addresses will be ignored; create subscriptions using the `Create Subscription` endpoint.<br><br> **Dynamic segments** \u2014 Use `custom_fields` input to create a segment that filters subscribers by custom field values. The segment is processed asynchronously and returns with `status: pending`. Results will be available in the `List Segment Subscribers` endpoint after processing is complete."
+                  },
+                  "response": [
+                    {
+                      "id": "a2125d04-7dfc-439d-85fd-f0be37c2196f",
+                      "name": "Created",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"input\": {\n    \"type\": \"subscriptions\",\n    \"subscriptions\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/segments",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "segments"
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"data\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"type\": \"all\",\n    \"total_results\": \"<integer>\",\n    \"status\": \"processing\",\n    \"active\": \"<boolean>\",\n    \"last_calculated\": \"<integer>\",\n    \"stats\": {\n      \"open_rate\": \"<double>\",\n      \"total_sent\": \"<integer>\",\n      \"percentage_premium_subscribers\": \"<double>\",\n      \"percentage_subscribers_with_referrals\": \"<double>\",\n      \"unique_emails_clicked\": \"<integer>\",\n      \"total_delivered\": \"<integer>\",\n      \"total_referrals\": \"<integer>\",\n      \"unsubscribed_rate\": \"<double>\",\n      \"total_subscribers\": \"<integer>\",\n      \"clickthrough_rate\": \"<double>\",\n      \"unsubscribed_count\": \"<integer>\",\n      \"unique_emails_opened\": \"<integer>\",\n      \"premium_subscribers\": \"<integer>\",\n      \"average_referrals_per_subscriber\": \"<double>\"\n    }\n  }\n}",
+                      "createdAt": "2026-07-28T01:13:06.000Z",
+                      "updatedAt": "2026-07-28T01:13:06.000Z",
+                      "uid": "35240-a2125d04-7dfc-439d-85fd-f0be37c2196f"
+                    },
+                    {
+                      "id": "50a4b0f7-4425-40b9-889b-0f3f101a0978",
+                      "name": "Bad Request",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"input\": {\n    \"type\": \"subscriptions\",\n    \"subscriptions\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/segments",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "segments"
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:13:06.000Z",
+                      "updatedAt": "2026-07-28T01:13:06.000Z",
+                      "uid": "35240-50a4b0f7-4425-40b9-889b-0f3f101a0978"
+                    },
+                    {
+                      "id": "11a2f280-af81-40c9-a2f5-1da8769d1dc7",
+                      "name": "Resource Not Found",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"input\": {\n    \"type\": \"subscriptions\",\n    \"subscriptions\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/segments",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "segments"
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:13:06.000Z",
+                      "updatedAt": "2026-07-28T01:13:06.000Z",
+                      "uid": "35240-11a2f280-af81-40c9-a2f5-1da8769d1dc7"
+                    },
+                    {
+                      "id": "f68c4902-7317-4f01-9d13-72b82ca136b2",
+                      "name": "Rate Limit Exceeded",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"input\": {\n    \"type\": \"subscriptions\",\n    \"subscriptions\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/segments",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "segments"
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:13:06.000Z",
+                      "updatedAt": "2026-07-28T01:13:06.000Z",
+                      "uid": "35240-f68c4902-7317-4f01-9d13-72b82ca136b2"
+                    },
+                    {
+                      "id": "8db53c22-7769-438a-93b6-0df4353415ba",
+                      "name": "Internal Server Error",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"input\": {\n    \"type\": \"subscriptions\",\n    \"subscriptions\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/segments",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "segments"
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:13:06.000Z",
+                      "updatedAt": "2026-07-28T01:13:06.000Z",
+                      "uid": "35240-8db53c22-7769-438a-93b6-0df4353415ba"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:13:06.000Z",
+                  "updatedAt": "2026-07-28T01:13:06.000Z",
+                  "uid": "35240-0f8bbd31-7d4a-43a8-9463-7bef2c4a0693"
+                },
+                {
+                  "name": "List segments <Badge intent=\"info\" minimal outlined>OAuth Scope: segments:read</Badge>",
+                  "id": "166c8cdf-f93d-4541-ad39-7f5208b0c9f7",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/publications/:publicationId/segments?type=all&status=all&limit=<integer>&page=<integer>&order_by=created&direction=asc&expand[]=stats&expand[]=stats",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "publications",
+                        ":publicationId",
+                        "segments"
+                      ],
+                      "query": [
+                        {
+                          "description": "Optionally filter the results by the segment's type.",
+                          "key": "type",
+                          "value": "all"
+                        },
+                        {
+                          "description": "Optionally filter the results by the segment's status.",
+                          "key": "status",
+                          "value": "all"
+                        },
+                        {
+                          "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                          "key": "limit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).<br>If not specified, results 1-10 from page 1 will be returned.",
+                          "key": "page",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The field that the results are sorted by. Defaults to created<br> `created` - The time in which the segment was first created.<br> `last_calculated` - The time that the segment last completed calculation. Measured in seconds since the Unix epoch.",
+                          "key": "order_by",
+                          "value": "created"
+                        },
+                        {
+                          "description": "The direction that the results are sorted in. Defaults to asc<br> `asc` - Ascending, sorts from smallest to largest.<br> `desc` - Descending, sorts from largest to smallest.",
+                          "key": "direction",
+                          "value": "asc"
+                        },
+                        {
+                          "description": "Optionally expand the response to include additional data. <br> `stats` - Requests the most recently calculated statistics for a segment. <br> Segment stats are recalculated once daily around 7 a.m. UTC for dynamic segments, but can be manually recalculated at any time in the dashboard. Manual and static segments only calculate once upon upload or creation.",
+                          "key": "expand[]",
+                          "value": "stats"
+                        },
+                        {
+                          "description": "Optionally expand the response to include additional data. <br> `stats` - Requests the most recently calculated statistics for a segment. <br> Segment stats are recalculated once daily around 7 a.m. UTC for dynamic segments, but can be manually recalculated at any time in the dashboard. Manual and static segments only calculate once upon upload or creation.",
+                          "key": "expand[]",
+                          "value": "stats"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "425fa47a-8c81-45c0-826c-c668041db0bb",
+                          "key": "publicationId",
+                          "value": "<string>",
+                          "description": "(Required) The prefixed ID of the publication object"
+                        }
+                      ]
+                    },
+                    "description": "Retrieve information about all segments belonging to a specific publication"
+                  },
+                  "response": [
+                    {
+                      "id": "de893fd1-9d99-4a9f-83bf-6f591dc20184",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/segments?type=all&status=all&limit=<integer>&page=<integer>&order_by=created&direction=asc&expand[]=stats",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "segments"
+                          ],
+                          "query": [
+                            {
+                              "description": "Optionally filter the results by the segment's type.",
+                              "key": "type",
+                              "value": "all"
+                            },
+                            {
+                              "description": "Optionally filter the results by the segment's status.",
+                              "key": "status",
+                              "value": "all"
+                            },
+                            {
+                              "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).<br>If not specified, results 1-10 from page 1 will be returned.",
+                              "key": "page",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "The field that the results are sorted by. Defaults to created<br> `created` - The time in which the segment was first created.<br> `last_calculated` - The time that the segment last completed calculation. Measured in seconds since the Unix epoch.",
+                              "key": "order_by",
+                              "value": "created"
+                            },
+                            {
+                              "description": "The direction that the results are sorted in. Defaults to asc<br> `asc` - Ascending, sorts from smallest to largest.<br> `desc` - Descending, sorts from largest to smallest.",
+                              "key": "direction",
+                              "value": "asc"
+                            },
+                            {
+                              "description": "Optionally expand the response to include additional data. <br> `stats` - Requests the most recently calculated statistics for a segment. <br> Segment stats are recalculated once daily around 7 a.m. UTC for dynamic segments, but can be manually recalculated at any time in the dashboard. Manual and static segments only calculate once upon upload or creation.",
+                              "key": "expand[]",
+                              "value": "stats"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"all\",\n      \"total_results\": \"<integer>\",\n      \"status\": \"completed\",\n      \"active\": \"<boolean>\",\n      \"last_calculated\": \"<integer>\",\n      \"stats\": {\n        \"open_rate\": \"<double>\",\n        \"total_sent\": \"<integer>\",\n        \"percentage_premium_subscribers\": \"<double>\",\n        \"percentage_subscribers_with_referrals\": \"<double>\",\n        \"unique_emails_clicked\": \"<integer>\",\n        \"total_delivered\": \"<integer>\",\n        \"total_referrals\": \"<integer>\",\n        \"unsubscribed_rate\": \"<double>\",\n        \"total_subscribers\": \"<integer>\",\n        \"clickthrough_rate\": \"<double>\",\n        \"unsubscribed_count\": \"<integer>\",\n        \"unique_emails_opened\": \"<integer>\",\n        \"premium_subscribers\": \"<integer>\",\n        \"average_referrals_per_subscriber\": \"<double>\"\n      }\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"all\",\n      \"total_results\": \"<integer>\",\n      \"status\": \"completed\",\n      \"active\": \"<boolean>\",\n      \"last_calculated\": \"<integer>\",\n      \"stats\": {\n        \"open_rate\": \"<double>\",\n        \"total_sent\": \"<integer>\",\n        \"percentage_premium_subscribers\": \"<double>\",\n        \"percentage_subscribers_with_referrals\": \"<double>\",\n        \"unique_emails_clicked\": \"<integer>\",\n        \"total_delivered\": \"<integer>\",\n        \"total_referrals\": \"<integer>\",\n        \"unsubscribed_rate\": \"<double>\",\n        \"total_subscribers\": \"<integer>\",\n        \"clickthrough_rate\": \"<double>\",\n        \"unsubscribed_count\": \"<integer>\",\n        \"unique_emails_opened\": \"<integer>\",\n        \"premium_subscribers\": \"<integer>\",\n        \"average_referrals_per_subscriber\": \"<double>\"\n      }\n    }\n  ],\n  \"limit\": \"<integer>\",\n  \"page\": 1,\n  \"total_results\": \"<integer>\",\n  \"total_pages\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:13:06.000Z",
+                      "updatedAt": "2026-07-28T01:13:06.000Z",
+                      "uid": "35240-de893fd1-9d99-4a9f-83bf-6f591dc20184"
+                    },
+                    {
+                      "id": "facbe505-0540-4c15-9b32-ce6220b6a029",
+                      "name": "Bad Request",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/segments?type=all&status=all&limit=<integer>&page=<integer>&order_by=created&direction=asc&expand[]=stats",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "segments"
+                          ],
+                          "query": [
+                            {
+                              "description": "Optionally filter the results by the segment's type.",
+                              "key": "type",
+                              "value": "all"
+                            },
+                            {
+                              "description": "Optionally filter the results by the segment's status.",
+                              "key": "status",
+                              "value": "all"
+                            },
+                            {
+                              "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).<br>If not specified, results 1-10 from page 1 will be returned.",
+                              "key": "page",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "The field that the results are sorted by. Defaults to created<br> `created` - The time in which the segment was first created.<br> `last_calculated` - The time that the segment last completed calculation. Measured in seconds since the Unix epoch.",
+                              "key": "order_by",
+                              "value": "created"
+                            },
+                            {
+                              "description": "The direction that the results are sorted in. Defaults to asc<br> `asc` - Ascending, sorts from smallest to largest.<br> `desc` - Descending, sorts from largest to smallest.",
+                              "key": "direction",
+                              "value": "asc"
+                            },
+                            {
+                              "description": "Optionally expand the response to include additional data. <br> `stats` - Requests the most recently calculated statistics for a segment. <br> Segment stats are recalculated once daily around 7 a.m. UTC for dynamic segments, but can be manually recalculated at any time in the dashboard. Manual and static segments only calculate once upon upload or creation.",
+                              "key": "expand[]",
+                              "value": "stats"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:13:06.000Z",
+                      "updatedAt": "2026-07-28T01:13:06.000Z",
+                      "uid": "35240-facbe505-0540-4c15-9b32-ce6220b6a029"
+                    },
+                    {
+                      "id": "32585d62-28ff-4f7d-88d5-3fefb381fd2a",
+                      "name": "Resource Not Found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/segments?type=all&status=all&limit=<integer>&page=<integer>&order_by=created&direction=asc&expand[]=stats",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "segments"
+                          ],
+                          "query": [
+                            {
+                              "description": "Optionally filter the results by the segment's type.",
+                              "key": "type",
+                              "value": "all"
+                            },
+                            {
+                              "description": "Optionally filter the results by the segment's status.",
+                              "key": "status",
+                              "value": "all"
+                            },
+                            {
+                              "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).<br>If not specified, results 1-10 from page 1 will be returned.",
+                              "key": "page",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "The field that the results are sorted by. Defaults to created<br> `created` - The time in which the segment was first created.<br> `last_calculated` - The time that the segment last completed calculation. Measured in seconds since the Unix epoch.",
+                              "key": "order_by",
+                              "value": "created"
+                            },
+                            {
+                              "description": "The direction that the results are sorted in. Defaults to asc<br> `asc` - Ascending, sorts from smallest to largest.<br> `desc` - Descending, sorts from largest to smallest.",
+                              "key": "direction",
+                              "value": "asc"
+                            },
+                            {
+                              "description": "Optionally expand the response to include additional data. <br> `stats` - Requests the most recently calculated statistics for a segment. <br> Segment stats are recalculated once daily around 7 a.m. UTC for dynamic segments, but can be manually recalculated at any time in the dashboard. Manual and static segments only calculate once upon upload or creation.",
+                              "key": "expand[]",
+                              "value": "stats"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:13:06.000Z",
+                      "updatedAt": "2026-07-28T01:13:06.000Z",
+                      "uid": "35240-32585d62-28ff-4f7d-88d5-3fefb381fd2a"
+                    },
+                    {
+                      "id": "34f4882c-74c5-494a-93d0-f908080ca257",
+                      "name": "Rate Limit Exceeded",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/segments?type=all&status=all&limit=<integer>&page=<integer>&order_by=created&direction=asc&expand[]=stats",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "segments"
+                          ],
+                          "query": [
+                            {
+                              "description": "Optionally filter the results by the segment's type.",
+                              "key": "type",
+                              "value": "all"
+                            },
+                            {
+                              "description": "Optionally filter the results by the segment's status.",
+                              "key": "status",
+                              "value": "all"
+                            },
+                            {
+                              "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).<br>If not specified, results 1-10 from page 1 will be returned.",
+                              "key": "page",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "The field that the results are sorted by. Defaults to created<br> `created` - The time in which the segment was first created.<br> `last_calculated` - The time that the segment last completed calculation. Measured in seconds since the Unix epoch.",
+                              "key": "order_by",
+                              "value": "created"
+                            },
+                            {
+                              "description": "The direction that the results are sorted in. Defaults to asc<br> `asc` - Ascending, sorts from smallest to largest.<br> `desc` - Descending, sorts from largest to smallest.",
+                              "key": "direction",
+                              "value": "asc"
+                            },
+                            {
+                              "description": "Optionally expand the response to include additional data. <br> `stats` - Requests the most recently calculated statistics for a segment. <br> Segment stats are recalculated once daily around 7 a.m. UTC for dynamic segments, but can be manually recalculated at any time in the dashboard. Manual and static segments only calculate once upon upload or creation.",
+                              "key": "expand[]",
+                              "value": "stats"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:13:06.000Z",
+                      "updatedAt": "2026-07-28T01:13:06.000Z",
+                      "uid": "35240-34f4882c-74c5-494a-93d0-f908080ca257"
+                    },
+                    {
+                      "id": "371cd8b1-060f-4e60-b7ac-5e099584f24d",
+                      "name": "Internal Server Error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/segments?type=all&status=all&limit=<integer>&page=<integer>&order_by=created&direction=asc&expand[]=stats",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "segments"
+                          ],
+                          "query": [
+                            {
+                              "description": "Optionally filter the results by the segment's type.",
+                              "key": "type",
+                              "value": "all"
+                            },
+                            {
+                              "description": "Optionally filter the results by the segment's status.",
+                              "key": "status",
+                              "value": "all"
+                            },
+                            {
+                              "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).<br>If not specified, results 1-10 from page 1 will be returned.",
+                              "key": "page",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "The field that the results are sorted by. Defaults to created<br> `created` - The time in which the segment was first created.<br> `last_calculated` - The time that the segment last completed calculation. Measured in seconds since the Unix epoch.",
+                              "key": "order_by",
+                              "value": "created"
+                            },
+                            {
+                              "description": "The direction that the results are sorted in. Defaults to asc<br> `asc` - Ascending, sorts from smallest to largest.<br> `desc` - Descending, sorts from largest to smallest.",
+                              "key": "direction",
+                              "value": "asc"
+                            },
+                            {
+                              "description": "Optionally expand the response to include additional data. <br> `stats` - Requests the most recently calculated statistics for a segment. <br> Segment stats are recalculated once daily around 7 a.m. UTC for dynamic segments, but can be manually recalculated at any time in the dashboard. Manual and static segments only calculate once upon upload or creation.",
+                              "key": "expand[]",
+                              "value": "stats"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:13:06.000Z",
+                      "updatedAt": "2026-07-28T01:13:06.000Z",
+                      "uid": "35240-371cd8b1-060f-4e60-b7ac-5e099584f24d"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:13:06.000Z",
+                  "updatedAt": "2026-07-28T01:13:06.000Z",
+                  "uid": "35240-166c8cdf-f93d-4541-ad39-7f5208b0c9f7"
+                }
+              ],
+              "id": "79140660-a3c4-407d-92d5-026d566b2201",
+              "createdAt": "2026-07-28T01:13:06.000Z",
+              "updatedAt": "2026-07-28T01:13:06.000Z",
+              "uid": "35240-79140660-a3c4-407d-92d5-026d566b2201"
+            }
+          ],
+          "id": "21e8fb13-4908-407d-bdbb-f8f6afe8ea1b",
+          "createdAt": "2026-07-28T01:13:06.000Z",
+          "updatedAt": "2026-07-28T01:13:06.000Z",
+          "uid": "35240-21e8fb13-4908-407d-bdbb-f8f6afe8ea1b"
+        }
+      ],
+      "id": "2e9ac372-65f4-40f1-9b24-c9b2d49d57bf",
+      "createdAt": "2026-07-28T01:13:06.000Z",
+      "updatedAt": "2026-07-28T01:13:06.000Z",
+      "uid": "35240-2e9ac372-65f4-40f1-9b24-c9b2d49d57bf"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.beehiiv.com/v2"
+    }
+  ]
+}

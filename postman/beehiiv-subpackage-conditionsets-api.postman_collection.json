@@ -1,0 +1,728 @@
+{
+  "info": {
+    "_postman_id": "c1e154dc-a0a5-445b-a23c-37c24c1c7836",
+    "name": "API Reference subpackage_advertisement_opportunities subpackage_conditionSets API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:12:07.000Z",
+    "updatedAt": "2026-07-28T01:12:07.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-c1e154dc-a0a5-445b-a23c-37c24c1c7836"
+  },
+  "item": [
+    {
+      "name": "publications",
+      "item": [
+        {
+          "name": "{publicationId}",
+          "item": [
+            {
+              "name": "condition_sets",
+              "item": [
+                {
+                  "name": "{conditionSetId}",
+                  "item": [
+                    {
+                      "name": "Get condition set <Badge intent=\"info\" minimal outlined>OAuth Scope: condition_sets:read</Badge>",
+                      "id": "4a9fce42-1156-44a6-8a7c-cea5d953667f",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/condition_sets/:conditionSetId?expand[]=stats&expand[]=stats",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "condition_sets",
+                            ":conditionSetId"
+                          ],
+                          "query": [
+                            {
+                              "description": "Optionally expand the response to include additional data.<br> `stats` - Calculates and returns the active subscriber count for this condition set synchronously.",
+                              "key": "expand[]",
+                              "value": "stats"
+                            },
+                            {
+                              "description": "Optionally expand the response to include additional data.<br> `stats` - Calculates and returns the active subscriber count for this condition set synchronously.",
+                              "key": "expand[]",
+                              "value": "stats"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "85f9aece-d96a-46b1-915b-f3a190ef6412",
+                              "key": "publicationId",
+                              "value": "<string>",
+                              "description": "(Required) The prefixed ID of the publication object"
+                            },
+                            {
+                              "id": "19bf82e7-6528-40a7-b986-55f396e3be10",
+                              "key": "conditionSetId",
+                              "value": "<string>",
+                              "description": "(Required) The UUID of the condition set object"
+                            }
+                          ]
+                        },
+                        "description": "Retrieve a single active dynamic content condition set for a publication. Use `expand[]=stats` to calculate and return the active subscriber count synchronously."
+                      },
+                      "response": [
+                        {
+                          "id": "fcffaf4c-605f-45d3-a566-8ae6762f7c06",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/condition_sets/:conditionSetId?expand[]=stats",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "condition_sets",
+                                ":conditionSetId"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Optionally expand the response to include additional data.<br> `stats` - Calculates and returns the active subscriber count for this condition set synchronously.",
+                                  "key": "expand[]",
+                                  "value": "stats"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "conditionSetId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"data\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"status\": \"archived\",\n    \"created\": \"<integer>\",\n    \"updated\": \"<integer>\",\n    \"purpose\": \"dynamic_content\",\n    \"stats\": {\n      \"active_subscriber_count\": \"<integer>\"\n    }\n  }\n}",
+                          "createdAt": "2026-07-28T01:12:08.000Z",
+                          "updatedAt": "2026-07-28T01:12:08.000Z",
+                          "uid": "35240-fcffaf4c-605f-45d3-a566-8ae6762f7c06"
+                        },
+                        {
+                          "id": "5791a173-7c25-448f-867f-7a342acb2158",
+                          "name": "Resource Not Found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/condition_sets/:conditionSetId?expand[]=stats",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "condition_sets",
+                                ":conditionSetId"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Optionally expand the response to include additional data.<br> `stats` - Calculates and returns the active subscriber count for this condition set synchronously.",
+                                  "key": "expand[]",
+                                  "value": "stats"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "conditionSetId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:12:08.000Z",
+                          "updatedAt": "2026-07-28T01:12:08.000Z",
+                          "uid": "35240-5791a173-7c25-448f-867f-7a342acb2158"
+                        },
+                        {
+                          "id": "fdbab019-bac6-48dd-88ba-1edd5c0f0d49",
+                          "name": "Rate Limit Exceeded",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/condition_sets/:conditionSetId?expand[]=stats",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "condition_sets",
+                                ":conditionSetId"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Optionally expand the response to include additional data.<br> `stats` - Calculates and returns the active subscriber count for this condition set synchronously.",
+                                  "key": "expand[]",
+                                  "value": "stats"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "conditionSetId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:12:08.000Z",
+                          "updatedAt": "2026-07-28T01:12:08.000Z",
+                          "uid": "35240-fdbab019-bac6-48dd-88ba-1edd5c0f0d49"
+                        },
+                        {
+                          "id": "aa9efcfb-3865-417d-a472-8d48e9a60085",
+                          "name": "Internal Server Error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/condition_sets/:conditionSetId?expand[]=stats",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "condition_sets",
+                                ":conditionSetId"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Optionally expand the response to include additional data.<br> `stats` - Calculates and returns the active subscriber count for this condition set synchronously.",
+                                  "key": "expand[]",
+                                  "value": "stats"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "conditionSetId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:12:08.000Z",
+                          "updatedAt": "2026-07-28T01:12:08.000Z",
+                          "uid": "35240-aa9efcfb-3865-417d-a472-8d48e9a60085"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:12:08.000Z",
+                      "updatedAt": "2026-07-28T01:12:08.000Z",
+                      "uid": "35240-4a9fce42-1156-44a6-8a7c-cea5d953667f"
+                    }
+                  ],
+                  "id": "03f9e676-d51b-494c-932a-6d18319e2b23",
+                  "createdAt": "2026-07-28T01:12:08.000Z",
+                  "updatedAt": "2026-07-28T01:12:08.000Z",
+                  "uid": "35240-03f9e676-d51b-494c-932a-6d18319e2b23"
+                },
+                {
+                  "name": "List condition sets <Badge intent=\"info\" minimal outlined>OAuth Scope: condition_sets:read</Badge>",
+                  "id": "46e333ff-84f4-4c68-83f7-3fad2c41bcd5",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/publications/:publicationId/condition_sets?limit=<integer>&cursor=<string>&page=<integer>&purpose=dynamic_content",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "publications",
+                        ":publicationId",
+                        "condition_sets"
+                      ],
+                      "query": [
+                        {
+                          "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                          "key": "limit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "**Cursor-based pagination (recommended)**: Use this opaque cursor token to fetch the next page of results. When provided, pagination will use cursor-based method which is more efficient and consistent than offset-based pagination.",
+                          "key": "cursor",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "**Offset-based pagination (deprecated)**: Page number for offset-based pagination. Please migrate to cursor-based pagination using the `cursor` parameter. If not specified, results 1-10 from page 1 will be returned.",
+                          "key": "page",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Filter condition sets by purpose. When not specified, all active condition sets are returned.",
+                          "key": "purpose",
+                          "value": "dynamic_content"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "910cde0f-9e79-49b5-b51c-0fc704944921",
+                          "key": "publicationId",
+                          "value": "<string>",
+                          "description": "(Required) The prefixed ID of the publication object"
+                        }
+                      ]
+                    },
+                    "description": "Retrieve all active condition sets for a publication. Condition sets define reusable audience segments for targeting content to specific subscribers. Use the `purpose` parameter to filter by a specific use case."
+                  },
+                  "response": [
+                    {
+                      "id": "ee3a18c2-9add-4467-93a5-2550e9f89157",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/condition_sets?limit=<integer>&cursor=<string>&page=<integer>&purpose=dynamic_content",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "condition_sets"
+                          ],
+                          "query": [
+                            {
+                              "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "**Cursor-based pagination (recommended)**: Use this opaque cursor token to fetch the next page of results. When provided, pagination will use cursor-based method which is more efficient and consistent than offset-based pagination.",
+                              "key": "cursor",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "**Offset-based pagination (deprecated)**: Page number for offset-based pagination. Please migrate to cursor-based pagination using the `cursor` parameter. If not specified, results 1-10 from page 1 will be returned.",
+                              "key": "page",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Filter condition sets by purpose. When not specified, all active condition sets are returned.",
+                              "key": "purpose",
+                              "value": "dynamic_content"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"status\": \"archived\",\n      \"created\": \"<integer>\",\n      \"updated\": \"<integer>\",\n      \"purpose\": \"dynamic_content\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"status\": \"active\",\n      \"created\": \"<integer>\",\n      \"updated\": \"<integer>\",\n      \"purpose\": \"dynamic_content\"\n    }\n  ],\n  \"limit\": \"<integer>\",\n  \"has_more\": \"<boolean>\",\n  \"next_cursor\": \"<string>\",\n  \"total_results\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:12:08.000Z",
+                      "updatedAt": "2026-07-28T01:12:08.000Z",
+                      "uid": "35240-ee3a18c2-9add-4467-93a5-2550e9f89157"
+                    },
+                    {
+                      "id": "3a471aa4-eeec-4c5d-b676-76b6180aaab8",
+                      "name": "Bad Request",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/condition_sets?limit=<integer>&cursor=<string>&page=<integer>&purpose=dynamic_content",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "condition_sets"
+                          ],
+                          "query": [
+                            {
+                              "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "**Cursor-based pagination (recommended)**: Use this opaque cursor token to fetch the next page of results. When provided, pagination will use cursor-based method which is more efficient and consistent than offset-based pagination.",
+                              "key": "cursor",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "**Offset-based pagination (deprecated)**: Page number for offset-based pagination. Please migrate to cursor-based pagination using the `cursor` parameter. If not specified, results 1-10 from page 1 will be returned.",
+                              "key": "page",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Filter condition sets by purpose. When not specified, all active condition sets are returned.",
+                              "key": "purpose",
+                              "value": "dynamic_content"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:12:08.000Z",
+                      "updatedAt": "2026-07-28T01:12:08.000Z",
+                      "uid": "35240-3a471aa4-eeec-4c5d-b676-76b6180aaab8"
+                    },
+                    {
+                      "id": "66f4001c-ac66-40cb-8eac-46300f428bac",
+                      "name": "Resource Not Found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/condition_sets?limit=<integer>&cursor=<string>&page=<integer>&purpose=dynamic_content",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "condition_sets"
+                          ],
+                          "query": [
+                            {
+                              "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "**Cursor-based pagination (recommended)**: Use this opaque cursor token to fetch the next page of results. When provided, pagination will use cursor-based method which is more efficient and consistent than offset-based pagination.",
+                              "key": "cursor",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "**Offset-based pagination (deprecated)**: Page number for offset-based pagination. Please migrate to cursor-based pagination using the `cursor` parameter. If not specified, results 1-10 from page 1 will be returned.",
+                              "key": "page",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Filter condition sets by purpose. When not specified, all active condition sets are returned.",
+                              "key": "purpose",
+                              "value": "dynamic_content"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:12:08.000Z",
+                      "updatedAt": "2026-07-28T01:12:08.000Z",
+                      "uid": "35240-66f4001c-ac66-40cb-8eac-46300f428bac"
+                    },
+                    {
+                      "id": "bc956c2a-da3e-4414-9d86-3e4a10d5948b",
+                      "name": "Rate Limit Exceeded",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/condition_sets?limit=<integer>&cursor=<string>&page=<integer>&purpose=dynamic_content",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "condition_sets"
+                          ],
+                          "query": [
+                            {
+                              "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "**Cursor-based pagination (recommended)**: Use this opaque cursor token to fetch the next page of results. When provided, pagination will use cursor-based method which is more efficient and consistent than offset-based pagination.",
+                              "key": "cursor",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "**Offset-based pagination (deprecated)**: Page number for offset-based pagination. Please migrate to cursor-based pagination using the `cursor` parameter. If not specified, results 1-10 from page 1 will be returned.",
+                              "key": "page",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Filter condition sets by purpose. When not specified, all active condition sets are returned.",
+                              "key": "purpose",
+                              "value": "dynamic_content"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:12:08.000Z",
+                      "updatedAt": "2026-07-28T01:12:08.000Z",
+                      "uid": "35240-bc956c2a-da3e-4414-9d86-3e4a10d5948b"
+                    },
+                    {
+                      "id": "2ba52717-ce55-4287-83a6-39158ef3db73",
+                      "name": "Internal Server Error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/condition_sets?limit=<integer>&cursor=<string>&page=<integer>&purpose=dynamic_content",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "condition_sets"
+                          ],
+                          "query": [
+                            {
+                              "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "**Cursor-based pagination (recommended)**: Use this opaque cursor token to fetch the next page of results. When provided, pagination will use cursor-based method which is more efficient and consistent than offset-based pagination.",
+                              "key": "cursor",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "**Offset-based pagination (deprecated)**: Page number for offset-based pagination. Please migrate to cursor-based pagination using the `cursor` parameter. If not specified, results 1-10 from page 1 will be returned.",
+                              "key": "page",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Filter condition sets by purpose. When not specified, all active condition sets are returned.",
+                              "key": "purpose",
+                              "value": "dynamic_content"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:12:08.000Z",
+                      "updatedAt": "2026-07-28T01:12:08.000Z",
+                      "uid": "35240-2ba52717-ce55-4287-83a6-39158ef3db73"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:12:08.000Z",
+                  "updatedAt": "2026-07-28T01:12:08.000Z",
+                  "uid": "35240-46e333ff-84f4-4c68-83f7-3fad2c41bcd5"
+                }
+              ],
+              "id": "a36e1bac-fdc8-4b5f-b7c7-ec0589d19751",
+              "createdAt": "2026-07-28T01:12:08.000Z",
+              "updatedAt": "2026-07-28T01:12:08.000Z",
+              "uid": "35240-a36e1bac-fdc8-4b5f-b7c7-ec0589d19751"
+            }
+          ],
+          "id": "6bac5fc9-61c4-479d-87fd-af6b1aa9ffcd",
+          "createdAt": "2026-07-28T01:12:08.000Z",
+          "updatedAt": "2026-07-28T01:12:08.000Z",
+          "uid": "35240-6bac5fc9-61c4-479d-87fd-af6b1aa9ffcd"
+        }
+      ],
+      "id": "a48794a8-b030-40d6-8069-9c66412b54c1",
+      "createdAt": "2026-07-28T01:12:08.000Z",
+      "updatedAt": "2026-07-28T01:12:08.000Z",
+      "uid": "35240-a48794a8-b030-40d6-8069-9c66412b54c1"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.beehiiv.com/v2"
+    }
+  ]
+}

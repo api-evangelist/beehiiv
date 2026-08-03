@@ -1,0 +1,395 @@
+{
+  "info": {
+    "_postman_id": "e8740612-c4f9-44b4-b9f2-9792dc4bb7e7",
+    "name": "API Reference subpackage_advertisement_opportunities API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:12:01.000Z",
+    "updatedAt": "2026-07-28T01:12:02.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-e8740612-c4f9-44b4-b9f2-9792dc4bb7e7"
+  },
+  "item": [
+    {
+      "name": "publications",
+      "item": [
+        {
+          "name": "{publicationId}",
+          "item": [
+            {
+              "name": "advertisement_opportunities",
+              "item": [
+                {
+                  "name": "Get advertisement opportunities <Badge intent=\"info\" minimal outlined>OAuth Scope: posts:read</Badge>",
+                  "id": "75942fab-7442-40d1-b58b-c9e5ec18d503",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/publications/:publicationId/advertisement_opportunities",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "publications",
+                        ":publicationId",
+                        "advertisement_opportunities"
+                      ],
+                      "variable": [
+                        {
+                          "id": "597dab4f-4c54-4f63-b0d6-f4baec411486",
+                          "key": "publicationId",
+                          "value": "<string>",
+                          "description": "(Required) The prefixed ID of the publication object"
+                        }
+                      ]
+                    },
+                    "description": "Retrieve a list of accepted advertisement opportunities for the publication."
+                  },
+                  "response": [
+                    {
+                      "id": "0fd94ffb-18f0-49ee-a7f0-1b603924809a",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/advertisement_opportunities",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "advertisement_opportunities"
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"advertiser_name\": \"<string>\",\n      \"payout_rate\": \"<string>\",\n      \"advertisement_kind\": \"<string>\",\n      \"send_by_window_start_at\": \"<integer>\",\n      \"send_by_window_end_at\": \"<integer>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"advertiser_name\": \"<string>\",\n      \"payout_rate\": \"<string>\",\n      \"advertisement_kind\": \"<string>\",\n      \"send_by_window_start_at\": \"<integer>\",\n      \"send_by_window_end_at\": \"<integer>\"\n    }\n  ],\n  \"total_results\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:12:02.000Z",
+                      "updatedAt": "2026-07-28T01:12:02.000Z",
+                      "uid": "35240-0fd94ffb-18f0-49ee-a7f0-1b603924809a"
+                    },
+                    {
+                      "id": "7613ea09-76cb-4825-a5ee-1c7b8eed9154",
+                      "name": "Bad Request",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/advertisement_opportunities",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "advertisement_opportunities"
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:12:02.000Z",
+                      "updatedAt": "2026-07-28T01:12:02.000Z",
+                      "uid": "35240-7613ea09-76cb-4825-a5ee-1c7b8eed9154"
+                    },
+                    {
+                      "id": "5391d1e1-6de4-4b25-8c55-6fb4116eb330",
+                      "name": "Unauthorized",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/advertisement_opportunities",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "advertisement_opportunities"
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:12:02.000Z",
+                      "updatedAt": "2026-07-28T01:12:02.000Z",
+                      "uid": "35240-5391d1e1-6de4-4b25-8c55-6fb4116eb330"
+                    },
+                    {
+                      "id": "837d1e41-74fa-4709-8121-115804875ef3",
+                      "name": "Forbidden",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/advertisement_opportunities",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "advertisement_opportunities"
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:12:02.000Z",
+                      "updatedAt": "2026-07-28T01:12:02.000Z",
+                      "uid": "35240-837d1e41-74fa-4709-8121-115804875ef3"
+                    },
+                    {
+                      "id": "0dcb81a7-3b46-4b4f-9f38-3e8590b0d3ad",
+                      "name": "Resource Not Found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/advertisement_opportunities",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "advertisement_opportunities"
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:12:02.000Z",
+                      "updatedAt": "2026-07-28T01:12:02.000Z",
+                      "uid": "35240-0dcb81a7-3b46-4b4f-9f38-3e8590b0d3ad"
+                    },
+                    {
+                      "id": "4d5640dd-c2ee-412f-be8d-19b7d4a174d4",
+                      "name": "Rate Limit Exceeded",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/advertisement_opportunities",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "advertisement_opportunities"
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:12:02.000Z",
+                      "updatedAt": "2026-07-28T01:12:02.000Z",
+                      "uid": "35240-4d5640dd-c2ee-412f-be8d-19b7d4a174d4"
+                    },
+                    {
+                      "id": "0e29e7cd-7141-4058-94f8-cbdeeed95136",
+                      "name": "Internal Server Error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/advertisement_opportunities",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "advertisement_opportunities"
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:12:02.000Z",
+                      "updatedAt": "2026-07-28T01:12:02.000Z",
+                      "uid": "35240-0e29e7cd-7141-4058-94f8-cbdeeed95136"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:12:02.000Z",
+                  "updatedAt": "2026-07-28T01:12:02.000Z",
+                  "uid": "35240-75942fab-7442-40d1-b58b-c9e5ec18d503"
+                }
+              ],
+              "id": "e369064b-69fd-413b-8a0a-1859a6526746",
+              "createdAt": "2026-07-28T01:12:02.000Z",
+              "updatedAt": "2026-07-28T01:12:02.000Z",
+              "uid": "35240-e369064b-69fd-413b-8a0a-1859a6526746"
+            }
+          ],
+          "id": "727b0c23-8dcc-4c6b-9fd5-0a667146a339",
+          "createdAt": "2026-07-28T01:12:02.000Z",
+          "updatedAt": "2026-07-28T01:12:02.000Z",
+          "uid": "35240-727b0c23-8dcc-4c6b-9fd5-0a667146a339"
+        }
+      ],
+      "id": "7c454706-54b2-4c33-ac6a-2270e994defa",
+      "createdAt": "2026-07-28T01:12:02.000Z",
+      "updatedAt": "2026-07-28T01:12:02.000Z",
+      "uid": "35240-7c454706-54b2-4c33-ac6a-2270e994defa"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.beehiiv.com/v2"
+    }
+  ]
+}

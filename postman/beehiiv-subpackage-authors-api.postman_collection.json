@@ -1,0 +1,924 @@
+{
+  "info": {
+    "_postman_id": "97c70344-d99f-4fa1-9587-29bd10abad6d",
+    "name": "API Reference subpackage_advertisement_opportunities subpackage_authors API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:12:02.000Z",
+    "updatedAt": "2026-07-28T01:12:03.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-97c70344-d99f-4fa1-9587-29bd10abad6d"
+  },
+  "item": [
+    {
+      "name": "publications",
+      "item": [
+        {
+          "name": "{publicationId}",
+          "item": [
+            {
+              "name": "authors",
+              "item": [
+                {
+                  "name": "{authorId}",
+                  "item": [
+                    {
+                      "name": "Get author",
+                      "id": "d9e0fbe5-356f-428a-93de-cfba03efec58",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/authors/:authorId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "authors",
+                            ":authorId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "e0209c1c-d34f-41af-9dd1-b1d13dd11650",
+                              "key": "publicationId",
+                              "value": "<string>",
+                              "description": "(Required) The prefixed ID of the publication object"
+                            },
+                            {
+                              "id": "25d780ff-ba72-401f-95cb-f84c59b30bb1",
+                              "key": "authorId",
+                              "value": "<string>",
+                              "description": "(Required) The author identifier. This accepts author UUID, full name, or first name."
+                            }
+                          ]
+                        },
+                        "description": "Retrieve a single author from a publication."
+                      },
+                      "response": [
+                        {
+                          "id": "8241b5d4-1c1d-4191-8f30-a94eb37a6894",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/authors/:authorId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "authors",
+                                ":authorId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "authorId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"data\": {\n    \"id\": \"<string>\",\n    \"type\": \"guest_author\",\n    \"name\": \"<string>\",\n    \"social_media_links\": {\n      \"twitter_handle\": \"<string>\",\n      \"facebook_url\": \"<string>\",\n      \"instagram_url\": \"<string>\",\n      \"linkedin_url\": \"<string>\",\n      \"youtube_url\": \"<string>\",\n      \"tiktok_url\": \"<string>\",\n      \"discord_url\": \"<string>\",\n      \"bluesky_url\": \"<string>\",\n      \"rss_url\": \"<string>\"\n    },\n    \"bio\": \"<string>\",\n    \"bio_image_url\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T01:12:03.000Z",
+                          "updatedAt": "2026-07-28T01:12:03.000Z",
+                          "uid": "35240-8241b5d4-1c1d-4191-8f30-a94eb37a6894"
+                        },
+                        {
+                          "id": "be71a7cd-07f2-4b30-bfe8-20472df644f0",
+                          "name": "Bad Request",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/authors/:authorId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "authors",
+                                ":authorId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "authorId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:12:03.000Z",
+                          "updatedAt": "2026-07-28T01:12:03.000Z",
+                          "uid": "35240-be71a7cd-07f2-4b30-bfe8-20472df644f0"
+                        },
+                        {
+                          "id": "36729f7d-9380-4dcb-80ea-f3d2e3f4e2bb",
+                          "name": "Unauthorized",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/authors/:authorId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "authors",
+                                ":authorId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "authorId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:12:03.000Z",
+                          "updatedAt": "2026-07-28T01:12:03.000Z",
+                          "uid": "35240-36729f7d-9380-4dcb-80ea-f3d2e3f4e2bb"
+                        },
+                        {
+                          "id": "90b9dc2b-c756-4ebe-8c1d-c664fdd29985",
+                          "name": "Forbidden",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/authors/:authorId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "authors",
+                                ":authorId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "authorId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:12:03.000Z",
+                          "updatedAt": "2026-07-28T01:12:03.000Z",
+                          "uid": "35240-90b9dc2b-c756-4ebe-8c1d-c664fdd29985"
+                        },
+                        {
+                          "id": "2f5afd16-f4c0-48f6-8126-1f704c288e62",
+                          "name": "Resource Not Found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/authors/:authorId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "authors",
+                                ":authorId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "authorId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:12:03.000Z",
+                          "updatedAt": "2026-07-28T01:12:03.000Z",
+                          "uid": "35240-2f5afd16-f4c0-48f6-8126-1f704c288e62"
+                        },
+                        {
+                          "id": "77ff068e-5c1b-411b-b026-8535ed1c382d",
+                          "name": "Rate Limit Exceeded",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/authors/:authorId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "authors",
+                                ":authorId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "authorId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:12:03.000Z",
+                          "updatedAt": "2026-07-28T01:12:03.000Z",
+                          "uid": "35240-77ff068e-5c1b-411b-b026-8535ed1c382d"
+                        },
+                        {
+                          "id": "dbd18484-05a2-4273-994e-ae0af3358a34",
+                          "name": "Internal Server Error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/authors/:authorId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "authors",
+                                ":authorId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "authorId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:12:03.000Z",
+                          "updatedAt": "2026-07-28T01:12:03.000Z",
+                          "uid": "35240-dbd18484-05a2-4273-994e-ae0af3358a34"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:12:03.000Z",
+                      "updatedAt": "2026-07-28T01:12:03.000Z",
+                      "uid": "35240-d9e0fbe5-356f-428a-93de-cfba03efec58"
+                    }
+                  ],
+                  "id": "a32f7154-4f4e-45d2-8e96-7f316fc542f2",
+                  "createdAt": "2026-07-28T01:12:03.000Z",
+                  "updatedAt": "2026-07-28T01:12:03.000Z",
+                  "uid": "35240-a32f7154-4f4e-45d2-8e96-7f316fc542f2"
+                },
+                {
+                  "name": "List authors",
+                  "id": "5d06b63d-f9de-4d35-8839-5b4f89cf1f0c",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/publications/:publicationId/authors?limit=<integer>&page=<integer>&name=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "publications",
+                        ":publicationId",
+                        "authors"
+                      ],
+                      "query": [
+                        {
+                          "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                          "key": "limit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).<br>If not specified, results 1-10 from page 1 will be returned.",
+                          "key": "page",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Optionally filter authors by full name or first name (case-insensitive).",
+                          "key": "name",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "cde4528e-edc2-4b62-b035-a45655699930",
+                          "key": "publicationId",
+                          "value": "<string>",
+                          "description": "(Required) The prefixed ID of the publication object"
+                        }
+                      ]
+                    },
+                    "description": "Retrieve a list of authors available for the publication."
+                  },
+                  "response": [
+                    {
+                      "id": "a6f51ace-678a-4415-ac51-9abddfd3ba9a",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/authors?limit=<integer>&page=<integer>&name=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "authors"
+                          ],
+                          "query": [
+                            {
+                              "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).<br>If not specified, results 1-10 from page 1 will be returned.",
+                              "key": "page",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Optionally filter authors by full name or first name (case-insensitive).",
+                              "key": "name",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"type\": \"user\",\n      \"name\": \"<string>\",\n      \"social_media_links\": {\n        \"twitter_handle\": \"<string>\",\n        \"facebook_url\": \"<string>\",\n        \"instagram_url\": \"<string>\",\n        \"linkedin_url\": \"<string>\",\n        \"youtube_url\": \"<string>\",\n        \"tiktok_url\": \"<string>\",\n        \"discord_url\": \"<string>\",\n        \"bluesky_url\": \"<string>\",\n        \"rss_url\": \"<string>\"\n      },\n      \"bio\": \"<string>\",\n      \"bio_image_url\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"type\": \"user\",\n      \"name\": \"<string>\",\n      \"social_media_links\": {\n        \"twitter_handle\": \"<string>\",\n        \"facebook_url\": \"<string>\",\n        \"instagram_url\": \"<string>\",\n        \"linkedin_url\": \"<string>\",\n        \"youtube_url\": \"<string>\",\n        \"tiktok_url\": \"<string>\",\n        \"discord_url\": \"<string>\",\n        \"bluesky_url\": \"<string>\",\n        \"rss_url\": \"<string>\"\n      },\n      \"bio\": \"<string>\",\n      \"bio_image_url\": \"<string>\"\n    }\n  ],\n  \"limit\": \"<integer>\",\n  \"page\": 1,\n  \"total_results\": \"<integer>\",\n  \"total_pages\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:12:03.000Z",
+                      "updatedAt": "2026-07-28T01:12:03.000Z",
+                      "uid": "35240-a6f51ace-678a-4415-ac51-9abddfd3ba9a"
+                    },
+                    {
+                      "id": "fcf3a92e-94d4-4433-a149-88d6455bd6f8",
+                      "name": "Bad Request",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/authors?limit=<integer>&page=<integer>&name=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "authors"
+                          ],
+                          "query": [
+                            {
+                              "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).<br>If not specified, results 1-10 from page 1 will be returned.",
+                              "key": "page",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Optionally filter authors by full name or first name (case-insensitive).",
+                              "key": "name",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:12:03.000Z",
+                      "updatedAt": "2026-07-28T01:12:03.000Z",
+                      "uid": "35240-fcf3a92e-94d4-4433-a149-88d6455bd6f8"
+                    },
+                    {
+                      "id": "a1e6a9b7-75ac-43fa-97af-5b26de4776c4",
+                      "name": "Unauthorized",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/authors?limit=<integer>&page=<integer>&name=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "authors"
+                          ],
+                          "query": [
+                            {
+                              "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).<br>If not specified, results 1-10 from page 1 will be returned.",
+                              "key": "page",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Optionally filter authors by full name or first name (case-insensitive).",
+                              "key": "name",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:12:03.000Z",
+                      "updatedAt": "2026-07-28T01:12:03.000Z",
+                      "uid": "35240-a1e6a9b7-75ac-43fa-97af-5b26de4776c4"
+                    },
+                    {
+                      "id": "c63ae145-b11e-4874-bff6-196889a37fa0",
+                      "name": "Forbidden",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/authors?limit=<integer>&page=<integer>&name=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "authors"
+                          ],
+                          "query": [
+                            {
+                              "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).<br>If not specified, results 1-10 from page 1 will be returned.",
+                              "key": "page",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Optionally filter authors by full name or first name (case-insensitive).",
+                              "key": "name",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:12:03.000Z",
+                      "updatedAt": "2026-07-28T01:12:03.000Z",
+                      "uid": "35240-c63ae145-b11e-4874-bff6-196889a37fa0"
+                    },
+                    {
+                      "id": "1e3d494b-518f-4bd6-b554-6a3cee2167e8",
+                      "name": "Resource Not Found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/authors?limit=<integer>&page=<integer>&name=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "authors"
+                          ],
+                          "query": [
+                            {
+                              "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).<br>If not specified, results 1-10 from page 1 will be returned.",
+                              "key": "page",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Optionally filter authors by full name or first name (case-insensitive).",
+                              "key": "name",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:12:03.000Z",
+                      "updatedAt": "2026-07-28T01:12:03.000Z",
+                      "uid": "35240-1e3d494b-518f-4bd6-b554-6a3cee2167e8"
+                    },
+                    {
+                      "id": "f4072b06-da64-4a4c-a8d7-669c185e36d2",
+                      "name": "Rate Limit Exceeded",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/authors?limit=<integer>&page=<integer>&name=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "authors"
+                          ],
+                          "query": [
+                            {
+                              "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).<br>If not specified, results 1-10 from page 1 will be returned.",
+                              "key": "page",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Optionally filter authors by full name or first name (case-insensitive).",
+                              "key": "name",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:12:03.000Z",
+                      "updatedAt": "2026-07-28T01:12:03.000Z",
+                      "uid": "35240-f4072b06-da64-4a4c-a8d7-669c185e36d2"
+                    },
+                    {
+                      "id": "c0d36864-64fe-4564-bda5-f1d7197035d6",
+                      "name": "Internal Server Error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/authors?limit=<integer>&page=<integer>&name=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "authors"
+                          ],
+                          "query": [
+                            {
+                              "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).<br>If not specified, results 1-10 from page 1 will be returned.",
+                              "key": "page",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Optionally filter authors by full name or first name (case-insensitive).",
+                              "key": "name",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:12:03.000Z",
+                      "updatedAt": "2026-07-28T01:12:03.000Z",
+                      "uid": "35240-c0d36864-64fe-4564-bda5-f1d7197035d6"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:12:03.000Z",
+                  "updatedAt": "2026-07-28T01:12:03.000Z",
+                  "uid": "35240-5d06b63d-f9de-4d35-8839-5b4f89cf1f0c"
+                }
+              ],
+              "id": "aa0058fd-fa5f-4a4f-b63d-a33624959bb8",
+              "createdAt": "2026-07-28T01:12:03.000Z",
+              "updatedAt": "2026-07-28T01:12:03.000Z",
+              "uid": "35240-aa0058fd-fa5f-4a4f-b63d-a33624959bb8"
+            }
+          ],
+          "id": "514ea100-6971-4077-b2dd-f0237a47ee0f",
+          "createdAt": "2026-07-28T01:12:03.000Z",
+          "updatedAt": "2026-07-28T01:12:03.000Z",
+          "uid": "35240-514ea100-6971-4077-b2dd-f0237a47ee0f"
+        }
+      ],
+      "id": "1e203299-ea83-47b2-b98f-a003c1514da5",
+      "createdAt": "2026-07-28T01:12:03.000Z",
+      "updatedAt": "2026-07-28T01:12:03.000Z",
+      "uid": "35240-1e203299-ea83-47b2-b98f-a003c1514da5"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.beehiiv.com/v2"
+    }
+  ]
+}

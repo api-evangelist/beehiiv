@@ -1,0 +1,1867 @@
+{
+  "info": {
+    "_postman_id": "e900aa13-31f3-45fb-97e7-4982a22410ec",
+    "name": "API Reference subpackage_advertisement_opportunities subpackage_tiers API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:13:21.000Z",
+    "updatedAt": "2026-07-28T01:13:22.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-e900aa13-31f3-45fb-97e7-4982a22410ec"
+  },
+  "item": [
+    {
+      "name": "publications",
+      "item": [
+        {
+          "name": "{publicationId}",
+          "item": [
+            {
+              "name": "tiers",
+              "item": [
+                {
+                  "name": "{tierId}",
+                  "item": [
+                    {
+                      "name": "Get tier <Badge intent=\"info\" minimal outlined>OAuth Scope: tiers:read</Badge>",
+                      "id": "1584b4f9-ed28-4787-b59d-9d5456448c22",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/tiers/:tierId?expand[]=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "tiers",
+                            ":tierId"
+                          ],
+                          "query": [
+                            {
+                              "description": "Optional list of expandable objects.<br>`stats` - Returns statistics about the tier(s).<br>`prices` - Returns prices for the tier(s).",
+                              "key": "expand[]",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "cd79bf36-8575-432f-93aa-1e4801816695",
+                              "key": "publicationId",
+                              "value": "<string>",
+                              "description": "(Required) The prefixed ID of the publication object"
+                            },
+                            {
+                              "id": "63141dec-b0c3-4c61-bfbf-46c5f4657f68",
+                              "key": "tierId",
+                              "value": "<string>",
+                              "description": "(Required) The prefixed ID of the tier object"
+                            }
+                          ]
+                        },
+                        "description": "Retrieve a single tier belonging to a specific publication"
+                      },
+                      "response": [
+                        {
+                          "id": "24067970-0dc5-44b2-8e90-0786fad1f862",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/tiers/:tierId?expand[]=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "tiers",
+                                ":tierId"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Optional list of expandable objects.<br>`stats` - Returns statistics about the tier(s).<br>`prices` - Returns prices for the tier(s).",
+                                  "key": "expand[]",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "tierId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"data\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"status\": \"archived\",\n    \"description\": \"Super engaged readers\",\n    \"stats\": {\n      \"active_subscriptions\": \"<integer>\"\n    },\n    \"prices\": [\n      {\n        \"id\": \"<string>\",\n        \"currency\": \"usd\",\n        \"amount_cents\": \"<integer>\",\n        \"enabled\": true,\n        \"interval\": \"quarter\",\n        \"denominator\": \"<string>\",\n        \"cta\": \"<string>\",\n        \"features\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"id\": \"<string>\",\n        \"currency\": \"eur\",\n        \"amount_cents\": \"<integer>\",\n        \"enabled\": true,\n        \"interval\": \"quarter\",\n        \"denominator\": \"<string>\",\n        \"cta\": \"<string>\",\n        \"features\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ]\n  }\n}",
+                          "createdAt": "2026-07-28T01:13:22.000Z",
+                          "updatedAt": "2026-07-28T01:13:22.000Z",
+                          "uid": "35240-24067970-0dc5-44b2-8e90-0786fad1f862"
+                        },
+                        {
+                          "id": "1278078a-e677-488c-a6c8-57b041b2478c",
+                          "name": "Bad Request",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/tiers/:tierId?expand[]=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "tiers",
+                                ":tierId"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Optional list of expandable objects.<br>`stats` - Returns statistics about the tier(s).<br>`prices` - Returns prices for the tier(s).",
+                                  "key": "expand[]",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "tierId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:13:22.000Z",
+                          "updatedAt": "2026-07-28T01:13:22.000Z",
+                          "uid": "35240-1278078a-e677-488c-a6c8-57b041b2478c"
+                        },
+                        {
+                          "id": "ec666892-5dec-41db-939d-f3c2f3fa99d1",
+                          "name": "Resource Not Found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/tiers/:tierId?expand[]=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "tiers",
+                                ":tierId"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Optional list of expandable objects.<br>`stats` - Returns statistics about the tier(s).<br>`prices` - Returns prices for the tier(s).",
+                                  "key": "expand[]",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "tierId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:13:22.000Z",
+                          "updatedAt": "2026-07-28T01:13:22.000Z",
+                          "uid": "35240-ec666892-5dec-41db-939d-f3c2f3fa99d1"
+                        },
+                        {
+                          "id": "beadc4af-48a3-45ed-84f5-b315c84632b2",
+                          "name": "Rate Limit Exceeded",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/tiers/:tierId?expand[]=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "tiers",
+                                ":tierId"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Optional list of expandable objects.<br>`stats` - Returns statistics about the tier(s).<br>`prices` - Returns prices for the tier(s).",
+                                  "key": "expand[]",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "tierId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:13:22.000Z",
+                          "updatedAt": "2026-07-28T01:13:22.000Z",
+                          "uid": "35240-beadc4af-48a3-45ed-84f5-b315c84632b2"
+                        },
+                        {
+                          "id": "053c4c28-17c2-441f-a3aa-161b0ed2adca",
+                          "name": "Internal Server Error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/tiers/:tierId?expand[]=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "tiers",
+                                ":tierId"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Optional list of expandable objects.<br>`stats` - Returns statistics about the tier(s).<br>`prices` - Returns prices for the tier(s).",
+                                  "key": "expand[]",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "tierId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:13:22.000Z",
+                          "updatedAt": "2026-07-28T01:13:22.000Z",
+                          "uid": "35240-053c4c28-17c2-441f-a3aa-161b0ed2adca"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:13:22.000Z",
+                      "updatedAt": "2026-07-28T01:13:22.000Z",
+                      "uid": "35240-1584b4f9-ed28-4787-b59d-9d5456448c22"
+                    },
+                    {
+                      "name": "Update a tier <Badge intent=\"info\" minimal outlined>OAuth Scope: tiers:write</Badge>",
+                      "id": "0e9315ba-f555-407b-9549-a6a6f07ef96b",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"prices_attributes\": [\n    {\n      \"id\": \"<string>\",\n      \"currency\": \"usd\",\n      \"amount_cents\": \"<integer>\",\n      \"interval\": \"month\",\n      \"interval_display\": \"<string>\",\n      \"cta\": \"<string>\",\n      \"features\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"delete\": false\n    },\n    {\n      \"id\": \"<string>\",\n      \"currency\": \"inr\",\n      \"amount_cents\": \"<integer>\",\n      \"interval\": \"one_time\",\n      \"interval_display\": \"<string>\",\n      \"cta\": \"<string>\",\n      \"features\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"delete\": false\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/tiers/:tierId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "tiers",
+                            ":tierId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "82c6dfdd-df6f-4e77-af72-d5719c8e8dbf",
+                              "key": "publicationId",
+                              "value": "<string>",
+                              "description": "(Required) The prefixed ID of the publication object"
+                            },
+                            {
+                              "id": "0d207164-5a34-4762-9d95-de07636c7a14",
+                              "key": "tierId",
+                              "value": "<string>",
+                              "description": "(Required) The prefixed ID of the tier object"
+                            }
+                          ]
+                        },
+                        "description": "Update an existing tier belonging to a specific publication"
+                      },
+                      "response": [
+                        {
+                          "id": "0522955c-39d6-46da-875b-e79d548a0f96",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"prices_attributes\": [\n    {\n      \"id\": \"<string>\",\n      \"currency\": \"usd\",\n      \"amount_cents\": \"<integer>\",\n      \"interval\": \"month\",\n      \"interval_display\": \"<string>\",\n      \"cta\": \"<string>\",\n      \"features\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"delete\": false\n    },\n    {\n      \"id\": \"<string>\",\n      \"currency\": \"inr\",\n      \"amount_cents\": \"<integer>\",\n      \"interval\": \"one_time\",\n      \"interval_display\": \"<string>\",\n      \"cta\": \"<string>\",\n      \"features\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"delete\": false\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/tiers/:tierId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "tiers",
+                                ":tierId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "tierId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"data\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"status\": \"archived\",\n    \"description\": \"Super engaged readers\",\n    \"stats\": {\n      \"active_subscriptions\": \"<integer>\"\n    },\n    \"prices\": [\n      {\n        \"id\": \"<string>\",\n        \"currency\": \"usd\",\n        \"amount_cents\": \"<integer>\",\n        \"enabled\": true,\n        \"interval\": \"quarter\",\n        \"denominator\": \"<string>\",\n        \"cta\": \"<string>\",\n        \"features\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"id\": \"<string>\",\n        \"currency\": \"eur\",\n        \"amount_cents\": \"<integer>\",\n        \"enabled\": true,\n        \"interval\": \"quarter\",\n        \"denominator\": \"<string>\",\n        \"cta\": \"<string>\",\n        \"features\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ]\n  }\n}",
+                          "createdAt": "2026-07-28T01:13:22.000Z",
+                          "updatedAt": "2026-07-28T01:13:22.000Z",
+                          "uid": "35240-0522955c-39d6-46da-875b-e79d548a0f96"
+                        },
+                        {
+                          "id": "2ffa37a3-6263-46f1-9de1-bafa27815bd1",
+                          "name": "Bad Request",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"prices_attributes\": [\n    {\n      \"id\": \"<string>\",\n      \"currency\": \"usd\",\n      \"amount_cents\": \"<integer>\",\n      \"interval\": \"month\",\n      \"interval_display\": \"<string>\",\n      \"cta\": \"<string>\",\n      \"features\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"delete\": false\n    },\n    {\n      \"id\": \"<string>\",\n      \"currency\": \"inr\",\n      \"amount_cents\": \"<integer>\",\n      \"interval\": \"one_time\",\n      \"interval_display\": \"<string>\",\n      \"cta\": \"<string>\",\n      \"features\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"delete\": false\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/tiers/:tierId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "tiers",
+                                ":tierId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "tierId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:13:22.000Z",
+                          "updatedAt": "2026-07-28T01:13:22.000Z",
+                          "uid": "35240-2ffa37a3-6263-46f1-9de1-bafa27815bd1"
+                        },
+                        {
+                          "id": "623a7e4f-91da-4cc2-ab53-8372a67dbdf2",
+                          "name": "Resource Not Found",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"prices_attributes\": [\n    {\n      \"id\": \"<string>\",\n      \"currency\": \"usd\",\n      \"amount_cents\": \"<integer>\",\n      \"interval\": \"month\",\n      \"interval_display\": \"<string>\",\n      \"cta\": \"<string>\",\n      \"features\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"delete\": false\n    },\n    {\n      \"id\": \"<string>\",\n      \"currency\": \"inr\",\n      \"amount_cents\": \"<integer>\",\n      \"interval\": \"one_time\",\n      \"interval_display\": \"<string>\",\n      \"cta\": \"<string>\",\n      \"features\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"delete\": false\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/tiers/:tierId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "tiers",
+                                ":tierId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "tierId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:13:22.000Z",
+                          "updatedAt": "2026-07-28T01:13:22.000Z",
+                          "uid": "35240-623a7e4f-91da-4cc2-ab53-8372a67dbdf2"
+                        },
+                        {
+                          "id": "bb55cf1a-ea5c-47f8-a355-504f39182281",
+                          "name": "Rate Limit Exceeded",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"prices_attributes\": [\n    {\n      \"id\": \"<string>\",\n      \"currency\": \"usd\",\n      \"amount_cents\": \"<integer>\",\n      \"interval\": \"month\",\n      \"interval_display\": \"<string>\",\n      \"cta\": \"<string>\",\n      \"features\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"delete\": false\n    },\n    {\n      \"id\": \"<string>\",\n      \"currency\": \"inr\",\n      \"amount_cents\": \"<integer>\",\n      \"interval\": \"one_time\",\n      \"interval_display\": \"<string>\",\n      \"cta\": \"<string>\",\n      \"features\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"delete\": false\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/tiers/:tierId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "tiers",
+                                ":tierId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "tierId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:13:22.000Z",
+                          "updatedAt": "2026-07-28T01:13:22.000Z",
+                          "uid": "35240-bb55cf1a-ea5c-47f8-a355-504f39182281"
+                        },
+                        {
+                          "id": "2d8e1fb8-ed6e-4eee-92e6-af94828eadde",
+                          "name": "Internal Server Error",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"prices_attributes\": [\n    {\n      \"id\": \"<string>\",\n      \"currency\": \"usd\",\n      \"amount_cents\": \"<integer>\",\n      \"interval\": \"month\",\n      \"interval_display\": \"<string>\",\n      \"cta\": \"<string>\",\n      \"features\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"delete\": false\n    },\n    {\n      \"id\": \"<string>\",\n      \"currency\": \"inr\",\n      \"amount_cents\": \"<integer>\",\n      \"interval\": \"one_time\",\n      \"interval_display\": \"<string>\",\n      \"cta\": \"<string>\",\n      \"features\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"delete\": false\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/tiers/:tierId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "tiers",
+                                ":tierId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "tierId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:13:22.000Z",
+                          "updatedAt": "2026-07-28T01:13:22.000Z",
+                          "uid": "35240-2d8e1fb8-ed6e-4eee-92e6-af94828eadde"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:13:22.000Z",
+                      "updatedAt": "2026-07-28T01:13:22.000Z",
+                      "uid": "35240-0e9315ba-f555-407b-9549-a6a6f07ef96b"
+                    },
+                    {
+                      "name": "Update a tier <Badge intent=\"info\" minimal outlined>OAuth Scope: tiers:write</Badge>",
+                      "id": "e4f163d9-0152-4afe-ac34-1e0b896e7a91",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"prices_attributes\": [\n    {\n      \"id\": \"<string>\",\n      \"currency\": \"usd\",\n      \"amount_cents\": \"<integer>\",\n      \"interval\": \"month\",\n      \"interval_display\": \"<string>\",\n      \"cta\": \"<string>\",\n      \"features\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"delete\": false\n    },\n    {\n      \"id\": \"<string>\",\n      \"currency\": \"inr\",\n      \"amount_cents\": \"<integer>\",\n      \"interval\": \"one_time\",\n      \"interval_display\": \"<string>\",\n      \"cta\": \"<string>\",\n      \"features\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"delete\": false\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/tiers/:tierId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "tiers",
+                            ":tierId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "5f13c63e-f3bf-42eb-9087-86bab9c27323",
+                              "key": "publicationId",
+                              "value": "<string>",
+                              "description": "(Required) The prefixed ID of the publication object"
+                            },
+                            {
+                              "id": "2fdbe5ca-7f4b-4bc1-bc05-4e60e228ee02",
+                              "key": "tierId",
+                              "value": "<string>",
+                              "description": "(Required) The prefixed ID of the tier object"
+                            }
+                          ]
+                        },
+                        "description": "Update an existing tier belonging to a specific publication"
+                      },
+                      "response": [
+                        {
+                          "id": "d68cb7d5-7f05-4faa-8b1d-c41c1aa7a39f",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"prices_attributes\": [\n    {\n      \"id\": \"<string>\",\n      \"currency\": \"usd\",\n      \"amount_cents\": \"<integer>\",\n      \"interval\": \"month\",\n      \"interval_display\": \"<string>\",\n      \"cta\": \"<string>\",\n      \"features\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"delete\": false\n    },\n    {\n      \"id\": \"<string>\",\n      \"currency\": \"inr\",\n      \"amount_cents\": \"<integer>\",\n      \"interval\": \"one_time\",\n      \"interval_display\": \"<string>\",\n      \"cta\": \"<string>\",\n      \"features\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"delete\": false\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/tiers/:tierId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "tiers",
+                                ":tierId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "tierId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"data\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"status\": \"archived\",\n    \"description\": \"Super engaged readers\",\n    \"stats\": {\n      \"active_subscriptions\": \"<integer>\"\n    },\n    \"prices\": [\n      {\n        \"id\": \"<string>\",\n        \"currency\": \"usd\",\n        \"amount_cents\": \"<integer>\",\n        \"enabled\": true,\n        \"interval\": \"quarter\",\n        \"denominator\": \"<string>\",\n        \"cta\": \"<string>\",\n        \"features\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"id\": \"<string>\",\n        \"currency\": \"eur\",\n        \"amount_cents\": \"<integer>\",\n        \"enabled\": true,\n        \"interval\": \"quarter\",\n        \"denominator\": \"<string>\",\n        \"cta\": \"<string>\",\n        \"features\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ]\n  }\n}",
+                          "createdAt": "2026-07-28T01:13:22.000Z",
+                          "updatedAt": "2026-07-28T01:13:22.000Z",
+                          "uid": "35240-d68cb7d5-7f05-4faa-8b1d-c41c1aa7a39f"
+                        },
+                        {
+                          "id": "183657be-fd60-4df5-a167-0723b023e38a",
+                          "name": "Bad Request",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"prices_attributes\": [\n    {\n      \"id\": \"<string>\",\n      \"currency\": \"usd\",\n      \"amount_cents\": \"<integer>\",\n      \"interval\": \"month\",\n      \"interval_display\": \"<string>\",\n      \"cta\": \"<string>\",\n      \"features\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"delete\": false\n    },\n    {\n      \"id\": \"<string>\",\n      \"currency\": \"inr\",\n      \"amount_cents\": \"<integer>\",\n      \"interval\": \"one_time\",\n      \"interval_display\": \"<string>\",\n      \"cta\": \"<string>\",\n      \"features\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"delete\": false\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/tiers/:tierId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "tiers",
+                                ":tierId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "tierId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:13:22.000Z",
+                          "updatedAt": "2026-07-28T01:13:22.000Z",
+                          "uid": "35240-183657be-fd60-4df5-a167-0723b023e38a"
+                        },
+                        {
+                          "id": "51c48052-b9c8-4bb1-a7e8-57d4da468cf8",
+                          "name": "Resource Not Found",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"prices_attributes\": [\n    {\n      \"id\": \"<string>\",\n      \"currency\": \"usd\",\n      \"amount_cents\": \"<integer>\",\n      \"interval\": \"month\",\n      \"interval_display\": \"<string>\",\n      \"cta\": \"<string>\",\n      \"features\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"delete\": false\n    },\n    {\n      \"id\": \"<string>\",\n      \"currency\": \"inr\",\n      \"amount_cents\": \"<integer>\",\n      \"interval\": \"one_time\",\n      \"interval_display\": \"<string>\",\n      \"cta\": \"<string>\",\n      \"features\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"delete\": false\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/tiers/:tierId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "tiers",
+                                ":tierId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "tierId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:13:22.000Z",
+                          "updatedAt": "2026-07-28T01:13:22.000Z",
+                          "uid": "35240-51c48052-b9c8-4bb1-a7e8-57d4da468cf8"
+                        },
+                        {
+                          "id": "9cef2eb9-fad1-4a9f-8fda-d4bb2ad05c8c",
+                          "name": "Rate Limit Exceeded",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"prices_attributes\": [\n    {\n      \"id\": \"<string>\",\n      \"currency\": \"usd\",\n      \"amount_cents\": \"<integer>\",\n      \"interval\": \"month\",\n      \"interval_display\": \"<string>\",\n      \"cta\": \"<string>\",\n      \"features\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"delete\": false\n    },\n    {\n      \"id\": \"<string>\",\n      \"currency\": \"inr\",\n      \"amount_cents\": \"<integer>\",\n      \"interval\": \"one_time\",\n      \"interval_display\": \"<string>\",\n      \"cta\": \"<string>\",\n      \"features\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"delete\": false\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/tiers/:tierId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "tiers",
+                                ":tierId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "tierId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:13:22.000Z",
+                          "updatedAt": "2026-07-28T01:13:22.000Z",
+                          "uid": "35240-9cef2eb9-fad1-4a9f-8fda-d4bb2ad05c8c"
+                        },
+                        {
+                          "id": "e47bfcbf-c9db-429a-98cd-c77a9f42fc49",
+                          "name": "Internal Server Error",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"prices_attributes\": [\n    {\n      \"id\": \"<string>\",\n      \"currency\": \"usd\",\n      \"amount_cents\": \"<integer>\",\n      \"interval\": \"month\",\n      \"interval_display\": \"<string>\",\n      \"cta\": \"<string>\",\n      \"features\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"delete\": false\n    },\n    {\n      \"id\": \"<string>\",\n      \"currency\": \"inr\",\n      \"amount_cents\": \"<integer>\",\n      \"interval\": \"one_time\",\n      \"interval_display\": \"<string>\",\n      \"cta\": \"<string>\",\n      \"features\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"delete\": false\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/tiers/:tierId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "tiers",
+                                ":tierId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "tierId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:13:22.000Z",
+                          "updatedAt": "2026-07-28T01:13:22.000Z",
+                          "uid": "35240-e47bfcbf-c9db-429a-98cd-c77a9f42fc49"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:13:22.000Z",
+                      "updatedAt": "2026-07-28T01:13:22.000Z",
+                      "uid": "35240-e4f163d9-0152-4afe-ac34-1e0b896e7a91"
+                    }
+                  ],
+                  "id": "54a9ddd8-366b-40d5-a062-00e979efbb43",
+                  "createdAt": "2026-07-28T01:13:22.000Z",
+                  "updatedAt": "2026-07-28T01:13:22.000Z",
+                  "uid": "35240-54a9ddd8-366b-40d5-a062-00e979efbb43"
+                },
+                {
+                  "name": "Create a tier <Badge intent=\"info\" minimal outlined>OAuth Scope: tiers:write</Badge>",
+                  "id": "2020420c-9777-427d-9a74-1746750f2c01",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"prices_attributes\": [\n    {\n      \"currency\": \"inr\",\n      \"amount_cents\": \"<integer>\",\n      \"interval\": \"one_time\",\n      \"enabled\": true,\n      \"interval_display\": \"<string>\",\n      \"cta\": \"<string>\",\n      \"features\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"currency\": \"brl\",\n      \"amount_cents\": \"<integer>\",\n      \"interval\": \"donation\",\n      \"enabled\": true,\n      \"interval_display\": \"<string>\",\n      \"cta\": \"<string>\",\n      \"features\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/publications/:publicationId/tiers",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "publications",
+                        ":publicationId",
+                        "tiers"
+                      ],
+                      "variable": [
+                        {
+                          "id": "625c54b1-d425-4f8b-a2a8-af04a273aa14",
+                          "key": "publicationId",
+                          "value": "<string>",
+                          "description": "(Required) The prefixed ID of the publication object"
+                        }
+                      ]
+                    },
+                    "description": "Create a new tier for a publication."
+                  },
+                  "response": [
+                    {
+                      "id": "a6e0972a-6829-4e8b-b8a3-26e48de710a2",
+                      "name": "Created",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"prices_attributes\": [\n    {\n      \"currency\": \"inr\",\n      \"amount_cents\": \"<integer>\",\n      \"interval\": \"one_time\",\n      \"enabled\": true,\n      \"interval_display\": \"<string>\",\n      \"cta\": \"<string>\",\n      \"features\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"currency\": \"brl\",\n      \"amount_cents\": \"<integer>\",\n      \"interval\": \"donation\",\n      \"enabled\": true,\n      \"interval_display\": \"<string>\",\n      \"cta\": \"<string>\",\n      \"features\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/tiers",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "tiers"
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"data\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"status\": \"archived\",\n    \"description\": \"Super engaged readers\",\n    \"stats\": {\n      \"active_subscriptions\": \"<integer>\"\n    },\n    \"prices\": [\n      {\n        \"id\": \"<string>\",\n        \"currency\": \"usd\",\n        \"amount_cents\": \"<integer>\",\n        \"enabled\": true,\n        \"interval\": \"quarter\",\n        \"denominator\": \"<string>\",\n        \"cta\": \"<string>\",\n        \"features\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"id\": \"<string>\",\n        \"currency\": \"eur\",\n        \"amount_cents\": \"<integer>\",\n        \"enabled\": true,\n        \"interval\": \"quarter\",\n        \"denominator\": \"<string>\",\n        \"cta\": \"<string>\",\n        \"features\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T01:13:22.000Z",
+                      "updatedAt": "2026-07-28T01:13:22.000Z",
+                      "uid": "35240-a6e0972a-6829-4e8b-b8a3-26e48de710a2"
+                    },
+                    {
+                      "id": "9a218f23-5df5-4d37-b190-62e74658f379",
+                      "name": "Bad Request",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"prices_attributes\": [\n    {\n      \"currency\": \"inr\",\n      \"amount_cents\": \"<integer>\",\n      \"interval\": \"one_time\",\n      \"enabled\": true,\n      \"interval_display\": \"<string>\",\n      \"cta\": \"<string>\",\n      \"features\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"currency\": \"brl\",\n      \"amount_cents\": \"<integer>\",\n      \"interval\": \"donation\",\n      \"enabled\": true,\n      \"interval_display\": \"<string>\",\n      \"cta\": \"<string>\",\n      \"features\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/tiers",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "tiers"
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:13:22.000Z",
+                      "updatedAt": "2026-07-28T01:13:22.000Z",
+                      "uid": "35240-9a218f23-5df5-4d37-b190-62e74658f379"
+                    },
+                    {
+                      "id": "ce650b9e-9220-476a-8d9f-39ce0214e6ee",
+                      "name": "Resource Not Found",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"prices_attributes\": [\n    {\n      \"currency\": \"inr\",\n      \"amount_cents\": \"<integer>\",\n      \"interval\": \"one_time\",\n      \"enabled\": true,\n      \"interval_display\": \"<string>\",\n      \"cta\": \"<string>\",\n      \"features\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"currency\": \"brl\",\n      \"amount_cents\": \"<integer>\",\n      \"interval\": \"donation\",\n      \"enabled\": true,\n      \"interval_display\": \"<string>\",\n      \"cta\": \"<string>\",\n      \"features\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/tiers",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "tiers"
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:13:22.000Z",
+                      "updatedAt": "2026-07-28T01:13:22.000Z",
+                      "uid": "35240-ce650b9e-9220-476a-8d9f-39ce0214e6ee"
+                    },
+                    {
+                      "id": "5ae182d2-a1b7-4631-9afa-5028764994c0",
+                      "name": "Rate Limit Exceeded",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"prices_attributes\": [\n    {\n      \"currency\": \"inr\",\n      \"amount_cents\": \"<integer>\",\n      \"interval\": \"one_time\",\n      \"enabled\": true,\n      \"interval_display\": \"<string>\",\n      \"cta\": \"<string>\",\n      \"features\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"currency\": \"brl\",\n      \"amount_cents\": \"<integer>\",\n      \"interval\": \"donation\",\n      \"enabled\": true,\n      \"interval_display\": \"<string>\",\n      \"cta\": \"<string>\",\n      \"features\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/tiers",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "tiers"
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:13:22.000Z",
+                      "updatedAt": "2026-07-28T01:13:22.000Z",
+                      "uid": "35240-5ae182d2-a1b7-4631-9afa-5028764994c0"
+                    },
+                    {
+                      "id": "53e4b0cc-0fbf-4f33-b9d8-d28efee83e15",
+                      "name": "Internal Server Error",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"prices_attributes\": [\n    {\n      \"currency\": \"inr\",\n      \"amount_cents\": \"<integer>\",\n      \"interval\": \"one_time\",\n      \"enabled\": true,\n      \"interval_display\": \"<string>\",\n      \"cta\": \"<string>\",\n      \"features\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"currency\": \"brl\",\n      \"amount_cents\": \"<integer>\",\n      \"interval\": \"donation\",\n      \"enabled\": true,\n      \"interval_display\": \"<string>\",\n      \"cta\": \"<string>\",\n      \"features\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/tiers",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "tiers"
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:13:22.000Z",
+                      "updatedAt": "2026-07-28T01:13:22.000Z",
+                      "uid": "35240-53e4b0cc-0fbf-4f33-b9d8-d28efee83e15"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:13:22.000Z",
+                  "updatedAt": "2026-07-28T01:13:22.000Z",
+                  "uid": "35240-2020420c-9777-427d-9a74-1746750f2c01"
+                },
+                {
+                  "name": "List tiers <Badge intent=\"info\" minimal outlined>OAuth Scope: tiers:read</Badge>",
+                  "id": "2d4f1baa-0cd2-4b6e-a935-a24fc4ca3579",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/publications/:publicationId/tiers?expand[]=<string>&limit=<integer>&page=<integer>&direction=asc",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "publications",
+                        ":publicationId",
+                        "tiers"
+                      ],
+                      "query": [
+                        {
+                          "description": "Optional list of expandable objects.<br>`stats` - Returns statistics about the tier(s).<br>`prices` - Returns prices for the tier(s).",
+                          "key": "expand[]",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                          "key": "limit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).<br>If not specified, results 1-10 from page 1 will be returned.",
+                          "key": "page",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The direction that the results are sorted in. Defaults to asc<br> `asc` - Ascending, sorts from smallest to largest.<br> `desc` - Descending, sorts from largest to smallest.",
+                          "key": "direction",
+                          "value": "asc"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "70a371b4-c3b8-4319-8633-fb89fd17d595",
+                          "key": "publicationId",
+                          "value": "<string>",
+                          "description": "(Required) The prefixed ID of the publication object"
+                        }
+                      ]
+                    },
+                    "description": "Retrieve all tiers belonging to a specific publication"
+                  },
+                  "response": [
+                    {
+                      "id": "2cccd90f-62be-4ffb-96ff-9d25aabdc187",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/tiers?expand[]=<string>&limit=<integer>&page=<integer>&direction=asc",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "tiers"
+                          ],
+                          "query": [
+                            {
+                              "description": "Optional list of expandable objects.<br>`stats` - Returns statistics about the tier(s).<br>`prices` - Returns prices for the tier(s).",
+                              "key": "expand[]",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).<br>If not specified, results 1-10 from page 1 will be returned.",
+                              "key": "page",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "The direction that the results are sorted in. Defaults to asc<br> `asc` - Ascending, sorts from smallest to largest.<br> `desc` - Descending, sorts from largest to smallest.",
+                              "key": "direction",
+                              "value": "asc"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"status\": \"active\",\n      \"description\": \"Super engaged readers\",\n      \"stats\": {\n        \"active_subscriptions\": \"<integer>\"\n      },\n      \"prices\": [\n        {\n          \"id\": \"<string>\",\n          \"currency\": \"inr\",\n          \"amount_cents\": \"<integer>\",\n          \"enabled\": true,\n          \"interval\": \"year\",\n          \"denominator\": \"<string>\",\n          \"cta\": \"<string>\",\n          \"features\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"id\": \"<string>\",\n          \"currency\": \"cad\",\n          \"amount_cents\": \"<integer>\",\n          \"enabled\": true,\n          \"interval\": \"donation\",\n          \"denominator\": \"<string>\",\n          \"cta\": \"<string>\",\n          \"features\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"status\": \"archived\",\n      \"description\": \"Super engaged readers\",\n      \"stats\": {\n        \"active_subscriptions\": \"<integer>\"\n      },\n      \"prices\": [\n        {\n          \"id\": \"<string>\",\n          \"currency\": \"cad\",\n          \"amount_cents\": \"<integer>\",\n          \"enabled\": true,\n          \"interval\": \"month\",\n          \"denominator\": \"<string>\",\n          \"cta\": \"<string>\",\n          \"features\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"id\": \"<string>\",\n          \"currency\": \"brl\",\n          \"amount_cents\": \"<integer>\",\n          \"enabled\": true,\n          \"interval\": \"one_time\",\n          \"denominator\": \"<string>\",\n          \"cta\": \"<string>\",\n          \"features\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ]\n    }\n  ],\n  \"limit\": \"<integer>\",\n  \"page\": 1,\n  \"total_results\": \"<integer>\",\n  \"total_pages\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:13:22.000Z",
+                      "updatedAt": "2026-07-28T01:13:22.000Z",
+                      "uid": "35240-2cccd90f-62be-4ffb-96ff-9d25aabdc187"
+                    },
+                    {
+                      "id": "a1b6d610-b34a-425b-97f9-04c7ae61410e",
+                      "name": "Bad Request",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/tiers?expand[]=<string>&limit=<integer>&page=<integer>&direction=asc",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "tiers"
+                          ],
+                          "query": [
+                            {
+                              "description": "Optional list of expandable objects.<br>`stats` - Returns statistics about the tier(s).<br>`prices` - Returns prices for the tier(s).",
+                              "key": "expand[]",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).<br>If not specified, results 1-10 from page 1 will be returned.",
+                              "key": "page",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "The direction that the results are sorted in. Defaults to asc<br> `asc` - Ascending, sorts from smallest to largest.<br> `desc` - Descending, sorts from largest to smallest.",
+                              "key": "direction",
+                              "value": "asc"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:13:22.000Z",
+                      "updatedAt": "2026-07-28T01:13:22.000Z",
+                      "uid": "35240-a1b6d610-b34a-425b-97f9-04c7ae61410e"
+                    },
+                    {
+                      "id": "64cc5db2-1636-40ca-beed-18947bfddd35",
+                      "name": "Resource Not Found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/tiers?expand[]=<string>&limit=<integer>&page=<integer>&direction=asc",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "tiers"
+                          ],
+                          "query": [
+                            {
+                              "description": "Optional list of expandable objects.<br>`stats` - Returns statistics about the tier(s).<br>`prices` - Returns prices for the tier(s).",
+                              "key": "expand[]",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).<br>If not specified, results 1-10 from page 1 will be returned.",
+                              "key": "page",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "The direction that the results are sorted in. Defaults to asc<br> `asc` - Ascending, sorts from smallest to largest.<br> `desc` - Descending, sorts from largest to smallest.",
+                              "key": "direction",
+                              "value": "asc"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:13:22.000Z",
+                      "updatedAt": "2026-07-28T01:13:22.000Z",
+                      "uid": "35240-64cc5db2-1636-40ca-beed-18947bfddd35"
+                    },
+                    {
+                      "id": "9b062e42-85ba-4749-84e9-cd29ee93d326",
+                      "name": "Rate Limit Exceeded",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/tiers?expand[]=<string>&limit=<integer>&page=<integer>&direction=asc",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "tiers"
+                          ],
+                          "query": [
+                            {
+                              "description": "Optional list of expandable objects.<br>`stats` - Returns statistics about the tier(s).<br>`prices` - Returns prices for the tier(s).",
+                              "key": "expand[]",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).<br>If not specified, results 1-10 from page 1 will be returned.",
+                              "key": "page",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "The direction that the results are sorted in. Defaults to asc<br> `asc` - Ascending, sorts from smallest to largest.<br> `desc` - Descending, sorts from largest to smallest.",
+                              "key": "direction",
+                              "value": "asc"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:13:22.000Z",
+                      "updatedAt": "2026-07-28T01:13:22.000Z",
+                      "uid": "35240-9b062e42-85ba-4749-84e9-cd29ee93d326"
+                    },
+                    {
+                      "id": "5b86d44b-2461-4b54-8bf5-3c8d3de12f70",
+                      "name": "Internal Server Error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/tiers?expand[]=<string>&limit=<integer>&page=<integer>&direction=asc",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "tiers"
+                          ],
+                          "query": [
+                            {
+                              "description": "Optional list of expandable objects.<br>`stats` - Returns statistics about the tier(s).<br>`prices` - Returns prices for the tier(s).",
+                              "key": "expand[]",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).<br>If not specified, results 1-10 from page 1 will be returned.",
+                              "key": "page",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "The direction that the results are sorted in. Defaults to asc<br> `asc` - Ascending, sorts from smallest to largest.<br> `desc` - Descending, sorts from largest to smallest.",
+                              "key": "direction",
+                              "value": "asc"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:13:22.000Z",
+                      "updatedAt": "2026-07-28T01:13:22.000Z",
+                      "uid": "35240-5b86d44b-2461-4b54-8bf5-3c8d3de12f70"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:13:22.000Z",
+                  "updatedAt": "2026-07-28T01:13:22.000Z",
+                  "uid": "35240-2d4f1baa-0cd2-4b6e-a935-a24fc4ca3579"
+                }
+              ],
+              "id": "85f49dac-dfa5-4b17-afb4-a7844f12f60c",
+              "createdAt": "2026-07-28T01:13:22.000Z",
+              "updatedAt": "2026-07-28T01:13:22.000Z",
+              "uid": "35240-85f49dac-dfa5-4b17-afb4-a7844f12f60c"
+            }
+          ],
+          "id": "f5c88aaf-9a35-4d3b-918d-933cb08a34cb",
+          "createdAt": "2026-07-28T01:13:22.000Z",
+          "updatedAt": "2026-07-28T01:13:22.000Z",
+          "uid": "35240-f5c88aaf-9a35-4d3b-918d-933cb08a34cb"
+        }
+      ],
+      "id": "bc14b179-87e3-44e6-9dce-cf7585058d73",
+      "createdAt": "2026-07-28T01:13:22.000Z",
+      "updatedAt": "2026-07-28T01:13:22.000Z",
+      "uid": "35240-bc14b179-87e3-44e6-9dce-cf7585058d73"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.beehiiv.com/v2"
+    }
+  ]
+}

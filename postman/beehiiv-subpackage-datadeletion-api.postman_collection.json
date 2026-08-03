@@ -1,0 +1,1094 @@
+{
+  "info": {
+    "_postman_id": "53802778-93de-4867-8c5c-ee4b9c212fc5",
+    "name": "API Reference subpackage_advertisement_opportunities subpackage_dataDeletion API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:12:31.000Z",
+    "updatedAt": "2026-07-28T01:12:31.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-53802778-93de-4867-8c5c-ee4b9c212fc5"
+  },
+  "item": [
+    {
+      "name": "publications",
+      "item": [
+        {
+          "name": "{publicationId}",
+          "item": [
+            {
+              "name": "data_privacy",
+              "item": [
+                {
+                  "name": "deletion_requests",
+                  "item": [
+                    {
+                      "name": "{id}",
+                      "item": [
+                        {
+                          "name": "Get data deletion request <Badge intent=\"info\" minimal outlined>OAuth Scope: data_deletion:read</Badge>",
+                          "id": "48dc6aca-c82e-4298-b2a8-32e338d16e1a",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/data_privacy/deletion_requests/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "data_privacy",
+                                "deletion_requests",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "227d29a0-016c-41fb-bff5-b7c7a743ed9b",
+                                  "key": "publicationId",
+                                  "value": "<string>",
+                                  "description": "(Required) The prefixed ID of the publication object"
+                                },
+                                {
+                                  "id": "980f3738-cdc0-409e-85b8-a05577acf649",
+                                  "key": "id",
+                                  "value": "<string>",
+                                  "description": "(Required) The ID of the data deletion request"
+                                }
+                              ]
+                            },
+                            "description": "<Warning>This is a gated feature that requires enablement. Contact support to enable Data Deletion API access for your organization.</Warning>\n\nRetrieve the details and current status of a specific data deletion request."
+                          },
+                          "response": [
+                            {
+                              "id": "027573fd-18cf-4ab4-a873-746048d94436",
+                              "name": "OK",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/publications/:publicationId/data_privacy/deletion_requests/:id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "publications",
+                                    ":publicationId",
+                                    "data_privacy",
+                                    "deletion_requests",
+                                    ":id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "publicationId"
+                                    },
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"data\": {\n    \"id\": \"<string>\",\n    \"email\": \"<string>\",\n    \"status\": \"canceled\",\n    \"source\": \"zendesk\",\n    \"requested_at\": \"<string>\",\n    \"scheduled_for_processing_at\": \"<string>\",\n    \"completed_at\": \"<string>\",\n    \"created_at\": \"<string>\"\n  }\n}",
+                              "createdAt": "2026-07-28T01:12:32.000Z",
+                              "updatedAt": "2026-07-28T01:12:32.000Z",
+                              "uid": "35240-027573fd-18cf-4ab4-a873-746048d94436"
+                            },
+                            {
+                              "id": "aaf25bd3-a620-4b7e-889c-c52023ac1f30",
+                              "name": "Forbidden",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/publications/:publicationId/data_privacy/deletion_requests/:id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "publications",
+                                    ":publicationId",
+                                    "data_privacy",
+                                    "deletion_requests",
+                                    ":id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "publicationId"
+                                    },
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Forbidden",
+                              "code": 403,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T01:12:32.000Z",
+                              "updatedAt": "2026-07-28T01:12:32.000Z",
+                              "uid": "35240-aaf25bd3-a620-4b7e-889c-c52023ac1f30"
+                            },
+                            {
+                              "id": "9894a38a-e8bd-4d17-a697-8138d6ea1b2a",
+                              "name": "Resource Not Found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/publications/:publicationId/data_privacy/deletion_requests/:id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "publications",
+                                    ":publicationId",
+                                    "data_privacy",
+                                    "deletion_requests",
+                                    ":id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "publicationId"
+                                    },
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T01:12:32.000Z",
+                              "updatedAt": "2026-07-28T01:12:32.000Z",
+                              "uid": "35240-9894a38a-e8bd-4d17-a697-8138d6ea1b2a"
+                            },
+                            {
+                              "id": "6ebf0386-51a6-4752-9fe8-760755cdd320",
+                              "name": "Rate Limit Exceeded",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/publications/:publicationId/data_privacy/deletion_requests/:id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "publications",
+                                    ":publicationId",
+                                    "data_privacy",
+                                    "deletion_requests",
+                                    ":id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "publicationId"
+                                    },
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Too Many Requests",
+                              "code": 429,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T01:12:32.000Z",
+                              "updatedAt": "2026-07-28T01:12:32.000Z",
+                              "uid": "35240-6ebf0386-51a6-4752-9fe8-760755cdd320"
+                            },
+                            {
+                              "id": "bf0f315f-1006-4231-aa89-808d6797f355",
+                              "name": "Internal Server Error",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/publications/:publicationId/data_privacy/deletion_requests/:id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "publications",
+                                    ":publicationId",
+                                    "data_privacy",
+                                    "deletion_requests",
+                                    ":id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "publicationId"
+                                    },
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T01:12:32.000Z",
+                              "updatedAt": "2026-07-28T01:12:32.000Z",
+                              "uid": "35240-bf0f315f-1006-4231-aa89-808d6797f355"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T01:12:31.000Z",
+                          "updatedAt": "2026-07-28T01:12:31.000Z",
+                          "uid": "35240-48dc6aca-c82e-4298-b2a8-32e338d16e1a"
+                        }
+                      ],
+                      "id": "7f00cc28-89b1-4c87-9b35-575f5533793a",
+                      "createdAt": "2026-07-28T01:12:31.000Z",
+                      "updatedAt": "2026-07-28T01:12:31.000Z",
+                      "uid": "35240-7f00cc28-89b1-4c87-9b35-575f5533793a"
+                    },
+                    {
+                      "name": "Create data deletion request <Badge intent=\"info\" minimal outlined>OAuth Scope: data_deletion:write</Badge>",
+                      "id": "f38cc26d-a051-4724-af06-8e36e0907127",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"email\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/data_privacy/deletion_requests",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "data_privacy",
+                            "deletion_requests"
+                          ],
+                          "variable": [
+                            {
+                              "id": "32007bea-258a-46ec-9e32-7e038eb14377",
+                              "key": "publicationId",
+                              "value": "<string>",
+                              "description": "(Required) The prefixed ID of the publication object"
+                            }
+                          ]
+                        },
+                        "description": "<Warning>This is a gated feature that requires enablement. Contact support to enable Data Deletion API access for your organization.</Warning>\n\nCreates a data deletion request for a subscriber within your organization. The subscriber's data will be redacted from all publications in the organization after a 14-day safety delay. This action cannot be undone once processing begins."
+                      },
+                      "response": [
+                        {
+                          "id": "a121ae39-eb4c-4b03-9d7c-f6d193628c25",
+                          "name": "Created",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"email\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/data_privacy/deletion_requests",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "data_privacy",
+                                "deletion_requests"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Created",
+                          "code": 201,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"data\": {\n    \"id\": \"<string>\",\n    \"email\": \"<string>\",\n    \"status\": \"canceled\",\n    \"source\": \"zendesk\",\n    \"requested_at\": \"<string>\",\n    \"scheduled_for_processing_at\": \"<string>\",\n    \"completed_at\": \"<string>\",\n    \"created_at\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T01:12:32.000Z",
+                          "updatedAt": "2026-07-28T01:12:32.000Z",
+                          "uid": "35240-a121ae39-eb4c-4b03-9d7c-f6d193628c25"
+                        },
+                        {
+                          "id": "defd0973-017a-4785-bed1-563c8cea989f",
+                          "name": "Bad Request",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"email\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/data_privacy/deletion_requests",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "data_privacy",
+                                "deletion_requests"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:12:32.000Z",
+                          "updatedAt": "2026-07-28T01:12:32.000Z",
+                          "uid": "35240-defd0973-017a-4785-bed1-563c8cea989f"
+                        },
+                        {
+                          "id": "5e70db75-50fc-446d-b71e-e166ec93247d",
+                          "name": "Forbidden",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"email\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/data_privacy/deletion_requests",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "data_privacy",
+                                "deletion_requests"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:12:32.000Z",
+                          "updatedAt": "2026-07-28T01:12:32.000Z",
+                          "uid": "35240-5e70db75-50fc-446d-b71e-e166ec93247d"
+                        },
+                        {
+                          "id": "47ac9577-0a19-4bcb-bd50-93e81ee1fa8d",
+                          "name": "Resource Not Found",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"email\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/data_privacy/deletion_requests",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "data_privacy",
+                                "deletion_requests"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:12:32.000Z",
+                          "updatedAt": "2026-07-28T01:12:32.000Z",
+                          "uid": "35240-47ac9577-0a19-4bcb-bd50-93e81ee1fa8d"
+                        },
+                        {
+                          "id": "b65ac8a3-74d3-4c71-9729-50bccd107b3a",
+                          "name": "Conflict",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"email\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/data_privacy/deletion_requests",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "data_privacy",
+                                "deletion_requests"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Conflict",
+                          "code": 409,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:12:32.000Z",
+                          "updatedAt": "2026-07-28T01:12:32.000Z",
+                          "uid": "35240-b65ac8a3-74d3-4c71-9729-50bccd107b3a"
+                        },
+                        {
+                          "id": "ac604ec3-5eee-486a-8e04-0224e11137a9",
+                          "name": "Rate Limit Exceeded",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"email\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/data_privacy/deletion_requests",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "data_privacy",
+                                "deletion_requests"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:12:32.000Z",
+                          "updatedAt": "2026-07-28T01:12:32.000Z",
+                          "uid": "35240-ac604ec3-5eee-486a-8e04-0224e11137a9"
+                        },
+                        {
+                          "id": "6c5044fb-8129-40f4-9a12-30b4250fed34",
+                          "name": "Internal Server Error",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"email\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/data_privacy/deletion_requests",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "data_privacy",
+                                "deletion_requests"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:12:32.000Z",
+                          "updatedAt": "2026-07-28T01:12:32.000Z",
+                          "uid": "35240-6c5044fb-8129-40f4-9a12-30b4250fed34"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:12:31.000Z",
+                      "updatedAt": "2026-07-28T01:12:31.000Z",
+                      "uid": "35240-f38cc26d-a051-4724-af06-8e36e0907127"
+                    },
+                    {
+                      "name": "List data deletion requests <Badge intent=\"info\" minimal outlined>OAuth Scope: data_deletion:read</Badge>",
+                      "id": "42b528a2-394c-4a50-8915-f8e78a9d5109",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/data_privacy/deletion_requests",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "data_privacy",
+                            "deletion_requests"
+                          ],
+                          "variable": [
+                            {
+                              "id": "210f4fe7-0462-4ded-8884-f8942a5b295c",
+                              "key": "publicationId",
+                              "value": "<string>",
+                              "description": "(Required) The prefixed ID of the publication object"
+                            }
+                          ]
+                        },
+                        "description": "<Warning>This is a gated feature that requires enablement. Contact support to enable Data Deletion API access for your organization.</Warning>\n\nList all data deletion requests for your organization."
+                      },
+                      "response": [
+                        {
+                          "id": "d665a93f-20f4-4d8d-bcb1-69828c917453",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/data_privacy/deletion_requests",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "data_privacy",
+                                "deletion_requests"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"email\": \"<string>\",\n      \"status\": \"pending\",\n      \"source\": \"app\",\n      \"requested_at\": \"<string>\",\n      \"scheduled_for_processing_at\": \"<string>\",\n      \"completed_at\": \"<string>\",\n      \"created_at\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"email\": \"<string>\",\n      \"status\": \"processing\",\n      \"source\": \"app\",\n      \"requested_at\": \"<string>\",\n      \"scheduled_for_processing_at\": \"<string>\",\n      \"completed_at\": \"<string>\",\n      \"created_at\": \"<string>\"\n    }\n  ],\n  \"limit\": \"<integer>\",\n  \"has_more\": \"<boolean>\",\n  \"next_cursor\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T01:12:32.000Z",
+                          "updatedAt": "2026-07-28T01:12:32.000Z",
+                          "uid": "35240-d665a93f-20f4-4d8d-bcb1-69828c917453"
+                        },
+                        {
+                          "id": "f68b183f-5d07-468e-8bd5-771c01f18086",
+                          "name": "Forbidden",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/data_privacy/deletion_requests",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "data_privacy",
+                                "deletion_requests"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:12:32.000Z",
+                          "updatedAt": "2026-07-28T01:12:32.000Z",
+                          "uid": "35240-f68b183f-5d07-468e-8bd5-771c01f18086"
+                        },
+                        {
+                          "id": "0dc9642c-86ff-4ee1-8b25-28e37b2668b4",
+                          "name": "Resource Not Found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/data_privacy/deletion_requests",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "data_privacy",
+                                "deletion_requests"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:12:32.000Z",
+                          "updatedAt": "2026-07-28T01:12:32.000Z",
+                          "uid": "35240-0dc9642c-86ff-4ee1-8b25-28e37b2668b4"
+                        },
+                        {
+                          "id": "8be6f252-9889-44c8-9597-3a044817f483",
+                          "name": "Rate Limit Exceeded",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/data_privacy/deletion_requests",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "data_privacy",
+                                "deletion_requests"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:12:32.000Z",
+                          "updatedAt": "2026-07-28T01:12:32.000Z",
+                          "uid": "35240-8be6f252-9889-44c8-9597-3a044817f483"
+                        },
+                        {
+                          "id": "8a46ace5-c896-4417-a3ec-89833717f3f0",
+                          "name": "Internal Server Error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/data_privacy/deletion_requests",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "data_privacy",
+                                "deletion_requests"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:12:32.000Z",
+                          "updatedAt": "2026-07-28T01:12:32.000Z",
+                          "uid": "35240-8a46ace5-c896-4417-a3ec-89833717f3f0"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:12:31.000Z",
+                      "updatedAt": "2026-07-28T01:12:31.000Z",
+                      "uid": "35240-42b528a2-394c-4a50-8915-f8e78a9d5109"
+                    }
+                  ],
+                  "id": "f6a8d3e9-6617-4dde-b944-5fd40d3285a0",
+                  "createdAt": "2026-07-28T01:12:31.000Z",
+                  "updatedAt": "2026-07-28T01:12:31.000Z",
+                  "uid": "35240-f6a8d3e9-6617-4dde-b944-5fd40d3285a0"
+                }
+              ],
+              "id": "b7d1e589-1546-42cd-9025-12cb097e7523",
+              "createdAt": "2026-07-28T01:12:31.000Z",
+              "updatedAt": "2026-07-28T01:12:31.000Z",
+              "uid": "35240-b7d1e589-1546-42cd-9025-12cb097e7523"
+            }
+          ],
+          "id": "69671395-2586-47cf-8356-03e6547a5f3b",
+          "createdAt": "2026-07-28T01:12:31.000Z",
+          "updatedAt": "2026-07-28T01:12:31.000Z",
+          "uid": "35240-69671395-2586-47cf-8356-03e6547a5f3b"
+        }
+      ],
+      "id": "f865d420-2db3-4fdf-93bc-4338ba1d88f4",
+      "createdAt": "2026-07-28T01:12:31.000Z",
+      "updatedAt": "2026-07-28T01:12:31.000Z",
+      "uid": "35240-f865d420-2db3-4fdf-93bc-4338ba1d88f4"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.beehiiv.com/v2"
+    }
+  ]
+}

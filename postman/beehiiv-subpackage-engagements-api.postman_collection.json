@@ -1,0 +1,469 @@
+{
+  "info": {
+    "_postman_id": "2a273295-f8a5-4251-8fba-945e5465b441",
+    "name": "API Reference subpackage_advertisement_opportunities subpackage_engagements API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:12:32.000Z",
+    "updatedAt": "2026-07-28T01:12:32.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-2a273295-f8a5-4251-8fba-945e5465b441"
+  },
+  "item": [
+    {
+      "name": "publications",
+      "item": [
+        {
+          "name": "{publicationId}",
+          "item": [
+            {
+              "name": "engagements",
+              "item": [
+                {
+                  "name": "Get publication engagements <Badge intent=\"info\" minimal outlined>OAuth Scope: publications:read</Badge>",
+                  "id": "dd8367e4-a10d-4cf0-b20b-9938795d229f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/publications/:publicationId/engagements?start_date=<date>&number_of_days=<integer>&granularity=day&email_type=message&direction=asc",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "publications",
+                        ":publicationId",
+                        "engagements"
+                      ],
+                      "query": [
+                        {
+                          "description": "The starting date for the engagement metrics in `YYYY-MM-DD` format. Defaults to 1 day ago if not provided.",
+                          "key": "start_date",
+                          "value": "<date>"
+                        },
+                        {
+                          "description": "The number of days to return engagement metrics for, starting from `start_date`. Must be between 1 and 31. Defaults to `1` if not provided.",
+                          "key": "number_of_days",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The granularity at which to report the engagement metrics. Defaults to `day` if not provided.",
+                          "key": "granularity",
+                          "value": "day"
+                        },
+                        {
+                          "description": "Filter engagement metrics by email type. If omitted, all email engagement is included.<br> `post`: Only post emails.<br> `message`: Only automated and system-generated emails.",
+                          "key": "email_type",
+                          "value": "message"
+                        },
+                        {
+                          "description": "The direction that the results are sorted in. Defaults to `asc`.<br> `asc`: Oldest to newest<br> `desc`: Newest to oldest",
+                          "key": "direction",
+                          "value": "asc"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "69b86c87-3443-4c1a-842f-f9aa3115fb60",
+                          "key": "publicationId",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Retrieve email engagement metrics for a specific publication over a defined date range and granularity.<br><br> By default, the endpoint returns metrics for the past day, aggregated daily. The max number of days allowed is 31. All dates and times are in UTC."
+                  },
+                  "response": [
+                    {
+                      "id": "1f66c3a0-1eb6-4ee6-a3d9-52c099a8f742",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/engagements?start_date=<date>&number_of_days=<integer>&granularity=day&email_type=message&direction=asc",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "engagements"
+                          ],
+                          "query": [
+                            {
+                              "description": "The starting date for the engagement metrics in `YYYY-MM-DD` format. Defaults to 1 day ago if not provided.",
+                              "key": "start_date",
+                              "value": "<date>"
+                            },
+                            {
+                              "description": "The number of days to return engagement metrics for, starting from `start_date`. Must be between 1 and 31. Defaults to `1` if not provided.",
+                              "key": "number_of_days",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "The granularity at which to report the engagement metrics. Defaults to `day` if not provided.",
+                              "key": "granularity",
+                              "value": "day"
+                            },
+                            {
+                              "description": "Filter engagement metrics by email type. If omitted, all email engagement is included.<br> `post`: Only post emails.<br> `message`: Only automated and system-generated emails.",
+                              "key": "email_type",
+                              "value": "message"
+                            },
+                            {
+                              "description": "The direction that the results are sorted in. Defaults to `asc`.<br> `asc`: Oldest to newest<br> `desc`: Newest to oldest",
+                              "key": "direction",
+                              "value": "asc"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"data\": [\n    {\n      \"date\": \"<date>\",\n      \"total_opens\": \"<integer>\",\n      \"unique_opens\": \"<integer>\",\n      \"total_clicks\": \"<integer>\",\n      \"total_verified_clicks\": \"<integer>\",\n      \"unique_clicks\": \"<integer>\",\n      \"unique_verified_clicks\": \"<integer>\"\n    },\n    {\n      \"date\": \"<date>\",\n      \"total_opens\": \"<integer>\",\n      \"unique_opens\": \"<integer>\",\n      \"total_clicks\": \"<integer>\",\n      \"total_verified_clicks\": \"<integer>\",\n      \"unique_clicks\": \"<integer>\",\n      \"unique_verified_clicks\": \"<integer>\"\n    }\n  ],\n  \"publication_id\": \"<string>\",\n  \"granularity\": \"month\",\n  \"email_type\": \"all\",\n  \"start_date\": \"<date>\",\n  \"number_of_days\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:12:32.000Z",
+                      "updatedAt": "2026-07-28T01:12:32.000Z",
+                      "uid": "35240-1f66c3a0-1eb6-4ee6-a3d9-52c099a8f742"
+                    },
+                    {
+                      "id": "5b39a0bb-b994-4fc6-8a0d-905d923fc7aa",
+                      "name": "Bad Request",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/engagements?start_date=<date>&number_of_days=<integer>&granularity=day&email_type=message&direction=asc",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "engagements"
+                          ],
+                          "query": [
+                            {
+                              "description": "The starting date for the engagement metrics in `YYYY-MM-DD` format. Defaults to 1 day ago if not provided.",
+                              "key": "start_date",
+                              "value": "<date>"
+                            },
+                            {
+                              "description": "The number of days to return engagement metrics for, starting from `start_date`. Must be between 1 and 31. Defaults to `1` if not provided.",
+                              "key": "number_of_days",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "The granularity at which to report the engagement metrics. Defaults to `day` if not provided.",
+                              "key": "granularity",
+                              "value": "day"
+                            },
+                            {
+                              "description": "Filter engagement metrics by email type. If omitted, all email engagement is included.<br> `post`: Only post emails.<br> `message`: Only automated and system-generated emails.",
+                              "key": "email_type",
+                              "value": "message"
+                            },
+                            {
+                              "description": "The direction that the results are sorted in. Defaults to `asc`.<br> `asc`: Oldest to newest<br> `desc`: Newest to oldest",
+                              "key": "direction",
+                              "value": "asc"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:12:32.000Z",
+                      "updatedAt": "2026-07-28T01:12:32.000Z",
+                      "uid": "35240-5b39a0bb-b994-4fc6-8a0d-905d923fc7aa"
+                    },
+                    {
+                      "id": "88a8a66d-5467-413d-aec1-e6caf11fe17b",
+                      "name": "Resource Not Found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/engagements?start_date=<date>&number_of_days=<integer>&granularity=day&email_type=message&direction=asc",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "engagements"
+                          ],
+                          "query": [
+                            {
+                              "description": "The starting date for the engagement metrics in `YYYY-MM-DD` format. Defaults to 1 day ago if not provided.",
+                              "key": "start_date",
+                              "value": "<date>"
+                            },
+                            {
+                              "description": "The number of days to return engagement metrics for, starting from `start_date`. Must be between 1 and 31. Defaults to `1` if not provided.",
+                              "key": "number_of_days",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "The granularity at which to report the engagement metrics. Defaults to `day` if not provided.",
+                              "key": "granularity",
+                              "value": "day"
+                            },
+                            {
+                              "description": "Filter engagement metrics by email type. If omitted, all email engagement is included.<br> `post`: Only post emails.<br> `message`: Only automated and system-generated emails.",
+                              "key": "email_type",
+                              "value": "message"
+                            },
+                            {
+                              "description": "The direction that the results are sorted in. Defaults to `asc`.<br> `asc`: Oldest to newest<br> `desc`: Newest to oldest",
+                              "key": "direction",
+                              "value": "asc"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:12:32.000Z",
+                      "updatedAt": "2026-07-28T01:12:32.000Z",
+                      "uid": "35240-88a8a66d-5467-413d-aec1-e6caf11fe17b"
+                    },
+                    {
+                      "id": "35e0f6db-64d9-4746-aed6-c3a3d3f61c61",
+                      "name": "Rate Limit Exceeded",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/engagements?start_date=<date>&number_of_days=<integer>&granularity=day&email_type=message&direction=asc",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "engagements"
+                          ],
+                          "query": [
+                            {
+                              "description": "The starting date for the engagement metrics in `YYYY-MM-DD` format. Defaults to 1 day ago if not provided.",
+                              "key": "start_date",
+                              "value": "<date>"
+                            },
+                            {
+                              "description": "The number of days to return engagement metrics for, starting from `start_date`. Must be between 1 and 31. Defaults to `1` if not provided.",
+                              "key": "number_of_days",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "The granularity at which to report the engagement metrics. Defaults to `day` if not provided.",
+                              "key": "granularity",
+                              "value": "day"
+                            },
+                            {
+                              "description": "Filter engagement metrics by email type. If omitted, all email engagement is included.<br> `post`: Only post emails.<br> `message`: Only automated and system-generated emails.",
+                              "key": "email_type",
+                              "value": "message"
+                            },
+                            {
+                              "description": "The direction that the results are sorted in. Defaults to `asc`.<br> `asc`: Oldest to newest<br> `desc`: Newest to oldest",
+                              "key": "direction",
+                              "value": "asc"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:12:32.000Z",
+                      "updatedAt": "2026-07-28T01:12:32.000Z",
+                      "uid": "35240-35e0f6db-64d9-4746-aed6-c3a3d3f61c61"
+                    },
+                    {
+                      "id": "5ec965ca-58d3-42f0-adf1-2a8a3e6a47a9",
+                      "name": "Internal Server Error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/engagements?start_date=<date>&number_of_days=<integer>&granularity=day&email_type=message&direction=asc",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "engagements"
+                          ],
+                          "query": [
+                            {
+                              "description": "The starting date for the engagement metrics in `YYYY-MM-DD` format. Defaults to 1 day ago if not provided.",
+                              "key": "start_date",
+                              "value": "<date>"
+                            },
+                            {
+                              "description": "The number of days to return engagement metrics for, starting from `start_date`. Must be between 1 and 31. Defaults to `1` if not provided.",
+                              "key": "number_of_days",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "The granularity at which to report the engagement metrics. Defaults to `day` if not provided.",
+                              "key": "granularity",
+                              "value": "day"
+                            },
+                            {
+                              "description": "Filter engagement metrics by email type. If omitted, all email engagement is included.<br> `post`: Only post emails.<br> `message`: Only automated and system-generated emails.",
+                              "key": "email_type",
+                              "value": "message"
+                            },
+                            {
+                              "description": "The direction that the results are sorted in. Defaults to `asc`.<br> `asc`: Oldest to newest<br> `desc`: Newest to oldest",
+                              "key": "direction",
+                              "value": "asc"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:12:32.000Z",
+                      "updatedAt": "2026-07-28T01:12:32.000Z",
+                      "uid": "35240-5ec965ca-58d3-42f0-adf1-2a8a3e6a47a9"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:12:32.000Z",
+                  "updatedAt": "2026-07-28T01:12:32.000Z",
+                  "uid": "35240-dd8367e4-a10d-4cf0-b20b-9938795d229f"
+                }
+              ],
+              "id": "d90e7f3d-2f43-4788-a244-13c12c15380d",
+              "createdAt": "2026-07-28T01:12:32.000Z",
+              "updatedAt": "2026-07-28T01:12:32.000Z",
+              "uid": "35240-d90e7f3d-2f43-4788-a244-13c12c15380d"
+            }
+          ],
+          "id": "9db3938e-ce48-427f-aad9-8944085ec35f",
+          "createdAt": "2026-07-28T01:12:32.000Z",
+          "updatedAt": "2026-07-28T01:12:32.000Z",
+          "uid": "35240-9db3938e-ce48-427f-aad9-8944085ec35f"
+        }
+      ],
+      "id": "a89d85b0-a5c9-480b-9738-575ffa03ac9c",
+      "createdAt": "2026-07-28T01:12:32.000Z",
+      "updatedAt": "2026-07-28T01:12:32.000Z",
+      "uid": "35240-a89d85b0-a5c9-480b-9738-575ffa03ac9c"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.beehiiv.com/v2"
+    }
+  ]
+}

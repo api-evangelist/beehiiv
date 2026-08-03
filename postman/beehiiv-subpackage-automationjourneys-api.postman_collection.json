@@ -1,0 +1,1168 @@
+{
+  "info": {
+    "_postman_id": "df06bd6b-6363-413a-af61-1fa0a4fd4f15",
+    "name": "API Reference subpackage_advertisement_opportunities subpackage_automationJourneys API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:12:03.000Z",
+    "updatedAt": "2026-07-28T01:12:03.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-df06bd6b-6363-413a-af61-1fa0a4fd4f15"
+  },
+  "item": [
+    {
+      "name": "publications",
+      "item": [
+        {
+          "name": "{publicationId}",
+          "item": [
+            {
+              "name": "automations",
+              "item": [
+                {
+                  "name": "{automationId}",
+                  "item": [
+                    {
+                      "name": "journeys",
+                      "item": [
+                        {
+                          "name": "{automationJourneyId}",
+                          "item": [
+                            {
+                              "name": "Get automation journey <Badge intent=\"info\" minimal outlined>OAuth Scope: automations:read</Badge>",
+                              "id": "f7ed2f37-0f50-4f83-9b7c-d60c550284a0",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/publications/:publicationId/automations/:automationId/journeys/:automationJourneyId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "publications",
+                                    ":publicationId",
+                                    "automations",
+                                    ":automationId",
+                                    "journeys",
+                                    ":automationJourneyId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "856ef0ab-65bb-4f6f-a479-be16011f3353",
+                                      "key": "publicationId",
+                                      "value": "<string>",
+                                      "description": "(Required) The prefixed ID of the publication object"
+                                    },
+                                    {
+                                      "id": "adc6c7e4-3f35-4507-9474-7cc5705243cb",
+                                      "key": "automationId",
+                                      "value": "<string>",
+                                      "description": "(Required) The prefixed ID of the automation object"
+                                    },
+                                    {
+                                      "id": "dc594d7c-4b0a-4ae1-89fe-4d1615687fc3",
+                                      "key": "automationJourneyId",
+                                      "value": "<string>",
+                                      "description": "(Required) The prefixed automation journey id"
+                                    }
+                                  ]
+                                },
+                                "description": "Retrieve a single automation journey by ID."
+                              },
+                              "response": [
+                                {
+                                  "id": "fd0ec4c6-7998-41d5-b61f-53364bdb0157",
+                                  "name": "OK",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/publications/:publicationId/automations/:automationId/journeys/:automationJourneyId",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "publications",
+                                        ":publicationId",
+                                        "automations",
+                                        ":automationId",
+                                        "journeys",
+                                        ":automationJourneyId"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "publicationId"
+                                        },
+                                        {
+                                          "key": "automationId"
+                                        },
+                                        {
+                                          "key": "automationJourneyId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"data\": {\n    \"id\": \"<string>\",\n    \"automation_id\": \"<string>\",\n    \"status\": \"manually_removed\",\n    \"subscription_id\": \"<string>\",\n    \"email\": \"<string>\",\n    \"started_at\": \"<integer>\",\n    \"completed_at\": \"<integer>\"\n  }\n}",
+                                  "createdAt": "2026-07-28T01:12:04.000Z",
+                                  "updatedAt": "2026-07-28T01:12:04.000Z",
+                                  "uid": "35240-fd0ec4c6-7998-41d5-b61f-53364bdb0157"
+                                },
+                                {
+                                  "id": "2573e98b-81e6-487e-adc3-82cd27c294cb",
+                                  "name": "Bad Request",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/publications/:publicationId/automations/:automationId/journeys/:automationJourneyId",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "publications",
+                                        ":publicationId",
+                                        "automations",
+                                        ":automationId",
+                                        "journeys",
+                                        ":automationJourneyId"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "publicationId"
+                                        },
+                                        {
+                                          "key": "automationId"
+                                        },
+                                        {
+                                          "key": "automationJourneyId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Bad Request",
+                                  "code": 400,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                                  "createdAt": "2026-07-28T01:12:04.000Z",
+                                  "updatedAt": "2026-07-28T01:12:04.000Z",
+                                  "uid": "35240-2573e98b-81e6-487e-adc3-82cd27c294cb"
+                                },
+                                {
+                                  "id": "2c42d081-28c6-4cf3-b27a-84fd2d795921",
+                                  "name": "Resource Not Found",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/publications/:publicationId/automations/:automationId/journeys/:automationJourneyId",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "publications",
+                                        ":publicationId",
+                                        "automations",
+                                        ":automationId",
+                                        "journeys",
+                                        ":automationJourneyId"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "publicationId"
+                                        },
+                                        {
+                                          "key": "automationId"
+                                        },
+                                        {
+                                          "key": "automationJourneyId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Not Found",
+                                  "code": 404,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                                  "createdAt": "2026-07-28T01:12:04.000Z",
+                                  "updatedAt": "2026-07-28T01:12:04.000Z",
+                                  "uid": "35240-2c42d081-28c6-4cf3-b27a-84fd2d795921"
+                                },
+                                {
+                                  "id": "87f30bc5-345d-4297-ad6c-9ce889c018a3",
+                                  "name": "Rate Limit Exceeded",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/publications/:publicationId/automations/:automationId/journeys/:automationJourneyId",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "publications",
+                                        ":publicationId",
+                                        "automations",
+                                        ":automationId",
+                                        "journeys",
+                                        ":automationJourneyId"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "publicationId"
+                                        },
+                                        {
+                                          "key": "automationId"
+                                        },
+                                        {
+                                          "key": "automationJourneyId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Too Many Requests",
+                                  "code": 429,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                                  "createdAt": "2026-07-28T01:12:04.000Z",
+                                  "updatedAt": "2026-07-28T01:12:04.000Z",
+                                  "uid": "35240-87f30bc5-345d-4297-ad6c-9ce889c018a3"
+                                },
+                                {
+                                  "id": "882bc3c0-21ae-46e4-8ceb-4b9d0d0869a8",
+                                  "name": "Internal Server Error",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/publications/:publicationId/automations/:automationId/journeys/:automationJourneyId",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "publications",
+                                        ":publicationId",
+                                        "automations",
+                                        ":automationId",
+                                        "journeys",
+                                        ":automationJourneyId"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "publicationId"
+                                        },
+                                        {
+                                          "key": "automationId"
+                                        },
+                                        {
+                                          "key": "automationJourneyId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Internal Server Error",
+                                  "code": 500,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                                  "createdAt": "2026-07-28T01:12:04.000Z",
+                                  "updatedAt": "2026-07-28T01:12:04.000Z",
+                                  "uid": "35240-882bc3c0-21ae-46e4-8ceb-4b9d0d0869a8"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T01:12:04.000Z",
+                              "updatedAt": "2026-07-28T01:12:04.000Z",
+                              "uid": "35240-f7ed2f37-0f50-4f83-9b7c-d60c550284a0"
+                            }
+                          ],
+                          "id": "0aa6288d-85f1-43c0-980e-2755c4ead6e0",
+                          "createdAt": "2026-07-28T01:12:04.000Z",
+                          "updatedAt": "2026-07-28T01:12:04.000Z",
+                          "uid": "35240-0aa6288d-85f1-43c0-980e-2755c4ead6e0"
+                        },
+                        {
+                          "name": "Add subscription to an automation <Badge intent=\"info\" minimal outlined>OAuth Scope: automations:write</Badge>",
+                          "id": "91dfef03-8216-4ac5-b094-9be274372072",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"email\": \"<string>\",\n  \"subscription_id\": \"<string>\",\n  \"double_opt_override\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/automations/:automationId/journeys",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "automations",
+                                ":automationId",
+                                "journeys"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "c4c81487-bcd0-4b62-a6d2-6b26812170bc",
+                                  "key": "publicationId",
+                                  "value": "<string>",
+                                  "description": "(Required) The prefixed ID of the publication object"
+                                },
+                                {
+                                  "id": "11ccca18-ebf3-4da6-8433-ac2888127a9a",
+                                  "key": "automationId",
+                                  "value": "<string>",
+                                  "description": "(Required) The prefixed ID of the automation object"
+                                }
+                              ]
+                            },
+                            "description": "Add an existing subscription to an automation flow. Requires the automation to have an active *Add by API* trigger. The specified `email` or `subscription_id` will be matched against your existing subscribers. If an existing subscriber is found, they will be enrolled immediately.\nLooking to enroll new subscribers? Use the **[Create Subscription](/api-reference/subscriptions/create)** endpoint instead and specify the `automation_ids` param."
+                          },
+                          "response": [
+                            {
+                              "id": "fec726fd-3253-4c2e-bc62-3416ffbd0abf",
+                              "name": "Created",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"email\": \"<string>\",\n  \"subscription_id\": \"<string>\",\n  \"double_opt_override\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/publications/:publicationId/automations/:automationId/journeys",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "publications",
+                                    ":publicationId",
+                                    "automations",
+                                    ":automationId",
+                                    "journeys"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "publicationId"
+                                    },
+                                    {
+                                      "key": "automationId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"data\": {\n    \"id\": \"<string>\",\n    \"automation_id\": \"<string>\",\n    \"status\": \"manually_removed\",\n    \"subscription_id\": \"<string>\",\n    \"email\": \"<string>\",\n    \"started_at\": \"<integer>\",\n    \"completed_at\": \"<integer>\"\n  }\n}",
+                              "createdAt": "2026-07-28T01:12:04.000Z",
+                              "updatedAt": "2026-07-28T01:12:04.000Z",
+                              "uid": "35240-fec726fd-3253-4c2e-bc62-3416ffbd0abf"
+                            },
+                            {
+                              "id": "4fb5c50e-e484-4c40-84f5-0d976ddc8cfb",
+                              "name": "Bad Request",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"email\": \"<string>\",\n  \"subscription_id\": \"<string>\",\n  \"double_opt_override\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/publications/:publicationId/automations/:automationId/journeys",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "publications",
+                                    ":publicationId",
+                                    "automations",
+                                    ":automationId",
+                                    "journeys"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "publicationId"
+                                    },
+                                    {
+                                      "key": "automationId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T01:12:04.000Z",
+                              "updatedAt": "2026-07-28T01:12:04.000Z",
+                              "uid": "35240-4fb5c50e-e484-4c40-84f5-0d976ddc8cfb"
+                            },
+                            {
+                              "id": "8c4fcd58-ea5e-46de-b208-8fdfcff70408",
+                              "name": "Resource Not Found",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"email\": \"<string>\",\n  \"subscription_id\": \"<string>\",\n  \"double_opt_override\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/publications/:publicationId/automations/:automationId/journeys",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "publications",
+                                    ":publicationId",
+                                    "automations",
+                                    ":automationId",
+                                    "journeys"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "publicationId"
+                                    },
+                                    {
+                                      "key": "automationId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T01:12:04.000Z",
+                              "updatedAt": "2026-07-28T01:12:04.000Z",
+                              "uid": "35240-8c4fcd58-ea5e-46de-b208-8fdfcff70408"
+                            },
+                            {
+                              "id": "a648fc8b-6b5c-4994-a00c-d33546b92618",
+                              "name": "Rate Limit Exceeded",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"email\": \"<string>\",\n  \"subscription_id\": \"<string>\",\n  \"double_opt_override\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/publications/:publicationId/automations/:automationId/journeys",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "publications",
+                                    ":publicationId",
+                                    "automations",
+                                    ":automationId",
+                                    "journeys"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "publicationId"
+                                    },
+                                    {
+                                      "key": "automationId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Too Many Requests",
+                              "code": 429,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T01:12:04.000Z",
+                              "updatedAt": "2026-07-28T01:12:04.000Z",
+                              "uid": "35240-a648fc8b-6b5c-4994-a00c-d33546b92618"
+                            },
+                            {
+                              "id": "8d503e4e-5f0e-47c5-9bb2-f0f8601ddd1f",
+                              "name": "Internal Server Error",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"email\": \"<string>\",\n  \"subscription_id\": \"<string>\",\n  \"double_opt_override\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/publications/:publicationId/automations/:automationId/journeys",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "publications",
+                                    ":publicationId",
+                                    "automations",
+                                    ":automationId",
+                                    "journeys"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "publicationId"
+                                    },
+                                    {
+                                      "key": "automationId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T01:12:04.000Z",
+                              "updatedAt": "2026-07-28T01:12:04.000Z",
+                              "uid": "35240-8d503e4e-5f0e-47c5-9bb2-f0f8601ddd1f"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T01:12:04.000Z",
+                          "updatedAt": "2026-07-28T01:12:04.000Z",
+                          "uid": "35240-91dfef03-8216-4ac5-b094-9be274372072"
+                        },
+                        {
+                          "name": "List automation journeys <Badge intent=\"info\" minimal outlined>OAuth Scope: automations:read</Badge>",
+                          "id": "67ca1624-6bf6-4058-8155-dcc5772e4789",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/automations/:automationId/journeys?status=all&limit=<integer>&page=<integer>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "automations",
+                                ":automationId",
+                                "journeys"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Optionally filter the results by the automation journey's status.",
+                                  "key": "status",
+                                  "value": "all"
+                                },
+                                {
+                                  "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                                  "key": "limit",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).",
+                                  "key": "page",
+                                  "value": "<integer>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "id": "d3a41ea0-5ea1-41b3-b533-1e0cf724f9c6",
+                                  "key": "publicationId",
+                                  "value": "<string>",
+                                  "description": "(Required) The prefixed ID of the publication object"
+                                },
+                                {
+                                  "id": "e2d40020-0769-4798-82b3-45d189718726",
+                                  "key": "automationId",
+                                  "value": "<string>",
+                                  "description": "(Required) The prefixed ID of the automation object"
+                                }
+                              ]
+                            },
+                            "description": "Retrieve a list of automation journeys that have occurred within a specific automation."
+                          },
+                          "response": [
+                            {
+                              "id": "6d1bd368-8a58-4484-aa40-49ed93b5880e",
+                              "name": "OK",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/publications/:publicationId/automations/:automationId/journeys?status=all&limit=<integer>&page=<integer>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "publications",
+                                    ":publicationId",
+                                    "automations",
+                                    ":automationId",
+                                    "journeys"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Optionally filter the results by the automation journey's status.",
+                                      "key": "status",
+                                      "value": "all"
+                                    },
+                                    {
+                                      "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                                      "key": "limit",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).",
+                                      "key": "page",
+                                      "value": "<integer>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "publicationId"
+                                    },
+                                    {
+                                      "key": "automationId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"automation_id\": \"<string>\",\n      \"status\": \"exited_early\",\n      \"subscription_id\": \"<string>\",\n      \"email\": \"<string>\",\n      \"started_at\": \"<integer>\",\n      \"completed_at\": \"<integer>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"automation_id\": \"<string>\",\n      \"status\": \"in_progress\",\n      \"subscription_id\": \"<string>\",\n      \"email\": \"<string>\",\n      \"started_at\": \"<integer>\",\n      \"completed_at\": \"<integer>\"\n    }\n  ],\n  \"limit\": \"<integer>\",\n  \"page\": 1,\n  \"total_results\": \"<integer>\",\n  \"total_pages\": \"<integer>\"\n}",
+                              "createdAt": "2026-07-28T01:12:04.000Z",
+                              "updatedAt": "2026-07-28T01:12:04.000Z",
+                              "uid": "35240-6d1bd368-8a58-4484-aa40-49ed93b5880e"
+                            },
+                            {
+                              "id": "2f295e11-32aa-405f-8122-6742f795e87f",
+                              "name": "Bad Request",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/publications/:publicationId/automations/:automationId/journeys?status=all&limit=<integer>&page=<integer>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "publications",
+                                    ":publicationId",
+                                    "automations",
+                                    ":automationId",
+                                    "journeys"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Optionally filter the results by the automation journey's status.",
+                                      "key": "status",
+                                      "value": "all"
+                                    },
+                                    {
+                                      "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                                      "key": "limit",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).",
+                                      "key": "page",
+                                      "value": "<integer>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "publicationId"
+                                    },
+                                    {
+                                      "key": "automationId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T01:12:04.000Z",
+                              "updatedAt": "2026-07-28T01:12:04.000Z",
+                              "uid": "35240-2f295e11-32aa-405f-8122-6742f795e87f"
+                            },
+                            {
+                              "id": "6bc25e69-91a2-445f-a62c-d414698fecb6",
+                              "name": "Resource Not Found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/publications/:publicationId/automations/:automationId/journeys?status=all&limit=<integer>&page=<integer>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "publications",
+                                    ":publicationId",
+                                    "automations",
+                                    ":automationId",
+                                    "journeys"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Optionally filter the results by the automation journey's status.",
+                                      "key": "status",
+                                      "value": "all"
+                                    },
+                                    {
+                                      "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                                      "key": "limit",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).",
+                                      "key": "page",
+                                      "value": "<integer>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "publicationId"
+                                    },
+                                    {
+                                      "key": "automationId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T01:12:04.000Z",
+                              "updatedAt": "2026-07-28T01:12:04.000Z",
+                              "uid": "35240-6bc25e69-91a2-445f-a62c-d414698fecb6"
+                            },
+                            {
+                              "id": "4f2f7c37-ecae-4d3d-9fee-e48bdf44058f",
+                              "name": "Rate Limit Exceeded",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/publications/:publicationId/automations/:automationId/journeys?status=all&limit=<integer>&page=<integer>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "publications",
+                                    ":publicationId",
+                                    "automations",
+                                    ":automationId",
+                                    "journeys"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Optionally filter the results by the automation journey's status.",
+                                      "key": "status",
+                                      "value": "all"
+                                    },
+                                    {
+                                      "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                                      "key": "limit",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).",
+                                      "key": "page",
+                                      "value": "<integer>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "publicationId"
+                                    },
+                                    {
+                                      "key": "automationId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Too Many Requests",
+                              "code": 429,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T01:12:04.000Z",
+                              "updatedAt": "2026-07-28T01:12:04.000Z",
+                              "uid": "35240-4f2f7c37-ecae-4d3d-9fee-e48bdf44058f"
+                            },
+                            {
+                              "id": "8ad9b21a-b9af-4f11-b0cf-665c72ed2d30",
+                              "name": "Internal Server Error",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/publications/:publicationId/automations/:automationId/journeys?status=all&limit=<integer>&page=<integer>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "publications",
+                                    ":publicationId",
+                                    "automations",
+                                    ":automationId",
+                                    "journeys"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Optionally filter the results by the automation journey's status.",
+                                      "key": "status",
+                                      "value": "all"
+                                    },
+                                    {
+                                      "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                                      "key": "limit",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).",
+                                      "key": "page",
+                                      "value": "<integer>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "publicationId"
+                                    },
+                                    {
+                                      "key": "automationId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T01:12:04.000Z",
+                              "updatedAt": "2026-07-28T01:12:04.000Z",
+                              "uid": "35240-8ad9b21a-b9af-4f11-b0cf-665c72ed2d30"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T01:12:04.000Z",
+                          "updatedAt": "2026-07-28T01:12:04.000Z",
+                          "uid": "35240-67ca1624-6bf6-4058-8155-dcc5772e4789"
+                        }
+                      ],
+                      "id": "82e261c9-e2f8-4d17-a9d0-068fde732f6c",
+                      "createdAt": "2026-07-28T01:12:04.000Z",
+                      "updatedAt": "2026-07-28T01:12:04.000Z",
+                      "uid": "35240-82e261c9-e2f8-4d17-a9d0-068fde732f6c"
+                    }
+                  ],
+                  "id": "5ad3af60-0f77-4125-afc2-cf0a27657efc",
+                  "createdAt": "2026-07-28T01:12:04.000Z",
+                  "updatedAt": "2026-07-28T01:12:04.000Z",
+                  "uid": "35240-5ad3af60-0f77-4125-afc2-cf0a27657efc"
+                }
+              ],
+              "id": "77f75405-9cf9-4626-b20b-f21ddadf950b",
+              "createdAt": "2026-07-28T01:12:04.000Z",
+              "updatedAt": "2026-07-28T01:12:04.000Z",
+              "uid": "35240-77f75405-9cf9-4626-b20b-f21ddadf950b"
+            }
+          ],
+          "id": "bb51b7ae-4093-4f61-b35b-a09261aad4b8",
+          "createdAt": "2026-07-28T01:12:04.000Z",
+          "updatedAt": "2026-07-28T01:12:04.000Z",
+          "uid": "35240-bb51b7ae-4093-4f61-b35b-a09261aad4b8"
+        }
+      ],
+      "id": "9a82c258-cb72-4497-baf6-dcf39db38591",
+      "createdAt": "2026-07-28T01:12:04.000Z",
+      "updatedAt": "2026-07-28T01:12:04.000Z",
+      "uid": "35240-9a82c258-cb72-4497-baf6-dcf39db38591"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.beehiiv.com/v2"
+    }
+  ]
+}

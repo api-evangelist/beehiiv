@@ -1,0 +1,722 @@
+{
+  "info": {
+    "_postman_id": "28d7ee7f-2763-43c3-a96a-1e9b4686f0ab",
+    "name": "API Reference subpackage_advertisement_opportunities subpackage_publications API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:13:02.000Z",
+    "updatedAt": "2026-07-28T01:13:02.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-28d7ee7f-2763-43c3-a96a-1e9b4686f0ab"
+  },
+  "item": [
+    {
+      "name": "publications",
+      "item": [
+        {
+          "name": "{publicationId}",
+          "item": [
+            {
+              "name": "Get publication <Badge intent=\"info\" minimal outlined>OAuth Scope: publications:read</Badge>",
+              "id": "7a7d0bb7-60ab-4c42-857f-3f4fefb8e7b2",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/publications/:publicationId?expand=stat_average_click_rate&expand=stat_total_sent",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "publications",
+                    ":publicationId"
+                  ],
+                  "query": [
+                    {
+                      "description": "Optionally expand the results by adding additional information like subscription counts and engagement stats.",
+                      "key": "expand",
+                      "value": "stat_average_click_rate"
+                    },
+                    {
+                      "description": "Optionally expand the results by adding additional information like subscription counts and engagement stats.",
+                      "key": "expand",
+                      "value": "stat_total_sent"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "0b7b6bdf-0ffd-4c04-84aa-3762326e0cbd",
+                      "key": "publicationId",
+                      "value": "<string>",
+                      "description": "(Required) The prefixed ID of the publication object"
+                    }
+                  ]
+                },
+                "description": "Retrieve a single publication"
+              },
+              "response": [
+                {
+                  "id": "78e32484-e020-49d7-b6de-519d66d599f2",
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/publications/:publicationId?expand=stat_total_sent",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "publications",
+                        ":publicationId"
+                      ],
+                      "query": [
+                        {
+                          "description": "Optionally expand the results by adding additional information like subscription counts and engagement stats.",
+                          "key": "expand",
+                          "value": "stat_total_sent"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "publicationId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"data\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"organization_name\": \"<string>\",\n    \"referral_program_enabled\": \"<boolean>\",\n    \"created\": \"<double>\",\n    \"stats\": {\n      \"active_subscriptions\": \"<integer>\",\n      \"active_premium_subscriptions\": \"<integer>\",\n      \"active_free_subscriptions\": \"<integer>\",\n      \"average_open_rate\": \"<double>\",\n      \"average_click_rate\": \"<double>\",\n      \"total_sent\": \"<integer>\",\n      \"total_unique_opened\": \"<integer>\",\n      \"total_clicked\": \"<integer>\"\n    }\n  }\n}",
+                  "createdAt": "2026-07-28T01:13:02.000Z",
+                  "updatedAt": "2026-07-28T01:13:02.000Z",
+                  "uid": "35240-78e32484-e020-49d7-b6de-519d66d599f2"
+                },
+                {
+                  "id": "ad35ff65-b72a-4a25-9472-c8991bc94dc0",
+                  "name": "Bad Request",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/publications/:publicationId?expand=stat_total_sent",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "publications",
+                        ":publicationId"
+                      ],
+                      "query": [
+                        {
+                          "description": "Optionally expand the results by adding additional information like subscription counts and engagement stats.",
+                          "key": "expand",
+                          "value": "stat_total_sent"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "publicationId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T01:13:02.000Z",
+                  "updatedAt": "2026-07-28T01:13:02.000Z",
+                  "uid": "35240-ad35ff65-b72a-4a25-9472-c8991bc94dc0"
+                },
+                {
+                  "id": "6af044f3-9947-4107-9c40-c4523739afbf",
+                  "name": "Resource Not Found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/publications/:publicationId?expand=stat_total_sent",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "publications",
+                        ":publicationId"
+                      ],
+                      "query": [
+                        {
+                          "description": "Optionally expand the results by adding additional information like subscription counts and engagement stats.",
+                          "key": "expand",
+                          "value": "stat_total_sent"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "publicationId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T01:13:02.000Z",
+                  "updatedAt": "2026-07-28T01:13:02.000Z",
+                  "uid": "35240-6af044f3-9947-4107-9c40-c4523739afbf"
+                },
+                {
+                  "id": "26044f2b-8aa7-4469-83b9-d9afa0bda468",
+                  "name": "Rate Limit Exceeded",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/publications/:publicationId?expand=stat_total_sent",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "publications",
+                        ":publicationId"
+                      ],
+                      "query": [
+                        {
+                          "description": "Optionally expand the results by adding additional information like subscription counts and engagement stats.",
+                          "key": "expand",
+                          "value": "stat_total_sent"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "publicationId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T01:13:02.000Z",
+                  "updatedAt": "2026-07-28T01:13:02.000Z",
+                  "uid": "35240-26044f2b-8aa7-4469-83b9-d9afa0bda468"
+                },
+                {
+                  "id": "855b022e-ee32-43cc-bf54-9532edd65ddb",
+                  "name": "Internal Server Error",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/publications/:publicationId?expand=stat_total_sent",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "publications",
+                        ":publicationId"
+                      ],
+                      "query": [
+                        {
+                          "description": "Optionally expand the results by adding additional information like subscription counts and engagement stats.",
+                          "key": "expand",
+                          "value": "stat_total_sent"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "publicationId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T01:13:02.000Z",
+                  "updatedAt": "2026-07-28T01:13:02.000Z",
+                  "uid": "35240-855b022e-ee32-43cc-bf54-9532edd65ddb"
+                }
+              ],
+              "createdAt": "2026-07-28T01:13:02.000Z",
+              "updatedAt": "2026-07-28T01:13:02.000Z",
+              "uid": "35240-7a7d0bb7-60ab-4c42-857f-3f4fefb8e7b2"
+            }
+          ],
+          "id": "23692cf3-962e-488f-9666-4971079348d0",
+          "createdAt": "2026-07-28T01:13:02.000Z",
+          "updatedAt": "2026-07-28T01:13:02.000Z",
+          "uid": "35240-23692cf3-962e-488f-9666-4971079348d0"
+        },
+        {
+          "name": "List publications <Badge intent=\"info\" minimal outlined>OAuth Scope: publications:read</Badge>",
+          "id": "f9ac2ae9-92bf-46f6-befe-67569e2d9a4d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/publications?expand=stat_average_click_rate&expand=stat_total_unique_opened&limit=<integer>&page=<integer>&direction=asc&order_by=created",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "publications"
+              ],
+              "query": [
+                {
+                  "description": "Optionally expand the results by adding additional information like subscription counts and engagement stats.",
+                  "key": "expand",
+                  "value": "stat_average_click_rate"
+                },
+                {
+                  "description": "Optionally expand the results by adding additional information like subscription counts and engagement stats.",
+                  "key": "expand",
+                  "value": "stat_total_unique_opened"
+                },
+                {
+                  "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                  "key": "limit",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).<br>If not specified, results 1-10 from page 1 will be returned.",
+                  "key": "page",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "The direction that the results are sorted in. Defaults to asc<br> `asc` - Ascending, sorts from smallest to largest.<br> `desc` - Descending, sorts from largest to smallest.",
+                  "key": "direction",
+                  "value": "asc"
+                },
+                {
+                  "description": "The field that the results are sorted by. Defaults to created<br> `created` - The time in which the publication was first created.<br> `name` - The name of the publication.",
+                  "key": "order_by",
+                  "value": "created"
+                }
+              ]
+            },
+            "description": "Retrieve all publications associated with your API key."
+          },
+          "response": [
+            {
+              "id": "6de1e447-9dab-45e1-97b9-d913885c21e8",
+              "name": "OK",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/publications?expand=stat_total_unique_opened&limit=<integer>&page=<integer>&direction=asc&order_by=created",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "publications"
+                  ],
+                  "query": [
+                    {
+                      "description": "Optionally expand the results by adding additional information like subscription counts and engagement stats.",
+                      "key": "expand",
+                      "value": "stat_total_unique_opened"
+                    },
+                    {
+                      "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).<br>If not specified, results 1-10 from page 1 will be returned.",
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The direction that the results are sorted in. Defaults to asc<br> `asc` - Ascending, sorts from smallest to largest.<br> `desc` - Descending, sorts from largest to smallest.",
+                      "key": "direction",
+                      "value": "asc"
+                    },
+                    {
+                      "description": "The field that the results are sorted by. Defaults to created<br> `created` - The time in which the publication was first created.<br> `name` - The name of the publication.",
+                      "key": "order_by",
+                      "value": "created"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"organization_name\": \"<string>\",\n      \"referral_program_enabled\": \"<boolean>\",\n      \"created\": \"<double>\",\n      \"stats\": {\n        \"active_subscriptions\": \"<integer>\",\n        \"active_premium_subscriptions\": \"<integer>\",\n        \"active_free_subscriptions\": \"<integer>\",\n        \"average_open_rate\": \"<double>\",\n        \"average_click_rate\": \"<double>\",\n        \"total_sent\": \"<integer>\",\n        \"total_unique_opened\": \"<integer>\",\n        \"total_clicked\": \"<integer>\"\n      }\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"organization_name\": \"<string>\",\n      \"referral_program_enabled\": \"<boolean>\",\n      \"created\": \"<double>\",\n      \"stats\": {\n        \"active_subscriptions\": \"<integer>\",\n        \"active_premium_subscriptions\": \"<integer>\",\n        \"active_free_subscriptions\": \"<integer>\",\n        \"average_open_rate\": \"<double>\",\n        \"average_click_rate\": \"<double>\",\n        \"total_sent\": \"<integer>\",\n        \"total_unique_opened\": \"<integer>\",\n        \"total_clicked\": \"<integer>\"\n      }\n    }\n  ],\n  \"limit\": \"<integer>\",\n  \"page\": 1,\n  \"total_results\": \"<integer>\",\n  \"total_pages\": \"<integer>\"\n}",
+              "createdAt": "2026-07-28T01:13:02.000Z",
+              "updatedAt": "2026-07-28T01:13:02.000Z",
+              "uid": "35240-6de1e447-9dab-45e1-97b9-d913885c21e8"
+            },
+            {
+              "id": "0043927b-e847-4695-9bd6-f881b015b927",
+              "name": "Bad Request",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/publications?expand=stat_total_unique_opened&limit=<integer>&page=<integer>&direction=asc&order_by=created",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "publications"
+                  ],
+                  "query": [
+                    {
+                      "description": "Optionally expand the results by adding additional information like subscription counts and engagement stats.",
+                      "key": "expand",
+                      "value": "stat_total_unique_opened"
+                    },
+                    {
+                      "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).<br>If not specified, results 1-10 from page 1 will be returned.",
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The direction that the results are sorted in. Defaults to asc<br> `asc` - Ascending, sorts from smallest to largest.<br> `desc` - Descending, sorts from largest to smallest.",
+                      "key": "direction",
+                      "value": "asc"
+                    },
+                    {
+                      "description": "The field that the results are sorted by. Defaults to created<br> `created` - The time in which the publication was first created.<br> `name` - The name of the publication.",
+                      "key": "order_by",
+                      "value": "created"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T01:13:02.000Z",
+              "updatedAt": "2026-07-28T01:13:02.000Z",
+              "uid": "35240-0043927b-e847-4695-9bd6-f881b015b927"
+            },
+            {
+              "id": "3ceff407-3a09-4881-a946-090c891f408a",
+              "name": "Resource Not Found",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/publications?expand=stat_total_unique_opened&limit=<integer>&page=<integer>&direction=asc&order_by=created",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "publications"
+                  ],
+                  "query": [
+                    {
+                      "description": "Optionally expand the results by adding additional information like subscription counts and engagement stats.",
+                      "key": "expand",
+                      "value": "stat_total_unique_opened"
+                    },
+                    {
+                      "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).<br>If not specified, results 1-10 from page 1 will be returned.",
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The direction that the results are sorted in. Defaults to asc<br> `asc` - Ascending, sorts from smallest to largest.<br> `desc` - Descending, sorts from largest to smallest.",
+                      "key": "direction",
+                      "value": "asc"
+                    },
+                    {
+                      "description": "The field that the results are sorted by. Defaults to created<br> `created` - The time in which the publication was first created.<br> `name` - The name of the publication.",
+                      "key": "order_by",
+                      "value": "created"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T01:13:02.000Z",
+              "updatedAt": "2026-07-28T01:13:02.000Z",
+              "uid": "35240-3ceff407-3a09-4881-a946-090c891f408a"
+            },
+            {
+              "id": "4fcd685a-ce0b-4b0a-844c-634de9e7bde0",
+              "name": "Rate Limit Exceeded",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/publications?expand=stat_total_unique_opened&limit=<integer>&page=<integer>&direction=asc&order_by=created",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "publications"
+                  ],
+                  "query": [
+                    {
+                      "description": "Optionally expand the results by adding additional information like subscription counts and engagement stats.",
+                      "key": "expand",
+                      "value": "stat_total_unique_opened"
+                    },
+                    {
+                      "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).<br>If not specified, results 1-10 from page 1 will be returned.",
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The direction that the results are sorted in. Defaults to asc<br> `asc` - Ascending, sorts from smallest to largest.<br> `desc` - Descending, sorts from largest to smallest.",
+                      "key": "direction",
+                      "value": "asc"
+                    },
+                    {
+                      "description": "The field that the results are sorted by. Defaults to created<br> `created` - The time in which the publication was first created.<br> `name` - The name of the publication.",
+                      "key": "order_by",
+                      "value": "created"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T01:13:02.000Z",
+              "updatedAt": "2026-07-28T01:13:02.000Z",
+              "uid": "35240-4fcd685a-ce0b-4b0a-844c-634de9e7bde0"
+            },
+            {
+              "id": "6ab203f4-d624-4a1a-8889-e35a8ea536fb",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/publications?expand=stat_total_unique_opened&limit=<integer>&page=<integer>&direction=asc&order_by=created",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "publications"
+                  ],
+                  "query": [
+                    {
+                      "description": "Optionally expand the results by adding additional information like subscription counts and engagement stats.",
+                      "key": "expand",
+                      "value": "stat_total_unique_opened"
+                    },
+                    {
+                      "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).<br>If not specified, results 1-10 from page 1 will be returned.",
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The direction that the results are sorted in. Defaults to asc<br> `asc` - Ascending, sorts from smallest to largest.<br> `desc` - Descending, sorts from largest to smallest.",
+                      "key": "direction",
+                      "value": "asc"
+                    },
+                    {
+                      "description": "The field that the results are sorted by. Defaults to created<br> `created` - The time in which the publication was first created.<br> `name` - The name of the publication.",
+                      "key": "order_by",
+                      "value": "created"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T01:13:02.000Z",
+              "updatedAt": "2026-07-28T01:13:02.000Z",
+              "uid": "35240-6ab203f4-d624-4a1a-8889-e35a8ea536fb"
+            }
+          ],
+          "createdAt": "2026-07-28T01:13:02.000Z",
+          "updatedAt": "2026-07-28T01:13:02.000Z",
+          "uid": "35240-f9ac2ae9-92bf-46f6-befe-67569e2d9a4d"
+        }
+      ],
+      "id": "c1e51d71-2899-4686-8bef-eceabfe053f8",
+      "createdAt": "2026-07-28T01:13:02.000Z",
+      "updatedAt": "2026-07-28T01:13:02.000Z",
+      "uid": "35240-c1e51d71-2899-4686-8bef-eceabfe053f8"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.beehiiv.com/v2"
+    }
+  ]
+}

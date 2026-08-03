@@ -1,0 +1,690 @@
+{
+  "info": {
+    "_postman_id": "5c3d7ae7-6a57-43ba-bb45-16d2c5a30a73",
+    "name": "API Reference subpackage_advertisement_opportunities subpackage_workspaces API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:13:24.000Z",
+    "updatedAt": "2026-07-28T01:13:24.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-5c3d7ae7-6a57-43ba-bb45-16d2c5a30a73"
+  },
+  "item": [
+    {
+      "name": "workspaces",
+      "item": [
+        {
+          "name": "identify",
+          "item": [
+            {
+              "name": "Identify workspace <Badge intent=\"info\" minimal outlined>OAuth Scope: identify:read</Badge>",
+              "id": "5075a635-d562-4c26-a2ac-b1a04274c000",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/workspaces/identify",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "workspaces",
+                    "identify"
+                  ]
+                },
+                "description": "Retrieve information about the workspace the OAuth or API token is associated with."
+              },
+              "response": [
+                {
+                  "id": "58f216b4-0351-47ee-a572-6ecf2db12f22",
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/workspaces/identify",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "workspaces",
+                        "identify"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"data\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"owner_email\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:13:24.000Z",
+                  "updatedAt": "2026-07-28T01:13:24.000Z",
+                  "uid": "35240-58f216b4-0351-47ee-a572-6ecf2db12f22"
+                },
+                {
+                  "id": "1719885d-5610-4116-93f7-3aaf4553314f",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/workspaces/identify",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "workspaces",
+                        "identify"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T01:13:24.000Z",
+                  "updatedAt": "2026-07-28T01:13:24.000Z",
+                  "uid": "35240-1719885d-5610-4116-93f7-3aaf4553314f"
+                },
+                {
+                  "id": "6a4873c3-0a3d-4684-9352-28a4254d217c",
+                  "name": "Forbidden",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/workspaces/identify",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "workspaces",
+                        "identify"
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T01:13:24.000Z",
+                  "updatedAt": "2026-07-28T01:13:24.000Z",
+                  "uid": "35240-6a4873c3-0a3d-4684-9352-28a4254d217c"
+                },
+                {
+                  "id": "233d942e-9bc3-474b-88c6-171dd9087bd2",
+                  "name": "Resource Not Found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/workspaces/identify",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "workspaces",
+                        "identify"
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T01:13:24.000Z",
+                  "updatedAt": "2026-07-28T01:13:24.000Z",
+                  "uid": "35240-233d942e-9bc3-474b-88c6-171dd9087bd2"
+                },
+                {
+                  "id": "8f07f16b-ce10-490b-866e-4fb849d8e9b7",
+                  "name": "Rate Limit Exceeded",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/workspaces/identify",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "workspaces",
+                        "identify"
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T01:13:24.000Z",
+                  "updatedAt": "2026-07-28T01:13:24.000Z",
+                  "uid": "35240-8f07f16b-ce10-490b-866e-4fb849d8e9b7"
+                },
+                {
+                  "id": "44aa6d7b-f70c-42a7-abc3-38155991dd0d",
+                  "name": "Internal Server Error",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/workspaces/identify",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "workspaces",
+                        "identify"
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T01:13:24.000Z",
+                  "updatedAt": "2026-07-28T01:13:24.000Z",
+                  "uid": "35240-44aa6d7b-f70c-42a7-abc3-38155991dd0d"
+                }
+              ],
+              "createdAt": "2026-07-28T01:13:24.000Z",
+              "updatedAt": "2026-07-28T01:13:24.000Z",
+              "uid": "35240-5075a635-d562-4c26-a2ac-b1a04274c000"
+            }
+          ],
+          "id": "a764bd29-1b6f-491f-ba9a-ed9a978527a2",
+          "createdAt": "2026-07-28T01:13:24.000Z",
+          "updatedAt": "2026-07-28T01:13:24.000Z",
+          "uid": "35240-a764bd29-1b6f-491f-ba9a-ed9a978527a2"
+        },
+        {
+          "name": "publications",
+          "item": [
+            {
+              "name": "by_subscription_email",
+              "item": [
+                {
+                  "name": "{email}",
+                  "item": [
+                    {
+                      "name": "Get publications by subscription email <Badge intent=\"info\" minimal outlined>OAuth Scope: publications:read</Badge>",
+                      "id": "2fef7929-7e0b-4f03-adea-e5d6a203d8fc",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/workspaces/publications/by_subscription_email/:email?expand=subscription&expand=subscription",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "workspaces",
+                            "publications",
+                            "by_subscription_email",
+                            ":email"
+                          ],
+                          "query": [
+                            {
+                              "description": "Optionally expand the results by adding additional information. <br>`subscription` - Returns the full Subscription object for the email address in each publication. <br>`publication` - Returns the full Publication object instead of just ID and name. <br>`subscription_custom_fields` - Returns custom field values nested within the subscription object. (Returns the subscription object regardless of whether `subscription` is requested.)",
+                              "key": "expand",
+                              "value": "subscription"
+                            },
+                            {
+                              "description": "Optionally expand the results by adding additional information. <br>`subscription` - Returns the full Subscription object for the email address in each publication. <br>`publication` - Returns the full Publication object instead of just ID and name. <br>`subscription_custom_fields` - Returns custom field values nested within the subscription object. (Returns the subscription object regardless of whether `subscription` is requested.)",
+                              "key": "expand",
+                              "value": "subscription"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "8534a4ab-e307-4777-a0ea-536ef39e7500",
+                              "key": "email",
+                              "value": "<string>",
+                              "description": "(Required) The email address to search for subscriptions"
+                            }
+                          ]
+                        },
+                        "description": "Retrieve all publications in the workspace that have a subscription for the specified email address. The workspace is determined by the provided API key."
+                      },
+                      "response": [
+                        {
+                          "id": "4ed80c28-7e41-4b30-8745-1478fdd1db13",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/workspaces/publications/by_subscription_email/:email?expand=subscription",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "workspaces",
+                                "publications",
+                                "by_subscription_email",
+                                ":email"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Optionally expand the results by adding additional information. <br>`subscription` - Returns the full Subscription object for the email address in each publication. <br>`publication` - Returns the full Publication object instead of just ID and name. <br>`subscription_custom_fields` - Returns custom field values nested within the subscription object. (Returns the subscription object regardless of whether `subscription` is requested.)",
+                                  "key": "expand",
+                                  "value": "subscription"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "email"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "[\n  {\n    \"publication_id\": \"<string>\",\n    \"publication_name\": \"<string>\",\n    \"subscription_id\": \"<string>\",\n    \"status\": \"inactive\",\n    \"publication\": {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"organization_name\": \"<string>\",\n      \"referral_program_enabled\": \"<boolean>\",\n      \"created\": \"<double>\",\n      \"stats\": {\n        \"active_subscriptions\": \"<integer>\",\n        \"active_premium_subscriptions\": \"<integer>\",\n        \"active_free_subscriptions\": \"<integer>\",\n        \"average_open_rate\": \"<double>\",\n        \"average_click_rate\": \"<double>\",\n        \"total_sent\": \"<integer>\",\n        \"total_unique_opened\": \"<integer>\",\n        \"total_clicked\": \"<integer>\"\n      }\n    },\n    \"subscription\": {\n      \"id\": \"<string>\",\n      \"email\": \"<email>\",\n      \"status\": \"active\",\n      \"created\": \"<integer>\",\n      \"subscription_tier\": \"free\",\n      \"subscription_premium_tier_names\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"utm_source\": \"<string>\",\n      \"utm_medium\": \"<string>\",\n      \"utm_channel\": \"api\",\n      \"utm_campaign\": \"<string>\",\n      \"utm_term\": \"<string>\",\n      \"utm_content\": \"<string>\",\n      \"referring_site\": \"<string>\",\n      \"referral_code\": \"<string>\",\n      \"subscription_premium_tiers\": [\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"status\": \"archived\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"status\": \"active\"\n        }\n      ],\n      \"custom_fields\": [\n        {\n          \"name\": \"<string>\",\n          \"kind\": \"double\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"kind\": \"list\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"tags\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"stats\": {\n        \"emails_received\": \"<integer>\",\n        \"open_rate\": \"<double>\",\n        \"click_through_rate\": \"<double>\"\n      },\n      \"newsletter_list_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  },\n  {\n    \"publication_id\": \"<string>\",\n    \"publication_name\": \"<string>\",\n    \"subscription_id\": \"<string>\",\n    \"status\": \"active\",\n    \"publication\": {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"organization_name\": \"<string>\",\n      \"referral_program_enabled\": \"<boolean>\",\n      \"created\": \"<double>\",\n      \"stats\": {\n        \"active_subscriptions\": \"<integer>\",\n        \"active_premium_subscriptions\": \"<integer>\",\n        \"active_free_subscriptions\": \"<integer>\",\n        \"average_open_rate\": \"<double>\",\n        \"average_click_rate\": \"<double>\",\n        \"total_sent\": \"<integer>\",\n        \"total_unique_opened\": \"<integer>\",\n        \"total_clicked\": \"<integer>\"\n      }\n    },\n    \"subscription\": {\n      \"id\": \"<string>\",\n      \"email\": \"<email>\",\n      \"status\": \"needs_attention\",\n      \"created\": \"<integer>\",\n      \"subscription_tier\": \"free\",\n      \"subscription_premium_tier_names\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"utm_source\": \"<string>\",\n      \"utm_medium\": \"<string>\",\n      \"utm_channel\": \"referral\",\n      \"utm_campaign\": \"<string>\",\n      \"utm_term\": \"<string>\",\n      \"utm_content\": \"<string>\",\n      \"referring_site\": \"<string>\",\n      \"referral_code\": \"<string>\",\n      \"subscription_premium_tiers\": [\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"status\": \"archived\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"status\": \"active\"\n        }\n      ],\n      \"custom_fields\": [\n        {\n          \"name\": \"<string>\",\n          \"kind\": \"list\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"kind\": \"datetime\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"tags\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"stats\": {\n        \"emails_received\": \"<integer>\",\n        \"open_rate\": \"<double>\",\n        \"click_through_rate\": \"<double>\"\n      },\n      \"newsletter_list_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  }\n]",
+                          "createdAt": "2026-07-28T01:13:24.000Z",
+                          "updatedAt": "2026-07-28T01:13:24.000Z",
+                          "uid": "35240-4ed80c28-7e41-4b30-8745-1478fdd1db13"
+                        },
+                        {
+                          "id": "ff02b768-213a-4181-a1ac-18d5e0201c91",
+                          "name": "Bad Request",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/workspaces/publications/by_subscription_email/:email?expand=subscription",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "workspaces",
+                                "publications",
+                                "by_subscription_email",
+                                ":email"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Optionally expand the results by adding additional information. <br>`subscription` - Returns the full Subscription object for the email address in each publication. <br>`publication` - Returns the full Publication object instead of just ID and name. <br>`subscription_custom_fields` - Returns custom field values nested within the subscription object. (Returns the subscription object regardless of whether `subscription` is requested.)",
+                                  "key": "expand",
+                                  "value": "subscription"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "email"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:13:24.000Z",
+                          "updatedAt": "2026-07-28T01:13:24.000Z",
+                          "uid": "35240-ff02b768-213a-4181-a1ac-18d5e0201c91"
+                        },
+                        {
+                          "id": "ebf25722-f9ec-4956-9733-10139eb897fb",
+                          "name": "Unauthorized",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/workspaces/publications/by_subscription_email/:email?expand=subscription",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "workspaces",
+                                "publications",
+                                "by_subscription_email",
+                                ":email"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Optionally expand the results by adding additional information. <br>`subscription` - Returns the full Subscription object for the email address in each publication. <br>`publication` - Returns the full Publication object instead of just ID and name. <br>`subscription_custom_fields` - Returns custom field values nested within the subscription object. (Returns the subscription object regardless of whether `subscription` is requested.)",
+                                  "key": "expand",
+                                  "value": "subscription"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "email"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:13:24.000Z",
+                          "updatedAt": "2026-07-28T01:13:24.000Z",
+                          "uid": "35240-ebf25722-f9ec-4956-9733-10139eb897fb"
+                        },
+                        {
+                          "id": "fcac2d03-6e7e-496a-9daf-a45497eb63bd",
+                          "name": "Resource Not Found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/workspaces/publications/by_subscription_email/:email?expand=subscription",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "workspaces",
+                                "publications",
+                                "by_subscription_email",
+                                ":email"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Optionally expand the results by adding additional information. <br>`subscription` - Returns the full Subscription object for the email address in each publication. <br>`publication` - Returns the full Publication object instead of just ID and name. <br>`subscription_custom_fields` - Returns custom field values nested within the subscription object. (Returns the subscription object regardless of whether `subscription` is requested.)",
+                                  "key": "expand",
+                                  "value": "subscription"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "email"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:13:24.000Z",
+                          "updatedAt": "2026-07-28T01:13:24.000Z",
+                          "uid": "35240-fcac2d03-6e7e-496a-9daf-a45497eb63bd"
+                        },
+                        {
+                          "id": "a4adb45a-3598-4837-9cb0-bc13cd4bc3aa",
+                          "name": "Rate Limit Exceeded",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/workspaces/publications/by_subscription_email/:email?expand=subscription",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "workspaces",
+                                "publications",
+                                "by_subscription_email",
+                                ":email"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Optionally expand the results by adding additional information. <br>`subscription` - Returns the full Subscription object for the email address in each publication. <br>`publication` - Returns the full Publication object instead of just ID and name. <br>`subscription_custom_fields` - Returns custom field values nested within the subscription object. (Returns the subscription object regardless of whether `subscription` is requested.)",
+                                  "key": "expand",
+                                  "value": "subscription"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "email"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:13:24.000Z",
+                          "updatedAt": "2026-07-28T01:13:24.000Z",
+                          "uid": "35240-a4adb45a-3598-4837-9cb0-bc13cd4bc3aa"
+                        },
+                        {
+                          "id": "a5efd5cd-fe50-48be-a655-f67e856ab47b",
+                          "name": "Internal Server Error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/workspaces/publications/by_subscription_email/:email?expand=subscription",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "workspaces",
+                                "publications",
+                                "by_subscription_email",
+                                ":email"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Optionally expand the results by adding additional information. <br>`subscription` - Returns the full Subscription object for the email address in each publication. <br>`publication` - Returns the full Publication object instead of just ID and name. <br>`subscription_custom_fields` - Returns custom field values nested within the subscription object. (Returns the subscription object regardless of whether `subscription` is requested.)",
+                                  "key": "expand",
+                                  "value": "subscription"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "email"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:13:24.000Z",
+                          "updatedAt": "2026-07-28T01:13:24.000Z",
+                          "uid": "35240-a5efd5cd-fe50-48be-a655-f67e856ab47b"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:13:24.000Z",
+                      "updatedAt": "2026-07-28T01:13:24.000Z",
+                      "uid": "35240-2fef7929-7e0b-4f03-adea-e5d6a203d8fc"
+                    }
+                  ],
+                  "id": "ecbbca4f-3f6c-4c8f-86b4-60ba7179f8e7",
+                  "createdAt": "2026-07-28T01:13:24.000Z",
+                  "updatedAt": "2026-07-28T01:13:24.000Z",
+                  "uid": "35240-ecbbca4f-3f6c-4c8f-86b4-60ba7179f8e7"
+                }
+              ],
+              "id": "edba8bd1-21dd-4aa9-975c-9ce5dea464d5",
+              "createdAt": "2026-07-28T01:13:24.000Z",
+              "updatedAt": "2026-07-28T01:13:24.000Z",
+              "uid": "35240-edba8bd1-21dd-4aa9-975c-9ce5dea464d5"
+            }
+          ],
+          "id": "8af60afe-c8e9-472b-9d1d-1b64f0f5d65f",
+          "createdAt": "2026-07-28T01:13:24.000Z",
+          "updatedAt": "2026-07-28T01:13:24.000Z",
+          "uid": "35240-8af60afe-c8e9-472b-9d1d-1b64f0f5d65f"
+        }
+      ],
+      "id": "daaa4832-9aa0-4708-87f0-88ef01f1e200",
+      "createdAt": "2026-07-28T01:13:24.000Z",
+      "updatedAt": "2026-07-28T01:13:24.000Z",
+      "uid": "35240-daaa4832-9aa0-4708-87f0-88ef01f1e200"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.beehiiv.com/v2"
+    }
+  ]
+}

@@ -1,0 +1,297 @@
+{
+  "info": {
+    "_postman_id": "074f3834-07e9-4f11-80a9-ee173dd43aa0",
+    "name": "API Reference subpackage_advertisement_opportunities subpackage_oauth_users API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:12:50.000Z",
+    "updatedAt": "2026-07-28T01:12:50.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-074f3834-07e9-4f11-80a9-ee173dd43aa0"
+  },
+  "item": [
+    {
+      "name": "users",
+      "item": [
+        {
+          "name": "identify",
+          "item": [
+            {
+              "name": "Identify user <Badge intent=\"info\" minimal outlined>OAuth Scope: identify:read</Badge>",
+              "id": "1e2bad2a-5a72-484a-9920-80da23307654",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/users/identify",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users",
+                    "identify"
+                  ]
+                },
+                "description": "Retrieve information about the user who authorized the OAuth access token."
+              },
+              "response": [
+                {
+                  "id": "a207f793-789c-4a74-9e30-726498ab2733",
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/identify",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        "identify"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"profile_picture\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:12:50.000Z",
+                  "updatedAt": "2026-07-28T01:12:50.000Z",
+                  "uid": "35240-a207f793-789c-4a74-9e30-726498ab2733"
+                },
+                {
+                  "id": "79ffed9e-d463-4efe-ad45-abc895b14745",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/identify",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        "identify"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T01:12:50.000Z",
+                  "updatedAt": "2026-07-28T01:12:50.000Z",
+                  "uid": "35240-79ffed9e-d463-4efe-ad45-abc895b14745"
+                },
+                {
+                  "id": "bbef3b65-136c-4ef9-b2e3-87e0522bca73",
+                  "name": "Forbidden",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/identify",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        "identify"
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T01:12:50.000Z",
+                  "updatedAt": "2026-07-28T01:12:50.000Z",
+                  "uid": "35240-bbef3b65-136c-4ef9-b2e3-87e0522bca73"
+                },
+                {
+                  "id": "1d67c73d-d232-4ea6-ba02-6005a4f27f6e",
+                  "name": "Resource Not Found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/identify",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        "identify"
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T01:12:50.000Z",
+                  "updatedAt": "2026-07-28T01:12:50.000Z",
+                  "uid": "35240-1d67c73d-d232-4ea6-ba02-6005a4f27f6e"
+                },
+                {
+                  "id": "5484f95c-5f28-4807-8d58-293ee4b69373",
+                  "name": "Rate Limit Exceeded",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/identify",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        "identify"
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T01:12:50.000Z",
+                  "updatedAt": "2026-07-28T01:12:50.000Z",
+                  "uid": "35240-5484f95c-5f28-4807-8d58-293ee4b69373"
+                },
+                {
+                  "id": "efbfa226-f8ea-4507-b2f2-91d5a80e4aaf",
+                  "name": "Internal Server Error",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/identify",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        "identify"
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T01:12:50.000Z",
+                  "updatedAt": "2026-07-28T01:12:50.000Z",
+                  "uid": "35240-efbfa226-f8ea-4507-b2f2-91d5a80e4aaf"
+                }
+              ],
+              "createdAt": "2026-07-28T01:12:50.000Z",
+              "updatedAt": "2026-07-28T01:12:50.000Z",
+              "uid": "35240-1e2bad2a-5a72-484a-9920-80da23307654"
+            }
+          ],
+          "id": "4d978c67-823f-4985-ab91-e0a0d6e949fc",
+          "createdAt": "2026-07-28T01:12:50.000Z",
+          "updatedAt": "2026-07-28T01:12:50.000Z",
+          "uid": "35240-4d978c67-823f-4985-ab91-e0a0d6e949fc"
+        }
+      ],
+      "id": "ea7efbda-6dc1-43e1-a984-be516194a5f0",
+      "createdAt": "2026-07-28T01:12:50.000Z",
+      "updatedAt": "2026-07-28T01:12:50.000Z",
+      "uid": "35240-ea7efbda-6dc1-43e1-a984-be516194a5f0"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.beehiiv.com/v2"
+    }
+  ]
+}

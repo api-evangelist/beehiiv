@@ -1,0 +1,1524 @@
+{
+  "info": {
+    "_postman_id": "1be16cf0-1ece-4424-ac6e-ac0871dded01",
+    "name": "API Reference subpackage_advertisement_opportunities subpackage_bulkSubscriptionUpdates API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:12:06.000Z",
+    "updatedAt": "2026-07-28T01:12:07.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-1be16cf0-1ece-4424-ac6e-ac0871dded01"
+  },
+  "item": [
+    {
+      "name": "publications",
+      "item": [
+        {
+          "name": "{publicationId}",
+          "item": [
+            {
+              "name": "bulk_subscription_updates",
+              "item": [
+                {
+                  "name": "{id}",
+                  "item": [
+                    {
+                      "name": "Get subscription update <Badge intent=\"info\" minimal outlined>OAuth Scope: subscriptions:read</Badge>",
+                      "id": "562eb00c-c3ea-42a4-abd3-3fadce0d7113",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/bulk_subscription_updates/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "bulk_subscription_updates",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "161ab045-6388-4645-9162-5ccfcbecd18e",
+                              "key": "publicationId",
+                              "value": "<string>",
+                              "description": "(Required) The prefixed ID of the publication object"
+                            },
+                            {
+                              "id": "adea5859-c261-4df0-9943-bc93a16b33fb",
+                              "key": "id",
+                              "value": "<string>",
+                              "description": "(Required) The ID of the Subscription Update object"
+                            }
+                          ]
+                        },
+                        "description": "Returns a single Subscription Update object for a publication."
+                      },
+                      "response": [
+                        {
+                          "id": "92908ec5-02e1-4555-9b94-ed0151c102a4",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/bulk_subscription_updates/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "bulk_subscription_updates",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"data\": {\n    \"id\": \"<string>\",\n    \"type\": \"bulk\",\n    \"params\": \"<string>\",\n    \"status\": \"failed\",\n    \"publication_id\": \"<string>\",\n    \"failure_reason\": \"<string>\",\n    \"completed\": \"<integer>\",\n    \"created\": \"<integer>\",\n    \"updated\": \"<integer>\",\n    \"error_log\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                          "createdAt": "2026-07-28T01:12:07.000Z",
+                          "updatedAt": "2026-07-28T01:12:07.000Z",
+                          "uid": "35240-92908ec5-02e1-4555-9b94-ed0151c102a4"
+                        },
+                        {
+                          "id": "a66315fe-8e34-4943-964a-94430a7d82ca",
+                          "name": "Bad Request",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/bulk_subscription_updates/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "bulk_subscription_updates",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:12:07.000Z",
+                          "updatedAt": "2026-07-28T01:12:07.000Z",
+                          "uid": "35240-a66315fe-8e34-4943-964a-94430a7d82ca"
+                        },
+                        {
+                          "id": "db1af1be-ddac-4662-b098-7c165576295e",
+                          "name": "Resource Not Found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/bulk_subscription_updates/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "bulk_subscription_updates",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:12:07.000Z",
+                          "updatedAt": "2026-07-28T01:12:07.000Z",
+                          "uid": "35240-db1af1be-ddac-4662-b098-7c165576295e"
+                        },
+                        {
+                          "id": "a2ccd4e1-7459-4620-bfc3-8532bbc5bcbd",
+                          "name": "Rate Limit Exceeded",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/bulk_subscription_updates/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "bulk_subscription_updates",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:12:07.000Z",
+                          "updatedAt": "2026-07-28T01:12:07.000Z",
+                          "uid": "35240-a2ccd4e1-7459-4620-bfc3-8532bbc5bcbd"
+                        },
+                        {
+                          "id": "0040520f-574c-443d-9b6d-ff9742545979",
+                          "name": "Internal Server Error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/bulk_subscription_updates/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "bulk_subscription_updates",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                },
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:12:07.000Z",
+                          "updatedAt": "2026-07-28T01:12:07.000Z",
+                          "uid": "35240-0040520f-574c-443d-9b6d-ff9742545979"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:12:07.000Z",
+                      "updatedAt": "2026-07-28T01:12:07.000Z",
+                      "uid": "35240-562eb00c-c3ea-42a4-abd3-3fadce0d7113"
+                    }
+                  ],
+                  "id": "dfbfe494-6dda-4c1d-baa4-36ab89c41c3a",
+                  "createdAt": "2026-07-28T01:12:07.000Z",
+                  "updatedAt": "2026-07-28T01:12:07.000Z",
+                  "uid": "35240-dfbfe494-6dda-4c1d-baa4-36ab89c41c3a"
+                },
+                {
+                  "name": "List subscription updates <Badge intent=\"info\" minimal outlined>OAuth Scope: subscriptions:read</Badge>",
+                  "id": "192374fd-ba7b-4b5c-b9c5-e62bf1d68605",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/publications/:publicationId/bulk_subscription_updates",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "publications",
+                        ":publicationId",
+                        "bulk_subscription_updates"
+                      ],
+                      "variable": [
+                        {
+                          "id": "266fec5b-10c3-494e-adcf-877c001f133d",
+                          "key": "publicationId",
+                          "value": "<string>",
+                          "description": "(Required) The prefixed ID of the publication object"
+                        }
+                      ]
+                    },
+                    "description": "Returns a list of Subscription Update objects for a publication."
+                  },
+                  "response": [
+                    {
+                      "id": "cac24c18-dfb9-4d21-a912-ee00c9c999bc",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/bulk_subscription_updates",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "bulk_subscription_updates"
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"type\": \"status\",\n      \"params\": \"<string>\",\n      \"status\": \"complete\",\n      \"publication_id\": \"<string>\",\n      \"failure_reason\": \"<string>\",\n      \"completed\": \"<integer>\",\n      \"created\": \"<integer>\",\n      \"updated\": \"<integer>\",\n      \"error_log\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"type\": \"bulk\",\n      \"params\": \"<string>\",\n      \"status\": \"processing\",\n      \"publication_id\": \"<string>\",\n      \"failure_reason\": \"<string>\",\n      \"completed\": \"<integer>\",\n      \"created\": \"<integer>\",\n      \"updated\": \"<integer>\",\n      \"error_log\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:12:07.000Z",
+                      "updatedAt": "2026-07-28T01:12:07.000Z",
+                      "uid": "35240-cac24c18-dfb9-4d21-a912-ee00c9c999bc"
+                    },
+                    {
+                      "id": "8a3c79dd-599a-4cd0-afec-ceb4c6f87bd1",
+                      "name": "Bad Request",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/bulk_subscription_updates",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "bulk_subscription_updates"
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:12:07.000Z",
+                      "updatedAt": "2026-07-28T01:12:07.000Z",
+                      "uid": "35240-8a3c79dd-599a-4cd0-afec-ceb4c6f87bd1"
+                    },
+                    {
+                      "id": "3f5cb8e9-b59a-40ff-b89c-6677987bde6a",
+                      "name": "Resource Not Found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/bulk_subscription_updates",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "bulk_subscription_updates"
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:12:07.000Z",
+                      "updatedAt": "2026-07-28T01:12:07.000Z",
+                      "uid": "35240-3f5cb8e9-b59a-40ff-b89c-6677987bde6a"
+                    },
+                    {
+                      "id": "7ba82a8d-cc89-4b89-b428-60461aa62426",
+                      "name": "Rate Limit Exceeded",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/bulk_subscription_updates",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "bulk_subscription_updates"
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:12:07.000Z",
+                      "updatedAt": "2026-07-28T01:12:07.000Z",
+                      "uid": "35240-7ba82a8d-cc89-4b89-b428-60461aa62426"
+                    },
+                    {
+                      "id": "9d8e04b4-797e-47c4-b99f-8414ce0e7301",
+                      "name": "Internal Server Error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/bulk_subscription_updates",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "bulk_subscription_updates"
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:12:07.000Z",
+                      "updatedAt": "2026-07-28T01:12:07.000Z",
+                      "uid": "35240-9d8e04b4-797e-47c4-b99f-8414ce0e7301"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:12:07.000Z",
+                  "updatedAt": "2026-07-28T01:12:07.000Z",
+                  "uid": "35240-192374fd-ba7b-4b5c-b9c5-e62bf1d68605"
+                }
+              ],
+              "id": "51d829b4-b0c6-4696-a270-510a9be959a9",
+              "createdAt": "2026-07-28T01:12:07.000Z",
+              "updatedAt": "2026-07-28T01:12:07.000Z",
+              "uid": "35240-51d829b4-b0c6-4696-a270-510a9be959a9"
+            },
+            {
+              "name": "subscriptions",
+              "item": [
+                {
+                  "name": "bulk_actions",
+                  "item": [
+                    {
+                      "name": "Update subscriptions <Badge intent=\"info\" minimal outlined>OAuth Scope: subscriptions:write</Badge>",
+                      "id": "0abed5b0-58d4-4a6c-9a9c-db1cde89fa44",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"subscriptions\": [\n    {\n      \"subscription_id\": \"<string>\",\n      \"tier\": \"premium\",\n      \"stripe_customer_id\": \"<string>\",\n      \"unsubscribe\": \"<boolean>\",\n      \"custom_fields\": [\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"delete\": \"<boolean>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"delete\": \"<boolean>\"\n        }\n      ]\n    },\n    {\n      \"subscription_id\": \"<string>\",\n      \"tier\": \"free\",\n      \"stripe_customer_id\": \"<string>\",\n      \"unsubscribe\": \"<boolean>\",\n      \"custom_fields\": [\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"delete\": \"<boolean>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"delete\": \"<boolean>\"\n        }\n      ]\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/subscriptions/bulk_actions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "subscriptions",
+                            "bulk_actions"
+                          ],
+                          "variable": [
+                            {
+                              "id": "cb440a7f-4f83-479e-a7aa-8c8d0c7c92af",
+                              "key": "publicationId",
+                              "value": "<string>",
+                              "description": "(Required) The prefixed ID of the publication object"
+                            }
+                          ]
+                        },
+                        "description": "Bulk update multiple subscriptions fields, including status, custom fields, and tiers."
+                      },
+                      "response": [
+                        {
+                          "id": "1accdfc5-b5f7-4e9e-992f-e893b3103a73",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"subscriptions\": [\n    {\n      \"subscription_id\": \"<string>\",\n      \"tier\": \"premium\",\n      \"stripe_customer_id\": \"<string>\",\n      \"unsubscribe\": \"<boolean>\",\n      \"custom_fields\": [\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"delete\": \"<boolean>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"delete\": \"<boolean>\"\n        }\n      ]\n    },\n    {\n      \"subscription_id\": \"<string>\",\n      \"tier\": \"free\",\n      \"stripe_customer_id\": \"<string>\",\n      \"unsubscribe\": \"<boolean>\",\n      \"custom_fields\": [\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"delete\": \"<boolean>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"delete\": \"<boolean>\"\n        }\n      ]\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/subscriptions/bulk_actions",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "subscriptions",
+                                "bulk_actions"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"data\": {\n    \"subscription_update_id\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T01:12:07.000Z",
+                          "updatedAt": "2026-07-28T01:12:07.000Z",
+                          "uid": "35240-1accdfc5-b5f7-4e9e-992f-e893b3103a73"
+                        },
+                        {
+                          "id": "891ed7ed-7bf3-4fd4-9dbd-9391a360d912",
+                          "name": "Bad Request",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"subscriptions\": [\n    {\n      \"subscription_id\": \"<string>\",\n      \"tier\": \"premium\",\n      \"stripe_customer_id\": \"<string>\",\n      \"unsubscribe\": \"<boolean>\",\n      \"custom_fields\": [\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"delete\": \"<boolean>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"delete\": \"<boolean>\"\n        }\n      ]\n    },\n    {\n      \"subscription_id\": \"<string>\",\n      \"tier\": \"free\",\n      \"stripe_customer_id\": \"<string>\",\n      \"unsubscribe\": \"<boolean>\",\n      \"custom_fields\": [\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"delete\": \"<boolean>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"delete\": \"<boolean>\"\n        }\n      ]\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/subscriptions/bulk_actions",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "subscriptions",
+                                "bulk_actions"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:12:07.000Z",
+                          "updatedAt": "2026-07-28T01:12:07.000Z",
+                          "uid": "35240-891ed7ed-7bf3-4fd4-9dbd-9391a360d912"
+                        },
+                        {
+                          "id": "1f053c97-db9a-4fe0-8ebf-b6ed5dd9c8c3",
+                          "name": "Resource Not Found",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"subscriptions\": [\n    {\n      \"subscription_id\": \"<string>\",\n      \"tier\": \"premium\",\n      \"stripe_customer_id\": \"<string>\",\n      \"unsubscribe\": \"<boolean>\",\n      \"custom_fields\": [\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"delete\": \"<boolean>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"delete\": \"<boolean>\"\n        }\n      ]\n    },\n    {\n      \"subscription_id\": \"<string>\",\n      \"tier\": \"free\",\n      \"stripe_customer_id\": \"<string>\",\n      \"unsubscribe\": \"<boolean>\",\n      \"custom_fields\": [\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"delete\": \"<boolean>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"delete\": \"<boolean>\"\n        }\n      ]\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/subscriptions/bulk_actions",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "subscriptions",
+                                "bulk_actions"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:12:07.000Z",
+                          "updatedAt": "2026-07-28T01:12:07.000Z",
+                          "uid": "35240-1f053c97-db9a-4fe0-8ebf-b6ed5dd9c8c3"
+                        },
+                        {
+                          "id": "9c9635b8-0f94-4847-b5b0-cbe8eddc6804",
+                          "name": "Rate Limit Exceeded",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"subscriptions\": [\n    {\n      \"subscription_id\": \"<string>\",\n      \"tier\": \"premium\",\n      \"stripe_customer_id\": \"<string>\",\n      \"unsubscribe\": \"<boolean>\",\n      \"custom_fields\": [\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"delete\": \"<boolean>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"delete\": \"<boolean>\"\n        }\n      ]\n    },\n    {\n      \"subscription_id\": \"<string>\",\n      \"tier\": \"free\",\n      \"stripe_customer_id\": \"<string>\",\n      \"unsubscribe\": \"<boolean>\",\n      \"custom_fields\": [\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"delete\": \"<boolean>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"delete\": \"<boolean>\"\n        }\n      ]\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/subscriptions/bulk_actions",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "subscriptions",
+                                "bulk_actions"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:12:07.000Z",
+                          "updatedAt": "2026-07-28T01:12:07.000Z",
+                          "uid": "35240-9c9635b8-0f94-4847-b5b0-cbe8eddc6804"
+                        },
+                        {
+                          "id": "031d00ea-f2ef-4fa5-a9f6-f5b7504ca7f9",
+                          "name": "Internal Server Error",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"subscriptions\": [\n    {\n      \"subscription_id\": \"<string>\",\n      \"tier\": \"premium\",\n      \"stripe_customer_id\": \"<string>\",\n      \"unsubscribe\": \"<boolean>\",\n      \"custom_fields\": [\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"delete\": \"<boolean>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"delete\": \"<boolean>\"\n        }\n      ]\n    },\n    {\n      \"subscription_id\": \"<string>\",\n      \"tier\": \"free\",\n      \"stripe_customer_id\": \"<string>\",\n      \"unsubscribe\": \"<boolean>\",\n      \"custom_fields\": [\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"delete\": \"<boolean>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"delete\": \"<boolean>\"\n        }\n      ]\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/subscriptions/bulk_actions",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "subscriptions",
+                                "bulk_actions"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:12:07.000Z",
+                          "updatedAt": "2026-07-28T01:12:07.000Z",
+                          "uid": "35240-031d00ea-f2ef-4fa5-a9f6-f5b7504ca7f9"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:12:07.000Z",
+                      "updatedAt": "2026-07-28T01:12:07.000Z",
+                      "uid": "35240-0abed5b0-58d4-4a6c-9a9c-db1cde89fa44"
+                    },
+                    {
+                      "name": "Update subscriptions <Badge intent=\"info\" minimal outlined>OAuth Scope: subscriptions:write</Badge>",
+                      "id": "4246a43d-6974-43c2-b238-157367b34976",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"subscriptions\": [\n    {\n      \"subscription_id\": \"<string>\",\n      \"tier\": \"premium\",\n      \"stripe_customer_id\": \"<string>\",\n      \"unsubscribe\": \"<boolean>\",\n      \"custom_fields\": [\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"delete\": \"<boolean>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"delete\": \"<boolean>\"\n        }\n      ]\n    },\n    {\n      \"subscription_id\": \"<string>\",\n      \"tier\": \"free\",\n      \"stripe_customer_id\": \"<string>\",\n      \"unsubscribe\": \"<boolean>\",\n      \"custom_fields\": [\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"delete\": \"<boolean>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"delete\": \"<boolean>\"\n        }\n      ]\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/subscriptions/bulk_actions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "subscriptions",
+                            "bulk_actions"
+                          ],
+                          "variable": [
+                            {
+                              "id": "560dc2a8-6450-4438-84b7-0888114d8263",
+                              "key": "publicationId",
+                              "value": "<string>",
+                              "description": "(Required) The prefixed ID of the publication object"
+                            }
+                          ]
+                        },
+                        "description": "Bulk update multiple subscriptions fields, including status, custom fields, and tiers."
+                      },
+                      "response": [
+                        {
+                          "id": "07843951-2aab-4dab-b19a-c4ceb6779e33",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"subscriptions\": [\n    {\n      \"subscription_id\": \"<string>\",\n      \"tier\": \"premium\",\n      \"stripe_customer_id\": \"<string>\",\n      \"unsubscribe\": \"<boolean>\",\n      \"custom_fields\": [\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"delete\": \"<boolean>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"delete\": \"<boolean>\"\n        }\n      ]\n    },\n    {\n      \"subscription_id\": \"<string>\",\n      \"tier\": \"free\",\n      \"stripe_customer_id\": \"<string>\",\n      \"unsubscribe\": \"<boolean>\",\n      \"custom_fields\": [\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"delete\": \"<boolean>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"delete\": \"<boolean>\"\n        }\n      ]\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/subscriptions/bulk_actions",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "subscriptions",
+                                "bulk_actions"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"data\": {\n    \"subscription_update_id\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T01:12:07.000Z",
+                          "updatedAt": "2026-07-28T01:12:07.000Z",
+                          "uid": "35240-07843951-2aab-4dab-b19a-c4ceb6779e33"
+                        },
+                        {
+                          "id": "d7ce7812-07fa-4e88-bc53-500de6027a5f",
+                          "name": "Bad Request",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"subscriptions\": [\n    {\n      \"subscription_id\": \"<string>\",\n      \"tier\": \"premium\",\n      \"stripe_customer_id\": \"<string>\",\n      \"unsubscribe\": \"<boolean>\",\n      \"custom_fields\": [\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"delete\": \"<boolean>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"delete\": \"<boolean>\"\n        }\n      ]\n    },\n    {\n      \"subscription_id\": \"<string>\",\n      \"tier\": \"free\",\n      \"stripe_customer_id\": \"<string>\",\n      \"unsubscribe\": \"<boolean>\",\n      \"custom_fields\": [\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"delete\": \"<boolean>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"delete\": \"<boolean>\"\n        }\n      ]\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/subscriptions/bulk_actions",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "subscriptions",
+                                "bulk_actions"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:12:07.000Z",
+                          "updatedAt": "2026-07-28T01:12:07.000Z",
+                          "uid": "35240-d7ce7812-07fa-4e88-bc53-500de6027a5f"
+                        },
+                        {
+                          "id": "92adbdee-d6a6-479f-9d55-f8090f89451f",
+                          "name": "Resource Not Found",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"subscriptions\": [\n    {\n      \"subscription_id\": \"<string>\",\n      \"tier\": \"premium\",\n      \"stripe_customer_id\": \"<string>\",\n      \"unsubscribe\": \"<boolean>\",\n      \"custom_fields\": [\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"delete\": \"<boolean>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"delete\": \"<boolean>\"\n        }\n      ]\n    },\n    {\n      \"subscription_id\": \"<string>\",\n      \"tier\": \"free\",\n      \"stripe_customer_id\": \"<string>\",\n      \"unsubscribe\": \"<boolean>\",\n      \"custom_fields\": [\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"delete\": \"<boolean>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"delete\": \"<boolean>\"\n        }\n      ]\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/subscriptions/bulk_actions",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "subscriptions",
+                                "bulk_actions"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:12:07.000Z",
+                          "updatedAt": "2026-07-28T01:12:07.000Z",
+                          "uid": "35240-92adbdee-d6a6-479f-9d55-f8090f89451f"
+                        },
+                        {
+                          "id": "300b30a6-49b5-4c34-8b97-f7fbccc53940",
+                          "name": "Rate Limit Exceeded",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"subscriptions\": [\n    {\n      \"subscription_id\": \"<string>\",\n      \"tier\": \"premium\",\n      \"stripe_customer_id\": \"<string>\",\n      \"unsubscribe\": \"<boolean>\",\n      \"custom_fields\": [\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"delete\": \"<boolean>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"delete\": \"<boolean>\"\n        }\n      ]\n    },\n    {\n      \"subscription_id\": \"<string>\",\n      \"tier\": \"free\",\n      \"stripe_customer_id\": \"<string>\",\n      \"unsubscribe\": \"<boolean>\",\n      \"custom_fields\": [\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"delete\": \"<boolean>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"delete\": \"<boolean>\"\n        }\n      ]\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/subscriptions/bulk_actions",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "subscriptions",
+                                "bulk_actions"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:12:07.000Z",
+                          "updatedAt": "2026-07-28T01:12:07.000Z",
+                          "uid": "35240-300b30a6-49b5-4c34-8b97-f7fbccc53940"
+                        },
+                        {
+                          "id": "5e22bf0b-e488-4d3f-aabb-fe4389e923b9",
+                          "name": "Internal Server Error",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"subscriptions\": [\n    {\n      \"subscription_id\": \"<string>\",\n      \"tier\": \"premium\",\n      \"stripe_customer_id\": \"<string>\",\n      \"unsubscribe\": \"<boolean>\",\n      \"custom_fields\": [\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"delete\": \"<boolean>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"delete\": \"<boolean>\"\n        }\n      ]\n    },\n    {\n      \"subscription_id\": \"<string>\",\n      \"tier\": \"free\",\n      \"stripe_customer_id\": \"<string>\",\n      \"unsubscribe\": \"<boolean>\",\n      \"custom_fields\": [\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"delete\": \"<boolean>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"delete\": \"<boolean>\"\n        }\n      ]\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/subscriptions/bulk_actions",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "subscriptions",
+                                "bulk_actions"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publicationId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:12:07.000Z",
+                          "updatedAt": "2026-07-28T01:12:07.000Z",
+                          "uid": "35240-5e22bf0b-e488-4d3f-aabb-fe4389e923b9"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:12:07.000Z",
+                      "updatedAt": "2026-07-28T01:12:07.000Z",
+                      "uid": "35240-4246a43d-6974-43c2-b238-157367b34976"
+                    }
+                  ],
+                  "id": "539ecef8-a29c-4325-9601-fea8dc64fe8c",
+                  "createdAt": "2026-07-28T01:12:07.000Z",
+                  "updatedAt": "2026-07-28T01:12:07.000Z",
+                  "uid": "35240-539ecef8-a29c-4325-9601-fea8dc64fe8c"
+                },
+                {
+                  "name": "Update subscriptions' status <Badge intent=\"info\" minimal outlined>OAuth Scope: subscriptions:write</Badge>",
+                  "id": "acd7c1fd-90f9-4cd2-8f17-9e5d2f4eef2e",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"subscription_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"new_status\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/publications/:publicationId/subscriptions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "publications",
+                        ":publicationId",
+                        "subscriptions"
+                      ],
+                      "variable": [
+                        {
+                          "id": "73be1d3b-0fff-4ee7-888a-96f023d06f7d",
+                          "key": "publicationId",
+                          "value": "<string>",
+                          "description": "(Required) The prefixed ID of the publication object"
+                        }
+                      ]
+                    },
+                    "description": "Bulk update subscriptions' status."
+                  },
+                  "response": [
+                    {
+                      "id": "bb8053e6-e431-4581-9ba6-4d9eeeb9f12e",
+                      "name": "Successful response",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"subscription_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"new_status\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/subscriptions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "subscriptions"
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:12:07.000Z",
+                      "updatedAt": "2026-07-28T01:12:07.000Z",
+                      "uid": "35240-bb8053e6-e431-4581-9ba6-4d9eeeb9f12e"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:12:07.000Z",
+                  "updatedAt": "2026-07-28T01:12:07.000Z",
+                  "uid": "35240-acd7c1fd-90f9-4cd2-8f17-9e5d2f4eef2e"
+                },
+                {
+                  "name": "Update subscriptions' status <Badge intent=\"info\" minimal outlined>OAuth Scope: subscriptions:write</Badge>",
+                  "id": "5c28d63e-5d17-4afc-8d98-30b0166b0be6",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"subscription_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"new_status\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/publications/:publicationId/subscriptions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "publications",
+                        ":publicationId",
+                        "subscriptions"
+                      ],
+                      "variable": [
+                        {
+                          "id": "f8345604-7fec-4caa-86c0-7bb3b31259f7",
+                          "key": "publicationId",
+                          "value": "<string>",
+                          "description": "(Required) The prefixed ID of the publication object"
+                        }
+                      ]
+                    },
+                    "description": "Bulk update subscriptions' status."
+                  },
+                  "response": [
+                    {
+                      "id": "2874c313-96d9-47a9-b852-8661bcd5571c",
+                      "name": "Successful response",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"subscription_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"new_status\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/subscriptions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "subscriptions"
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:12:07.000Z",
+                      "updatedAt": "2026-07-28T01:12:07.000Z",
+                      "uid": "35240-2874c313-96d9-47a9-b852-8661bcd5571c"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:12:07.000Z",
+                  "updatedAt": "2026-07-28T01:12:07.000Z",
+                  "uid": "35240-5c28d63e-5d17-4afc-8d98-30b0166b0be6"
+                }
+              ],
+              "id": "965665a2-e528-4871-956c-04f71799f495",
+              "createdAt": "2026-07-28T01:12:07.000Z",
+              "updatedAt": "2026-07-28T01:12:07.000Z",
+              "uid": "35240-965665a2-e528-4871-956c-04f71799f495"
+            }
+          ],
+          "id": "4f47e3db-88bc-430f-90f6-b2a194e573e3",
+          "createdAt": "2026-07-28T01:12:07.000Z",
+          "updatedAt": "2026-07-28T01:12:07.000Z",
+          "uid": "35240-4f47e3db-88bc-430f-90f6-b2a194e573e3"
+        }
+      ],
+      "id": "cad1fce9-3855-4f68-b7a1-da938882513a",
+      "createdAt": "2026-07-28T01:12:07.000Z",
+      "updatedAt": "2026-07-28T01:12:07.000Z",
+      "uid": "35240-cad1fce9-3855-4f68-b7a1-da938882513a"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.beehiiv.com/v2"
+    }
+  ]
+}

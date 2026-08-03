@@ -1,0 +1,571 @@
+{
+  "info": {
+    "_postman_id": "18cf4517-d028-4b8a-85d5-18630aa22681",
+    "name": "API Reference subpackage_advertisement_opportunities subpackage_postTemplates API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:12:59.000Z",
+    "updatedAt": "2026-07-28T01:12:59.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-18cf4517-d028-4b8a-85d5-18630aa22681"
+  },
+  "item": [
+    {
+      "name": "publications",
+      "item": [
+        {
+          "name": "{publicationId}",
+          "item": [
+            {
+              "name": "post_templates",
+              "item": [
+                {
+                  "name": "Get post templates",
+                  "id": "d58fb82b-b9fb-4092-8708-f120c9f4dad2",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/publications/:publicationId/post_templates?limit=<integer>&page=<integer>&order=asc&order_by=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "publications",
+                        ":publicationId",
+                        "post_templates"
+                      ],
+                      "query": [
+                        {
+                          "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                          "key": "limit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).<br>If not specified, results 1-10 from page 1 will be returned.",
+                          "key": "page",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The direction of the request. Defaults to `asc`.",
+                          "key": "order",
+                          "value": "asc"
+                        },
+                        {
+                          "description": "The field to order by. Defaults to `created`.",
+                          "key": "order_by",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "8fcec7a6-872e-4459-bb0f-31e6018dea33",
+                          "key": "publicationId",
+                          "value": "<string>",
+                          "description": "(Required) The prefixed ID of the publication object"
+                        }
+                      ]
+                    },
+                    "description": "Retrieve a list of post templates available for the publication."
+                  },
+                  "response": [
+                    {
+                      "id": "ab4e5cda-96d7-4339-bba6-93f4875ed9e5",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/post_templates?limit=<integer>&page=<integer>&order=asc&order_by=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "post_templates"
+                          ],
+                          "query": [
+                            {
+                              "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).<br>If not specified, results 1-10 from page 1 will be returned.",
+                              "key": "page",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "The direction of the request. Defaults to `asc`.",
+                              "key": "order",
+                              "value": "asc"
+                            },
+                            {
+                              "description": "The field to order by. Defaults to `created`.",
+                              "key": "order_by",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  ],\n  \"limit\": \"<integer>\",\n  \"page\": 1,\n  \"total_results\": \"<integer>\",\n  \"total_pages\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:12:59.000Z",
+                      "updatedAt": "2026-07-28T01:12:59.000Z",
+                      "uid": "35240-ab4e5cda-96d7-4339-bba6-93f4875ed9e5"
+                    },
+                    {
+                      "id": "55f6de27-a463-4841-b8d7-b30185756933",
+                      "name": "Bad Request",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/post_templates?limit=<integer>&page=<integer>&order=asc&order_by=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "post_templates"
+                          ],
+                          "query": [
+                            {
+                              "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).<br>If not specified, results 1-10 from page 1 will be returned.",
+                              "key": "page",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "The direction of the request. Defaults to `asc`.",
+                              "key": "order",
+                              "value": "asc"
+                            },
+                            {
+                              "description": "The field to order by. Defaults to `created`.",
+                              "key": "order_by",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:12:59.000Z",
+                      "updatedAt": "2026-07-28T01:12:59.000Z",
+                      "uid": "35240-55f6de27-a463-4841-b8d7-b30185756933"
+                    },
+                    {
+                      "id": "87e74e1a-837a-4c18-a088-06d02cbf319d",
+                      "name": "Unauthorized",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/post_templates?limit=<integer>&page=<integer>&order=asc&order_by=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "post_templates"
+                          ],
+                          "query": [
+                            {
+                              "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).<br>If not specified, results 1-10 from page 1 will be returned.",
+                              "key": "page",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "The direction of the request. Defaults to `asc`.",
+                              "key": "order",
+                              "value": "asc"
+                            },
+                            {
+                              "description": "The field to order by. Defaults to `created`.",
+                              "key": "order_by",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:12:59.000Z",
+                      "updatedAt": "2026-07-28T01:12:59.000Z",
+                      "uid": "35240-87e74e1a-837a-4c18-a088-06d02cbf319d"
+                    },
+                    {
+                      "id": "ec50774b-56e4-4945-af76-3b2420782487",
+                      "name": "Forbidden",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/post_templates?limit=<integer>&page=<integer>&order=asc&order_by=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "post_templates"
+                          ],
+                          "query": [
+                            {
+                              "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).<br>If not specified, results 1-10 from page 1 will be returned.",
+                              "key": "page",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "The direction of the request. Defaults to `asc`.",
+                              "key": "order",
+                              "value": "asc"
+                            },
+                            {
+                              "description": "The field to order by. Defaults to `created`.",
+                              "key": "order_by",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:12:59.000Z",
+                      "updatedAt": "2026-07-28T01:12:59.000Z",
+                      "uid": "35240-ec50774b-56e4-4945-af76-3b2420782487"
+                    },
+                    {
+                      "id": "e26ec932-4f0f-4cc9-9be5-5a63292493c1",
+                      "name": "Resource Not Found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/post_templates?limit=<integer>&page=<integer>&order=asc&order_by=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "post_templates"
+                          ],
+                          "query": [
+                            {
+                              "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).<br>If not specified, results 1-10 from page 1 will be returned.",
+                              "key": "page",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "The direction of the request. Defaults to `asc`.",
+                              "key": "order",
+                              "value": "asc"
+                            },
+                            {
+                              "description": "The field to order by. Defaults to `created`.",
+                              "key": "order_by",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:12:59.000Z",
+                      "updatedAt": "2026-07-28T01:12:59.000Z",
+                      "uid": "35240-e26ec932-4f0f-4cc9-9be5-5a63292493c1"
+                    },
+                    {
+                      "id": "54d77d75-de8e-4b19-96d4-297d20cc988a",
+                      "name": "Rate Limit Exceeded",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/post_templates?limit=<integer>&page=<integer>&order=asc&order_by=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "post_templates"
+                          ],
+                          "query": [
+                            {
+                              "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).<br>If not specified, results 1-10 from page 1 will be returned.",
+                              "key": "page",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "The direction of the request. Defaults to `asc`.",
+                              "key": "order",
+                              "value": "asc"
+                            },
+                            {
+                              "description": "The field to order by. Defaults to `created`.",
+                              "key": "order_by",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:12:59.000Z",
+                      "updatedAt": "2026-07-28T01:12:59.000Z",
+                      "uid": "35240-54d77d75-de8e-4b19-96d4-297d20cc988a"
+                    },
+                    {
+                      "id": "a0e743e5-c674-44d5-983b-5e1ebc844207",
+                      "name": "Internal Server Error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/publications/:publicationId/post_templates?limit=<integer>&page=<integer>&order=asc&order_by=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "publications",
+                            ":publicationId",
+                            "post_templates"
+                          ],
+                          "query": [
+                            {
+                              "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).<br>If not specified, results 1-10 from page 1 will be returned.",
+                              "key": "page",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "The direction of the request. Defaults to `asc`.",
+                              "key": "order",
+                              "value": "asc"
+                            },
+                            {
+                              "description": "The field to order by. Defaults to `created`.",
+                              "key": "order_by",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "publicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:12:59.000Z",
+                      "updatedAt": "2026-07-28T01:12:59.000Z",
+                      "uid": "35240-a0e743e5-c674-44d5-983b-5e1ebc844207"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:12:59.000Z",
+                  "updatedAt": "2026-07-28T01:12:59.000Z",
+                  "uid": "35240-d58fb82b-b9fb-4092-8708-f120c9f4dad2"
+                }
+              ],
+              "id": "a4320bda-7cfa-4a31-bbf4-2980fb1bbc03",
+              "createdAt": "2026-07-28T01:12:59.000Z",
+              "updatedAt": "2026-07-28T01:12:59.000Z",
+              "uid": "35240-a4320bda-7cfa-4a31-bbf4-2980fb1bbc03"
+            }
+          ],
+          "id": "bebe3a0a-c9c2-4fcb-8029-3c093d14bca5",
+          "createdAt": "2026-07-28T01:12:59.000Z",
+          "updatedAt": "2026-07-28T01:12:59.000Z",
+          "uid": "35240-bebe3a0a-c9c2-4fcb-8029-3c093d14bca5"
+        }
+      ],
+      "id": "f7687f15-6278-4c04-bdec-12029e6a5127",
+      "createdAt": "2026-07-28T01:12:59.000Z",
+      "updatedAt": "2026-07-28T01:12:59.000Z",
+      "uid": "35240-f7687f15-6278-4c04-bdec-12029e6a5127"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.beehiiv.com/v2"
+    }
+  ]
+}

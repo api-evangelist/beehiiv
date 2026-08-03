@@ -1,0 +1,442 @@
+{
+  "info": {
+    "_postman_id": "b5fc7dfc-93e9-415d-95a9-4f3d81638e33",
+    "name": "API Reference subpackage_advertisement_opportunities subpackage_subscriptionTags API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:13:12.000Z",
+    "updatedAt": "2026-07-28T01:13:12.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-b5fc7dfc-93e9-415d-95a9-4f3d81638e33"
+  },
+  "item": [
+    {
+      "name": "publications",
+      "item": [
+        {
+          "name": "{publicationId}",
+          "item": [
+            {
+              "name": "subscriptions",
+              "item": [
+                {
+                  "name": "{subscriptionId}",
+                  "item": [
+                    {
+                      "name": "tags",
+                      "item": [
+                        {
+                          "name": "Add subscription tag <Badge intent=\"info\" minimal outlined>OAuth Scope: subscriptions:write</Badge>",
+                          "id": "a9c64a79-fa33-4f41-9898-b16cff75aa72",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/publications/:publicationId/subscriptions/:subscriptionId/tags",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "publications",
+                                ":publicationId",
+                                "subscriptions",
+                                ":subscriptionId",
+                                "tags"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "b1558123-57ad-4e00-8aac-282f16e55480",
+                                  "key": "publicationId",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                },
+                                {
+                                  "id": "c4255bf5-c96b-4190-b368-ceda9fd80d0f",
+                                  "key": "subscriptionId",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            },
+                            "description": "Adds tags to a subscription. If the tag does not exist on the publication, it will be created automatically."
+                          },
+                          "response": [
+                            {
+                              "id": "e1910597-b615-4352-9f07-a0c0bb61e2a3",
+                              "name": "OK",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/publications/:publicationId/subscriptions/:subscriptionId/tags",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "publications",
+                                    ":publicationId",
+                                    "subscriptions",
+                                    ":subscriptionId",
+                                    "tags"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "publicationId"
+                                    },
+                                    {
+                                      "key": "subscriptionId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"data\": {\n    \"id\": \"<string>\",\n    \"email\": \"<email>\",\n    \"status\": \"needs_attention\",\n    \"created\": \"<integer>\",\n    \"subscription_tier\": \"free\",\n    \"subscription_premium_tier_names\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"utm_source\": \"<string>\",\n    \"utm_medium\": \"<string>\",\n    \"utm_channel\": \"magic_link\",\n    \"utm_campaign\": \"<string>\",\n    \"utm_term\": \"<string>\",\n    \"utm_content\": \"<string>\",\n    \"referring_site\": \"<string>\",\n    \"referral_code\": \"<string>\",\n    \"subscription_premium_tiers\": [\n      {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"status\": \"archived\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"status\": \"archived\"\n      }\n    ],\n    \"custom_fields\": [\n      {\n        \"name\": \"<string>\",\n        \"kind\": \"boolean\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"kind\": \"datetime\",\n        \"value\": \"<string>\"\n      }\n    ],\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"stats\": {\n      \"emails_received\": \"<integer>\",\n      \"open_rate\": \"<double>\",\n      \"click_through_rate\": \"<double>\"\n    },\n    \"newsletter_list_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                              "createdAt": "2026-07-28T01:13:13.000Z",
+                              "updatedAt": "2026-07-28T01:13:13.000Z",
+                              "uid": "35240-e1910597-b615-4352-9f07-a0c0bb61e2a3"
+                            },
+                            {
+                              "id": "fe92caaa-c9f3-421f-b436-bb8e6fb60145",
+                              "name": "Bad Request",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/publications/:publicationId/subscriptions/:subscriptionId/tags",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "publications",
+                                    ":publicationId",
+                                    "subscriptions",
+                                    ":subscriptionId",
+                                    "tags"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "publicationId"
+                                    },
+                                    {
+                                      "key": "subscriptionId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T01:13:13.000Z",
+                              "updatedAt": "2026-07-28T01:13:13.000Z",
+                              "uid": "35240-fe92caaa-c9f3-421f-b436-bb8e6fb60145"
+                            },
+                            {
+                              "id": "9e8a4568-e2ff-46ff-878b-59d3ec835e87",
+                              "name": "Resource Not Found",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/publications/:publicationId/subscriptions/:subscriptionId/tags",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "publications",
+                                    ":publicationId",
+                                    "subscriptions",
+                                    ":subscriptionId",
+                                    "tags"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "publicationId"
+                                    },
+                                    {
+                                      "key": "subscriptionId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T01:13:13.000Z",
+                              "updatedAt": "2026-07-28T01:13:13.000Z",
+                              "uid": "35240-9e8a4568-e2ff-46ff-878b-59d3ec835e87"
+                            },
+                            {
+                              "id": "ba364330-78d2-47dd-9cbe-293989aa04b4",
+                              "name": "Rate Limit Exceeded",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/publications/:publicationId/subscriptions/:subscriptionId/tags",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "publications",
+                                    ":publicationId",
+                                    "subscriptions",
+                                    ":subscriptionId",
+                                    "tags"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "publicationId"
+                                    },
+                                    {
+                                      "key": "subscriptionId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Too Many Requests",
+                              "code": 429,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T01:13:13.000Z",
+                              "updatedAt": "2026-07-28T01:13:13.000Z",
+                              "uid": "35240-ba364330-78d2-47dd-9cbe-293989aa04b4"
+                            },
+                            {
+                              "id": "907d9ed8-a349-4abe-8aaf-0fd5ad2415c2",
+                              "name": "Internal Server Error",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/publications/:publicationId/subscriptions/:subscriptionId/tags",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "publications",
+                                    ":publicationId",
+                                    "subscriptions",
+                                    ":subscriptionId",
+                                    "tags"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "publicationId"
+                                    },
+                                    {
+                                      "key": "subscriptionId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"status\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"code\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T01:13:13.000Z",
+                              "updatedAt": "2026-07-28T01:13:13.000Z",
+                              "uid": "35240-907d9ed8-a349-4abe-8aaf-0fd5ad2415c2"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T01:13:13.000Z",
+                          "updatedAt": "2026-07-28T01:13:13.000Z",
+                          "uid": "35240-a9c64a79-fa33-4f41-9898-b16cff75aa72"
+                        }
+                      ],
+                      "id": "f6476814-2c76-4d37-b6e6-53ea9da2df75",
+                      "createdAt": "2026-07-28T01:13:13.000Z",
+                      "updatedAt": "2026-07-28T01:13:13.000Z",
+                      "uid": "35240-f6476814-2c76-4d37-b6e6-53ea9da2df75"
+                    }
+                  ],
+                  "id": "d1e2751d-74bd-4c5f-bb50-6338cc021266",
+                  "createdAt": "2026-07-28T01:13:13.000Z",
+                  "updatedAt": "2026-07-28T01:13:13.000Z",
+                  "uid": "35240-d1e2751d-74bd-4c5f-bb50-6338cc021266"
+                }
+              ],
+              "id": "e0833098-7e4a-4213-afc2-e14164736a65",
+              "createdAt": "2026-07-28T01:13:13.000Z",
+              "updatedAt": "2026-07-28T01:13:13.000Z",
+              "uid": "35240-e0833098-7e4a-4213-afc2-e14164736a65"
+            }
+          ],
+          "id": "6a288019-880a-4a8b-a7ad-806c61d0b92e",
+          "createdAt": "2026-07-28T01:13:13.000Z",
+          "updatedAt": "2026-07-28T01:13:13.000Z",
+          "uid": "35240-6a288019-880a-4a8b-a7ad-806c61d0b92e"
+        }
+      ],
+      "id": "d9856d60-2b33-4ded-8455-d5aa57833402",
+      "createdAt": "2026-07-28T01:13:13.000Z",
+      "updatedAt": "2026-07-28T01:13:13.000Z",
+      "uid": "35240-d9856d60-2b33-4ded-8455-d5aa57833402"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.beehiiv.com/v2"
+    }
+  ]
+}
