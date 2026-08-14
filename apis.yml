@@ -28,7 +28,7 @@ tags:
   - Media
   - Advertising
 created: '2026-05-08'
-modified: '2026-05-30'
+modified: '2026-08-13'
 specificationVersion: '0.19'
 apis:
 - aid: beehiiv:beehiiv-subpackage-advertisement-opportunities-api
@@ -909,6 +909,48 @@ apis:
     url: asyncapi/beehiiv-asyncapi.yml
   - type: Documentation
     url: https://developers.beehiiv.com/api-reference
+- aid: beehiiv:beehiiv-oauth2-api
+  name: beehiiv OAuth2 API
+  description: >-
+    The beehiiv OAuth2 authorization surface — authorization-code flow with PKCE, plus token creation, refresh,
+    revocation, introspection and token-info endpoints. Published by beehiiv as a separate OpenAPI 3.1 document
+    from the API reference, and served on the app domain rather than the API domain.
+  humanURL: https://developers.beehiiv.com/oauth2
+  baseURL: https://app.beehiiv.com
+  tags:
+  - OAuth2
+  - Authorization
+  - Tokens
+  properties:
+  - type: OpenAPI
+    url: openapi/beehiiv-oauth2-api-openapi.yml
+  - type: Documentation
+    url: https://developers.beehiiv.com/oauth2
+  - type: OAuthScopes
+    url: scopes/beehiiv-scopes.yml
+  - type: Authentication
+    url: authentication/beehiiv-authentication.yml
+- aid: beehiiv:beehiiv-webhook-events-api
+  name: beehiiv Webhook Events
+  description: >-
+    The beehiiv outbound webhook event surface, published by beehiiv as an OpenAPI 3.1 document using the
+    webhooks object — 22 event types across Subscription, Post, Newsletter List Subscription, Podcast and Survey.
+    Delivered through Svix with svix-id, svix-timestamp and svix-signature verification headers.
+  humanURL: https://developers.beehiiv.com/webhooks
+  baseURL: https://api.beehiiv.com/v2
+  tags:
+  - Webhooks
+  - Events
+  - Notifications
+  properties:
+  - type: OpenAPI
+    url: openapi/beehiiv-webhook-events-openapi.yml
+  - type: Webhooks
+    url: openapi/beehiiv-webhook-events-openapi.yml
+  - type: AsyncAPI
+    url: asyncapi/beehiiv-asyncapi.yml
+  - type: Documentation
+    url: https://developers.beehiiv.com/webhooks
 common:
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/beehiiv/overview
@@ -951,6 +993,10 @@ common:
   - type: LlmsText
     url: https://developers.beehiiv.com/llms-full.txt
   - type: MCPServer
+    url: mcp/beehiiv-mcp.yml
+  - type: MCPServer
+    url: https://mcp.beehiiv.com/mcp
+  - type: MCPServer
     url: https://developers.beehiiv.com/_mcp/server
   - type: SDKs
     url: https://github.com/beehiiv/typescript-sdk
@@ -958,6 +1004,56 @@ common:
     url: https://support.beehiiv.com/hc/en-us
   - url: https://www.beehiiv.com/blog
     type: Blog
+  - type: Packages
+    url: packages/beehiiv-packages.yml
+  - type: WellKnown
+    url: well-known/beehiiv-well-known.yml
+  - type: APICatalog
+    url: well-known/beehiiv-api-catalog.json
+  - type: ToolCrosswalk
+    url: mcp/beehiiv-tool-crosswalk.yml
+  - type: LLMsTxt
+    url: llms/beehiiv-llms.txt
+  - type: Overlay
+    url: overlays/beehiiv-api-reference-overlay.yaml
+  - type: Conformance
+    url: conformance/beehiiv-conformance.yml
+  - type: Compliance
+    url: conformance/beehiiv-conformance.yml
+  - type: ErrorCatalog
+    url: errors/beehiiv-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/beehiiv-lifecycle.yml
+  - type: StatusPage
+    url: https://status.beehiiv.com
+  - type: Deprecation
+    url: lifecycle/beehiiv-lifecycle.yml
+  - type: OAuthScopes
+    url: scopes/beehiiv-scopes.yml
+  - type: Conventions
+    url: conventions/beehiiv-conventions.yml
+  - type: ChangeLog
+    url: changelog/beehiiv-changelog.yml
+  - type: DataModel
+    url: data-model/beehiiv-data-model.yml
+  - type: AsyncAPI
+    url: asyncapi/beehiiv-asyncapi.yml
+  - type: Webhooks
+    url: openapi/beehiiv-webhook-events-openapi.yml
+  - type: AgentSkill
+    url: skills/_index.yml
+  - type: DeveloperPortal
+    url: https://developers.beehiiv.com/
+  - type: Postman
+    url: https://www.postman.com/kinlaneapi/beehiiv/overview
+  - type: TermsOfService
+    url: https://www.beehiiv.com/tou
+  - type: PrivacyPolicy
+    url: https://www.beehiiv.com/privacy
+  - type: SignUp
+    url: https://app.beehiiv.com/signup
+  - type: Login
+    url: https://app.beehiiv.com/login
 integrations:
   - name: Zapier
     url: https://help.zapier.com/hc/en-us/articles/39823554109965-How-to-get-started-with-beehiiv-on-Zapier
@@ -969,3 +1065,8 @@ integrations:
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+x-enrichment:
+  date: '2026-08-13'
+  status: enriched
+  artifacts_added: 22
+  pass: local-v1
