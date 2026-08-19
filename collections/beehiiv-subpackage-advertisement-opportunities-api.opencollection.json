@@ -1,0 +1,43 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Reference subpackage_advertisement_opportunities API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "subpackage_advertisement_opportunities",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get advertisement opportunities <Badge intent=\"info\" minimal outlined>OAuth Scope: posts:read</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/advertisement_opportunities",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of accepted advertisement opportunities for the publication."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

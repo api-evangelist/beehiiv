@@ -1,0 +1,66 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Reference subpackage_advertisement_opportunities subpackage_workspaces API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "subpackage_workspaces",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Identify workspace <Badge intent=\"info\" minimal outlined>OAuth Scope: identify:read</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.beehiiv.com/v2/workspaces/identify",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Retrieve information about the workspace the OAuth or API token is associated with."
+        },
+        {
+          "info": {
+            "name": "Get publications by subscription email <Badge intent=\"info\" minimal outlined>OAuth Scope: publications:read</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.beehiiv.com/v2/workspaces/publications/by_subscription_email/:email",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "path",
+                "description": "The email address to search for subscriptions"
+              },
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query",
+                "description": "Optionally expand the results by adding additional information. <br>`subscription` - Returns the full Subscription object for the email address in each publication. <br>`publication` - Returns the full Publication object instead of just ID and name. <br>`subscription_custom_fields` - Returns custom field values nested within the subscription object. (Returns the subscription object regardless of whether `subscription` is requested.)"
+              }
+            ]
+          },
+          "docs": "Retrieve all publications in the workspace that have a subscription for the specified email address. The workspace is determined by the provided API key."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,204 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Reference subpackage_advertisement_opportunities subpackage_customFields API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "subpackage_customFields",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List custom fields <Badge intent=\"info\" minimal outlined>OAuth Scope: custom_fields:read</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/custom_fields",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              }
+            ]
+          },
+          "docs": "List all custom fields on a publication."
+        },
+        {
+          "info": {
+            "name": "Create custom field <Badge intent=\"info\" minimal outlined>OAuth Scope: custom_fields:write</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/custom_fields",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a custom field on a publication, for use in subscriptions."
+        },
+        {
+          "info": {
+            "name": "Get custom field <Badge intent=\"info\" minimal outlined>OAuth Scope: custom_fields:read</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/custom_fields/:id",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the Custom Fields object"
+              }
+            ]
+          },
+          "docs": "View a specific custom field on a publication."
+        },
+        {
+          "info": {
+            "name": "Update custom field <Badge intent=\"info\" minimal outlined>OAuth Scope: custom_fields:write</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/custom_fields/:id",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the Custom Fields object"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a custom field on a publication."
+        },
+        {
+          "info": {
+            "name": "Update custom field <Badge intent=\"info\" minimal outlined>OAuth Scope: custom_fields:write</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/custom_fields/:id",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the Custom Fields object"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a custom field on a publication."
+        },
+        {
+          "info": {
+            "name": "Delete custom field <Badge intent=\"info\" minimal outlined>OAuth Scope: custom_fields:write</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/custom_fields/:id",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the Custom Fields object"
+              }
+            ]
+          },
+          "docs": "Delete a custom field from a publication."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

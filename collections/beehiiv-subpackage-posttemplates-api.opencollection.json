@@ -1,0 +1,67 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Reference subpackage_advertisement_opportunities subpackage_postTemplates API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "subpackage_postTemplates",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get post templates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/post_templates",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).<br>If not specified, results 1-10 from page 1 will be returned."
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "The direction of the request. Defaults to `asc`."
+              },
+              {
+                "name": "order_by",
+                "value": "",
+                "type": "query",
+                "description": "The field to order by. Defaults to `created`."
+              }
+            ]
+          },
+          "docs": "Retrieve a list of post templates available for the publication."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

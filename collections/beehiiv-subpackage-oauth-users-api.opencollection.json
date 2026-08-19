@@ -1,0 +1,35 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Reference subpackage_advertisement_opportunities subpackage_oauth_users API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "subpackage_oauth_users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Identify user <Badge intent=\"info\" minimal outlined>OAuth Scope: identify:read</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.beehiiv.com/v2/users/identify",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Retrieve information about the user who authorized the OAuth access token."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

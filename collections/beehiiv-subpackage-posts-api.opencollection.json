@@ -1,0 +1,320 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Reference subpackage_advertisement_opportunities subpackage_posts API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "subpackage_posts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List posts <Badge intent=\"info\" minimal outlined>OAuth Scope: posts:read</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/posts",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              },
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query",
+                "description": "Optionally expand the results by adding additional information. <br>`stats` - Adds statistics about the post(s). <br>`free_web_content` - Adds the web HTML rendered to a free reader. <br>`free_email_content` - Adds the email HTML rendered to a free reader. <br>`free_rss_content` - Adds the RSS feed HTML. <br>`premium_web_content` - Adds the web HTML rendered to a premium reader. <br>`premium_email_content` - Adds the email HTML rendered to a premium reader."
+              },
+              {
+                "name": "audience",
+                "value": "",
+                "type": "query",
+                "description": "Optionally filter the results by audience"
+              },
+              {
+                "name": "platform",
+                "value": "",
+                "type": "query",
+                "description": "Optionally filter the results by platform.<br>`web` - Posts only published to web.<br>`email` - Posts only published to email.<br>`both` - Posts published to email and web.<br>`all` - Does not restrict results by platform."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Optionally filter the results by the status of the post.<br>`draft` - not been scheduled.<br>`confirmed` - The post will be active after the `scheduled_at`.<br>`archived` - The post is no longer active.<br>`all` - Does not restrict results by status."
+              },
+              {
+                "name": "content_tags[]",
+                "value": "",
+                "type": "query",
+                "description": "Optionally filter posts by content_tags. Adding a content tag will return any post with that content tag associated to it.<br><br><b>Example</b>: Filtering for `content_tags: [\"sales\",\"closing\"]` will return results of posts that have *either* `sales` or `closing` content_tags."
+              },
+              {
+                "name": "slugs[]",
+                "value": "",
+                "type": "query",
+                "description": "Optionally filter posts by their slugs. Adding a slug will return any post with that exact slug associated to it.<br><br><b>Example:</b> Filtering for `slugs: [\"my-first-post\",\"another-post\"]` will return results of posts that have *either* `my-first-post` or `another-post` as their slug."
+              },
+              {
+                "name": "authors[]",
+                "value": "",
+                "type": "query",
+                "description": "Optionally filter posts by their authors. Adding an author name will return any post with that author associated to it (case-insensitive).<br><br><b>Example:</b> Filtering for `authors: [\"John Doe\",\"Jane Smith\"]` will return results of posts that have *either* John Doe or Jane Smith as authors."
+              },
+              {
+                "name": "premium_tiers",
+                "value": "",
+                "type": "query",
+                "description": "Optionally filter posts by audience based on premium tiers.<br> This takes in an array of Display Names of the premium tiers.<br> It will also scope any expanded content output to the specified premium tiers.<br> Note: This is case insensitive."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).<br>If not specified, results 1-10 from page 1 will be returned."
+              },
+              {
+                "name": "order_by",
+                "value": "",
+                "type": "query",
+                "description": "The field that the results are sorted by. Defaults to created<br> `created` - The time in which the post was first created.<br> `publish_date` - The time the post was set to be published.<br> `displayed_date` - The time displayed in place of the `publish_date`. If no `displayed_date` was set, it will default to the `publish_date`"
+              },
+              {
+                "name": "direction",
+                "value": "",
+                "type": "query",
+                "description": "The direction that the results are sorted in. Defaults to asc<br> `asc` - Ascending, sorts from smallest to largest.<br> `desc` - Descending, sorts from largest to smallest."
+              },
+              {
+                "name": "hidden_from_feed",
+                "value": "",
+                "type": "query",
+                "description": "Optionally filter the results by the `hidden_from_feed` attribute of the post.<br>`all` - Does not restrict results by `hidden_from_feed`.<br>`true` - Only return posts hidden from the feed.<br>`false` - Only return posts that are visible on the feed."
+              }
+            ]
+          },
+          "docs": "Retrieve all posts belonging to a specific publication"
+        },
+        {
+          "info": {
+            "name": "Create post <Badge intent=\"info\" minimal outlined>OAuth Scope: posts:write</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/posts",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "<Note title=\"Currently in beta\" icon=\"b\">\n  This feature is currently in beta, the API is subject to change, and available only to Enterprise users.<br/><br/>To inquire about Enterprise pricing,\n  please visit our <a href=\"https://www.beehiiv.com/enterprise\">Enterprise page</a>.\n</Note>\nCreate a post for a specific publication. For a detailed walkthrough including setup, testing workflows, and working with custom HTML and templates, see the <a href=\"https://www.beehiiv.com/support/article/367591"
+        },
+        {
+          "info": {
+            "name": "Get post <Badge intent=\"info\" minimal outlined>OAuth Scope: posts:read</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/posts/:postId",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              },
+              {
+                "name": "postId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the post object"
+              },
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query",
+                "description": "Optionally expand the results by adding additional information. <br>`stats` - Adds statistics about the post(s). <br>`free_web_content` - Adds the web HTML rendered to a free reader. <br>`free_email_content` - Adds the email HTML rendered to a free reader. <br>`free_rss_content` - Adds the RSS feed HTML. <br>`premium_web_content` - Adds the web HTML rendered to a premium reader. <br>`premium_email_content` - Adds the email HTML rendered to a premium reader."
+              },
+              {
+                "name": "premium_tiers",
+                "value": "",
+                "type": "query",
+                "description": "Scope any expanded content output to the specified premium tiers.<br> This takes in an array of Display Names of the premium tiers.<br> Note: This is case insensitive."
+              }
+            ]
+          },
+          "docs": "Retrieve a single Post belonging to a specific publication"
+        },
+        {
+          "info": {
+            "name": "Update post <Badge intent=\"info\" minimal outlined>OAuth Scope: posts:write</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/posts/:postId",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              },
+              {
+                "name": "postId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the post to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "<Note title=\"Currently in beta\" icon=\"b\">\n  This feature is currently in beta, the API is subject to change, and available only to Enterprise users.<br/><br/>To inquire about Enterprise pricing,\n  please visit our <a href=\"https://www.beehiiv.com/enterprise\">Enterprise page</a>.\n</Note>\nUpdate an existing post for a specific publication. Only the fields provided in the request body will be updated — all other fields remain unchanged. For a detailed walkthrough of content methods and working with"
+        },
+        {
+          "info": {
+            "name": "Delete post <Badge intent=\"info\" minimal outlined>OAuth Scope: posts:write</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/posts/:postId",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              },
+              {
+                "name": "postId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the post object"
+              }
+            ]
+          },
+          "docs": "Delete or Archive a post. Any post that has been confirmed will have it's status changed to `archived`. Posts in the `draft` status will be permanently deleted."
+        },
+        {
+          "info": {
+            "name": "Get aggregate stats <Badge intent=\"info\" minimal outlined>OAuth Scope: posts:read</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/posts/aggregate_stats",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              },
+              {
+                "name": "audience",
+                "value": "",
+                "type": "query",
+                "description": "Optionally filter the results by audience"
+              },
+              {
+                "name": "platform",
+                "value": "",
+                "type": "query",
+                "description": "Optionally filter the results by platform.<br>`web` - Posts only published to web.<br>`email` - Posts only published to email.<br>`both` - Posts published to email and web.<br>`all` - Does not restrict results by platform."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Optionally filter the results by the status of the post.<br>`draft` - not been scheduled.<br>`confirmed` - The post will be active after the `scheduled_at`.<br>`archived` - The post is no longer active.<br>`all` - Does not restrict results by status."
+              },
+              {
+                "name": "content_tags[]",
+                "value": "",
+                "type": "query",
+                "description": "Optionally filter posts by content_tags. Adding a content tag will return any post with that content tag associated to it.<br>Example: Filtering for `content_tags: [\"sales\",\"closing\"]` will return results of posts that have *either* sales or closing content_tags."
+              },
+              {
+                "name": "authors[]",
+                "value": "",
+                "type": "query",
+                "description": "Optionally filter posts by their authors. Adding an author name will return any post with that author associated to it (case-insensitive).<br><br><b>Example:</b> Filtering for `authors: [\"John Doe\",\"Jane Smith\"]` will return results of posts that have *either* John Doe or Jane Smith as authors."
+              },
+              {
+                "name": "hidden_from_feed",
+                "value": "",
+                "type": "query",
+                "description": "Optionally filter the results by the `hidden_from_feed` attribute of the post.<br>`all` - Does not restrict results by `hidden_from_feed`.<br>`true` - Only return posts hidden from the feed.<br>`false` - Only return posts that are visible on the feed."
+              }
+            ]
+          },
+          "docs": "Retrieve aggregate stats for all posts"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

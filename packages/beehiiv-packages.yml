@@ -1,0 +1,70 @@
+generated: '2026-08-13'
+method: searched
+source: https://registry.npmjs.org/@beehiiv/sdk, https://api.wordpress.org/plugins/info/1.0/beehiiv.json, https://github.com/beehiiv
+note: Registry metadata read unauthenticated on 2026-08-13. beehiiv publishes exactly one first-party API client
+  library (TypeScript) plus a first-party WordPress plugin and Google Tag Manager community templates. Every Python,
+  Ruby, PHP and Go package matching "beehiiv" on the public registries is community-built.
+packages:
+- language: typescript
+  registry: npm
+  name: '@beehiiv/sdk'
+  url: https://www.npmjs.com/package/@beehiiv/sdk
+  install: npm install @beehiiv/sdk
+  repository: https://github.com/beehiiv/typescript-sdk
+  official: true
+  version: 0.1.9
+  published: '2025-12-03'
+  note: Fern-generated TypeScript SDK for the v2 REST API. npm maintainers are @beehiiv.com addresses (jacob.wolf@beehiiv.com,
+    calvin.walzel@beehiiv.com), and the repo sits in the beehiiv GitHub org. Still pre-1.0 and last published 2025-12-03,
+    which predates the ad-network, podcasts, complimentary-access and post-preview operations added to the published
+    OpenAPI since.
+- language: php
+  registry: wordpress.org
+  name: beehiiv
+  url: https://wordpress.org/plugins/beehiiv/
+  install: Install "beehiiv" from the WordPress plugin directory
+  repository: https://github.com/beehiiv/wordpress
+  official: true
+  version: 1.0.0
+  published: '2026-08-11'
+  note: The official beehiiv WordPress plugin, published under the beehiiv wordpress.org author profile and mirrored
+    at github.com/beehiiv/wordpress. Not an API client library — an end-user integration.
+- language: javascript
+  registry: github
+  name: gtm-beehiiv-pixel-base
+  url: https://github.com/beehiiv/gtm-beehiiv-pixel-base
+  install: Import the template into a Google Tag Manager container
+  repository: https://github.com/beehiiv/gtm-beehiiv-pixel-base
+  official: true
+  version: null
+  published: null
+  note: 'Google Tag Manager community template source in the beehiiv GitHub org (pushed 2026-07-09). Distributed
+    through the GTM Community Template Gallery, which exposes no versioned registry metadata endpoint, so version/published
+    are null by measurement rather than by omission. Siblings: gtm-beehiiv-pixel-event, gtm-beehiiv-embed-tracker.'
+- language: typescript
+  registry: npm
+  name: beehiiv-mcp
+  url: https://www.npmjs.com/package/beehiiv-mcp
+  install: npx -y beehiiv-mcp
+  repository: https://github.com/beehiiv/beehiiv-mcp
+  official: false
+  version: 1.0.0
+  published: '2025-09-24'
+  note: NOT VERIFIED FIRST-PARTY. package.json claims author "Beehiiv MCP <support@beehiiv.com>" and repository
+    github.com/beehiiv/beehiiv-mcp, but that repository returns HTTP 404 and the sole npm maintainer is martyamark@gmail.com,
+    not a beehiiv address. beehiiv ships its own hosted MCP at https://mcp.beehiiv.com/mcp (see mcp/beehiiv-mcp.yml);
+    this stdio package is community work claiming the org namespace.
+- language: python
+  registry: pypi
+  name: beehiiv
+  url: https://pypi.org/project/beehiiv/
+  install: pip install beehiiv
+  repository: https://github.com/abrihter/beehiiv
+  official: false
+  version: '0.2'
+  published: '2023-07-27'
+  note: Community Python wrapper by abrihter, unmaintained since 2023-07-27. beehiiv publishes no first-party Python
+    SDK.
+gaps:
+- No first-party Python, Ruby, Go, PHP (Composer), Java or .NET client library.
+- The one first-party SDK (@beehiiv/sdk 0.1.9) is 8 months behind the published OpenAPI and still on a 0.x version.

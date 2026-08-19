@@ -1,0 +1,104 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Reference subpackage_advertisement_opportunities subpackage_conditionSets API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "subpackage_conditionSets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List condition sets <Badge intent=\"info\" minimal outlined>OAuth Scope: condition_sets:read</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/condition_sets",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10."
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "**Cursor-based pagination (recommended)**: Use this opaque cursor token to fetch the next page of results. When provided, pagination will use cursor-based method which is more efficient and consistent than offset-based pagination."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "**Offset-based pagination (deprecated)**: Page number for offset-based pagination. Please migrate to cursor-based pagination using the `cursor` parameter. If not specified, results 1-10 from page 1 will be returned."
+              },
+              {
+                "name": "purpose",
+                "value": "",
+                "type": "query",
+                "description": "Filter condition sets by purpose. When not specified, all active condition sets are returned."
+              }
+            ]
+          },
+          "docs": "Retrieve all active condition sets for a publication. Condition sets define reusable audience segments for targeting content to specific subscribers. Use the `purpose` parameter to filter by a specific use case."
+        },
+        {
+          "info": {
+            "name": "Get condition set <Badge intent=\"info\" minimal outlined>OAuth Scope: condition_sets:read</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/condition_sets/:conditionSetId",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              },
+              {
+                "name": "conditionSetId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the condition set object"
+              },
+              {
+                "name": "expand[]",
+                "value": "",
+                "type": "query",
+                "description": "Optionally expand the response to include additional data.<br> `stats` - Calculates and returns the active subscriber count for this condition set synchronously."
+              }
+            ]
+          },
+          "docs": "Retrieve a single active dynamic content condition set for a publication. Use `expand[]=stats` to calculate and return the active subscriber count synchronously."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,110 @@
+generated: '2026-08-13'
+method: searched
+source: https://developers.beehiiv.com/welcome/pagination, https://developers.beehiiv.com/welcome/rate-limiting,
+  https://developers.beehiiv.com/oauth2, https://developers.beehiiv.com/webhooks, openapi/_original/beehiiv-openapi.yml
+auth:
+  style: bearer
+  header: Authorization
+  forms:
+  - publication API key
+  - OAuth2 access token
+  see: authentication/beehiiv-authentication.yml
+versioning:
+  style: url-path
+  current: v2
+  base: https://api.beehiiv.com/v2
+  note: Single major version in the path. No date-based or header-based version pinning; no published version-support
+    window.
+idempotency:
+  supported: false
+  evidence: No Idempotency-Key header, no idempotency parameter and no occurrence of the string "idempoten" anywhere
+    in the published OpenAPI (95 operations) or in the developer documentation, probed 2026-08-13.
+  consequence: Retrying a failed POST (create subscription, create post, bulk subscription create) can duplicate.
+    Callers must dedupe client-side on their own key — e.g. by looking up the subscription by email before creating.
+  note: Recorded as an honest absence. No Idempotency pointer is emitted in apis.yml, because beehiiv does not ship
+    the capability.
+pagination:
+  styles:
+  - name: cursor
+    status: recommended
+    params:
+    - name: cursor
+      type: string
+      description: Opaque cursor token for the pagination position.
+    - name: limit
+      type: integer
+      description: 1-100, default 10.
+    response_fields:
+    - pagination.limit
+    - pagination.has_more
+    - pagination.next_cursor
+    note: No total counts. Loop on pagination.has_more using pagination.next_cursor.
+  - name: offset
+    status: deprecated
+    params:
+    - name: page
+      type: integer
+      description: 1-100. Requests beyond page 100 are refused with 400.
+    - name: limit
+      type: integer
+      description: 1-100, default 10.
+    response_fields:
+    - pagination.page
+    - pagination.limit
+    - pagination.total_results
+    - pagination.total_pages
+    note: All offset requests return deprecation warning headers today; complete removal is announced but undated.
+  envelope: '{ "data": [...], "pagination": { ... } }'
+  docs: https://developers.beehiiv.com/welcome/pagination
+expansion:
+  supported: partial
+  note: A few operations accept an expand[] query parameter (for example workspaces publications-by-subscription-email).
+    There is no API-wide field-expansion or sparse-fieldset convention.
+metadata:
+  supported: false
+  note: 'No general metadata/custom-attribute bag on resources. Subscriber-level extensibility is instead a first-class
+    resource: Custom Fields (custom_fields:read / custom_fields:write).'
+request_id:
+  supported: false
+  note: beehiiv publishes no request-id / trace-id response header. There is no documented correlation identifier
+    to quote in a support ticket.
+errors:
+  envelope: '{ "status": <int>, "statusText": "<string>", "errors": [ { "message": "...", "code": "..." } ] }'
+  media_type: application/json
+  rfc9457: false
+  see: errors/beehiiv-problem-types.yml
+rate_limits:
+  limit: 180
+  window: per minute
+  scope: organization
+  headers:
+  - RateLimit-Limit
+  - RateLimit-Remaining
+  - RateLimit-Reset
+  status: 429
+  retry_after: Only published for the 202 Send API polling case, not for 429.
+  see: rate-limits/beehiiv-rate-limits.yml
+async:
+  pattern: 202 Accepted + Retry-After
+  note: Posts created through the Send API return 202 while processing in the background; poll, honoring Retry-After.
+webhooks:
+  delivery: Svix
+  signature_headers:
+  - svix-id
+  - svix-timestamp
+  - svix-signature
+  verification: HMAC over the signed content using the endpoint signing secret from Settings > Webhooks; see https://docs.svix.com/receiving/verifying-payloads/how-manual
+  plan_gate: Scale and above
+  see: asyncapi/beehiiv-asyncapi.yml
+identifiers:
+  style: prefixed opaque strings
+  confirmed_prefixes:
+  - prefix: pub_
+    entity: publication
+    evidence: https://developers.beehiiv.com/welcome/pagination — GET /v2/publications/pub_123/subscriptions
+  note: Only the publication prefix is evidenced in published examples. The OpenAPI carries no id examples for posts,
+    subscriptions, tiers or segments, and beehiiv publishes no id-prefix registry, so no other prefix is asserted
+    here.
+content_type:
+  request: application/json (OAuth token endpoints use application/x-www-form-urlencoded)
+  response: application/json

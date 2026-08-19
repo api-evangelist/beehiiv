@@ -1,0 +1,98 @@
+generated: '2026-08-13'
+method: probed
+source: https://www.beehiiv.com/features/mcp (product page), probed https://mcp.beehiiv.com/mcp, https://developers.beehiiv.com/_mcp/server,
+  https://www.beehiiv.com/pricing.md
+deployment:
+  mode: remote
+  endpoint: https://mcp.beehiiv.com/mcp
+  auth: oauth
+  verified: probed
+  note: 'POST to the endpoint returns HTTP 401 with WWW-Authenticate: Bearer resource_metadata="https://mcp.beehiiv.com/.well-known/oauth-protected-resource/mcp"
+    — a live, spec-correct MCP resource server. beehiiv ships no stdio package of its own; the npm package beehiiv-mcp
+    is community-published (see packages/beehiiv-packages.yml).'
+servers:
+- name: beehiiv MCP
+  role: product
+  endpoint: https://mcp.beehiiv.com/mcp
+  transport: streamable-http
+  docs: https://www.beehiiv.com/features/mcp
+  status: live
+  auth: oauth2
+  http_status: 401
+  probed: '2026-08-13'
+  oauth:
+    authorization_server: https://mcp.beehiiv.com
+    authorization_endpoint: https://mcp.beehiiv.com/authorize
+    token_endpoint: https://mcp.beehiiv.com/token
+    registration_endpoint: https://mcp.beehiiv.com/register
+    grant_types:
+    - authorization_code
+    - refresh_token
+    pkce:
+    - S256
+    scopes_supported:
+    - read
+    - write
+    dynamic_client_registration: true
+    protected_resource_metadata: https://mcp.beehiiv.com/.well-known/oauth-protected-resource/mcp
+  tools: auth-gated — tools/list returns 401 without a bearer token; the tool set and its inputSchemas require authenticated
+    introspection and are NOT recorded here rather than guessed.
+  entitlement: Plan-gated. beehiiv pricing lists "beehiiv MCP (Read Access)" on the free Launch tier and "beehiiv
+    MCP (Write Access)" from Scale upward, which lines up with the read/write scopes the protected-resource metadata
+    advertises.
+- name: beehiiv Marketing MCP
+  role: marketing/pricing
+  endpoint: https://www.beehiiv.com/api/mcp
+  transport: streamable-http
+  docs: https://www.beehiiv.com/pricing.md
+  status: live
+  auth: none
+  http_status: 403
+  probed: '2026-08-13'
+  verified: searched
+  tools:
+  - name: get_pricing
+    description: Exact Launch / Scale / Max / Enterprise quote for a list size.
+    input: '{ "subscribers": <integer> } — rounds up to the next published bucket'
+  - name: pricing_faq
+    description: Trial, take rate, billing, refunds, downgrades.
+    input: none
+  note: Documented by beehiiv itself in https://www.beehiiv.com/pricing.md, including the Cursor mcp.json snippet.
+    Our anonymous POST was answered with a Cloudflare managed browser challenge (403), so the tool list here is
+    the provider-published one, not an observed tools/list response.
+- name: beehiiv docs MCP
+  role: documentation
+  endpoint: https://developers.beehiiv.com/_mcp/server
+  transport: streamable-http
+  docs: https://developers.beehiiv.com/llms.txt
+  status: live
+  auth: none
+  http_status: 200
+  probed: '2026-08-13'
+  verified: probed
+  server_info:
+    name: fern-docs-mcp-server
+    version: 1.0.0
+    protocolVersion: '2025-06-18'
+  tools:
+  - name: searchDocs
+    title: Search developers.beehiiv.com Docs
+    description: Search the documentation at https://developers.beehiiv.com. Returns relevant doc passages with
+      source URLs.
+    readOnlyHint: true
+    inputSchema:
+      type: object
+      properties:
+        query:
+          type: string
+          description: The search query to run against the docs
+      required:
+      - query
+      additionalProperties: false
+  note: Fern-hosted docs search, advertised in llms.txt. Anonymous initialize + tools/list both returned 200; the
+    single tool and its real inputSchema were captured verbatim.
+observations:
+- beehiiv runs three distinct MCP surfaces on three different hosts with three different auth postures — an operational
+  product server (OAuth), an anonymous marketing/pricing server, and an anonymous docs-search server.
+- The product MCP is the only one that reaches account data, and it is the only one gated. Its scope vocabulary
+  (read/write) is coarser than the OAuth2 scope vocabulary the REST API uses (posts:read, subscriptions:write, ...).

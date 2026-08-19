@@ -1,0 +1,39 @@
+generated: '2026-08-13'
+method: searched
+source: https://github.com/beehiiv/beehiiv-newsletter-advisor
+note: 'beehiiv PUBLISHES its own Agent Skill. This is not a skill API Evangelist authored on the provider''s behalf
+  — SKILL.md was fetched verbatim from the beehiiv GitHub organization on 2026-08-13 (raw.githubusercontent.com/beehiiv/beehiiv-newsletter-advisor/main/SKILL.md,
+  HTTP 200). It is a domain-advice skill rather than an API-operations skill: it teaches newsletter strategy grounded
+  in beehiiv''s 2025 dataset and instructs the agent to pull live account data through the beehiiv MCP when connected.
+  It names no OpenAPI operationIds.'
+skills:
+- name: beehiiv-newsletter-advisor
+  file: beehiiv-newsletter-advisor.md
+  repository: https://github.com/beehiiv/beehiiv-newsletter-advisor
+  landing_page: https://github.com/beehiiv/beehiiv-newsletter-advisor-site
+  method: searched
+  official: true
+  fetched: '2026-08-13'
+  http_status: 200
+  description: Expert advisor for newsletter creators using beehiiv — content, growth, monetization, benchmarks,
+    deliverability and platform features.
+  api: null
+  operations: []
+  depends_on:
+    mcp: https://mcp.beehiiv.com/mcp
+    note: The skill instructs the agent to check whether the beehiiv MCP is connected and personalize from real
+      account data before quoting platform averages.
+  references_not_vendored:
+  - references/state-of-newsletters-2026.md
+  - references/platform-features.md
+  - references/youtube-tutorials.md
+  live_fetch_sources:
+  - https://www.beehiiv.com/blog/the-state-of-newsletters-2026.md
+  - https://product.beehiiv.com
+  - https://blog.beehiiv.com
+  - https://www.beehiiv.com/support/search
+  - https://www.beehiiv.com/newsletter-glossary/[term]
+  - https://www.beehiiv.com/features/[feature-slug]
+gaps:
+- No provider-published skill covers API operations — there is no packaged flow for "create a post and send it"
+  or "sync subscribers" grounded in operationIds.

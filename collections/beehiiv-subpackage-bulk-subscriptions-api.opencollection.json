@@ -1,0 +1,47 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Reference subpackage_advertisement_opportunities subpackage_bulk_subscriptions API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "subpackage_bulk_subscriptions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Bulk create subscription <Badge intent=\"info\" minimal outlined>OAuth Scope: subscriptions:write</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/bulk_subscriptions",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create new subscriptions for a publication."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

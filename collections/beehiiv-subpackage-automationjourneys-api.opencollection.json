@@ -1,0 +1,139 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Reference subpackage_advertisement_opportunities subpackage_automationJourneys API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "subpackage_automationJourneys",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List automation journeys <Badge intent=\"info\" minimal outlined>OAuth Scope: automations:read</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/automations/:automationId/journeys",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              },
+              {
+                "name": "automationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the automation object"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Optionally filter the results by the automation journey's status."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10)."
+              }
+            ]
+          },
+          "docs": "Retrieve a list of automation journeys that have occurred within a specific automation."
+        },
+        {
+          "info": {
+            "name": "Add subscription to an automation <Badge intent=\"info\" minimal outlined>OAuth Scope: automations:write</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/automations/:automationId/journeys",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              },
+              {
+                "name": "automationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the automation object"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add an existing subscription to an automation flow. Requires the automation to have an active *Add by API* trigger. The specified `email` or `subscription_id` will be matched against your existing subscribers. If an existing subscriber is found, they will be enrolled immediately.\nLooking to enroll new subscribers? Use the **[Create Subscription](/api-reference/subscriptions/create)** endpoint instead and specify the `automation_ids` param."
+        },
+        {
+          "info": {
+            "name": "Get automation journey <Badge intent=\"info\" minimal outlined>OAuth Scope: automations:read</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/automations/:automationId/journeys/:automationJourneyId",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              },
+              {
+                "name": "automationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the automation object"
+              },
+              {
+                "name": "automationJourneyId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed automation journey id"
+              }
+            ]
+          },
+          "docs": "Retrieve a single automation journey by ID."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

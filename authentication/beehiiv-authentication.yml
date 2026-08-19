@@ -1,12 +1,82 @@
-generated: '2026-07-11'
-method: derived
-source: openapi/beehiiv-openapi.yml
+generated: '2026-08-13'
+method: searched
+source: https://developers.beehiiv.com/oauth2, https://developers.beehiiv.com/welcome/create-an-api-key, openapi/_original/beehiiv-openapi.yml,
+  openapi/_original/beehiiv-oauth2-openapi.json, https://mcp.beehiiv.com/.well-known/oauth-authorization-server
+docs: https://developers.beehiiv.com/oauth2
 summary:
   types:
   - http
+  - oauth2
+  primary: bearer
+  transport: 'Authorization: Bearer <token> header only'
+note: Upgraded from derived to searched on 2026-08-13. The published OpenAPI declares only an HTTP bearer scheme;
+  the OAuth2 authorization-code flow is real but lives in a SEPARATE OpenAPI document (openapi/oauth2.json, servers
+  https://app.beehiiv.com) and in the docs, which is why a spec-only derivation understates beehiiv authentication.
 schemes:
 - name: BearerAuthScheme
   type: http
   scheme: bearer
+  in: header
+  header: Authorization
+  description: 'Publication API key created in the beehiiv app (Settings > API). Sent as Authorization: Bearer <api
+    key>.'
+  applies_to: All 95 operations of the v2 REST API at https://api.beehiiv.com/v2
   sources:
-  - openapi/beehiiv-openapi.yml
+  - openapi/_original/beehiiv-openapi.yml
+  docs: https://developers.beehiiv.com/welcome/create-an-api-key
+  rotation: Keys are created and revoked in the app; beehiiv publishes no key-rotation or expiry policy.
+  scoping: A key is scoped to the workspace/organization; the 180 req/min rate limit is shared across every key
+    in that organization.
+- name: OAuth2AuthorizationCode
+  type: oauth2
+  flow: authorizationCode
+  description: 'Standard OAuth2 authorization-code flow for third-party integrations. Tokens are used as the same
+    Authorization: Bearer header against api.beehiiv.com.'
+  authorizationUrl: https://app.beehiiv.com/oauth/authorize
+  tokenUrl: https://app.beehiiv.com/oauth/token
+  refreshUrl: https://app.beehiiv.com/oauth/token
+  revocationUrl: https://app.beehiiv.com/oauth/revoke
+  introspectionUrl: https://app.beehiiv.com/oauth/introspect
+  tokenInfoUrl: https://app.beehiiv.com/oauth/token/info
+  pkce: Required for public clients; code_challenge_method S256 or plain.
+  grant_types:
+  - authorization_code
+  - refresh_token
+  client_registration: Manual — contact beehiiv Support to register an OAuth application. No dynamic client registration
+    on the REST API.
+  scopes: scopes/beehiiv-scopes.yml
+  sources:
+  - openapi/_original/beehiiv-oauth2-openapi.json
+  - https://developers.beehiiv.com/oauth2
+  token_response:
+  - access_token
+  - token_type
+  - expires_in
+  - refresh_token
+- name: MCPOAuth
+  type: oauth2
+  flow: authorizationCode
+  description: Separate OAuth 2.1 authorization server fronting the beehiiv MCP, discoverable via RFC 8414 metadata.
+    Distinct issuer and a coarser scope vocabulary from the REST OAuth above.
+  issuer: https://mcp.beehiiv.com
+  authorizationUrl: https://mcp.beehiiv.com/authorize
+  tokenUrl: https://mcp.beehiiv.com/token
+  registrationUrl: https://mcp.beehiiv.com/register
+  pkce: S256
+  client_registration: Dynamic client registration (RFC 7591) endpoint published.
+  scopes:
+  - read
+  - write
+  sources:
+  - well-known/beehiiv-mcp-oauth-authorization-server.json
+  - well-known/beehiiv-mcp-oauth-protected-resource.json
+  applies_to: https://mcp.beehiiv.com/mcp
+unauthenticated_surfaces:
+- url: https://developers.beehiiv.com/_mcp/server
+  note: Docs-search MCP; anonymous.
+- url: https://www.beehiiv.com/api/mcp
+  note: Marketing/pricing MCP; documented as anonymous.
+gaps:
+- The OAuth2 flow is absent from the API-reference OpenAPI securitySchemes, so generated clients see only a bearer
+  key.
+- No mTLS, no signed requests, no key-rotation policy published.

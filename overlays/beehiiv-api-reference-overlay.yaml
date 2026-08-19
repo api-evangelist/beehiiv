@@ -1,0 +1,123 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for the beehiiv v2 API
+  version: 1.0.0
+  x-generated: '2026-08-13'
+  x-method: generated
+  x-source: openapi/_original/beehiiv-openapi.yml
+  x-note: Captures the API Evangelist enrichment findings as an OpenAPI Overlay 1.0.0 document. It EXTENDS the harvested spec;
+    the original is never mutated. Every value here is evidenced in the repo artifacts named in x-artifact.
+extends: openapi/_original/beehiiv-openapi.yml
+actions:
+- target: $.info
+  update:
+    description: 'beehiiv v2 REST API for newsletter publishing: publications, posts, subscriptions, segments, tiers, automations,
+      polls, podcasts, webhooks, the ad network and referral program. Authenticated with a publication API key or an OAuth2
+      access token, both sent as Authorization: Bearer.'
+    contact:
+      name: beehiiv Developers
+      url: https://developers.beehiiv.com/
+    termsOfService: https://www.beehiiv.com/tou
+    x-artifact: authentication/beehiiv-authentication.yml
+- target: $.info
+  update:
+    x-api-catalog: https://developers.beehiiv.com/.well-known/api-catalog
+    x-llms-txt: https://developers.beehiiv.com/llms.txt
+    x-mcp-server: https://mcp.beehiiv.com/mcp
+- target: $.components.securitySchemes.BearerAuthScheme
+  update:
+    description: Publication API key created in the beehiiv app, OR an OAuth2 access token from https://app.beehiiv.com/oauth/token.
+      Same header either way.
+    x-docs: https://developers.beehiiv.com/welcome/create-an-api-key
+- target: $.components.securitySchemes
+  update:
+    OAuth2AuthorizationCode:
+      type: oauth2
+      description: OAuth2 authorization-code flow. Documented and specified separately at https://developers.beehiiv.com/openapi/oauth2.json
+        — absent from the API-reference document, which is why generated clients see only a bearer key.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://app.beehiiv.com/oauth/authorize
+          tokenUrl: https://app.beehiiv.com/oauth/token
+          refreshUrl: https://app.beehiiv.com/oauth/token
+          scopes:
+            identify:read: Default scope; identify the user and workspace.
+            posts:read: Read posts.
+            posts:write: Create, update and delete posts.
+            subscriptions:read: Read subscriptions.
+            subscriptions:write: Create, update and delete subscriptions.
+            segments:read: Read segments.
+            segments:write: Create, recalculate and delete segments.
+            publications:read: Read publications and engagements.
+            automations:read: Read automations and journeys.
+            automations:write: Add subscriptions to automations.
+            custom_fields:read: Read custom fields.
+            custom_fields:write: Create, update and delete custom fields.
+            polls:read: Read polls and responses.
+            podcasts:read: Read podcasts and episodes.
+            tiers:read: Read tiers.
+            tiers:write: Create and update tiers.
+            webhooks:read: Read webhook registrations.
+            webhooks:write: Create, update and delete webhook registrations.
+            newsletter_lists:read: Read newsletter lists and list subscriptions.
+            newsletter_lists:write: Manage newsletter lists and list subscriptions.
+            referral_program:read: Read the referral program.
+            condition_sets:read: Read condition sets.
+            complimentary_access:read: Read complimentary access grants.
+            data_deletion:read: Read data deletion requests.
+            data_deletion:write: Create data deletion requests.
+      x-artifact: scopes/beehiiv-scopes.yml
+- target: $.info
+  update:
+    x-rate-limit:
+      limit: 180
+      window: minute
+      scope: organization
+      headers:
+      - RateLimit-Limit
+      - RateLimit-Remaining
+      - RateLimit-Reset
+      exhausted_status: 429
+      x-artifact: rate-limits/beehiiv-rate-limits.yml
+- target: $.info
+  update:
+    x-pagination:
+      recommended: cursor
+      params:
+      - cursor
+      - limit
+      response:
+      - pagination.has_more
+      - pagination.next_cursor
+      deprecated:
+        style: offset
+        params:
+        - page
+        - limit
+        note: Page > 100 returns 400. Removal announced, undated.
+      x-artifact: conventions/beehiiv-conventions.yml
+- target: $.info
+  update:
+    x-error-envelope:
+      media_type: application/json
+      shape: '{ status, statusText, errors[{ message, code }] }'
+      rfc9457: false
+      x-artifact: errors/beehiiv-problem-types.yml
+- target: $.info
+  update:
+    x-idempotency:
+      supported: false
+      note: No Idempotency-Key. Retrying a create can duplicate; dedupe client-side.
+      x-artifact: conventions/beehiiv-conventions.yml
+- target: $.info
+  update:
+    x-webhooks:
+      spec: https://developers.beehiiv.com/openapi/webhooks.json
+      delivery: Svix
+      signature_headers:
+      - svix-id
+      - svix-timestamp
+      - svix-signature
+      event_types: 22
+      plan_gate: Scale and above
+      x-artifact: asyncapi/beehiiv-asyncapi.yml

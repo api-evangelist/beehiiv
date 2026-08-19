@@ -1,0 +1,524 @@
+generated: '2026-08-13'
+method: derived
+source: mcp/beehiiv-mcp.yml + openapi/_original/beehiiv-openapi.yml + https://www.beehiiv.com/pricing.md
+surfaces:
+  openapi:
+    file: openapi/_original/beehiiv-openapi.yml
+    base: https://api.beehiiv.com/v2
+    operations: 95
+    gated: false
+  openapi_oauth2:
+    file: openapi/_original/beehiiv-oauth2-openapi.json
+    base: https://app.beehiiv.com
+    operations: 5
+    gated: false
+  graphql: null
+  mcp:
+  - url: https://mcp.beehiiv.com/mcp
+    gated: true
+    note: OAuth-required; tools/list returns 401 so its tool set could not be enumerated.
+  - url: https://www.beehiiv.com/api/mcp
+    gated: false
+    note: Anonymous but Cloudflare-challenged for us; tools taken from the provider-published pricing.md.
+  - url: https://developers.beehiiv.com/_mcp/server
+    gated: false
+    note: Anonymous; tools/list observed 200.
+crosswalk: []
+mcp_only:
+- tool: searchDocs
+  server: https://developers.beehiiv.com/_mcp/server
+  reason: Documentation full-text search. No REST equivalent — the beehiiv v2 API exposes no docs-search operation.
+  confidence: high
+- tool: get_pricing
+  server: https://www.beehiiv.com/api/mcp
+  reason: Marketing pricing quote by subscriber bucket. Commercial catalog data; the v2 REST API has no pricing
+    or plan-catalog operation.
+  confidence: high
+- tool: pricing_faq
+  server: https://www.beehiiv.com/api/mcp
+  reason: Static commercial FAQ (trial, take rate, billing, refunds, downgrades). No REST equivalent.
+  confidence: high
+rest_only:
+- operationId: index
+  method: GET
+  path: /publications/{publicationId}/ad_network/offers
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: create
+  method: POST
+  path: /publications/{publicationId}/ad_network/offers
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: advertisements
+  method: GET
+  path: /publications/{publicationId}/ad_network/offers/{offerId}/advertisements
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: index
+  method: GET
+  path: /publications/{publicationId}/ad_network/reports
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: summary
+  method: GET
+  path: /publications/{publicationId}/ad_network/reports/summaries
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: account-summary
+  method: GET
+  path: /ad_network/reports/summaries
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: index
+  method: GET
+  path: /publications/{publicationId}/advertisement_opportunities
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: index
+  method: GET
+  path: /publications/{publicationId}/authors
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: show
+  method: GET
+  path: /publications/{publicationId}/authors/{authorId}
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: create
+  method: POST
+  path: /publications/{publicationId}/automations/{automationId}/journeys
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: index
+  method: GET
+  path: /publications/{publicationId}/automations/{automationId}/journeys
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: show
+  method: GET
+  path: /publications/{publicationId}/automations/{automationId}/journeys/{automationJourneyId}
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: index
+  method: GET
+  path: /publications/{publicationId}/automations
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: show
+  method: GET
+  path: /publications/{publicationId}/automations/{automationId}
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: list-emails
+  method: GET
+  path: /publications/{publicationId}/automations/{automationId}/emails
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: create
+  method: POST
+  path: /publications/{publicationId}/bulk_subscriptions
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: index
+  method: GET
+  path: /publications/{publicationId}/bulk_subscription_updates
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: show
+  method: GET
+  path: /publications/{publicationId}/bulk_subscription_updates/{id}
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: put
+  method: PUT
+  path: /publications/{publicationId}/subscriptions/bulk_actions
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: patch
+  method: PATCH
+  path: /publications/{publicationId}/subscriptions/bulk_actions
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: put-status
+  method: PUT
+  path: /publications/{publicationId}/subscriptions
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: patch-status
+  method: PATCH
+  path: /publications/{publicationId}/subscriptions
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: create
+  method: POST
+  path: /publications/{publicationId}/subscriptions
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: index
+  method: GET
+  path: /publications/{publicationId}/subscriptions
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: index
+  method: GET
+  path: /publications/{publicationId}/complimentary_access
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: show
+  method: GET
+  path: /publications/{publicationId}/complimentary_access/{complimentaryAccessId}
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: index
+  method: GET
+  path: /publications/{publicationId}/condition_sets
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: show
+  method: GET
+  path: /publications/{publicationId}/condition_sets/{conditionSetId}
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: create
+  method: POST
+  path: /publications/{publicationId}/custom_fields
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: index
+  method: GET
+  path: /publications/{publicationId}/custom_fields
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: show
+  method: GET
+  path: /publications/{publicationId}/custom_fields/{id}
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: put
+  method: PUT
+  path: /publications/{publicationId}/custom_fields/{id}
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: patch
+  method: PATCH
+  path: /publications/{publicationId}/custom_fields/{id}
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: delete
+  method: DELETE
+  path: /publications/{publicationId}/custom_fields/{id}
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: create
+  method: POST
+  path: /publications/{publicationId}/data_privacy/deletion_requests
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: index
+  method: GET
+  path: /publications/{publicationId}/data_privacy/deletion_requests
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: show
+  method: GET
+  path: /publications/{publicationId}/data_privacy/deletion_requests/{id}
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: index
+  method: GET
+  path: /publications/{publicationId}/engagements
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: index
+  method: GET
+  path: /publications/{publicationId}/newsletter_lists
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: create
+  method: POST
+  path: /publications/{publicationId}/newsletter_lists
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: show
+  method: GET
+  path: /publications/{publicationId}/newsletter_lists/{newsletterListId}
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: update
+  method: PATCH
+  path: /publications/{publicationId}/newsletter_lists/{newsletterListId}
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: delete
+  method: DELETE
+  path: /publications/{publicationId}/newsletter_lists/{newsletterListId}
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: create
+  method: POST
+  path: /publications/{publicationId}/newsletter_lists/{newsletterListId}/subscriptions
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: index
+  method: GET
+  path: /publications/{publicationId}/newsletter_lists/{newsletterListId}/subscriptions
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: show
+  method: GET
+  path: /publications/{publicationId}/newsletter_lists/{newsletterListId}/subscriptions/{newsletterListSubscriptionId}
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: update
+  method: PATCH
+  path: /publications/{publicationId}/newsletter_lists/{newsletterListId}/subscriptions/{newsletterListSubscriptionId}
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: update-by-subscription-id
+  method: PATCH
+  path: /publications/{publicationId}/newsletter_lists/{newsletterListId}/subscriptions/by_subscription_id/{subscriptionId}
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: identify
+  method: GET
+  path: /users/identify
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: list-podcasts
+  method: GET
+  path: /publications/{publicationId}/podcasts
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: get-podcast
+  method: GET
+  path: /publications/{publicationId}/podcasts/{podcastShowId}
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: list-episodes
+  method: GET
+  path: /publications/{publicationId}/podcasts/{podcastShowId}/episodes
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: get-episode
+  method: GET
+  path: /publications/{publicationId}/podcasts/{podcastShowId}/episodes/{podcastEpisodeId}
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: index
+  method: GET
+  path: /publications/{publicationId}/polls
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: show
+  method: GET
+  path: /publications/{publicationId}/polls/{pollId}
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: list-responses
+  method: GET
+  path: /publications/{publicationId}/polls/{pollId}/responses
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: create
+  method: POST
+  path: /publications/{publicationId}/posts
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: index
+  method: GET
+  path: /publications/{publicationId}/posts
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: update
+  method: PATCH
+  path: /publications/{publicationId}/posts/{postId}
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: show
+  method: GET
+  path: /publications/{publicationId}/posts/{postId}
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: delete
+  method: DELETE
+  path: /publications/{publicationId}/posts/{postId}
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: aggregate-stats
+  method: GET
+  path: /publications/{publicationId}/posts/aggregate_stats
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: test-send
+  method: POST
+  path: /publications/{publicationId}/posts/{postId}/test_sends
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: preview
+  method: GET
+  path: /publications/{publicationId}/posts/{postId}/preview
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: index
+  method: GET
+  path: /publications/{publicationId}/post_templates
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: index
+  method: GET
+  path: /publications
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: show
+  method: GET
+  path: /publications/{publicationId}
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: show
+  method: GET
+  path: /publications/{publicationId}/referral_program
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: create
+  method: POST
+  path: /publications/{publicationId}/segments
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: index
+  method: GET
+  path: /publications/{publicationId}/segments
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: show
+  method: GET
+  path: /publications/{publicationId}/segments/{segmentId}
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: delete
+  method: DELETE
+  path: /publications/{publicationId}/segments/{segmentId}
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: recalculate
+  method: PUT
+  path: /publications/{publicationId}/segments/{segmentId}/recalculate
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: list-members
+  method: GET
+  path: /publications/{publicationId}/segments/{segmentId}/members
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: expand-results
+  method: GET
+  path: /publications/{publicationId}/segments/{segmentId}/results
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: get-by-email
+  method: GET
+  path: /publications/{publicationId}/subscriptions/by_email/{email}
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: update-by-email
+  method: PUT
+  path: /publications/{publicationId}/subscriptions/by_email/{email}
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: get-by-id
+  method: GET
+  path: /publications/{publicationId}/subscriptions/{subscriptionId}
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: put
+  method: PUT
+  path: /publications/{publicationId}/subscriptions/{subscriptionId}
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: patch
+  method: PATCH
+  path: /publications/{publicationId}/subscriptions/{subscriptionId}
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: delete
+  method: DELETE
+  path: /publications/{publicationId}/subscriptions/{subscriptionId}
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: create
+  method: POST
+  path: /publications/{publicationId}/subscriptions/{subscriptionId}/tags
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: create
+  method: POST
+  path: /publications/{publicationId}/tiers
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: index
+  method: GET
+  path: /publications/{publicationId}/tiers
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: show
+  method: GET
+  path: /publications/{publicationId}/tiers/{tierId}
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: put
+  method: PUT
+  path: /publications/{publicationId}/tiers/{tierId}
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: patch
+  method: PATCH
+  path: /publications/{publicationId}/tiers/{tierId}
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: create
+  method: POST
+  path: /publications/{publicationId}/webhooks
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: index
+  method: GET
+  path: /publications/{publicationId}/webhooks
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: show
+  method: GET
+  path: /publications/{publicationId}/webhooks/{endpointId}
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: update
+  method: PATCH
+  path: /publications/{publicationId}/webhooks/{endpointId}
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: delete
+  method: DELETE
+  path: /publications/{publicationId}/webhooks/{endpointId}
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: identify
+  method: GET
+  path: /workspaces/identify
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: permissions
+  method: GET
+  path: /workspaces/permissions
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+- operationId: publications-by-subscription-email
+  method: GET
+  path: /workspaces/publications/by_subscription_email/{email}
+  reason: No public MCP tool is known to bind to this operation. The product MCP at mcp.beehiiv.com is OAuth-gated,
+    so its coverage of the REST surface is unmeasured, not zero.
+coverage:
+  rest_operations: 95
+  mcp_tools_observed: 3
+  bound: 0
+  mcp_only: 3
+  rest_only: 95
+  unmeasured: The tool set of the product MCP (https://mcp.beehiiv.com/mcp) is behind OAuth. Nothing here should
+    be read as evidence that beehiiv MCP does not cover these operations — only that we could not observe it anonymously.

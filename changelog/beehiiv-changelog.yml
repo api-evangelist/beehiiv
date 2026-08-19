@@ -1,0 +1,89 @@
+generated: '2026-08-13'
+method: searched
+source: https://product.beehiiv.com (148 dated product updates; datePublished read from each post's JSON-LD), https://www.beehiiv.com/changelog
+  (HTTP 200), https://developers.beehiiv.com/changelog (HTTP 404)
+url: https://product.beehiiv.com
+secondary_url: https://www.beehiiv.com/changelog
+scheme: dated product updates, roughly monthly, published as posts on a beehiiv publication
+current_version: null
+api_changelog: false
+note: 'beehiiv has TWO changelog surfaces and neither is developer-facing. https://www.beehiiv.com/changelog and
+  its .md twin render entries client-side and returned only "Loading..." to us. The real dated archive is product.beehiiv.com
+  — a beehiiv publication with 148 update posts, each carrying a JSON-LD datePublished. It publishes no RSS/Atom
+  feed (/feed, /rss.xml, /rss/feed.xml all 404), so entries have to be read post by post. Recorded below are the
+  developer-relevant entries, selected by slug and dated from each post. There is no API-version changelog: developers.beehiiv.com/changelog
+  is 404 and the OpenAPI info.version is a flat 1.0.0.'
+entry_count: 10
+entries:
+- title: Click Triggers, Send API, and More
+  date: '2026-08-06'
+  url: https://product.beehiiv.com/p/click-triggers-send-api-and-more
+  breaking: false
+  area:
+  - Send API
+  - Automations
+- title: beehiiv MCP v2
+  date: '2026-04-30'
+  url: https://product.beehiiv.com/p/beehiiv-mcp-v2
+  breaking: false
+  area:
+  - MCP
+  - Agents
+- title: beehiiv MCP
+  date: '2026-03-24'
+  url: https://product.beehiiv.com/p/beehiiv-mcp
+  breaking: false
+  area:
+  - MCP
+  - Agents
+  note: First release of the hosted MCP server now at https://mcp.beehiiv.com/mcp.
+- title: Automations v4
+  date: '2026-03-12'
+  url: https://product.beehiiv.com/p/automations-v4
+  breaking: false
+  area:
+  - Automations
+- title: Flexible Subscriptions and Fresh Integrations
+  date: '2025-09-17'
+  url: https://product.beehiiv.com/p/flexible-subscriptions-and-fresh-integrations
+  breaking: false
+  area:
+  - Subscriptions
+  - Integrations
+- title: Send API
+  date: '2025-01-16'
+  url: https://product.beehiiv.com/p/send-api
+  breaking: false
+  area:
+  - Send API
+  note: Send API is plan-gated to Max and above.
+- title: Really Simple Sending (RSS)
+  date: '2024-10-31'
+  url: https://product.beehiiv.com/p/really-simple-sending-rss
+  breaking: false
+  area:
+  - Posts
+  - RSS
+- title: Introducing Webhooks
+  date: '2023-10-10'
+  url: https://product.beehiiv.com/p/introducing-webhooks
+  breaking: false
+  area:
+  - Webhooks
+- title: 'Introducing: API v2'
+  date: '2022-12-02'
+  url: https://product.beehiiv.com/p/api-v2-daily-growth-email-mailchimp-content-import
+  breaking: true
+  area:
+  - API
+  note: The current major version. No v3 has been announced since.
+- title: 'Introducing: integrations, integrations, integrations'
+  date: '2022-04-06'
+  url: https://product.beehiiv.com/p/introducing-integrations-integrations-integrations
+  breaking: false
+  area:
+  - Integrations
+gaps:
+- No API changelog or release notes on the developer portal.
+- No feed on either changelog surface; www.beehiiv.com/changelog is JS-only.
+- Entries are product announcements, not versioned API changes — no operation-level diff is published.

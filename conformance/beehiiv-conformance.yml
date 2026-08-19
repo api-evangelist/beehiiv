@@ -1,0 +1,104 @@
+generated: '2026-08-13'
+method: searched
+source: https://security.beehiiv.com/, https://developers.beehiiv.com/oauth2, https://developers.beehiiv.com/.well-known/api-catalog,
+  https://mcp.beehiiv.com/.well-known/oauth-authorization-server, https://developers.beehiiv.com/welcome/rate-limiting,
+  openapi/_original/
+standards:
+- id: openapi-3.1
+  conforms: true
+  evidence: 'Three OpenAPI 3.1.0 documents published and self-served: openapi/api-reference.json (95 operations),
+    openapi/webhooks.json (22 webhook definitions using the OpenAPI 3.1 webhooks object), openapi/oauth2.json (5
+    operations).'
+- id: rfc9727-api-catalog
+  conforms: true
+  evidence: https://developers.beehiiv.com/.well-known/api-catalog returns 200 with content-type application/linkset+json;
+    profile="https://www.rfc-editor.org/info/rfc9727", naming all three service-desc documents.
+- id: oauth2-authorization-code
+  conforms: true
+  evidence: RFC 6749 authorization-code flow documented and specified at https://app.beehiiv.com/oauth/{authorize,token,revoke,introspect}.
+- id: rfc7636-pkce
+  conforms: true
+  evidence: code_challenge / code_challenge_method (S256, plain) parameters on /oauth/authorize; required for public
+    clients.
+- id: rfc7009-token-revocation
+  conforms: true
+  evidence: POST /oauth/revoke documented in openapi/oauth2.json.
+- id: rfc7662-token-introspection
+  conforms: true
+  evidence: POST /oauth/introspect documented in openapi/oauth2.json.
+- id: rfc8414-authorization-server-metadata
+  conforms: partial
+  evidence: Served for the MCP authorization server (https://mcp.beehiiv.com/.well-known/oauth-authorization-server,
+    200). NOT served for the REST OAuth server on app.beehiiv.com — that path is behind a PerimeterX challenge and
+    no metadata document was observable.
+- id: rfc9728-protected-resource-metadata
+  conforms: true
+  evidence: https://mcp.beehiiv.com/.well-known/oauth-protected-resource/mcp returns 200 naming resource, authorization_servers
+    and scopes_supported; the 401 on /mcp carries the matching WWW-Authenticate resource_metadata parameter.
+- id: rfc7591-dynamic-client-registration
+  conforms: partial
+  evidence: registration_endpoint https://mcp.beehiiv.com/register advertised for the MCP server. The REST OAuth
+    surface requires manual registration through beehiiv Support.
+- id: mcp-2025-06-18
+  conforms: true
+  evidence: https://developers.beehiiv.com/_mcp/server answered initialize with protocolVersion 2025-06-18 (fern-docs-mcp-server
+    1.0.0); https://mcp.beehiiv.com/mcp answers with a spec-correct MCP 401 challenge.
+- id: ietf-ratelimit-headers
+  conforms: true
+  evidence: RateLimit-Limit / RateLimit-Remaining / RateLimit-Reset documented at https://developers.beehiiv.com/welcome/rate-limiting,
+    matching the IETF draft-ietf-httpapi-ratelimit-headers naming (Reset as unix epoch seconds rather than delta-seconds).
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: All 583 response bodies in the published OpenAPI are application/json with a vendor { status, statusText,
+    errors[] } envelope. No application/problem+json anywhere.
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: /.well-known/security.txt returns 404 on developers.beehiiv.com, api.beehiiv.com and www.beehiiv.com
+    (403 bot-challenge on app.beehiiv.com).
+- id: a2a-agent-card
+  conforms: false
+  evidence: /.well-known/agent-card.json and /.well-known/agent.json return 404 on every beehiiv host probed 2026-08-13.
+- id: oidc
+  conforms: false
+  evidence: No /.well-known/openid-configuration on any host; the OAuth flow issues access tokens only, with an
+    identify:read scope in place of an id_token. SSO is offered as an Enterprise feature but no OIDC discovery document
+    is published.
+- id: idempotency-key
+  conforms: false
+  evidence: No Idempotency-Key header in 95 operations or anywhere in the docs.
+- id: cursor-pagination
+  conforms: true
+  evidence: Opaque cursor tokens with next_cursor / has_more, documented as the recommended style; offset pagination
+    is deprecated.
+- id: webhook-signing
+  conforms: true
+  evidence: Webhooks delivered via Svix with svix-id / svix-timestamp / svix-signature headers and a per-endpoint
+    signing secret.
+compliance:
+  certifications:
+  - name: SOC 2 Type I
+    status: achieved
+    date: '2025-10-07'
+    auditor_framework: AICPA
+    source: https://security.beehiiv.com/
+  memberships:
+  - name: M3AAWG
+    description: Messaging Malware Mobile Anti-Abuse Working Group
+    source: https://security.beehiiv.com/
+  regulatory:
+  - name: GDPR
+    status: adherence claimed
+    source: https://security.beehiiv.com/
+    detail: DSAR form at https://www.beehiiv.com/privacy/gdpr; data-deletion API operations exist under the data_deletion
+      scope.
+  - name: CCPA
+    status: adherence claimed
+    source: https://security.beehiiv.com/
+  explicitly_not_compliant:
+  - name: HIPAA
+    statement: '"beehiiv is not HIPAA compliant, and we do not have plans to pursue this certification." No BAA,
+      no PHI.'
+    source: https://security.beehiiv.com/
+  monitoring: Continuously monitored by Secureframe.
+  data_residency: All publication and subscriber data stored in AWS US regions.
+  subprocessors: https://subprocessors.beehiiv.com/sub-processor-list

@@ -1,0 +1,103 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Reference subpackage_advertisement_opportunities subpackage_dataDeletion API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "subpackage_dataDeletion",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List data deletion requests <Badge intent=\"info\" minimal outlined>OAuth Scope: data_deletion:read</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/data_privacy/deletion_requests",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              }
+            ]
+          },
+          "docs": "<Warning>This is a gated feature that requires enablement. Contact support to enable Data Deletion API access for your organization.</Warning>\n\nList all data deletion requests for your organization."
+        },
+        {
+          "info": {
+            "name": "Create data deletion request <Badge intent=\"info\" minimal outlined>OAuth Scope: data_deletion:write</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/data_privacy/deletion_requests",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "<Warning>This is a gated feature that requires enablement. Contact support to enable Data Deletion API access for your organization.</Warning>\n\nCreates a data deletion request for a subscriber within your organization. The subscriber's data will be redacted from all publications in the organization after a 14-day safety delay. This action cannot be undone once processing begins."
+        },
+        {
+          "info": {
+            "name": "Get data deletion request <Badge intent=\"info\" minimal outlined>OAuth Scope: data_deletion:read</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/data_privacy/deletion_requests/:id",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the data deletion request"
+              }
+            ]
+          },
+          "docs": "<Warning>This is a gated feature that requires enablement. Contact support to enable Data Deletion API access for your organization.</Warning>\n\nRetrieve the details and current status of a specific data deletion request."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

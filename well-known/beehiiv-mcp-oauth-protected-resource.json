@@ -1,0 +1,1 @@
+{"resource":"https://mcp.beehiiv.com/mcp","authorization_servers":["https://mcp.beehiiv.com"],"scopes_supported":["read","write"],"bearer_methods_supported":["header"]}

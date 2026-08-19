@@ -1,17 +1,45 @@
-generated: '2026-07-11'
+generated: '2026-08-13'
 method: searched
 probe: true
 source: https://security.beehiiv.com/
 url: https://security.beehiiv.com/
+http_status: 200
 certifications:
-- SOC 2
-- HIPAA
+- SOC 2 Type I
+certification_detail:
+- name: SOC 2 Type I
+  achieved: '2025-10-07'
+  framework: AICPA
+memberships:
+- M3AAWG
+regulatory_adherence:
 - GDPR
+- CCPA
+not_compliant:
+- name: HIPAA
+  statement: beehiiv states plainly that it is NOT HIPAA compliant, will not pursue the certification, does not
+    support PHI and will not sign a BAA.
+monitoring: Secureframe (continuous)
+data_residency: AWS regions in the United States
+subprocessors: https://subprocessors.beehiiv.com/sub-processor-list
+controls_published:
+- Change Management
+- Baseline Configurations
+- Segregation of Environments
+- Secure Development Policy
+privacy:
+  policy: https://www.beehiiv.com/privacy
+  gdpr_dsar: https://www.beehiiv.com/privacy/gdpr
+  california: https://www.beehiiv.com/privacy#california-privacy
+correction: 'CORRECTED 2026-08-13. The prior version of this artifact listed HIPAA as a beehiiv certification. That
+  was a keyword false positive: the trust center mentions HIPAA only to state that beehiiv is NOT HIPAA compliant.
+  GDPR was also listed as a certification; it is a regulatory adherence claim, not a certification, and has been
+  moved.'
 evidence:
 - source: https://security.beehiiv.com/
-  keywords:
-  - soc 2
-  - hipaa
-  - trust center
-  - compliance certification
-  - gdpr
+  fetched: '2026-08-13'
+  http_status: 200
+  quotes:
+  - As of October 7, 2025, beehiiv has achieved SOC 2 Type 1 compliance.
+  - beehiiv is not HIPAA compliant, and we do not have plans to pursue this certification.
+  - Continuously monitored by Secureframe

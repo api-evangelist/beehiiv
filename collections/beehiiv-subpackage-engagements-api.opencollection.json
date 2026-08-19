@@ -1,0 +1,72 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Reference subpackage_advertisement_opportunities subpackage_engagements API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "subpackage_engagements",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get publication engagements <Badge intent=\"info\" minimal outlined>OAuth Scope: publications:read</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/engagements",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "start_date",
+                "value": "",
+                "type": "query",
+                "description": "The starting date for the engagement metrics in `YYYY-MM-DD` format. Defaults to 1 day ago if not provided."
+              },
+              {
+                "name": "number_of_days",
+                "value": "",
+                "type": "query",
+                "description": "The number of days to return engagement metrics for, starting from `start_date`. Must be between 1 and 31. Defaults to `1` if not provided."
+              },
+              {
+                "name": "granularity",
+                "value": "",
+                "type": "query",
+                "description": "The granularity at which to report the engagement metrics. Defaults to `day` if not provided."
+              },
+              {
+                "name": "email_type",
+                "value": "",
+                "type": "query",
+                "description": "Filter engagement metrics by email type. If omitted, all email engagement is included.<br> `post`: Only post emails.<br> `message`: Only automated and system-generated emails."
+              },
+              {
+                "name": "direction",
+                "value": "",
+                "type": "query",
+                "description": "The direction that the results are sorted in. Defaults to `asc`.<br> `asc`: Oldest to newest<br> `desc`: Newest to oldest"
+              }
+            ]
+          },
+          "docs": "Retrieve email engagement metrics for a specific publication over a defined date range and granularity.<br><br> By default, the endpoint returns metrics for the past day, aggregated daily. The max number of days allowed is 31. All dates and times are in UTC."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,93 @@
+generated: '2026-08-13'
+method: derived
+source: openapi/_original/beehiiv-openapi.yml (harvested 2026-08-13 from https://developers.beehiiv.com/openapi/api-reference.json)
+format: vendor-json
+note: beehiiv does NOT use RFC 9457 application/problem+json. Every error response on all 95 operations is application/json
+  carrying the vendor Error envelope below. Titles are the exact response descriptions in the published spec; remediation
+  is derived from the beehiiv docs pages cited under docs.
+docs:
+- https://developers.beehiiv.com/welcome/rate-limiting
+- https://developers.beehiiv.com/oauth2
+- https://developers.beehiiv.com/welcome/pagination
+envelope:
+  media_type: application/json
+  schema: components.schemas["type_:Error"]
+  fields:
+  - name: status
+    type: integer
+    required: true
+    description: HTTP status code, repeated in the body.
+  - name: statusText
+    type: string
+    required: true
+    description: Human-readable status text.
+  - name: errors
+    type: array
+    required: true
+    description: One or more ErrorDetail objects.
+  - name: errors[].message
+    type: string
+    required: true
+    description: Human-readable description of this error.
+  - name: errors[].code
+    type: string
+    required: true
+    description: Machine-readable error code string. beehiiv publishes no enumerated registry of these code values.
+problem_types:
+- status: 400
+  title: Bad Request
+  occurrences: 81
+  description: Malformed request, invalid parameters, or — for offset pagination — a request beyond page 100.
+  remediation: Validate parameters against the operation schema. If paginating with page/limit, migrate to cursor
+    pagination; requests past page 100 are refused.
+- status: 401
+  title: Unauthorized
+  occurrences: 93
+  description: The API key or OAuth access token is missing, invalid, or expired.
+  remediation: 'Send Authorization: Bearer <api key or OAuth access token>. For OAuth, refresh with grant_type=refresh_token
+    at POST https://app.beehiiv.com/oauth/token.'
+- status: 403
+  title: Forbidden
+  occurrences: 24
+  description: Authenticated but not permitted — usually a missing OAuth scope or a plan that does not include the
+    feature (webhooks require Scale, the Send API requires Max).
+  remediation: Check the OAuth scope badge on the operation in the API reference and the plan gate in plans/beehiiv-plans-pricing.yml.
+- status: 404
+  title: Resource Not Found
+  occurrences: 92
+  description: The publication, subscription, post or other addressed resource does not exist or is not visible
+    to this token.
+  remediation: Confirm the publicationId prefix and that the token is scoped to that publication.
+- status: 409
+  title: Conflict
+  occurrences: 1
+  description: The request conflicts with current resource state.
+  remediation: Re-read the resource and retry. beehiiv publishes no idempotency key, so a blind retry of a create
+    can duplicate.
+- status: 422
+  title: Unprocessable Entity
+  occurrences: 11
+  description: Syntactically valid but semantically rejected — validation failure on the request body.
+  remediation: Read errors[].message; each entry names the failing field condition.
+- status: 429
+  title: Rate Limit Exceeded
+  occurrences: 93
+  description: More than 180 requests in the current minute for this organization.
+  remediation: Back off exponentially and honor RateLimit-Reset (unix seconds). Self-pace at ~3 req/sec across every
+    key and token in the organization.
+- status: 500
+  title: Internal Server Error
+  occurrences: 93
+  description: Unhandled server-side failure.
+  remediation: Retry with backoff; escalate to support.beehiiv.com if persistent.
+async_semantics:
+- status: 202
+  title: Accepted
+  occurrences: 3
+  description: The post was created via the Send API and is still being processed in the background.
+  remediation: Wait briefly and retry, honoring the Retry-After header. This is the only place beehiiv publishes
+    Retry-After semantics.
+gaps:
+- 'No enumerated error-code registry: errors[].code is typed as a free string with no published list of values.'
+- No RFC 9457 problem+json; no type URIs.
+- No error documentation page in the developer docs.

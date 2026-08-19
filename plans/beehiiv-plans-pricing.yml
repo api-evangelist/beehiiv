@@ -4,7 +4,8 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: beehiiv
 providerId: beehiiv
 created: '2026-05-08'
-modified: '2026-05-25'
+method: searched
+modified: '2026-08-13'
 reconciled: true
 tags:
 - Newsletter
@@ -14,16 +15,18 @@ tags:
 - Publishing
 - Plans
 - Pricing
-description: Commercial plans for beehiiv's newsletter publishing platform. Four tiers (Launch, Scale, Max, Enterprise) gating subscriber counts, premium publishing features, and API surface (Send API restricted to Enterprise).
+description: Commercial plans for beehiiv's newsletter publishing platform. Four tiers (Launch, Scale, Max, Enterprise)
+  gating subscriber counts, premium publishing features, and API surface (Send API restricted to Enterprise).
 sources:
 - https://www.beehiiv.com/pricing
-- https://developers.beehiiv.com/welcome/getting-started
-- https://developers.beehiiv.com/welcome/rate-limiting
+- https://www.beehiiv.com/pricing.md
+- https://www.beehiiv.com/enterprise
 plans:
 - id: beehiiv-launch
   name: Launch
   type: free
-  description: Free starter tier for new newsletter publishers. Includes site, podcast, campaign analytics, custom domains, and API access (except the Send API).
+  description: Free starter tier for new newsletter publishers. Includes site, podcast, campaign analytics, custom
+    domains, and API access (except the Send API).
   entries:
   - label: Monthly Price
     name: monthly_price
@@ -44,7 +47,7 @@ plans:
     timeFrame: monthly
     geo: global
     unit: 1
-    price: 'included'
+    price: included
     userMultiplied: false
   - label: Email Sends
     name: email_sends
@@ -54,7 +57,7 @@ plans:
     timeFrame: monthly
     geo: global
     unit: 1
-    price: 'included'
+    price: included
     userMultiplied: false
   elements:
   - name: Newsletter, website, podcast
@@ -65,7 +68,8 @@ plans:
 - id: beehiiv-scale
   name: Scale
   type: paid
-  description: Mid-tier for growing publishers with ad/boosts network access, automations, webhooks, and paid subscriptions at 0% take rate.
+  description: Mid-tier for growing publishers with ad/boosts network access, automations, webhooks, and paid subscriptions
+    at 0% take rate.
   entries:
   - label: Monthly Price
     name: monthly_price
@@ -75,9 +79,10 @@ plans:
     timeFrame: monthly
     geo: global
     unit: 1
-    price: '43'
+    price: '39'
     currency: USD
     userMultiplied: false
+    note: Entry price, up to 500 subscribers. Scales to $329/mo at 100,000. See priceTable.
   - label: Annual Price
     name: annual_price
     type: flat
@@ -86,9 +91,10 @@ plans:
     timeFrame: annual
     geo: global
     unit: 1
-    price: '517'
+    price: '408'
     currency: USD
     userMultiplied: false
+    note: Entry annual total, up to 500 subscribers (~$34/mo). See priceTable.
   - label: Subscriber Limit
     name: subscribers
     type: flat
@@ -97,7 +103,7 @@ plans:
     timeFrame: monthly
     geo: global
     unit: 1
-    price: 'included'
+    price: included
     userMultiplied: false
   elements:
   - name: Everything in Launch
@@ -114,7 +120,8 @@ plans:
 - id: beehiiv-max
   name: Max
   type: paid
-  description: Premium tier for established publishers. Adds branding removal, sponsorship storefront, audio newsletters, RSS-to-Send, dynamic content, and up to 10 publications.
+  description: Premium tier for established publishers. Adds branding removal, sponsorship storefront, audio newsletters,
+    RSS-to-Send, dynamic content, and up to 10 publications.
   entries:
   - label: Monthly Price
     name: monthly_price
@@ -124,9 +131,10 @@ plans:
     timeFrame: monthly
     geo: global
     unit: 1
-    price: '96'
+    price: '99'
     currency: USD
     userMultiplied: false
+    note: Entry price, up to 500 subscribers. Scales to $459/mo at 100,000. See priceTable.
   - label: Annual Price
     name: annual_price
     type: flat
@@ -135,9 +143,10 @@ plans:
     timeFrame: annual
     geo: global
     unit: 1
-    price: '1151'
+    price: '1032'
     currency: USD
     userMultiplied: false
+    note: Entry annual total, up to 500 subscribers (~$86/mo). See priceTable.
   - label: Subscriber Limit
     name: subscribers
     type: flat
@@ -146,7 +155,7 @@ plans:
     timeFrame: monthly
     geo: global
     unit: 1
-    price: 'included'
+    price: included
     userMultiplied: false
   elements:
   - name: Everything in Scale
@@ -162,7 +171,8 @@ plans:
 - id: beehiiv-enterprise
   name: Enterprise
   type: enterprise
-  description: Custom contracts for publishers above 100k subscribers needing Send API, dedicated IPs, SSO, and concierge onboarding.
+  description: Custom contracts for publishers above 100k subscribers needing Send API, dedicated IPs, SSO, and
+    concierge onboarding.
   entries:
   - label: Pricing
     name: pricing
@@ -186,3 +196,115 @@ plans:
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
+provenanceNote: Upgraded generated -> searched on 2026-08-13 against https://www.beehiiv.com/pricing.md (HTTP 200),
+  a provider-published machine-readable twin of the pricing page carrying the full published price table by subscriber
+  bucket. The prior entries quoted the 1,000-subscriber annual-equivalent figures ($43 Scale, $96 Max) as if they
+  were the plan price; beehiiv prices Scale and Max per subscriber bucket, so a single monthly_price is not a faithful
+  representation. The bucket table is now recorded in priceTable below and the headline entries carry the entry-point
+  price.
+planCount: 4
+currency: USD
+pricingModel: per-subscriber-bucket subscription; billing monthly or annual; email sends unlimited on every tier
+priceTable:
+  unit: USD
+  note: Published buckets. Do not interpolate between rows — beehiiv says so on the page itself.
+  columns:
+  - subscribers
+  - scale_monthly
+  - scale_annual_total
+  - scale_annual_per_month
+  - max_monthly
+  - max_annual_total
+  - max_annual_per_month
+  rows:
+  - - 100
+    - 39
+    - 408
+    - 34
+    - 99
+    - 1032
+    - 86
+  - - 500
+    - 39
+    - 408
+    - 34
+    - 99
+    - 1032
+    - 86
+  - - 1000
+    - 49
+    - 517
+    - 43
+    - 109
+    - 1151
+    - 96
+  - - 2500
+    - 69
+    - 729
+    - 61
+    - 149
+    - 1573
+    - 131
+  - - 5000
+    - 89
+    - 940
+    - 78
+    - 169
+    - 1785
+    - 149
+  - - 10000
+    - 109
+    - 1151
+    - 96
+    - 219
+    - 2313
+    - 193
+  - - 25000
+    - 169
+    - 1785
+    - 149
+    - 289
+    - 3052
+    - 254
+  - - 50000
+    - 249
+    - 2629
+    - 219
+    - 379
+    - 4002
+    - 334
+  - - 75000
+    - 289
+    - 3052
+    - 254
+    - 419
+    - 4425
+    - 369
+  - - 100000
+    - 329
+    - 3474
+    - 290
+    - 459
+    - 4847
+    - 404
+  above_100k: Enterprise is the usual path for custom limits and billing.
+apiEntitlements:
+- plan: Launch
+  api: API access excluding the Send API
+  mcp: beehiiv MCP (Read Access)
+  webhooks: false
+- plan: Scale
+  api: API access excluding the Send API
+  mcp: beehiiv MCP (Write Access)
+  webhooks: true
+- plan: Max
+  api: Full API including the Send API
+  mcp: beehiiv MCP (Write Access)
+  webhooks: true
+- plan: Enterprise
+  api: Full API + SSO, dedicated IPs, custom publication limits
+  mcp: beehiiv MCP (Write Access)
+  webhooks: true
+agentNote: beehiiv publishes a Marketing MCP at https://www.beehiiv.com/api/mcp with get_pricing and pricing_faq
+  tools, and directs agents to call it rather than scrape the price slider. That makes plan data a first-class agent
+  surface here — see mcp/beehiiv-mcp.yml.

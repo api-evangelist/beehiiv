@@ -1,0 +1,231 @@
+generated: '2026-08-13'
+method: derived
+source: openapi/_original/beehiiv-openapi.yml (95 operations, 64 paths) + https://developers.beehiiv.com/api-reference
+root_entity: Publication
+note: 'Derived from the path hierarchy and the operation set of the published OpenAPI. beehiiv is a strongly publication-scoped
+  API: 58 of 64 paths are rooted at /publications/{publicationId}. Relationship edges are read from path nesting
+  and from documented id-reference parameters, not guessed from schema names.'
+entity_count: 21
+entities:
+- name: Publication
+  path_segment: publications
+  operations: 91
+  description: The root tenant object. Every other resource except workspaces and ad-network account reports hangs
+    off a publicationId path parameter.
+- name: Subscription
+  path_segment: subscriptions
+  operations: 18
+  description: A subscriber on a publication, addressable by id or by email.
+- name: Post
+  path_segment: posts
+  operations: 8
+  description: 'A newsletter issue: draft, scheduled, or sent.'
+- name: PostTemplate
+  path_segment: post_templates
+  operations: 1
+  description: Reusable post layout.
+- name: Segment
+  path_segment: segments
+  operations: 7
+  description: A saved audience definition, recalculable, expandable to subscriber ids.
+- name: CustomField
+  path_segment: custom_fields
+  operations: 6
+  description: Publication-defined attribute attached to subscriptions.
+- name: Tier
+  path_segment: tiers
+  operations: 5
+  description: A paid subscription tier on a publication.
+- name: Automation
+  path_segment: automations
+  operations: 6
+  description: A workflow definition.
+- name: Webhook
+  path_segment: webhooks
+  operations: 5
+  description: A customer endpoint registration for event delivery.
+- name: Poll
+  path_segment: polls
+  operations: 3
+  description: A reader poll and its responses.
+- name: NewsletterList
+  path_segment: newsletter_lists
+  operations: 10
+  description: A named list within a publication.
+- name: Podcast
+  path_segment: podcasts
+  operations: 4
+  description: A podcast show and its episodes.
+- name: ReferralProgram
+  path_segment: referral_program
+  operations: 1
+  description: The publication referral program configuration.
+- name: BulkSubscriptionUpdate
+  path_segment: bulk_subscription_updates
+  operations: 2
+  description: An async batch job over subscriptions.
+- name: ComplimentaryAccess
+  path_segment: complimentary_access
+  operations: 2
+  description: A comped premium grant on a subscription.
+- name: ConditionSet
+  path_segment: condition_sets
+  operations: 2
+  description: Reusable condition logic used by segments and automations.
+- name: AdNetworkOffer / AdNetworkReport
+  path_segment: ad_network
+  operations: 6
+  description: Ad network offers, advertisements and performance reports.
+- name: AdvertisementOpportunity
+  path_segment: advertisement_opportunities
+  operations: 1
+  description: Sponsorship opportunities available to the publication.
+- name: Author
+  path_segment: authors
+  operations: 2
+  description: A byline on a publication.
+- name: Engagement
+  path_segment: engagements
+  operations: 1
+  description: Aggregate publication engagement statistics.
+- name: Workspace
+  path_segment: workspaces
+  operations: 3
+  description: The account above publications; identity and permissions.
+relationships:
+- from: Publication
+  to: AdNetworkOffer / AdNetworkReport
+  type: has_many
+  via: publicationId (path)
+- from: Publication
+  to: AdvertisementOpportunity
+  type: has_many
+  via: publicationId (path)
+- from: Publication
+  to: Author
+  type: has_many
+  via: publicationId (path)
+- from: Publication
+  to: Automation
+  type: has_many
+  via: publicationId (path)
+- from: Publication
+  to: BulkSubscriptionUpdate
+  type: has_many
+  via: publicationId (path)
+- from: Publication
+  to: ComplimentaryAccess
+  type: has_many
+  via: publicationId (path)
+- from: Publication
+  to: ConditionSet
+  type: has_many
+  via: publicationId (path)
+- from: Publication
+  to: CustomField
+  type: has_many
+  via: publicationId (path)
+- from: Publication
+  to: Engagement
+  type: has_many
+  via: publicationId (path)
+- from: Publication
+  to: NewsletterList
+  type: has_many
+  via: publicationId (path)
+- from: Publication
+  to: Podcast
+  type: has_many
+  via: publicationId (path)
+- from: Publication
+  to: Poll
+  type: has_many
+  via: publicationId (path)
+- from: Publication
+  to: Post
+  type: has_many
+  via: publicationId (path)
+- from: Publication
+  to: PostTemplate
+  type: has_many
+  via: publicationId (path)
+- from: Publication
+  to: ReferralProgram
+  type: has_many
+  via: publicationId (path)
+- from: Publication
+  to: Segment
+  type: has_many
+  via: publicationId (path)
+- from: Publication
+  to: Subscription
+  type: has_many
+  via: publicationId (path)
+- from: Publication
+  to: Tier
+  type: has_many
+  via: publicationId (path)
+- from: Publication
+  to: Webhook
+  type: has_many
+  via: publicationId (path)
+- from: Workspace
+  to: Publication
+  type: has_many
+  via: GET /workspaces/publications_by_subscription_email, GET /publications
+- from: Subscription
+  to: SubscriptionTag
+  type: has_many
+  via: POST /publications/{publicationId}/subscriptions/{subscriptionId}/tags
+- from: Subscription
+  to: NewsletterListSubscription
+  type: has_many
+  via: subscriptionId
+- from: NewsletterList
+  to: NewsletterListSubscription
+  type: has_many
+  via: newsletterListId (path)
+- from: Automation
+  to: AutomationJourney
+  type: has_many
+  via: automationId (path)
+- from: AutomationJourney
+  to: Subscription
+  type: belongs_to
+  via: subscription id in the journey create body
+- from: Podcast
+  to: PodcastEpisode
+  type: has_many
+  via: podcastShowId (path)
+- from: Poll
+  to: PollResponse
+  type: has_many
+  via: pollId (path)
+- from: Segment
+  to: Subscription
+  type: has_many
+  via: GET /segments/{segmentId}/results (subscriber ids)
+- from: ConditionSet
+  to: Segment
+  type: has_many
+  via: condition set reused by segment definitions
+- from: Tier
+  to: Subscription
+  type: has_many
+  via: subscription tier events (tier created / paused / resumed webhooks)
+- from: ComplimentaryAccess
+  to: Subscription
+  type: belongs_to
+  via: subscription id
+- from: AdNetworkOffer
+  to: Advertisement
+  type: has_many
+  via: GET /publications/{publicationId}/ad_network/offers/{offerId}/advertisements
+identifiers:
+  style: opaque prefixed strings
+  confirmed:
+  - prefix: pub_
+    entity: Publication
+  note: Only pub_ is evidenced in published examples; see conventions/beehiiv-conventions.yml.
+events: 22 webhook event types cover Subscription, Post, NewsletterListSubscription, Podcast and Survey — see openapi/_original/beehiiv-webhooks-openapi.json
+  and asyncapi/beehiiv-asyncapi.yml.

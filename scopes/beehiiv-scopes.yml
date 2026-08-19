@@ -1,0 +1,235 @@
+generated: '2026-08-13'
+method: searched
+source: https://developers.beehiiv.com/oauth2 (Available scopes) + per-operation OAuth Scope badges in https://developers.beehiiv.com/llms.txt
+docs: https://developers.beehiiv.com/oauth2
+note: 'derive-oauth-scopes.py found nothing: the published OpenAPI declares only an HTTP bearer securityScheme and
+  no oauth2 flows, so the scope surface exists only in the documentation and in the per-operation badges. This file
+  is the searched reconciliation of both. The MCP server at mcp.beehiiv.com uses a separate, coarser scope vocabulary
+  (read, write) — see mcp/beehiiv-mcp.yml.'
+flows:
+  authorizationCode:
+    authorizationUrl: https://app.beehiiv.com/oauth/authorize
+    tokenUrl: https://app.beehiiv.com/oauth/token
+    refreshUrl: https://app.beehiiv.com/oauth/token
+    revocationUrl: https://app.beehiiv.com/oauth/revoke
+    introspectionUrl: https://app.beehiiv.com/oauth/introspect
+    pkce: required for public clients (S256 or plain)
+convention:
+  pattern: <resource>:<permission>
+  permissions:
+    read: Permits read actions (GET).
+    write: Required for mutating actions (POST, PUT, DELETE).
+  delimiter: space-delimited in the scope query parameter
+registration: Not self-serve. beehiiv OAuth clients are registered by contacting beehiiv Support (https://support.beehiiv.com/hc/en-us).
+scope_count: 30
+scopes:
+- name: identify:read
+  type: default
+  description: Default scope granted to every OAuth authorization. Identifies the authorizing user and workspace.
+  operations:
+  - Identify user
+  - Identify workspace
+  - Get workspace permissions
+- name: automations:read
+  type: optional
+  description: Read access to automations resources.
+  operations:
+  - List automation journeys
+  - Get automation journey
+  - List automations
+  - Get automation
+- name: automations:write
+  type: optional
+  description: Write access (POST/PUT/DELETE) to automations resources.
+  operations:
+  - Add subscription to an automation
+- name: custom_fields:read
+  type: optional
+  description: Read access to custom fields resources.
+  operations:
+  - Get custom field
+  - List custom fields
+- name: custom_fields:write
+  type: optional
+  description: Write access (POST/PUT/DELETE) to custom fields resources.
+  operations:
+  - Create custom field
+  - Update custom field
+  - Delete custom field
+- name: subscriptions:read
+  type: optional
+  description: Read access to subscriptions resources.
+  operations:
+  - List subscription updates
+  - Get subscription update
+  - List subscriptions
+  - Get subscription by email
+  - Get subscription by ID
+- name: subscriptions:write
+  type: optional
+  description: Write access (POST/PUT/DELETE) to subscriptions resources.
+  operations:
+  - Bulk create subscription
+  - Update subscriptions
+  - Update subscriptions' status
+  - Create subscription
+  - Update subscription by ID
+  - Update subscription by email
+  - Delete subscription
+  - Add subscription tag
+- name: polls:read
+  type: optional
+  description: Read access to polls resources.
+  operations:
+  - List polls
+  - Get poll
+  - List poll responses
+- name: polls:write
+  type: optional
+  description: Write access (POST/PUT/DELETE) to polls resources.
+  operations: []
+- name: podcasts:read
+  type: optional
+  description: Read access to podcasts resources.
+  operations:
+  - List podcasts
+  - Get podcast
+  - List podcast episodes
+  - Get podcast episode
+- name: podcasts:write
+  type: optional
+  description: Write access (POST/PUT/DELETE) to podcasts resources.
+  operations: []
+- name: posts:read
+  type: optional
+  description: Read access to posts resources.
+  operations:
+  - Get ad offers
+  - Get ad offer advertisements
+  - Get ad network reports
+  - Get ad network report summary
+  - Get account ad network report summary
+  - Get advertisement opportunities
+  - List posts
+  - Get aggregate stats
+  - Get post
+  - Generate post preview URL
+  - Get post templates
+- name: posts:write
+  type: optional
+  description: Write access (POST/PUT/DELETE) to posts resources.
+  operations:
+  - Accept ad offer
+  - Create post
+  - Update post
+  - Delete post
+- name: publications:read
+  type: optional
+  description: Read access to publications resources.
+  operations:
+  - Get publication engagements
+  - List publications
+  - Get publication
+  - Get publications by subscription email
+- name: publications:write
+  type: optional
+  description: Write access (POST/PUT/DELETE) to publications resources.
+  operations: []
+- name: referral_program:read
+  type: optional
+  description: Read access to referral program resources.
+  operations:
+  - Get referral program
+- name: referral_program:write
+  type: optional
+  description: Write access (POST/PUT/DELETE) to referral program resources.
+  operations: []
+- name: segments:read
+  type: optional
+  description: Read access to segments resources.
+  operations:
+  - List segments
+  - Get segment
+  - List segment subscribers
+  - List segment subscriber IDs
+- name: segments:write
+  type: optional
+  description: Write access (POST/PUT/DELETE) to segments resources.
+  operations:
+  - Recalculate segment
+  - Delete segment
+- name: tiers:read
+  type: optional
+  description: Read access to tiers resources.
+  operations:
+  - List tiers
+  - Get tier
+- name: tiers:write
+  type: optional
+  description: Write access (POST/PUT/DELETE) to tiers resources.
+  operations:
+  - Create a tier
+  - Update a tier
+- name: webhooks:read
+  type: optional
+  description: Read access to webhooks resources.
+  operations:
+  - List webhooks
+  - Get webhook
+- name: webhooks:write
+  type: optional
+  description: Write access (POST/PUT/DELETE) to webhooks resources.
+  operations:
+  - Create a webhook
+  - Update webhook
+  - Delete a webhook
+- name: complimentary_access:read
+  type: observed-undocumented
+  description: Advertised on operations in the API reference but not listed on the OAuth2 scopes page.
+  operations:
+  - List complimentary access
+  - Get complimentary access
+- name: condition_sets:read
+  type: observed-undocumented
+  description: Advertised on operations in the API reference but not listed on the OAuth2 scopes page.
+  operations:
+  - List condition sets
+  - Get condition set
+- name: data_deletion:read
+  type: observed-undocumented
+  description: Advertised on operations in the API reference but not listed on the OAuth2 scopes page.
+  operations:
+  - Get data deletion request
+  - List data deletion requests
+- name: data_deletion:write
+  type: observed-undocumented
+  description: Advertised on operations in the API reference but not listed on the OAuth2 scopes page.
+  operations:
+  - Create data deletion request
+- name: newsletter_lists:read
+  type: observed-undocumented
+  description: Advertised on operations in the API reference but not listed on the OAuth2 scopes page.
+  operations:
+  - List newsletter lists
+  - Get newsletter list
+  - List newsletter list subscriptions
+  - Get newsletter list subscription
+- name: newsletter_lists:write
+  type: observed-undocumented
+  description: Advertised on operations in the API reference but not listed on the OAuth2 scopes page.
+  operations:
+  - Create newsletter list
+  - Update newsletter list
+  - Delete newsletter list
+  - Create newsletter list subscription
+  - Update newsletter list subscription
+  - Update newsletter list subscription by subscription ID
+- name: posts
+  type: observed-undocumented
+  description: Advertised on operations in the API reference but not listed on the OAuth2 scopes page.
+  operations:
+  - Send test email
+gaps:
+- Scopes are not expressed in the OpenAPI securitySchemes, so no generated client or agent can discover them from
+  the contract.
+- 'Several scopes appear on operation badges but are absent from the documented scope list (see type: observed-undocumented).'

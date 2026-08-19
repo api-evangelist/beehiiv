@@ -4,7 +4,8 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: beehiiv
 providerId: beehiiv
 created: '2026-05-08'
-modified: '2026-05-25'
+method: searched
+modified: '2026-08-13'
 reconciled: true
 tags:
 - Newsletter
@@ -15,10 +16,12 @@ tags:
 - Rate Limiting
 - Quotas
 - Throttling
-description: beehiiv enforces a single global rate limit on the v2 REST API at 180 requests per minute per organization, returning 429 with IETF-draft RateLimit-* headers.
+description: beehiiv enforces a single global rate limit on the v2 REST API at 180 requests per minute per organization,
+  returning 429 with IETF-draft RateLimit-* headers.
 sources:
 - https://developers.beehiiv.com/welcome/rate-limiting
 - https://developers.beehiiv.com/welcome/getting-started
+- https://developers.beehiiv.com/llms.txt
 responseCodes:
   throttled: 429
 headers:
@@ -34,14 +37,25 @@ limits:
   metric: requests
   limit: 180
   timeFrame: per_minute
-  notes: 180 requests / 60 seconds = 3 req/sec. beehiiv recommends pacing requests at ~350ms intervals to stay under the limit proactively.
+  notes: 180 requests / 60 seconds = 3 req/sec. beehiiv recommends pacing requests at ~350ms intervals to stay under
+    the limit proactively.
 policies:
 - name: Exponential Backoff
-  description: On 429 responses, retry with exponential backoff and jitter. Honor RateLimit-Reset to know when the window resets.
+  description: On 429 responses, retry with exponential backoff and jitter. Honor RateLimit-Reset to know when the
+    window resets.
 - name: Proactive Throttling
-  description: Client SDKs and integrations should self-pace at roughly 3 req/sec (one request per ~333-350ms) instead of waiting for 429 responses.
+  description: Client SDKs and integrations should self-pace at roughly 3 req/sec (one request per ~333-350ms) instead
+    of waiting for 429 responses.
 - name: Per-Organization Aggregation
-  description: All API keys and OAuth tokens within a single beehiiv workspace/organization share the same 180 req/min bucket.
+  description: All API keys and OAuth tokens within a single beehiiv workspace/organization share the same 180 req/min
+    bucket.
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
+provenanceNote: 'Upgraded generated -> searched on 2026-08-13. Every value below was re-read from https://developers.beehiiv.com/welcome/rate-limiting
+  (HTTP 200): 180 requests/minute per organization, 429 on exhaustion, and the three RateLimit-* response headers
+  with Reset expressed as unix epoch seconds.'
+limitCount: 1
+retryAfter:
+  published: false
+  note: Retry-After is documented only for the 202 Send API polling case, not for 429.

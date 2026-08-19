@@ -1,0 +1,89 @@
+generated: '2026-08-13'
+method: probed
+source: direct HTTP probes of every beehiiv host in apis.yml and openapi servers[]
+summary:
+  hosts_probed: 5
+  documents_found: 3
+  note: developers.beehiiv.com serves a real RFC 9727 api-catalog linkset. mcp.beehiiv.com serves RFC 9728 protected-resource
+    metadata and RFC 8414 authorization-server metadata for the beehiiv MCP. No security.txt is served on any host;
+    no OIDC discovery on the API host.
+hosts:
+- host: https://developers.beehiiv.com
+  documents:
+  - path: /.well-known/api-catalog
+    status: 200
+    file: beehiiv-api-catalog.json
+    spec: RFC 9727
+    note: application/linkset+json; lists three service-desc OpenAPI documents (webhooks, oauth2, api-reference).
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: https://mcp.beehiiv.com
+  documents:
+  - path: /.well-known/oauth-protected-resource/mcp
+    status: 200
+    file: beehiiv-mcp-oauth-protected-resource.json
+    spec: RFC 9728
+    note: resource https://mcp.beehiiv.com/mcp; scopes_supported read, write.
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    file: beehiiv-mcp-oauth-authorization-server.json
+    spec: RFC 8414
+    note: issuer https://mcp.beehiiv.com; authorization_code + refresh_token; PKCE S256; dynamic client registration
+      endpoint published.
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: https://api.beehiiv.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: https://www.beehiiv.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: https://app.beehiiv.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 403
+    note: PerimeterX bot challenge on the app host; not an observed document.
+  - path: /.well-known/oauth-authorization-server
+    status: 403
+    note: PerimeterX bot challenge; OAuth2 endpoints are served under /oauth on this host per the docs, but no RFC
+      8414 metadata was observable.
+  - path: /.well-known/agent-card.json
+    status: 403
+  - path: /.well-known/agent.json
+    status: 403

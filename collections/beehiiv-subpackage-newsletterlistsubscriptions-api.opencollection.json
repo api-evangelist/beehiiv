@@ -1,0 +1,227 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Reference subpackage_advertisement_opportunities subpackage_newsletterListSubscriptions API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "subpackage_newsletterListSubscriptions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List newsletter list subscriptions <Badge intent=\"warning\" minimal outlined>Beta</Badge> <Badge intent=\"info\" minimal outlined>OAuth Scope: newsletter_lists:read</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/newsletter_lists/:newsletterListId/subscriptions",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              },
+              {
+                "name": "newsletterListId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the newsletter list object"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10."
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "**Cursor-based pagination (recommended)**: Use this opaque cursor token to fetch the next page of results. When provided, pagination will use cursor-based method which is more efficient and consistent than offset-based pagination."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "**Offset-based pagination (deprecated)**: Page number for offset-based pagination. Please migrate to cursor-based pagination using the `cursor` parameter. If not specified, results 1-10 from page 1 will be returned."
+              },
+              {
+                "name": "direction",
+                "value": "",
+                "type": "query",
+                "description": "The direction that the results are sorted in. Defaults to asc<br> `asc` - Ascending, sorts from smallest to largest.<br> `desc` - Descending, sorts from largest to smallest."
+              }
+            ]
+          },
+          "docs": "<Note title=\"Currently in beta\" icon=\"b\">\n  Newsletter Lists is currently in beta, the API is subject to change.\n</Note>\nList all subscriptions for a newsletter list."
+        },
+        {
+          "info": {
+            "name": "Create newsletter list subscription <Badge intent=\"warning\" minimal outlined>Beta</Badge> <Badge intent=\"info\" minimal outlined>OAuth Scope: newsletter_lists:write</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/newsletter_lists/:newsletterListId/subscriptions",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              },
+              {
+                "name": "newsletterListId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the newsletter list object"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "<Note title=\"Currently in beta\" icon=\"b\">\n  Newsletter Lists is currently in beta, the API is subject to change.\n</Note>\nSubscribe a subscription to a newsletter list. Accepts either a subscription_id or email to identify the subscription."
+        },
+        {
+          "info": {
+            "name": "Get newsletter list subscription <Badge intent=\"warning\" minimal outlined>Beta</Badge> <Badge intent=\"info\" minimal outlined>OAuth Scope: newsletter_lists:read</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/newsletter_lists/:newsletterListId/subscriptions/:newsletterListSubscriptionId",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              },
+              {
+                "name": "newsletterListId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the newsletter list object"
+              },
+              {
+                "name": "newsletterListSubscriptionId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the newsletter list subscription object"
+              }
+            ]
+          },
+          "docs": "<Note title=\"Currently in beta\" icon=\"b\">\n  Newsletter Lists is currently in beta, the API is subject to change.\n</Note>\nRetrieve a single newsletter list subscription."
+        },
+        {
+          "info": {
+            "name": "Update newsletter list subscription <Badge intent=\"warning\" minimal outlined>Beta</Badge> <Badge intent=\"info\" minimal outlined>OAuth Scope: newsletter_lists:write</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/newsletter_lists/:newsletterListId/subscriptions/:newsletterListSubscriptionId",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              },
+              {
+                "name": "newsletterListId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the newsletter list object"
+              },
+              {
+                "name": "newsletterListSubscriptionId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the newsletter list subscription object"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "<Note title=\"Currently in beta\" icon=\"b\">\n  Newsletter Lists is currently in beta, the API is subject to change.\n</Note>\nUpdate a newsletter list subscription. Currently supports unsubscribing a subscription from a newsletter list."
+        },
+        {
+          "info": {
+            "name": "Update newsletter list subscription by subscription ID <Badge intent=\"warning\" minimal outlined>Beta</Badge> <Badge intent=\"info\" minimal outlined>OAuth Scope: newsletter_lists:write</Badge>",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.beehiiv.com/v2/publications/:publicationId/newsletter_lists/:newsletterListId/subscriptions/by_subscription_id/:subscriptionId",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "publicationId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the publication object"
+              },
+              {
+                "name": "newsletterListId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the newsletter list object"
+              },
+              {
+                "name": "subscriptionId",
+                "value": "",
+                "type": "path",
+                "description": "The prefixed ID of the subscription"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "<Note title=\"Currently in beta\" icon=\"b\">\n  Newsletter Lists is currently in beta, the API is subject to change.\n</Note>\nUpdate a newsletter list subscription by subscription ID. An alternative to the update endpoint when you don't have the newsletter list subscription ID. Accepts either a subscription_id or email to identify the subscription. Currently supports unsubscribing a subscription from a newsletter list."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

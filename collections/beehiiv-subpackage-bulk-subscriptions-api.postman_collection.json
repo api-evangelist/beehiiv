@@ -1,0 +1,385 @@
+{
+  "item": [
+    {
+      "id": "75cc3f7e-bfe5-400c-b7f9-99fa8c8ad0fd",
+      "name": "subpackage_bulk_subscriptions",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "cd81f9f0-f99c-4c3c-89a3-628fa484b0e5",
+          "name": "Bulk create subscription <Badge intent=\"info\" minimal outlined>OAuth Scope: subscriptions:write</Badge>",
+          "request": {
+            "name": "Bulk create subscription <Badge intent=\"info\" minimal outlined>OAuth Scope: subscriptions:write</Badge>",
+            "description": {
+              "content": "Create new subscriptions for a publication.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "publications",
+                ":publicationId",
+                "bulk_subscriptions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "publicationId",
+                  "description": "(Required) The prefixed ID of the publication object"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"subscriptions\": [\n    {\n      \"email\": \"<string>\",\n      \"reactivate_existing\": false,\n      \"send_welcome_email\": false,\n      \"utm_source\": \"<string>\",\n      \"utm_medium\": \"<string>\",\n      \"utm_campaign\": \"<string>\",\n      \"utm_term\": \"<string>\",\n      \"utm_content\": \"<string>\",\n      \"referring_site\": \"<string>\",\n      \"referral_code\": \"<string>\",\n      \"custom_fields\": [\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"double_opt_override\": \"<string>\",\n      \"tier\": \"<string>\",\n      \"premium_tiers\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"premium_tier_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"stripe_customer_id\": \"<string>\",\n      \"automation_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"newsletter_list_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"skip_newsletter_list_auto_subscribe\": \"<boolean>\"\n    },\n    {\n      \"email\": \"<string>\",\n      \"reactivate_existing\": false,\n      \"send_welcome_email\": false,\n      \"utm_source\": \"<string>\",\n      \"utm_medium\": \"<string>\",\n      \"utm_campaign\": \"<string>\",\n      \"utm_term\": \"<string>\",\n      \"utm_content\": \"<string>\",\n      \"referring_site\": \"<string>\",\n      \"referral_code\": \"<string>\",\n      \"custom_fields\": [\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"double_opt_override\": \"<string>\",\n      \"tier\": \"<string>\",\n      \"premium_tiers\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"premium_tier_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"stripe_customer_id\": \"<string>\",\n      \"automation_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"newsletter_list_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"skip_newsletter_list_auto_subscribe\": \"<boolean>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5ededde8-c9a4-4a08-880c-2253c42eb1f4",
+              "name": "Subscriptions created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "publications",
+                    ":publicationId",
+                    "bulk_subscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "publicationId",
+                      "description": "(Required) The prefixed ID of the publication object"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subscriptions\": [\n    {\n      \"email\": \"string\",\n      \"reactivate_existing\": false,\n      \"send_welcome_email\": false,\n      \"utm_source\": \"string\",\n      \"utm_medium\": \"string\",\n      \"utm_campaign\": \"string\",\n      \"utm_term\": \"string\",\n      \"utm_content\": \"string\",\n      \"referring_site\": \"string\",\n      \"referral_code\": \"string\",\n      \"custom_fields\": [\n        {\n          \"name\": \"string\",\n          \"value\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"value\": \"string\"\n        }\n      ],\n      \"double_opt_override\": \"string\",\n      \"tier\": \"premium\",\n      \"premium_tiers\": [\n        \"string\",\n        \"string\"\n      ],\n      \"premium_tier_ids\": [\n        \"string\",\n        \"string\"\n      ],\n      \"stripe_customer_id\": \"string\",\n      \"automation_ids\": [\n        \"string\",\n        \"string\"\n      ],\n      \"newsletter_list_ids\": [\n        \"string\",\n        \"string\"\n      ],\n      \"skip_newsletter_list_auto_subscribe\": true\n    },\n    {\n      \"email\": \"string\",\n      \"reactivate_existing\": false,\n      \"send_welcome_email\": false,\n      \"utm_source\": \"string\",\n      \"utm_medium\": \"string\",\n      \"utm_campaign\": \"string\",\n      \"utm_term\": \"string\",\n      \"utm_content\": \"string\",\n      \"referring_site\": \"string\",\n      \"referral_code\": \"string\",\n      \"custom_fields\": [\n        {\n          \"name\": \"string\",\n          \"value\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"value\": \"string\"\n        }\n      ],\n      \"double_opt_override\": \"string\",\n      \"tier\": \"free\",\n      \"premium_tiers\": [\n        \"string\",\n        \"string\"\n      ],\n      \"premium_tier_ids\": [\n        \"string\",\n        \"string\"\n      ],\n      \"stripe_customer_id\": \"string\",\n      \"automation_ids\": [\n        \"string\",\n        \"string\"\n      ],\n      \"newsletter_list_ids\": [\n        \"string\",\n        \"string\"\n      ],\n      \"skip_newsletter_list_auto_subscribe\": false\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"import_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6d9ac10f-e412-467f-8388-8d8bcf64ce84",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "publications",
+                    ":publicationId",
+                    "bulk_subscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "publicationId",
+                      "description": "(Required) The prefixed ID of the publication object"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subscriptions\": [\n    {\n      \"email\": \"string\",\n      \"reactivate_existing\": false,\n      \"send_welcome_email\": false,\n      \"utm_source\": \"string\",\n      \"utm_medium\": \"string\",\n      \"utm_campaign\": \"string\",\n      \"utm_term\": \"string\",\n      \"utm_content\": \"string\",\n      \"referring_site\": \"string\",\n      \"referral_code\": \"string\",\n      \"custom_fields\": [\n        {\n          \"name\": \"string\",\n          \"value\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"value\": \"string\"\n        }\n      ],\n      \"double_opt_override\": \"string\",\n      \"tier\": \"premium\",\n      \"premium_tiers\": [\n        \"string\",\n        \"string\"\n      ],\n      \"premium_tier_ids\": [\n        \"string\",\n        \"string\"\n      ],\n      \"stripe_customer_id\": \"string\",\n      \"automation_ids\": [\n        \"string\",\n        \"string\"\n      ],\n      \"newsletter_list_ids\": [\n        \"string\",\n        \"string\"\n      ],\n      \"skip_newsletter_list_auto_subscribe\": true\n    },\n    {\n      \"email\": \"string\",\n      \"reactivate_existing\": false,\n      \"send_welcome_email\": false,\n      \"utm_source\": \"string\",\n      \"utm_medium\": \"string\",\n      \"utm_campaign\": \"string\",\n      \"utm_term\": \"string\",\n      \"utm_content\": \"string\",\n      \"referring_site\": \"string\",\n      \"referral_code\": \"string\",\n      \"custom_fields\": [\n        {\n          \"name\": \"string\",\n          \"value\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"value\": \"string\"\n        }\n      ],\n      \"double_opt_override\": \"string\",\n      \"tier\": \"free\",\n      \"premium_tiers\": [\n        \"string\",\n        \"string\"\n      ],\n      \"premium_tier_ids\": [\n        \"string\",\n        \"string\"\n      ],\n      \"stripe_customer_id\": \"string\",\n      \"automation_ids\": [\n        \"string\",\n        \"string\"\n      ],\n      \"newsletter_list_ids\": [\n        \"string\",\n        \"string\"\n      ],\n      \"skip_newsletter_list_auto_subscribe\": false\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 4436,\n  \"statusText\": \"string\",\n  \"errors\": [\n    {\n      \"message\": \"string\",\n      \"code\": \"string\"\n    },\n    {\n      \"message\": \"string\",\n      \"code\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3b537926-4b5f-4005-b08c-428a9dbd31bf",
+              "name": "Resource Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "publications",
+                    ":publicationId",
+                    "bulk_subscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "publicationId",
+                      "description": "(Required) The prefixed ID of the publication object"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subscriptions\": [\n    {\n      \"email\": \"string\",\n      \"reactivate_existing\": false,\n      \"send_welcome_email\": false,\n      \"utm_source\": \"string\",\n      \"utm_medium\": \"string\",\n      \"utm_campaign\": \"string\",\n      \"utm_term\": \"string\",\n      \"utm_content\": \"string\",\n      \"referring_site\": \"string\",\n      \"referral_code\": \"string\",\n      \"custom_fields\": [\n        {\n          \"name\": \"string\",\n          \"value\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"value\": \"string\"\n        }\n      ],\n      \"double_opt_override\": \"string\",\n      \"tier\": \"premium\",\n      \"premium_tiers\": [\n        \"string\",\n        \"string\"\n      ],\n      \"premium_tier_ids\": [\n        \"string\",\n        \"string\"\n      ],\n      \"stripe_customer_id\": \"string\",\n      \"automation_ids\": [\n        \"string\",\n        \"string\"\n      ],\n      \"newsletter_list_ids\": [\n        \"string\",\n        \"string\"\n      ],\n      \"skip_newsletter_list_auto_subscribe\": true\n    },\n    {\n      \"email\": \"string\",\n      \"reactivate_existing\": false,\n      \"send_welcome_email\": false,\n      \"utm_source\": \"string\",\n      \"utm_medium\": \"string\",\n      \"utm_campaign\": \"string\",\n      \"utm_term\": \"string\",\n      \"utm_content\": \"string\",\n      \"referring_site\": \"string\",\n      \"referral_code\": \"string\",\n      \"custom_fields\": [\n        {\n          \"name\": \"string\",\n          \"value\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"value\": \"string\"\n        }\n      ],\n      \"double_opt_override\": \"string\",\n      \"tier\": \"free\",\n      \"premium_tiers\": [\n        \"string\",\n        \"string\"\n      ],\n      \"premium_tier_ids\": [\n        \"string\",\n        \"string\"\n      ],\n      \"stripe_customer_id\": \"string\",\n      \"automation_ids\": [\n        \"string\",\n        \"string\"\n      ],\n      \"newsletter_list_ids\": [\n        \"string\",\n        \"string\"\n      ],\n      \"skip_newsletter_list_auto_subscribe\": false\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 4436,\n  \"statusText\": \"string\",\n  \"errors\": [\n    {\n      \"message\": \"string\",\n      \"code\": \"string\"\n    },\n    {\n      \"message\": \"string\",\n      \"code\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cc89fb43-91d9-4809-bdbb-bea06f756412",
+              "name": "Rate Limit Exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "publications",
+                    ":publicationId",
+                    "bulk_subscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "publicationId",
+                      "description": "(Required) The prefixed ID of the publication object"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subscriptions\": [\n    {\n      \"email\": \"string\",\n      \"reactivate_existing\": false,\n      \"send_welcome_email\": false,\n      \"utm_source\": \"string\",\n      \"utm_medium\": \"string\",\n      \"utm_campaign\": \"string\",\n      \"utm_term\": \"string\",\n      \"utm_content\": \"string\",\n      \"referring_site\": \"string\",\n      \"referral_code\": \"string\",\n      \"custom_fields\": [\n        {\n          \"name\": \"string\",\n          \"value\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"value\": \"string\"\n        }\n      ],\n      \"double_opt_override\": \"string\",\n      \"tier\": \"premium\",\n      \"premium_tiers\": [\n        \"string\",\n        \"string\"\n      ],\n      \"premium_tier_ids\": [\n        \"string\",\n        \"string\"\n      ],\n      \"stripe_customer_id\": \"string\",\n      \"automation_ids\": [\n        \"string\",\n        \"string\"\n      ],\n      \"newsletter_list_ids\": [\n        \"string\",\n        \"string\"\n      ],\n      \"skip_newsletter_list_auto_subscribe\": true\n    },\n    {\n      \"email\": \"string\",\n      \"reactivate_existing\": false,\n      \"send_welcome_email\": false,\n      \"utm_source\": \"string\",\n      \"utm_medium\": \"string\",\n      \"utm_campaign\": \"string\",\n      \"utm_term\": \"string\",\n      \"utm_content\": \"string\",\n      \"referring_site\": \"string\",\n      \"referral_code\": \"string\",\n      \"custom_fields\": [\n        {\n          \"name\": \"string\",\n          \"value\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"value\": \"string\"\n        }\n      ],\n      \"double_opt_override\": \"string\",\n      \"tier\": \"free\",\n      \"premium_tiers\": [\n        \"string\",\n        \"string\"\n      ],\n      \"premium_tier_ids\": [\n        \"string\",\n        \"string\"\n      ],\n      \"stripe_customer_id\": \"string\",\n      \"automation_ids\": [\n        \"string\",\n        \"string\"\n      ],\n      \"newsletter_list_ids\": [\n        \"string\",\n        \"string\"\n      ],\n      \"skip_newsletter_list_auto_subscribe\": false\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 4436,\n  \"statusText\": \"string\",\n  \"errors\": [\n    {\n      \"message\": \"string\",\n      \"code\": \"string\"\n    },\n    {\n      \"message\": \"string\",\n      \"code\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "84e21ea0-df14-4f3f-9d33-e9d1ccd70c31",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "publications",
+                    ":publicationId",
+                    "bulk_subscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "publicationId",
+                      "description": "(Required) The prefixed ID of the publication object"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subscriptions\": [\n    {\n      \"email\": \"string\",\n      \"reactivate_existing\": false,\n      \"send_welcome_email\": false,\n      \"utm_source\": \"string\",\n      \"utm_medium\": \"string\",\n      \"utm_campaign\": \"string\",\n      \"utm_term\": \"string\",\n      \"utm_content\": \"string\",\n      \"referring_site\": \"string\",\n      \"referral_code\": \"string\",\n      \"custom_fields\": [\n        {\n          \"name\": \"string\",\n          \"value\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"value\": \"string\"\n        }\n      ],\n      \"double_opt_override\": \"string\",\n      \"tier\": \"premium\",\n      \"premium_tiers\": [\n        \"string\",\n        \"string\"\n      ],\n      \"premium_tier_ids\": [\n        \"string\",\n        \"string\"\n      ],\n      \"stripe_customer_id\": \"string\",\n      \"automation_ids\": [\n        \"string\",\n        \"string\"\n      ],\n      \"newsletter_list_ids\": [\n        \"string\",\n        \"string\"\n      ],\n      \"skip_newsletter_list_auto_subscribe\": true\n    },\n    {\n      \"email\": \"string\",\n      \"reactivate_existing\": false,\n      \"send_welcome_email\": false,\n      \"utm_source\": \"string\",\n      \"utm_medium\": \"string\",\n      \"utm_campaign\": \"string\",\n      \"utm_term\": \"string\",\n      \"utm_content\": \"string\",\n      \"referring_site\": \"string\",\n      \"referral_code\": \"string\",\n      \"custom_fields\": [\n        {\n          \"name\": \"string\",\n          \"value\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"value\": \"string\"\n        }\n      ],\n      \"double_opt_override\": \"string\",\n      \"tier\": \"free\",\n      \"premium_tiers\": [\n        \"string\",\n        \"string\"\n      ],\n      \"premium_tier_ids\": [\n        \"string\",\n        \"string\"\n      ],\n      \"stripe_customer_id\": \"string\",\n      \"automation_ids\": [\n        \"string\",\n        \"string\"\n      ],\n      \"newsletter_list_ids\": [\n        \"string\",\n        \"string\"\n      ],\n      \"skip_newsletter_list_auto_subscribe\": false\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 4436,\n  \"statusText\": \"string\",\n  \"errors\": [\n    {\n      \"message\": \"string\",\n      \"code\": \"string\"\n    },\n    {\n      \"message\": \"string\",\n      \"code\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.beehiiv.com/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a929a808-1247-480a-81cc-e21c5bf266cc",
+    "name": "API Reference subpackage_advertisement_opportunities subpackage_bulk_subscriptions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

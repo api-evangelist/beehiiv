@@ -1,0 +1,52 @@
+generated: '2026-08-13'
+method: searched
+source: https://status.beehiiv.com (HTTP 200), https://www.beehiiv.com/changelog (HTTP 200), https://developers.beehiiv.com/welcome/pagination,
+  openapi/_original/beehiiv-openapi.yml
+versioning:
+  scheme: url-path major version
+  current: v2
+  base: https://api.beehiiv.com/v2
+  policy_published: false
+  note: No published version-support window, no sunset dates for v1, no version negotiation header.
+status_page:
+  url: https://status.beehiiv.com
+  provider: Atlassian Statuspage
+  http_status: 200
+  probed: '2026-08-13'
+  note: Also resolves at https://beehiiv.statuspage.io (HTTP 200).
+changelog:
+  url: https://www.beehiiv.com/changelog
+  http_status: 200
+  markdown_twin: https://www.beehiiv.com/changelog.md
+  product_updates: https://product.beehiiv.com
+  note: Product-level, not API-level. The entries render client-side (the .md twin returns only "Loading..."), and
+    there is no developer-facing API changelog on developers.beehiiv.com — /changelog there is 404. See changelog/beehiiv-changelog.yml.
+deprecation:
+  policy_published: false
+  headers:
+    sunset: false
+    deprecation: false
+    note: RFC 8594 Sunset / Deprecation headers are not documented. beehiiv does say offset-pagination requests
+      return unnamed "deprecation warning headers", but the header names are not published.
+  active_deprecations:
+  - item: Offset-based pagination (page + limit query parameters)
+    status: deprecated
+    announced_on: https://developers.beehiiv.com/welcome/pagination
+    replacement: Cursor-based pagination (cursor + limit; pagination.next_cursor / pagination.has_more)
+    enforcement:
+    - All offset requests return deprecation warning headers today.
+    - Requests beyond page 100 already return 400 with migration guidance.
+    - Complete removal announced, no date given.
+    sunset_date: null
+    migration_guide: https://developers.beehiiv.com/welcome/pagination
+  deprecated_operations: []
+  note: 'Zero operations in the published OpenAPI carry deprecated: true, so the one live deprecation is documented
+    in prose only and is invisible to any tool reading the contract.'
+sla:
+  published: false
+  note: No public SLA or uptime commitment; Enterprise terms are negotiated (deliverability reports listed as "coming
+    soon" on the Enterprise tier).
+support:
+  url: https://support.beehiiv.com/hc/en-us
+  ticket: https://app.beehiiv.com/?new_support_ticket
+  tiers: Human Support from Scale, Priority from Max, VIP from Enterprise.

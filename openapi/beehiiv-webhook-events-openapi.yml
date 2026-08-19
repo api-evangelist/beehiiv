@@ -1,0 +1,857 @@
+openapi: 3.1.0
+info:
+  title: Webhooks
+  version: 1.0.0
+paths: {}
+webhooks:
+  subscribed:
+    post:
+      operationId: subscribed
+      summary: Newsletter List Subscription Subscribed
+      responses:
+        '200':
+          description: Webhook received successfully
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/type_newsletter_list_subscription:NewsletterListSubscription'
+  unsubscribed:
+    post:
+      operationId: unsubscribed
+      summary: Newsletter List Subscription Unsubscribed
+      responses:
+        '200':
+          description: Webhook received successfully
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/type_newsletter_list_subscription:NewsletterListSubscription'
+  paused:
+    post:
+      operationId: paused
+      summary: Subscription Paused
+      responses:
+        '200':
+          description: Webhook received successfully
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/type_subscription:Subscription'
+  resumed:
+    post:
+      operationId: resumed
+      summary: Subscription Resumed
+      responses:
+        '200':
+          description: Webhook received successfully
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/type_subscription:Subscription'
+  episode-published:
+    post:
+      operationId: episode-published
+      summary: Podcast Episode Published
+      responses:
+        '200':
+          description: Webhook received successfully
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/type_podcasts:PodcastEpisode'
+  episode-updated:
+    post:
+      operationId: episode-updated
+      summary: Podcast Episode Updated
+      responses:
+        '200':
+          description: Webhook received successfully
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/type_podcasts:PodcastEpisode'
+  episode-archived:
+    post:
+      operationId: episode-archived
+      summary: Podcast Episode Archived
+      responses:
+        '200':
+          description: Webhook received successfully
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/type_podcasts:PodcastEpisode'
+  episode-deleted:
+    post:
+      operationId: episode-deleted
+      summary: Podcast Episode Deleted
+      responses:
+        '200':
+          description: Webhook received successfully
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/type_podcasts:PodcastEpisode'
+  private-feed-activated:
+    post:
+      operationId: private-feed-activated
+      summary: Podcast Private Feed Activated
+      responses:
+        '200':
+          description: Webhook received successfully
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/type_podcasts:PodcastPrivateFeed'
+  sent:
+    post:
+      operationId: sent
+      summary: Post Sent
+      responses:
+        '200':
+          description: Webhook received successfully
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/type_post:Post'
+  updated:
+    post:
+      operationId: updated
+      summary: Post Updated
+      responses:
+        '200':
+          description: Webhook received successfully
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/type_post:Post'
+  scheduled:
+    post:
+      operationId: scheduled
+      summary: Post Scheduled
+      responses:
+        '200':
+          description: Webhook received successfully
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/type_post:Post'
+  created:
+    post:
+      operationId: created
+      summary: Subscription Created
+      responses:
+        '200':
+          description: Webhook received successfully
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/type_subscription:Subscription'
+  confirmed:
+    post:
+      operationId: confirmed
+      summary: Subscription Confirmed
+      responses:
+        '200':
+          description: Webhook received successfully
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/type_subscription:Subscription'
+  deleted:
+    post:
+      operationId: deleted
+      summary: Subscription Deleted
+      responses:
+        '200':
+          description: Webhook received successfully
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/type_subscription:Subscription'
+  upgraded:
+    post:
+      operationId: upgraded
+      summary: Subscription Upgraded
+      responses:
+        '200':
+          description: Webhook received successfully
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/type_subscription:Subscription'
+  downgraded:
+    post:
+      operationId: downgraded
+      summary: Subscription Downgraded
+      responses:
+        '200':
+          description: Webhook received successfully
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/type_subscription:Subscription'
+  tier-paused:
+    post:
+      operationId: tier-paused
+      summary: Subscription Tier Paused
+      responses:
+        '200':
+          description: Webhook received successfully
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/type_subscription:Subscription'
+  tier-resumed:
+    post:
+      operationId: tier-resumed
+      summary: Subscription Tier Resumed
+      responses:
+        '200':
+          description: Webhook received successfully
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/type_subscription:Subscription'
+  tier-added:
+    post:
+      operationId: tier-added
+      summary: Subscription Tier Created
+      responses:
+        '200':
+          description: Webhook received successfully
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/type_subscription:Subscription'
+  tier-deleted:
+    post:
+      operationId: tier-deleted
+      summary: Subscription Tier Deleted
+      responses:
+        '200':
+          description: Webhook received successfully
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/type_subscription:Subscription'
+  submitted:
+    post:
+      operationId: submitted
+      summary: Survey Response Submitted
+      responses:
+        '200':
+          description: Webhook received successfully
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/type_survey:SurveyResponse'
+components:
+  schemas:
+    type_newsletter_list_subscription:NewsletterListSubscriptionStatus:
+      type: string
+      enum:
+      - pending
+      - active
+      - inactive
+      - paused
+      description: The status of the newsletter list subscription.
+      title: NewsletterListSubscriptionStatus
+    type_newsletter_list_subscription:NewsletterListSubscriptionData:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The prefixed ID of the newsletter list subscription.
+        list_name:
+          type: string
+          description: The name of the newsletter list.
+        subscription_id:
+          type: string
+          description: The prefixed ID of the subscription.
+        email:
+          type: string
+          description: The email address of the subscriber.
+        status:
+          $ref: '#/components/schemas/type_newsletter_list_subscription:NewsletterListSubscriptionStatus'
+          description: The status of the newsletter list subscription.
+        subscribed_at:
+          type: integer
+          description: The time the subscriber was added to the list. Measured in seconds since the Unix epoch.
+        unsubscribed_at:
+          type: integer
+          description: The time the subscriber was removed from the list. Measured in seconds since the Unix epoch.
+        created:
+          type: integer
+          description: The time the newsletter list subscription was created. Measured in seconds since the Unix epoch.
+        updated:
+          type: integer
+          description: The time the newsletter list subscription was last updated. Measured in seconds since the Unix epoch.
+      required:
+      - id
+      - list_name
+      - subscription_id
+      - email
+      - status
+      - created
+      - updated
+      title: NewsletterListSubscriptionData
+    type_newsletter_list_subscription:NewsletterListSubscription:
+      type: object
+      properties:
+        uid:
+          type: string
+          description: The prefixed event ID, unique to each webhook event.
+        event_timestamp:
+          type: integer
+          description: The date the event was created. Measured in seconds since the Unix epoch.
+        event_type:
+          type: string
+          description: The event type.
+        data:
+          $ref: '#/components/schemas/type_newsletter_list_subscription:NewsletterListSubscriptionData'
+      title: NewsletterListSubscription
+    type_podcasts:PodcastEpisodeStatus:
+      type: string
+      enum:
+      - draft
+      - scheduled
+      - published
+      - archived
+      description: The status of the episode.<br>`draft` - Not yet published.<br>`scheduled` - Scheduled for future publication.<br>`published` - Available via web and RSS.<br>`archived` - No longer available via web or RSS.
+      title: PodcastEpisodeStatus
+    type_podcasts:PodcastShowStatus:
+      type: string
+      enum:
+      - draft
+      - live
+      - archived
+      description: The status of the podcast.<br>`draft` - No episodes have been published.<br> `live` - Published and active.<br>`archived` - The podcast is no longer active.
+      title: PodcastShowStatus
+    type_podcasts:PodcastShowType:
+      type: string
+      enum:
+      - episodic
+      - serial
+      description: The type of the podcast.<br>`episodic` - Episodes can be consumed in any order.<br>`serial` - Episodes are intended to be consumed in order.
+      title: PodcastShowType
+    type_podcasts:PodcastShowData:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The prefixed ID of the podcast.
+        created:
+          type: integer
+          description: The time the podcast was created. Measured in seconds since the Unix epoch.
+        slug:
+          type: string
+          description: The URL slug of the podcast.
+        description:
+          type: string
+          description: The description of the podcast.
+        categories:
+          type: array
+          items:
+            type: string
+          description: Selected categories for the podcast, ordered by display position.
+        artwork_url:
+          type: string
+          description: The URL of the podcast artwork. Empty string when no artwork is set.
+        status:
+          $ref: '#/components/schemas/type_podcasts:PodcastShowStatus'
+          description: The status of the podcast.
+        language:
+          type: string
+          description: The ISO 639-1 two-letter language code for the podcast.
+        title:
+          type: string
+          description: The title of the podcast.
+        author:
+          type: string
+          description: The author of the podcast.
+        type:
+          $ref: '#/components/schemas/type_podcasts:PodcastShowType'
+          description: The type of the podcast.
+        imported:
+          type: boolean
+          description: Whether the podcast was created via an import.
+        copyright:
+          type: string
+          description: The copyright text for the podcast.
+        publishing_frequency:
+          type: integer
+          description: The most common interval, in whole days, between consecutive published episodes.
+        website_url:
+          type: string
+          description: The website URL associated with the podcast.
+        explicit:
+          type: boolean
+          description: Whether the podcast is marked as explicit.
+        platform_links:
+          type: object
+          additionalProperties:
+            type: string
+          description: Platform distribution URLs keyed by platform name. Present only for public podcasts.
+      required:
+      - id
+      - created
+      - slug
+      - description
+      - categories
+      - artwork_url
+      - status
+      - language
+      - title
+      - author
+      - type
+      - imported
+      - copyright
+      - explicit
+      title: PodcastShowData
+    type_podcasts:PodcastEpisodeData:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The prefixed ID of the episode.
+        created:
+          type: integer
+          description: The time the episode was created. Measured in seconds since the Unix epoch.
+        updated:
+          type: integer
+          description: The time the episode was last updated. Measured in seconds since the Unix epoch.
+        title:
+          type: string
+          description: The title of the episode.
+        slug:
+          type: string
+          description: The web slug where this episode can be accessed.
+        publish_date:
+          type: integer
+          description: The exact time the system published the episode (when it went live), not the scheduled time the user set for publication. Measured in seconds since the Unix epoch. Null when the episode has not been published.
+        displayed_date:
+          type: integer
+          description: The time displayed in place of the `publish_date`. Measured in seconds since the Unix epoch.
+        duration:
+          type: integer
+          description: The duration of the episode audio in seconds. Null when no completed audio file is available.
+        description:
+          type: string
+          description: A plain-text, truncated version of the episode show notes (max 255 characters).
+        show_notes:
+          type: string
+          description: The full HTML show notes for the episode.
+        artwork_url:
+          type: string
+          description: The URL of the episode artwork. Falls back to the podcast artwork when the episode has none. Empty string when no artwork is set.
+        status:
+          $ref: '#/components/schemas/type_podcasts:PodcastEpisodeStatus'
+          description: The status of the episode.
+        season_number:
+          type: integer
+          description: The season number for the episode, if set.
+        episode_number:
+          type: integer
+          description: The episode number within the season, if set.
+        audio_url:
+          type: string
+          description: The public streaming URL for the episode audio. Null when no completed audio file is available.
+        transcript_url:
+          type: string
+          description: The WebVTT transcript URL for the episode. Null when transcripts are disabled or no completed transcript is available.
+        show:
+          $ref: '#/components/schemas/type_podcasts:PodcastShowData'
+          description: The podcast this episode belongs to.
+      required:
+      - id
+      - created
+      - updated
+      - title
+      - slug
+      - displayed_date
+      - description
+      - show_notes
+      - artwork_url
+      - status
+      - show
+      title: PodcastEpisodeData
+    type_podcasts:PodcastEpisode:
+      type: object
+      properties:
+        uid:
+          type: string
+          description: The prefixed event ID, unique to each webhook event.
+        event_timestamp:
+          type: integer
+          description: The date the event was created. Measured in seconds since the Unix epoch.
+        event_type:
+          type: string
+          description: The event type.
+        data:
+          $ref: '#/components/schemas/type_podcasts:PodcastEpisodeData'
+      title: PodcastEpisode
+    type_subscription:SubscriptionDataStatus:
+      type: string
+      enum:
+      - validating
+      - invalid
+      - pending
+      - active
+      - inactive
+      - needs_attention
+      description: The status of the subscription.
+      title: SubscriptionDataStatus
+    type_subscription:CustomFieldKind:
+      type: string
+      enum:
+      - string
+      - integer
+      - number
+      - boolean
+      - date
+      - datetime
+      - list
+      description: The type of the custom field.
+      title: CustomFieldKind
+    type_subscription:CustomFieldValue:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The display name of the custom field.
+        kind:
+          $ref: '#/components/schemas/type_subscription:CustomFieldKind'
+          description: The type of the custom field.
+        value:
+          type: string
+          description: 'The formatted value of the custom field. The actual JSON type depends on the kind: - string: the value as a string - integer, number: the value as a number (JSON number type) - boolean: true or false (JSON boolean type) - date: formatted date string (e.g., "Jan 15, 2024") - datetime: formatted date and time string (e.g., "Jan 15, 2024 3:45 PM") - list: comma-separated values as a string'
+      required:
+      - name
+      - kind
+      title: CustomFieldValue
+    type_subscription:SubscriptionData:
+      type: object
+      properties:
+        created:
+          type: integer
+          description: The time the subscription was created. Measured in seconds since the Unix epoch.
+        email:
+          type: string
+          description: The email address of the subscription.
+        id:
+          type: string
+          description: The prefixed ID of the subscription.
+        referral_code:
+          type: string
+          description: The code associated to this subscriber to refer others. When a new subscription is created with this referral code, credit for the referral goes to this subscription.
+        referring_site:
+          type: string
+          description: The website that the subscriber was referred from.
+        status:
+          $ref: '#/components/schemas/type_subscription:SubscriptionDataStatus'
+          description: The status of the subscription.
+        subscription_tier:
+          type: string
+          description: The tier of the subscription.
+        subscription_premium_tier_names:
+          type: array
+          items:
+            type: string
+          description: The names of the premium tiers associated with the subscription.
+        stripe_customer_id:
+          type: string
+          description: The Stripe customer ID associated with the subscription.
+        utm_campaign:
+          type: string
+          description: The acquisition campaign that the subscriber was acquired from.
+        utm_channel:
+          type: string
+          description: The channel that the subscriber was acquired from.
+        utm_medium:
+          type: string
+          description: The medium that the subscriber was acquired from.
+        utm_source:
+          type: string
+          description: The source that the subscriber was acquired from.
+        custom_fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/type_subscription:CustomFieldValue'
+          description: An array of custom field values that have been set on the subscription. Each custom field value includes the field name, kind (type), and formatted value.
+        tags:
+          type: array
+          items:
+            type: string
+          description: An array of tag names that have been applied to the subscription.
+      title: SubscriptionData
+    type_podcasts:PodcastPrivateFeedData:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The prefixed ID of the private feed token.
+        url:
+          type: string
+          description: The personalized private RSS feed URL.
+        created:
+          type: integer
+          description: The time the private feed token was created. Measured in seconds since the Unix epoch.
+        activated:
+          type: integer
+          description: The time the private feed was first fetched by a recognized podcast app. Measured in seconds since the Unix epoch. Null when the feed has not been activated.
+        revoked:
+          type: integer
+          description: The time the private feed token was revoked. Measured in seconds since the Unix epoch. Null when the token has not been revoked.
+        expires:
+          type: integer
+          description: The time the private feed token expires. Measured in seconds since the Unix epoch. Null when the token does not expire.
+        subscription:
+          $ref: '#/components/schemas/type_subscription:SubscriptionData'
+          description: The subscription associated with the private feed token.
+        show:
+          $ref: '#/components/schemas/type_podcasts:PodcastShowData'
+          description: The podcast associated with the private feed token.
+      required:
+      - id
+      - url
+      - created
+      - subscription
+      - show
+      title: PodcastPrivateFeedData
+    type_podcasts:PodcastPrivateFeed:
+      type: object
+      properties:
+        uid:
+          type: string
+          description: The prefixed event ID, unique to each webhook event.
+        event_timestamp:
+          type: integer
+          description: The date the event was created. Measured in seconds since the Unix epoch.
+        event_type:
+          type: string
+          description: The event type.
+        data:
+          $ref: '#/components/schemas/type_podcasts:PodcastPrivateFeedData'
+      title: PodcastPrivateFeed
+    type_post:PostStatus:
+      type: string
+      enum:
+      - draft
+      - confirmed
+      - archived
+      description: The status of the post.<br>`draft` - not been scheduled.<br>`confirmed` - The post will be active after the `scheduled_at`.<br>`archived` - The post is no longer active.
+      title: PostStatus
+    type_post:PostData:
+      type: object
+      properties:
+        audience:
+          type: string
+          description: The audience that the post is available to on the web. Only applicable if the platform is `web` or `both`.
+        authors:
+          type: array
+          items:
+            type: string
+          description: An array of author names
+        content_tags:
+          type: array
+          items:
+            type: string
+          description: All content tags that were associated with the post.
+        created:
+          type: integer
+          description: The time the post was created. Measured in seconds since the Unix epoch
+        displayed_date:
+          type: integer
+          description: The time displayed in place of the `publish_date`. Measured in seconds since the Unix epoch
+        id:
+          type: string
+          description: The prefixed post id
+        preview_text:
+          type: string
+          description: The email preview text
+        publish_date:
+          type: integer
+          description: The time the post was set to be published. Measured in seconds since the Unix epoch
+        slug:
+          type: string
+          description: The web slug where this post can be accessed.
+        split_tested:
+          type: boolean
+          description: A flag to indicate if a split test was done. Only applicable to email posts.
+        status:
+          $ref: '#/components/schemas/type_post:PostStatus'
+          description: The status of the post.<br>`draft` - not been scheduled.<br>`confirmed` - The post will be active after the `scheduled_at`.<br>`archived` - The post is no longer active.
+        subject_line:
+          type: string
+          description: The email subject line. In cases of A/B Testing, this will be adjusted to the winning subject line.
+        subtitle:
+          type: string
+          description: The subtitle displayed in web views
+        thumbnail_url:
+          type: string
+          description: The URL of the thumbnail. Defaults to the Publication logo if not set.
+        title:
+          type: string
+          description: The title displayed in web views
+        web_url:
+          type: string
+          description: The full URL where this post can be accessed on the web. Only applicable if the platform is `web` or `both`.
+        platform:
+          type: string
+          description: The platform that the post is or will be published to.
+        meta_default_description:
+          type: string
+          description: Meta tag description for the post, called SEO Description in the admin UI
+        meta_default_title:
+          type: string
+          description: Meta tag title for the post, called SEO Title in the admin UI
+        hidden_from_feed:
+          type: boolean
+          description: A flag to indicate if the post is hidden from the website feed.
+        enforce_gated_content:
+          type: boolean
+          description: A flag to indicate if the post enforces gated content for non-subscribers.
+        email_capture_popup:
+          type: boolean
+          description: A flag to indicate if popup email capture is enabled for this post.
+      required:
+      - audience
+      - authors
+      - content_tags
+      - created
+      - id
+      - preview_text
+      - slug
+      - split_tested
+      - status
+      - subject_line
+      - subtitle
+      - thumbnail_url
+      - title
+      - platform
+      - hidden_from_feed
+      - enforce_gated_content
+      - email_capture_popup
+      title: PostData
+    type_post:Post:
+      type: object
+      properties:
+        uid:
+          type: string
+          description: The prefixed event ID, unique to each webhook event.
+        event_timestamp:
+          type: integer
+          description: The date the event was created. Measured in seconds since the Unix epoch.
+        event_type:
+          type: string
+          description: The event type.
+        data:
+          $ref: '#/components/schemas/type_post:PostData'
+      title: Post
+    type_subscription:Subscription:
+      type: object
+      properties:
+        uid:
+          type: string
+          description: The prefixed event ID, unique to each webhook event.
+        event_timestamp:
+          type: integer
+          description: The date the event was created. Measured in seconds since the Unix epoch.
+        event_type:
+          type: string
+          description: The event type.
+        data:
+          $ref: '#/components/schemas/type_subscription:SubscriptionData'
+      title: Subscription
+    type_survey:SurveyResponseQuestion:
+      type: object
+      properties:
+        answer:
+          type: string
+          description: The answer provided to the question.
+        prompt:
+          type: string
+          description: The question that was asked.
+        type:
+          type: string
+          description: The type of question asked (e.g. multiple choice).
+      title: SurveyResponseQuestion
+    type_survey:SurveyResponseAnswer:
+      type: object
+      properties:
+        answer:
+          type: string
+          description: The answer provided to the question.
+        created:
+          type: integer
+          description: The time the answer was created. Measured in seconds since the Unix epoch.
+        id:
+          type: integer
+          description: The ID of the answer.
+        question_data:
+          $ref: '#/components/schemas/type_survey:SurveyResponseQuestion'
+        updated:
+          type: integer
+          description: The date the answer was updated. Measured in seconds since the Unix epoch.
+      title: SurveyResponseAnswer
+    type_survey:SurveyResponseData:
+      type: object
+      properties:
+        answers:
+          type: array
+          items:
+            $ref: '#/components/schemas/type_survey:SurveyResponseAnswer'
+          description: An array of answers from the survey response.
+        created:
+          type: integer
+          description: The time the survey response was created. Measured in seconds since the Unix epoch.
+        id:
+          type: string
+          description: The response ID. This is unique to the individual submission.
+        survey_id:
+          type: string
+          description: The ID of the survey that the response was submitted to.
+        subscription:
+          $ref: '#/components/schemas/type_subscription:SubscriptionData'
+        updated:
+          type: integer
+          description: The date the survey response was updated. Measured in seconds since the Unix epoch.
+      title: SurveyResponseData
+    type_survey:SurveyResponse:
+      type: object
+      properties:
+        uid:
+          type: string
+          description: The prefixed event ID, unique to each webhook event.
+        event_timestamp:
+          type: integer
+          description: The date the event was created. Measured in seconds since the Unix epoch.
+        event_type:
+          type: string
+          description: The event type.
+        data:
+          $ref: '#/components/schemas/type_survey:SurveyResponseData'
+      title: SurveyResponse
