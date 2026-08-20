@@ -37,7 +37,8 @@ apis:
     The subpackage_advertisement_opportunities API from beehiiv — 1 operation(s) for subpackage_advertisement_opportunities.
   humanURL: https://developers.beehiiv.com/api-reference/publications
   baseURL: https://api.beehiiv.com/v2
-  tags:
+  tags: []
+  tags_raw:
   - subpackage_advertisement_opportunities
   properties:
   - type: OpenAPI
@@ -73,7 +74,8 @@ apis:
   description: The subpackage_authors API from beehiiv — 2 operation(s) for subpackage_authors.
   humanURL: https://developers.beehiiv.com/api-reference/publications
   baseURL: https://api.beehiiv.com/v2
-  tags:
+  tags: []
+  tags_raw:
   - subpackage_authors
   properties:
   - type: OpenAPI
@@ -146,7 +148,8 @@ apis:
   description: The subpackage_automations API from beehiiv — 3 operation(s) for subpackage_automations.
   humanURL: https://developers.beehiiv.com/api-reference/publications
   baseURL: https://api.beehiiv.com/v2
-  tags:
+  tags: []
+  tags_raw:
   - subpackage_automations
   properties:
   - type: OpenAPI
@@ -183,7 +186,8 @@ apis:
     The subpackage_bulk_subscriptions API from beehiiv — 1 operation(s) for subpackage_bulk_subscriptions.
   humanURL: https://developers.beehiiv.com/api-reference/publications
   baseURL: https://api.beehiiv.com/v2
-  tags:
+  tags: []
+  tags_raw:
   - subpackage_bulk_subscriptions
   properties:
   - type: OpenAPI
@@ -367,7 +371,8 @@ apis:
   description: The subpackage_engagements API from beehiiv — 1 operation(s) for subpackage_engagements.
   humanURL: https://developers.beehiiv.com/api-reference/publications
   baseURL: https://api.beehiiv.com/v2
-  tags:
+  tags: []
+  tags_raw:
   - subpackage_engagements
   properties:
   - type: OpenAPI
@@ -477,7 +482,8 @@ apis:
   description: The subpackage_oauth_users API from beehiiv — 1 operation(s) for subpackage_oauth_users.
   humanURL: https://developers.beehiiv.com/api-reference/publications
   baseURL: https://api.beehiiv.com/v2
-  tags:
+  tags: []
+  tags_raw:
   - subpackage_oauth_users
   properties:
   - type: OpenAPI
@@ -513,7 +519,8 @@ apis:
   description: The subpackage_polls API from beehiiv — 3 operation(s) for subpackage_polls.
   humanURL: https://developers.beehiiv.com/api-reference/publications
   baseURL: https://api.beehiiv.com/v2
-  tags:
+  tags: []
+  tags_raw:
   - subpackage_polls
   properties:
   - type: OpenAPI
@@ -549,7 +556,8 @@ apis:
   description: The subpackage_posts API from beehiiv — 3 operation(s) for subpackage_posts.
   humanURL: https://developers.beehiiv.com/api-reference/publications
   baseURL: https://api.beehiiv.com/v2
-  tags:
+  tags: []
+  tags_raw:
   - subpackage_posts
   properties:
   - type: OpenAPI
@@ -623,7 +631,8 @@ apis:
     The subpackage_publications API from beehiiv — 2 operation(s) for subpackage_publications.
   humanURL: https://developers.beehiiv.com/api-reference/publications
   baseURL: https://api.beehiiv.com/v2
-  tags:
+  tags: []
+  tags_raw:
   - subpackage_publications
   properties:
   - type: OpenAPI
@@ -696,7 +705,8 @@ apis:
   description: The subpackage_segments API from beehiiv — 5 operation(s) for subpackage_segments.
   humanURL: https://developers.beehiiv.com/api-reference/publications
   baseURL: https://api.beehiiv.com/v2
-  tags:
+  tags: []
+  tags_raw:
   - subpackage_segments
   properties:
   - type: OpenAPI
@@ -733,7 +743,8 @@ apis:
     The subpackage_subscriptions API from beehiiv — 3 operation(s) for subpackage_subscriptions.
   humanURL: https://developers.beehiiv.com/api-reference/publications
   baseURL: https://api.beehiiv.com/v2
-  tags:
+  tags: []
+  tags_raw:
   - subpackage_subscriptions
   properties:
   - type: OpenAPI
@@ -806,7 +817,8 @@ apis:
   description: The subpackage_tiers API from beehiiv — 2 operation(s) for subpackage_tiers.
   humanURL: https://developers.beehiiv.com/api-reference/publications
   baseURL: https://api.beehiiv.com/v2
-  tags:
+  tags: []
+  tags_raw:
   - subpackage_tiers
   properties:
   - type: OpenAPI
@@ -842,7 +854,8 @@ apis:
   description: The subpackage_webhooks API from beehiiv — 2 operation(s) for subpackage_webhooks.
   humanURL: https://developers.beehiiv.com/api-reference/publications
   baseURL: https://api.beehiiv.com/v2
-  tags:
+  tags: []
+  tags_raw:
   - subpackage_webhooks
   properties:
   - type: OpenAPI
@@ -878,7 +891,8 @@ apis:
   description: The subpackage_workspaces API from beehiiv — 2 operation(s) for subpackage_workspaces.
   humanURL: https://developers.beehiiv.com/api-reference/publications
   baseURL: https://api.beehiiv.com/v2
-  tags:
+  tags: []
+  tags_raw:
   - subpackage_workspaces
   properties:
   - type: OpenAPI
@@ -918,6 +932,10 @@ apis:
   humanURL: https://developers.beehiiv.com/oauth2
   baseURL: https://app.beehiiv.com
   tags:
+  - Authentication
+  - Authorization
+  - Tokens
+  tags_raw:
   - OAuth2
   - Authorization
   - Tokens
@@ -939,6 +957,10 @@ apis:
   humanURL: https://developers.beehiiv.com/webhooks
   baseURL: https://api.beehiiv.com/v2
   tags:
+  - Webhook
+  - Event
+  - Notification
+  tags_raw:
   - Webhooks
   - Events
   - Notifications
