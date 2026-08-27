@@ -923,50 +923,66 @@ apis:
     url: asyncapi/beehiiv-asyncapi.yml
   - type: Documentation
     url: https://developers.beehiiv.com/api-reference
-- aid: beehiiv:beehiiv-oauth2-api
-  name: beehiiv OAuth2 API
-  description: >-
-    The beehiiv OAuth2 authorization surface — authorization-code flow with PKCE, plus token creation, refresh,
-    revocation, introspection and token-info endpoints. Published by beehiiv as a separate OpenAPI 3.1 document
-    from the API reference, and served on the app domain rather than the API domain.
-  humanURL: https://developers.beehiiv.com/oauth2
-  baseURL: https://app.beehiiv.com
+- aid: beehiiv:beehiiv-authorizations-api
+  name: beehiiv Authorizations API
+  description: The Authorizations API from beehiiv — 1 operation(s) for authorizations.
+  humanURL: https://developers.beehiiv.com/api-reference/publications
+  baseURL: https://api.beehiiv.com/v2
   tags:
-  - Authentication
-  - Authorization
-  - Tokens
-  tags_raw:
-  - OAuth2
-  - Authorization
-  - Tokens
+  - Authorizations
   properties:
   - type: OpenAPI
-    url: openapi/beehiiv-oauth2-api-openapi.yml
+    url: openapi/beehiiv-authorizations-api-openapi.yml
   - type: Documentation
     url: https://developers.beehiiv.com/oauth2
   - type: OAuthScopes
     url: scopes/beehiiv-scopes.yml
   - type: Authentication
     url: authentication/beehiiv-authentication.yml
-- aid: beehiiv:beehiiv-webhook-events-api
-  name: beehiiv Webhook Events
-  description: >-
-    The beehiiv outbound webhook event surface, published by beehiiv as an OpenAPI 3.1 document using the
-    webhooks object — 22 event types across Subscription, Post, Newsletter List Subscription, Podcast and Survey.
-    Delivered through Svix with svix-id, svix-timestamp and svix-signature verification headers.
-  humanURL: https://developers.beehiiv.com/webhooks
+  - type: Webhooks
+    url: openapi/beehiiv-webhook-events-openapi.yml
+  - type: AsyncAPI
+    url: asyncapi/beehiiv-asyncapi.yml
+  - type: Documentation
+    url: https://developers.beehiiv.com/webhooks
+- aid: beehiiv:beehiiv-tokens-api
+  name: beehiiv Tokens API
+  description: The Tokens API from beehiiv — 4 operation(s) for tokens.
+  humanURL: https://developers.beehiiv.com/api-reference/publications
   baseURL: https://api.beehiiv.com/v2
   tags:
-  - Webhook
-  - Event
-  - Notification
-  tags_raw:
-  - Webhooks
-  - Events
-  - Notifications
+  - Tokens
   properties:
   - type: OpenAPI
+    url: openapi/beehiiv-tokens-api-openapi.yml
+  - type: Documentation
+    url: https://developers.beehiiv.com/oauth2
+  - type: OAuthScopes
+    url: scopes/beehiiv-scopes.yml
+  - type: Authentication
+    url: authentication/beehiiv-authentication.yml
+  - type: Webhooks
     url: openapi/beehiiv-webhook-events-openapi.yml
+  - type: AsyncAPI
+    url: asyncapi/beehiiv-asyncapi.yml
+  - type: Documentation
+    url: https://developers.beehiiv.com/webhooks
+- aid: beehiiv:beehiiv-webhooks-api
+  name: beehiiv Webhooks API
+  description: The Webhooks API from beehiiv — 0 operation(s) for webhooks.
+  humanURL: https://developers.beehiiv.com/api-reference/publications
+  baseURL: https://api.beehiiv.com/v2
+  tags:
+  - Webhooks
+  properties:
+  - type: OpenAPI
+    url: openapi/beehiiv-webhooks-api-openapi.yml
+  - type: Documentation
+    url: https://developers.beehiiv.com/oauth2
+  - type: OAuthScopes
+    url: scopes/beehiiv-scopes.yml
+  - type: Authentication
+    url: authentication/beehiiv-authentication.yml
   - type: Webhooks
     url: openapi/beehiiv-webhook-events-openapi.yml
   - type: AsyncAPI
