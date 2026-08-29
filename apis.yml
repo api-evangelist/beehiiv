@@ -1085,6 +1085,9 @@ apis:
   - type: Documentation
     url: https://developers.beehiiv.com/api-reference
 common:
+  - type: CapabilityMap
+    url: capabilities/beehiiv-capability-edges.yml
+    name: beehiiv Business Capability Map
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/beehiiv/overview
   - type: AgenticAccess

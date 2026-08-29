@@ -1,0 +1,75 @@
+slug: beehiiv
+provider: beehiiv
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Media, Entertainment & Telecom Content
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 6
+edges:
+- tag: Data Deletion
+  spec_file: beehiiv-data-deletion-api-openapi.yml
+  capability_id: BC-130.50
+  capability_id_l1: BC-130
+  capability_name: Privacy & Data Protection Management
+  confidence: 0.85
+  evidence: POST /publications/{publicationId}/data_privacy/deletion_requests — "Create data deletion
+    request"
+  reason: The path is explicitly under data_privacy and the operations create and track deletion requests,
+    i.e. handling of data-subject erasure rights — Privacy & Data Protection Management.
+- tag: Ad Network Offers
+  spec_file: beehiiv-ad-network-offers-api-openapi.yml
+  capability_id: BC-3760
+  capability_id_l1: BC-3760
+  capability_name: Advertising Sales & Operations Management
+  confidence: 0.78
+  evidence: POST /publications/{publicationId}/ad_network/offers — "Accept ad offer"; schemas type_ad_network_offers_AdOfferAdvertiser,
+    type_ad_network_offers_AdOfferCampaign
+  reason: Publisher-side surface for receiving and accepting advertiser offers and viewing the resulting
+    advertisements — advertising sales/operations. Ambiguous between direct sales and ad-network (programmatic-like)
+    sales, so no L2 asserted.
+- tag: Segments
+  spec_file: beehiiv-segments-api-openapi.yml
+  capability_id: BC-420.20
+  capability_id_l1: BC-420
+  capability_name: Customer Segmentation Management
+  confidence: 0.78
+  evidence: '"Create segment", "Recalculate segment", "List segment subscribers"; type__SegmentType, type__SegmentStats'
+  reason: Operations define, recalculate and enumerate members of subscriber segments — segmentation of
+    the customer/subscriber base.
+- tag: Ad Network Reports
+  spec_file: beehiiv-ad-network-reports-api-openapi.yml
+  capability_id: BC-3760.60
+  capability_id_l1: BC-3760
+  capability_name: Advertising Revenue Reporting
+  confidence: 0.75
+  evidence: GET /publications/{publicationId}/ad_network/reports/summaries — "Get ad network report summary";
+    schema type_ad_network_reports_AdNetworkReportSummaryMetrics
+  reason: Read-only reporting of ad network delivery/performance metrics per publication and account,
+    matching advertising revenue and delivery reporting.
+- tag: Webhooks
+  spec_file: beehiiv-webhooks-api-openapi.yml
+  capability_id: BC-4270.80
+  capability_id_l1: BC-4270
+  capability_name: Webhook & Event Subscription Management
+  confidence: 0.75
+  evidence: POST /publications/{publicationId}/webhooks 'Create a webhook'; type_webhooks_WebhookEventType
+  reason: CRUD over outbound webhook endpoints and their event types for platform consumers, which matches
+    webhook and event subscription lifecycle management in the developer-platform capability. Mapped rather
+    than abstained because the frame has an explicit capability for exactly this surface.
+- tag: Subscriptions
+  spec_file: beehiiv-subscriptions-api-openapi.yml
+  capability_id: BC-3750.20
+  capability_id_l1: BC-3750
+  capability_name: Subscription & Entitlement Management
+  confidence: 0.7
+  evidence: '"Create subscription", "Update subscription by ID"; type__SubscriptionTierInfo, type_ids_OptionalStripeCustomerId,
+    type_ids_ComplimentaryAccessId'
+  reason: Full lifecycle CRUD over subscriber records including paid tiers and complimentary access for
+    a direct-to-consumer publication — subscription and entitlement management for the audience.
