@@ -1,0 +1,583 @@
+openapi: 3.2.0
+info:
+  title: Reference Bulk Subscription Updates API
+  version: 1.0.0
+servers:
+- url: https://api.beehiiv.com/v2
+  description: Default
+tags:
+- name: Bulk Subscription Updates
+paths:
+  /publications/{publicationId}/bulk_subscription_updates:
+    get:
+      operationId: index
+      summary: 'List subscription updates <Badge intent="info" minimal outlined>OAuth Scope: subscriptions:read</Badge>'
+      description: Returns a list of Subscription Update objects for a publication.
+      tags:
+      - Bulk Subscription Updates
+      parameters:
+      - name: publicationId
+        in: path
+        description: The prefixed ID of the publication object
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids_PublicationId'
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_bulkSubscriptionUpdates_BulkSubscriptionUpdatesListResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '401':
+          description: Unauthorized. The API key or OAuth access token is missing, invalid, or expired.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '404':
+          description: Resource Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '429':
+          description: Rate Limit Exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+  /publications/{publicationId}/bulk_subscription_updates/{id}:
+    get:
+      operationId: show
+      summary: 'Get subscription update <Badge intent="info" minimal outlined>OAuth Scope: subscriptions:read</Badge>'
+      description: Returns a single Subscription Update object for a publication.
+      tags:
+      - Bulk Subscription Updates
+      parameters:
+      - name: publicationId
+        in: path
+        description: The prefixed ID of the publication object
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids_PublicationId'
+      - name: id
+        in: path
+        description: The ID of the Subscription Update object
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_bulkSubscriptionUpdates_BulkSubscriptionUpdatesGetResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '401':
+          description: Unauthorized. The API key or OAuth access token is missing, invalid, or expired.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '404':
+          description: Resource Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '429':
+          description: Rate Limit Exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+  /publications/{publicationId}/subscriptions/bulk_actions:
+    put:
+      operationId: put
+      summary: 'Update subscriptions <Badge intent="info" minimal outlined>OAuth Scope: subscriptions:write</Badge>'
+      description: Bulk update multiple subscriptions fields, including status, custom fields, and tiers.
+      tags:
+      - Bulk Subscription Updates
+      parameters:
+      - name: publicationId
+        in: path
+        description: The prefixed ID of the publication object
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids_PublicationId'
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_subscriptions_SubscriptionsPatchResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '401':
+          description: Unauthorized. The API key or OAuth access token is missing, invalid, or expired.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '404':
+          description: Resource Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '429':
+          description: Rate Limit Exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                subscriptions:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/type_bulkSubscriptionUpdates_SubscriptionsPatchRequestSubscriptionsItem'
+                  description: An array of objects representing the subscriptions to be updated (max 1000).
+    patch:
+      operationId: patch
+      summary: 'Update subscriptions <Badge intent="info" minimal outlined>OAuth Scope: subscriptions:write</Badge>'
+      description: Bulk update multiple subscriptions fields, including status, custom fields, and tiers.
+      tags:
+      - Bulk Subscription Updates
+      parameters:
+      - name: publicationId
+        in: path
+        description: The prefixed ID of the publication object
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids_PublicationId'
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_subscriptions_SubscriptionsPatchResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '401':
+          description: Unauthorized. The API key or OAuth access token is missing, invalid, or expired.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '404':
+          description: Resource Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '429':
+          description: Rate Limit Exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                subscriptions:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/type_bulkSubscriptionUpdates_SubscriptionsPatchRequestSubscriptionsItem'
+                  description: An array of objects representing the subscriptions to be updated (max 1000).
+  /publications/{publicationId}/subscriptions:
+    put:
+      operationId: put-status
+      summary: 'Update subscriptions'' status <Badge intent="info" minimal outlined>OAuth Scope: subscriptions:write</Badge>'
+      description: Bulk update subscriptions' status.
+      tags:
+      - Bulk Subscription Updates
+      parameters:
+      - name: publicationId
+        in: path
+        description: The prefixed ID of the publication object
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids_PublicationId'
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                subscription_ids:
+                  type: array
+                  items:
+                    type: string
+                  description: An array of subscription IDs to be updated
+                new_status:
+                  type: string
+                  description: The new status to set for the subscriptions
+              required:
+              - subscription_ids
+              - new_status
+    patch:
+      operationId: patch-status
+      summary: 'Update subscriptions'' status <Badge intent="info" minimal outlined>OAuth Scope: subscriptions:write</Badge>'
+      description: Bulk update subscriptions' status.
+      tags:
+      - Bulk Subscription Updates
+      parameters:
+      - name: publicationId
+        in: path
+        description: The prefixed ID of the publication object
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids_PublicationId'
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                subscription_ids:
+                  type: array
+                  items:
+                    type: string
+                  description: An array of subscription IDs to be updated
+                new_status:
+                  type: string
+                  description: The new status to set for the subscriptions
+              required:
+              - subscription_ids
+              - new_status
+components:
+  schemas:
+    type_subscriptions_SubscriptionsPatchResponseData:
+      type: object
+      properties:
+        subscription_update_id:
+          type: string
+          description: The ID of the Subscription Update object responsible for handling the update job
+      title: SubscriptionsPatchResponseData
+    type__Error:
+      type: object
+      properties:
+        status:
+          type: integer
+        statusText:
+          type: string
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/type__ErrorDetail'
+      required:
+      - status
+      - statusText
+      - errors
+      description: The top level error response.
+      title: Error
+    type_bulkSubscriptionUpdates_BulkSubscriptionUpdatesListResponseDataItem:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The ID of the update object
+        type:
+          $ref: '#/components/schemas/type_bulkSubscriptionUpdates_BulkSubscriptionUpdatesListResponseDataItemType'
+          description: The type of update (status or bulk)
+        params:
+          type: string
+          description: The parameters passed in for the update
+        status:
+          $ref: '#/components/schemas/type_bulkSubscriptionUpdates_BulkSubscriptionUpdatesListResponseDataItemStatus'
+          description: The status of the update
+        publication_id:
+          $ref: '#/components/schemas/type_ids_PublicationId'
+          description: The publication ID associated with this update
+        failure_reason:
+          type: string
+          description: If the job as a whole fails, this will detail the errors encountered
+        completed:
+          type: integer
+          description: The timestamp of the job's completion
+        created:
+          type: integer
+          description: The timestamp of the job's creation
+        updated:
+          type: integer
+          description: The timestamp of the job's update
+        error_log:
+          type: array
+          items:
+            type: string
+          description: An array of errors encountered for individual updates within the job
+      title: BulkSubscriptionUpdatesListResponseDataItem
+    type_subscriptions_SubscriptionsPatchResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/type_subscriptions_SubscriptionsPatchResponseData'
+      required:
+      - data
+      title: SubscriptionsPatchResponse
+    type_bulkSubscriptionUpdates_BulkSubscriptionUpdatesGetResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/type_bulkSubscriptionUpdates_BulkSubscriptionUpdatesGetResponseData'
+      title: BulkSubscriptionUpdatesGetResponse
+    type_ids_OptionalStripeCustomerId:
+      type: string
+      description: The prefixed ID of the Stripe customer.
+      title: OptionalStripeCustomerId
+    type_bulkSubscriptionUpdates_BulkSubscriptionUpdatesListResponseDataItemType:
+      type: string
+      enum:
+      - status
+      - bulk
+      description: The type of update (status or bulk)
+      title: BulkSubscriptionUpdatesListResponseDataItemType
+    type_bulkSubscriptionUpdates_SubscriptionsPatchRequestSubscriptionsItemTier:
+      type: string
+      enum:
+      - free
+      - premium
+      description: The Tier of the Subscription (not required)
+      title: SubscriptionsPatchRequestSubscriptionsItemTier
+    type_bulkSubscriptionUpdates_BulkSubscriptionUpdatesListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/type_bulkSubscriptionUpdates_BulkSubscriptionUpdatesListResponseDataItem'
+          description: An array of Subscription Update objects
+      title: BulkSubscriptionUpdatesListResponse
+    type__CustomFieldDataType:
+      oneOf:
+      - type: string
+      - type: number
+        format: double
+      - type: boolean
+      - type: array
+        items:
+          type: string
+      title: CustomFieldDataType
+    type_bulkSubscriptionUpdates_BulkSubscriptionUpdatesListResponseDataItemStatus:
+      type: string
+      enum:
+      - pending
+      - processing
+      - complete
+      - failed
+      description: The status of the update
+      title: BulkSubscriptionUpdatesListResponseDataItemStatus
+    type_bulkSubscriptionUpdates_SubscriptionsPatchRequestSubscriptionsItem:
+      type: object
+      properties:
+        subscription_id:
+          $ref: '#/components/schemas/type_ids_SubscriptionId'
+        tier:
+          $ref: '#/components/schemas/type_bulkSubscriptionUpdates_SubscriptionsPatchRequestSubscriptionsItemTier'
+          description: The Tier of the Subscription (not required)
+        stripe_customer_id:
+          $ref: '#/components/schemas/type_ids_OptionalStripeCustomerId'
+          description: The Stripe Customer ID of the subscription (not required)
+        unsubscribe:
+          type: boolean
+          description: A boolean value specifying whether to unsubscribe this subscription from the publication (not required)
+        custom_fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/type_bulkSubscriptionUpdates_SubscriptionsPatchRequestSubscriptionsItemCustomFieldsItem'
+          description: An array of custom field objects to update
+        complimentary_gift_id:
+          $ref: '#/components/schemas/type_ids_ComplimentaryAccessId'
+          description: The prefixed ID of a complimentary access object to apply to this subscription. The complimentary access must belong to the same publication.
+      required:
+      - subscription_id
+      title: SubscriptionsPatchRequestSubscriptionsItem
+    type_ids_ComplimentaryAccessId:
+      type: string
+      description: The prefixed ID of the complimentary access object.
+      title: ComplimentaryAccessId
+    type__ErrorDetail:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+      required:
+      - message
+      - code
+      title: ErrorDetail
+    type_bulkSubscriptionUpdates_SubscriptionsPatchRequestSubscriptionsItemCustomFieldsItem:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The display value of the custom field
+        value:
+          $ref: '#/components/schemas/type__CustomFieldDataType'
+          description: The value of the custom field
+        delete:
+          type: boolean
+          description: A boolean value to specify whether to delete this custom field entry from the subscription
+      title: SubscriptionsPatchRequestSubscriptionsItemCustomFieldsItem
+    type_bulkSubscriptionUpdates_BulkSubscriptionUpdatesGetResponseDataType:
+      type: string
+      enum:
+      - bulk
+      - status
+      description: The type of update (status or bulk)
+      title: BulkSubscriptionUpdatesGetResponseDataType
+    type_bulkSubscriptionUpdates_BulkSubscriptionUpdatesGetResponseDataStatus:
+      type: string
+      enum:
+      - pending
+      - processing
+      - complete
+      - failed
+      description: The status of the update
+      title: BulkSubscriptionUpdatesGetResponseDataStatus
+    type_ids_PublicationId:
+      type: string
+      description: The prefixed ID of the publication.
+      title: PublicationId
+    type_ids_SubscriptionId:
+      type: string
+      description: The prefixed ID of the subscription.
+      title: SubscriptionId
+    type_bulkSubscriptionUpdates_BulkSubscriptionUpdatesGetResponseData:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The ID of the update object
+        type:
+          $ref: '#/components/schemas/type_bulkSubscriptionUpdates_BulkSubscriptionUpdatesGetResponseDataType'
+          description: The type of update (status or bulk)
+        params:
+          type: string
+          description: The parameters passed in for the update
+        status:
+          $ref: '#/components/schemas/type_bulkSubscriptionUpdates_BulkSubscriptionUpdatesGetResponseDataStatus'
+          description: The status of the update
+        publication_id:
+          $ref: '#/components/schemas/type_ids_PublicationId'
+          description: The publication ID associated with this update
+        failure_reason:
+          type: string
+          description: If the job as a whole fails, this will detail the errors encountered
+        completed:
+          type: integer
+          description: The timestamp of the job's completion
+        created:
+          type: integer
+          description: The timestamp of the job's creation
+        updated:
+          type: integer
+          description: The timestamp of the job's update
+        error_log:
+          type: array
+          items:
+            type: string
+          description: An array of errors encountered for individual updates within the job
+      title: BulkSubscriptionUpdatesGetResponseData
+  securitySchemes:
+    BearerAuthScheme:
+      type: http
+      scheme: bearer

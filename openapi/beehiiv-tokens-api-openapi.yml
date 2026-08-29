@@ -1,0 +1,316 @@
+openapi: 3.2.0
+info:
+  title: Beehiiv Tokens API
+  version: 1.0.0
+  description: 'Operations tagged Tokens across 2 of this provider''s published API definitions: beehiiv-oauth2-api-openapi.yml, beehiiv-oauth2-openapi.json. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://app.beehiiv.com
+  description: Default
+tags:
+- name: Tokens
+paths:
+  /oauth/token:
+    post:
+      operationId: token
+      summary: Create token
+      description: Exchanges an authorization code for an access token, or exchanges a refresh token for a new access token. Send parameters as application/x-www-form-urlencoded.
+      tags:
+      - Tokens
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__TokenResponse'
+        '400':
+          description: The request is invalid or missing required parameters.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__OAuthError'
+        '401':
+          description: Client authentication failed or the token is invalid.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__OAuthError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                grant_type:
+                  $ref: '#/components/schemas/type__GrantType'
+                  description: authorization_code or refresh_token.
+                code:
+                  type: string
+                  description: Authorization code returned from /oauth/authorize.
+                redirect_uri:
+                  type: string
+                  description: Must match the redirect URI used in the authorization request.
+                client_id:
+                  type: string
+                  description: OAuth application client ID (uid).
+                client_secret:
+                  type: string
+                  description: Required for confidential clients.
+                refresh_token:
+                  type: string
+                  description: Refresh token returned from a previous token exchange.
+                code_verifier:
+                  type: string
+                  description: PKCE code verifier. Required for public clients.
+              required:
+              - grant_type
+    servers:
+    - url: https://app.beehiiv.com
+      description: Default
+  /oauth/revoke:
+    post:
+      operationId: revoke
+      summary: Revoke token
+      description: Revokes an access token or refresh token. Send parameters as `application/x-www-form-urlencoded`.
+      tags:
+      - Tokens
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__EmptyResponse'
+        '401':
+          description: Client authentication failed or the token is invalid.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__OAuthError'
+        '403':
+          description: The authenticated client or token is not allowed to perform this action.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__OAuthError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                token:
+                  type: string
+                  description: The access or refresh token to revoke.
+                token_type_hint:
+                  $ref: '#/components/schemas/type__TokenTypeHint'
+                  description: Optional hint to help the server process the token faster.
+                client_id:
+                  type: string
+                  description: OAuth application client ID (`uid`).
+                client_secret:
+                  type: string
+                  description: Required for confidential clients.
+              required:
+              - token
+    servers:
+    - url: https://app.beehiiv.com
+      description: Default
+  /oauth/introspect:
+    post:
+      operationId: introspect
+      summary: Introspect token
+      description: Returns whether a token is active and metadata about the token. Send parameters as `application/x-www-form-urlencoded`.
+      tags:
+      - Tokens
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__IntrospectionResponse'
+        '400':
+          description: The request is invalid or missing required parameters.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__OAuthError'
+        '401':
+          description: Client authentication failed or the token is invalid.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__OAuthError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                token:
+                  type: string
+                  description: The access or refresh token to introspect.
+                token_type_hint:
+                  $ref: '#/components/schemas/type__TokenTypeHint'
+                  description: Optional hint to help the server process the token faster.
+                client_id:
+                  type: string
+                  description: OAuth application client ID (`uid`).
+                client_secret:
+                  type: string
+                  description: Required for confidential clients.
+              required:
+              - token
+    servers:
+    - url: https://app.beehiiv.com
+      description: Default
+  /oauth/token/info:
+    get:
+      operationId: token-info
+      summary: Get token info
+      description: Returns metadata for the current access token.
+      tags:
+      - Tokens
+      parameters:
+      - name: Authorization
+        in: header
+        description: Bearer access token (`Bearer <access_token>`).
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__TokenInfoResponse'
+        '401':
+          description: Client authentication failed or the token is invalid.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__OAuthError'
+    servers:
+    - url: https://app.beehiiv.com
+      description: Default
+components:
+  schemas:
+    type__EmptyResponse:
+      type: object
+      properties: {}
+      title: EmptyResponse
+    type__TokenType:
+      type: string
+      enum:
+      - Bearer
+      description: The token type returned by OAuth2 token endpoints.
+      title: TokenType
+    type__TokenInfoResponse:
+      type: object
+      properties:
+        resource_owner_id:
+          type: string
+        scope:
+          type: string
+        expires_in_seconds:
+          type: integer
+        application:
+          $ref: '#/components/schemas/type__TokenApplication'
+        created_at:
+          type: integer
+      description: Metadata for the current access token.
+      title: TokenInfoResponse
+    type__IntrospectionResponse:
+      type: object
+      properties:
+        active:
+          type: boolean
+        scope:
+          type: string
+        client_id:
+          type: string
+        token_type:
+          $ref: '#/components/schemas/type__TokenType'
+        exp:
+          type: integer
+        iat:
+          type: integer
+        nbf:
+          type: integer
+        sub:
+          type: string
+        aud:
+          type: string
+        iss:
+          type: string
+        jti:
+          type: string
+      required:
+      - active
+      description: RFC 7662 token introspection response.
+      title: IntrospectionResponse
+    type__TokenResponse:
+      type: object
+      properties:
+        access_token:
+          type: string
+        token_type:
+          $ref: '#/components/schemas/type__TokenType'
+        expires_in:
+          type: integer
+        refresh_token:
+          type: string
+        scope:
+          type: string
+        created_at:
+          type: integer
+      required:
+      - access_token
+      - token_type
+      - expires_in
+      - created_at
+      description: Access token response from `/oauth/token`.
+      title: TokenResponse
+    type__TokenTypeHint:
+      type: string
+      enum:
+      - access_token
+      - refresh_token
+      description: A hint about the type of token being sent.
+      title: TokenTypeHint
+    type__OAuthError:
+      type: object
+      properties:
+        error:
+          type: string
+        error_description:
+          type: string
+        error_uri:
+          type: string
+        state:
+          type: string
+      required:
+      - error
+      description: Standard OAuth2 error response.
+      title: OAuthError
+    type__GrantType:
+      type: string
+      enum:
+      - authorization_code
+      - refresh_token
+      description: The OAuth2 grant type.
+      title: GrantType
+    type__TokenApplication:
+      type: object
+      properties:
+        uid:
+          type: string
+        name:
+          type: string
+      description: OAuth application metadata attached to token info responses.
+      title: TokenApplication
+x-refined-from:
+- beehiiv-oauth2-api-openapi.yml
+- beehiiv-oauth2-openapi.json

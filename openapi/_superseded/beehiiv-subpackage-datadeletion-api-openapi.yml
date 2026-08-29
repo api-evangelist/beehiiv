@@ -1,0 +1,301 @@
+openapi: 3.2.0
+info:
+  title: Reference subpackage_advertisement_opportunities Subpackage Data Deletion API
+  version: 1.0.0
+servers:
+- url: https://api.beehiiv.com/v2
+tags:
+- name: subpackage_dataDeletion
+paths:
+  /publications/{publicationId}/data_privacy/deletion_requests:
+    post:
+      operationId: create
+      summary: 'Create data deletion request <Badge intent="info" minimal outlined>OAuth Scope: data_deletion:write</Badge>'
+      description: '<Warning>This is a gated feature that requires enablement. Contact support to enable Data Deletion API access for your organization.</Warning>
+
+
+        Creates a data deletion request for a subscriber within your organization. The subscriber''s data will be redacted from all publications in the organization after a 14-day safety delay. This action cannot be undone once processing begins.'
+      tags:
+      - subpackage_dataDeletion
+      parameters:
+      - name: publicationId
+        in: path
+        description: The prefixed ID of the publication object
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids_PublicationId'
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_dataDeletion_DataDeletionRequestResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '404':
+          description: Resource Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '429':
+          description: Rate Limit Exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: The email address of the subscriber to delete.
+              required:
+              - email
+    get:
+      operationId: index
+      summary: 'List data deletion requests <Badge intent="info" minimal outlined>OAuth Scope: data_deletion:read</Badge>'
+      description: '<Warning>This is a gated feature that requires enablement. Contact support to enable Data Deletion API access for your organization.</Warning>
+
+
+        List all data deletion requests for your organization.'
+      tags:
+      - subpackage_dataDeletion
+      parameters:
+      - name: publicationId
+        in: path
+        description: The prefixed ID of the publication object
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids_PublicationId'
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_dataDeletion_DataDeletionRequestIndexResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '404':
+          description: Resource Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '429':
+          description: Rate Limit Exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+  /publications/{publicationId}/data_privacy/deletion_requests/{id}:
+    get:
+      operationId: show
+      summary: 'Get data deletion request <Badge intent="info" minimal outlined>OAuth Scope: data_deletion:read</Badge>'
+      description: '<Warning>This is a gated feature that requires enablement. Contact support to enable Data Deletion API access for your organization.</Warning>
+
+
+        Retrieve the details and current status of a specific data deletion request.'
+      tags:
+      - subpackage_dataDeletion
+      parameters:
+      - name: publicationId
+        in: path
+        description: The prefixed ID of the publication object
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids_PublicationId'
+      - name: id
+        in: path
+        description: The ID of the data deletion request
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_dataDeletion_DataDeletionRequestResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '404':
+          description: Resource Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '429':
+          description: Rate Limit Exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+components:
+  schemas:
+    type_dataDeletion_DataDeletionRequestInfo:
+      type: object
+      properties:
+        id:
+          type: string
+        email:
+          type: string
+        status:
+          $ref: '#/components/schemas/type_dataDeletion_DataDeletionRequestStatus'
+        source:
+          $ref: '#/components/schemas/type_dataDeletion_DataDeletionRequestSource'
+        requested_at:
+          type: string
+        scheduled_for_processing_at:
+          type: string
+        completed_at:
+          type: string
+        created_at:
+          type: string
+      title: DataDeletionRequestInfo
+    type_dataDeletion_DataDeletionRequestStatus:
+      type: string
+      enum:
+      - pending
+      - processing
+      - completed
+      - failed
+      - canceled
+      description: The current status of the data deletion request.
+      title: DataDeletionRequestStatus
+    type_dataDeletion_DataDeletionRequestSource:
+      type: string
+      enum:
+      - zendesk
+      - retool
+      - website
+      - app
+      - public_api
+      - other
+      description: The source from which the deletion request was created.
+      title: DataDeletionRequestSource
+    type_dataDeletion_DataDeletionRequestResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/type_dataDeletion_DataDeletionRequestInfo'
+      title: DataDeletionRequestResponse
+    type__Error:
+      type: object
+      properties:
+        status:
+          type: integer
+        statusText:
+          type: string
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/type__ErrorDetail'
+      required:
+      - status
+      - statusText
+      - errors
+      description: The top level error response.
+      title: Error
+    type_dataDeletion_DataDeletionRequestIndexResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/type_dataDeletion_DataDeletionRequestInfo'
+        limit:
+          type: integer
+          description: The limit placed on the results. If no limit was specified in the request, this defaults to 10.
+        has_more:
+          type: boolean
+          description: Whether there are more results available after this page.
+        next_cursor:
+          type: string
+          description: The cursor to use for the next page of results.
+      title: DataDeletionRequestIndexResponse
+    type__ErrorDetail:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+      required:
+      - message
+      - code
+      title: ErrorDetail
+    type_ids_PublicationId:
+      type: string
+      description: The prefixed ID of the publication.
+      title: PublicationId
+  securitySchemes:
+    BearerAuthScheme:
+      type: http
+      scheme: bearer

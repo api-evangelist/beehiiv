@@ -1,0 +1,629 @@
+openapi: 3.2.0
+info:
+  title: Reference Podcasts API
+  version: 1.0.0
+servers:
+- url: https://api.beehiiv.com/v2
+  description: Default
+tags:
+- name: podcasts
+paths:
+  /publications/{publicationId}/podcasts:
+    get:
+      operationId: list-podcasts
+      summary: 'List podcasts <Badge intent="info" minimal outlined>OAuth Scope: podcasts:read</Badge>'
+      description: Retrieve all podcasts belonging to a specific publication.
+      tags:
+      - podcasts
+      parameters:
+      - name: publicationId
+        in: path
+        description: The prefixed ID of the publication object
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids_PublicationId'
+      - name: limit
+        in: query
+        description: A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.
+        required: false
+        schema:
+          type: integer
+      - name: cursor
+        in: query
+        description: Use this opaque cursor token to fetch the next page of results. Obtain the value from `next_cursor` in a previous response.
+        required: false
+        schema:
+          type: string
+      - name: status
+        in: query
+        description: Optionally filter the results by the status of the podcast.<br>`draft` - No episodes have been published.<br>`live` - Published and active.<br>`archived` - The podcast is no longer active.
+        required: false
+        schema:
+          $ref: '#/components/schemas/type_podcasts_PodcastShowStatus'
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_podcasts_PodcastShowsListResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '401':
+          description: Unauthorized. The API key or OAuth access token is missing, invalid, or expired.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '404':
+          description: Resource Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '429':
+          description: Rate Limit Exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+  /publications/{publicationId}/podcasts/{podcastShowId}:
+    get:
+      operationId: get-podcast
+      summary: 'Get podcast <Badge intent="info" minimal outlined>OAuth Scope: podcasts:read</Badge>'
+      description: Retrieve a single podcast belonging to a specific publication.
+      tags:
+      - podcasts
+      parameters:
+      - name: publicationId
+        in: path
+        description: The prefixed ID of the publication object
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids_PublicationId'
+      - name: podcastShowId
+        in: path
+        description: The prefixed ID of the podcast
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids_PodcastShowId'
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_podcasts_PodcastShowGetResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '401':
+          description: Unauthorized. The API key or OAuth access token is missing, invalid, or expired.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '404':
+          description: Resource Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '429':
+          description: Rate Limit Exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+  /publications/{publicationId}/podcasts/{podcastShowId}/episodes:
+    get:
+      operationId: list-episodes
+      summary: 'List podcast episodes <Badge intent="info" minimal outlined>OAuth Scope: podcasts:read</Badge>'
+      description: Retrieve all episodes belonging to a specific podcast.
+      tags:
+      - podcasts
+      parameters:
+      - name: publicationId
+        in: path
+        description: The prefixed ID of the publication object
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids_PublicationId'
+      - name: podcastShowId
+        in: path
+        description: The prefixed ID of the podcast
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids_PodcastShowId'
+      - name: limit
+        in: query
+        description: A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.
+        required: false
+        schema:
+          type: integer
+      - name: cursor
+        in: query
+        description: Use this opaque cursor token to fetch the next page of results. Obtain the value from `next_cursor` in a previous response.
+        required: false
+        schema:
+          type: string
+      - name: status
+        in: query
+        description: Optionally filter the results by the status of the episode.<br>`draft` - Not yet published.<br>`scheduled` - Scheduled for future publication.<br>`published` - Available via web and RSS.<br>`archived` - No longer available via web or RSS.
+        required: false
+        schema:
+          $ref: '#/components/schemas/type_podcasts_PodcastEpisodeStatus'
+      - name: order_by
+        in: query
+        description: The field that the results are sorted by. Defaults to `displayed_date`<br>`created` - The time in which the episode was first created.<br>`updated` - The time the episode was last updated.<br>`publish_date` - The exact time the system published the episode (when it went live), not the scheduled time the user set.<br>`displayed_date` - The time displayed in place of the `publish_date`. Uses a custom display date if set, otherwise the scheduled time the user set for publication, otherwise the `publish_date`, otherwise the creation date. For imported episodes, the original feed's `pubDate` is stored as the custom display date. This is the same field used to order episodes in the podcast's RSS feed.
+        required: false
+        schema:
+          $ref: '#/components/schemas/type_podcasts_PodcastEpisodeOrderBy'
+      - name: direction
+        in: query
+        description: The direction that the results are sorted in. Defaults to desc<br> `asc` - Ascending, sorts from smallest to largest.<br> `desc` - Descending, sorts from largest to smallest.
+        required: false
+        schema:
+          $ref: '#/components/schemas/type__RequestDirection'
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_podcasts_PodcastEpisodesListResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '401':
+          description: Unauthorized. The API key or OAuth access token is missing, invalid, or expired.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '404':
+          description: Resource Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '429':
+          description: Rate Limit Exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+  /publications/{publicationId}/podcasts/{podcastShowId}/episodes/{podcastEpisodeId}:
+    get:
+      operationId: get-episode
+      summary: 'Get podcast episode <Badge intent="info" minimal outlined>OAuth Scope: podcasts:read</Badge>'
+      description: Retrieve a single episode belonging to a specific podcast.
+      tags:
+      - podcasts
+      parameters:
+      - name: publicationId
+        in: path
+        description: The prefixed ID of the publication object
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids_PublicationId'
+      - name: podcastShowId
+        in: path
+        description: The prefixed ID of the podcast
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids_PodcastShowId'
+      - name: podcastEpisodeId
+        in: path
+        description: The prefixed ID of the episode
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids_PodcastEpisodeId'
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_podcasts_PodcastEpisodeGetResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '401':
+          description: Unauthorized. The API key or OAuth access token is missing, invalid, or expired.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '404':
+          description: Resource Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '429':
+          description: Rate Limit Exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+components:
+  schemas:
+    type_podcasts_PodcastEpisodesListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/type_podcasts_PodcastEpisode'
+          description: A list of episodes for this podcast.
+        limit:
+          type: integer
+          description: The limit placed on the results. If no limit was specified in the request, this defaults to 10.
+        has_more:
+          type: boolean
+          description: Indicates whether there are more results available after the current page.
+        next_cursor:
+          type: string
+          description: The cursor token to use for fetching the next page of results. Null when has_more is false.
+        total_results:
+          type: integer
+          description: The total number of results from all pages.
+      required:
+      - data
+      - limit
+      - has_more
+      title: PodcastEpisodesListResponse
+    type_ids_PublicationId:
+      type: string
+      description: The prefixed ID of the publication.
+      title: PublicationId
+    type_podcasts_PodcastShow:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/type_ids_PodcastShowId'
+          description: The prefixed ID of the podcast.
+        created:
+          type: integer
+          description: The time the podcast was created. Measured in seconds since the Unix epoch.
+        slug:
+          type: string
+          description: The URL slug of the podcast.
+        description:
+          type: string
+          description: The description of the podcast.
+        categories:
+          type: array
+          items:
+            type: string
+          description: Selected categories for the podcast, ordered by display position. Subcategories include the parent name (e.g. `News-Politics`).
+        artwork_url:
+          type: string
+          description: The URL of the podcast artwork. Empty string when no artwork is set.
+        status:
+          $ref: '#/components/schemas/type_podcasts_PodcastShowStatus'
+          description: The status of the podcast.<br>`draft` - No episodes have been published.<br> `live` - Published and active.<br>`archived` - The podcast is no longer active.
+        language:
+          type: string
+          description: The ISO 639-1 two-letter language code for the podcast (e.g. `en`, `es`).
+        title:
+          type: string
+          description: The title of the podcast.
+        author:
+          type: string
+          description: The author of the podcast. Defaults to the publication name.
+        type:
+          $ref: '#/components/schemas/type_podcasts_PodcastShowType'
+          description: The type of the podcast.<br>`episodic` - Episodes can be consumed in any order.<br>`serial` - Episodes are intended to be consumed in order.
+        imported:
+          type: boolean
+          description: Whether the podcast was created via an import.
+        copyright:
+          type: string
+          description: The copyright text for the podcast. Defaults to the publication name.
+        publishing_frequency:
+          type: integer
+          description: The most common interval, in whole days, between consecutive published episodes (the statistical mode of day gaps). Gaps are measured using each episode's display date — the custom display date if set, otherwise the scheduled time, otherwise the publish date, otherwise the creation date. Null when fewer than two published episodes exist or a frequency has not been calculated yet.
+        website_url:
+          type: string
+          description: The website URL associated with the podcast.
+        explicit:
+          type: boolean
+          description: Whether the podcast is marked as explicit.
+        platform_links:
+          type: object
+          additionalProperties:
+            type: string
+          description: Platform distribution URLs keyed by platform name (e.g. `apple`, `spotify`, `youtube`). Present only for public podcasts. Platforms without a URL are null. Omitted for premium podcasts (limited to paid tiers), which use a private RSS feed with a unique URL per eligible subscriber.
+      required:
+      - id
+      - created
+      - slug
+      - description
+      - categories
+      - artwork_url
+      - status
+      - language
+      - title
+      - author
+      - type
+      - imported
+      - copyright
+      - explicit
+      title: PodcastShow
+    type_podcasts_PodcastEpisodeGetResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/type_podcasts_PodcastEpisode'
+      required:
+      - data
+      title: PodcastEpisodeGetResponse
+    type__Error:
+      type: object
+      properties:
+        status:
+          type: integer
+        statusText:
+          type: string
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/type__ErrorDetail'
+      required:
+      - status
+      - statusText
+      - errors
+      description: The top level error response.
+      title: Error
+    type_podcasts_PodcastShowStatus:
+      type: string
+      enum:
+      - draft
+      - live
+      - archived
+      description: The status of the podcast.<br>`draft` - No episodes have been published.<br> `live` - Published and active.<br>`archived` - The podcast is no longer active.
+      title: PodcastShowStatus
+    type__RequestDirection:
+      type: string
+      enum:
+      - asc
+      - desc
+      default: asc
+      description: The direction of the request. Defaults to `asc`.
+      title: RequestDirection
+    type_podcasts_PodcastShowType:
+      type: string
+      enum:
+      - episodic
+      - serial
+      description: The type of the podcast.<br>`episodic` - Episodes can be consumed in any order.<br>`serial` - Episodes are intended to be consumed in order.
+      title: PodcastShowType
+    type_podcasts_PodcastShowGetResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/type_podcasts_PodcastShow'
+      required:
+      - data
+      title: PodcastShowGetResponse
+    type_podcasts_PodcastEpisode:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/type_ids_PodcastEpisodeId'
+          description: The prefixed ID of the episode.
+        created:
+          type: integer
+          description: The time the episode was created. Measured in seconds since the Unix epoch.
+        updated:
+          type: integer
+          description: The time the episode was last updated. Measured in seconds since the Unix epoch.
+        title:
+          type: string
+          description: The title of the episode.
+        slug:
+          type: string
+          description: The web slug where this episode can be accessed.
+        publish_date:
+          type: integer
+          description: The exact time the system published the episode (when it went live), not the scheduled time the user set for publication. Measured in seconds since the Unix epoch. Null when the episode has not been published.
+        displayed_date:
+          type: integer
+          description: The time displayed in place of the `publish_date`. Measured in seconds since the Unix epoch. Uses a custom display date if set, otherwise the scheduled time the user set for publication, otherwise the `publish_date`, otherwise the creation date. For imported episodes, the original feed's `pubDate` is stored as the custom display date so the episode keeps its original date in feeds even though `publish_date` reflects when it was published in beehiiv. This is the same field used to order episodes in the podcast's RSS feed.
+        duration:
+          type: integer
+          description: The duration of the episode audio in seconds. Null when no completed audio file is available.
+        description:
+          type: string
+          description: A plain-text, truncated version of the episode show notes (max 255 characters). Derived from the same content as `show_notes`.
+        show_notes:
+          type: string
+          description: The full HTML show notes for the episode. `description` is a truncated plain-text version of this content.
+        artwork_url:
+          type: string
+          description: The URL of the episode artwork. Falls back to the podcast artwork when the episode has none. Empty string when no artwork is set.
+        status:
+          $ref: '#/components/schemas/type_podcasts_PodcastEpisodeStatus'
+          description: The status of the episode.<br>`draft` - Not yet published.<br>`scheduled` - Scheduled for future publication.<br>`published` - Available via web and RSS.<br>`archived` - No longer available via web or RSS.
+        season_number:
+          type: integer
+          description: The season number for the episode, if set.
+        episode_number:
+          type: integer
+          description: The episode number within the season, if set.
+        audio_url:
+          type: string
+          description: The public streaming URL for the episode audio. Null when no completed audio file is available.
+        transcript_url:
+          type: string
+          description: The WebVTT transcript URL for the episode. Null when transcripts are disabled or no completed transcript is available.
+        show:
+          $ref: '#/components/schemas/type_podcasts_PodcastShow'
+          description: The podcast this episode belongs to.
+      required:
+      - id
+      - created
+      - updated
+      - title
+      - slug
+      - displayed_date
+      - description
+      - show_notes
+      - artwork_url
+      - status
+      - show
+      title: PodcastEpisode
+    type_ids_PodcastEpisodeId:
+      type: string
+      description: The prefixed ID of the podcast episode.
+      title: PodcastEpisodeId
+    type__ErrorDetail:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+      required:
+      - message
+      - code
+      title: ErrorDetail
+    type_podcasts_PodcastEpisodeOrderBy:
+      type: string
+      enum:
+      - created
+      - updated
+      - publish_date
+      - displayed_date
+      default: displayed_date
+      description: The field that episode list results are sorted by. Defaults to `displayed_date`<br>`created` - The time in which the episode was first created.<br>`updated` - The time the episode was last updated.<br>`publish_date` - The exact time the system published the episode (when it went live), not the scheduled time the user set.<br> `displayed_date` - The time displayed in place of the `publish_date`. Uses a custom display date if set, otherwise the scheduled time the user set for publication, otherwise the `publish_date`, otherwise the creation date. For imported episodes, the original feed's `pubDate` is stored as the custom display date. This is the same field used to order episodes in the podcast's RSS feed.
+      title: PodcastEpisodeOrderBy
+    type_podcasts_PodcastEpisodeStatus:
+      type: string
+      enum:
+      - draft
+      - scheduled
+      - published
+      - archived
+      description: The status of the episode.<br>`draft` - Not yet published.<br>`scheduled` - Scheduled for future publication.<br>`published` - Available via web and RSS.<br>`archived` - No longer available via web or RSS.
+      title: PodcastEpisodeStatus
+    type_ids_PodcastShowId:
+      type: string
+      description: The prefixed ID of the podcast.
+      title: PodcastShowId
+    type_podcasts_PodcastShowsListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/type_podcasts_PodcastShow'
+          description: A list of podcasts for this publication.
+        limit:
+          type: integer
+          description: The limit placed on the results. If no limit was specified in the request, this defaults to 10.
+        has_more:
+          type: boolean
+          description: Indicates whether there are more results available after the current page.
+        next_cursor:
+          type: string
+          description: The cursor token to use for fetching the next page of results. Null when has_more is false.
+        total_results:
+          type: integer
+          description: The total number of results from all pages.
+      required:
+      - data
+      - limit
+      - has_more
+      title: PodcastShowsListResponse
+  securitySchemes:
+    BearerAuthScheme:
+      type: http
+      scheme: bearer

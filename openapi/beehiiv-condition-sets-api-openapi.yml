@@ -1,0 +1,312 @@
+openapi: 3.2.0
+info:
+  title: Reference Condition Sets API
+  version: 1.0.0
+servers:
+- url: https://api.beehiiv.com/v2
+  description: Default
+tags:
+- name: Condition Sets
+paths:
+  /publications/{publicationId}/condition_sets:
+    get:
+      operationId: index
+      summary: 'List condition sets <Badge intent="info" minimal outlined>OAuth Scope: condition_sets:read</Badge>'
+      description: Retrieve all active condition sets for a publication. Condition sets define reusable audience segments for targeting content to specific subscribers. Use the `purpose` parameter to filter by a specific use case.
+      tags:
+      - Condition Sets
+      parameters:
+      - name: publicationId
+        in: path
+        description: The prefixed ID of the publication object
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids_PublicationId'
+      - name: limit
+        in: query
+        description: A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.
+        required: false
+        schema:
+          type: integer
+      - name: cursor
+        in: query
+        description: '**Cursor-based pagination (recommended)**: Use this opaque cursor token to fetch the next page of results. When provided, pagination will use cursor-based method which is more efficient and consistent than offset-based pagination.'
+        required: false
+        schema:
+          type: string
+      - name: page
+        in: query
+        description: '**Offset-based pagination (deprecated)**: Page number for offset-based pagination. Please migrate to cursor-based pagination using the `cursor` parameter. If not specified, results 1-10 from page 1 will be returned.'
+        required: false
+        schema:
+          type: integer
+      - name: purpose
+        in: query
+        description: Filter condition sets by purpose. When not specified, all active condition sets are returned.
+        required: false
+        schema:
+          $ref: '#/components/schemas/type_conditionSets_ConditionSetPurpose'
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_conditionSets_ConditionSetsListResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '401':
+          description: Unauthorized. The API key or OAuth access token is missing, invalid, or expired.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '404':
+          description: Resource Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '429':
+          description: Rate Limit Exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+  /publications/{publicationId}/condition_sets/{conditionSetId}:
+    get:
+      operationId: show
+      summary: 'Get condition set <Badge intent="info" minimal outlined>OAuth Scope: condition_sets:read</Badge>'
+      description: Retrieve a single active dynamic content condition set for a publication. Use `expand[]=stats` to calculate and return the active subscriber count synchronously.
+      tags:
+      - Condition Sets
+      parameters:
+      - name: publicationId
+        in: path
+        description: The prefixed ID of the publication object
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids_PublicationId'
+      - name: conditionSetId
+        in: path
+        description: The UUID of the condition set object
+        required: true
+        schema:
+          type: string
+      - name: expand[]
+        in: query
+        description: Optionally expand the response to include additional data.<br> `stats` - Calculates and returns the active subscriber count for this condition set synchronously.
+        required: false
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/type_conditionSets_ConditionSetShowExpandItems'
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_conditionSets_ConditionSetShowResponse'
+        '401':
+          description: Unauthorized. The API key or OAuth access token is missing, invalid, or expired.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '404':
+          description: Resource Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '429':
+          description: Rate Limit Exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+components:
+  schemas:
+    type_conditionSets_ConditionSet:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The UUID of the condition set.
+        name:
+          type: string
+          description: The display name of the condition set.
+        status:
+          $ref: '#/components/schemas/type_conditionSets_ConditionSetStatus'
+          description: Whether the condition set is currently active or has been archived.
+        created:
+          type: integer
+          description: The time the condition set was created. Measured in seconds since the Unix epoch.
+        updated:
+          type: integer
+          description: The time the condition set was last updated. Measured in seconds since the Unix epoch.
+        purpose:
+          $ref: '#/components/schemas/type_conditionSets_ConditionSetPurpose'
+          description: The purpose of the condition set, indicating its intended use.
+        stats:
+          $ref: '#/components/schemas/type_conditionSets_ConditionSetStats'
+          description: Subscriber count statistics for the condition set. Included when `expand[]=stats` is specified in the request.
+      required:
+      - id
+      - name
+      - status
+      - created
+      - updated
+      - purpose
+      title: ConditionSet
+    type_conditionSets_ConditionSetListItem:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The UUID of the condition set.
+        name:
+          type: string
+          description: The display name of the condition set.
+        status:
+          $ref: '#/components/schemas/type_conditionSets_ConditionSetStatus'
+          description: Whether the condition set is currently active or has been archived.
+        created:
+          type: integer
+          description: The time the condition set was created. Measured in seconds since the Unix epoch.
+        updated:
+          type: integer
+          description: The time the condition set was last updated. Measured in seconds since the Unix epoch.
+        purpose:
+          $ref: '#/components/schemas/type_conditionSets_ConditionSetPurpose'
+          description: The purpose of the condition set, indicating its intended use.
+      required:
+      - id
+      - name
+      - status
+      - created
+      - updated
+      - purpose
+      title: ConditionSetListItem
+    type_ids_PublicationId:
+      type: string
+      description: The prefixed ID of the publication.
+      title: PublicationId
+    type__Error:
+      type: object
+      properties:
+        status:
+          type: integer
+        statusText:
+          type: string
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/type__ErrorDetail'
+      required:
+      - status
+      - statusText
+      - errors
+      description: The top level error response.
+      title: Error
+    type_conditionSets_ConditionSetShowExpandItems:
+      type: string
+      enum:
+      - stats
+      title: ConditionSetShowExpandItems
+    type_conditionSets_ConditionSetStats:
+      type: object
+      properties:
+        active_subscriber_count:
+          type: integer
+          description: Count of active subscribers matching this condition set, calculated synchronously at request time.
+      required:
+      - active_subscriber_count
+      title: ConditionSetStats
+    type_conditionSets_ConditionSetStatus:
+      type: string
+      enum:
+      - active
+      - archived
+      title: ConditionSetStatus
+    type_conditionSets_ConditionSetShowResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/type_conditionSets_ConditionSet'
+      required:
+      - data
+      title: ConditionSetShowResponse
+    type_conditionSets_ConditionSetsListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/type_conditionSets_ConditionSetListItem'
+          description: An array of condition sets.
+        limit:
+          type: integer
+          description: The limit placed on the results. If no limit was specified in the request, this defaults to 10.
+        has_more:
+          type: boolean
+          description: '**Cursor pagination only**: Indicates whether there are more results available after the current page. Only present when using cursor-based pagination.'
+        next_cursor:
+          type: string
+          description: '**Cursor pagination only**: The cursor token to use for fetching the next page of results. This will be null if has_more is false. Only present when using cursor-based pagination.'
+        total_results:
+          type: integer
+          description: The total number of results from all pages.
+      required:
+      - data
+      title: ConditionSetsListResponse
+    type__ErrorDetail:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+      required:
+      - message
+      - code
+      title: ErrorDetail
+    type_conditionSets_ConditionSetPurpose:
+      type: string
+      enum:
+      - dynamic_content
+      description: The purpose of the condition set, indicating its intended use.
+      title: ConditionSetPurpose
+  securitySchemes:
+    BearerAuthScheme:
+      type: http
+      scheme: bearer

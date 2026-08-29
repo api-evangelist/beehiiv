@@ -1,0 +1,366 @@
+openapi: 3.2.0
+info:
+  title: Reference subpackage_advertisement_opportunities Subpackage Publications API
+  version: 1.0.0
+servers:
+- url: https://api.beehiiv.com/v2
+tags:
+- name: subpackage_publications
+paths:
+  /publications:
+    get:
+      operationId: index
+      summary: 'List publications <Badge intent="info" minimal outlined>OAuth Scope: publications:read</Badge>'
+      description: Retrieve all publications associated with your API key.
+      tags:
+      - subpackage_publications
+      parameters:
+      - name: expand
+        in: query
+        description: Optionally expand the results by adding additional information like subscription counts and engagement stats.
+        required: false
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/type_publications_PublicationsRequestExpandItem'
+      - name: limit
+        in: query
+        description: A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.
+        required: false
+        schema:
+          type: integer
+      - name: page
+        in: query
+        description: 'Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).<br>If not specified, results 1-10 from page 1 will be returned.'
+        required: false
+        schema:
+          type: integer
+      - name: direction
+        in: query
+        description: The direction that the results are sorted in. Defaults to asc<br> `asc` - Ascending, sorts from smallest to largest.<br> `desc` - Descending, sorts from largest to smallest.
+        required: false
+        schema:
+          $ref: '#/components/schemas/type__RequestDirection'
+      - name: order_by
+        in: query
+        description: The field that the results are sorted by. Defaults to created<br> `created` - The time in which the publication was first created.<br> `name` - The name of the publication.
+        required: false
+        schema:
+          $ref: '#/components/schemas/type_publications_PublicationsListRequestOrderBy'
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_publications_PublicationsListResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '404':
+          description: Resource Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '429':
+          description: Rate Limit Exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+  /publications/{publicationId}:
+    get:
+      operationId: show
+      summary: 'Get publication <Badge intent="info" minimal outlined>OAuth Scope: publications:read</Badge>'
+      description: Retrieve a single publication
+      tags:
+      - subpackage_publications
+      parameters:
+      - name: publicationId
+        in: path
+        description: The prefixed ID of the publication object
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids_PublicationId'
+      - name: expand
+        in: query
+        description: Optionally expand the results by adding additional information like subscription counts and engagement stats.
+        required: false
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/type_publications_PublicationsGetRequestExpandItem'
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_publications_PublicationsGetResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '404':
+          description: Resource Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '429':
+          description: Rate Limit Exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+components:
+  schemas:
+    type_publications_PublicationsGetRequestExpandItem:
+      type: string
+      enum:
+      - stats
+      - stat_active_subscriptions
+      - stat_active_premium_subscriptions
+      - stat_active_free_subscriptions
+      - stat_average_open_rate
+      - stat_average_click_rate
+      - stat_total_sent
+      - stat_total_unique_opened
+      - stat_total_clicked
+      title: PublicationsGetRequestExpandItem
+    type_publications_PublicationsGetResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/type__Publication'
+      required:
+      - data
+      title: PublicationsGetResponse
+    type_ids_PublicationId:
+      type: string
+      description: The prefixed ID of the publication.
+      title: PublicationId
+    type__TotalEmailsSent:
+      oneOf:
+      - type: integer
+      - type: boolean
+      description: Total number of emails sent
+      title: TotalEmailsSent
+    type__Error:
+      type: object
+      properties:
+        status:
+          type: integer
+        statusText:
+          type: string
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/type__ErrorDetail'
+      required:
+      - status
+      - statusText
+      - errors
+      description: The top level error response.
+      title: Error
+    type__ErrorDetail:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+      required:
+      - message
+      - code
+      title: ErrorDetail
+    type__AverageOpenRate:
+      oneOf:
+      - type: number
+        format: double
+      - type: boolean
+      description: The publications historical average open rate
+      title: AverageOpenRate
+    type__ActivePremiumSubscriptionCount:
+      oneOf:
+      - type: integer
+      - type: boolean
+      description: Total number of active premium/paid subscriptions
+      title: ActivePremiumSubscriptionCount
+    type__ActiveFreeSubscriptionCount:
+      oneOf:
+      - type: integer
+      - type: boolean
+      description: Total number of active free subscriptions
+      title: ActiveFreeSubscriptionCount
+    type__TotalUniqueOpens:
+      oneOf:
+      - type: integer
+      - type: boolean
+      description: Total number of uniquely opened emails. Only counts the first open for each subscriber.
+      title: TotalUniqueOpens
+    type__TotalClicks:
+      oneOf:
+      - type: integer
+      - type: boolean
+      description: The total number of links clicked from emails.
+      title: TotalClicks
+    type_publications_PublicationsListRequestOrderBy:
+      type: string
+      enum:
+      - created
+      - name
+      default: created
+      title: PublicationsListRequestOrderBy
+    type_publications_PublicationsRequestExpandItem:
+      type: string
+      enum:
+      - stats
+      - stat_active_subscriptions
+      - stat_active_premium_subscriptions
+      - stat_active_free_subscriptions
+      - stat_average_open_rate
+      - stat_average_click_rate
+      - stat_total_sent
+      - stat_total_unique_opened
+      - stat_total_clicked
+      title: PublicationsRequestExpandItem
+    type__ActiveSubscriptionCount:
+      oneOf:
+      - type: integer
+      - type: boolean
+      description: Total number of active free and premium subscriptions
+      title: ActiveSubscriptionCount
+    type__PublicationStats:
+      type: object
+      properties:
+        active_subscriptions:
+          $ref: '#/components/schemas/type__ActiveSubscriptionCount'
+          description: Total number of active free and premium subscriptions
+        active_premium_subscriptions:
+          $ref: '#/components/schemas/type__ActivePremiumSubscriptionCount'
+          description: Total number of active premium/paid subscriptions
+        active_free_subscriptions:
+          $ref: '#/components/schemas/type__ActiveFreeSubscriptionCount'
+          description: Total number of active free subscriptions
+        average_open_rate:
+          $ref: '#/components/schemas/type__AverageOpenRate'
+          description: The publications historical average open rate
+        average_click_rate:
+          $ref: '#/components/schemas/type__AverageClickRate'
+          description: The publications historical average click through rate
+        total_sent:
+          $ref: '#/components/schemas/type__TotalEmailsSent'
+          description: Total number of emails sent
+        total_unique_opened:
+          $ref: '#/components/schemas/type__TotalUniqueOpens'
+          description: Total number of uniquely opened emails. Only counts the first open for each subscriber.
+        total_clicked:
+          $ref: '#/components/schemas/type__TotalClicks'
+          description: The total number of links clicked from emails.
+      description: "Optional list of stats for a publication. Retrievable by including an `expand` array in the publication request body. Add `\"stats\"` to the array to retrieve all, or add individual stats (prefaced with `stat_`) to only retrieve specific ones.\n\nExamples:\n{\n  \"expand\": [\"stats\"]\n}\n\n{\n  \"expand\": [\"stat_active_subscriptions\", \"stat_average_click_rate\"]\n}"
+      title: PublicationStats
+    type__AverageClickRate:
+      oneOf:
+      - type: number
+        format: double
+      - type: boolean
+      description: The publications historical average click through rate
+      title: AverageClickRate
+    type__RequestDirection:
+      type: string
+      enum:
+      - asc
+      - desc
+      default: asc
+      description: The direction of the request. Defaults to `asc`.
+      title: RequestDirection
+    type__Publication:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/type_ids_PublicationId'
+          description: A unique prefixed id of the publication
+        name:
+          type: string
+          description: The name of the publication
+        organization_name:
+          type: string
+          description: The name of the organization
+        referral_program_enabled:
+          type: boolean
+          description: A boolean field indicating whether the referral program is active for this publication.
+        created:
+          type: number
+          format: double
+          description: The time that the publication was created. Measured in seconds since the Unix epoch
+        stats:
+          $ref: '#/components/schemas/type__PublicationStats'
+      required:
+      - id
+      - name
+      - organization_name
+      - referral_program_enabled
+      - created
+      title: Publication
+    type_publications_PublicationsListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/type__Publication'
+        limit:
+          type: integer
+          description: The limit placed on the results. If no limit was specified in the request,this defaults to 10.
+        page:
+          type: integer
+          default: 1
+          description: The page number the results are from. If no page was specified in the request, this defaults to page 1.
+        total_results:
+          type: integer
+          description: The total number of results from all pages.
+        total_pages:
+          type: integer
+          description: The total number of pages.
+      required:
+      - data
+      - limit
+      - page
+      - total_results
+      - total_pages
+      title: PublicationsListResponse
+  securitySchemes:
+    BearerAuthScheme:
+      type: http
+      scheme: bearer

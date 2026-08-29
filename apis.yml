@@ -43,898 +43,6 @@ created: '2026-05-08'
 modified: '2026-08-13'
 specificationVersion: '0.23'
 apis:
-- aid: beehiiv:beehiiv-subpackage-advertisement-opportunities-api
-  name: beehiiv subpackage_advertisement_opportunities API
-  description: >-
-    The subpackage_advertisement_opportunities API from beehiiv — 1 operation(s) for subpackage_advertisement_opportunities.
-  humanURL: https://developers.beehiiv.com/api-reference/publications
-  baseURL: https://api.beehiiv.com/v2
-  tags: []
-  tags_raw:
-  - subpackage_advertisement_opportunities
-  properties:
-  - type: OpenAPI
-    url: openapi/beehiiv-subpackage-advertisement-opportunities-api-openapi.yml
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/publications
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/subscriptions
-  - type: JSONSchema
-    url: json-schema/beehiiv-subscription-schema.json
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/posts
-  - type: JSONSchema
-    url: json-schema/beehiiv-post-schema.json
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/automations
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/custom_fields
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/segments
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/tiers
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/polls
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/webhooks
-  - type: AsyncAPI
-    url: asyncapi/beehiiv-asyncapi.yml
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference
-- aid: beehiiv:beehiiv-subpackage-authors-api
-  name: beehiiv subpackage_authors API
-  description: The subpackage_authors API from beehiiv — 2 operation(s) for subpackage_authors.
-  humanURL: https://developers.beehiiv.com/api-reference/publications
-  baseURL: https://api.beehiiv.com/v2
-  tags: []
-  tags_raw:
-  - subpackage_authors
-  properties:
-  - type: OpenAPI
-    url: openapi/beehiiv-subpackage-authors-api-openapi.yml
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/publications
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/subscriptions
-  - type: JSONSchema
-    url: json-schema/beehiiv-subscription-schema.json
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/posts
-  - type: JSONSchema
-    url: json-schema/beehiiv-post-schema.json
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/automations
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/custom_fields
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/segments
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/tiers
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/polls
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/webhooks
-  - type: AsyncAPI
-    url: asyncapi/beehiiv-asyncapi.yml
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference
-- aid: beehiiv:beehiiv-subpackage-automationjourneys-api
-  name: beehiiv subpackage_automationJourneys API
-  description: >-
-    The subpackage_automationJourneys API from beehiiv — 2 operation(s) for subpackage_automationjourneys.
-  humanURL: https://developers.beehiiv.com/api-reference/publications
-  baseURL: https://api.beehiiv.com/v2
-  tags:
-  - subpackage_automationJourneys
-  properties:
-  - type: OpenAPI
-    url: openapi/beehiiv-subpackage-automationjourneys-api-openapi.yml
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/publications
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/subscriptions
-  - type: JSONSchema
-    url: json-schema/beehiiv-subscription-schema.json
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/posts
-  - type: JSONSchema
-    url: json-schema/beehiiv-post-schema.json
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/automations
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/custom_fields
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/segments
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/tiers
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/polls
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/webhooks
-  - type: AsyncAPI
-    url: asyncapi/beehiiv-asyncapi.yml
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference
-- aid: beehiiv:beehiiv-subpackage-automations-api
-  name: beehiiv subpackage_automations API
-  description: The subpackage_automations API from beehiiv — 3 operation(s) for subpackage_automations.
-  humanURL: https://developers.beehiiv.com/api-reference/publications
-  baseURL: https://api.beehiiv.com/v2
-  tags: []
-  tags_raw:
-  - subpackage_automations
-  properties:
-  - type: OpenAPI
-    url: openapi/beehiiv-subpackage-automations-api-openapi.yml
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/publications
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/subscriptions
-  - type: JSONSchema
-    url: json-schema/beehiiv-subscription-schema.json
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/posts
-  - type: JSONSchema
-    url: json-schema/beehiiv-post-schema.json
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/automations
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/custom_fields
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/segments
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/tiers
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/polls
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/webhooks
-  - type: AsyncAPI
-    url: asyncapi/beehiiv-asyncapi.yml
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference
-- aid: beehiiv:beehiiv-subpackage-bulk-subscriptions-api
-  name: beehiiv subpackage_bulk_subscriptions API
-  description: >-
-    The subpackage_bulk_subscriptions API from beehiiv — 1 operation(s) for subpackage_bulk_subscriptions.
-  humanURL: https://developers.beehiiv.com/api-reference/publications
-  baseURL: https://api.beehiiv.com/v2
-  tags: []
-  tags_raw:
-  - subpackage_bulk_subscriptions
-  properties:
-  - type: OpenAPI
-    url: openapi/beehiiv-subpackage-bulk-subscriptions-api-openapi.yml
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/publications
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/subscriptions
-  - type: JSONSchema
-    url: json-schema/beehiiv-subscription-schema.json
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/posts
-  - type: JSONSchema
-    url: json-schema/beehiiv-post-schema.json
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/automations
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/custom_fields
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/segments
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/tiers
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/polls
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/webhooks
-  - type: AsyncAPI
-    url: asyncapi/beehiiv-asyncapi.yml
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference
-- aid: beehiiv:beehiiv-subpackage-bulksubscriptionupdates-api
-  name: beehiiv subpackage_bulkSubscriptionUpdates API
-  description: >-
-    The subpackage_bulkSubscriptionUpdates API from beehiiv — 4 operation(s) for subpackage_bulksubscriptionupdates.
-  humanURL: https://developers.beehiiv.com/api-reference/publications
-  baseURL: https://api.beehiiv.com/v2
-  tags:
-  - subpackage_bulkSubscriptionUpdates
-  properties:
-  - type: OpenAPI
-    url: openapi/beehiiv-subpackage-bulksubscriptionupdates-api-openapi.yml
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/publications
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/subscriptions
-  - type: JSONSchema
-    url: json-schema/beehiiv-subscription-schema.json
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/posts
-  - type: JSONSchema
-    url: json-schema/beehiiv-post-schema.json
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/automations
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/custom_fields
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/segments
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/tiers
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/polls
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/webhooks
-  - type: AsyncAPI
-    url: asyncapi/beehiiv-asyncapi.yml
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference
-- aid: beehiiv:beehiiv-subpackage-conditionsets-api
-  name: beehiiv subpackage_conditionSets API
-  description: >-
-    The subpackage_conditionSets API from beehiiv — 2 operation(s) for subpackage_conditionsets.
-  humanURL: https://developers.beehiiv.com/api-reference/publications
-  baseURL: https://api.beehiiv.com/v2
-  tags:
-  - subpackage_conditionSets
-  properties:
-  - type: OpenAPI
-    url: openapi/beehiiv-subpackage-conditionsets-api-openapi.yml
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/publications
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/subscriptions
-  - type: JSONSchema
-    url: json-schema/beehiiv-subscription-schema.json
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/posts
-  - type: JSONSchema
-    url: json-schema/beehiiv-post-schema.json
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/automations
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/custom_fields
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/segments
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/tiers
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/polls
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/webhooks
-  - type: AsyncAPI
-    url: asyncapi/beehiiv-asyncapi.yml
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference
-- aid: beehiiv:beehiiv-subpackage-customfields-api
-  name: beehiiv subpackage_customFields API
-  description: >-
-    The subpackage_customFields API from beehiiv — 2 operation(s) for subpackage_customfields.
-  humanURL: https://developers.beehiiv.com/api-reference/publications
-  baseURL: https://api.beehiiv.com/v2
-  tags:
-  - subpackage_customFields
-  properties:
-  - type: OpenAPI
-    url: openapi/beehiiv-subpackage-customfields-api-openapi.yml
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/publications
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/subscriptions
-  - type: JSONSchema
-    url: json-schema/beehiiv-subscription-schema.json
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/posts
-  - type: JSONSchema
-    url: json-schema/beehiiv-post-schema.json
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/automations
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/custom_fields
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/segments
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/tiers
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/polls
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/webhooks
-  - type: AsyncAPI
-    url: asyncapi/beehiiv-asyncapi.yml
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference
-- aid: beehiiv:beehiiv-subpackage-datadeletion-api
-  name: beehiiv subpackage_dataDeletion API
-  description: >-
-    The subpackage_dataDeletion API from beehiiv — 2 operation(s) for subpackage_datadeletion.
-  humanURL: https://developers.beehiiv.com/api-reference/publications
-  baseURL: https://api.beehiiv.com/v2
-  tags:
-  - subpackage_dataDeletion
-  properties:
-  - type: OpenAPI
-    url: openapi/beehiiv-subpackage-datadeletion-api-openapi.yml
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/publications
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/subscriptions
-  - type: JSONSchema
-    url: json-schema/beehiiv-subscription-schema.json
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/posts
-  - type: JSONSchema
-    url: json-schema/beehiiv-post-schema.json
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/automations
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/custom_fields
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/segments
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/tiers
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/polls
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/webhooks
-  - type: AsyncAPI
-    url: asyncapi/beehiiv-asyncapi.yml
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference
-- aid: beehiiv:beehiiv-subpackage-engagements-api
-  name: beehiiv subpackage_engagements API
-  description: The subpackage_engagements API from beehiiv — 1 operation(s) for subpackage_engagements.
-  humanURL: https://developers.beehiiv.com/api-reference/publications
-  baseURL: https://api.beehiiv.com/v2
-  tags: []
-  tags_raw:
-  - subpackage_engagements
-  properties:
-  - type: OpenAPI
-    url: openapi/beehiiv-subpackage-engagements-api-openapi.yml
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/publications
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/subscriptions
-  - type: JSONSchema
-    url: json-schema/beehiiv-subscription-schema.json
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/posts
-  - type: JSONSchema
-    url: json-schema/beehiiv-post-schema.json
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/automations
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/custom_fields
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/segments
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/tiers
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/polls
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/webhooks
-  - type: AsyncAPI
-    url: asyncapi/beehiiv-asyncapi.yml
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference
-- aid: beehiiv:beehiiv-subpackage-newsletterlists-api
-  name: beehiiv subpackage_newsletterLists API
-  description: >-
-    The subpackage_newsletterLists API from beehiiv — 2 operation(s) for subpackage_newsletterlists.
-  humanURL: https://developers.beehiiv.com/api-reference/publications
-  baseURL: https://api.beehiiv.com/v2
-  tags:
-  - subpackage_newsletterLists
-  properties:
-  - type: OpenAPI
-    url: openapi/beehiiv-subpackage-newsletterlists-api-openapi.yml
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/publications
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/subscriptions
-  - type: JSONSchema
-    url: json-schema/beehiiv-subscription-schema.json
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/posts
-  - type: JSONSchema
-    url: json-schema/beehiiv-post-schema.json
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/automations
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/custom_fields
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/segments
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/tiers
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/polls
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/webhooks
-  - type: AsyncAPI
-    url: asyncapi/beehiiv-asyncapi.yml
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference
-- aid: beehiiv:beehiiv-subpackage-newsletterlistsubscriptions-api
-  name: beehiiv subpackage_newsletterListSubscriptions API
-  description: >-
-    The subpackage_newsletterListSubscriptions API from beehiiv — 3 operation(s) for subpackage_newsletterlistsubscriptions.
-  humanURL: https://developers.beehiiv.com/api-reference/publications
-  baseURL: https://api.beehiiv.com/v2
-  tags:
-  - subpackage_newsletterListSubscriptions
-  properties:
-  - type: OpenAPI
-    url: openapi/beehiiv-subpackage-newsletterlistsubscriptions-api-openapi.yml
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/publications
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/subscriptions
-  - type: JSONSchema
-    url: json-schema/beehiiv-subscription-schema.json
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/posts
-  - type: JSONSchema
-    url: json-schema/beehiiv-post-schema.json
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/automations
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/custom_fields
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/segments
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/tiers
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/polls
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/webhooks
-  - type: AsyncAPI
-    url: asyncapi/beehiiv-asyncapi.yml
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference
-- aid: beehiiv:beehiiv-subpackage-oauth-users-api
-  name: beehiiv subpackage_oauth_users API
-  description: The subpackage_oauth_users API from beehiiv — 1 operation(s) for subpackage_oauth_users.
-  humanURL: https://developers.beehiiv.com/api-reference/publications
-  baseURL: https://api.beehiiv.com/v2
-  tags: []
-  tags_raw:
-  - subpackage_oauth_users
-  properties:
-  - type: OpenAPI
-    url: openapi/beehiiv-subpackage-oauth-users-api-openapi.yml
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/publications
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/subscriptions
-  - type: JSONSchema
-    url: json-schema/beehiiv-subscription-schema.json
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/posts
-  - type: JSONSchema
-    url: json-schema/beehiiv-post-schema.json
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/automations
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/custom_fields
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/segments
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/tiers
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/polls
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/webhooks
-  - type: AsyncAPI
-    url: asyncapi/beehiiv-asyncapi.yml
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference
-- aid: beehiiv:beehiiv-subpackage-polls-api
-  name: beehiiv subpackage_polls API
-  description: The subpackage_polls API from beehiiv — 3 operation(s) for subpackage_polls.
-  humanURL: https://developers.beehiiv.com/api-reference/publications
-  baseURL: https://api.beehiiv.com/v2
-  tags: []
-  tags_raw:
-  - subpackage_polls
-  properties:
-  - type: OpenAPI
-    url: openapi/beehiiv-subpackage-polls-api-openapi.yml
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/publications
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/subscriptions
-  - type: JSONSchema
-    url: json-schema/beehiiv-subscription-schema.json
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/posts
-  - type: JSONSchema
-    url: json-schema/beehiiv-post-schema.json
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/automations
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/custom_fields
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/segments
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/tiers
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/polls
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/webhooks
-  - type: AsyncAPI
-    url: asyncapi/beehiiv-asyncapi.yml
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference
-- aid: beehiiv:beehiiv-subpackage-posts-api
-  name: beehiiv subpackage_posts API
-  description: The subpackage_posts API from beehiiv — 3 operation(s) for subpackage_posts.
-  humanURL: https://developers.beehiiv.com/api-reference/publications
-  baseURL: https://api.beehiiv.com/v2
-  tags: []
-  tags_raw:
-  - subpackage_posts
-  properties:
-  - type: OpenAPI
-    url: openapi/beehiiv-subpackage-posts-api-openapi.yml
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/publications
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/subscriptions
-  - type: JSONSchema
-    url: json-schema/beehiiv-subscription-schema.json
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/posts
-  - type: JSONSchema
-    url: json-schema/beehiiv-post-schema.json
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/automations
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/custom_fields
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/segments
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/tiers
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/polls
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/webhooks
-  - type: AsyncAPI
-    url: asyncapi/beehiiv-asyncapi.yml
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference
-- aid: beehiiv:beehiiv-subpackage-posttemplates-api
-  name: beehiiv subpackage_postTemplates API
-  description: >-
-    The subpackage_postTemplates API from beehiiv — 1 operation(s) for subpackage_posttemplates.
-  humanURL: https://developers.beehiiv.com/api-reference/publications
-  baseURL: https://api.beehiiv.com/v2
-  tags:
-  - subpackage_postTemplates
-  properties:
-  - type: OpenAPI
-    url: openapi/beehiiv-subpackage-posttemplates-api-openapi.yml
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/publications
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/subscriptions
-  - type: JSONSchema
-    url: json-schema/beehiiv-subscription-schema.json
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/posts
-  - type: JSONSchema
-    url: json-schema/beehiiv-post-schema.json
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/automations
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/custom_fields
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/segments
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/tiers
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/polls
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/webhooks
-  - type: AsyncAPI
-    url: asyncapi/beehiiv-asyncapi.yml
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference
-- aid: beehiiv:beehiiv-subpackage-publications-api
-  name: beehiiv subpackage_publications API
-  description: >-
-    The subpackage_publications API from beehiiv — 2 operation(s) for subpackage_publications.
-  humanURL: https://developers.beehiiv.com/api-reference/publications
-  baseURL: https://api.beehiiv.com/v2
-  tags: []
-  tags_raw:
-  - subpackage_publications
-  properties:
-  - type: OpenAPI
-    url: openapi/beehiiv-subpackage-publications-api-openapi.yml
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/publications
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/subscriptions
-  - type: JSONSchema
-    url: json-schema/beehiiv-subscription-schema.json
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/posts
-  - type: JSONSchema
-    url: json-schema/beehiiv-post-schema.json
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/automations
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/custom_fields
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/segments
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/tiers
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/polls
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/webhooks
-  - type: AsyncAPI
-    url: asyncapi/beehiiv-asyncapi.yml
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference
-- aid: beehiiv:beehiiv-subpackage-referralprogram-api
-  name: beehiiv subpackage_referralProgram API
-  description: >-
-    The subpackage_referralProgram API from beehiiv — 1 operation(s) for subpackage_referralprogram.
-  humanURL: https://developers.beehiiv.com/api-reference/publications
-  baseURL: https://api.beehiiv.com/v2
-  tags:
-  - subpackage_referralProgram
-  properties:
-  - type: OpenAPI
-    url: openapi/beehiiv-subpackage-referralprogram-api-openapi.yml
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/publications
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/subscriptions
-  - type: JSONSchema
-    url: json-schema/beehiiv-subscription-schema.json
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/posts
-  - type: JSONSchema
-    url: json-schema/beehiiv-post-schema.json
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/automations
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/custom_fields
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/segments
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/tiers
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/polls
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/webhooks
-  - type: AsyncAPI
-    url: asyncapi/beehiiv-asyncapi.yml
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference
-- aid: beehiiv:beehiiv-subpackage-segments-api
-  name: beehiiv subpackage_segments API
-  description: The subpackage_segments API from beehiiv — 5 operation(s) for subpackage_segments.
-  humanURL: https://developers.beehiiv.com/api-reference/publications
-  baseURL: https://api.beehiiv.com/v2
-  tags: []
-  tags_raw:
-  - subpackage_segments
-  properties:
-  - type: OpenAPI
-    url: openapi/beehiiv-subpackage-segments-api-openapi.yml
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/publications
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/subscriptions
-  - type: JSONSchema
-    url: json-schema/beehiiv-subscription-schema.json
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/posts
-  - type: JSONSchema
-    url: json-schema/beehiiv-post-schema.json
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/automations
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/custom_fields
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/segments
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/tiers
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/polls
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/webhooks
-  - type: AsyncAPI
-    url: asyncapi/beehiiv-asyncapi.yml
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference
-- aid: beehiiv:beehiiv-subpackage-subscriptions-api
-  name: beehiiv subpackage_subscriptions API
-  description: >-
-    The subpackage_subscriptions API from beehiiv — 3 operation(s) for subpackage_subscriptions.
-  humanURL: https://developers.beehiiv.com/api-reference/publications
-  baseURL: https://api.beehiiv.com/v2
-  tags: []
-  tags_raw:
-  - subpackage_subscriptions
-  properties:
-  - type: OpenAPI
-    url: openapi/beehiiv-subpackage-subscriptions-api-openapi.yml
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/publications
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/subscriptions
-  - type: JSONSchema
-    url: json-schema/beehiiv-subscription-schema.json
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/posts
-  - type: JSONSchema
-    url: json-schema/beehiiv-post-schema.json
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/automations
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/custom_fields
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/segments
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/tiers
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/polls
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/webhooks
-  - type: AsyncAPI
-    url: asyncapi/beehiiv-asyncapi.yml
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference
-- aid: beehiiv:beehiiv-subpackage-subscriptiontags-api
-  name: beehiiv subpackage_subscriptionTags API
-  description: >-
-    The subpackage_subscriptionTags API from beehiiv — 1 operation(s) for subpackage_subscriptiontags.
-  humanURL: https://developers.beehiiv.com/api-reference/publications
-  baseURL: https://api.beehiiv.com/v2
-  tags:
-  - subpackage_subscriptionTags
-  properties:
-  - type: OpenAPI
-    url: openapi/beehiiv-subpackage-subscriptiontags-api-openapi.yml
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/publications
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/subscriptions
-  - type: JSONSchema
-    url: json-schema/beehiiv-subscription-schema.json
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/posts
-  - type: JSONSchema
-    url: json-schema/beehiiv-post-schema.json
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/automations
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/custom_fields
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/segments
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/tiers
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/polls
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/webhooks
-  - type: AsyncAPI
-    url: asyncapi/beehiiv-asyncapi.yml
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference
-- aid: beehiiv:beehiiv-subpackage-tiers-api
-  name: beehiiv subpackage_tiers API
-  description: The subpackage_tiers API from beehiiv — 2 operation(s) for subpackage_tiers.
-  humanURL: https://developers.beehiiv.com/api-reference/publications
-  baseURL: https://api.beehiiv.com/v2
-  tags: []
-  tags_raw:
-  - subpackage_tiers
-  properties:
-  - type: OpenAPI
-    url: openapi/beehiiv-subpackage-tiers-api-openapi.yml
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/publications
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/subscriptions
-  - type: JSONSchema
-    url: json-schema/beehiiv-subscription-schema.json
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/posts
-  - type: JSONSchema
-    url: json-schema/beehiiv-post-schema.json
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/automations
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/custom_fields
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/segments
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/tiers
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/polls
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/webhooks
-  - type: AsyncAPI
-    url: asyncapi/beehiiv-asyncapi.yml
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference
-- aid: beehiiv:beehiiv-subpackage-webhooks-api
-  name: beehiiv subpackage_webhooks API
-  description: The subpackage_webhooks API from beehiiv — 2 operation(s) for subpackage_webhooks.
-  humanURL: https://developers.beehiiv.com/api-reference/publications
-  baseURL: https://api.beehiiv.com/v2
-  tags: []
-  tags_raw:
-  - subpackage_webhooks
-  properties:
-  - type: OpenAPI
-    url: openapi/beehiiv-subpackage-webhooks-api-openapi.yml
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/publications
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/subscriptions
-  - type: JSONSchema
-    url: json-schema/beehiiv-subscription-schema.json
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/posts
-  - type: JSONSchema
-    url: json-schema/beehiiv-post-schema.json
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/automations
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/custom_fields
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/segments
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/tiers
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/polls
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/webhooks
-  - type: AsyncAPI
-    url: asyncapi/beehiiv-asyncapi.yml
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference
-- aid: beehiiv:beehiiv-subpackage-workspaces-api
-  name: beehiiv subpackage_workspaces API
-  description: The subpackage_workspaces API from beehiiv — 2 operation(s) for subpackage_workspaces.
-  humanURL: https://developers.beehiiv.com/api-reference/publications
-  baseURL: https://api.beehiiv.com/v2
-  tags: []
-  tags_raw:
-  - subpackage_workspaces
-  properties:
-  - type: OpenAPI
-    url: openapi/beehiiv-subpackage-workspaces-api-openapi.yml
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/publications
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/subscriptions
-  - type: JSONSchema
-    url: json-schema/beehiiv-subscription-schema.json
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/posts
-  - type: JSONSchema
-    url: json-schema/beehiiv-post-schema.json
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/automations
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/custom_fields
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/segments
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/tiers
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/polls
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference/webhooks
-  - type: AsyncAPI
-    url: asyncapi/beehiiv-asyncapi.yml
-  - type: Documentation
-    url: https://developers.beehiiv.com/api-reference
 - aid: beehiiv:beehiiv-authorizations-api
   name: beehiiv Authorizations API
   description: The Authorizations API from beehiiv — 1 operation(s) for authorizations.
@@ -1001,6 +109,981 @@ apis:
     url: asyncapi/beehiiv-asyncapi.yml
   - type: Documentation
     url: https://developers.beehiiv.com/webhooks
+- aid: beehiiv:beehiiv-ad-network-offers-api
+  name: beehiiv Ad Network Offers API
+  description: The Ad Network Offers API from beehiiv — 2 operation(s) for ad network offers.
+  humanURL: https://developers.beehiiv.com/api-reference/publications
+  baseURL: https://api.beehiiv.com/v2
+  tags:
+  - Ad Network Offers
+  properties:
+  - type: OpenAPI
+    url: openapi/beehiiv-ad-network-offers-api-openapi.yml
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/publications
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/subscriptions
+  - type: JSONSchema
+    url: json-schema/beehiiv-subscription-schema.json
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/posts
+  - type: JSONSchema
+    url: json-schema/beehiiv-post-schema.json
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/automations
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/custom_fields
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/segments
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/tiers
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/polls
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/webhooks
+  - type: AsyncAPI
+    url: asyncapi/beehiiv-asyncapi.yml
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference
+- aid: beehiiv:beehiiv-ad-network-reports-api
+  name: beehiiv Ad Network Reports API
+  description: The Ad Network Reports API from beehiiv — 3 operation(s) for ad network reports.
+  humanURL: https://developers.beehiiv.com/api-reference/publications
+  baseURL: https://api.beehiiv.com/v2
+  tags:
+  - Ad Network Reports
+  properties:
+  - type: OpenAPI
+    url: openapi/beehiiv-ad-network-reports-api-openapi.yml
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/publications
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/subscriptions
+  - type: JSONSchema
+    url: json-schema/beehiiv-subscription-schema.json
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/posts
+  - type: JSONSchema
+    url: json-schema/beehiiv-post-schema.json
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/automations
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/custom_fields
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/segments
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/tiers
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/polls
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/webhooks
+  - type: AsyncAPI
+    url: asyncapi/beehiiv-asyncapi.yml
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference
+- aid: beehiiv:beehiiv-advertisement-opportunities-api
+  name: beehiiv Advertisement Opportunities API
+  description: >-
+    The Advertisement Opportunities API from beehiiv — 1 operation(s) for advertisement opportunities.
+  humanURL: https://developers.beehiiv.com/api-reference/publications
+  baseURL: https://api.beehiiv.com/v2
+  tags:
+  - Advertisement Opportunities
+  properties:
+  - type: OpenAPI
+    url: openapi/beehiiv-advertisement-opportunities-api-openapi.yml
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/publications
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/subscriptions
+  - type: JSONSchema
+    url: json-schema/beehiiv-subscription-schema.json
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/posts
+  - type: JSONSchema
+    url: json-schema/beehiiv-post-schema.json
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/automations
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/custom_fields
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/segments
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/tiers
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/polls
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/webhooks
+  - type: AsyncAPI
+    url: asyncapi/beehiiv-asyncapi.yml
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference
+- aid: beehiiv:beehiiv-authors-api
+  name: beehiiv Authors API
+  description: The Authors API from beehiiv — 2 operation(s) for authors.
+  humanURL: https://developers.beehiiv.com/api-reference/publications
+  baseURL: https://api.beehiiv.com/v2
+  tags:
+  - Authors
+  properties:
+  - type: OpenAPI
+    url: openapi/beehiiv-authors-api-openapi.yml
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/publications
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/subscriptions
+  - type: JSONSchema
+    url: json-schema/beehiiv-subscription-schema.json
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/posts
+  - type: JSONSchema
+    url: json-schema/beehiiv-post-schema.json
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/automations
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/custom_fields
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/segments
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/tiers
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/polls
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/webhooks
+  - type: AsyncAPI
+    url: asyncapi/beehiiv-asyncapi.yml
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference
+- aid: beehiiv:beehiiv-automation-journeys-api
+  name: beehiiv Automation Journeys API
+  description: The Automation Journeys API from beehiiv — 2 operation(s) for automation journeys.
+  humanURL: https://developers.beehiiv.com/api-reference/publications
+  baseURL: https://api.beehiiv.com/v2
+  tags:
+  - Automation Journeys
+  properties:
+  - type: OpenAPI
+    url: openapi/beehiiv-automation-journeys-api-openapi.yml
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/publications
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/subscriptions
+  - type: JSONSchema
+    url: json-schema/beehiiv-subscription-schema.json
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/posts
+  - type: JSONSchema
+    url: json-schema/beehiiv-post-schema.json
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/automations
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/custom_fields
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/segments
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/tiers
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/polls
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/webhooks
+  - type: AsyncAPI
+    url: asyncapi/beehiiv-asyncapi.yml
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference
+- aid: beehiiv:beehiiv-automations-api
+  name: beehiiv Automations API
+  description: The Automations API from beehiiv — 3 operation(s) for automations.
+  humanURL: https://developers.beehiiv.com/api-reference/publications
+  baseURL: https://api.beehiiv.com/v2
+  tags:
+  - Automations
+  properties:
+  - type: OpenAPI
+    url: openapi/beehiiv-automations-api-openapi.yml
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/publications
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/subscriptions
+  - type: JSONSchema
+    url: json-schema/beehiiv-subscription-schema.json
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/posts
+  - type: JSONSchema
+    url: json-schema/beehiiv-post-schema.json
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/automations
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/custom_fields
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/segments
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/tiers
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/polls
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/webhooks
+  - type: AsyncAPI
+    url: asyncapi/beehiiv-asyncapi.yml
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference
+- aid: beehiiv:beehiiv-bulk-subscription-updates-api
+  name: beehiiv Bulk Subscription Updates API
+  description: >-
+    The Bulk Subscription Updates API from beehiiv — 4 operation(s) for bulk subscription updates.
+  humanURL: https://developers.beehiiv.com/api-reference/publications
+  baseURL: https://api.beehiiv.com/v2
+  tags:
+  - Bulk Subscription Updates
+  properties:
+  - type: OpenAPI
+    url: openapi/beehiiv-bulk-subscription-updates-api-openapi.yml
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/publications
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/subscriptions
+  - type: JSONSchema
+    url: json-schema/beehiiv-subscription-schema.json
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/posts
+  - type: JSONSchema
+    url: json-schema/beehiiv-post-schema.json
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/automations
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/custom_fields
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/segments
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/tiers
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/polls
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/webhooks
+  - type: AsyncAPI
+    url: asyncapi/beehiiv-asyncapi.yml
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference
+- aid: beehiiv:beehiiv-bulk-subscriptions-api
+  name: beehiiv Bulk Subscriptions API
+  description: The Bulk Subscriptions API from beehiiv — 1 operation(s) for bulk subscriptions.
+  humanURL: https://developers.beehiiv.com/api-reference/publications
+  baseURL: https://api.beehiiv.com/v2
+  tags:
+  - Bulk Subscriptions
+  properties:
+  - type: OpenAPI
+    url: openapi/beehiiv-bulk-subscriptions-api-openapi.yml
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/publications
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/subscriptions
+  - type: JSONSchema
+    url: json-schema/beehiiv-subscription-schema.json
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/posts
+  - type: JSONSchema
+    url: json-schema/beehiiv-post-schema.json
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/automations
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/custom_fields
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/segments
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/tiers
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/polls
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/webhooks
+  - type: AsyncAPI
+    url: asyncapi/beehiiv-asyncapi.yml
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference
+- aid: beehiiv:beehiiv-complimentary-access-api
+  name: beehiiv Complimentary Access API
+  description: The Complimentary Access API from beehiiv — 2 operation(s) for complimentary access.
+  humanURL: https://developers.beehiiv.com/api-reference/publications
+  baseURL: https://api.beehiiv.com/v2
+  tags:
+  - Complimentary Access
+  properties:
+  - type: OpenAPI
+    url: openapi/beehiiv-complimentary-access-api-openapi.yml
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/publications
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/subscriptions
+  - type: JSONSchema
+    url: json-schema/beehiiv-subscription-schema.json
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/posts
+  - type: JSONSchema
+    url: json-schema/beehiiv-post-schema.json
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/automations
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/custom_fields
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/segments
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/tiers
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/polls
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/webhooks
+  - type: AsyncAPI
+    url: asyncapi/beehiiv-asyncapi.yml
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference
+- aid: beehiiv:beehiiv-condition-sets-api
+  name: beehiiv Condition Sets API
+  description: The Condition Sets API from beehiiv — 2 operation(s) for condition sets.
+  humanURL: https://developers.beehiiv.com/api-reference/publications
+  baseURL: https://api.beehiiv.com/v2
+  tags:
+  - Condition Sets
+  properties:
+  - type: OpenAPI
+    url: openapi/beehiiv-condition-sets-api-openapi.yml
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/publications
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/subscriptions
+  - type: JSONSchema
+    url: json-schema/beehiiv-subscription-schema.json
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/posts
+  - type: JSONSchema
+    url: json-schema/beehiiv-post-schema.json
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/automations
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/custom_fields
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/segments
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/tiers
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/polls
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/webhooks
+  - type: AsyncAPI
+    url: asyncapi/beehiiv-asyncapi.yml
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference
+- aid: beehiiv:beehiiv-custom-fields-api
+  name: beehiiv Custom Fields API
+  description: The Custom Fields API from beehiiv — 2 operation(s) for custom fields.
+  humanURL: https://developers.beehiiv.com/api-reference/publications
+  baseURL: https://api.beehiiv.com/v2
+  tags:
+  - Custom Fields
+  properties:
+  - type: OpenAPI
+    url: openapi/beehiiv-custom-fields-api-openapi.yml
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/publications
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/subscriptions
+  - type: JSONSchema
+    url: json-schema/beehiiv-subscription-schema.json
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/posts
+  - type: JSONSchema
+    url: json-schema/beehiiv-post-schema.json
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/automations
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/custom_fields
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/segments
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/tiers
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/polls
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/webhooks
+  - type: AsyncAPI
+    url: asyncapi/beehiiv-asyncapi.yml
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference
+- aid: beehiiv:beehiiv-data-deletion-api
+  name: beehiiv Data Deletion API
+  description: The Data Deletion API from beehiiv — 2 operation(s) for data deletion.
+  humanURL: https://developers.beehiiv.com/api-reference/publications
+  baseURL: https://api.beehiiv.com/v2
+  tags:
+  - Data Deletion
+  properties:
+  - type: OpenAPI
+    url: openapi/beehiiv-data-deletion-api-openapi.yml
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/publications
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/subscriptions
+  - type: JSONSchema
+    url: json-schema/beehiiv-subscription-schema.json
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/posts
+  - type: JSONSchema
+    url: json-schema/beehiiv-post-schema.json
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/automations
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/custom_fields
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/segments
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/tiers
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/polls
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/webhooks
+  - type: AsyncAPI
+    url: asyncapi/beehiiv-asyncapi.yml
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference
+- aid: beehiiv:beehiiv-engagements-api
+  name: beehiiv Engagements API
+  description: The engagements API from beehiiv — 1 operation(s) for engagements.
+  humanURL: https://developers.beehiiv.com/api-reference/publications
+  baseURL: https://api.beehiiv.com/v2
+  tags:
+  - engagements
+  properties:
+  - type: OpenAPI
+    url: openapi/beehiiv-engagements-api-openapi.yml
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/publications
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/subscriptions
+  - type: JSONSchema
+    url: json-schema/beehiiv-subscription-schema.json
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/posts
+  - type: JSONSchema
+    url: json-schema/beehiiv-post-schema.json
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/automations
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/custom_fields
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/segments
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/tiers
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/polls
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/webhooks
+  - type: AsyncAPI
+    url: asyncapi/beehiiv-asyncapi.yml
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference
+- aid: beehiiv:beehiiv-newsletter-list-subscriptions-api
+  name: beehiiv Newsletter List Subscriptions API
+  description: >-
+    The Newsletter List Subscriptions API from beehiiv — 3 operation(s) for newsletter list subscriptions.
+  humanURL: https://developers.beehiiv.com/api-reference/publications
+  baseURL: https://api.beehiiv.com/v2
+  tags:
+  - Newsletter List Subscriptions
+  properties:
+  - type: OpenAPI
+    url: openapi/beehiiv-newsletter-list-subscriptions-api-openapi.yml
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/publications
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/subscriptions
+  - type: JSONSchema
+    url: json-schema/beehiiv-subscription-schema.json
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/posts
+  - type: JSONSchema
+    url: json-schema/beehiiv-post-schema.json
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/automations
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/custom_fields
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/segments
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/tiers
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/polls
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/webhooks
+  - type: AsyncAPI
+    url: asyncapi/beehiiv-asyncapi.yml
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference
+- aid: beehiiv:beehiiv-newsletter-lists-api
+  name: beehiiv Newsletter Lists API
+  description: The Newsletter Lists API from beehiiv — 2 operation(s) for newsletter lists.
+  humanURL: https://developers.beehiiv.com/api-reference/publications
+  baseURL: https://api.beehiiv.com/v2
+  tags:
+  - Newsletter Lists
+  properties:
+  - type: OpenAPI
+    url: openapi/beehiiv-newsletter-lists-api-openapi.yml
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/publications
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/subscriptions
+  - type: JSONSchema
+    url: json-schema/beehiiv-subscription-schema.json
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/posts
+  - type: JSONSchema
+    url: json-schema/beehiiv-post-schema.json
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/automations
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/custom_fields
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/segments
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/tiers
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/polls
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/webhooks
+  - type: AsyncAPI
+    url: asyncapi/beehiiv-asyncapi.yml
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference
+- aid: beehiiv:beehiiv-oauth-users-api
+  name: beehiiv OAUTH Users API
+  description: The oauth_users API from beehiiv — 1 operation(s) for oauth_users.
+  humanURL: https://developers.beehiiv.com/api-reference/publications
+  baseURL: https://api.beehiiv.com/v2
+  tags:
+  - oauth_users
+  properties:
+  - type: OpenAPI
+    url: openapi/beehiiv-oauth-users-api-openapi.yml
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/publications
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/subscriptions
+  - type: JSONSchema
+    url: json-schema/beehiiv-subscription-schema.json
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/posts
+  - type: JSONSchema
+    url: json-schema/beehiiv-post-schema.json
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/automations
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/custom_fields
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/segments
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/tiers
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/polls
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/webhooks
+  - type: AsyncAPI
+    url: asyncapi/beehiiv-asyncapi.yml
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference
+- aid: beehiiv:beehiiv-podcasts-api
+  name: beehiiv Podcasts API
+  description: The podcasts API from beehiiv — 4 operation(s) for podcasts.
+  humanURL: https://developers.beehiiv.com/api-reference/publications
+  baseURL: https://api.beehiiv.com/v2
+  tags:
+  - podcasts
+  properties:
+  - type: OpenAPI
+    url: openapi/beehiiv-podcasts-api-openapi.yml
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/publications
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/subscriptions
+  - type: JSONSchema
+    url: json-schema/beehiiv-subscription-schema.json
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/posts
+  - type: JSONSchema
+    url: json-schema/beehiiv-post-schema.json
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/automations
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/custom_fields
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/segments
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/tiers
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/polls
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/webhooks
+  - type: AsyncAPI
+    url: asyncapi/beehiiv-asyncapi.yml
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference
+- aid: beehiiv:beehiiv-polls-api
+  name: beehiiv Polls API
+  description: The Polls API from beehiiv — 3 operation(s) for polls.
+  humanURL: https://developers.beehiiv.com/api-reference/publications
+  baseURL: https://api.beehiiv.com/v2
+  tags:
+  - Polls
+  properties:
+  - type: OpenAPI
+    url: openapi/beehiiv-polls-api-openapi.yml
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/publications
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/subscriptions
+  - type: JSONSchema
+    url: json-schema/beehiiv-subscription-schema.json
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/posts
+  - type: JSONSchema
+    url: json-schema/beehiiv-post-schema.json
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/automations
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/custom_fields
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/segments
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/tiers
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/polls
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/webhooks
+  - type: AsyncAPI
+    url: asyncapi/beehiiv-asyncapi.yml
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference
+- aid: beehiiv:beehiiv-post-templates-api
+  name: beehiiv Post Templates API
+  description: The Post Templates API from beehiiv — 1 operation(s) for post templates.
+  humanURL: https://developers.beehiiv.com/api-reference/publications
+  baseURL: https://api.beehiiv.com/v2
+  tags:
+  - Post Templates
+  properties:
+  - type: OpenAPI
+    url: openapi/beehiiv-post-templates-api-openapi.yml
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/publications
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/subscriptions
+  - type: JSONSchema
+    url: json-schema/beehiiv-subscription-schema.json
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/posts
+  - type: JSONSchema
+    url: json-schema/beehiiv-post-schema.json
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/automations
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/custom_fields
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/segments
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/tiers
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/polls
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/webhooks
+  - type: AsyncAPI
+    url: asyncapi/beehiiv-asyncapi.yml
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference
+- aid: beehiiv:beehiiv-posts-api
+  name: beehiiv Posts API
+  description: The Posts API from beehiiv — 5 operation(s) for posts.
+  humanURL: https://developers.beehiiv.com/api-reference/publications
+  baseURL: https://api.beehiiv.com/v2
+  tags:
+  - Posts
+  properties:
+  - type: OpenAPI
+    url: openapi/beehiiv-posts-api-openapi.yml
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/publications
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/subscriptions
+  - type: JSONSchema
+    url: json-schema/beehiiv-subscription-schema.json
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/posts
+  - type: JSONSchema
+    url: json-schema/beehiiv-post-schema.json
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/automations
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/custom_fields
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/segments
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/tiers
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/polls
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/webhooks
+  - type: AsyncAPI
+    url: asyncapi/beehiiv-asyncapi.yml
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference
+- aid: beehiiv:beehiiv-publications-api
+  name: beehiiv Publications API
+  description: The Publications API from beehiiv — 2 operation(s) for publications.
+  humanURL: https://developers.beehiiv.com/api-reference/publications
+  baseURL: https://api.beehiiv.com/v2
+  tags:
+  - Publications
+  properties:
+  - type: OpenAPI
+    url: openapi/beehiiv-publications-api-openapi.yml
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/publications
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/subscriptions
+  - type: JSONSchema
+    url: json-schema/beehiiv-subscription-schema.json
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/posts
+  - type: JSONSchema
+    url: json-schema/beehiiv-post-schema.json
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/automations
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/custom_fields
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/segments
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/tiers
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/polls
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/webhooks
+  - type: AsyncAPI
+    url: asyncapi/beehiiv-asyncapi.yml
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference
+- aid: beehiiv:beehiiv-referral-program-api
+  name: beehiiv Referral Program API
+  description: The Referral Program API from beehiiv — 1 operation(s) for referral program.
+  humanURL: https://developers.beehiiv.com/api-reference/publications
+  baseURL: https://api.beehiiv.com/v2
+  tags:
+  - Referral Program
+  properties:
+  - type: OpenAPI
+    url: openapi/beehiiv-referral-program-api-openapi.yml
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/publications
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/subscriptions
+  - type: JSONSchema
+    url: json-schema/beehiiv-subscription-schema.json
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/posts
+  - type: JSONSchema
+    url: json-schema/beehiiv-post-schema.json
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/automations
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/custom_fields
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/segments
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/tiers
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/polls
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/webhooks
+  - type: AsyncAPI
+    url: asyncapi/beehiiv-asyncapi.yml
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference
+- aid: beehiiv:beehiiv-segments-api
+  name: beehiiv Segments API
+  description: The Segments API from beehiiv — 5 operation(s) for segments.
+  humanURL: https://developers.beehiiv.com/api-reference/publications
+  baseURL: https://api.beehiiv.com/v2
+  tags:
+  - Segments
+  properties:
+  - type: OpenAPI
+    url: openapi/beehiiv-segments-api-openapi.yml
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/publications
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/subscriptions
+  - type: JSONSchema
+    url: json-schema/beehiiv-subscription-schema.json
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/posts
+  - type: JSONSchema
+    url: json-schema/beehiiv-post-schema.json
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/automations
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/custom_fields
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/segments
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/tiers
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/polls
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/webhooks
+  - type: AsyncAPI
+    url: asyncapi/beehiiv-asyncapi.yml
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference
+- aid: beehiiv:beehiiv-subscription-tags-api
+  name: beehiiv Subscription Tags API
+  description: The Subscription Tags API from beehiiv — 1 operation(s) for subscription tags.
+  humanURL: https://developers.beehiiv.com/api-reference/publications
+  baseURL: https://api.beehiiv.com/v2
+  tags:
+  - Subscription Tags
+  properties:
+  - type: OpenAPI
+    url: openapi/beehiiv-subscription-tags-api-openapi.yml
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/publications
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/subscriptions
+  - type: JSONSchema
+    url: json-schema/beehiiv-subscription-schema.json
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/posts
+  - type: JSONSchema
+    url: json-schema/beehiiv-post-schema.json
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/automations
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/custom_fields
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/segments
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/tiers
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/polls
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/webhooks
+  - type: AsyncAPI
+    url: asyncapi/beehiiv-asyncapi.yml
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference
+- aid: beehiiv:beehiiv-subscriptions-api
+  name: beehiiv Subscriptions API
+  description: The Subscriptions API from beehiiv — 3 operation(s) for subscriptions.
+  humanURL: https://developers.beehiiv.com/api-reference/publications
+  baseURL: https://api.beehiiv.com/v2
+  tags:
+  - Subscriptions
+  properties:
+  - type: OpenAPI
+    url: openapi/beehiiv-subscriptions-api-openapi.yml
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/publications
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/subscriptions
+  - type: JSONSchema
+    url: json-schema/beehiiv-subscription-schema.json
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/posts
+  - type: JSONSchema
+    url: json-schema/beehiiv-post-schema.json
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/automations
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/custom_fields
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/segments
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/tiers
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/polls
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/webhooks
+  - type: AsyncAPI
+    url: asyncapi/beehiiv-asyncapi.yml
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference
+- aid: beehiiv:beehiiv-tiers-api
+  name: beehiiv Tiers API
+  description: The Tiers API from beehiiv — 2 operation(s) for tiers.
+  humanURL: https://developers.beehiiv.com/api-reference/publications
+  baseURL: https://api.beehiiv.com/v2
+  tags:
+  - Tiers
+  properties:
+  - type: OpenAPI
+    url: openapi/beehiiv-tiers-api-openapi.yml
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/publications
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/subscriptions
+  - type: JSONSchema
+    url: json-schema/beehiiv-subscription-schema.json
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/posts
+  - type: JSONSchema
+    url: json-schema/beehiiv-post-schema.json
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/automations
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/custom_fields
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/segments
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/tiers
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/polls
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/webhooks
+  - type: AsyncAPI
+    url: asyncapi/beehiiv-asyncapi.yml
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference
+- aid: beehiiv:beehiiv-workspaces-api
+  name: beehiiv Workspaces API
+  description: The workspaces API from beehiiv — 3 operation(s) for workspaces.
+  humanURL: https://developers.beehiiv.com/api-reference/publications
+  baseURL: https://api.beehiiv.com/v2
+  tags:
+  - workspaces
+  properties:
+  - type: OpenAPI
+    url: openapi/beehiiv-workspaces-api-openapi.yml
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/publications
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/subscriptions
+  - type: JSONSchema
+    url: json-schema/beehiiv-subscription-schema.json
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/posts
+  - type: JSONSchema
+    url: json-schema/beehiiv-post-schema.json
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/automations
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/custom_fields
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/segments
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/tiers
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/polls
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference/webhooks
+  - type: AsyncAPI
+    url: asyncapi/beehiiv-asyncapi.yml
+  - type: Documentation
+    url: https://developers.beehiiv.com/api-reference
 common:
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/beehiiv/overview

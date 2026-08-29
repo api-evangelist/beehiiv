@@ -1,0 +1,388 @@
+openapi: 3.2.0
+info:
+  title: Reference Ad Network Reports API
+  version: 1.0.0
+servers:
+- url: https://api.beehiiv.com/v2
+  description: Default
+tags:
+- name: Ad Network Reports
+paths:
+  /publications/{publicationId}/ad_network/reports:
+    get:
+      operationId: index
+      summary: 'Get ad network reports <Badge intent="info" minimal outlined>OAuth Scope: posts:read</Badge>'
+      description: "<Note title=\"Currently in beta\" icon=\"b\">\n  This feature is currently in beta and the API is subject to change.<br/>\n</Note>\nRetrieve advertisement performance and payment reports for the publication."
+      tags:
+      - Ad Network Reports
+      parameters:
+      - name: publicationId
+        in: path
+        description: The prefixed ID of the publication object.
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids_PublicationId'
+      - name: limit
+        in: query
+        description: A limit between 1 and 100. Defaults to 10.
+        required: false
+        schema:
+          type: integer
+      - name: page
+        in: query
+        description: The page of reports to return. Defaults to 1.
+        required: false
+        schema:
+          type: integer
+      - name: start_date
+        in: query
+        description: Include reports for advertisements sent on or after this date in `YYYY-MM-DD` format.
+        required: false
+        schema:
+          type: string
+          format: date
+      - name: end_date
+        in: query
+        description: Include reports for advertisements sent on or before this date in `YYYY-MM-DD` format.
+        required: false
+        schema:
+          type: string
+          format: date
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_ad_network_reports_AdNetworkReportsGetResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '401':
+          description: Unauthorized. The API key or OAuth access token is missing, invalid, or expired.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '404':
+          description: Resource Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '429':
+          description: Rate Limit Exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+  /publications/{publicationId}/ad_network/reports/summaries:
+    get:
+      operationId: summary
+      summary: 'Get ad network report summary <Badge intent="info" minimal outlined>OAuth Scope: posts:read</Badge>'
+      description: "<Note title=\"Currently in beta\" icon=\"b\">\n  This feature is currently in beta and the API is subject to change.<br/>\n</Note>\nRetrieve aggregate advertisement performance and revenue for a publication."
+      tags:
+      - Ad Network Reports
+      parameters:
+      - name: publicationId
+        in: path
+        description: The prefixed ID of the publication object.
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids_PublicationId'
+      - name: start_date
+        in: query
+        description: Include reports for advertisements sent on or after this date in `YYYY-MM-DD` format.
+        required: false
+        schema:
+          type: string
+          format: date
+      - name: end_date
+        in: query
+        description: Include reports for advertisements sent on or before this date in `YYYY-MM-DD` format.
+        required: false
+        schema:
+          type: string
+          format: date
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_ad_network_reports_AdNetworkReportSummary'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '401':
+          description: Unauthorized. The API key or OAuth access token is missing, invalid, or expired.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '404':
+          description: Resource Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '429':
+          description: Rate Limit Exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+  /ad_network/reports/summaries:
+    get:
+      operationId: account-summary
+      summary: 'Get account ad network report summary <Badge intent="info" minimal outlined>OAuth Scope: posts:read</Badge>'
+      description: "<Note title=\"Currently in beta\" icon=\"b\">\n  This feature is currently in beta and the API is subject to change.<br/>\n</Note>\nRetrieve one account-wide aggregate of advertisement performance and revenue across accessible publications."
+      tags:
+      - Ad Network Reports
+      parameters:
+      - name: start_date
+        in: query
+        description: Include reports for advertisements sent on or after this date in `YYYY-MM-DD` format.
+        required: false
+        schema:
+          type: string
+          format: date
+      - name: end_date
+        in: query
+        description: Include reports for advertisements sent on or before this date in `YYYY-MM-DD` format.
+        required: false
+        schema:
+          type: string
+          format: date
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_ad_network_reports_AdNetworkReportSummary'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '401':
+          description: Unauthorized. The API key or OAuth access token is missing, invalid, or expired.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '429':
+          description: Rate Limit Exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+components:
+  schemas:
+    type_ad_network_reports_AdNetworkReport:
+      type: object
+      properties:
+        publication_id:
+          $ref: '#/components/schemas/type_ids_PublicationId'
+          description: The prefixed ID of the publication that ran the advertisement.
+        post_id:
+          $ref: '#/components/schemas/type_ids_PostId'
+          description: The prefixed ID of the post containing the advertisement.
+        ad_link_id:
+          type: string
+          description: The ID used to attribute engagement events to the advertisement.
+        opens:
+          type: integer
+          description: The approved number of unique opens.
+        verified_clicks:
+          type: integer
+          description: The approved number of verified clicks.
+        revenue:
+          type: string
+          description: The formatted revenue approved for payment.
+        is_programmatic:
+          type: boolean
+          description: Whether the advertisement was placed through a programmatic ad slot instead of an on-demand offer.
+      required:
+      - publication_id
+      - post_id
+      - ad_link_id
+      - opens
+      - verified_clicks
+      - revenue
+      - is_programmatic
+      title: AdNetworkReport
+    type_ids_PostId:
+      type: string
+      description: The prefixed ID of the post.
+      title: PostId
+    type_ad_network_reports_AdNetworkReportSummaryMetrics:
+      type: object
+      properties:
+        opens:
+          type: integer
+          description: The approved number of unique opens.
+        verified_clicks:
+          type: integer
+          description: The approved number of verified clicks.
+        revenue:
+          type: string
+          description: The formatted revenue approved for payment.
+      required:
+      - opens
+      - verified_clicks
+      - revenue
+      title: AdNetworkReportSummaryMetrics
+    type_ad_network_reports_AdNetworkReportsGetResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/type_ad_network_reports_AdNetworkReport'
+          description: Advertisement performance and payment reports for the publication.
+        limit:
+          type: integer
+          description: The maximum number of reports returned.
+        page:
+          type: integer
+          description: The page number returned.
+        total_results:
+          type: integer
+          description: The total number of reports.
+        total_pages:
+          type: integer
+          description: The total number of pages.
+      required:
+      - data
+      - limit
+      - page
+      - total_results
+      - total_pages
+      title: AdNetworkReportsGetResponse
+    type_ids_PublicationId:
+      type: string
+      description: The prefixed ID of the publication.
+      title: PublicationId
+    type__Error:
+      type: object
+      properties:
+        status:
+          type: integer
+        statusText:
+          type: string
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/type__ErrorDetail'
+      required:
+      - status
+      - statusText
+      - errors
+      description: The top level error response.
+      title: Error
+    type__ErrorDetail:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+      required:
+      - message
+      - code
+      title: ErrorDetail
+    type_ad_network_reports_AdNetworkReportSummary:
+      type: object
+      properties:
+        publication_id:
+          $ref: '#/components/schemas/type_ids_PublicationId'
+          description: The prefixed publication ID. Omitted from account-wide summaries.
+        opens:
+          type: integer
+          description: The total approved number of unique opens.
+        verified_clicks:
+          type: integer
+          description: The total approved number of verified clicks.
+        revenue:
+          type: string
+          description: The total formatted revenue approved for payment.
+        oda:
+          $ref: '#/components/schemas/type_ad_network_reports_AdNetworkReportSummaryMetrics'
+          description: Metrics for advertisements accepted as on-demand offers.
+        programmatic:
+          $ref: '#/components/schemas/type_ad_network_reports_AdNetworkReportSummaryMetrics'
+          description: Metrics for advertisements placed through programmatic ad slots.
+      required:
+      - opens
+      - verified_clicks
+      - revenue
+      - oda
+      - programmatic
+      title: AdNetworkReportSummary
+  securitySchemes:
+    BearerAuthScheme:
+      type: http
+      scheme: bearer

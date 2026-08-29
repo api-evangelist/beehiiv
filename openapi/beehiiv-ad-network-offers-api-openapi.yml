@@ -1,0 +1,437 @@
+openapi: 3.2.0
+info:
+  title: Reference Ad Network Offers API
+  version: 1.0.0
+servers:
+- url: https://api.beehiiv.com/v2
+  description: Default
+tags:
+- name: Ad Network Offers
+paths:
+  /publications/{publicationId}/ad_network/offers:
+    get:
+      operationId: index
+      summary: 'Get ad offers <Badge intent="info" minimal outlined>OAuth Scope: posts:read</Badge>'
+      description: "<Note title=\"Currently in beta\" icon=\"b\">\n  This feature is currently in beta and the API is subject to change.<br/>\n</Note>\nRetrieve a list of ad offers available for the publication."
+      tags:
+      - Ad Network Offers
+      parameters:
+      - name: publicationId
+        in: path
+        description: The prefixed ID of the publication object
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids_PublicationId'
+      - name: requested_from
+        in: query
+        description: A source identifier for where the offers request originated.
+        required: false
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_ad_network_offers_AdOffersGetResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '401':
+          description: Unauthorized. The API key or OAuth access token is missing, invalid, or expired.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '404':
+          description: Resource Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '429':
+          description: Rate Limit Exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+    post:
+      operationId: create
+      summary: 'Accept ad offer <Badge intent="info" minimal outlined>OAuth Scope: posts:write</Badge>'
+      description: "<Note title=\"Currently in beta\" icon=\"b\">\n  This feature is currently in beta and the API is subject to change.<br/>\n</Note>\nDraft and accept an ad offer, then insert the resulting advertisement opportunity into a post."
+      tags:
+      - Ad Network Offers
+      parameters:
+      - name: publicationId
+        in: path
+        description: The prefixed ID of the publication object
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids_PublicationId'
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_ad_network_offers_AdOfferCreateResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '401':
+          description: Unauthorized. The API key or OAuth access token is missing, invalid, or expired.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '404':
+          description: Resource Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '422':
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '429':
+          description: Rate Limit Exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                offer_id:
+                  type: string
+                  description: The ID of the ad offer to accept.
+                advertisement_id:
+                  type: string
+                  description: The ID of the advertisement creative to use.
+                post_id:
+                  type: string
+                  description: The ID of the post where the advertisement should be inserted.
+              required:
+              - offer_id
+              - advertisement_id
+              - post_id
+  /publications/{publicationId}/ad_network/offers/{offerId}/advertisements:
+    get:
+      operationId: advertisements
+      summary: 'Get ad offer advertisements <Badge intent="info" minimal outlined>OAuth Scope: posts:read</Badge>'
+      description: "<Note title=\"Currently in beta\" icon=\"b\">\n  This feature is currently in beta and the API is subject to change.<br/>\n</Note>\nRetrieve the active text advertisement creatives available for an ad offer."
+      tags:
+      - Ad Network Offers
+      parameters:
+      - name: publicationId
+        in: path
+        description: The prefixed ID of the publication object
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids_PublicationId'
+      - name: offerId
+        in: path
+        description: The ID of the ad offer.
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_ad_network_offers_AdOfferAdvertisementsGetResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '401':
+          description: Unauthorized. The API key or OAuth access token is missing, invalid, or expired.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '404':
+          description: Resource Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '422':
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '429':
+          description: Rate Limit Exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+components:
+  schemas:
+    type_ids_PublicationId:
+      type: string
+      description: The prefixed ID of the publication.
+      title: PublicationId
+    type_ad_network_offers_AdOfferCreateResponseData:
+      type: object
+      properties:
+        offer_id:
+          type: string
+          description: The ID of the accepted ad offer.
+        opportunity_id:
+          type: string
+          description: The ID of the drafted and accepted opportunity created from the offer.
+        advertisement_id:
+          type: string
+          description: The ID of the advertisement creative selected for the opportunity.
+        post_id:
+          type: string
+          description: The ID of the post where the opportunity was inserted.
+      required:
+      - offer_id
+      - opportunity_id
+      - advertisement_id
+      - post_id
+      title: AdOfferCreateResponseData
+    type__Error:
+      type: object
+      properties:
+        status:
+          type: integer
+        statusText:
+          type: string
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/type__ErrorDetail'
+      required:
+      - status
+      - statusText
+      - errors
+      description: The top level error response.
+      title: Error
+    type_ad_network_offers_AdOffer:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The ID of the offer or pending opportunity.
+        payout_model:
+          type: string
+          description: The payout model for the offer.
+        payout_per_click:
+          type: string
+          description: The formatted payout per eligible click.
+        payout_per_mille:
+          type: string
+          description: The formatted payout per thousand eligible opens.
+        estimated_payout:
+          type: string
+          description: The formatted estimated payout.
+        send_by:
+          type: string
+          format: date-time
+          description: The date the advertisement should be sent by.
+        campaign:
+          $ref: '#/components/schemas/type_ad_network_offers_AdOfferCampaign'
+        advertiser:
+          $ref: '#/components/schemas/type_ad_network_offers_AdOfferAdvertiser'
+      required:
+      - id
+      - payout_model
+      - payout_per_click
+      - payout_per_mille
+      - estimated_payout
+      - campaign
+      - advertiser
+      title: AdOffer
+    type_ad_network_offers_AdOfferAdvertisement:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The ID of the advertisement creative.
+        recommended:
+          type: boolean
+          description: Whether this is the recommended creative for the offer.
+        name:
+          type: string
+          description: The advertisement name.
+        headline:
+          type: string
+          description: The advertisement headline.
+        description:
+          type: string
+          description: The advertisement description.
+        kind:
+          type: string
+          description: The advertisement creative kind.
+        sponsor_text:
+          type: string
+          description: The sponsor label used by the creative.
+        text:
+          type: string
+          description: The plain text extracted from the advertisement creative.
+      required:
+      - id
+      - recommended
+      - name
+      - headline
+      - kind
+      - sponsor_text
+      - text
+      title: AdOfferAdvertisement
+    type_ad_network_offers_AdOfferCreateResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/type_ad_network_offers_AdOfferCreateResponseData'
+      required:
+      - data
+      title: AdOfferCreateResponse
+    type_ad_network_offers_AdOfferAdvertiser:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The advertiser name.
+        logo_url:
+          type: string
+          description: The advertiser logo URL.
+        description:
+          type: string
+          description: The advertiser description.
+        url:
+          type: string
+          description: The advertiser website URL.
+      required:
+      - name
+      title: AdOfferAdvertiser
+    type_ad_network_offers_AdOfferAdvertisementsGetResponse:
+      type: object
+      properties:
+        advertisements:
+          type: array
+          items:
+            $ref: '#/components/schemas/type_ad_network_offers_AdOfferAdvertisement'
+          description: A list of active advertisement creatives available for this offer.
+      required:
+      - advertisements
+      title: AdOfferAdvertisementsGetResponse
+    type__ErrorDetail:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+      required:
+      - message
+      - code
+      title: ErrorDetail
+    type_ad_network_offers_AdOffersGetResponse:
+      type: object
+      properties:
+        offers:
+          type: array
+          items:
+            $ref: '#/components/schemas/type_ad_network_offers_AdOffer'
+          description: A list of ad offers available for this publication.
+      required:
+      - offers
+      title: AdOffersGetResponse
+    type_ad_network_offers_AdOfferCampaign:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The campaign name.
+        message_to_publisher:
+          type: string
+          description: The message from the advertiser to the publisher.
+        promoted_item:
+          type: string
+          description: The item promoted by the campaign.
+        promoted_item_other:
+          type: string
+          description: Additional promoted item details when applicable.
+      required:
+      - name
+      title: AdOfferCampaign
+  securitySchemes:
+    BearerAuthScheme:
+      type: http
+      scheme: bearer

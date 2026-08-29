@@ -1,0 +1,625 @@
+openapi: 3.2.0
+info:
+  title: Reference Workspaces API
+  version: 1.0.0
+servers:
+- url: https://api.beehiiv.com/v2
+  description: Default
+tags:
+- name: workspaces
+paths:
+  /workspaces/identify:
+    get:
+      operationId: identify
+      summary: 'Identify workspace <Badge intent="info" minimal outlined>OAuth Scope: identify:read</Badge>'
+      description: Retrieve information about the workspace the OAuth or API token is associated with.
+      tags:
+      - workspaces
+      parameters:
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_workspaces_WorkspaceIdentifyResponse'
+        '401':
+          description: Unauthorized. The API key or OAuth access token is missing, invalid, or expired.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '404':
+          description: Resource Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '429':
+          description: Rate Limit Exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+  /workspaces/permissions:
+    get:
+      operationId: permissions
+      summary: 'Get workspace permissions <Badge intent="info" minimal outlined>OAuth Scope: identify:read</Badge>'
+      description: Retrieve the permissions granted to the OAuth or API token for this workspace. API keys return all granular OAuth scopes. OAuth tokens return only the scopes they were authorized for.<br><br> `posts` write access is only included when the Send API feature is enabled; tokens with `posts:write` but without Send API receive `posts` as `["read"]`.
+      tags:
+      - workspaces
+      parameters:
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_workspaces_WorkspacePermissionsResponse'
+        '401':
+          description: Unauthorized. The API key or OAuth access token is missing, invalid, or expired.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '404':
+          description: Resource Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '429':
+          description: Rate Limit Exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+  /workspaces/publications/by_subscription_email/{email}:
+    get:
+      operationId: publications-by-subscription-email
+      summary: 'Get publications by subscription email <Badge intent="info" minimal outlined>OAuth Scope: publications:read</Badge>'
+      description: Retrieve all publications in the workspace that have a subscription for the specified email address. The workspace is determined by the provided API key.
+      tags:
+      - workspaces
+      parameters:
+      - name: email
+        in: path
+        description: The email address to search for subscriptions
+        required: true
+        schema:
+          type: string
+      - name: expand
+        in: query
+        description: Optionally expand the results by adding additional information. <br>`subscription` - Returns the full Subscription object for the email address in each publication. <br>`publication` - Returns the full Publication object instead of just ID and name. <br>`subscription_custom_fields` - Returns custom field values nested within the subscription object. (Returns the subscription object regardless of whether `subscription` is requested.)
+        required: false
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/type_workspaces_PublicationsBySubscriptionEmailRequestExpandItem'
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/type_workspaces_PublicationsBySubscriptionEmailResponseItem'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '401':
+          description: Unauthorized. The API key or OAuth access token is missing, invalid, or expired.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '404':
+          description: Resource Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '429':
+          description: Rate Limit Exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+components:
+  schemas:
+    type__CustomFieldType:
+      type: string
+      enum:
+      - string
+      - integer
+      - boolean
+      - date
+      - datetime
+      - list
+      - double
+      description: The type of value being stored in the custom field.
+      title: CustomFieldType
+    type__ActivePremiumSubscriptionCount:
+      oneOf:
+      - type: integer
+      - type: boolean
+      description: Total number of active premium/paid subscriptions
+      title: ActivePremiumSubscriptionCount
+    type_workspaces_WorkspaceIdentity:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/type_ids_WorkspaceId'
+          description: The prefixed ID of the workspace.
+        name:
+          type: string
+          description: The name of the workspace.
+        owner_email:
+          type: string
+          description: The email of the owner of the workspace.
+      required:
+      - id
+      - name
+      - owner_email
+      title: WorkspaceIdentity
+    type__SubscriptionCustomFieldList:
+      type: array
+      items:
+        $ref: '#/components/schemas/type__CustomField'
+      description: 'Optional list of custom fields for a subscription. Retrievable by including `expand: [custom_field]` in the request body.'
+      title: SubscriptionCustomFieldList
+    type__ActiveFreeSubscriptionCount:
+      oneOf:
+      - type: integer
+      - type: boolean
+      description: Total number of active free subscriptions
+      title: ActiveFreeSubscriptionCount
+    type__SubscriptionTierList:
+      type: array
+      items:
+        $ref: '#/components/schemas/type__SubscriptionTierInfo'
+      description: 'Optional list of tiers for a subscription. Retrievable by including `expand: [subscription_premium_tiers]` in the request body.'
+      title: SubscriptionTierList
+    type__Error:
+      type: object
+      properties:
+        status:
+          type: integer
+        statusText:
+          type: string
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/type__ErrorDetail'
+      required:
+      - status
+      - statusText
+      - errors
+      description: The top level error response.
+      title: Error
+    type__SubscriptionTierInfoStatus:
+      type: string
+      enum:
+      - active
+      - archived
+      description: Returns whether or not the tier has any active prices.
+      title: SubscriptionTierInfoStatus
+    type_workspaces_WorkspaceIdentifyResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/type_workspaces_WorkspaceIdentity'
+      required:
+      - data
+      title: WorkspaceIdentifyResponse
+    type__SubscriptionTags:
+      type: array
+      items:
+        type: string
+      description: 'Optional list of tags for a subscription. Retrievable by including `expand: [tags]` in the request body.
+
+        Max limit of 100 unique tags per publication.'
+      title: SubscriptionTags
+    type__Publication:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/type_ids_PublicationId'
+          description: A unique prefixed id of the publication
+        name:
+          type: string
+          description: The name of the publication
+        organization_name:
+          type: string
+          description: The name of the organization
+        referral_program_enabled:
+          type: boolean
+          description: A boolean field indicating whether the referral program is active for this publication.
+        created:
+          type: number
+          format: double
+          description: The time that the publication was created. Measured in seconds since the Unix epoch
+        stats:
+          $ref: '#/components/schemas/type__PublicationStats'
+      required:
+      - id
+      - name
+      - organization_name
+      - referral_program_enabled
+      - created
+      title: Publication
+    type_ids_WorkspaceId:
+      type: string
+      description: The prefixed ID of the workspace.
+      title: WorkspaceId
+    type__SubscriptionTierInfo:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/type_ids_TierId'
+        name:
+          type: string
+        status:
+          $ref: '#/components/schemas/type__SubscriptionTierInfoStatus'
+          description: Returns whether or not the tier has any active prices.
+      required:
+      - id
+      - name
+      - status
+      title: SubscriptionTierInfo
+    type__SubscriptionStats:
+      type: object
+      properties:
+        emails_received:
+          type: integer
+          description: The total number of emails that have been sent to this subscriber
+        open_rate:
+          type: number
+          format: double
+          description: The percentage of emails that the subscriber has opened
+        click_through_rate:
+          type: number
+          format: double
+          description: The percentage of emails that the subscriber has clicked a link in
+      description: 'Optional list of stats for a subscription. Retrievable by including `expand: [stats]` in the request body.'
+      title: SubscriptionStats
+    type_workspaces_PermissionAction:
+      type: string
+      enum:
+      - read
+      - write
+      title: PermissionAction
+    type__AverageOpenRate:
+      oneOf:
+      - type: number
+        format: double
+      - type: boolean
+      description: The publications historical average open rate
+      title: AverageOpenRate
+    type__SubscriptionExpandedStatus:
+      type: string
+      enum:
+      - validating
+      - invalid
+      - pending
+      - active
+      - inactive
+      - needs_attention
+      - paused
+      description: The status of the subscription.<br>`validating` - The email address is being validated.<br>`invalid` - The email address is invalid.<br>`pending` - The email address is valid, but the subscription is pending double opt-in.<br>`active` - The email was valid and the subscription is active.<br>`inactive` - The subscription was made inactive, possibly due to an unsubscribe.<br>`needs_attention` - The subscription requires approval or denial.<br>`paused` - The subscriber has paused their subscription.
+      title: SubscriptionExpandedStatus
+    type__CustomField:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the existing custom field
+        kind:
+          $ref: '#/components/schemas/type__CustomFieldType'
+          description: The type of value being stored in the custom field.
+        value:
+          $ref: '#/components/schemas/type__CustomFieldDataType'
+          description: The value stored for the subscription
+      title: CustomField
+    type__CustomFieldDataType:
+      oneOf:
+      - type: string
+      - type: number
+        format: double
+      - type: boolean
+      - type: array
+        items:
+          type: string
+      title: CustomFieldDataType
+    type__ErrorDetail:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+      required:
+      - message
+      - code
+      title: ErrorDetail
+    type__SubscriptionExpandedUtmChannel:
+      type: string
+      enum:
+      - ''
+      - website
+      - import
+      - embed
+      - api
+      - referral
+      - recommendation
+      - magic_link
+      - boost
+      - boost_send
+      - boost_direct_link
+      - integration
+      - product
+      - group_invite
+      description: The acquisition channel
+      title: SubscriptionExpandedUtmChannel
+    type_workspaces_PublicationsBySubscriptionEmailResponseItem:
+      type: object
+      properties:
+        publication_id:
+          $ref: '#/components/schemas/type_ids_PublicationId'
+          description: The prefixed ID of the publication
+        publication_name:
+          type: string
+          description: The name of the publication
+        subscription_id:
+          $ref: '#/components/schemas/type_ids_SubscriptionId'
+          description: The prefixed ID of the subscription matching the email address for this publication
+        status:
+          $ref: '#/components/schemas/type__SubscriptionExpandedStatus'
+          description: The status of the subscription matching the email address for this publication
+        publication:
+          $ref: '#/components/schemas/type__Publication'
+          description: The full Publication object. Only present when `expand` includes `publication`.
+        subscription:
+          $ref: '#/components/schemas/type__Subscription'
+          description: The Subscription object matching the email address for this publication.  Only present when `expand` includes `subscription` or `subscription_custom_fields`.
+      required:
+      - publication_id
+      - publication_name
+      - subscription_id
+      - status
+      title: PublicationsBySubscriptionEmailResponseItem
+    type_workspaces_PublicationsBySubscriptionEmailRequestExpandItem:
+      type: string
+      enum:
+      - subscription
+      - publication
+      - subscription_custom_fields
+      title: PublicationsBySubscriptionEmailRequestExpandItem
+    type__SubscriptionExpandedSubscriptionTier:
+      type: string
+      enum:
+      - free
+      - premium
+      description: The current tier of the subscription.
+      title: SubscriptionExpandedSubscriptionTier
+    type__PublicationStats:
+      type: object
+      properties:
+        active_subscriptions:
+          $ref: '#/components/schemas/type__ActiveSubscriptionCount'
+          description: Total number of active free and premium subscriptions
+        active_premium_subscriptions:
+          $ref: '#/components/schemas/type__ActivePremiumSubscriptionCount'
+          description: Total number of active premium/paid subscriptions
+        active_free_subscriptions:
+          $ref: '#/components/schemas/type__ActiveFreeSubscriptionCount'
+          description: Total number of active free subscriptions
+        average_open_rate:
+          $ref: '#/components/schemas/type__AverageOpenRate'
+          description: The publications historical average open rate
+        average_click_rate:
+          $ref: '#/components/schemas/type__AverageClickRate'
+          description: The publications historical average click through rate
+        total_sent:
+          $ref: '#/components/schemas/type__TotalEmailsSent'
+          description: Total number of emails sent
+        total_unique_opened:
+          $ref: '#/components/schemas/type__TotalUniqueOpens'
+          description: Total number of uniquely opened emails. Only counts the first open for each subscriber.
+        total_clicked:
+          $ref: '#/components/schemas/type__TotalClicks'
+          description: The total number of links clicked from emails.
+      description: "Optional list of stats for a publication. Retrievable by including an `expand` array in the publication request body. Add `\"stats\"` to the array to retrieve all, or add individual stats (prefaced with `stat_`) to only retrieve specific ones.\n\nExamples:\n{\n  \"expand\": [\"stats\"]\n}\n\n{\n  \"expand\": [\"stat_active_subscriptions\", \"stat_average_click_rate\"]\n}"
+      title: PublicationStats
+    type_ids_PublicationId:
+      type: string
+      description: The prefixed ID of the publication.
+      title: PublicationId
+    type_workspaces_WorkspacePermissions:
+      type: object
+      additionalProperties:
+        type: array
+        items:
+          $ref: '#/components/schemas/type_workspaces_PermissionAction'
+      description: A map of OAuth resources to the permission actions granted for each. Keys are resource names (e.g. `posts`, `segments`) and values are arrays of granted actions (`read` and/or `write`). API keys receive all granular OAuth scopes. OAuth tokens receive only the scopes they were authorized for. `posts` write access is only included when the Send API feature is enabled for the workspace; if the token has `posts:write` but Send API is disabled, `posts` is returned as `["read"]`.
+      title: WorkspacePermissions
+    type_ids_SubscriptionId:
+      type: string
+      description: The prefixed ID of the subscription.
+      title: SubscriptionId
+    type__ActiveSubscriptionCount:
+      oneOf:
+      - type: integer
+      - type: boolean
+      description: Total number of active free and premium subscriptions
+      title: ActiveSubscriptionCount
+    type__TotalEmailsSent:
+      oneOf:
+      - type: integer
+      - type: boolean
+      description: Total number of emails sent
+      title: TotalEmailsSent
+    type__TotalClicks:
+      oneOf:
+      - type: integer
+      - type: boolean
+      description: The total number of links clicked from emails.
+      title: TotalClicks
+    type_workspaces_WorkspacePermissionsResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/type_workspaces_WorkspacePermissions'
+      required:
+      - data
+      title: WorkspacePermissionsResponse
+    type__AverageClickRate:
+      oneOf:
+      - type: number
+        format: double
+      - type: boolean
+      description: The publications historical average click through rate
+      title: AverageClickRate
+    type__TotalUniqueOpens:
+      oneOf:
+      - type: integer
+      - type: boolean
+      description: Total number of uniquely opened emails. Only counts the first open for each subscriber.
+      title: TotalUniqueOpens
+    type__Subscription:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/type_ids_SubscriptionId'
+          description: The prefixed subscription id
+        email:
+          type: string
+          format: email
+        status:
+          $ref: '#/components/schemas/type__SubscriptionExpandedStatus'
+          description: The status of the subscription.<br>`validating` - The email address is being validated.<br>`invalid` - The email address is invalid.<br>`pending` - The email address is valid, but the subscription is pending double opt-in.<br>`active` - The email was valid and the subscription is active.<br>`inactive` - The subscription was made inactive, possibly due to an unsubscribe.<br>`needs_attention` - The subscription requires approval or denial.
+        created:
+          type: integer
+          description: The date the subscription was created. Measured in seconds since the Unix epoch
+        subscription_tier:
+          $ref: '#/components/schemas/type__SubscriptionExpandedSubscriptionTier'
+          description: The current tier of the subscription.
+        subscription_premium_tier_names:
+          type: array
+          items:
+            type: string
+          description: The current premium tiers of the subscription. Empty if the subscriber is not associated with any premium tiers.
+        utm_source:
+          type: string
+          description: The acquisition source; where the subscriber came from
+        utm_medium:
+          type: string
+          description: The acquisition medium; how the subscriber got to your publication
+        utm_channel:
+          $ref: '#/components/schemas/type__SubscriptionExpandedUtmChannel'
+          description: The acquisition channel
+        utm_campaign:
+          type: string
+          description: The acquisition campaign
+        utm_term:
+          type: string
+          description: The acquisition term; typically the keyword or search term
+        utm_content:
+          type: string
+          description: The acquisition content; typically used for A/B testing or ad variations
+        referring_site:
+          type: string
+          description: The website that the subscriber was referred from
+        referral_code:
+          type: string
+          description: The code associated to this subscriber to refer others. When a new subscription is created with this referral code, credit for the referral goes to this subscription.
+        subscription_premium_tiers:
+          $ref: '#/components/schemas/type__SubscriptionTierList'
+        custom_fields:
+          $ref: '#/components/schemas/type__SubscriptionCustomFieldList'
+        tags:
+          $ref: '#/components/schemas/type__SubscriptionTags'
+        stats:
+          $ref: '#/components/schemas/type__SubscriptionStats'
+        newsletter_list_ids:
+          type: array
+          items:
+            type: string
+          description: The prefixed IDs of the newsletter lists this subscription is actively subscribed to. Requires `expand[]=newsletter_lists`.
+      required:
+      - id
+      - email
+      - status
+      - created
+      - subscription_tier
+      - subscription_premium_tier_names
+      - utm_source
+      - utm_medium
+      - utm_channel
+      - utm_campaign
+      - utm_term
+      - utm_content
+      - referring_site
+      - referral_code
+      description: The subscription object
+      title: Subscription
+    type_ids_TierId:
+      type: string
+      description: The prefixed ID of the tier.
+      title: TierId
+  securitySchemes:
+    BearerAuthScheme:
+      type: http
+      scheme: bearer

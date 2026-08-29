@@ -1,0 +1,188 @@
+openapi: 3.2.0
+info:
+  title: Reference Post Templates API
+  version: 1.0.0
+servers:
+- url: https://api.beehiiv.com/v2
+  description: Default
+tags:
+- name: Post Templates
+paths:
+  /publications/{publicationId}/post_templates:
+    get:
+      operationId: index
+      summary: 'Get post templates <Badge intent="info" minimal outlined>OAuth Scope: posts:read</Badge>'
+      description: Retrieve a list of post templates available for the publication.
+      tags:
+      - Post Templates
+      parameters:
+      - name: publicationId
+        in: path
+        description: The prefixed ID of the publication object
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids_PublicationId'
+      - name: limit
+        in: query
+        description: A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.
+        required: false
+        schema:
+          type: integer
+      - name: page
+        in: query
+        description: 'Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).<br>If not specified, results 1-10 from page 1 will be returned.'
+        required: false
+        schema:
+          type: integer
+      - name: order
+        in: query
+        description: The direction of the request. Defaults to `asc`.
+        required: false
+        schema:
+          $ref: '#/components/schemas/type__RequestDirection'
+      - name: order_by
+        in: query
+        description: The field to order by. Defaults to `created`.
+        required: false
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_postTemplates_PostTemplatesGetResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '401':
+          description: Unauthorized. The API key or OAuth access token is missing, invalid, or expired.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '404':
+          description: Resource Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '429':
+          description: Rate Limit Exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+components:
+  schemas:
+    type_ids_PublicationId:
+      type: string
+      description: The prefixed ID of the publication.
+      title: PublicationId
+    type__Error:
+      type: object
+      properties:
+        status:
+          type: integer
+        statusText:
+          type: string
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/type__ErrorDetail'
+      required:
+      - status
+      - statusText
+      - errors
+      description: The top level error response.
+      title: Error
+    type__RequestDirection:
+      type: string
+      enum:
+      - asc
+      - desc
+      default: asc
+      description: The direction of the request. Defaults to `asc`.
+      title: RequestDirection
+    type_postTemplates_PostTemplate:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/type_ids_PostTemplateId'
+          description: The prefixed ID of the post template.
+        name:
+          type: string
+          description: The name of the post template.
+      required:
+      - id
+      - name
+      title: PostTemplate
+    type__ErrorDetail:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+      required:
+      - message
+      - code
+      title: ErrorDetail
+    type_postTemplates_PostTemplatesGetResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/type_postTemplates_PostTemplate'
+          description: A list of post templates available for this publication.
+        limit:
+          type: integer
+          description: The limit placed on the results. If no limit was specified in the request, this defaults to 10.
+        page:
+          type: integer
+          default: 1
+          description: The page number the results are from. If no page was specified in the request, this defaults to page 1.
+        total_results:
+          type: integer
+          description: The total number of results from all pages.
+        total_pages:
+          type: integer
+          description: The total number of pages.
+      required:
+      - data
+      - limit
+      - page
+      - total_results
+      - total_pages
+      title: PostTemplatesGetResponse
+    type_ids_PostTemplateId:
+      type: string
+      description: The prefixed ID of the post template.
+      title: PostTemplateId
+  securitySchemes:
+    BearerAuthScheme:
+      type: http
+      scheme: bearer

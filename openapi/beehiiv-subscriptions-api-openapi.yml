@@ -1,0 +1,1200 @@
+openapi: 3.2.0
+info:
+  title: Reference Subscriptions API
+  version: 1.0.0
+servers:
+- url: https://api.beehiiv.com/v2
+  description: Default
+tags:
+- name: Subscriptions
+paths:
+  /publications/{publicationId}/subscriptions:
+    post:
+      operationId: create
+      summary: 'Create subscription <Badge intent="info" minimal outlined>OAuth Scope: subscriptions:write</Badge>'
+      description: Create new subscriptions for a publication.
+      tags:
+      - Subscriptions
+      parameters:
+      - name: publicationId
+        in: path
+        description: The prefixed ID of the publication object
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids_PublicationId'
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Subscription created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_subscriptions_SubscriptionResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '401':
+          description: Unauthorized. The API key or OAuth access token is missing, invalid, or expired.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '404':
+          description: Resource Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '429':
+          description: Rate Limit Exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/type__SubscriptionRequest'
+    get:
+      operationId: index
+      summary: 'List subscriptions <Badge intent="info" minimal outlined>OAuth Scope: subscriptions:read</Badge>'
+      description: 'Retrieve all subscriptions belonging to a specific publication.
+
+
+        <Info> **New**: This endpoint now supports cursor-based pagination for better performance and consistency. Use the `cursor` parameter instead of `page` for new integrations. </Info>
+
+        <Warning> **Deprecation Notice**: Offset-based pagination (using `page` parameter) is deprecated and limited to 100 pages maximum. Please migrate to cursor-based pagination. See our [Pagination Guide](/welcome/pagination) for details. </Warning>'
+      tags:
+      - Subscriptions
+      parameters:
+      - name: publicationId
+        in: path
+        description: The prefixed ID of the publication object
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids_PublicationId'
+      - name: expand[]
+        in: query
+        description: Optional list of expandable objects.<br>`subscription_premium_tiers ` - Returns an array of tiers the subscription is associated with.<br>`referrals` - Returns an array of subscriptions with limited data - `id`, `email`, and `status`. These are the subscriptions that were referred by this subscription.<br>`stats` - Returns statistics about the subscription(s).<br>`custom_fields` - Returns an array of custom field values that have been set on the subscription. <br>`newsletter_lists` - Returns an array of newsletter list prefixed IDs the subscription is actively subscribed to.
+        required: false
+        schema:
+          $ref: '#/components/schemas/type_subscriptions_SubscriptionsListRequestExpandItem'
+      - name: status
+        in: query
+        description: Optionally filter the results by a status
+        required: false
+        schema:
+          $ref: '#/components/schemas/type_subscriptions_SubscriptionsListRequestStatus'
+      - name: tier
+        in: query
+        description: Optionally filter the results by a their tier
+        required: false
+        schema:
+          $ref: '#/components/schemas/type_subscriptions_SubscriptionsListRequestTier'
+      - name: premium_tiers[]
+        in: query
+        description: Optionally filter the results by one or multiple premium tiers
+        required: false
+        schema:
+          type: string
+      - name: premium_tier_ids[]
+        in: query
+        description: Optionally filter the results by one or multiple premium tier ids
+        required: false
+        schema:
+          type: string
+      - name: limit
+        in: query
+        description: A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.
+        required: false
+        schema:
+          type: integer
+      - name: cursor
+        in: query
+        description: '**Cursor-based pagination (recommended)**: Use this opaque cursor token to fetch the next page of results. When provided, pagination will use cursor-based method which is more efficient and consistent than offset-based pagination. See the [Pagination Guide](/welcome/pagination) for more details.'
+        required: false
+        schema:
+          type: string
+      - name: page
+        in: query
+        description: '**Offset-based pagination (deprecated)**: Page number for offset-based pagination. This method is deprecated and limited to 100 pages maximum. Please migrate to cursor-based pagination using the `cursor` parameter. If not specified, results 1-10 from page 1 will be returned. See the [Pagination Guide](/welcome/pagination) for migration guidance.'
+        required: false
+        schema:
+          type: integer
+      - name: email
+        in: query
+        description: Optional email address to find a subscription.<br>This param must be an exact match and is case insensitive.
+        required: false
+        schema:
+          type: string
+      - name: order_by
+        in: query
+        description: The field that the results are sorted by. Defaults to created<br> `created` - The time in which the subscription was first created.<br>
+        required: false
+        schema:
+          $ref: '#/components/schemas/type_subscriptions_SubscriptionsListRequestOrderBy'
+      - name: direction
+        in: query
+        description: The direction that the results are sorted in. Defaults to asc<br> `asc` - Ascending, sorts from smallest to largest.<br> `desc` - Descending, sorts from largest to smallest.
+        required: false
+        schema:
+          $ref: '#/components/schemas/type__RequestDirection'
+      - name: creation_date
+        in: query
+        description: Optional date entry (in the format YYYY/MM/DD) that filters returned subscriptions by their creation date.
+        required: false
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_subscriptions_SubscriptionsListResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '401':
+          description: Unauthorized. The API key or OAuth access token is missing, invalid, or expired.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '404':
+          description: Resource Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '429':
+          description: Rate Limit Exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+  /publications/{publicationId}/subscriptions/by_email/{email}:
+    get:
+      operationId: get-by-email
+      summary: 'Get subscription by email <Badge intent="info" minimal outlined>OAuth Scope: subscriptions:read</Badge>'
+      description: <Info>Please note that this endpoint requires the email to be URL encoded. Please reference your language's documentation for the correct method of encoding.</Info> Retrieve a single subscription belonging to a specific email address in a specific publication.
+      tags:
+      - Subscriptions
+      parameters:
+      - name: publicationId
+        in: path
+        description: The prefixed ID of the publication object
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids_PublicationId'
+      - name: email
+        in: path
+        description: The ID of the subscriber object
+        required: true
+        schema:
+          type: string
+      - name: expand[]
+        in: query
+        description: Optional list of expandable objects.<br>`subscription_premium_tiers ` - Returns an array of tiers the subscription is associated with.<br>`referrals` - Returns an array of subscriptions with limited data - `id`, `email`, and `status`. These are the subscriptions that were referred by this subscription.<br>`stats` - Returns statistics about the subscription(s).<br>`custom_fields` - Returns an array of custom field values that have been set on the subscription. <br>`tags` - Returns an array of tags that have been set on the subscription.<br>`newsletter_lists` - Returns an array of newsletter list prefixed IDs the subscription is actively subscribed to.
+        required: false
+        schema:
+          $ref: '#/components/schemas/type_subscriptions_SubscriptionsGetRequestExpandItem'
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_subscriptions_SubscriptionResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '401':
+          description: Unauthorized. The API key or OAuth access token is missing, invalid, or expired.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '404':
+          description: Resource Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '429':
+          description: Rate Limit Exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+    put:
+      operationId: update-by-email
+      summary: 'Update subscription by email <Badge intent="info" minimal outlined>OAuth Scope: subscriptions:write</Badge>'
+      description: Update a single subscription by email.
+      tags:
+      - Subscriptions
+      parameters:
+      - name: publicationId
+        in: path
+        description: The prefixed ID of the publication object
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids_PublicationId'
+      - name: email
+        in: path
+        description: The email of the subscription object
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_subscriptions_SubscriptionResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '401':
+          description: Unauthorized. The API key or OAuth access token is missing, invalid, or expired.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '404':
+          description: Resource Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '429':
+          description: Rate Limit Exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: The new email address for the subscription
+                tier:
+                  $ref: '#/components/schemas/type_bulkSubscriptionUpdates_SubscriptionsPutRequestSubscriptionsItemTier'
+                  description: Optional parameter to set the tier for this subscription.
+                premium_tier_ids:
+                  type: array
+                  items:
+                    type: string
+                  description: An array of premium tier IDs to assign to this subscription. When provided, the subscription will be assigned to these specific premium tiers. Can be combined with `premium_tiers` to include tiers from both (duplicates are removed). Takes precedence over the `tier` parameter.
+                premium_tiers:
+                  type: array
+                  items:
+                    type: string
+                  description: An array of premium tier names to assign to this subscription. When provided, the subscription will be assigned to premium tiers matching these names. Can be combined with `premium_tier_ids` to include tiers from both (duplicates are removed). Takes precedence over the `tier` parameter.
+                stripe_customer_id:
+                  $ref: '#/components/schemas/type_ids_OptionalStripeCustomerId'
+                  description: The Stripe Customer ID of the subscription (not required)
+                unsubscribe:
+                  type: boolean
+                  description: A boolean value specifying whether to unsubscribe this subscription from the publication (not required)
+                custom_fields:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/type_bulkSubscriptionUpdates_SubscriptionsPutRequestSubscriptionsItemCustomFieldsItem'
+                  description: An array of custom field objects to update
+                complimentary_gift_id:
+                  $ref: '#/components/schemas/type_ids_ComplimentaryAccessId'
+                  description: The prefixed ID of a complimentary access object to apply to this subscription. The complimentary access must belong to the same publication.
+  /publications/{publicationId}/subscriptions/{subscriptionId}:
+    get:
+      operationId: get-by-id
+      summary: 'Get subscription by ID <Badge intent="info" minimal outlined>OAuth Scope: subscriptions:read</Badge>'
+      description: <Info>In previous versions of the API, another endpoint existed to retrieve a subscription by the subscriber ID. This endpoint is now deprecated and will be removed in a future version of the API. Please use this endpoint instead. The subscription ID can be found by exporting a list of subscriptions either via the `Settings > Publications > Export Data` or by exporting a CSV in a segment.</Info> Retrieve a single subscription belonging to a specific publication.
+      tags:
+      - Subscriptions
+      parameters:
+      - name: publicationId
+        in: path
+        description: The prefixed ID of the publication object
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids_PublicationId'
+      - name: subscriptionId
+        in: path
+        description: The prefixed ID of the subscription object
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids_SubscriptionId'
+      - name: expand[]
+        in: query
+        description: Optional list of expandable objects.<br>`subscription_premium_tiers` - Returns an array of tiers the subscription is associated with.<br>`referrals` - Returns an array of subscriptions with limited data - `id`, `email`, and `status`. These are the subscriptions that were referred by this subscription.<br>`stats` - Returns statistics about the subscription(s).<br>`custom_fields` - Returns an array of custom field values that have been set on the subscription. <br>`tags` - Returns an array of tags that have been set on the subscription.<br>`newsletter_lists` - Returns an array of newsletter list prefixed IDs the subscription is actively subscribed to.
+        required: false
+        schema:
+          $ref: '#/components/schemas/type_subscriptions_SubscriptionsGetRequestExpandItem'
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_subscriptions_SubscriptionResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '401':
+          description: Unauthorized. The API key or OAuth access token is missing, invalid, or expired.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '404':
+          description: Resource Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '429':
+          description: Rate Limit Exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+    put:
+      operationId: put
+      summary: 'Update subscription by ID <Badge intent="info" minimal outlined>OAuth Scope: subscriptions:write</Badge>'
+      description: Update a single subscription.
+      tags:
+      - Subscriptions
+      parameters:
+      - name: publicationId
+        in: path
+        description: The prefixed ID of the publication object
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids_PublicationId'
+      - name: subscriptionId
+        in: path
+        description: The prefixed ID of the subscription object
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids_SubscriptionId'
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_subscriptions_SubscriptionResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '401':
+          description: Unauthorized. The API key or OAuth access token is missing, invalid, or expired.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '404':
+          description: Resource Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '429':
+          description: Rate Limit Exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tier:
+                  $ref: '#/components/schemas/type_bulkSubscriptionUpdates_SubscriptionsPutRequestSubscriptionsItemTier'
+                  description: Optional parameter to set the tier for this subscription.
+                premium_tier_ids:
+                  type: array
+                  items:
+                    type: string
+                  description: An array of premium tier IDs to assign to this subscription. When provided, the subscription will be assigned to these specific premium tiers. Can be combined with `premium_tiers` to include tiers from both (duplicates are removed). Takes precedence over the `tier` parameter.
+                premium_tiers:
+                  type: array
+                  items:
+                    type: string
+                  description: An array of premium tier names to assign to this subscription. When provided, the subscription will be assigned to premium tiers matching these names. Can be combined with `premium_tier_ids` to include tiers from both (duplicates are removed). Takes precedence over the `tier` parameter.
+                email:
+                  type: string
+                  description: The new email address for the subscription
+                stripe_customer_id:
+                  $ref: '#/components/schemas/type_ids_OptionalStripeCustomerId'
+                  description: The Stripe Customer ID of the subscription (not required)
+                unsubscribe:
+                  type: boolean
+                  description: A boolean value specifying whether to unsubscribe this subscription from the publication (not required)
+                custom_fields:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/type_bulkSubscriptionUpdates_SubscriptionsPutRequestSubscriptionsItemCustomFieldsItem'
+                  description: An array of custom field objects to update
+                complimentary_gift_id:
+                  $ref: '#/components/schemas/type_ids_ComplimentaryAccessId'
+                  description: The prefixed ID of a complimentary access object to apply to this subscription. The complimentary access must belong to the same publication.
+    patch:
+      operationId: patch
+      summary: 'Update subscription by ID <Badge intent="info" minimal outlined>OAuth Scope: subscriptions:write</Badge>'
+      description: Update a single subscription.
+      tags:
+      - Subscriptions
+      parameters:
+      - name: publicationId
+        in: path
+        description: The prefixed ID of the publication object
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids_PublicationId'
+      - name: subscriptionId
+        in: path
+        description: The prefixed ID of the subscription object
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids_SubscriptionId'
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_subscriptions_SubscriptionResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '401':
+          description: Unauthorized. The API key or OAuth access token is missing, invalid, or expired.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '404':
+          description: Resource Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '429':
+          description: Rate Limit Exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: The new email address for the subscription
+                tier:
+                  $ref: '#/components/schemas/type_bulkSubscriptionUpdates_SubscriptionsPatchRequestSubscriptionsItemTier'
+                  description: Optional parameter to set the tier for this subscription.
+                premium_tier_ids:
+                  type: array
+                  items:
+                    type: string
+                  description: An array of premium tier IDs to assign to this subscription. When provided, the subscription will be assigned to these specific premium tiers. Can be combined with `premium_tiers` to include tiers from both (duplicates are removed). Takes precedence over the `tier` parameter.
+                premium_tiers:
+                  type: array
+                  items:
+                    type: string
+                  description: An array of premium tier names to assign to this subscription. When provided, the subscription will be assigned to premium tiers matching these names. Can be combined with `premium_tier_ids` to include tiers from both (duplicates are removed). Takes precedence over the `tier` parameter.
+                stripe_customer_id:
+                  $ref: '#/components/schemas/type_ids_OptionalStripeCustomerId'
+                  description: The Stripe Customer ID of the subscription (not required)
+                unsubscribe:
+                  type: boolean
+                  description: A boolean value specifying whether to unsubscribe this subscription from the publication (not required)
+                custom_fields:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/type_bulkSubscriptionUpdates_SubscriptionsPatchRequestSubscriptionsItemCustomFieldsItem'
+                  description: An array of custom field objects to update
+                complimentary_gift_id:
+                  $ref: '#/components/schemas/type_ids_ComplimentaryAccessId'
+                  description: The prefixed ID of a complimentary access object to apply to this subscription. The complimentary access must belong to the same publication.
+    delete:
+      operationId: delete
+      summary: 'Delete subscription <Badge intent="info" minimal outlined>OAuth Scope: subscriptions:write</Badge>'
+      description: <Warning>This cannot be undone. All data associated with the subscription will also be deleted. We recommend unsubscribing when possible instead of deleting. If a premium subscription is deleted they will no longer be billed.</Warning> Deletes a subscription.
+      tags:
+      - Subscriptions
+      parameters:
+      - name: publicationId
+        in: path
+        description: The prefixed ID of the publication object
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids_PublicationId'
+      - name: subscriptionId
+        in: path
+        description: The prefixed ID of the subscription object
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids_SubscriptionId'
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_subscriptions_SubscriptionDeleteResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '401':
+          description: Unauthorized. The API key or OAuth access token is missing, invalid, or expired.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '404':
+          description: Resource Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '429':
+          description: Rate Limit Exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+components:
+  schemas:
+    type__SubscriptionsCreateRequestTier:
+      type: string
+      enum:
+      - free
+      - premium
+      description: The tier for this subscription.
+      title: SubscriptionsCreateRequestTier
+    type__CustomFieldType:
+      type: string
+      enum:
+      - string
+      - integer
+      - boolean
+      - date
+      - datetime
+      - list
+      - double
+      description: The type of value being stored in the custom field.
+      title: CustomFieldType
+    type_subscriptions_SubscriptionDeleteResponse:
+      type: object
+      properties:
+        message:
+          type: string
+      title: SubscriptionDeleteResponse
+    type__SubscriptionCustomFieldList:
+      type: array
+      items:
+        $ref: '#/components/schemas/type__CustomField'
+      description: 'Optional list of custom fields for a subscription. Retrievable by including `expand: [custom_field]` in the request body.'
+      title: SubscriptionCustomFieldList
+    type__Error:
+      type: object
+      properties:
+        status:
+          type: integer
+        statusText:
+          type: string
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/type__ErrorDetail'
+      required:
+      - status
+      - statusText
+      - errors
+      description: The top level error response.
+      title: Error
+    type__SubscriptionTierList:
+      type: array
+      items:
+        $ref: '#/components/schemas/type__SubscriptionTierInfo'
+      description: 'Optional list of tiers for a subscription. Retrievable by including `expand: [subscription_premium_tiers]` in the request body.'
+      title: SubscriptionTierList
+    type__SubscriptionTierInfoStatus:
+      type: string
+      enum:
+      - active
+      - archived
+      description: Returns whether or not the tier has any active prices.
+      title: SubscriptionTierInfoStatus
+    type_subscriptions_SubscriptionsListRequestOrderBy:
+      type: string
+      enum:
+      - created
+      default: created
+      title: SubscriptionsListRequestOrderBy
+    type_subscriptions_SubscriptionsListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/type__Subscription'
+        limit:
+          type: integer
+          description: The limit placed on the results. If no limit was specified in the request, this defaults to 10.
+        page:
+          type: integer
+          default: 1
+          description: '**Offset pagination only**: The page number the results are from. Only present when using deprecated offset-based pagination.'
+        total_pages:
+          type: integer
+          description: '**Offset pagination only**: The total number of pages. Only present when using deprecated offset-based pagination.'
+        has_more:
+          type: boolean
+          description: '**Cursor pagination only**: Indicates whether there are more results available after the current page. Only present when using cursor-based pagination.'
+        next_cursor:
+          type: string
+          description: '**Cursor pagination only**: The cursor token to use for fetching the next page of results. This will be null if has_more is false. Only present when using cursor-based pagination.'
+        total_results:
+          type: integer
+          description: '**Mixed pagination**: The total number of results from all pages. For offset-based pagination, this is always included.'
+      required:
+      - data
+      title: SubscriptionsListResponse
+    type__SubscriptionTags:
+      type: array
+      items:
+        type: string
+      description: 'Optional list of tags for a subscription. Retrievable by including `expand: [tags]` in the request body.
+
+        Max limit of 100 unique tags per publication.'
+      title: SubscriptionTags
+    type_ids_OptionalStripeCustomerId:
+      type: string
+      description: The prefixed ID of the Stripe customer.
+      title: OptionalStripeCustomerId
+    type__SubscriptionTierInfo:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/type_ids_TierId'
+        name:
+          type: string
+        status:
+          $ref: '#/components/schemas/type__SubscriptionTierInfoStatus'
+          description: Returns whether or not the tier has any active prices.
+      required:
+      - id
+      - name
+      - status
+      title: SubscriptionTierInfo
+    type__SubscriptionStats:
+      type: object
+      properties:
+        emails_received:
+          type: integer
+          description: The total number of emails that have been sent to this subscriber
+        open_rate:
+          type: number
+          format: double
+          description: The percentage of emails that the subscriber has opened
+        click_through_rate:
+          type: number
+          format: double
+          description: The percentage of emails that the subscriber has clicked a link in
+      description: 'Optional list of stats for a subscription. Retrievable by including `expand: [stats]` in the request body.'
+      title: SubscriptionStats
+    type__RequestDirection:
+      type: string
+      enum:
+      - asc
+      - desc
+      default: asc
+      description: The direction of the request. Defaults to `asc`.
+      title: RequestDirection
+    type_bulkSubscriptionUpdates_SubscriptionsPatchRequestSubscriptionsItemTier:
+      type: string
+      enum:
+      - free
+      - premium
+      description: The Tier of the Subscription (not required)
+      title: SubscriptionsPatchRequestSubscriptionsItemTier
+    type__SubscriptionExpandedStatus:
+      type: string
+      enum:
+      - validating
+      - invalid
+      - pending
+      - active
+      - inactive
+      - needs_attention
+      - paused
+      description: The status of the subscription.<br>`validating` - The email address is being validated.<br>`invalid` - The email address is invalid.<br>`pending` - The email address is valid, but the subscription is pending double opt-in.<br>`active` - The email was valid and the subscription is active.<br>`inactive` - The subscription was made inactive, possibly due to an unsubscribe.<br>`needs_attention` - The subscription requires approval or denial.<br>`paused` - The subscriber has paused their subscription.
+      title: SubscriptionExpandedStatus
+    type__CustomField:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the existing custom field
+        kind:
+          $ref: '#/components/schemas/type__CustomFieldType'
+          description: The type of value being stored in the custom field.
+        value:
+          $ref: '#/components/schemas/type__CustomFieldDataType'
+          description: The value stored for the subscription
+      title: CustomField
+    type__CustomFieldDataType:
+      oneOf:
+      - type: string
+      - type: number
+        format: double
+      - type: boolean
+      - type: array
+        items:
+          type: string
+      title: CustomFieldDataType
+    type_ids_ComplimentaryAccessId:
+      type: string
+      description: The prefixed ID of the complimentary access object.
+      title: ComplimentaryAccessId
+    type__ErrorDetail:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+      required:
+      - message
+      - code
+      title: ErrorDetail
+    type__CustomFieldValue:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the existing custom field
+        value:
+          $ref: '#/components/schemas/type__CustomFieldDataType'
+          description: The value stored for the subscription
+      description: The object required for setting custom field values on a subscription
+      title: CustomFieldValue
+    type_bulkSubscriptionUpdates_SubscriptionsPatchRequestSubscriptionsItemCustomFieldsItem:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The display value of the custom field
+        value:
+          $ref: '#/components/schemas/type__CustomFieldDataType'
+          description: The value of the custom field
+        delete:
+          type: boolean
+          description: A boolean value to specify whether to delete this custom field entry from the subscription
+      title: SubscriptionsPatchRequestSubscriptionsItemCustomFieldsItem
+    type__SubscriptionExpandedUtmChannel:
+      type: string
+      enum:
+      - ''
+      - website
+      - import
+      - embed
+      - api
+      - referral
+      - recommendation
+      - magic_link
+      - boost
+      - boost_send
+      - boost_direct_link
+      - integration
+      - product
+      - group_invite
+      description: The acquisition channel
+      title: SubscriptionExpandedUtmChannel
+    type_subscriptions_SubscriptionResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/type__Subscription'
+      required:
+      - data
+      description: The response containing subscription data
+      title: SubscriptionResponse
+    type__SubscriptionRequest:
+      type: object
+      properties:
+        email:
+          type: string
+          description: The email address of the subscription.
+        reactivate_existing:
+          type: boolean
+          default: false
+          description: Whether or not to reactivate the subscription if they have already unsubscribed. This option should be used only if the subscriber is knowingly resubscribing.
+        send_welcome_email:
+          type: boolean
+          default: false
+        utm_source:
+          type: string
+          description: The source of the subscription.
+        utm_medium:
+          type: string
+          description: The medium of the subscription
+        utm_campaign:
+          type: string
+          description: The acquisition campaign of the subscription
+        utm_term:
+          type: string
+          description: The acquisition term; typically the keyword or search term
+        utm_content:
+          type: string
+          description: The acquisition content; typically used for A/B testing or ad variations
+        referring_site:
+          type: string
+          description: The website that the subscriber was referred from
+        referral_code:
+          type: string
+          description: This should be a subscribers referral_code. This gives referral credit for the new subscription.
+        custom_fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/type__CustomFieldValue'
+          description: The custom fields must already exist for the publication. Any new custom fields here will be discarded.
+        double_opt_override:
+          $ref: '#/components/schemas/type__DoubleOptOverride'
+          description: 'Override the publication''s default double opt-in settings for this subscription. Possible values are:
+
+            - "on" — The subscriber will receive a double opt-in confirmation email and will need to confirm their subscription prior to being marked as active.
+
+            - "off" — The subscriber will be marked as active immediately and will not receive a double opt-in confirmation email.
+
+            - "not_set" — The publication''s default double opt-in settings will be applied to this subscription.'
+        tier:
+          $ref: '#/components/schemas/type__SubscriptionsCreateRequestTier'
+          description: The tier for this subscription.
+        premium_tiers:
+          type: array
+          items:
+            type: string
+          description: An array of premium tier names to assign to this subscription. When provided, the subscription will be assigned to premium tiers matching these names. Can be combined with `premium_tier_ids` to include tiers from both (duplicates are removed). Takes precedence over the `tier` parameter.
+        premium_tier_ids:
+          type: array
+          items:
+            type: string
+          description: An array of premium tier IDs to assign to this subscription. When provided, the subscription will be assigned to these specific premium tiers. Can be combined with `premium_tiers` to include tiers from both (duplicates are removed). Takes precedence over the `tier` parameter.
+        stripe_customer_id:
+          $ref: '#/components/schemas/type_ids_OptionalStripeCustomerId'
+          description: The Stripe customer ID for this subscription.
+        automation_ids:
+          type: array
+          items:
+            type: string
+          description: Enroll the subscriber into automations after their subscription has been created. Requires the automations to have an active *Add by API* trigger.
+        newsletter_list_ids:
+          type: array
+          items:
+            type: string
+          description: An array of newsletter list prefixed IDs to subscribe the new subscription to. The newsletter lists must belong to the same publication.
+        skip_newsletter_list_auto_subscribe:
+          type: boolean
+          description: When true, the subscriber will not be auto-subscribed to newsletter lists configured with auto-subscribe. Defaults to false.
+        complimentary_gift_id:
+          $ref: '#/components/schemas/type_ids_ComplimentaryAccessId'
+          description: The prefixed ID of a complimentary access object to apply to this subscription. The complimentary access must belong to the same publication.
+      required:
+      - email
+      title: SubscriptionRequest
+    type_subscriptions_SubscriptionsGetRequestExpandItem:
+      type: string
+      enum:
+      - stats
+      - custom_fields
+      - referrals
+      - tags
+      - newsletter_lists
+      title: SubscriptionsGetRequestExpandItem
+    type_subscriptions_SubscriptionsListRequestExpandItem:
+      type: string
+      enum:
+      - stats
+      - custom_fields
+      - referrals
+      - newsletter_lists
+      title: SubscriptionsListRequestExpandItem
+    type__DoubleOptOverride:
+      type: string
+      description: Override publication double-opt settings for this subscription.
+      title: DoubleOptOverride
+    type_bulkSubscriptionUpdates_SubscriptionsPutRequestSubscriptionsItemCustomFieldsItem:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the existing custom field
+        value:
+          $ref: '#/components/schemas/type__CustomFieldDataType'
+          description: The value of the custom field
+        delete:
+          type: boolean
+          description: A boolean value to specify whether to delete this custom field entry from the subscription
+      title: SubscriptionsPutRequestSubscriptionsItemCustomFieldsItem
+    type_subscriptions_SubscriptionsListRequestTier:
+      type: string
+      enum:
+      - free
+      - premium
+      - all
+      default: all
+      title: SubscriptionsListRequestTier
+    type__SubscriptionExpandedSubscriptionTier:
+      type: string
+      enum:
+      - free
+      - premium
+      description: The current tier of the subscription.
+      title: SubscriptionExpandedSubscriptionTier
+    type_ids_PublicationId:
+      type: string
+      description: The prefixed ID of the publication.
+      title: PublicationId
+    type_ids_SubscriptionId:
+      type: string
+      description: The prefixed ID of the subscription.
+      title: SubscriptionId
+    type_bulkSubscriptionUpdates_SubscriptionsPutRequestSubscriptionsItemTier:
+      type: string
+      enum:
+      - free
+      - premium
+      description: The Tier of the Subscription (not required)
+      title: SubscriptionsPutRequestSubscriptionsItemTier
+    type_subscriptions_SubscriptionsListRequestStatus:
+      type: string
+      enum:
+      - validating
+      - invalid
+      - pending
+      - active
+      - inactive
+      - all
+      default: all
+      title: SubscriptionsListRequestStatus
+    type__Subscription:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/type_ids_SubscriptionId'
+          description: The prefixed subscription id
+        email:
+          type: string
+          format: email
+        status:
+          $ref: '#/components/schemas/type__SubscriptionExpandedStatus'
+          description: The status of the subscription.<br>`validating` - The email address is being validated.<br>`invalid` - The email address is invalid.<br>`pending` - The email address is valid, but the subscription is pending double opt-in.<br>`active` - The email was valid and the subscription is active.<br>`inactive` - The subscription was made inactive, possibly due to an unsubscribe.<br>`needs_attention` - The subscription requires approval or denial.
+        created:
+          type: integer
+          description: The date the subscription was created. Measured in seconds since the Unix epoch
+        subscription_tier:
+          $ref: '#/components/schemas/type__SubscriptionExpandedSubscriptionTier'
+          description: The current tier of the subscription.
+        subscription_premium_tier_names:
+          type: array
+          items:
+            type: string
+          description: The current premium tiers of the subscription. Empty if the subscriber is not associated with any premium tiers.
+        utm_source:
+          type: string
+          description: The acquisition source; where the subscriber came from
+        utm_medium:
+          type: string
+          description: The acquisition medium; how the subscriber got to your publication
+        utm_channel:
+          $ref: '#/components/schemas/type__SubscriptionExpandedUtmChannel'
+          description: The acquisition channel
+        utm_campaign:
+          type: string
+          description: The acquisition campaign
+        utm_term:
+          type: string
+          description: The acquisition term; typically the keyword or search term
+        utm_content:
+          type: string
+          description: The acquisition content; typically used for A/B testing or ad variations
+        referring_site:
+          type: string
+          description: The website that the subscriber was referred from
+        referral_code:
+          type: string
+          description: The code associated to this subscriber to refer others. When a new subscription is created with this referral code, credit for the referral goes to this subscription.
+        subscription_premium_tiers:
+          $ref: '#/components/schemas/type__SubscriptionTierList'
+        custom_fields:
+          $ref: '#/components/schemas/type__SubscriptionCustomFieldList'
+        tags:
+          $ref: '#/components/schemas/type__SubscriptionTags'
+        stats:
+          $ref: '#/components/schemas/type__SubscriptionStats'
+        newsletter_list_ids:
+          type: array
+          items:
+            type: string
+          description: The prefixed IDs of the newsletter lists this subscription is actively subscribed to. Requires `expand[]=newsletter_lists`.
+      required:
+      - id
+      - email
+      - status
+      - created
+      - subscription_tier
+      - subscription_premium_tier_names
+      - utm_source
+      - utm_medium
+      - utm_channel
+      - utm_campaign
+      - utm_term
+      - utm_content
+      - referring_site
+      - referral_code
+      description: The subscription object
+      title: Subscription
+    type_ids_TierId:
+      type: string
+      description: The prefixed ID of the tier.
+      title: TierId
+  securitySchemes:
+    BearerAuthScheme:
+      type: http
+      scheme: bearer

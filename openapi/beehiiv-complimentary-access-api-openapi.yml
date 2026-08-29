@@ -1,0 +1,376 @@
+openapi: 3.2.0
+info:
+  title: Reference Complimentary Access API
+  version: 1.0.0
+servers:
+- url: https://api.beehiiv.com/v2
+  description: Default
+tags:
+- name: Complimentary Access
+paths:
+  /publications/{publicationId}/complimentary_access:
+    get:
+      operationId: index
+      summary: 'List complimentary access <Badge intent="info" minimal outlined>OAuth Scope: complimentary_access:read</Badge>'
+      description: Retrieve all complimentary access objects belonging to a specific publication.
+      tags:
+      - Complimentary Access
+      parameters:
+      - name: publicationId
+        in: path
+        description: The prefixed ID of the publication object
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids_PublicationId'
+      - name: expand[]
+        in: query
+        description: Optional list of expandable objects.<br>`tier` - Returns the full tier object associated with this complimentary access.<br>`stats` - Returns granted subscription counts.
+        required: false
+        schema:
+          type: string
+      - name: limit
+        in: query
+        description: A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.
+        required: false
+        schema:
+          type: integer
+      - name: cursor
+        in: query
+        description: Use this opaque cursor token to fetch the next page of results. Obtain the value from `next_cursor` in a previous response.
+        required: false
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_complimentaryAccess_IndexComplimentaryAccessResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '401':
+          description: Unauthorized. The API key or OAuth access token is missing, invalid, or expired.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '404':
+          description: Resource Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '429':
+          description: Rate Limit Exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+  /publications/{publicationId}/complimentary_access/{complimentaryAccessId}:
+    get:
+      operationId: show
+      summary: 'Get complimentary access <Badge intent="info" minimal outlined>OAuth Scope: complimentary_access:read</Badge>'
+      description: Retrieve a single complimentary access object belonging to a specific publication.
+      tags:
+      - Complimentary Access
+      parameters:
+      - name: publicationId
+        in: path
+        description: The prefixed ID of the publication object
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids_PublicationId'
+      - name: complimentaryAccessId
+        in: path
+        description: The prefixed ID of the complimentary access object
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids_ComplimentaryAccessId'
+      - name: expand[]
+        in: query
+        description: Optional list of expandable objects.<br>`tier` - Returns the full tier object associated with this complimentary access.
+        required: false
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_complimentaryAccess_ComplimentaryAccessResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '401':
+          description: Unauthorized. The API key or OAuth access token is missing, invalid, or expired.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '404':
+          description: Resource Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '429':
+          description: Rate Limit Exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+components:
+  schemas:
+    type_tiers_TierPriceCurrency:
+      type: string
+      enum:
+      - usd
+      - aud
+      - cad
+      - eur
+      - gbp
+      - inr
+      - brl
+      - mxn
+      - nzd
+      - dkk
+      title: TierPriceCurrency
+    type_tiers_TierStatus:
+      type: string
+      enum:
+      - active
+      - archived
+      description: Returns whether or not the tier has any active prices.
+      title: TierStatus
+    type_complimentaryAccess_ComplimentaryAccessStats:
+      type: object
+      properties:
+        total_granted:
+          type: integer
+          description: Total number of subscriptions that have ever been granted this complimentary access.
+        active_granted:
+          type: integer
+          description: Number of subscriptions currently within an active complimentary access period.
+      required:
+      - total_granted
+      - active_granted
+      description: 'Optional stats for a complimentary access object. Retrievable by including `expand: [stats]` in the request.'
+      title: ComplimentaryAccessStats
+    type_ids_PublicationId:
+      type: string
+      description: The prefixed ID of the publication.
+      title: PublicationId
+    type_ids_PriceId:
+      type: string
+      description: The prefixed ID of the price.
+      title: PriceId
+    type__Error:
+      type: object
+      properties:
+        status:
+          type: integer
+        statusText:
+          type: string
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/type__ErrorDetail'
+      required:
+      - status
+      - statusText
+      - errors
+      description: The top level error response.
+      title: Error
+    type_ids_ComplimentaryAccessId:
+      type: string
+      description: The prefixed ID of the complimentary access object.
+      title: ComplimentaryAccessId
+    type_complimentaryAccess_IndexComplimentaryAccessResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/type_complimentaryAccess_ComplimentaryAccess'
+        limit:
+          type: integer
+          description: The limit placed on the results. Defaults to 10 if not specified.
+        has_more:
+          type: boolean
+          description: Indicates whether there are more results available after the current page.
+        next_cursor:
+          type: string
+          description: The cursor token to use for fetching the next page of results. This will be null if has_more is false.
+        total_results:
+          type: integer
+          description: The total number of results from all pages.
+      required:
+      - data
+      title: IndexComplimentaryAccessResponse
+    type_complimentaryAccess_ComplimentaryAccess:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/type_ids_ComplimentaryAccessId'
+          description: The prefixed ID of the complimentary access object.
+        duration:
+          type: integer
+          description: The duration of the gift. Null when time_unit is "forever".
+        time_unit:
+          $ref: '#/components/schemas/type_complimentaryAccess_ComplimentaryAccessTimeUnit'
+          description: The unit of time for the gift duration.
+        description:
+          type: string
+          description: A human-readable description of the gift (e.g., "3 Months Gift", "Lifetime Gift").
+        tier_id:
+          $ref: '#/components/schemas/type_ids_TierId'
+          description: The prefixed ID of the associated tier. Always present.
+        tier:
+          $ref: '#/components/schemas/type_tiers_Tier'
+          description: 'The full tier object. Present when `expand: [tier]` is requested. Returned alongside `tier_id`.'
+        stats:
+          $ref: '#/components/schemas/type_complimentaryAccess_ComplimentaryAccessStats'
+          description: 'Stats for this complimentary access. Retrievable by including `expand: [stats]` in the request.'
+      required:
+      - id
+      - time_unit
+      - description
+      description: The complimentary access object.
+      title: ComplimentaryAccess
+    type_tiers_TierStats:
+      type: object
+      properties:
+        active_subscriptions:
+          type: integer
+          description: Total number of active subscriptions belonging to this tier.
+      required:
+      - active_subscriptions
+      description: 'Optional list of stats for a tier. Retrievable by including `expand: [stats]` in the tier request body.'
+      title: TierStats
+    type__ErrorDetail:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+      required:
+      - message
+      - code
+      title: ErrorDetail
+    type_tiers_TierPrice:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/type_ids_PriceId'
+        currency:
+          $ref: '#/components/schemas/type_tiers_TierPriceCurrency'
+        amount_cents:
+          type: integer
+        enabled:
+          type: boolean
+          default: true
+        interval:
+          $ref: '#/components/schemas/type_tiers_TierPriceInterval'
+        denominator:
+          type: string
+        cta:
+          type: string
+          description: When using the external Stripe checkout, this text will be displayed on the button
+        features:
+          type: array
+          items:
+            type: string
+      description: Price belonging to a Tier
+      title: TierPrice
+    type_tiers_TierPriceInterval:
+      type: string
+      enum:
+      - month
+      - quarter
+      - year
+      - one_time
+      - donation
+      title: TierPriceInterval
+    type_complimentaryAccess_ComplimentaryAccessTimeUnit:
+      type: string
+      enum:
+      - days
+      - months
+      - years
+      - forever
+      description: The unit of time for the gift duration.<br>`days` - Duration in days.<br>`months` - Duration in months.<br>`years` - Duration in years.<br>`forever` - Lifetime access with no expiration.
+      title: ComplimentaryAccessTimeUnit
+    type_complimentaryAccess_ComplimentaryAccessResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/type_complimentaryAccess_ComplimentaryAccess'
+      title: ComplimentaryAccessResponse
+    type_tiers_Tier:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/type_ids_TierId'
+        name:
+          type: string
+        status:
+          $ref: '#/components/schemas/type_tiers_TierStatus'
+          description: Returns whether or not the tier has any active prices.
+        description:
+          type: string
+          default: Super engaged readers
+        stats:
+          $ref: '#/components/schemas/type_tiers_TierStats'
+        prices:
+          type: array
+          items:
+            $ref: '#/components/schemas/type_tiers_TierPrice'
+          description: 'Optional list of prices for a tier. Retrievable by including `expand: [prices]` in the tier request body.'
+      required:
+      - id
+      - name
+      - status
+      description: The subscription tier object.
+      title: Tier
+    type_ids_TierId:
+      type: string
+      description: The prefixed ID of the tier.
+      title: TierId
+  securitySchemes:
+    BearerAuthScheme:
+      type: http
+      scheme: bearer

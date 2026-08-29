@@ -1,0 +1,288 @@
+openapi: 3.2.0
+info:
+  title: Reference Authors API
+  version: 1.0.0
+servers:
+- url: https://api.beehiiv.com/v2
+  description: Default
+tags:
+- name: Authors
+paths:
+  /publications/{publicationId}/authors:
+    get:
+      operationId: index
+      summary: List authors
+      description: Retrieve a list of authors available for the publication.
+      tags:
+      - Authors
+      parameters:
+      - name: publicationId
+        in: path
+        description: The prefixed ID of the publication object
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids_PublicationId'
+      - name: limit
+        in: query
+        description: A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.
+        required: false
+        schema:
+          type: integer
+      - name: page
+        in: query
+        description: 'Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).<br>If not specified, results 1-10 from page 1 will be returned.'
+        required: false
+        schema:
+          type: integer
+      - name: name
+        in: query
+        description: Optionally filter authors by full name or first name (case-insensitive).
+        required: false
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_authors_AuthorsListResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '401':
+          description: Unauthorized. The API key or OAuth access token is missing, invalid, or expired.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '404':
+          description: Resource Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '429':
+          description: Rate Limit Exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+  /publications/{publicationId}/authors/{authorId}:
+    get:
+      operationId: show
+      summary: Get author
+      description: Retrieve a single author from a publication.
+      tags:
+      - Authors
+      parameters:
+      - name: publicationId
+        in: path
+        description: The prefixed ID of the publication object
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids_PublicationId'
+      - name: authorId
+        in: path
+        description: The author identifier. This accepts a prefixed author ID, full name, or first name.
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_authors_AuthorsGetResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '401':
+          description: Unauthorized. The API key or OAuth access token is missing, invalid, or expired.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '404':
+          description: Resource Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '429':
+          description: Rate Limit Exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+components:
+  schemas:
+    type_authors_Author:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The prefixed ID of the author (e.g. `guest_xxx` for guest authors, `user_xxx` for users).
+        type:
+          $ref: '#/components/schemas/type_authors_AuthorType'
+          description: The author type.
+        name:
+          type: string
+          description: The author display name.
+        bio:
+          type: string
+          description: The biography text for the author.
+        bio_image_url:
+          type: string
+          description: The profile image URL for the author.
+        social_media_links:
+          $ref: '#/components/schemas/type_authors_AuthorSocialMediaLinks'
+      required:
+      - id
+      - type
+      - name
+      - social_media_links
+      title: Author
+    type_ids_PublicationId:
+      type: string
+      description: The prefixed ID of the publication.
+      title: PublicationId
+    type__Error:
+      type: object
+      properties:
+        status:
+          type: integer
+        statusText:
+          type: string
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/type__ErrorDetail'
+      required:
+      - status
+      - statusText
+      - errors
+      description: The top level error response.
+      title: Error
+    type__ErrorDetail:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+      required:
+      - message
+      - code
+      title: ErrorDetail
+    type_authors_AuthorsGetResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/type_authors_Author'
+      required:
+      - data
+      title: AuthorsGetResponse
+    type_authors_AuthorType:
+      type: string
+      enum:
+      - user
+      - guest_author
+      title: AuthorType
+    type_authors_AuthorSocialMediaLinks:
+      type: object
+      properties:
+        twitter_handle:
+          type: string
+        facebook_url:
+          type: string
+        instagram_url:
+          type: string
+        linkedin_url:
+          type: string
+        youtube_url:
+          type: string
+        tiktok_url:
+          type: string
+        discord_url:
+          type: string
+        bluesky_url:
+          type: string
+        rss_url:
+          type: string
+      title: AuthorSocialMediaLinks
+    type_authors_AuthorsListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/type_authors_Author'
+          description: A list of authors available for this publication.
+        limit:
+          type: integer
+          description: The limit placed on the results. If no limit was specified in the request, this defaults to 10.
+        page:
+          type: integer
+          default: 1
+          description: The page number the results are from. If no page was specified in the request, this defaults to page 1.
+        total_results:
+          type: integer
+          description: The total number of results from all pages.
+        total_pages:
+          type: integer
+          description: The total number of pages.
+      required:
+      - data
+      - limit
+      - page
+      - total_results
+      - total_pages
+      title: AuthorsListResponse
+  securitySchemes:
+    BearerAuthScheme:
+      type: http
+      scheme: bearer

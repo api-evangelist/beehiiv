@@ -1,0 +1,447 @@
+openapi: 3.2.0
+info:
+  title: Reference subpackage_advertisement_opportunities Subpackage Webhooks API
+  version: 1.0.0
+servers:
+- url: https://api.beehiiv.com/v2
+tags:
+- name: subpackage_webhooks
+paths:
+  /publications/{publicationId}/webhooks:
+    post:
+      operationId: create
+      summary: 'Create a webhook <Badge intent="info" minimal outlined>OAuth Scope: webhooks:write</Badge>'
+      description: Create a new webhook for a given publication.
+      tags:
+      - subpackage_webhooks
+      parameters:
+      - name: publicationId
+        in: path
+        description: The prefixed ID of the publication object
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids_PublicationId'
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Webhook created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_webhooks_WebhookResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '404':
+          description: Resource Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '429':
+          description: Rate Limit Exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                url:
+                  type: string
+                  format: uri
+                  description: The webhook URL to send events to.
+                event_types:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/type_webhooks_WebhookEventType'
+                  description: The types of events the webhook will receive.
+                description:
+                  type: string
+                  description: A description of the webhook.
+              required:
+              - url
+              - event_types
+    get:
+      operationId: index
+      summary: 'List webhooks <Badge intent="info" minimal outlined>OAuth Scope: webhooks:read</Badge>'
+      description: Retrieve all webhooks belonging to a specific publication.
+      tags:
+      - subpackage_webhooks
+      parameters:
+      - name: publicationId
+        in: path
+        description: The prefixed ID of the publication object
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids_PublicationId'
+      - name: limit
+        in: query
+        description: A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.
+        required: false
+        schema:
+          type: integer
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_webhooks_IndexWebhooksResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '404':
+          description: Resource Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '429':
+          description: Rate Limit Exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+  /publications/{publicationId}/webhooks/{endpointId}:
+    get:
+      operationId: show
+      summary: 'Get webhook <Badge intent="info" minimal outlined>OAuth Scope: webhooks:read</Badge>'
+      description: Retrieve a specific webhook belonging to a publication.
+      tags:
+      - subpackage_webhooks
+      parameters:
+      - name: publicationId
+        in: path
+        description: The prefixed ID of the publication object
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids_PublicationId'
+      - name: endpointId
+        in: path
+        description: The prefixed ID of the webhook object
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids_EndpointId'
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_webhooks_WebhookResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '404':
+          description: Resource Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '422':
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '429':
+          description: Rate Limit Exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+    patch:
+      operationId: update
+      summary: 'Update webhook <Badge intent="info" minimal outlined>OAuth Scope: webhooks:write</Badge>'
+      description: Update a webhook subscription for a publication.
+      tags:
+      - subpackage_webhooks
+      parameters:
+      - name: publicationId
+        in: path
+        description: The prefixed ID of the publication object
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids_PublicationId'
+      - name: endpointId
+        in: path
+        description: The prefixed ID of the webhook object
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids_EndpointId'
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_webhooks_WebhookResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '404':
+          description: Resource Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '429':
+          description: Rate Limit Exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                event_types:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/type_webhooks_WebhookEventType'
+                  description: The types of events the webhook will receive.
+                description:
+                  type: string
+                  description: A description of the webhook.
+    delete:
+      operationId: delete
+      summary: 'Delete a webhook <Badge intent="info" minimal outlined>OAuth Scope: webhooks:write</Badge>'
+      description: Delete a webhook subscription from a publication.
+      tags:
+      - subpackage_webhooks
+      parameters:
+      - name: publicationId
+        in: path
+        description: The prefixed ID of the publication object
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids_PublicationId'
+      - name: endpointId
+        in: path
+        description: The prefixed ID of the webhook object
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids_EndpointId'
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_webhooks_WebhooksDeleteResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '404':
+          description: Resource Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '429':
+          description: Rate Limit Exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+components:
+  schemas:
+    type_webhooks_WebhooksDeleteResponse:
+      type: object
+      properties:
+        message:
+          type: string
+      title: WebhooksDeleteResponse
+    type_webhooks_IndexWebhooksResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/type_webhooks_Webhook'
+      required:
+      - data
+      title: IndexWebhooksResponse
+    type_webhooks_WebhookEventType:
+      type: string
+      enum:
+      - post.sent
+      - post.updated
+      - subscription.confirmed
+      - subscription.created
+      - subscription.downgraded
+      - subscription.paused
+      - subscription.resumed
+      - subscription.tier.paused
+      - subscription.tier.resumed
+      - subscription.upgraded
+      - subscription.tier.created
+      - subscription.tier.deleted
+      - subscription.deleted
+      - newsletter_list_subscription.subscribed
+      - newsletter_list_subscription.unsubscribed
+      - newsletter_list_subscription.paused
+      - newsletter_list_subscription.resumed
+      - post.scheduled
+      - survey.response_submitted
+      title: WebhookEventType
+    type_ids_EndpointId:
+      type: string
+      description: The prefixed ID of the endpoint.
+      title: EndpointId
+    type__Error:
+      type: object
+      properties:
+        status:
+          type: integer
+        statusText:
+          type: string
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/type__ErrorDetail'
+      required:
+      - status
+      - statusText
+      - errors
+      description: The top level error response.
+      title: Error
+    type__ErrorDetail:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+      required:
+      - message
+      - code
+      title: ErrorDetail
+    type_webhooks_Webhook:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/type_ids_EndpointId'
+          description: The prefixed ID for the webhook.
+        url:
+          type: string
+          format: uri
+          description: The webhook URL to send events to.
+        created:
+          type: integer
+          description: The date the webhook was created. Measured in seconds since the Unix epoch.
+        updated:
+          type: integer
+          description: The date the webhook was last updated. Measured in seconds since the Unix epoch.
+        event_types:
+          type: array
+          items:
+            $ref: '#/components/schemas/type_webhooks_WebhookEventType'
+          description: The types of events the webhook will receive.
+        description:
+          type: string
+          description: The user-defined description for the webhook.
+      required:
+      - id
+      - url
+      - created
+      - updated
+      - event_types
+      - description
+      title: Webhook
+    type_ids_PublicationId:
+      type: string
+      description: The prefixed ID of the publication.
+      title: PublicationId
+    type_webhooks_WebhookResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/type_webhooks_Webhook'
+      required:
+      - data
+      title: WebhookResponse
+  securitySchemes:
+    BearerAuthScheme:
+      type: http
+      scheme: bearer

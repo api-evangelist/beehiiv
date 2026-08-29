@@ -1,0 +1,577 @@
+openapi: 3.2.0
+info:
+  title: Reference Automations API
+  version: 1.0.0
+servers:
+- url: https://api.beehiiv.com/v2
+  description: Default
+tags:
+- name: Automations
+paths:
+  /publications/{publicationId}/automations:
+    get:
+      operationId: index
+      summary: 'List automations <Badge intent="info" minimal outlined>OAuth Scope: automations:read</Badge>'
+      description: Retrieve automations for a publication.
+      tags:
+      - Automations
+      parameters:
+      - name: publicationId
+        in: path
+        description: The prefixed ID of the publication object
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids_PublicationId'
+      - name: expand[]
+        in: query
+        description: Optional list of expandable objects.
+        required: false
+        schema:
+          $ref: '#/components/schemas/type_automations_AutomationsListRequestExpandItem'
+      - name: limit
+        in: query
+        description: A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.
+        required: false
+        schema:
+          type: integer
+      - name: page
+        in: query
+        description: 'Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).<br>If not specified, results 1-10 from page 1 will be returned.'
+        required: false
+        schema:
+          type: integer
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_automations_AutomationsListResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '401':
+          description: Unauthorized. The API key or OAuth access token is missing, invalid, or expired.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '404':
+          description: Resource Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '429':
+          description: Rate Limit Exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+  /publications/{publicationId}/automations/{automationId}:
+    get:
+      operationId: show
+      summary: 'Get automation <Badge intent="info" minimal outlined>OAuth Scope: automations:read</Badge>'
+      description: Retrieve a single automation for a publication.
+      tags:
+      - Automations
+      parameters:
+      - name: publicationId
+        in: path
+        description: The prefixed ID of the publication object
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids_PublicationId'
+      - name: automationId
+        in: path
+        description: The prefixed ID of the automation object
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids_AutomationId'
+      - name: expand[]
+        in: query
+        description: Optional list of expandable objects.
+        required: false
+        schema:
+          $ref: '#/components/schemas/type_automations_AutomationsGetRequestExpandItem'
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_automations_AutomationsGetResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '401':
+          description: Unauthorized. The API key or OAuth access token is missing, invalid, or expired.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '404':
+          description: Resource Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '429':
+          description: Rate Limit Exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+  /publications/{publicationId}/automations/{automationId}/emails:
+    get:
+      operationId: list-emails
+      summary: List automation emails
+      description: Retrieve all emails belonging to a specific automation, including engagement statistics for each email.
+      tags:
+      - Automations
+      parameters:
+      - name: publicationId
+        in: path
+        description: The prefixed ID of the publication object
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids_PublicationId'
+      - name: automationId
+        in: path
+        description: The prefixed ID of the automation object
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids_AutomationId'
+      - name: limit
+        in: query
+        description: A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.
+        required: false
+        schema:
+          type: integer
+      - name: cursor
+        in: query
+        description: '**Cursor-based pagination (recommended)**: Use this opaque cursor token to fetch the next page of results. Obtain it from the `next_cursor` field of a previous response.'
+        required: false
+        schema:
+          type: string
+      - name: page
+        in: query
+        description: '**Deprecated**: Use `cursor` instead. Pagination returns the results in pages. Limited to 100 pages maximum.'
+        required: false
+        schema:
+          type: integer
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_automations_AutomationEmailsListResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '401':
+          description: Unauthorized. The API key or OAuth access token is missing, invalid, or expired.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '404':
+          description: Resource Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '429':
+          description: Rate Limit Exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+components:
+  schemas:
+    type_automations_AutomationsGetResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/type__Automation'
+      title: AutomationsGetResponse
+    type__Error:
+      type: object
+      properties:
+        status:
+          type: integer
+        statusText:
+          type: string
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/type__ErrorDetail'
+      required:
+      - status
+      - statusText
+      - errors
+      description: The top level error response.
+      title: Error
+    type_automations_AutomationEmailStatsClicks:
+      type: object
+      properties:
+        url:
+          type: string
+          description: The URL the stats are for
+        total_clicks:
+          type: integer
+        total_unique_clicks:
+          type: integer
+        total_click_through_rate:
+          type: number
+          format: double
+          description: The percentage of clicks on the URL compared to the total number of unique opens
+      title: AutomationEmailStatsClicks
+    type_automations_AutomationsListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/type__Automation'
+        limit:
+          type: integer
+          description: The limit placed on the results. If no limit was specified in the request,this defaults to 10.
+        page:
+          type: integer
+          default: 1
+          description: The page number the results are from. If no page was specified in the request, this defaults to page 1.
+        total_results:
+          type: integer
+          description: The total number of results from all pages.
+        total_pages:
+          type: integer
+          description: The total number of pages.
+      title: AutomationsListResponse
+    type__AutomationStats:
+      type: object
+      properties:
+        journeys:
+          $ref: '#/components/schemas/type__AutomationStatsJourneys'
+          description: Journey counts for the automation
+        email:
+          $ref: '#/components/schemas/type__AutomationStatsEmail'
+          description: Aggregate email engagement statistics
+      description: 'Optional statistics for an automation. Retrievable by including `expand: [stats]` in the automation request.'
+      title: AutomationStats
+    type_automations_AutomationsGetRequestExpandItem:
+      type: string
+      enum:
+      - stats
+      title: AutomationsGetRequestExpandItem
+    type__Automation:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/type_ids_AutomationId'
+          description: A unique prefixed id of the automation
+        status:
+          $ref: '#/components/schemas/type__AutomationStatus'
+        name:
+          type: string
+        trigger_events:
+          type: array
+          items:
+            $ref: '#/components/schemas/type__AutomationTriggerEvent'
+          description: The types of events that can trigger the automation.
+        description:
+          type: string
+        stats:
+          $ref: '#/components/schemas/type__AutomationStats'
+      required:
+      - id
+      - status
+      - name
+      - trigger_events
+      title: Automation
+    type_automations_AutomationEmailsListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/type_automations_AutomationEmail'
+        limit:
+          type: integer
+          description: The limit placed on the results. If no limit was specified in the request, this defaults to 10.
+        has_more:
+          type: boolean
+          description: '**Cursor pagination only**: Indicates whether there are more results available after the current page.'
+        next_cursor:
+          type: string
+          description: '**Cursor pagination only**: The cursor token to use for fetching the next page of results. This will be null if has_more is false.'
+        page:
+          type: integer
+          default: 1
+          description: '**Offset pagination only**: The page number the results are from. Only present when using deprecated offset-based pagination.'
+        total_results:
+          type: integer
+          description: The total number of results from all pages.
+        total_pages:
+          type: integer
+          description: The total number of pages.
+      required:
+      - data
+      title: AutomationEmailsListResponse
+    type_ids_AutomationId:
+      type: string
+      description: The prefixed ID of the automation.
+      title: AutomationId
+    type__AutomationTriggerEvent:
+      type: string
+      enum:
+      - api
+      - downgrade
+      - email_submission
+      - form_submission
+      - manual
+      - poll_submission
+      - purchased_product
+      - referral_action
+      - segment_action
+      - signup
+      - unengaged
+      - upgrade
+      title: AutomationTriggerEvent
+    type__ErrorDetail:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+      required:
+      - message
+      - code
+      title: ErrorDetail
+    type__AutomationStatsJourneys:
+      type: object
+      properties:
+        running:
+          type: integer
+          default: 0
+          description: Number of journeys currently in progress
+        completed:
+          type: integer
+          default: 0
+          description: Number of completed journeys
+        total:
+          type: integer
+          default: 0
+          description: Total number of journeys
+      description: Journey counts for an automation.
+      title: AutomationStatsJourneys
+    type__AutomationStatus:
+      type: string
+      enum:
+      - running
+      - finishing
+      - inactive
+      - live
+      - draft
+      title: AutomationStatus
+    type_ids_PublicationId:
+      type: string
+      description: The prefixed ID of the publication.
+      title: PublicationId
+    type_automations_AutomationEmail:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique ID of the email message
+        automation_step_id:
+          type: string
+          description: The unique ID of the automation step this email belongs to
+        subject_line:
+          type: string
+          description: The email subject line
+        preview_text:
+          type: string
+          description: The email preview text
+        status:
+          type: string
+          description: The status of the email message. `active` - The email is active and will be sent. `inactive` - The email is inactive.
+        first_sent_at:
+          type: integer
+          description: The time the email was first sent. Measured in seconds since the Unix epoch
+        last_sent_at:
+          type: integer
+          description: The time the email was last sent. Measured in seconds since the Unix epoch
+        created_at:
+          type: integer
+          description: The time the email was created. Measured in seconds since the Unix epoch
+        stats:
+          $ref: '#/components/schemas/type_automations_AutomationEmailStats'
+      required:
+      - id
+      - automation_step_id
+      - subject_line
+      - preview_text
+      - status
+      - created_at
+      description: An email message within an automation.
+      title: AutomationEmail
+    type_automations_AutomationEmailStatsEmail:
+      type: object
+      properties:
+        recipients:
+          type: integer
+          default: 0
+          description: Total number of email recipients
+        delivered:
+          type: integer
+          default: 0
+          description: Total number of emails delivered
+        opens:
+          type: integer
+          default: 0
+          description: Total number of email opens
+        unique_opens:
+          type: integer
+          default: 0
+          description: Total number of unique email opens
+        open_rate:
+          type: number
+          format: double
+          description: The percentage of emails that have been opened
+        clicks:
+          type: integer
+          default: 0
+          description: Total number of email clicks
+        unique_clicks:
+          type: integer
+          default: 0
+          description: Unique number of email clicks
+        click_rate:
+          type: number
+          format: double
+          description: The percentage of emails that have been clicked
+        unsubscribes:
+          type: integer
+          default: 0
+          description: Total number of email unsubscribes
+        spam_reports:
+          type: integer
+          default: 0
+          description: The number of subscribers that reported this email as spam
+      description: Email engagement statistics for an automation email.
+      title: AutomationEmailStatsEmail
+    type_automations_AutomationEmailStats:
+      type: object
+      properties:
+        email:
+          $ref: '#/components/schemas/type_automations_AutomationEmailStatsEmail'
+          description: Stats scoped to email recipients
+        clicks:
+          type: array
+          items:
+            $ref: '#/components/schemas/type_automations_AutomationEmailStatsClicks'
+          description: An array of click statistics for each URL in the email
+      description: Statistics for an automation email message.
+      title: AutomationEmailStats
+    type__AutomationStatsEmail:
+      type: object
+      properties:
+        recipients:
+          type: integer
+          default: 0
+          description: Total number of email recipients across all emails
+        delivered:
+          type: integer
+          default: 0
+          description: Total number of emails delivered
+        opens:
+          type: integer
+          default: 0
+          description: Total number of email opens
+        unique_opens:
+          type: integer
+          default: 0
+          description: Total number of unique email opens
+        open_rate:
+          type: number
+          format: double
+          description: The percentage of emails that have been opened
+        clicks:
+          type: integer
+          default: 0
+          description: Total number of email clicks
+        unique_clicks:
+          type: integer
+          default: 0
+          description: Unique number of email clicks
+        click_rate:
+          type: number
+          format: double
+          description: The percentage of emails that have been clicked
+        unsubscribes:
+          type: integer
+          default: 0
+          description: Total number of email unsubscribes
+        spam_reports:
+          type: integer
+          default: 0
+          description: The number of subscribers that reported emails as spam
+      description: Aggregate email engagement statistics for an automation.
+      title: AutomationStatsEmail
+    type_automations_AutomationsListRequestExpandItem:
+      type: string
+      enum:
+      - stats
+      title: AutomationsListRequestExpandItem
+  securitySchemes:
+    BearerAuthScheme:
+      type: http
+      scheme: bearer

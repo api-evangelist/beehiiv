@@ -1,0 +1,202 @@
+openapi: 3.2.0
+info:
+  title: Reference subpackage_advertisement_opportunities Subpackage Referral Program API
+  version: 1.0.0
+servers:
+- url: https://api.beehiiv.com/v2
+tags:
+- name: subpackage_referralProgram
+paths:
+  /publications/{publicationId}/referral_program:
+    get:
+      operationId: show
+      summary: 'Get referral program <Badge intent="info" minimal outlined>OAuth Scope: referral_program:read</Badge>'
+      description: Retrieve details about the publication's referral program, including milestones and rewards.
+      tags:
+      - subpackage_referralProgram
+      parameters:
+      - name: publicationId
+        in: path
+        description: The prefixed ID of the publication object
+        required: true
+        schema:
+          $ref: '#/components/schemas/type_ids_PublicationId'
+      - name: limit
+        in: query
+        description: A limit on the number of objects to be returned. The limit can range between 1 and 100, and the default is 10.
+        required: false
+        schema:
+          type: integer
+      - name: page
+        in: query
+        description: 'Pagination returns the results in pages. Each page contains the number of results specified by the `limit` (default: 10).<br>If not specified, results 1-10 from page 1 will be returned.'
+        required: false
+        schema:
+          type: integer
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_referralProgram_ReferralProgramGetResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '404':
+          description: Resource Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '429':
+          description: Rate Limit Exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+components:
+  schemas:
+    type__MilestoneRewardType:
+      type: string
+      enum:
+      - physical
+      - promo_code
+      - digital
+      - premium_gift
+      description: What type of reward this is.<br>`physical` - A product which must be sent to the subscriber.<br>`promo_code` - A code that is redeemable for goods or services.
+      title: MilestoneRewardType
+    type_ids_RewardId:
+      type: string
+      description: The prefixed ID of the reward.
+      title: RewardId
+    type__Milestone:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/type_ids_MilestoneId'
+          description: A unique prefixed id of the milestone.
+        auto_fulfill:
+          type: boolean
+          description: Only available with a promo code reward type. This indicates that an email will automatically be sent when the milestone is reached containing the reward promo code.
+        num_referrals:
+          type: integer
+          description: The number of referrals needed to reach this milestone.
+        reward:
+          $ref: '#/components/schemas/type__MilestoneReward'
+      required:
+      - id
+      - auto_fulfill
+      - num_referrals
+      - reward
+      description: The milestone object.
+      title: Milestone
+    type__MilestoneReward:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/type_ids_RewardId'
+          description: A unique prefixed id of the reward.
+        name:
+          type: string
+          description: The name given to the reward at creation.
+        description:
+          type: string
+          description: The description given to the name at creation.
+        image_url:
+          type: string
+          description: A URL of an image to be displayed with the reward.
+        type:
+          $ref: '#/components/schemas/type__MilestoneRewardType'
+          description: What type of reward this is.<br>`physical` - A product which must be sent to the subscriber.<br>`promo_code` - A code that is redeemable for goods or services.
+      required:
+      - id
+      - name
+      - description
+      - image_url
+      - type
+      description: The reward object.
+      title: MilestoneReward
+    type__Error:
+      type: object
+      properties:
+        status:
+          type: integer
+        statusText:
+          type: string
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/type__ErrorDetail'
+      required:
+      - status
+      - statusText
+      - errors
+      description: The top level error response.
+      title: Error
+    type_referralProgram_ReferralProgramGetResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/type__Milestone'
+          description: A list of the milestones related to this publication's referral program.
+        limit:
+          type: integer
+          description: The limit placed on the results. If no limit was specified in the request,this defaults to 10.
+        page:
+          type: integer
+          default: 1
+          description: The page number the results are from. If no page was specified in the request, this defaults to page 1.
+        total_results:
+          type: integer
+          description: The total number of results from all pages.
+        total_pages:
+          type: integer
+          description: The total number of pages.
+      required:
+      - data
+      - limit
+      - page
+      - total_results
+      - total_pages
+      title: ReferralProgramGetResponse
+    type__ErrorDetail:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+      required:
+      - message
+      - code
+      title: ErrorDetail
+    type_ids_MilestoneId:
+      type: string
+      description: The prefixed ID of the milestone.
+      title: MilestoneId
+    type_ids_PublicationId:
+      type: string
+      description: The prefixed ID of the publication.
+      title: PublicationId
+  securitySchemes:
+    BearerAuthScheme:
+      type: http
+      scheme: bearer

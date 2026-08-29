@@ -1,0 +1,111 @@
+openapi: 3.2.0
+info:
+  title: Reference subpackage_advertisement_opportunities Subpackage OAUTH Users API
+  version: 1.0.0
+servers:
+- url: https://api.beehiiv.com/v2
+tags:
+- name: subpackage_oauth_users
+paths:
+  /users/identify:
+    get:
+      operationId: identify
+      summary: 'Identify user <Badge intent="info" minimal outlined>OAuth Scope: identify:read</Badge>'
+      description: Retrieve information about the user who authorized the OAuth access token.
+      tags:
+      - subpackage_oauth_users
+      parameters:
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type_oauth_users_UserIdentifyResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '404':
+          description: Resource Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '429':
+          description: Rate Limit Exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/type__Error'
+components:
+  schemas:
+    type__Error:
+      type: object
+      properties:
+        status:
+          type: integer
+        statusText:
+          type: string
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/type__ErrorDetail'
+      required:
+      - status
+      - statusText
+      - errors
+      description: The top level error response.
+      title: Error
+    type_oauth_users_UserIdentifyResponse:
+      type: object
+      properties:
+        first_name:
+          type: string
+          description: The first name of the user.
+        last_name:
+          type: string
+          description: The last name of the user.
+        email:
+          type: string
+          description: The email address of the user.
+        profile_picture:
+          type: string
+          description: URL to the user's profile picture.
+      description: Response containing information about the authenticated user.
+      title: UserIdentifyResponse
+    type__ErrorDetail:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+      required:
+      - message
+      - code
+      title: ErrorDetail
+  securitySchemes:
+    BearerAuthScheme:
+      type: http
+      scheme: bearer
