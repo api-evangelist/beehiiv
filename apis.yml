@@ -93,6 +93,8 @@ apis:
   humanURL: https://developers.beehiiv.com/api-reference/publications
   baseURL: https://api.beehiiv.com/v2
   tags:
+  - Webhook
+  tags_raw:
   - Webhooks
   properties:
   - type: OpenAPI
@@ -549,6 +551,8 @@ apis:
   humanURL: https://developers.beehiiv.com/api-reference/publications
   baseURL: https://api.beehiiv.com/v2
   tags:
+  - Engagements
+  tags_raw:
   - engagements
   properties:
   - type: OpenAPI
@@ -657,7 +661,8 @@ apis:
   description: The oauth_users API from beehiiv — 1 operation(s) for oauth_users.
   humanURL: https://developers.beehiiv.com/api-reference/publications
   baseURL: https://api.beehiiv.com/v2
-  tags:
+  tags: []
+  tags_raw:
   - oauth_users
   properties:
   - type: OpenAPI
@@ -694,6 +699,8 @@ apis:
   humanURL: https://developers.beehiiv.com/api-reference/publications
   baseURL: https://api.beehiiv.com/v2
   tags:
+  - Podcasts
+  tags_raw:
   - podcasts
   properties:
   - type: OpenAPI
@@ -874,6 +881,8 @@ apis:
   humanURL: https://developers.beehiiv.com/api-reference/publications
   baseURL: https://api.beehiiv.com/v2
   tags:
+  - ReferralProgram
+  tags_raw:
   - Referral Program
   properties:
   - type: OpenAPI
@@ -982,6 +991,8 @@ apis:
   humanURL: https://developers.beehiiv.com/api-reference/publications
   baseURL: https://api.beehiiv.com/v2
   tags:
+  - Subscription
+  tags_raw:
   - Subscriptions
   properties:
   - type: OpenAPI
@@ -1054,6 +1065,8 @@ apis:
   humanURL: https://developers.beehiiv.com/api-reference/publications
   baseURL: https://api.beehiiv.com/v2
   tags:
+  - Workspaces
+  tags_raw:
   - workspaces
   properties:
   - type: OpenAPI
