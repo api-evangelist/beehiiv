@@ -8,8 +8,13 @@ deployment:
   auth: oauth
   verified: probed
   note: 'POST to the endpoint returns HTTP 401 with WWW-Authenticate: Bearer resource_metadata="https://mcp.beehiiv.com/.well-known/oauth-protected-resource/mcp"
-    — a live, spec-correct MCP resource server. beehiiv ships no stdio package of its own; the npm package beehiiv-mcp
-    is community-published (see packages/beehiiv-packages.yml).'
+    — a live, spec-correct MCP resource server. beehiiv ships no stdio package of its own; the npm package
+    beehiiv-mcp is community-published (see packages/beehiiv-packages.yml).'
+  probe_prior: (never probed)
+  probe: gated
+  probe_why: RFC 9728 challenge on the MCP path only
+  checked: '2026-09-11'
+  source: claimed-backlog re-probe 2026-09-11
 servers:
 - name: beehiiv MCP
   role: product
@@ -35,11 +40,11 @@ servers:
     - write
     dynamic_client_registration: true
     protected_resource_metadata: https://mcp.beehiiv.com/.well-known/oauth-protected-resource/mcp
-  tools: auth-gated — tools/list returns 401 without a bearer token; the tool set and its inputSchemas require authenticated
-    introspection and are NOT recorded here rather than guessed.
-  entitlement: Plan-gated. beehiiv pricing lists "beehiiv MCP (Read Access)" on the free Launch tier and "beehiiv
-    MCP (Write Access)" from Scale upward, which lines up with the read/write scopes the protected-resource metadata
-    advertises.
+  tools: auth-gated — tools/list returns 401 without a bearer token; the tool set and its inputSchemas
+    require authenticated introspection and are NOT recorded here rather than guessed.
+  entitlement: Plan-gated. beehiiv pricing lists "beehiiv MCP (Read Access)" on the free Launch tier and
+    "beehiiv MCP (Write Access)" from Scale upward, which lines up with the read/write scopes the protected-resource
+    metadata advertises.
 - name: beehiiv Marketing MCP
   role: marketing/pricing
   endpoint: https://www.beehiiv.com/api/mcp
@@ -57,9 +62,9 @@ servers:
   - name: pricing_faq
     description: Trial, take rate, billing, refunds, downgrades.
     input: none
-  note: Documented by beehiiv itself in https://www.beehiiv.com/pricing.md, including the Cursor mcp.json snippet.
-    Our anonymous POST was answered with a Cloudflare managed browser challenge (403), so the tool list here is
-    the provider-published one, not an observed tools/list response.
+  note: Documented by beehiiv itself in https://www.beehiiv.com/pricing.md, including the Cursor mcp.json
+    snippet. Our anonymous POST was answered with a Cloudflare managed browser challenge (403), so the
+    tool list here is the provider-published one, not an observed tools/list response.
 - name: beehiiv docs MCP
   role: documentation
   endpoint: https://developers.beehiiv.com/_mcp/server
@@ -77,8 +82,8 @@ servers:
   tools:
   - name: searchDocs
     title: Search developers.beehiiv.com Docs
-    description: Search the documentation at https://developers.beehiiv.com. Returns relevant doc passages with
-      source URLs.
+    description: Search the documentation at https://developers.beehiiv.com. Returns relevant doc passages
+      with source URLs.
     readOnlyHint: true
     inputSchema:
       type: object
@@ -89,10 +94,12 @@ servers:
       required:
       - query
       additionalProperties: false
-  note: Fern-hosted docs search, advertised in llms.txt. Anonymous initialize + tools/list both returned 200; the
-    single tool and its real inputSchema were captured verbatim.
+  note: Fern-hosted docs search, advertised in llms.txt. Anonymous initialize + tools/list both returned
+    200; the single tool and its real inputSchema were captured verbatim.
 observations:
-- beehiiv runs three distinct MCP surfaces on three different hosts with three different auth postures — an operational
-  product server (OAuth), an anonymous marketing/pricing server, and an anonymous docs-search server.
+- beehiiv runs three distinct MCP surfaces on three different hosts with three different auth postures
+  — an operational product server (OAuth), an anonymous marketing/pricing server, and an anonymous docs-search
+  server.
 - The product MCP is the only one that reaches account data, and it is the only one gated. Its scope vocabulary
-  (read/write) is coarser than the OAuth2 scope vocabulary the REST API uses (posts:read, subscriptions:write, ...).
+  (read/write) is coarser than the OAuth2 scope vocabulary the REST API uses (posts:read, subscriptions:write,
+  ...).
