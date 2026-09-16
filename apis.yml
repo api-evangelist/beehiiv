@@ -60,7 +60,7 @@ apis:
   - type: Authentication
     url: authentication/beehiiv-authentication.yml
   - type: Webhooks
-    url: openapi/beehiiv-webhook-events-openapi.yml
+    url: openapi/_original/beehiiv-webhook-events-openapi.yml
   - type: AsyncAPI
     url: asyncapi/beehiiv-asyncapi.yml
   - type: Documentation
@@ -82,7 +82,7 @@ apis:
   - type: Authentication
     url: authentication/beehiiv-authentication.yml
   - type: Webhooks
-    url: openapi/beehiiv-webhook-events-openapi.yml
+    url: openapi/_original/beehiiv-webhook-events-openapi.yml
   - type: AsyncAPI
     url: asyncapi/beehiiv-asyncapi.yml
   - type: Documentation
@@ -106,7 +106,7 @@ apis:
   - type: Authentication
     url: authentication/beehiiv-authentication.yml
   - type: Webhooks
-    url: openapi/beehiiv-webhook-events-openapi.yml
+    url: openapi/_original/beehiiv-webhook-events-openapi.yml
   - type: AsyncAPI
     url: asyncapi/beehiiv-asyncapi.yml
   - type: Documentation
@@ -1188,7 +1188,7 @@ common:
   - type: AsyncAPI
     url: asyncapi/beehiiv-asyncapi.yml
   - type: Webhooks
-    url: openapi/beehiiv-webhook-events-openapi.yml
+    url: openapi/_original/beehiiv-webhook-events-openapi.yml
   - type: AgentSkill
     url: skills/_index.yml
   - type: DeveloperPortal
