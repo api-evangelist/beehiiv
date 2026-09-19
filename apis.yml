@@ -32,6 +32,14 @@ accessModel:
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/beehiiv.png
 tags:
+  - Newsletters
+  - Creators
+  - Email
+  - Subscription
+  - Publishing
+  - Media
+  - Advertising
+tags_raw:
   - Newsletter
   - Creator
   - Email
@@ -49,6 +57,8 @@ apis:
   humanURL: https://developers.beehiiv.com/api-reference/publications
   baseURL: https://api.beehiiv.com/v2
   tags:
+  - Authorization
+  tags_raw:
   - Authorizations
   properties:
   - type: OpenAPI
@@ -298,6 +308,8 @@ apis:
   humanURL: https://developers.beehiiv.com/api-reference/publications
   baseURL: https://api.beehiiv.com/v2
   tags:
+  - Automation
+  tags_raw:
   - Automations
   properties:
   - type: OpenAPI
@@ -1065,7 +1077,7 @@ apis:
   humanURL: https://developers.beehiiv.com/api-reference/publications
   baseURL: https://api.beehiiv.com/v2
   tags:
-  - Workspaces
+  - Workspace
   tags_raw:
   - workspaces
   properties:
