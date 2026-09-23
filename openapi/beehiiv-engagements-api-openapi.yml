@@ -6,15 +6,18 @@ servers:
 - url: https://api.beehiiv.com/v2
   description: Default
 tags:
-- name: engagements
+- name: Engagements
 paths:
   /publications/{publicationId}/engagements:
     get:
       operationId: index
-      summary: 'Get publication engagements <Badge intent="info" minimal outlined>OAuth Scope: publications:read</Badge>'
-      description: Retrieve email engagement metrics for a specific publication over a defined date range and granularity.<br><br> By default, the endpoint returns metrics for the past day, aggregated daily. The max number of days allowed is 31. All dates and times are in UTC.
+      summary: 'Get publication engagements OAuth Scope: publications:read'
+      description: 'Retrieve email engagement metrics for a specific publication over a defined date range and granularity.
+
+
+        By default, the endpoint returns metrics for the past day, aggregated daily. The max number of days allowed is 31. All dates and times are in UTC.'
       tags:
-      - engagements
+      - Engagements
       parameters:
       - name: publicationId
         in: path
@@ -97,85 +100,6 @@ paths:
                 $ref: '#/components/schemas/type__Error'
 components:
   schemas:
-    type_engagements_PublicationEngagementEmailType:
-      type: string
-      enum:
-      - all
-      - post
-      - message
-      title: PublicationEngagementEmailType
-    type_engagements_PublicationEngagementsResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/type_engagements_PublicationEngagementMetrics'
-          description: The list of engagement metrics for the publication within the specified date range and granularity. Returns an empty list if there is no engagement data for the specified period.
-        publication_id:
-          $ref: '#/components/schemas/type_ids_PublicationId'
-          description: The unique identifier of the publication. Passed as a path parameter in the request.
-        granularity:
-          $ref: '#/components/schemas/type_engagements_PublicationEngagementGranularity'
-          description: The granularity at which the engagement metrics are reported.
-        email_type:
-          $ref: '#/components/schemas/type_engagements_PublicationEngagementEmailType'
-          description: The email type filter applied to the engagement metrics. Defaults to `all`.
-        start_date:
-          type: string
-          format: date
-          description: The starting date of the engagement metrics.
-        number_of_days:
-          $ref: '#/components/schemas/type_engagements_NumberOfDays'
-          description: The number of days of engagement metrics returned.
-      required:
-      - data
-      - publication_id
-      - granularity
-      - email_type
-      - start_date
-      - number_of_days
-      title: PublicationEngagementsResponse
-    type_ids_PublicationId:
-      type: string
-      description: The prefixed ID of the publication.
-      title: PublicationId
-    type__Error:
-      type: object
-      properties:
-        status:
-          type: integer
-        statusText:
-          type: string
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/type__ErrorDetail'
-      required:
-      - status
-      - statusText
-      - errors
-      description: The top level error response.
-      title: Error
-    type__RequestDirection:
-      type: string
-      enum:
-      - asc
-      - desc
-      default: asc
-      description: The direction of the request. Defaults to `asc`.
-      title: RequestDirection
-    type__ErrorDetail:
-      type: object
-      properties:
-        message:
-          type: string
-        code:
-          type: string
-      required:
-      - message
-      - code
-      title: ErrorDetail
     type_engagements_PublicationEngagementMetrics:
       type: object
       properties:
@@ -210,9 +134,21 @@ components:
       - unique_clicks
       - unique_verified_clicks
       title: PublicationEngagementMetrics
-    type_engagements_NumberOfDays:
-      type: integer
-      title: NumberOfDays
+    type_ids_PublicationId:
+      type: string
+      description: The prefixed ID of the publication.
+      title: PublicationId
+    type__ErrorDetail:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+      required:
+      - message
+      - code
+      title: ErrorDetail
     type_engagements_PublicationEngagementGranularity:
       type: string
       enum:
@@ -220,6 +156,73 @@ components:
       - week
       - month
       title: PublicationEngagementGranularity
+    type_engagements_PublicationEngagementsResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/type_engagements_PublicationEngagementMetrics'
+          description: The list of engagement metrics for the publication within the specified date range and granularity. Returns an empty list if there is no engagement data for the specified period.
+        publication_id:
+          $ref: '#/components/schemas/type_ids_PublicationId'
+          description: The unique identifier of the publication. Passed as a path parameter in the request.
+        granularity:
+          $ref: '#/components/schemas/type_engagements_PublicationEngagementGranularity'
+          description: The granularity at which the engagement metrics are reported.
+        email_type:
+          $ref: '#/components/schemas/type_engagements_PublicationEngagementEmailType'
+          description: The email type filter applied to the engagement metrics. Defaults to `all`.
+        start_date:
+          type: string
+          format: date
+          description: The starting date of the engagement metrics.
+        number_of_days:
+          $ref: '#/components/schemas/type_engagements_NumberOfDays'
+          description: The number of days of engagement metrics returned.
+      required:
+      - data
+      - publication_id
+      - granularity
+      - email_type
+      - start_date
+      - number_of_days
+      title: PublicationEngagementsResponse
+    type_engagements_NumberOfDays:
+      type: integer
+      title: NumberOfDays
+    type__Error:
+      type: object
+      properties:
+        status:
+          type: integer
+        statusText:
+          type: string
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/type__ErrorDetail'
+      required:
+      - status
+      - statusText
+      - errors
+      description: The top level error response.
+      title: Error
+    type__RequestDirection:
+      type: string
+      enum:
+      - asc
+      - desc
+      default: asc
+      description: The direction of the request. Defaults to `asc`.
+      title: RequestDirection
+    type_engagements_PublicationEngagementEmailType:
+      type: string
+      enum:
+      - all
+      - post
+      - message
+      title: PublicationEngagementEmailType
   securitySchemes:
     BearerAuthScheme:
       type: http

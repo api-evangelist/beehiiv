@@ -11,7 +11,7 @@ paths:
   /publications/{publicationId}/complimentary_access:
     get:
       operationId: index
-      summary: 'List complimentary access <Badge intent="info" minimal outlined>OAuth Scope: complimentary_access:read</Badge>'
+      summary: 'List complimentary access OAuth Scope: complimentary_access:read'
       description: Retrieve all complimentary access objects belonging to a specific publication.
       tags:
       - Complimentary Access
@@ -86,7 +86,7 @@ paths:
   /publications/{publicationId}/complimentary_access/{complimentaryAccessId}:
     get:
       operationId: show
-      summary: 'Get complimentary access <Badge intent="info" minimal outlined>OAuth Scope: complimentary_access:read</Badge>'
+      summary: 'Get complimentary access OAuth Scope: complimentary_access:read'
       description: Retrieve a single complimentary access object belonging to a specific publication.
       tags:
       - Complimentary Access
@@ -154,92 +154,19 @@ paths:
                 $ref: '#/components/schemas/type__Error'
 components:
   schemas:
-    type_tiers_TierPriceCurrency:
+    type_tiers_TierPriceInterval:
       type: string
       enum:
-      - usd
-      - aud
-      - cad
-      - eur
-      - gbp
-      - inr
-      - brl
-      - mxn
-      - nzd
-      - dkk
-      title: TierPriceCurrency
-    type_tiers_TierStatus:
-      type: string
-      enum:
-      - active
-      - archived
-      description: Returns whether or not the tier has any active prices.
-      title: TierStatus
-    type_complimentaryAccess_ComplimentaryAccessStats:
-      type: object
-      properties:
-        total_granted:
-          type: integer
-          description: Total number of subscriptions that have ever been granted this complimentary access.
-        active_granted:
-          type: integer
-          description: Number of subscriptions currently within an active complimentary access period.
-      required:
-      - total_granted
-      - active_granted
-      description: 'Optional stats for a complimentary access object. Retrievable by including `expand: [stats]` in the request.'
-      title: ComplimentaryAccessStats
+      - month
+      - quarter
+      - year
+      - one_time
+      - donation
+      title: TierPriceInterval
     type_ids_PublicationId:
       type: string
       description: The prefixed ID of the publication.
       title: PublicationId
-    type_ids_PriceId:
-      type: string
-      description: The prefixed ID of the price.
-      title: PriceId
-    type__Error:
-      type: object
-      properties:
-        status:
-          type: integer
-        statusText:
-          type: string
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/type__ErrorDetail'
-      required:
-      - status
-      - statusText
-      - errors
-      description: The top level error response.
-      title: Error
-    type_ids_ComplimentaryAccessId:
-      type: string
-      description: The prefixed ID of the complimentary access object.
-      title: ComplimentaryAccessId
-    type_complimentaryAccess_IndexComplimentaryAccessResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/type_complimentaryAccess_ComplimentaryAccess'
-        limit:
-          type: integer
-          description: The limit placed on the results. Defaults to 10 if not specified.
-        has_more:
-          type: boolean
-          description: Indicates whether there are more results available after the current page.
-        next_cursor:
-          type: string
-          description: The cursor token to use for fetching the next page of results. This will be null if has_more is false.
-        total_results:
-          type: integer
-          description: The total number of results from all pages.
-      required:
-      - data
-      title: IndexComplimentaryAccessResponse
     type_complimentaryAccess_ComplimentaryAccess:
       type: object
       properties:
@@ -270,16 +197,6 @@ components:
       - description
       description: The complimentary access object.
       title: ComplimentaryAccess
-    type_tiers_TierStats:
-      type: object
-      properties:
-        active_subscriptions:
-          type: integer
-          description: Total number of active subscriptions belonging to this tier.
-      required:
-      - active_subscriptions
-      description: 'Optional list of stats for a tier. Retrievable by including `expand: [stats]` in the tier request body.'
-      title: TierStats
     type__ErrorDetail:
       type: object
       properties:
@@ -291,6 +208,66 @@ components:
       - message
       - code
       title: ErrorDetail
+    type_complimentaryAccess_ComplimentaryAccessStats:
+      type: object
+      properties:
+        total_granted:
+          type: integer
+          description: Total number of subscriptions that have ever been granted this complimentary access.
+        active_granted:
+          type: integer
+          description: Number of subscriptions currently within an active complimentary access period.
+      required:
+      - total_granted
+      - active_granted
+      description: 'Optional stats for a complimentary access object. Retrievable by including `expand: [stats]` in the request.'
+      title: ComplimentaryAccessStats
+    type_tiers_TierStatus:
+      type: string
+      enum:
+      - active
+      - archived
+      description: Returns whether or not the tier has any active prices.
+      title: TierStatus
+    type_tiers_TierPriceCurrency:
+      type: string
+      enum:
+      - usd
+      - aud
+      - cad
+      - eur
+      - gbp
+      - inr
+      - brl
+      - mxn
+      - nzd
+      - dkk
+      title: TierPriceCurrency
+    type__Error:
+      type: object
+      properties:
+        status:
+          type: integer
+        statusText:
+          type: string
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/type__ErrorDetail'
+      required:
+      - status
+      - statusText
+      - errors
+      description: The top level error response.
+      title: Error
+    type_ids_PriceId:
+      type: string
+      description: The prefixed ID of the price.
+      title: PriceId
+    type_ids_ComplimentaryAccessId:
+      type: string
+      description: The prefixed ID of the complimentary access object.
+      title: ComplimentaryAccessId
     type_tiers_TierPrice:
       type: object
       properties:
@@ -316,15 +293,6 @@ components:
             type: string
       description: Price belonging to a Tier
       title: TierPrice
-    type_tiers_TierPriceInterval:
-      type: string
-      enum:
-      - month
-      - quarter
-      - year
-      - one_time
-      - donation
-      title: TierPriceInterval
     type_complimentaryAccess_ComplimentaryAccessTimeUnit:
       type: string
       enum:
@@ -334,6 +302,38 @@ components:
       - forever
       description: The unit of time for the gift duration.<br>`days` - Duration in days.<br>`months` - Duration in months.<br>`years` - Duration in years.<br>`forever` - Lifetime access with no expiration.
       title: ComplimentaryAccessTimeUnit
+    type_complimentaryAccess_IndexComplimentaryAccessResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/type_complimentaryAccess_ComplimentaryAccess'
+        limit:
+          type: integer
+          description: The limit placed on the results. Defaults to 10 if not specified.
+        has_more:
+          type: boolean
+          description: Indicates whether there are more results available after the current page.
+        next_cursor:
+          type: string
+          description: The cursor token to use for fetching the next page of results. This will be null if has_more is false.
+        total_results:
+          type: integer
+          description: The total number of results from all pages.
+      required:
+      - data
+      title: IndexComplimentaryAccessResponse
+    type_tiers_TierStats:
+      type: object
+      properties:
+        active_subscriptions:
+          type: integer
+          description: Total number of active subscriptions belonging to this tier.
+      required:
+      - active_subscriptions
+      description: 'Optional list of stats for a tier. Retrievable by including `expand: [stats]` in the tier request body.'
+      title: TierStats
     type_complimentaryAccess_ComplimentaryAccessResponse:
       type: object
       properties:

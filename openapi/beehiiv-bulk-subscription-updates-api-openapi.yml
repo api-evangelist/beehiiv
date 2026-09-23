@@ -11,7 +11,7 @@ paths:
   /publications/{publicationId}/bulk_subscription_updates:
     get:
       operationId: index
-      summary: 'List subscription updates <Badge intent="info" minimal outlined>OAuth Scope: subscriptions:read</Badge>'
+      summary: 'List subscription updates OAuth Scope: subscriptions:read'
       description: Returns a list of Subscription Update objects for a publication.
       tags:
       - Bulk Subscription Updates
@@ -68,7 +68,7 @@ paths:
   /publications/{publicationId}/bulk_subscription_updates/{id}:
     get:
       operationId: show
-      summary: 'Get subscription update <Badge intent="info" minimal outlined>OAuth Scope: subscriptions:read</Badge>'
+      summary: 'Get subscription update OAuth Scope: subscriptions:read'
       description: Returns a single Subscription Update object for a publication.
       tags:
       - Bulk Subscription Updates
@@ -131,7 +131,7 @@ paths:
   /publications/{publicationId}/subscriptions/bulk_actions:
     put:
       operationId: put
-      summary: 'Update subscriptions <Badge intent="info" minimal outlined>OAuth Scope: subscriptions:write</Badge>'
+      summary: 'Update subscriptions OAuth Scope: subscriptions:write'
       description: Bulk update multiple subscriptions fields, including status, custom fields, and tiers.
       tags:
       - Bulk Subscription Updates
@@ -198,7 +198,7 @@ paths:
                   description: An array of objects representing the subscriptions to be updated (max 1000).
     patch:
       operationId: patch
-      summary: 'Update subscriptions <Badge intent="info" minimal outlined>OAuth Scope: subscriptions:write</Badge>'
+      summary: 'Update subscriptions OAuth Scope: subscriptions:write'
       description: Bulk update multiple subscriptions fields, including status, custom fields, and tiers.
       tags:
       - Bulk Subscription Updates
@@ -266,7 +266,7 @@ paths:
   /publications/{publicationId}/subscriptions:
     put:
       operationId: put-status
-      summary: 'Update subscriptions'' status <Badge intent="info" minimal outlined>OAuth Scope: subscriptions:write</Badge>'
+      summary: 'Update subscriptions'' status OAuth Scope: subscriptions:write'
       description: Bulk update subscriptions' status.
       tags:
       - Bulk Subscription Updates
@@ -305,7 +305,7 @@ paths:
               - new_status
     patch:
       operationId: patch-status
-      summary: 'Update subscriptions'' status <Badge intent="info" minimal outlined>OAuth Scope: subscriptions:write</Badge>'
+      summary: 'Update subscriptions'' status OAuth Scope: subscriptions:write'
       description: Bulk update subscriptions' status.
       tags:
       - Bulk Subscription Updates
@@ -344,126 +344,14 @@ paths:
               - new_status
 components:
   schemas:
-    type_subscriptions_SubscriptionsPatchResponseData:
-      type: object
-      properties:
-        subscription_update_id:
-          type: string
-          description: The ID of the Subscription Update object responsible for handling the update job
-      title: SubscriptionsPatchResponseData
-    type__Error:
-      type: object
-      properties:
-        status:
-          type: integer
-        statusText:
-          type: string
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/type__ErrorDetail'
-      required:
-      - status
-      - statusText
-      - errors
-      description: The top level error response.
-      title: Error
-    type_bulkSubscriptionUpdates_BulkSubscriptionUpdatesListResponseDataItem:
-      type: object
-      properties:
-        id:
-          type: string
-          description: The ID of the update object
-        type:
-          $ref: '#/components/schemas/type_bulkSubscriptionUpdates_BulkSubscriptionUpdatesListResponseDataItemType'
-          description: The type of update (status or bulk)
-        params:
-          type: string
-          description: The parameters passed in for the update
-        status:
-          $ref: '#/components/schemas/type_bulkSubscriptionUpdates_BulkSubscriptionUpdatesListResponseDataItemStatus'
-          description: The status of the update
-        publication_id:
-          $ref: '#/components/schemas/type_ids_PublicationId'
-          description: The publication ID associated with this update
-        failure_reason:
-          type: string
-          description: If the job as a whole fails, this will detail the errors encountered
-        completed:
-          type: integer
-          description: The timestamp of the job's completion
-        created:
-          type: integer
-          description: The timestamp of the job's creation
-        updated:
-          type: integer
-          description: The timestamp of the job's update
-        error_log:
-          type: array
-          items:
-            type: string
-          description: An array of errors encountered for individual updates within the job
-      title: BulkSubscriptionUpdatesListResponseDataItem
-    type_subscriptions_SubscriptionsPatchResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/type_subscriptions_SubscriptionsPatchResponseData'
-      required:
-      - data
-      title: SubscriptionsPatchResponse
-    type_bulkSubscriptionUpdates_BulkSubscriptionUpdatesGetResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/type_bulkSubscriptionUpdates_BulkSubscriptionUpdatesGetResponseData'
-      title: BulkSubscriptionUpdatesGetResponse
+    type_ids_SubscriptionId:
+      type: string
+      description: The prefixed ID of the subscription.
+      title: SubscriptionId
     type_ids_OptionalStripeCustomerId:
       type: string
       description: The prefixed ID of the Stripe customer.
       title: OptionalStripeCustomerId
-    type_bulkSubscriptionUpdates_BulkSubscriptionUpdatesListResponseDataItemType:
-      type: string
-      enum:
-      - status
-      - bulk
-      description: The type of update (status or bulk)
-      title: BulkSubscriptionUpdatesListResponseDataItemType
-    type_bulkSubscriptionUpdates_SubscriptionsPatchRequestSubscriptionsItemTier:
-      type: string
-      enum:
-      - free
-      - premium
-      description: The Tier of the Subscription (not required)
-      title: SubscriptionsPatchRequestSubscriptionsItemTier
-    type_bulkSubscriptionUpdates_BulkSubscriptionUpdatesListResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/type_bulkSubscriptionUpdates_BulkSubscriptionUpdatesListResponseDataItem'
-          description: An array of Subscription Update objects
-      title: BulkSubscriptionUpdatesListResponse
-    type__CustomFieldDataType:
-      oneOf:
-      - type: string
-      - type: number
-        format: double
-      - type: boolean
-      - type: array
-        items:
-          type: string
-      title: CustomFieldDataType
-    type_bulkSubscriptionUpdates_BulkSubscriptionUpdatesListResponseDataItemStatus:
-      type: string
-      enum:
-      - pending
-      - processing
-      - complete
-      - failed
-      description: The status of the update
-      title: BulkSubscriptionUpdatesListResponseDataItemStatus
     type_bulkSubscriptionUpdates_SubscriptionsPatchRequestSubscriptionsItem:
       type: object
       properties:
@@ -489,21 +377,47 @@ components:
       required:
       - subscription_id
       title: SubscriptionsPatchRequestSubscriptionsItem
-    type_ids_ComplimentaryAccessId:
+    type_bulkSubscriptionUpdates_BulkSubscriptionUpdatesGetResponseDataType:
       type: string
-      description: The prefixed ID of the complimentary access object.
-      title: ComplimentaryAccessId
-    type__ErrorDetail:
+      enum:
+      - bulk
+      - status
+      description: The type of update (status or bulk)
+      title: BulkSubscriptionUpdatesGetResponseDataType
+    type__CustomFieldDataType:
+      oneOf:
+      - type: string
+      - type: number
+        format: double
+      - type: boolean
+      - type: array
+        items:
+          type: string
+      title: CustomFieldDataType
+    type_subscriptions_SubscriptionsPatchResponse:
       type: object
       properties:
-        message:
-          type: string
-        code:
-          type: string
+        data:
+          $ref: '#/components/schemas/type_subscriptions_SubscriptionsPatchResponseData'
       required:
-      - message
-      - code
-      title: ErrorDetail
+      - data
+      title: SubscriptionsPatchResponse
+    type_bulkSubscriptionUpdates_BulkSubscriptionUpdatesListResponseDataItemStatus:
+      type: string
+      enum:
+      - pending
+      - processing
+      - complete
+      - failed
+      description: The status of the update
+      title: BulkSubscriptionUpdatesListResponseDataItemStatus
+    type_subscriptions_SubscriptionsPatchResponseData:
+      type: object
+      properties:
+        subscription_update_id:
+          type: string
+          description: The ID of the Subscription Update object responsible for handling the update job
+      title: SubscriptionsPatchResponseData
     type_bulkSubscriptionUpdates_SubscriptionsPatchRequestSubscriptionsItemCustomFieldsItem:
       type: object
       properties:
@@ -517,30 +431,44 @@ components:
           type: boolean
           description: A boolean value to specify whether to delete this custom field entry from the subscription
       title: SubscriptionsPatchRequestSubscriptionsItemCustomFieldsItem
-    type_bulkSubscriptionUpdates_BulkSubscriptionUpdatesGetResponseDataType:
+    type_bulkSubscriptionUpdates_SubscriptionsPatchRequestSubscriptionsItemTier:
       type: string
       enum:
-      - bulk
-      - status
-      description: The type of update (status or bulk)
-      title: BulkSubscriptionUpdatesGetResponseDataType
-    type_bulkSubscriptionUpdates_BulkSubscriptionUpdatesGetResponseDataStatus:
-      type: string
-      enum:
-      - pending
-      - processing
-      - complete
-      - failed
-      description: The status of the update
-      title: BulkSubscriptionUpdatesGetResponseDataStatus
+      - free
+      - premium
+      description: The Tier of the Subscription (not required)
+      title: SubscriptionsPatchRequestSubscriptionsItemTier
+    type_bulkSubscriptionUpdates_BulkSubscriptionUpdatesGetResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/type_bulkSubscriptionUpdates_BulkSubscriptionUpdatesGetResponseData'
+      title: BulkSubscriptionUpdatesGetResponse
     type_ids_PublicationId:
       type: string
       description: The prefixed ID of the publication.
       title: PublicationId
-    type_ids_SubscriptionId:
+    type__Error:
+      type: object
+      properties:
+        status:
+          type: integer
+        statusText:
+          type: string
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/type__ErrorDetail'
+      required:
+      - status
+      - statusText
+      - errors
+      description: The top level error response.
+      title: Error
+    type_ids_ComplimentaryAccessId:
       type: string
-      description: The prefixed ID of the subscription.
-      title: SubscriptionId
+      description: The prefixed ID of the complimentary access object.
+      title: ComplimentaryAccessId
     type_bulkSubscriptionUpdates_BulkSubscriptionUpdatesGetResponseData:
       type: object
       properties:
@@ -577,6 +505,78 @@ components:
             type: string
           description: An array of errors encountered for individual updates within the job
       title: BulkSubscriptionUpdatesGetResponseData
+    type_bulkSubscriptionUpdates_BulkSubscriptionUpdatesListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/type_bulkSubscriptionUpdates_BulkSubscriptionUpdatesListResponseDataItem'
+          description: An array of Subscription Update objects
+      title: BulkSubscriptionUpdatesListResponse
+    type__ErrorDetail:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+      required:
+      - message
+      - code
+      title: ErrorDetail
+    type_bulkSubscriptionUpdates_BulkSubscriptionUpdatesListResponseDataItemType:
+      type: string
+      enum:
+      - status
+      - bulk
+      description: The type of update (status or bulk)
+      title: BulkSubscriptionUpdatesListResponseDataItemType
+    type_bulkSubscriptionUpdates_BulkSubscriptionUpdatesListResponseDataItem:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The ID of the update object
+        type:
+          $ref: '#/components/schemas/type_bulkSubscriptionUpdates_BulkSubscriptionUpdatesListResponseDataItemType'
+          description: The type of update (status or bulk)
+        params:
+          type: string
+          description: The parameters passed in for the update
+        status:
+          $ref: '#/components/schemas/type_bulkSubscriptionUpdates_BulkSubscriptionUpdatesListResponseDataItemStatus'
+          description: The status of the update
+        publication_id:
+          $ref: '#/components/schemas/type_ids_PublicationId'
+          description: The publication ID associated with this update
+        failure_reason:
+          type: string
+          description: If the job as a whole fails, this will detail the errors encountered
+        completed:
+          type: integer
+          description: The timestamp of the job's completion
+        created:
+          type: integer
+          description: The timestamp of the job's creation
+        updated:
+          type: integer
+          description: The timestamp of the job's update
+        error_log:
+          type: array
+          items:
+            type: string
+          description: An array of errors encountered for individual updates within the job
+      title: BulkSubscriptionUpdatesListResponseDataItem
+    type_bulkSubscriptionUpdates_BulkSubscriptionUpdatesGetResponseDataStatus:
+      type: string
+      enum:
+      - pending
+      - processing
+      - complete
+      - failed
+      description: The status of the update
+      title: BulkSubscriptionUpdatesGetResponseDataStatus
   securitySchemes:
     BearerAuthScheme:
       type: http

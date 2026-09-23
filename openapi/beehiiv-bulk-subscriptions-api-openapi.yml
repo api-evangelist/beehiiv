@@ -11,7 +11,7 @@ paths:
   /publications/{publicationId}/bulk_subscriptions:
     post:
       operationId: create
-      summary: 'Bulk create subscription <Badge intent="info" minimal outlined>OAuth Scope: subscriptions:write</Badge>'
+      summary: 'Bulk create subscription OAuth Scope: subscriptions:write'
       description: Create new subscriptions for a publication.
       tags:
       - Bulk Subscriptions
@@ -79,56 +79,14 @@ paths:
               - subscriptions
 components:
   schemas:
-    type__SubscriptionsCreateRequestTier:
-      type: string
-      enum:
-      - free
-      - premium
-      description: The tier for this subscription.
-      title: SubscriptionsCreateRequestTier
-    type_ids_OptionalStripeCustomerId:
-      type: string
-      description: The prefixed ID of the Stripe customer.
-      title: OptionalStripeCustomerId
-    type__DoubleOptOverride:
-      type: string
-      description: Override publication double-opt settings for this subscription.
-      title: DoubleOptOverride
     type_ids_PublicationId:
       type: string
       description: The prefixed ID of the publication.
       title: PublicationId
-    type__CustomFieldDataType:
-      oneOf:
-      - type: string
-      - type: number
-        format: double
-      - type: boolean
-      - type: array
-        items:
-          type: string
-      title: CustomFieldDataType
-    type__Error:
-      type: object
-      properties:
-        status:
-          type: integer
-        statusText:
-          type: string
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/type__ErrorDetail'
-      required:
-      - status
-      - statusText
-      - errors
-      description: The top level error response.
-      title: Error
-    type_ids_ComplimentaryAccessId:
+    type_ids_OptionalStripeCustomerId:
       type: string
-      description: The prefixed ID of the complimentary access object.
-      title: ComplimentaryAccessId
+      description: The prefixed ID of the Stripe customer.
+      title: OptionalStripeCustomerId
     type__ErrorDetail:
       type: object
       properties:
@@ -140,17 +98,6 @@ components:
       - message
       - code
       title: ErrorDetail
-    type__CustomFieldValue:
-      type: object
-      properties:
-        name:
-          type: string
-          description: The name of the existing custom field
-        value:
-          $ref: '#/components/schemas/type__CustomFieldDataType'
-          description: The value stored for the subscription
-      description: The object required for setting custom field values on a subscription
-      title: CustomFieldValue
     type__SubscriptionRequest:
       type: object
       properties:
@@ -234,6 +181,44 @@ components:
       required:
       - email
       title: SubscriptionRequest
+    type__SubscriptionsCreateRequestTier:
+      type: string
+      enum:
+      - free
+      - premium
+      description: The tier for this subscription.
+      title: SubscriptionsCreateRequestTier
+    type__Error:
+      type: object
+      properties:
+        status:
+          type: integer
+        statusText:
+          type: string
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/type__ErrorDetail'
+      required:
+      - status
+      - statusText
+      - errors
+      description: The top level error response.
+      title: Error
+    type__CustomFieldDataType:
+      oneOf:
+      - type: string
+      - type: number
+        format: double
+      - type: boolean
+      - type: array
+        items:
+          type: string
+      title: CustomFieldDataType
+    type_ids_ComplimentaryAccessId:
+      type: string
+      description: The prefixed ID of the complimentary access object.
+      title: ComplimentaryAccessId
     type_bulk_subscriptions_BulkSubscriptionCreateResponse:
       type: object
       properties:
@@ -248,6 +233,21 @@ components:
       - import_id
       description: The response containing the import ID
       title: BulkSubscriptionCreateResponse
+    type__DoubleOptOverride:
+      type: string
+      description: Override publication double-opt settings for this subscription.
+      title: DoubleOptOverride
+    type__CustomFieldValue:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the existing custom field
+        value:
+          $ref: '#/components/schemas/type__CustomFieldDataType'
+          description: The value stored for the subscription
+      description: The object required for setting custom field values on a subscription
+      title: CustomFieldValue
   securitySchemes:
     BearerAuthScheme:
       type: http

@@ -11,8 +11,11 @@ paths:
   /publications/{publicationId}/ad_network/offers:
     get:
       operationId: index
-      summary: 'Get ad offers <Badge intent="info" minimal outlined>OAuth Scope: posts:read</Badge>'
-      description: "<Note title=\"Currently in beta\" icon=\"b\">\n  This feature is currently in beta and the API is subject to change.<br/>\n</Note>\nRetrieve a list of ad offers available for the publication."
+      summary: 'Get ad offers OAuth Scope: posts:read'
+      description: 'This feature is currently in beta and the API is subject to change.
+
+
+        Retrieve a list of ad offers available for the publication.'
       tags:
       - Ad Network Offers
       parameters:
@@ -79,8 +82,11 @@ paths:
                 $ref: '#/components/schemas/type__Error'
     post:
       operationId: create
-      summary: 'Accept ad offer <Badge intent="info" minimal outlined>OAuth Scope: posts:write</Badge>'
-      description: "<Note title=\"Currently in beta\" icon=\"b\">\n  This feature is currently in beta and the API is subject to change.<br/>\n</Note>\nDraft and accept an ad offer, then insert the resulting advertisement opportunity into a post."
+      summary: 'Accept ad offer OAuth Scope: posts:write'
+      description: 'This feature is currently in beta and the API is subject to change.
+
+
+        Draft and accept an ad offer, then insert the resulting advertisement opportunity into a post.'
       tags:
       - Ad Network Offers
       parameters:
@@ -167,8 +173,11 @@ paths:
   /publications/{publicationId}/ad_network/offers/{offerId}/advertisements:
     get:
       operationId: advertisements
-      summary: 'Get ad offer advertisements <Badge intent="info" minimal outlined>OAuth Scope: posts:read</Badge>'
-      description: "<Note title=\"Currently in beta\" icon=\"b\">\n  This feature is currently in beta and the API is subject to change.<br/>\n</Note>\nRetrieve the active text advertisement creatives available for an ad offer."
+      summary: 'Get ad offer advertisements OAuth Scope: posts:read'
+      description: 'This feature is currently in beta and the API is subject to change.
+
+
+        Retrieve the active text advertisement creatives available for an ad offer.'
       tags:
       - Ad Network Offers
       parameters:
@@ -241,48 +250,58 @@ paths:
                 $ref: '#/components/schemas/type__Error'
 components:
   schemas:
+    type_ad_network_offers_AdOfferCampaign:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The campaign name.
+        message_to_publisher:
+          type: string
+          description: The message from the advertiser to the publisher.
+        promoted_item:
+          type: string
+          description: The item promoted by the campaign.
+        promoted_item_other:
+          type: string
+          description: Additional promoted item details when applicable.
+      required:
+      - name
+      title: AdOfferCampaign
     type_ids_PublicationId:
       type: string
       description: The prefixed ID of the publication.
       title: PublicationId
-    type_ad_network_offers_AdOfferCreateResponseData:
+    type__ErrorDetail:
       type: object
       properties:
-        offer_id:
+        message:
           type: string
-          description: The ID of the accepted ad offer.
-        opportunity_id:
+        code:
           type: string
-          description: The ID of the drafted and accepted opportunity created from the offer.
-        advertisement_id:
-          type: string
-          description: The ID of the advertisement creative selected for the opportunity.
-        post_id:
-          type: string
-          description: The ID of the post where the opportunity was inserted.
       required:
-      - offer_id
-      - opportunity_id
-      - advertisement_id
-      - post_id
-      title: AdOfferCreateResponseData
-    type__Error:
+      - message
+      - code
+      title: ErrorDetail
+    type_ad_network_offers_AdOfferCreateResponse:
       type: object
       properties:
-        status:
-          type: integer
-        statusText:
-          type: string
-        errors:
+        data:
+          $ref: '#/components/schemas/type_ad_network_offers_AdOfferCreateResponseData'
+      required:
+      - data
+      title: AdOfferCreateResponse
+    type_ad_network_offers_AdOffersGetResponse:
+      type: object
+      properties:
+        offers:
           type: array
           items:
-            $ref: '#/components/schemas/type__ErrorDetail'
+            $ref: '#/components/schemas/type_ad_network_offers_AdOffer'
+          description: A list of ad offers available for this publication.
       required:
-      - status
-      - statusText
-      - errors
-      description: The top level error response.
-      title: Error
+      - offers
+      title: AdOffersGetResponse
     type_ad_network_offers_AdOffer:
       type: object
       properties:
@@ -354,14 +373,23 @@ components:
       - sponsor_text
       - text
       title: AdOfferAdvertisement
-    type_ad_network_offers_AdOfferCreateResponse:
+    type__Error:
       type: object
       properties:
-        data:
-          $ref: '#/components/schemas/type_ad_network_offers_AdOfferCreateResponseData'
+        status:
+          type: integer
+        statusText:
+          type: string
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/type__ErrorDetail'
       required:
-      - data
-      title: AdOfferCreateResponse
+      - status
+      - statusText
+      - errors
+      description: The top level error response.
+      title: Error
     type_ad_network_offers_AdOfferAdvertiser:
       type: object
       properties:
@@ -380,6 +408,27 @@ components:
       required:
       - name
       title: AdOfferAdvertiser
+    type_ad_network_offers_AdOfferCreateResponseData:
+      type: object
+      properties:
+        offer_id:
+          type: string
+          description: The ID of the accepted ad offer.
+        opportunity_id:
+          type: string
+          description: The ID of the drafted and accepted opportunity created from the offer.
+        advertisement_id:
+          type: string
+          description: The ID of the advertisement creative selected for the opportunity.
+        post_id:
+          type: string
+          description: The ID of the post where the opportunity was inserted.
+      required:
+      - offer_id
+      - opportunity_id
+      - advertisement_id
+      - post_id
+      title: AdOfferCreateResponseData
     type_ad_network_offers_AdOfferAdvertisementsGetResponse:
       type: object
       properties:
@@ -391,46 +440,6 @@ components:
       required:
       - advertisements
       title: AdOfferAdvertisementsGetResponse
-    type__ErrorDetail:
-      type: object
-      properties:
-        message:
-          type: string
-        code:
-          type: string
-      required:
-      - message
-      - code
-      title: ErrorDetail
-    type_ad_network_offers_AdOffersGetResponse:
-      type: object
-      properties:
-        offers:
-          type: array
-          items:
-            $ref: '#/components/schemas/type_ad_network_offers_AdOffer'
-          description: A list of ad offers available for this publication.
-      required:
-      - offers
-      title: AdOffersGetResponse
-    type_ad_network_offers_AdOfferCampaign:
-      type: object
-      properties:
-        name:
-          type: string
-          description: The campaign name.
-        message_to_publisher:
-          type: string
-          description: The message from the advertiser to the publisher.
-        promoted_item:
-          type: string
-          description: The item promoted by the campaign.
-        promoted_item_other:
-          type: string
-          description: Additional promoted item details when applicable.
-      required:
-      - name
-      title: AdOfferCampaign
   securitySchemes:
     BearerAuthScheme:
       type: http

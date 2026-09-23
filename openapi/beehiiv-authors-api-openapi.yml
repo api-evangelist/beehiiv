@@ -190,23 +190,6 @@ components:
       type: string
       description: The prefixed ID of the publication.
       title: PublicationId
-    type__Error:
-      type: object
-      properties:
-        status:
-          type: integer
-        statusText:
-          type: string
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/type__ErrorDetail'
-      required:
-      - status
-      - statusText
-      - errors
-      description: The top level error response.
-      title: Error
     type__ErrorDetail:
       type: object
       properties:
@@ -226,12 +209,6 @@ components:
       required:
       - data
       title: AuthorsGetResponse
-    type_authors_AuthorType:
-      type: string
-      enum:
-      - user
-      - guest_author
-      title: AuthorType
     type_authors_AuthorSocialMediaLinks:
       type: object
       properties:
@@ -254,6 +231,29 @@ components:
         rss_url:
           type: string
       title: AuthorSocialMediaLinks
+    type__Error:
+      type: object
+      properties:
+        status:
+          type: integer
+        statusText:
+          type: string
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/type__ErrorDetail'
+      required:
+      - status
+      - statusText
+      - errors
+      description: The top level error response.
+      title: Error
+    type_authors_AuthorType:
+      type: string
+      enum:
+      - user
+      - guest_author
+      title: AuthorType
     type_authors_AuthorsListResponse:
       type: object
       properties:

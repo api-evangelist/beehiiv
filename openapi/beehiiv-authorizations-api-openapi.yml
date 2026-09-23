@@ -1,8 +1,7 @@
 openapi: 3.2.0
 info:
-  title: Beehiiv Authorizations API
+  title: OAuth2 Authorizations API
   version: 1.0.0
-  description: 'Operations tagged Authorizations across 2 of this provider''s published API definitions: beehiiv-oauth2-api-openapi.yml, beehiiv-oauth2-openapi.json. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://app.beehiiv.com
   description: Default
@@ -78,22 +77,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/type__OAuthError'
-    servers:
-    - url: https://app.beehiiv.com
-      description: Default
 components:
   schemas:
-    type__EmptyResponse:
-      type: object
-      properties: {}
-      title: EmptyResponse
-    type__CodeChallengeMethod:
-      type: string
-      enum:
-      - plain
-      - S256
-      description: The PKCE code challenge method.
-      title: CodeChallengeMethod
     type__OAuthError:
       type: object
       properties:
@@ -109,6 +94,14 @@ components:
       - error
       description: Standard OAuth2 error response.
       title: OAuthError
-x-refined-from:
-- beehiiv-oauth2-api-openapi.yml
-- beehiiv-oauth2-openapi.json
+    type__CodeChallengeMethod:
+      type: string
+      enum:
+      - plain
+      - S256
+      description: The PKCE code challenge method.
+      title: CodeChallengeMethod
+    type__EmptyResponse:
+      type: object
+      properties: {}
+      title: EmptyResponse

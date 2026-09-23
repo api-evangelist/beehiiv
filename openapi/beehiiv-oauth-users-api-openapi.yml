@@ -11,7 +11,7 @@ paths:
   /users/identify:
     get:
       operationId: identify
-      summary: 'Identify user <Badge intent="info" minimal outlined>OAuth Scope: identify:read</Badge>'
+      summary: 'Identify user OAuth Scope: identify:read'
       description: Retrieve information about the user who authorized the OAuth access token.
       tags:
       - oauth_users
@@ -61,34 +61,6 @@ paths:
                 $ref: '#/components/schemas/type__Error'
 components:
   schemas:
-    type__ErrorDetail:
-      type: object
-      properties:
-        message:
-          type: string
-        code:
-          type: string
-      required:
-      - message
-      - code
-      title: ErrorDetail
-    type__Error:
-      type: object
-      properties:
-        status:
-          type: integer
-        statusText:
-          type: string
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/type__ErrorDetail'
-      required:
-      - status
-      - statusText
-      - errors
-      description: The top level error response.
-      title: Error
     type_oauth_users_UserIdentifyResponse:
       type: object
       properties:
@@ -106,6 +78,34 @@ components:
           description: URL to the user's profile picture.
       description: Response containing information about the authenticated user.
       title: UserIdentifyResponse
+    type__Error:
+      type: object
+      properties:
+        status:
+          type: integer
+        statusText:
+          type: string
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/type__ErrorDetail'
+      required:
+      - status
+      - statusText
+      - errors
+      description: The top level error response.
+      title: Error
+    type__ErrorDetail:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+      required:
+      - message
+      - code
+      title: ErrorDetail
   securitySchemes:
     BearerAuthScheme:
       type: http

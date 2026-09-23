@@ -11,8 +11,11 @@ paths:
   /publications/{publicationId}/ad_network/reports:
     get:
       operationId: index
-      summary: 'Get ad network reports <Badge intent="info" minimal outlined>OAuth Scope: posts:read</Badge>'
-      description: "<Note title=\"Currently in beta\" icon=\"b\">\n  This feature is currently in beta and the API is subject to change.<br/>\n</Note>\nRetrieve advertisement performance and payment reports for the publication."
+      summary: 'Get ad network reports OAuth Scope: posts:read'
+      description: 'This feature is currently in beta and the API is subject to change.
+
+
+        Retrieve advertisement performance and payment reports for the publication.'
       tags:
       - Ad Network Reports
       parameters:
@@ -100,8 +103,11 @@ paths:
   /publications/{publicationId}/ad_network/reports/summaries:
     get:
       operationId: summary
-      summary: 'Get ad network report summary <Badge intent="info" minimal outlined>OAuth Scope: posts:read</Badge>'
-      description: "<Note title=\"Currently in beta\" icon=\"b\">\n  This feature is currently in beta and the API is subject to change.<br/>\n</Note>\nRetrieve aggregate advertisement performance and revenue for a publication."
+      summary: 'Get ad network report summary OAuth Scope: posts:read'
+      description: 'This feature is currently in beta and the API is subject to change.
+
+
+        Retrieve aggregate advertisement performance and revenue for a publication.'
       tags:
       - Ad Network Reports
       parameters:
@@ -177,8 +183,11 @@ paths:
   /ad_network/reports/summaries:
     get:
       operationId: account-summary
-      summary: 'Get account ad network report summary <Badge intent="info" minimal outlined>OAuth Scope: posts:read</Badge>'
-      description: "<Note title=\"Currently in beta\" icon=\"b\">\n  This feature is currently in beta and the API is subject to change.<br/>\n</Note>\nRetrieve one account-wide aggregate of advertisement performance and revenue across accessible publications."
+      summary: 'Get account ad network report summary OAuth Scope: posts:read'
+      description: 'This feature is currently in beta and the API is subject to change.
+
+
+        Retrieve one account-wide aggregate of advertisement performance and revenue across accessible publications.'
       tags:
       - Ad Network Reports
       parameters:
@@ -278,23 +287,10 @@ components:
       type: string
       description: The prefixed ID of the post.
       title: PostId
-    type_ad_network_reports_AdNetworkReportSummaryMetrics:
-      type: object
-      properties:
-        opens:
-          type: integer
-          description: The approved number of unique opens.
-        verified_clicks:
-          type: integer
-          description: The approved number of verified clicks.
-        revenue:
-          type: string
-          description: The formatted revenue approved for payment.
-      required:
-      - opens
-      - verified_clicks
-      - revenue
-      title: AdNetworkReportSummaryMetrics
+    type_ids_PublicationId:
+      type: string
+      description: The prefixed ID of the publication.
+      title: PublicationId
     type_ad_network_reports_AdNetworkReportsGetResponse:
       type: object
       properties:
@@ -322,27 +318,6 @@ components:
       - total_results
       - total_pages
       title: AdNetworkReportsGetResponse
-    type_ids_PublicationId:
-      type: string
-      description: The prefixed ID of the publication.
-      title: PublicationId
-    type__Error:
-      type: object
-      properties:
-        status:
-          type: integer
-        statusText:
-          type: string
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/type__ErrorDetail'
-      required:
-      - status
-      - statusText
-      - errors
-      description: The top level error response.
-      title: Error
     type__ErrorDetail:
       type: object
       properties:
@@ -382,6 +357,40 @@ components:
       - oda
       - programmatic
       title: AdNetworkReportSummary
+    type__Error:
+      type: object
+      properties:
+        status:
+          type: integer
+        statusText:
+          type: string
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/type__ErrorDetail'
+      required:
+      - status
+      - statusText
+      - errors
+      description: The top level error response.
+      title: Error
+    type_ad_network_reports_AdNetworkReportSummaryMetrics:
+      type: object
+      properties:
+        opens:
+          type: integer
+          description: The approved number of unique opens.
+        verified_clicks:
+          type: integer
+          description: The approved number of verified clicks.
+        revenue:
+          type: string
+          description: The formatted revenue approved for payment.
+      required:
+      - opens
+      - verified_clicks
+      - revenue
+      title: AdNetworkReportSummaryMetrics
   securitySchemes:
     BearerAuthScheme:
       type: http

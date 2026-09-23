@@ -11,8 +11,8 @@ paths:
   /publications/{publicationId}/data_privacy/deletion_requests:
     post:
       operationId: create
-      summary: 'Create data deletion request <Badge intent="info" minimal outlined>OAuth Scope: data_deletion:write</Badge>'
-      description: '<Warning>This is a gated feature that requires enablement. Contact support to enable Data Deletion API access for your organization.</Warning>
+      summary: 'Create data deletion request OAuth Scope: data_deletion:write'
+      description: 'This is a gated feature that requires enablement. Contact support to enable Data Deletion API access for your organization.
 
 
         Creates a data deletion request for a subscriber within your organization. The subscriber''s data will be redacted from all publications in the organization after a 14-day safety delay. This action cannot be undone once processing begins.
@@ -96,8 +96,8 @@ paths:
               - email
     get:
       operationId: index
-      summary: 'List data deletion requests <Badge intent="info" minimal outlined>OAuth Scope: data_deletion:read</Badge>'
-      description: '<Warning>This is a gated feature that requires enablement. Contact support to enable Data Deletion API access for your organization.</Warning>
+      summary: 'List data deletion requests OAuth Scope: data_deletion:read'
+      description: 'This is a gated feature that requires enablement. Contact support to enable Data Deletion API access for your organization.
 
 
         List all data deletion requests for your organization.
@@ -159,8 +159,8 @@ paths:
   /publications/{publicationId}/data_privacy/deletion_requests/{id}:
     get:
       operationId: show
-      summary: 'Get data deletion request <Badge intent="info" minimal outlined>OAuth Scope: data_deletion:read</Badge>'
-      description: '<Warning>This is a gated feature that requires enablement. Contact support to enable Data Deletion API access for your organization.</Warning>
+      summary: 'Get data deletion request OAuth Scope: data_deletion:read'
+      description: 'This is a gated feature that requires enablement. Contact support to enable Data Deletion API access for your organization.
 
 
         Retrieve the details and current status of a specific data deletion request.
@@ -231,16 +231,54 @@ components:
       type: string
       description: The prefixed ID of the publication.
       title: PublicationId
-    type_dataDeletion_DataDeletionRequestStatus:
-      type: string
-      enum:
-      - pending
-      - processing
-      - completed
-      - failed
-      - canceled
-      description: The current status of the data deletion request.
-      title: DataDeletionRequestStatus
+    type__ErrorDetail:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+      required:
+      - message
+      - code
+      title: ErrorDetail
+    type_dataDeletion_DataDeletionRequestIndexResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/type_dataDeletion_DataDeletionRequestInfo'
+        limit:
+          type: integer
+          description: The limit placed on the results. If no limit was specified in the request, this defaults to 10.
+        has_more:
+          type: boolean
+          description: Whether there are more results available after this page.
+        next_cursor:
+          type: string
+          description: The cursor to use for the next page of results.
+      title: DataDeletionRequestIndexResponse
+    type_dataDeletion_DataDeletionRequestInfo:
+      type: object
+      properties:
+        id:
+          type: string
+        email:
+          type: string
+        status:
+          $ref: '#/components/schemas/type_dataDeletion_DataDeletionRequestStatus'
+        source:
+          $ref: '#/components/schemas/type_dataDeletion_DataDeletionRequestSource'
+        requested_at:
+          type: string
+        scheduled_for_processing_at:
+          type: string
+        completed_at:
+          type: string
+        created_at:
+          type: string
+      title: DataDeletionRequestInfo
     type_dataDeletion_DataDeletionRequestSource:
       type: string
       enum:
@@ -269,60 +307,22 @@ components:
       - errors
       description: The top level error response.
       title: Error
-    type_dataDeletion_DataDeletionRequestIndexResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/type_dataDeletion_DataDeletionRequestInfo'
-        limit:
-          type: integer
-          description: The limit placed on the results. If no limit was specified in the request, this defaults to 10.
-        has_more:
-          type: boolean
-          description: Whether there are more results available after this page.
-        next_cursor:
-          type: string
-          description: The cursor to use for the next page of results.
-      title: DataDeletionRequestIndexResponse
     type_dataDeletion_DataDeletionRequestResponse:
       type: object
       properties:
         data:
           $ref: '#/components/schemas/type_dataDeletion_DataDeletionRequestInfo'
       title: DataDeletionRequestResponse
-    type__ErrorDetail:
-      type: object
-      properties:
-        message:
-          type: string
-        code:
-          type: string
-      required:
-      - message
-      - code
-      title: ErrorDetail
-    type_dataDeletion_DataDeletionRequestInfo:
-      type: object
-      properties:
-        id:
-          type: string
-        email:
-          type: string
-        status:
-          $ref: '#/components/schemas/type_dataDeletion_DataDeletionRequestStatus'
-        source:
-          $ref: '#/components/schemas/type_dataDeletion_DataDeletionRequestSource'
-        requested_at:
-          type: string
-        scheduled_for_processing_at:
-          type: string
-        completed_at:
-          type: string
-        created_at:
-          type: string
-      title: DataDeletionRequestInfo
+    type_dataDeletion_DataDeletionRequestStatus:
+      type: string
+      enum:
+      - pending
+      - processing
+      - completed
+      - failed
+      - canceled
+      description: The current status of the data deletion request.
+      title: DataDeletionRequestStatus
   securitySchemes:
     BearerAuthScheme:
       type: http

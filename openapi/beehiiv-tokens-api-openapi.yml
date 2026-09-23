@@ -1,8 +1,7 @@
 openapi: 3.2.0
 info:
-  title: Beehiiv Tokens API
+  title: OAuth2 Tokens API
   version: 1.0.0
-  description: 'Operations tagged Tokens across 2 of this provider''s published API definitions: beehiiv-oauth2-api-openapi.yml, beehiiv-oauth2-openapi.json. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://app.beehiiv.com
   description: Default
@@ -64,9 +63,6 @@ paths:
                   description: PKCE code verifier. Required for public clients.
               required:
               - grant_type
-    servers:
-    - url: https://app.beehiiv.com
-      description: Default
   /oauth/revoke:
     post:
       operationId: revoke
@@ -113,9 +109,6 @@ paths:
                   description: Required for confidential clients.
               required:
               - token
-    servers:
-    - url: https://app.beehiiv.com
-      description: Default
   /oauth/introspect:
     post:
       operationId: introspect
@@ -162,9 +155,6 @@ paths:
                   description: Required for confidential clients.
               required:
               - token
-    servers:
-    - url: https://app.beehiiv.com
-      description: Default
   /oauth/token/info:
     get:
       operationId: token-info
@@ -192,21 +182,27 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/type__OAuthError'
-    servers:
-    - url: https://app.beehiiv.com
-      description: Default
 components:
   schemas:
-    type__EmptyResponse:
-      type: object
-      properties: {}
-      title: EmptyResponse
     type__TokenType:
       type: string
       enum:
       - Bearer
       description: The token type returned by OAuth2 token endpoints.
       title: TokenType
+    type__EmptyResponse:
+      type: object
+      properties: {}
+      title: EmptyResponse
+    type__TokenApplication:
+      type: object
+      properties:
+        uid:
+          type: string
+        name:
+          type: string
+      description: OAuth application metadata attached to token info responses.
+      title: TokenApplication
     type__TokenInfoResponse:
       type: object
       properties:
@@ -222,6 +218,35 @@ components:
           type: integer
       description: Metadata for the current access token.
       title: TokenInfoResponse
+    type__GrantType:
+      type: string
+      enum:
+      - authorization_code
+      - refresh_token
+      description: The OAuth2 grant type.
+      title: GrantType
+    type__OAuthError:
+      type: object
+      properties:
+        error:
+          type: string
+        error_description:
+          type: string
+        error_uri:
+          type: string
+        state:
+          type: string
+      required:
+      - error
+      description: Standard OAuth2 error response.
+      title: OAuthError
+    type__TokenTypeHint:
+      type: string
+      enum:
+      - access_token
+      - refresh_token
+      description: A hint about the type of token being sent.
+      title: TokenTypeHint
     type__IntrospectionResponse:
       type: object
       properties:
@@ -273,44 +298,3 @@ components:
       - created_at
       description: Access token response from `/oauth/token`.
       title: TokenResponse
-    type__TokenTypeHint:
-      type: string
-      enum:
-      - access_token
-      - refresh_token
-      description: A hint about the type of token being sent.
-      title: TokenTypeHint
-    type__OAuthError:
-      type: object
-      properties:
-        error:
-          type: string
-        error_description:
-          type: string
-        error_uri:
-          type: string
-        state:
-          type: string
-      required:
-      - error
-      description: Standard OAuth2 error response.
-      title: OAuthError
-    type__GrantType:
-      type: string
-      enum:
-      - authorization_code
-      - refresh_token
-      description: The OAuth2 grant type.
-      title: GrantType
-    type__TokenApplication:
-      type: object
-      properties:
-        uid:
-          type: string
-        name:
-          type: string
-      description: OAuth application metadata attached to token info responses.
-      title: TokenApplication
-x-refined-from:
-- beehiiv-oauth2-api-openapi.yml
-- beehiiv-oauth2-openapi.json

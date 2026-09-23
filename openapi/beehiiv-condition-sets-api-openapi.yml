@@ -11,7 +11,7 @@ paths:
   /publications/{publicationId}/condition_sets:
     get:
       operationId: index
-      summary: 'List condition sets <Badge intent="info" minimal outlined>OAuth Scope: condition_sets:read</Badge>'
+      summary: 'List condition sets OAuth Scope: condition_sets:read'
       description: Retrieve all active condition sets for a publication. Condition sets define reusable audience segments for targeting content to specific subscribers. Use the `purpose` parameter to filter by a specific use case.
       tags:
       - Condition Sets
@@ -92,7 +92,7 @@ paths:
   /publications/{publicationId}/condition_sets/{conditionSetId}:
     get:
       operationId: show
-      summary: 'Get condition set <Badge intent="info" minimal outlined>OAuth Scope: condition_sets:read</Badge>'
+      summary: 'Get condition set OAuth Scope: condition_sets:read'
       description: Retrieve a single active dynamic content condition set for a publication. Use `expand[]=stats` to calculate and return the active subscriber count synchronously.
       tags:
       - Condition Sets
@@ -156,6 +156,44 @@ paths:
                 $ref: '#/components/schemas/type__Error'
 components:
   schemas:
+    type_conditionSets_ConditionSetStats:
+      type: object
+      properties:
+        active_subscriber_count:
+          type: integer
+          description: Count of active subscribers matching this condition set, calculated synchronously at request time.
+      required:
+      - active_subscriber_count
+      title: ConditionSetStats
+    type_ids_PublicationId:
+      type: string
+      description: The prefixed ID of the publication.
+      title: PublicationId
+    type_conditionSets_ConditionSetShowResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/type_conditionSets_ConditionSet'
+      required:
+      - data
+      title: ConditionSetShowResponse
+    type__ErrorDetail:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+      required:
+      - message
+      - code
+      title: ErrorDetail
+    type_conditionSets_ConditionSetPurpose:
+      type: string
+      enum:
+      - dynamic_content
+      description: The purpose of the condition set, indicating its intended use.
+      title: ConditionSetPurpose
     type_conditionSets_ConditionSet:
       type: object
       properties:
@@ -217,10 +255,11 @@ components:
       - updated
       - purpose
       title: ConditionSetListItem
-    type_ids_PublicationId:
+    type_conditionSets_ConditionSetShowExpandItems:
       type: string
-      description: The prefixed ID of the publication.
-      title: PublicationId
+      enum:
+      - stats
+      title: ConditionSetShowExpandItems
     type__Error:
       type: object
       properties:
@@ -238,34 +277,12 @@ components:
       - errors
       description: The top level error response.
       title: Error
-    type_conditionSets_ConditionSetShowExpandItems:
-      type: string
-      enum:
-      - stats
-      title: ConditionSetShowExpandItems
-    type_conditionSets_ConditionSetStats:
-      type: object
-      properties:
-        active_subscriber_count:
-          type: integer
-          description: Count of active subscribers matching this condition set, calculated synchronously at request time.
-      required:
-      - active_subscriber_count
-      title: ConditionSetStats
     type_conditionSets_ConditionSetStatus:
       type: string
       enum:
       - active
       - archived
       title: ConditionSetStatus
-    type_conditionSets_ConditionSetShowResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/type_conditionSets_ConditionSet'
-      required:
-      - data
-      title: ConditionSetShowResponse
     type_conditionSets_ConditionSetsListResponse:
       type: object
       properties:
@@ -289,23 +306,6 @@ components:
       required:
       - data
       title: ConditionSetsListResponse
-    type__ErrorDetail:
-      type: object
-      properties:
-        message:
-          type: string
-        code:
-          type: string
-      required:
-      - message
-      - code
-      title: ErrorDetail
-    type_conditionSets_ConditionSetPurpose:
-      type: string
-      enum:
-      - dynamic_content
-      description: The purpose of the condition set, indicating its intended use.
-      title: ConditionSetPurpose
   securitySchemes:
     BearerAuthScheme:
       type: http

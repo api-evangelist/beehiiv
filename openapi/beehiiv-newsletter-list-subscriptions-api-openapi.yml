@@ -11,11 +11,11 @@ paths:
   /publications/{publicationId}/newsletter_lists/{newsletterListId}/subscriptions:
     post:
       operationId: create
-      summary: 'Create newsletter list subscription <Badge intent="info" minimal outlined>OAuth Scope: newsletter_lists:write</Badge>'
+      summary: 'Create newsletter list subscription OAuth Scope: newsletter_lists:write'
       description: 'Subscribe a subscription to a newsletter list. Accepts either a subscription_id or email to identify the subscription.
 
 
-        <Info> This endpoint only enrolls **existing** subscriptions. To create a new subscription **and** enroll it in one or more newsletter lists in a single call, use the [Create subscription](/api-reference/subscriptions/create) endpoint and pass the `newsletter_list_ids` parameter. </Info>'
+        This endpoint only enrolls **existing** subscriptions. To create a new subscription **and** enroll it in one or more newsletter lists in a single call, use the Create subscription endpoint and pass the `newsletter_list_ids` parameter.'
       tags:
       - Newsletter List Subscriptions
       parameters:
@@ -94,7 +94,7 @@ paths:
                   description: The email address of the subscription to subscribe. Either subscription_id or email must be provided.
     get:
       operationId: index
-      summary: 'List newsletter list subscriptions <Badge intent="info" minimal outlined>OAuth Scope: newsletter_lists:read</Badge>'
+      summary: 'List newsletter list subscriptions OAuth Scope: newsletter_lists:read'
       description: List all subscriptions for a newsletter list.
       tags:
       - Newsletter List Subscriptions
@@ -181,7 +181,7 @@ paths:
   /publications/{publicationId}/newsletter_lists/{newsletterListId}/subscriptions/{newsletterListSubscriptionId}:
     get:
       operationId: show
-      summary: 'Get newsletter list subscription <Badge intent="info" minimal outlined>OAuth Scope: newsletter_lists:read</Badge>'
+      summary: 'Get newsletter list subscription OAuth Scope: newsletter_lists:read'
       description: Retrieve a single newsletter list subscription.
       tags:
       - Newsletter List Subscriptions
@@ -249,7 +249,7 @@ paths:
                 $ref: '#/components/schemas/type__Error'
     patch:
       operationId: update
-      summary: 'Update newsletter list subscription <Badge intent="info" minimal outlined>OAuth Scope: newsletter_lists:write</Badge>'
+      summary: 'Update newsletter list subscription OAuth Scope: newsletter_lists:write'
       description: Update a newsletter list subscription. Currently supports unsubscribing a subscription from a newsletter list.
       tags:
       - Newsletter List Subscriptions
@@ -333,7 +333,7 @@ paths:
   /publications/{publicationId}/newsletter_lists/{newsletterListId}/subscriptions/by_subscription_id/{subscriptionId}:
     patch:
       operationId: update-by-subscription-id
-      summary: 'Update newsletter list subscription by subscription ID <Badge intent="info" minimal outlined>OAuth Scope: newsletter_lists:write</Badge>'
+      summary: Update newsletter list subscription by subscription ID OAuth Scope…
       description: Update a newsletter list subscription by subscription ID. An alternative to the update endpoint when you don't have the newsletter list subscription ID. Accepts either a subscription_id or email to identify the subscription. Currently supports unsubscribing a subscription from a newsletter list.
       tags:
       - Newsletter List Subscriptions
@@ -416,14 +416,14 @@ paths:
                   description: Set to true to unsubscribe the subscription from this newsletter list.
 components:
   schemas:
-    type_newsletterListSubscriptions_NewsletterListSubscriptionResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/type_newsletterListSubscriptions_NewsletterListSubscriptionInfo'
-      required:
-      - data
-      title: NewsletterListSubscriptionResponse
+    type_ids_SubscriptionId:
+      type: string
+      description: The prefixed ID of the subscription.
+      title: SubscriptionId
+    type_ids_PublicationId:
+      type: string
+      description: The prefixed ID of the publication.
+      title: PublicationId
     type_newsletterListSubscriptions_NewsletterListSubscriptionIndexResponse:
       type: object
       properties:
@@ -446,47 +446,6 @@ components:
       required:
       - data
       title: NewsletterListSubscriptionIndexResponse
-    type_ids_PublicationId:
-      type: string
-      description: The prefixed ID of the publication.
-      title: PublicationId
-    type__Error:
-      type: object
-      properties:
-        status:
-          type: integer
-        statusText:
-          type: string
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/type__ErrorDetail'
-      required:
-      - status
-      - statusText
-      - errors
-      description: The top level error response.
-      title: Error
-    type__RequestDirection:
-      type: string
-      enum:
-      - asc
-      - desc
-      default: asc
-      description: The direction of the request. Defaults to `asc`.
-      title: RequestDirection
-    type_ids_NewsletterListId:
-      type: string
-      description: The prefixed ID of the newsletter list.
-      title: NewsletterListId
-    type_ids_NewsletterListSubscriptionId:
-      type: string
-      description: The prefixed ID of the newsletter list subscription.
-      title: NewsletterListSubscriptionId
-    type_ids_SubscriptionId:
-      type: string
-      description: The prefixed ID of the subscription.
-      title: SubscriptionId
     type__ErrorDetail:
       type: object
       properties:
@@ -498,6 +457,10 @@ components:
       - message
       - code
       title: ErrorDetail
+    type_ids_NewsletterListSubscriptionId:
+      type: string
+      description: The prefixed ID of the newsletter list subscription.
+      title: NewsletterListSubscriptionId
     type_newsletterListSubscriptions_NewsletterListSubscriptionInfo:
       type: object
       properties:
@@ -529,6 +492,43 @@ components:
       - status
       - created_at
       title: NewsletterListSubscriptionInfo
+    type__Error:
+      type: object
+      properties:
+        status:
+          type: integer
+        statusText:
+          type: string
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/type__ErrorDetail'
+      required:
+      - status
+      - statusText
+      - errors
+      description: The top level error response.
+      title: Error
+    type__RequestDirection:
+      type: string
+      enum:
+      - asc
+      - desc
+      default: asc
+      description: The direction of the request. Defaults to `asc`.
+      title: RequestDirection
+    type_ids_NewsletterListId:
+      type: string
+      description: The prefixed ID of the newsletter list.
+      title: NewsletterListId
+    type_newsletterListSubscriptions_NewsletterListSubscriptionResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/type_newsletterListSubscriptions_NewsletterListSubscriptionInfo'
+      required:
+      - data
+      title: NewsletterListSubscriptionResponse
     type_newsletterListSubscriptions_NewsletterListSubscriptionStatus:
       type: string
       enum:

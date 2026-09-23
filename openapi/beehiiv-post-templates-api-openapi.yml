@@ -11,7 +11,7 @@ paths:
   /publications/{publicationId}/post_templates:
     get:
       operationId: index
-      summary: 'Get post templates <Badge intent="info" minimal outlined>OAuth Scope: posts:read</Badge>'
+      summary: 'Get post templates OAuth Scope: posts:read'
       description: Retrieve a list of post templates available for the publication.
       tags:
       - Post Templates
@@ -101,31 +101,6 @@ components:
       type: string
       description: The prefixed ID of the publication.
       title: PublicationId
-    type__Error:
-      type: object
-      properties:
-        status:
-          type: integer
-        statusText:
-          type: string
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/type__ErrorDetail'
-      required:
-      - status
-      - statusText
-      - errors
-      description: The top level error response.
-      title: Error
-    type__RequestDirection:
-      type: string
-      enum:
-      - asc
-      - desc
-      default: asc
-      description: The direction of the request. Defaults to `asc`.
-      title: RequestDirection
     type_postTemplates_PostTemplate:
       type: object
       properties:
@@ -178,6 +153,31 @@ components:
       - total_results
       - total_pages
       title: PostTemplatesGetResponse
+    type__Error:
+      type: object
+      properties:
+        status:
+          type: integer
+        statusText:
+          type: string
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/type__ErrorDetail'
+      required:
+      - status
+      - statusText
+      - errors
+      description: The top level error response.
+      title: Error
+    type__RequestDirection:
+      type: string
+      enum:
+      - asc
+      - desc
+      default: asc
+      description: The direction of the request. Defaults to `asc`.
+      title: RequestDirection
     type_ids_PostTemplateId:
       type: string
       description: The prefixed ID of the post template.

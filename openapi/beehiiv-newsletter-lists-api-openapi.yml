@@ -11,7 +11,7 @@ paths:
   /publications/{publicationId}/newsletter_lists:
     get:
       operationId: index
-      summary: 'List newsletter lists <Badge intent="info" minimal outlined>OAuth Scope: newsletter_lists:read</Badge>'
+      summary: 'List newsletter lists OAuth Scope: newsletter_lists:read'
       description: List all newsletter lists for a publication.
       tags:
       - Newsletter Lists
@@ -85,7 +85,7 @@ paths:
                 $ref: '#/components/schemas/type__Error'
     post:
       operationId: create
-      summary: 'Create newsletter list <Badge intent="info" minimal outlined>OAuth Scope: newsletter_lists:write</Badge>'
+      summary: 'Create newsletter list OAuth Scope: newsletter_lists:write'
       description: Create a new newsletter list for a publication. The list will be created with an active status. The slug will be auto-generated from the name if not provided.
       tags:
       - Newsletter Lists
@@ -168,7 +168,7 @@ paths:
   /publications/{publicationId}/newsletter_lists/{newsletterListId}:
     get:
       operationId: show
-      summary: 'Get newsletter list <Badge intent="info" minimal outlined>OAuth Scope: newsletter_lists:read</Badge>'
+      summary: 'Get newsletter list OAuth Scope: newsletter_lists:read'
       description: Retrieve a single newsletter list belonging to a specific publication.
       tags:
       - Newsletter Lists
@@ -230,7 +230,7 @@ paths:
                 $ref: '#/components/schemas/type__Error'
     patch:
       operationId: update
-      summary: 'Update newsletter list <Badge intent="info" minimal outlined>OAuth Scope: newsletter_lists:write</Badge>'
+      summary: 'Update newsletter list OAuth Scope: newsletter_lists:write'
       description: Update a newsletter list belonging to a specific publication.
       tags:
       - Newsletter Lists
@@ -319,7 +319,7 @@ paths:
                   description: The status of the newsletter list. Valid values are `active` and `archived`. Setting `draft` is not permitted.
     delete:
       operationId: delete
-      summary: 'Delete newsletter list <Badge intent="info" minimal outlined>OAuth Scope: newsletter_lists:write</Badge>'
+      summary: 'Delete newsletter list OAuth Scope: newsletter_lists:write'
       description: Delete a newsletter list belonging to a specific publication.
       tags:
       - Newsletter Lists
@@ -371,18 +371,29 @@ paths:
                 $ref: '#/components/schemas/type__Error'
 components:
   schemas:
-    type_newsletterLists_NewsletterListStatus:
-      type: string
-      enum:
-      - draft
-      - active
-      - archived
-      description: The status of the newsletter list.
-      title: NewsletterListStatus
+    type_newsletterLists_NewsletterListResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/type_newsletterLists_NewsletterListInfo'
+      required:
+      - data
+      title: NewsletterListResponse
     type_ids_PublicationId:
       type: string
       description: The prefixed ID of the publication.
       title: PublicationId
+    type__ErrorDetail:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+      required:
+      - message
+      - code
+      title: ErrorDetail
     type_newsletterLists_NewsletterListInfo:
       type: object
       properties:
@@ -423,42 +434,6 @@ components:
       - created_at
       - updated_at
       title: NewsletterListInfo
-    type_newsletterLists_NewsletterListWritableStatus:
-      type: string
-      enum:
-      - active
-      - archived
-      description: Valid status values when updating a newsletter list. draft is not permitted.
-      title: NewsletterListWritableStatus
-    type__Error:
-      type: object
-      properties:
-        status:
-          type: integer
-        statusText:
-          type: string
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/type__ErrorDetail'
-      required:
-      - status
-      - statusText
-      - errors
-      description: The top level error response.
-      title: Error
-    type_ids_NewsletterListId:
-      type: string
-      description: The prefixed ID of the newsletter list.
-      title: NewsletterListId
-    type__RequestDirection:
-      type: string
-      enum:
-      - asc
-      - desc
-      default: asc
-      description: The direction of the request. Defaults to `asc`.
-      title: RequestDirection
     type_newsletterLists_NewsletterListIndexResponse:
       type: object
       properties:
@@ -486,25 +461,50 @@ components:
       - total_results
       - total_pages
       title: NewsletterListIndexResponse
-    type_newsletterLists_NewsletterListResponse:
+    type__Error:
       type: object
       properties:
-        data:
-          $ref: '#/components/schemas/type_newsletterLists_NewsletterListInfo'
-      required:
-      - data
-      title: NewsletterListResponse
-    type__ErrorDetail:
-      type: object
-      properties:
-        message:
+        status:
+          type: integer
+        statusText:
           type: string
-        code:
-          type: string
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/type__ErrorDetail'
       required:
-      - message
-      - code
-      title: ErrorDetail
+      - status
+      - statusText
+      - errors
+      description: The top level error response.
+      title: Error
+    type__RequestDirection:
+      type: string
+      enum:
+      - asc
+      - desc
+      default: asc
+      description: The direction of the request. Defaults to `asc`.
+      title: RequestDirection
+    type_ids_NewsletterListId:
+      type: string
+      description: The prefixed ID of the newsletter list.
+      title: NewsletterListId
+    type_newsletterLists_NewsletterListWritableStatus:
+      type: string
+      enum:
+      - active
+      - archived
+      description: Valid status values when updating a newsletter list. draft is not permitted.
+      title: NewsletterListWritableStatus
+    type_newsletterLists_NewsletterListStatus:
+      type: string
+      enum:
+      - draft
+      - active
+      - archived
+      description: The status of the newsletter list.
+      title: NewsletterListStatus
   securitySchemes:
     BearerAuthScheme:
       type: http

@@ -11,7 +11,7 @@ paths:
   /publications/{publicationId}/tiers:
     post:
       operationId: create
-      summary: 'Create a tier <Badge intent="info" minimal outlined>OAuth Scope: tiers:write</Badge>'
+      summary: 'Create a tier OAuth Scope: tiers:write'
       description: Create a new tier for a publication.
       tags:
       - Tiers
@@ -83,7 +83,7 @@ paths:
               - name
     get:
       operationId: index
-      summary: 'List tiers <Badge intent="info" minimal outlined>OAuth Scope: tiers:read</Badge>'
+      summary: 'List tiers OAuth Scope: tiers:read'
       description: Retrieve all tiers belonging to a specific publication
       tags:
       - Tiers
@@ -164,7 +164,7 @@ paths:
   /publications/{publicationId}/tiers/{tierId}:
     get:
       operationId: show
-      summary: 'Get tier <Badge intent="info" minimal outlined>OAuth Scope: tiers:read</Badge>'
+      summary: 'Get tier OAuth Scope: tiers:read'
       description: Retrieve a single tier belonging to a specific publication
       tags:
       - Tiers
@@ -232,7 +232,7 @@ paths:
                 $ref: '#/components/schemas/type__Error'
     put:
       operationId: put
-      summary: 'Update a tier <Badge intent="info" minimal outlined>OAuth Scope: tiers:write</Badge>'
+      summary: 'Update a tier OAuth Scope: tiers:write'
       description: Update an existing tier belonging to a specific publication
       tags:
       - Tiers
@@ -308,7 +308,7 @@ paths:
                     $ref: '#/components/schemas/type_tiers_UpdateTierPriceRequest'
     patch:
       operationId: patch
-      summary: 'Update a tier <Badge intent="info" minimal outlined>OAuth Scope: tiers:write</Badge>'
+      summary: 'Update a tier OAuth Scope: tiers:write'
       description: Update an existing tier belonging to a specific publication
       tags:
       - Tiers
@@ -384,6 +384,37 @@ paths:
                     $ref: '#/components/schemas/type_tiers_UpdateTierPriceRequest'
 components:
   schemas:
+    type_tiers_TierPriceInterval:
+      type: string
+      enum:
+      - month
+      - quarter
+      - year
+      - one_time
+      - donation
+      title: TierPriceInterval
+    type_ids_PublicationId:
+      type: string
+      description: The prefixed ID of the publication.
+      title: PublicationId
+    type__ErrorDetail:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+      required:
+      - message
+      - code
+      title: ErrorDetail
+    type_tiers_TierStatus:
+      type: string
+      enum:
+      - active
+      - archived
+      description: Returns whether or not the tier has any active prices.
+      title: TierStatus
     type_tiers_TierPriceCurrency:
       type: string
       enum:
@@ -398,54 +429,37 @@ components:
       - nzd
       - dkk
       title: TierPriceCurrency
-    type_tiers_TierStatus:
-      type: string
-      enum:
-      - active
-      - archived
-      description: Returns whether or not the tier has any active prices.
-      title: TierStatus
-    type_tiers_IndexTiersResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/type_tiers_Tier'
-        limit:
-          type: integer
-          description: The limit placed on the results. If no limit was specified in the request,this defaults to 10.
-        page:
-          type: integer
-          default: 1
-          description: The page number the results are from. If no page was specified in the request, this defaults to page 1.
-        total_results:
-          type: integer
-          description: The total number of results from all pages.
-        total_pages:
-          type: integer
-          description: The total number of pages.
-      required:
-      - data
-      - limit
-      - page
-      - total_results
-      - total_pages
-      title: IndexTiersResponse
     type_tiers_TierResponse:
       type: object
       properties:
         data:
           $ref: '#/components/schemas/type_tiers_Tier'
       title: TierResponse
-    type_ids_PublicationId:
-      type: string
-      description: The prefixed ID of the publication.
-      title: PublicationId
-    type_ids_PriceId:
-      type: string
-      description: The prefixed ID of the price.
-      title: PriceId
+    type_tiers_TierPricesAttributesItem:
+      type: object
+      properties:
+        currency:
+          $ref: '#/components/schemas/type_tiers_TierPriceCurrency'
+        amount_cents:
+          type: integer
+        enabled:
+          type: boolean
+          default: true
+        interval:
+          $ref: '#/components/schemas/type_tiers_TierPriceInterval'
+        interval_display:
+          type: string
+        cta:
+          type: string
+        features:
+          type: array
+          items:
+            type: string
+      required:
+      - currency
+      - amount_cents
+      - interval
+      title: TierPricesAttributesItem
     type_tiers_UpdateTierPriceRequest:
       type: object
       properties:
@@ -476,14 +490,6 @@ components:
       - amount_cents
       - interval
       title: UpdateTierPriceRequest
-    type__RequestDirection:
-      type: string
-      enum:
-      - asc
-      - desc
-      default: asc
-      description: The direction of the request. Defaults to `asc`.
-      title: RequestDirection
     type__Error:
       type: object
       properties:
@@ -501,36 +507,18 @@ components:
       - errors
       description: The top level error response.
       title: Error
-    type__ErrorDetail:
-      type: object
-      properties:
-        message:
-          type: string
-        code:
-          type: string
-      required:
-      - message
-      - code
-      title: ErrorDetail
-    type_tiers_TierStats:
-      type: object
-      properties:
-        active_subscriptions:
-          type: integer
-          description: Total number of active subscriptions belonging to this tier.
-      required:
-      - active_subscriptions
-      description: 'Optional list of stats for a tier. Retrievable by including `expand: [stats]` in the tier request body.'
-      title: TierStats
-    type_tiers_TierPriceInterval:
+    type_ids_PriceId:
+      type: string
+      description: The prefixed ID of the price.
+      title: PriceId
+    type__RequestDirection:
       type: string
       enum:
-      - month
-      - quarter
-      - year
-      - one_time
-      - donation
-      title: TierPriceInterval
+      - asc
+      - desc
+      default: asc
+      description: The direction of the request. Defaults to `asc`.
+      title: RequestDirection
     type_tiers_TierPrice:
       type: object
       properties:
@@ -556,31 +544,43 @@ components:
             type: string
       description: Price belonging to a Tier
       title: TierPrice
-    type_tiers_TierPricesAttributesItem:
+    type_tiers_TierStats:
       type: object
       properties:
-        currency:
-          $ref: '#/components/schemas/type_tiers_TierPriceCurrency'
-        amount_cents:
+        active_subscriptions:
           type: integer
-        enabled:
-          type: boolean
-          default: true
-        interval:
-          $ref: '#/components/schemas/type_tiers_TierPriceInterval'
-        interval_display:
-          type: string
-        cta:
-          type: string
-        features:
+          description: Total number of active subscriptions belonging to this tier.
+      required:
+      - active_subscriptions
+      description: 'Optional list of stats for a tier. Retrievable by including `expand: [stats]` in the tier request body.'
+      title: TierStats
+    type_tiers_IndexTiersResponse:
+      type: object
+      properties:
+        data:
           type: array
           items:
-            type: string
+            $ref: '#/components/schemas/type_tiers_Tier'
+        limit:
+          type: integer
+          description: The limit placed on the results. If no limit was specified in the request,this defaults to 10.
+        page:
+          type: integer
+          default: 1
+          description: The page number the results are from. If no page was specified in the request, this defaults to page 1.
+        total_results:
+          type: integer
+          description: The total number of results from all pages.
+        total_pages:
+          type: integer
+          description: The total number of pages.
       required:
-      - currency
-      - amount_cents
-      - interval
-      title: TierPricesAttributesItem
+      - data
+      - limit
+      - page
+      - total_results
+      - total_pages
+      title: IndexTiersResponse
     type_tiers_Tier:
       type: object
       properties:
