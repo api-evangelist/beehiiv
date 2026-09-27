@@ -79,6 +79,17 @@ paths:
                 $ref: '#/components/schemas/type__OAuthError'
 components:
   schemas:
+    type__CodeChallengeMethod:
+      type: string
+      enum:
+      - plain
+      - S256
+      description: The PKCE code challenge method.
+      title: CodeChallengeMethod
+    type__EmptyResponse:
+      type: object
+      properties: {}
+      title: EmptyResponse
     type__OAuthError:
       type: object
       properties:
@@ -94,14 +105,3 @@ components:
       - error
       description: Standard OAuth2 error response.
       title: OAuthError
-    type__CodeChallengeMethod:
-      type: string
-      enum:
-      - plain
-      - S256
-      description: The PKCE code challenge method.
-      title: CodeChallengeMethod
-    type__EmptyResponse:
-      type: object
-      properties: {}
-      title: EmptyResponse

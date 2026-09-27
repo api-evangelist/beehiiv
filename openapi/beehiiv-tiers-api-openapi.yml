@@ -384,19 +384,34 @@ paths:
                     $ref: '#/components/schemas/type_tiers_UpdateTierPriceRequest'
 components:
   schemas:
-    type_tiers_TierPriceInterval:
+    type__Error:
+      type: object
+      properties:
+        status:
+          type: integer
+        statusText:
+          type: string
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/type__ErrorDetail'
+      required:
+      - status
+      - statusText
+      - errors
+      description: The top level error response.
+      title: Error
+    type_tiers_TierStatus:
       type: string
       enum:
-      - month
-      - quarter
-      - year
-      - one_time
-      - donation
-      title: TierPriceInterval
-    type_ids_PublicationId:
+      - active
+      - archived
+      description: Returns whether or not the tier has any active prices.
+      title: TierStatus
+    type_ids_TierId:
       type: string
-      description: The prefixed ID of the publication.
-      title: PublicationId
+      description: The prefixed ID of the tier.
+      title: TierId
     type__ErrorDetail:
       type: object
       properties:
@@ -408,13 +423,92 @@ components:
       - message
       - code
       title: ErrorDetail
-    type_tiers_TierStatus:
+    type__RequestDirection:
       type: string
       enum:
-      - active
-      - archived
-      description: Returns whether or not the tier has any active prices.
-      title: TierStatus
+      - asc
+      - desc
+      default: asc
+      description: The direction of the request. Defaults to `asc`.
+      title: RequestDirection
+    type_tiers_Tier:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/type_ids_TierId'
+        name:
+          type: string
+        status:
+          $ref: '#/components/schemas/type_tiers_TierStatus'
+          description: Returns whether or not the tier has any active prices.
+        description:
+          type: string
+          default: Super engaged readers
+        stats:
+          $ref: '#/components/schemas/type_tiers_TierStats'
+        prices:
+          type: array
+          items:
+            $ref: '#/components/schemas/type_tiers_TierPrice'
+          description: 'Optional list of prices for a tier. Retrievable by including `expand: [prices]` in the tier request body.'
+      required:
+      - id
+      - name
+      - status
+      description: The subscription tier object.
+      title: Tier
+    type_ids_PriceId:
+      type: string
+      description: The prefixed ID of the price.
+      title: PriceId
+    type_tiers_TierPriceInterval:
+      type: string
+      enum:
+      - month
+      - quarter
+      - year
+      - one_time
+      - donation
+      title: TierPriceInterval
+    type_tiers_TierPrice:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/type_ids_PriceId'
+        currency:
+          $ref: '#/components/schemas/type_tiers_TierPriceCurrency'
+        amount_cents:
+          type: integer
+        enabled:
+          type: boolean
+          default: true
+        interval:
+          $ref: '#/components/schemas/type_tiers_TierPriceInterval'
+        denominator:
+          type: string
+        cta:
+          type: string
+          description: When using the external Stripe checkout, this text will be displayed on the button
+        features:
+          type: array
+          items:
+            type: string
+      description: Price belonging to a Tier
+      title: TierPrice
+    type_ids_PublicationId:
+      type: string
+      description: The prefixed ID of the publication.
+      title: PublicationId
+    type_tiers_TierStats:
+      type: object
+      properties:
+        active_subscriptions:
+          type: integer
+          description: Total number of active subscriptions belonging to this tier.
+      required:
+      - active_subscriptions
+      description: 'Optional list of stats for a tier. Retrievable by including `expand: [stats]` in the tier request body.'
+      title: TierStats
     type_tiers_TierPriceCurrency:
       type: string
       enum:
@@ -429,12 +523,6 @@ components:
       - nzd
       - dkk
       title: TierPriceCurrency
-    type_tiers_TierResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/type_tiers_Tier'
-      title: TierResponse
     type_tiers_TierPricesAttributesItem:
       type: object
       properties:
@@ -460,6 +548,39 @@ components:
       - amount_cents
       - interval
       title: TierPricesAttributesItem
+    type_tiers_IndexTiersResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/type_tiers_Tier'
+        limit:
+          type: integer
+          description: The limit placed on the results. If no limit was specified in the request,this defaults to 10.
+        page:
+          type: integer
+          default: 1
+          description: The page number the results are from. If no page was specified in the request, this defaults to page 1.
+        total_results:
+          type: integer
+          description: The total number of results from all pages.
+        total_pages:
+          type: integer
+          description: The total number of pages.
+      required:
+      - data
+      - limit
+      - page
+      - total_results
+      - total_pages
+      title: IndexTiersResponse
+    type_tiers_TierResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/type_tiers_Tier'
+      title: TierResponse
     type_tiers_UpdateTierPriceRequest:
       type: object
       properties:
@@ -490,127 +611,6 @@ components:
       - amount_cents
       - interval
       title: UpdateTierPriceRequest
-    type__Error:
-      type: object
-      properties:
-        status:
-          type: integer
-        statusText:
-          type: string
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/type__ErrorDetail'
-      required:
-      - status
-      - statusText
-      - errors
-      description: The top level error response.
-      title: Error
-    type_ids_PriceId:
-      type: string
-      description: The prefixed ID of the price.
-      title: PriceId
-    type__RequestDirection:
-      type: string
-      enum:
-      - asc
-      - desc
-      default: asc
-      description: The direction of the request. Defaults to `asc`.
-      title: RequestDirection
-    type_tiers_TierPrice:
-      type: object
-      properties:
-        id:
-          $ref: '#/components/schemas/type_ids_PriceId'
-        currency:
-          $ref: '#/components/schemas/type_tiers_TierPriceCurrency'
-        amount_cents:
-          type: integer
-        enabled:
-          type: boolean
-          default: true
-        interval:
-          $ref: '#/components/schemas/type_tiers_TierPriceInterval'
-        denominator:
-          type: string
-        cta:
-          type: string
-          description: When using the external Stripe checkout, this text will be displayed on the button
-        features:
-          type: array
-          items:
-            type: string
-      description: Price belonging to a Tier
-      title: TierPrice
-    type_tiers_TierStats:
-      type: object
-      properties:
-        active_subscriptions:
-          type: integer
-          description: Total number of active subscriptions belonging to this tier.
-      required:
-      - active_subscriptions
-      description: 'Optional list of stats for a tier. Retrievable by including `expand: [stats]` in the tier request body.'
-      title: TierStats
-    type_tiers_IndexTiersResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/type_tiers_Tier'
-        limit:
-          type: integer
-          description: The limit placed on the results. If no limit was specified in the request,this defaults to 10.
-        page:
-          type: integer
-          default: 1
-          description: The page number the results are from. If no page was specified in the request, this defaults to page 1.
-        total_results:
-          type: integer
-          description: The total number of results from all pages.
-        total_pages:
-          type: integer
-          description: The total number of pages.
-      required:
-      - data
-      - limit
-      - page
-      - total_results
-      - total_pages
-      title: IndexTiersResponse
-    type_tiers_Tier:
-      type: object
-      properties:
-        id:
-          $ref: '#/components/schemas/type_ids_TierId'
-        name:
-          type: string
-        status:
-          $ref: '#/components/schemas/type_tiers_TierStatus'
-          description: Returns whether or not the tier has any active prices.
-        description:
-          type: string
-          default: Super engaged readers
-        stats:
-          $ref: '#/components/schemas/type_tiers_TierStats'
-        prices:
-          type: array
-          items:
-            $ref: '#/components/schemas/type_tiers_TierPrice'
-          description: 'Optional list of prices for a tier. Retrievable by including `expand: [prices]` in the tier request body.'
-      required:
-      - id
-      - name
-      - status
-      description: The subscription tier object.
-      title: Tier
-    type_ids_TierId:
-      type: string
-      description: The prefixed ID of the tier.
-      title: TierId
   securitySchemes:
     BearerAuthScheme:
       type: http

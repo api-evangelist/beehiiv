@@ -371,18 +371,23 @@ paths:
                 $ref: '#/components/schemas/type__Error'
 components:
   schemas:
-    type_newsletterLists_NewsletterListResponse:
+    type__Error:
       type: object
       properties:
-        data:
-          $ref: '#/components/schemas/type_newsletterLists_NewsletterListInfo'
+        status:
+          type: integer
+        statusText:
+          type: string
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/type__ErrorDetail'
       required:
-      - data
-      title: NewsletterListResponse
-    type_ids_PublicationId:
-      type: string
-      description: The prefixed ID of the publication.
-      title: PublicationId
+      - status
+      - statusText
+      - errors
+      description: The top level error response.
+      title: Error
     type__ErrorDetail:
       type: object
       properties:
@@ -394,6 +399,14 @@ components:
       - message
       - code
       title: ErrorDetail
+    type_newsletterLists_NewsletterListResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/type_newsletterLists_NewsletterListInfo'
+      required:
+      - data
+      title: NewsletterListResponse
     type_newsletterLists_NewsletterListInfo:
       type: object
       properties:
@@ -461,23 +474,10 @@ components:
       - total_results
       - total_pages
       title: NewsletterListIndexResponse
-    type__Error:
-      type: object
-      properties:
-        status:
-          type: integer
-        statusText:
-          type: string
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/type__ErrorDetail'
-      required:
-      - status
-      - statusText
-      - errors
-      description: The top level error response.
-      title: Error
+    type_ids_PublicationId:
+      type: string
+      description: The prefixed ID of the publication.
+      title: PublicationId
     type__RequestDirection:
       type: string
       enum:
@@ -486,6 +486,14 @@ components:
       default: asc
       description: The direction of the request. Defaults to `asc`.
       title: RequestDirection
+    type_newsletterLists_NewsletterListStatus:
+      type: string
+      enum:
+      - draft
+      - active
+      - archived
+      description: The status of the newsletter list.
+      title: NewsletterListStatus
     type_ids_NewsletterListId:
       type: string
       description: The prefixed ID of the newsletter list.
@@ -497,14 +505,6 @@ components:
       - archived
       description: Valid status values when updating a newsletter list. draft is not permitted.
       title: NewsletterListWritableStatus
-    type_newsletterLists_NewsletterListStatus:
-      type: string
-      enum:
-      - draft
-      - active
-      - archived
-      description: The status of the newsletter list.
-      title: NewsletterListStatus
   securitySchemes:
     BearerAuthScheme:
       type: http

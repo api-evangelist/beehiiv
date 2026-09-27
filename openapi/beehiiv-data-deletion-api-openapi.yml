@@ -227,10 +227,23 @@ paths:
                 $ref: '#/components/schemas/type__Error'
 components:
   schemas:
-    type_ids_PublicationId:
-      type: string
-      description: The prefixed ID of the publication.
-      title: PublicationId
+    type__Error:
+      type: object
+      properties:
+        status:
+          type: integer
+        statusText:
+          type: string
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/type__ErrorDetail'
+      required:
+      - status
+      - statusText
+      - errors
+      description: The top level error response.
+      title: Error
     type__ErrorDetail:
       type: object
       properties:
@@ -242,23 +255,22 @@ components:
       - message
       - code
       title: ErrorDetail
-    type_dataDeletion_DataDeletionRequestIndexResponse:
+    type_dataDeletion_DataDeletionRequestResponse:
       type: object
       properties:
         data:
-          type: array
-          items:
-            $ref: '#/components/schemas/type_dataDeletion_DataDeletionRequestInfo'
-        limit:
-          type: integer
-          description: The limit placed on the results. If no limit was specified in the request, this defaults to 10.
-        has_more:
-          type: boolean
-          description: Whether there are more results available after this page.
-        next_cursor:
-          type: string
-          description: The cursor to use for the next page of results.
-      title: DataDeletionRequestIndexResponse
+          $ref: '#/components/schemas/type_dataDeletion_DataDeletionRequestInfo'
+      title: DataDeletionRequestResponse
+    type_dataDeletion_DataDeletionRequestStatus:
+      type: string
+      enum:
+      - pending
+      - processing
+      - completed
+      - failed
+      - canceled
+      description: The current status of the data deletion request.
+      title: DataDeletionRequestStatus
     type_dataDeletion_DataDeletionRequestInfo:
       type: object
       properties:
@@ -279,6 +291,10 @@ components:
         created_at:
           type: string
       title: DataDeletionRequestInfo
+    type_ids_PublicationId:
+      type: string
+      description: The prefixed ID of the publication.
+      title: PublicationId
     type_dataDeletion_DataDeletionRequestSource:
       type: string
       enum:
@@ -290,39 +306,23 @@ components:
       - other
       description: The source from which the deletion request was created.
       title: DataDeletionRequestSource
-    type__Error:
-      type: object
-      properties:
-        status:
-          type: integer
-        statusText:
-          type: string
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/type__ErrorDetail'
-      required:
-      - status
-      - statusText
-      - errors
-      description: The top level error response.
-      title: Error
-    type_dataDeletion_DataDeletionRequestResponse:
+    type_dataDeletion_DataDeletionRequestIndexResponse:
       type: object
       properties:
         data:
-          $ref: '#/components/schemas/type_dataDeletion_DataDeletionRequestInfo'
-      title: DataDeletionRequestResponse
-    type_dataDeletion_DataDeletionRequestStatus:
-      type: string
-      enum:
-      - pending
-      - processing
-      - completed
-      - failed
-      - canceled
-      description: The current status of the data deletion request.
-      title: DataDeletionRequestStatus
+          type: array
+          items:
+            $ref: '#/components/schemas/type_dataDeletion_DataDeletionRequestInfo'
+        limit:
+          type: integer
+          description: The limit placed on the results. If no limit was specified in the request, this defaults to 10.
+        has_more:
+          type: boolean
+          description: Whether there are more results available after this page.
+        next_cursor:
+          type: string
+          description: The cursor to use for the next page of results.
+      title: DataDeletionRequestIndexResponse
   securitySchemes:
     BearerAuthScheme:
       type: http

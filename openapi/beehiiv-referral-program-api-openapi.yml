@@ -79,21 +79,6 @@ paths:
                 $ref: '#/components/schemas/type__Error'
 components:
   schemas:
-    type_ids_PublicationId:
-      type: string
-      description: The prefixed ID of the publication.
-      title: PublicationId
-    type__ErrorDetail:
-      type: object
-      properties:
-        message:
-          type: string
-        code:
-          type: string
-      required:
-      - message
-      - code
-      title: ErrorDetail
     type__Milestone:
       type: object
       properties:
@@ -115,40 +100,6 @@ components:
       - reward
       description: The milestone object.
       title: Milestone
-    type__MilestoneReward:
-      type: object
-      properties:
-        id:
-          $ref: '#/components/schemas/type_ids_RewardId'
-          description: A unique prefixed id of the reward.
-        name:
-          type: string
-          description: The name given to the reward at creation.
-        description:
-          type: string
-          description: The description given to the name at creation.
-        image_url:
-          type: string
-          description: A URL of an image to be displayed with the reward.
-        type:
-          $ref: '#/components/schemas/type__MilestoneRewardType'
-          description: What type of reward this is.<br>`physical` - A product which must be sent to the subscriber.<br>`promo_code` - A code that is redeemable for goods or services.
-      required:
-      - id
-      - name
-      - description
-      - image_url
-      - type
-      description: The reward object.
-      title: MilestoneReward
-    type_ids_MilestoneId:
-      type: string
-      description: The prefixed ID of the milestone.
-      title: MilestoneId
-    type_ids_RewardId:
-      type: string
-      description: The prefixed ID of the reward.
-      title: RewardId
     type__Error:
       type: object
       properties:
@@ -194,6 +145,29 @@ components:
       - total_results
       - total_pages
       title: ReferralProgramGetResponse
+    type__ErrorDetail:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+      required:
+      - message
+      - code
+      title: ErrorDetail
+    type_ids_RewardId:
+      type: string
+      description: The prefixed ID of the reward.
+      title: RewardId
+    type_ids_MilestoneId:
+      type: string
+      description: The prefixed ID of the milestone.
+      title: MilestoneId
+    type_ids_PublicationId:
+      type: string
+      description: The prefixed ID of the publication.
+      title: PublicationId
     type__MilestoneRewardType:
       type: string
       enum:
@@ -203,6 +177,32 @@ components:
       - premium_gift
       description: What type of reward this is.<br>`physical` - A product which must be sent to the subscriber.<br>`promo_code` - A code that is redeemable for goods or services.
       title: MilestoneRewardType
+    type__MilestoneReward:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/type_ids_RewardId'
+          description: A unique prefixed id of the reward.
+        name:
+          type: string
+          description: The name given to the reward at creation.
+        description:
+          type: string
+          description: The description given to the name at creation.
+        image_url:
+          type: string
+          description: A URL of an image to be displayed with the reward.
+        type:
+          $ref: '#/components/schemas/type__MilestoneRewardType'
+          description: What type of reward this is.<br>`physical` - A product which must be sent to the subscriber.<br>`promo_code` - A code that is redeemable for goods or services.
+      required:
+      - id
+      - name
+      - description
+      - image_url
+      - type
+      description: The reward object.
+      title: MilestoneReward
   securitySchemes:
     BearerAuthScheme:
       type: http

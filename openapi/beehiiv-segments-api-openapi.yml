@@ -533,19 +533,85 @@ paths:
                 $ref: '#/components/schemas/type__Error'
 components:
   schemas:
-    type_ids_SubscriptionId:
+    type_segments_SegmentMembersResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/type__Subscription'
+        limit:
+          type: integer
+          description: The limit placed on the results. If no limit was specified in the request,this defaults to 10.
+        page:
+          type: integer
+          default: 1
+          description: The page number the results are from. If no page was specified in the request, this defaults to page 1.
+        total_results:
+          type: integer
+          description: The total number of results from all pages.
+        total_pages:
+          type: integer
+          description: The total number of pages.
+      required:
+      - data
+      - limit
+      - page
+      - total_results
+      - total_pages
+      title: SegmentMembersResponse
+    type__SubscriptionTierInfo:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/type_ids_TierId'
+        name:
+          type: string
+        status:
+          $ref: '#/components/schemas/type__SubscriptionTierInfoStatus'
+          description: Returns whether or not the tier has any active prices.
+      required:
+      - id
+      - name
+      - status
+      title: SubscriptionTierInfo
+    type_ids_TierId:
       type: string
-      description: The prefixed ID of the subscription.
-      title: SubscriptionId
+      description: The prefixed ID of the tier.
+      title: TierId
+    type_segments_SegmentOrderBy:
+      type: string
+      enum:
+      - created
+      - last_calculated
+      default: created
+      title: SegmentOrderBy
     type_segments_SegmentsExpandItems:
       type: string
       enum:
       - stats
       title: SegmentsExpandItems
-    type_ids_SegmentId:
+    type_segments_SegmentDeleteResponse:
+      type: object
+      properties:
+        message:
+          type: string
+      title: SegmentDeleteResponse
+    type__SegmentStatus:
       type: string
-      description: The prefixed ID of the segment.
-      title: SegmentId
+      enum:
+      - pending
+      - processing
+      - completed
+      - failed
+      description: The status of the segment's most recent calculation.<br>`pending` - The segment has not been calculated yet.<br>`processing` - The calculation is in progress, and has not completed.<br>`completed` - The calculation was successful.<br>`failed` - Something went wrong during the calculation.
+      title: SegmentStatus
+    type_segments_CustomFieldsLogicalOperator:
+      type: string
+      enum:
+      - and
+      - or
+      title: CustomFieldsLogicalOperator
     type_segments_SegmentMembersExpandItems:
       type: string
       enum:
@@ -555,13 +621,6 @@ components:
       - tags
       - subscription_premium_tiers
       title: SegmentMembersExpandItems
-    type_segments_SegmentOrderBy:
-      type: string
-      enum:
-      - created
-      - last_calculated
-      default: created
-      title: SegmentOrderBy
     type_segments_SegmentsListResponse:
       type: object
       properties:
@@ -590,6 +649,227 @@ components:
       - total_results
       - total_pages
       title: SegmentsListResponse
+    type__SubscriptionCustomFieldList:
+      type: array
+      items:
+        $ref: '#/components/schemas/type__CustomField'
+      description: 'Optional list of custom fields for a subscription. Retrievable by including `expand: [custom_field]` in the request body.'
+      title: SubscriptionCustomFieldList
+    type__SegmentType:
+      type: string
+      enum:
+      - dynamic
+      - static
+      - manual
+      - all
+      default: all
+      description: The type of segment.<br>`dynamic` - The segment is recalculated at set intervals.<br>`static` - The segment is calculated once at creation.<br>`manual` - The segment is not calculated at all. The results are created via CSV.
+      title: SegmentType
+    type_ids_SegmentId:
+      type: string
+      description: The prefixed ID of the segment.
+      title: SegmentId
+    type_ids_SubscriptionId:
+      type: string
+      description: The prefixed ID of the subscription.
+      title: SubscriptionId
+    type_segments_CustomFieldFilter:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The display name of the custom field (case-insensitive match). Must be an existing custom field on the publication.
+        operator:
+          type: string
+          description: The comparison operator for the filter (e.g., `equal`, `not_equal`, `contains`, `exists`, `does_not_exist`). Available operators depend on the custom field's type.
+        value:
+          type: string
+          description: The value to compare against. Required for all operators except `exists` and `does_not_exist`.
+      required:
+      - name
+      - operator
+      description: A single custom field filter condition.
+      title: CustomFieldFilter
+    type__Segment:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/type_ids_SegmentId'
+          description: The prefixed ID of the segment.
+        name:
+          type: string
+          description: The name of the segment.
+        type:
+          $ref: '#/components/schemas/type__SegmentType'
+          description: The type of segment.<br>`dynamic` - The segment is recalculated at set intervals.<br>`static` - The segment is calculated once at creation.<br>`manual` - The segment is not calculated at all. The results are created via CSV.
+        last_calculated:
+          type: integer
+          description: The time the Segment was last calculated. Measured in seconds since the Unix epoch
+        total_results:
+          type: integer
+          description: The total number of subscriptions that belong in the segment from the last calculation.
+        status:
+          $ref: '#/components/schemas/type__SegmentStatus'
+          description: The status of the segment's most recent calculation.<br>`pending` - The segment has not been calculated yet.<br>`processing` - The calculation is in progress, and has not completed.<br>`completed` - The calculation was successful.<br>`failed` - Something went wrong during the calculation.
+        active:
+          type: boolean
+          description: Dynamic segments are marked inactive if they haven't been used in a specific period of time. Inactive segments will not automatically be recalculated.
+        stats:
+          $ref: '#/components/schemas/type__SegmentStats'
+      required:
+      - id
+      - name
+      - type
+      - total_results
+      - status
+      - active
+      description: The segment object. To expand results, see the results endpoint.
+      title: Segment
+    type_segments_SegmentRequestStatus:
+      type: string
+      enum:
+      - pending
+      - processing
+      - completed
+      - failed
+      - all
+      default: all
+      title: SegmentRequestStatus
+    type_segments_SegmentsGetResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            type: string
+          description: An array of subscription ids
+        limit:
+          type: integer
+          description: The limit placed on the results. If no limit was specified in the request,this defaults to 10.
+        page:
+          type: integer
+          default: 1
+          description: The page number the results are from. If no page was specified in the request, this defaults to page 1.
+        total_results:
+          type: integer
+          description: The total number of results from all pages.
+        total_pages:
+          type: integer
+          description: The total number of pages.
+      required:
+      - data
+      - limit
+      - page
+      - total_results
+      - total_pages
+      title: SegmentsGetResponse
+    type__SubscriptionStats:
+      type: object
+      properties:
+        emails_received:
+          type: integer
+          description: The total number of emails that have been sent to this subscriber
+        open_rate:
+          type: number
+          format: double
+          description: The percentage of emails that the subscriber has opened
+        click_through_rate:
+          type: number
+          format: double
+          description: The percentage of emails that the subscriber has clicked a link in
+      description: 'Optional list of stats for a subscription. Retrievable by including `expand: [stats]` in the request body.'
+      title: SubscriptionStats
+    type_segments_SegmentRecalculateResponse:
+      type: object
+      properties:
+        message:
+          type: string
+      title: SegmentRecalculateResponse
+    type__SubscriptionTags:
+      type: array
+      items:
+        type: string
+      description: 'Optional list of tags for a subscription. Retrievable by including `expand: [tags]` in the request body.
+
+        Max limit of 100 unique tags per publication.'
+      title: SubscriptionTags
+    type__CustomFieldType:
+      type: string
+      enum:
+      - string
+      - integer
+      - boolean
+      - date
+      - datetime
+      - list
+      - double
+      description: The type of value being stored in the custom field.
+      title: CustomFieldType
+    type__Error:
+      type: object
+      properties:
+        status:
+          type: integer
+        statusText:
+          type: string
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/type__ErrorDetail'
+      required:
+      - status
+      - statusText
+      - errors
+      description: The top level error response.
+      title: Error
+    type__ErrorDetail:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+      required:
+      - message
+      - code
+      title: ErrorDetail
+    type__SubscriptionExpandedStatus:
+      type: string
+      enum:
+      - validating
+      - invalid
+      - pending
+      - active
+      - inactive
+      - needs_attention
+      - paused
+      description: The status of the subscription.<br>`validating` - The email address is being validated.<br>`invalid` - The email address is invalid.<br>`pending` - The email address is valid, but the subscription is pending double opt-in.<br>`active` - The email was valid and the subscription is active.<br>`inactive` - The subscription was made inactive, possibly due to an unsubscribe.<br>`needs_attention` - The subscription requires approval or denial.<br>`paused` - The subscriber has paused their subscription.
+      title: SubscriptionExpandedStatus
+    type__SubscriptionTierList:
+      type: array
+      items:
+        $ref: '#/components/schemas/type__SubscriptionTierInfo'
+      description: 'Optional list of tiers for a subscription. Retrievable by including `expand: [subscription_premium_tiers]` in the request body.'
+      title: SubscriptionTierList
+    type_ids_PublicationId:
+      type: string
+      description: The prefixed ID of the publication.
+      title: PublicationId
+    type_segments_SegmentShowResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/type__Segment'
+      required:
+      - data
+      title: SegmentShowResponse
+    type__SubscriptionTierInfoStatus:
+      type: string
+      enum:
+      - active
+      - archived
+      description: Returns whether or not the tier has any active prices.
+      title: SubscriptionTierInfoStatus
     type__CustomField:
       type: object
       properties:
@@ -680,57 +960,13 @@ components:
       - referral_code
       description: The subscription object
       title: Subscription
-    type_segments_SegmentSubscriptionInput:
-      oneOf:
-      - type: object
-        properties:
-          type:
-            type: string
-            enum:
-            - subscriptions
-            description: 'Discriminator value: subscriptions'
-          subscriptions:
-            type: array
-            items:
-              $ref: '#/components/schemas/type_ids_SubscriptionId'
-        required:
-        - type
-        - subscriptions
-      - type: object
-        properties:
-          type:
-            type: string
-            enum:
-            - emails
-            description: 'Discriminator value: emails'
-          emails:
-            type: array
-            items:
-              type: string
-        required:
-        - type
-        - emails
-      - type: object
-        properties:
-          type:
-            type: string
-            enum:
-            - custom_fields
-            description: 'Discriminator value: custom_fields'
-          operator:
-            $ref: '#/components/schemas/type_segments_CustomFieldsLogicalOperator'
-            description: The logical operator used to combine multiple custom field filters. Defaults to `and` if not specified.
-          custom_fields:
-            type: array
-            items:
-              $ref: '#/components/schemas/type_segments_CustomFieldFilter'
-        required:
-        - type
-        - custom_fields
-      discriminator:
-        propertyName: type
-      description: Input for segment creation. Use `subscriptions` or `emails` to create a manual segment from explicit lists, or `custom_fields` to create a dynamic segment filtered by custom field values.
-      title: SegmentSubscriptionInput
+    type__SubscriptionExpandedSubscriptionTier:
+      type: string
+      enum:
+      - free
+      - premium
+      description: The current tier of the subscription.
+      title: SubscriptionExpandedSubscriptionTier
     type__CustomFieldDataType:
       oneOf:
       - type: string
@@ -741,256 +977,6 @@ components:
         items:
           type: string
       title: CustomFieldDataType
-    type__SegmentType:
-      type: string
-      enum:
-      - dynamic
-      - static
-      - manual
-      - all
-      default: all
-      description: The type of segment.<br>`dynamic` - The segment is recalculated at set intervals.<br>`static` - The segment is calculated once at creation.<br>`manual` - The segment is not calculated at all. The results are created via CSV.
-      title: SegmentType
-    type_ids_TierId:
-      type: string
-      description: The prefixed ID of the tier.
-      title: TierId
-    type__Segment:
-      type: object
-      properties:
-        id:
-          $ref: '#/components/schemas/type_ids_SegmentId'
-          description: The prefixed ID of the segment.
-        name:
-          type: string
-          description: The name of the segment.
-        type:
-          $ref: '#/components/schemas/type__SegmentType'
-          description: The type of segment.<br>`dynamic` - The segment is recalculated at set intervals.<br>`static` - The segment is calculated once at creation.<br>`manual` - The segment is not calculated at all. The results are created via CSV.
-        last_calculated:
-          type: integer
-          description: The time the Segment was last calculated. Measured in seconds since the Unix epoch
-        total_results:
-          type: integer
-          description: The total number of subscriptions that belong in the segment from the last calculation.
-        status:
-          $ref: '#/components/schemas/type__SegmentStatus'
-          description: The status of the segment's most recent calculation.<br>`pending` - The segment has not been calculated yet.<br>`processing` - The calculation is in progress, and has not completed.<br>`completed` - The calculation was successful.<br>`failed` - Something went wrong during the calculation.
-        active:
-          type: boolean
-          description: Dynamic segments are marked inactive if they haven't been used in a specific period of time. Inactive segments will not automatically be recalculated.
-        stats:
-          $ref: '#/components/schemas/type__SegmentStats'
-      required:
-      - id
-      - name
-      - type
-      - total_results
-      - status
-      - active
-      description: The segment object. To expand results, see the results endpoint.
-      title: Segment
-    type__SubscriptionCustomFieldList:
-      type: array
-      items:
-        $ref: '#/components/schemas/type__CustomField'
-      description: 'Optional list of custom fields for a subscription. Retrievable by including `expand: [custom_field]` in the request body.'
-      title: SubscriptionCustomFieldList
-    type_segments_SegmentMembersResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/type__Subscription'
-        limit:
-          type: integer
-          description: The limit placed on the results. If no limit was specified in the request,this defaults to 10.
-        page:
-          type: integer
-          default: 1
-          description: The page number the results are from. If no page was specified in the request, this defaults to page 1.
-        total_results:
-          type: integer
-          description: The total number of results from all pages.
-        total_pages:
-          type: integer
-          description: The total number of pages.
-      required:
-      - data
-      - limit
-      - page
-      - total_results
-      - total_pages
-      title: SegmentMembersResponse
-    type__SegmentStatus:
-      type: string
-      enum:
-      - pending
-      - processing
-      - completed
-      - failed
-      description: The status of the segment's most recent calculation.<br>`pending` - The segment has not been calculated yet.<br>`processing` - The calculation is in progress, and has not completed.<br>`completed` - The calculation was successful.<br>`failed` - Something went wrong during the calculation.
-      title: SegmentStatus
-    type__SubscriptionExpandedStatus:
-      type: string
-      enum:
-      - validating
-      - invalid
-      - pending
-      - active
-      - inactive
-      - needs_attention
-      - paused
-      description: The status of the subscription.<br>`validating` - The email address is being validated.<br>`invalid` - The email address is invalid.<br>`pending` - The email address is valid, but the subscription is pending double opt-in.<br>`active` - The email was valid and the subscription is active.<br>`inactive` - The subscription was made inactive, possibly due to an unsubscribe.<br>`needs_attention` - The subscription requires approval or denial.<br>`paused` - The subscriber has paused their subscription.
-      title: SubscriptionExpandedStatus
-    type__RequestDirection:
-      type: string
-      enum:
-      - asc
-      - desc
-      default: asc
-      description: The direction of the request. Defaults to `asc`.
-      title: RequestDirection
-    type__SubscriptionTierList:
-      type: array
-      items:
-        $ref: '#/components/schemas/type__SubscriptionTierInfo'
-      description: 'Optional list of tiers for a subscription. Retrievable by including `expand: [subscription_premium_tiers]` in the request body.'
-      title: SubscriptionTierList
-    type__SubscriptionTierInfoStatus:
-      type: string
-      enum:
-      - active
-      - archived
-      description: Returns whether or not the tier has any active prices.
-      title: SubscriptionTierInfoStatus
-    type__CustomFieldType:
-      type: string
-      enum:
-      - string
-      - integer
-      - boolean
-      - date
-      - datetime
-      - list
-      - double
-      description: The type of value being stored in the custom field.
-      title: CustomFieldType
-    type__SubscriptionTierInfo:
-      type: object
-      properties:
-        id:
-          $ref: '#/components/schemas/type_ids_TierId'
-        name:
-          type: string
-        status:
-          $ref: '#/components/schemas/type__SubscriptionTierInfoStatus'
-          description: Returns whether or not the tier has any active prices.
-      required:
-      - id
-      - name
-      - status
-      title: SubscriptionTierInfo
-    type_ids_PublicationId:
-      type: string
-      description: The prefixed ID of the publication.
-      title: PublicationId
-    type_segments_SegmentDeleteResponse:
-      type: object
-      properties:
-        message:
-          type: string
-      title: SegmentDeleteResponse
-    type__SubscriptionExpandedUtmChannel:
-      type: string
-      enum:
-      - ''
-      - website
-      - import
-      - embed
-      - api
-      - referral
-      - recommendation
-      - magic_link
-      - boost
-      - boost_send
-      - boost_direct_link
-      - integration
-      - product
-      - group_invite
-      description: The acquisition channel
-      title: SubscriptionExpandedUtmChannel
-    type__SubscriptionTags:
-      type: array
-      items:
-        type: string
-      description: 'Optional list of tags for a subscription. Retrievable by including `expand: [tags]` in the request body.
-
-        Max limit of 100 unique tags per publication.'
-      title: SubscriptionTags
-    type_segments_SegmentRequestStatus:
-      type: string
-      enum:
-      - pending
-      - processing
-      - completed
-      - failed
-      - all
-      default: all
-      title: SegmentRequestStatus
-    type__SubscriptionStats:
-      type: object
-      properties:
-        emails_received:
-          type: integer
-          description: The total number of emails that have been sent to this subscriber
-        open_rate:
-          type: number
-          format: double
-          description: The percentage of emails that the subscriber has opened
-        click_through_rate:
-          type: number
-          format: double
-          description: The percentage of emails that the subscriber has clicked a link in
-      description: 'Optional list of stats for a subscription. Retrievable by including `expand: [stats]` in the request body.'
-      title: SubscriptionStats
-    type_segments_CustomFieldsLogicalOperator:
-      type: string
-      enum:
-      - and
-      - or
-      title: CustomFieldsLogicalOperator
-    type__Error:
-      type: object
-      properties:
-        status:
-          type: integer
-        statusText:
-          type: string
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/type__ErrorDetail'
-      required:
-      - status
-      - statusText
-      - errors
-      description: The top level error response.
-      title: Error
-    type__SubscriptionExpandedSubscriptionTier:
-      type: string
-      enum:
-      - free
-      - premium
-      description: The current tier of the subscription.
-      title: SubscriptionExpandedSubscriptionTier
-    type_segments_SegmentRecalculateResponse:
-      type: object
-      properties:
-        message:
-          type: string
-      title: SegmentRecalculateResponse
     type__SegmentStats:
       type: object
       properties:
@@ -1058,70 +1044,84 @@ components:
       - premium_subscribers
       - average_referrals_per_subscriber
       title: SegmentStats
-    type_segments_CustomFieldFilter:
-      type: object
-      properties:
-        name:
-          type: string
-          description: The display name of the custom field (case-insensitive match). Must be an existing custom field on the publication.
-        operator:
-          type: string
-          description: The comparison operator for the filter (e.g., `equal`, `not_equal`, `contains`, `exists`, `does_not_exist`). Available operators depend on the custom field's type.
-        value:
-          type: string
-          description: The value to compare against. Required for all operators except `exists` and `does_not_exist`.
-      required:
-      - name
-      - operator
-      description: A single custom field filter condition.
-      title: CustomFieldFilter
-    type__ErrorDetail:
-      type: object
-      properties:
-        message:
-          type: string
-        code:
-          type: string
-      required:
-      - message
-      - code
-      title: ErrorDetail
-    type_segments_SegmentShowResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/type__Segment'
-      required:
-      - data
-      title: SegmentShowResponse
-    type_segments_SegmentsGetResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
+    type__RequestDirection:
+      type: string
+      enum:
+      - asc
+      - desc
+      default: asc
+      description: The direction of the request. Defaults to `asc`.
+      title: RequestDirection
+    type__SubscriptionExpandedUtmChannel:
+      type: string
+      enum:
+      - ''
+      - website
+      - import
+      - embed
+      - api
+      - referral
+      - recommendation
+      - magic_link
+      - boost
+      - boost_send
+      - boost_direct_link
+      - integration
+      - product
+      - group_invite
+      description: The acquisition channel
+      title: SubscriptionExpandedUtmChannel
+    type_segments_SegmentSubscriptionInput:
+      oneOf:
+      - type: object
+        properties:
+          type:
             type: string
-          description: An array of subscription ids
-        limit:
-          type: integer
-          description: The limit placed on the results. If no limit was specified in the request,this defaults to 10.
-        page:
-          type: integer
-          default: 1
-          description: The page number the results are from. If no page was specified in the request, this defaults to page 1.
-        total_results:
-          type: integer
-          description: The total number of results from all pages.
-        total_pages:
-          type: integer
-          description: The total number of pages.
-      required:
-      - data
-      - limit
-      - page
-      - total_results
-      - total_pages
-      title: SegmentsGetResponse
+            enum:
+            - subscriptions
+            description: 'Discriminator value: subscriptions'
+          subscriptions:
+            type: array
+            items:
+              $ref: '#/components/schemas/type_ids_SubscriptionId'
+        required:
+        - type
+        - subscriptions
+      - type: object
+        properties:
+          type:
+            type: string
+            enum:
+            - emails
+            description: 'Discriminator value: emails'
+          emails:
+            type: array
+            items:
+              type: string
+        required:
+        - type
+        - emails
+      - type: object
+        properties:
+          type:
+            type: string
+            enum:
+            - custom_fields
+            description: 'Discriminator value: custom_fields'
+          operator:
+            $ref: '#/components/schemas/type_segments_CustomFieldsLogicalOperator'
+            description: The logical operator used to combine multiple custom field filters. Defaults to `and` if not specified.
+          custom_fields:
+            type: array
+            items:
+              $ref: '#/components/schemas/type_segments_CustomFieldFilter'
+        required:
+        - type
+        - custom_fields
+      discriminator:
+        propertyName: type
+      description: Input for segment creation. Use `subscriptions` or `emails` to create a manual segment from explicit lists, or `custom_fields` to create a dynamic segment filtered by custom field values.
+      title: SegmentSubscriptionInput
   securitySchemes:
     BearerAuthScheme:
       type: http

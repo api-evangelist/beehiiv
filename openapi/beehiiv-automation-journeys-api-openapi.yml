@@ -244,45 +244,6 @@ paths:
                 $ref: '#/components/schemas/type__Error'
 components:
   schemas:
-    type_ids_SubscriptionId:
-      type: string
-      description: The prefixed ID of the subscription.
-      title: SubscriptionId
-    type_ids_PublicationId:
-      type: string
-      description: The prefixed ID of the publication.
-      title: PublicationId
-    type_ids_AutomationJourneyId:
-      type: string
-      description: The prefixed ID of the automation journey.
-      title: AutomationJourneyId
-    type__ErrorDetail:
-      type: object
-      properties:
-        message:
-          type: string
-        code:
-          type: string
-      required:
-      - message
-      - code
-      title: ErrorDetail
-    type_automationJourneys_AutomationJourneysResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/type__AutomationJourney'
-      required:
-      - data
-      title: AutomationJourneysResponse
-    type__AutomationJourneyStatus:
-      type: string
-      enum:
-      - in_progress
-      - completed
-      - exited_early
-      - manually_removed
-      title: AutomationJourneyStatus
     type__AutomationJourney:
       type: object
       properties:
@@ -327,6 +288,49 @@ components:
       - errors
       description: The top level error response.
       title: Error
+    type_ids_AutomationJourneyId:
+      type: string
+      description: The prefixed ID of the automation journey.
+      title: AutomationJourneyId
+    type_ids_SubscriptionId:
+      type: string
+      description: The prefixed ID of the subscription.
+      title: SubscriptionId
+    type__ErrorDetail:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+      required:
+      - message
+      - code
+      title: ErrorDetail
+    type__AutomationJourneyStatus:
+      type: string
+      enum:
+      - in_progress
+      - completed
+      - exited_early
+      - manually_removed
+      title: AutomationJourneyStatus
+    type_ids_AutomationId:
+      type: string
+      description: The prefixed ID of the automation.
+      title: AutomationId
+    type_automationJourneys_AutomationJourneysResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/type__AutomationJourney'
+      required:
+      - data
+      title: AutomationJourneysResponse
+    type__DoubleOptOverride:
+      type: string
+      description: Override publication double-opt settings for this subscription.
+      title: DoubleOptOverride
     type_automationJourneys_AutomationJourneysIndexResponse:
       type: object
       properties:
@@ -354,6 +358,10 @@ components:
       - total_results
       - total_pages
       title: AutomationJourneysIndexResponse
+    type_ids_PublicationId:
+      type: string
+      description: The prefixed ID of the publication.
+      title: PublicationId
     type_automationJourneys_AutomationJourneysGetRequestStatus:
       type: string
       enum:
@@ -363,14 +371,6 @@ components:
       - all
       default: all
       title: AutomationJourneysGetRequestStatus
-    type_ids_AutomationId:
-      type: string
-      description: The prefixed ID of the automation.
-      title: AutomationId
-    type__DoubleOptOverride:
-      type: string
-      description: Override publication double-opt settings for this subscription.
-      title: DoubleOptOverride
   securitySchemes:
     BearerAuthScheme:
       type: http

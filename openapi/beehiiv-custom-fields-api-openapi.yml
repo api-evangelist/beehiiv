@@ -401,16 +401,23 @@ paths:
                 $ref: '#/components/schemas/type__Error'
 components:
   schemas:
-    type_customFields_CustomFieldsDeleteResponse:
+    type__Error:
       type: object
       properties:
-        message:
+        status:
+          type: integer
+        statusText:
           type: string
-      title: CustomFieldsDeleteResponse
-    type_ids_PublicationId:
-      type: string
-      description: The prefixed ID of the publication.
-      title: PublicationId
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/type__ErrorDetail'
+      required:
+      - status
+      - statusText
+      - errors
+      description: The top level error response.
+      title: Error
     type__ErrorDetail:
       type: object
       properties:
@@ -422,6 +429,12 @@ components:
       - message
       - code
       title: ErrorDetail
+    type_customFields_CustomFieldsPatchResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/type_customFields_CustomFieldInfo'
+      title: CustomFieldsPatchResponse
     type_customFields_CustomFieldIndexResponse:
       type: object
       properties:
@@ -449,29 +462,10 @@ components:
         data:
           $ref: '#/components/schemas/type_customFields_CustomFieldInfo'
       title: CustomFieldResponse
-    type__Error:
-      type: object
-      properties:
-        status:
-          type: integer
-        statusText:
-          type: string
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/type__ErrorDetail'
-      required:
-      - status
-      - statusText
-      - errors
-      description: The top level error response.
-      title: Error
-    type_customFields_CustomFieldsPatchResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/type_customFields_CustomFieldInfo'
-      title: CustomFieldsPatchResponse
+    type_ids_PublicationId:
+      type: string
+      description: The prefixed ID of the publication.
+      title: PublicationId
     type__CustomFieldType:
       type: string
       enum:
@@ -501,6 +495,12 @@ components:
             type: string
           description: Array of option values. Only included when kind is "list".
       title: CustomFieldInfo
+    type_customFields_CustomFieldsDeleteResponse:
+      type: object
+      properties:
+        message:
+          type: string
+      title: CustomFieldsDeleteResponse
   securitySchemes:
     BearerAuthScheme:
       type: http

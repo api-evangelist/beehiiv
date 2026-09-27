@@ -156,44 +156,6 @@ paths:
                 $ref: '#/components/schemas/type__Error'
 components:
   schemas:
-    type_conditionSets_ConditionSetStats:
-      type: object
-      properties:
-        active_subscriber_count:
-          type: integer
-          description: Count of active subscribers matching this condition set, calculated synchronously at request time.
-      required:
-      - active_subscriber_count
-      title: ConditionSetStats
-    type_ids_PublicationId:
-      type: string
-      description: The prefixed ID of the publication.
-      title: PublicationId
-    type_conditionSets_ConditionSetShowResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/type_conditionSets_ConditionSet'
-      required:
-      - data
-      title: ConditionSetShowResponse
-    type__ErrorDetail:
-      type: object
-      properties:
-        message:
-          type: string
-        code:
-          type: string
-      required:
-      - message
-      - code
-      title: ErrorDetail
-    type_conditionSets_ConditionSetPurpose:
-      type: string
-      enum:
-      - dynamic_content
-      description: The purpose of the condition set, indicating its intended use.
-      title: ConditionSetPurpose
     type_conditionSets_ConditionSet:
       type: object
       properties:
@@ -226,40 +188,15 @@ components:
       - updated
       - purpose
       title: ConditionSet
-    type_conditionSets_ConditionSetListItem:
+    type_conditionSets_ConditionSetStats:
       type: object
       properties:
-        id:
-          type: string
-          description: The UUID of the condition set.
-        name:
-          type: string
-          description: The display name of the condition set.
-        status:
-          $ref: '#/components/schemas/type_conditionSets_ConditionSetStatus'
-          description: Whether the condition set is currently active or has been archived.
-        created:
+        active_subscriber_count:
           type: integer
-          description: The time the condition set was created. Measured in seconds since the Unix epoch.
-        updated:
-          type: integer
-          description: The time the condition set was last updated. Measured in seconds since the Unix epoch.
-        purpose:
-          $ref: '#/components/schemas/type_conditionSets_ConditionSetPurpose'
-          description: The purpose of the condition set, indicating its intended use.
+          description: Count of active subscribers matching this condition set, calculated synchronously at request time.
       required:
-      - id
-      - name
-      - status
-      - created
-      - updated
-      - purpose
-      title: ConditionSetListItem
-    type_conditionSets_ConditionSetShowExpandItems:
-      type: string
-      enum:
-      - stats
-      title: ConditionSetShowExpandItems
+      - active_subscriber_count
+      title: ConditionSetStats
     type__Error:
       type: object
       properties:
@@ -277,6 +214,28 @@ components:
       - errors
       description: The top level error response.
       title: Error
+    type__ErrorDetail:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+      required:
+      - message
+      - code
+      title: ErrorDetail
+    type_conditionSets_ConditionSetPurpose:
+      type: string
+      enum:
+      - dynamic_content
+      description: The purpose of the condition set, indicating its intended use.
+      title: ConditionSetPurpose
+    type_conditionSets_ConditionSetShowExpandItems:
+      type: string
+      enum:
+      - stats
+      title: ConditionSetShowExpandItems
     type_conditionSets_ConditionSetStatus:
       type: string
       enum:
@@ -306,6 +265,47 @@ components:
       required:
       - data
       title: ConditionSetsListResponse
+    type_ids_PublicationId:
+      type: string
+      description: The prefixed ID of the publication.
+      title: PublicationId
+    type_conditionSets_ConditionSetShowResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/type_conditionSets_ConditionSet'
+      required:
+      - data
+      title: ConditionSetShowResponse
+    type_conditionSets_ConditionSetListItem:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The UUID of the condition set.
+        name:
+          type: string
+          description: The display name of the condition set.
+        status:
+          $ref: '#/components/schemas/type_conditionSets_ConditionSetStatus'
+          description: Whether the condition set is currently active or has been archived.
+        created:
+          type: integer
+          description: The time the condition set was created. Measured in seconds since the Unix epoch.
+        updated:
+          type: integer
+          description: The time the condition set was last updated. Measured in seconds since the Unix epoch.
+        purpose:
+          $ref: '#/components/schemas/type_conditionSets_ConditionSetPurpose'
+          description: The purpose of the condition set, indicating its intended use.
+      required:
+      - id
+      - name
+      - status
+      - created
+      - updated
+      - purpose
+      title: ConditionSetListItem
   securitySchemes:
     BearerAuthScheme:
       type: http

@@ -61,23 +61,6 @@ paths:
                 $ref: '#/components/schemas/type__Error'
 components:
   schemas:
-    type_oauth_users_UserIdentifyResponse:
-      type: object
-      properties:
-        first_name:
-          type: string
-          description: The first name of the user.
-        last_name:
-          type: string
-          description: The last name of the user.
-        email:
-          type: string
-          description: The email address of the user.
-        profile_picture:
-          type: string
-          description: URL to the user's profile picture.
-      description: Response containing information about the authenticated user.
-      title: UserIdentifyResponse
     type__Error:
       type: object
       properties:
@@ -95,6 +78,23 @@ components:
       - errors
       description: The top level error response.
       title: Error
+    type_oauth_users_UserIdentifyResponse:
+      type: object
+      properties:
+        first_name:
+          type: string
+          description: The first name of the user.
+        last_name:
+          type: string
+          description: The last name of the user.
+        email:
+          type: string
+          description: The email address of the user.
+        profile_picture:
+          type: string
+          description: URL to the user's profile picture.
+      description: Response containing information about the authenticated user.
+      title: UserIdentifyResponse
     type__ErrorDetail:
       type: object
       properties:
