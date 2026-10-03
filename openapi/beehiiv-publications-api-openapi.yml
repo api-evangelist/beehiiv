@@ -158,6 +158,47 @@ paths:
                 $ref: '#/components/schemas/type__Error'
 components:
   schemas:
+    type__Publication:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/type_ids_PublicationId'
+          description: A unique prefixed id of the publication
+        name:
+          type: string
+          description: The name of the publication
+        organization_name:
+          type: string
+          description: The name of the organization
+        referral_program_enabled:
+          type: boolean
+          description: A boolean field indicating whether the referral program is active for this publication.
+        created:
+          type: number
+          format: double
+          description: The time that the publication was created. Measured in seconds since the Unix epoch
+        stats:
+          $ref: '#/components/schemas/type__PublicationStats'
+      required:
+      - id
+      - name
+      - organization_name
+      - referral_program_enabled
+      - created
+      title: Publication
+    type_publications_PublicationsGetRequestExpandItem:
+      type: string
+      enum:
+      - stats
+      - stat_active_subscriptions
+      - stat_active_premium_subscriptions
+      - stat_active_free_subscriptions
+      - stat_average_open_rate
+      - stat_average_click_rate
+      - stat_total_sent
+      - stat_total_unique_opened
+      - stat_total_clicked
+      title: PublicationsGetRequestExpandItem
     type__AverageClickRate:
       oneOf:
       - type: number
@@ -165,18 +206,23 @@ components:
       - type: boolean
       description: The publications historical average click through rate
       title: AverageClickRate
-    type__ActivePremiumSubscriptionCount:
-      oneOf:
-      - type: integer
-      - type: boolean
-      description: Total number of active premium/paid subscriptions
-      title: ActivePremiumSubscriptionCount
-    type__TotalEmailsSent:
-      oneOf:
-      - type: integer
-      - type: boolean
-      description: Total number of emails sent
-      title: TotalEmailsSent
+    type__Error:
+      type: object
+      properties:
+        status:
+          type: integer
+        statusText:
+          type: string
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/type__ErrorDetail'
+      required:
+      - status
+      - statusText
+      - errors
+      description: The top level error response.
+      title: Error
     type__AverageOpenRate:
       oneOf:
       - type: number
@@ -184,12 +230,12 @@ components:
       - type: boolean
       description: The publications historical average open rate
       title: AverageOpenRate
-    type__TotalClicks:
+    type__ActiveSubscriptionCount:
       oneOf:
       - type: integer
       - type: boolean
-      description: The total number of links clicked from emails.
-      title: TotalClicks
+      description: Total number of active free and premium subscriptions
+      title: ActiveSubscriptionCount
     type_publications_PublicationsRequestExpandItem:
       type: string
       enum:
@@ -203,6 +249,49 @@ components:
       - stat_total_unique_opened
       - stat_total_clicked
       title: PublicationsRequestExpandItem
+    type__ActiveFreeSubscriptionCount:
+      oneOf:
+      - type: integer
+      - type: boolean
+      description: Total number of active free subscriptions
+      title: ActiveFreeSubscriptionCount
+    type_publications_PublicationsListRequestOrderBy:
+      type: string
+      enum:
+      - created
+      - name
+      default: created
+      title: PublicationsListRequestOrderBy
+    type__ActivePremiumSubscriptionCount:
+      oneOf:
+      - type: integer
+      - type: boolean
+      description: Total number of active premium/paid subscriptions
+      title: ActivePremiumSubscriptionCount
+    type__TotalClicks:
+      oneOf:
+      - type: integer
+      - type: boolean
+      description: The total number of links clicked from emails.
+      title: TotalClicks
+    type__RequestDirection:
+      type: string
+      enum:
+      - asc
+      - desc
+      default: asc
+      description: The direction of the request. Defaults to `asc`.
+      title: RequestDirection
+    type_ids_PublicationId:
+      type: string
+      description: The prefixed ID of the publication.
+      title: PublicationId
+    type__TotalUniqueOpens:
+      oneOf:
+      - type: integer
+      - type: boolean
+      description: Total number of uniquely opened emails. Only counts the first open for each subscriber.
+      title: TotalUniqueOpens
     type__PublicationStats:
       type: object
       properties:
@@ -232,6 +321,12 @@ components:
           description: The total number of links clicked from emails.
       description: "Optional list of stats for a publication. Retrievable by including an `expand` array in the publication request body. Add `\"stats\"` to the array to retrieve all, or add individual stats (prefaced with `stat_`) to only retrieve specific ones.\n\nExamples:\n{\n  \"expand\": [\"stats\"]\n}\n\n{\n  \"expand\": [\"stat_active_subscriptions\", \"stat_average_click_rate\"]\n}"
       title: PublicationStats
+    type__TotalEmailsSent:
+      oneOf:
+      - type: integer
+      - type: boolean
+      description: Total number of emails sent
+      title: TotalEmailsSent
     type_publications_PublicationsListResponse:
       type: object
       properties:
@@ -259,23 +354,14 @@ components:
       - total_results
       - total_pages
       title: PublicationsListResponse
-    type__Error:
+    type_publications_PublicationsGetResponse:
       type: object
       properties:
-        status:
-          type: integer
-        statusText:
-          type: string
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/type__ErrorDetail'
+        data:
+          $ref: '#/components/schemas/type__Publication'
       required:
-      - status
-      - statusText
-      - errors
-      description: The top level error response.
-      title: Error
+      - data
+      title: PublicationsGetResponse
     type__ErrorDetail:
       type: object
       properties:
@@ -287,92 +373,6 @@ components:
       - message
       - code
       title: ErrorDetail
-    type_publications_PublicationsListRequestOrderBy:
-      type: string
-      enum:
-      - created
-      - name
-      default: created
-      title: PublicationsListRequestOrderBy
-    type_ids_PublicationId:
-      type: string
-      description: The prefixed ID of the publication.
-      title: PublicationId
-    type__ActiveFreeSubscriptionCount:
-      oneOf:
-      - type: integer
-      - type: boolean
-      description: Total number of active free subscriptions
-      title: ActiveFreeSubscriptionCount
-    type__TotalUniqueOpens:
-      oneOf:
-      - type: integer
-      - type: boolean
-      description: Total number of uniquely opened emails. Only counts the first open for each subscriber.
-      title: TotalUniqueOpens
-    type_publications_PublicationsGetRequestExpandItem:
-      type: string
-      enum:
-      - stats
-      - stat_active_subscriptions
-      - stat_active_premium_subscriptions
-      - stat_active_free_subscriptions
-      - stat_average_open_rate
-      - stat_average_click_rate
-      - stat_total_sent
-      - stat_total_unique_opened
-      - stat_total_clicked
-      title: PublicationsGetRequestExpandItem
-    type__RequestDirection:
-      type: string
-      enum:
-      - asc
-      - desc
-      default: asc
-      description: The direction of the request. Defaults to `asc`.
-      title: RequestDirection
-    type_publications_PublicationsGetResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/type__Publication'
-      required:
-      - data
-      title: PublicationsGetResponse
-    type__Publication:
-      type: object
-      properties:
-        id:
-          $ref: '#/components/schemas/type_ids_PublicationId'
-          description: A unique prefixed id of the publication
-        name:
-          type: string
-          description: The name of the publication
-        organization_name:
-          type: string
-          description: The name of the organization
-        referral_program_enabled:
-          type: boolean
-          description: A boolean field indicating whether the referral program is active for this publication.
-        created:
-          type: number
-          format: double
-          description: The time that the publication was created. Measured in seconds since the Unix epoch
-        stats:
-          $ref: '#/components/schemas/type__PublicationStats'
-      required:
-      - id
-      - name
-      - organization_name
-      - referral_program_enabled
-      - created
-      title: Publication
-    type__ActiveSubscriptionCount:
-      oneOf:
-      - type: integer
-      - type: boolean
-      description: Total number of active free and premium subscriptions
-      title: ActiveSubscriptionCount
   securitySchemes:
     BearerAuthScheme:
       type: http

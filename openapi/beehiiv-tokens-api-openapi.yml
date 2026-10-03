@@ -184,6 +184,15 @@ paths:
                 $ref: '#/components/schemas/type__OAuthError'
 components:
   schemas:
+    type__TokenApplication:
+      type: object
+      properties:
+        uid:
+          type: string
+        name:
+          type: string
+      description: OAuth application metadata attached to token info responses.
+      title: TokenApplication
     type__IntrospectionResponse:
       type: object
       properties:
@@ -217,13 +226,12 @@ components:
       type: object
       properties: {}
       title: EmptyResponse
-    type__TokenTypeHint:
+    type__TokenType:
       type: string
       enum:
-      - access_token
-      - refresh_token
-      description: A hint about the type of token being sent.
-      title: TokenTypeHint
+      - Bearer
+      description: The token type returned by OAuth2 token endpoints.
+      title: TokenType
     type__TokenInfoResponse:
       type: object
       properties:
@@ -239,15 +247,6 @@ components:
           type: integer
       description: Metadata for the current access token.
       title: TokenInfoResponse
-    type__TokenApplication:
-      type: object
-      properties:
-        uid:
-          type: string
-        name:
-          type: string
-      description: OAuth application metadata attached to token info responses.
-      title: TokenApplication
     type__TokenResponse:
       type: object
       properties:
@@ -270,6 +269,20 @@ components:
       - created_at
       description: Access token response from `/oauth/token`.
       title: TokenResponse
+    type__GrantType:
+      type: string
+      enum:
+      - authorization_code
+      - refresh_token
+      description: The OAuth2 grant type.
+      title: GrantType
+    type__TokenTypeHint:
+      type: string
+      enum:
+      - access_token
+      - refresh_token
+      description: A hint about the type of token being sent.
+      title: TokenTypeHint
     type__OAuthError:
       type: object
       properties:
@@ -285,16 +298,3 @@ components:
       - error
       description: Standard OAuth2 error response.
       title: OAuthError
-    type__GrantType:
-      type: string
-      enum:
-      - authorization_code
-      - refresh_token
-      description: The OAuth2 grant type.
-      title: GrantType
-    type__TokenType:
-      type: string
-      enum:
-      - Bearer
-      description: The token type returned by OAuth2 token endpoints.
-      title: TokenType

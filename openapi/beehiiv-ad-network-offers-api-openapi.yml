@@ -250,66 +250,6 @@ paths:
                 $ref: '#/components/schemas/type__Error'
 components:
   schemas:
-    type_ad_network_offers_AdOffersGetResponse:
-      type: object
-      properties:
-        offers:
-          type: array
-          items:
-            $ref: '#/components/schemas/type_ad_network_offers_AdOffer'
-          description: A list of ad offers available for this publication.
-      required:
-      - offers
-      title: AdOffersGetResponse
-    type__Error:
-      type: object
-      properties:
-        status:
-          type: integer
-        statusText:
-          type: string
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/type__ErrorDetail'
-      required:
-      - status
-      - statusText
-      - errors
-      description: The top level error response.
-      title: Error
-    type_ad_network_offers_AdOfferCreateResponseData:
-      type: object
-      properties:
-        offer_id:
-          type: string
-          description: The ID of the accepted ad offer.
-        opportunity_id:
-          type: string
-          description: The ID of the drafted and accepted opportunity created from the offer.
-        advertisement_id:
-          type: string
-          description: The ID of the advertisement creative selected for the opportunity.
-        post_id:
-          type: string
-          description: The ID of the post where the opportunity was inserted.
-      required:
-      - offer_id
-      - opportunity_id
-      - advertisement_id
-      - post_id
-      title: AdOfferCreateResponseData
-    type__ErrorDetail:
-      type: object
-      properties:
-        message:
-          type: string
-        code:
-          type: string
-      required:
-      - message
-      - code
-      title: ErrorDetail
     type_ad_network_offers_AdOfferCampaign:
       type: object
       properties:
@@ -328,14 +268,27 @@ components:
       required:
       - name
       title: AdOfferCampaign
-    type_ad_network_offers_AdOfferCreateResponse:
+    type__Error:
       type: object
       properties:
-        data:
-          $ref: '#/components/schemas/type_ad_network_offers_AdOfferCreateResponseData'
+        status:
+          type: integer
+        statusText:
+          type: string
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/type__ErrorDetail'
       required:
-      - data
-      title: AdOfferCreateResponse
+      - status
+      - statusText
+      - errors
+      description: The top level error response.
+      title: Error
+    type_ids_PublicationId:
+      type: string
+      description: The prefixed ID of the publication.
+      title: PublicationId
     type_ad_network_offers_AdOffer:
       type: object
       properties:
@@ -371,21 +324,14 @@ components:
       - campaign
       - advertiser
       title: AdOffer
-    type_ad_network_offers_AdOfferAdvertisementsGetResponse:
+    type_ad_network_offers_AdOfferCreateResponse:
       type: object
       properties:
-        advertisements:
-          type: array
-          items:
-            $ref: '#/components/schemas/type_ad_network_offers_AdOfferAdvertisement'
-          description: A list of active advertisement creatives available for this offer.
+        data:
+          $ref: '#/components/schemas/type_ad_network_offers_AdOfferCreateResponseData'
       required:
-      - advertisements
-      title: AdOfferAdvertisementsGetResponse
-    type_ids_PublicationId:
-      type: string
-      description: The prefixed ID of the publication.
-      title: PublicationId
+      - data
+      title: AdOfferCreateResponse
     type_ad_network_offers_AdOfferAdvertisement:
       type: object
       properties:
@@ -422,6 +368,28 @@ components:
       - sponsor_text
       - text
       title: AdOfferAdvertisement
+    type_ad_network_offers_AdOffersGetResponse:
+      type: object
+      properties:
+        offers:
+          type: array
+          items:
+            $ref: '#/components/schemas/type_ad_network_offers_AdOffer'
+          description: A list of ad offers available for this publication.
+      required:
+      - offers
+      title: AdOffersGetResponse
+    type_ad_network_offers_AdOfferAdvertisementsGetResponse:
+      type: object
+      properties:
+        advertisements:
+          type: array
+          items:
+            $ref: '#/components/schemas/type_ad_network_offers_AdOfferAdvertisement'
+          description: A list of active advertisement creatives available for this offer.
+      required:
+      - advertisements
+      title: AdOfferAdvertisementsGetResponse
     type_ad_network_offers_AdOfferAdvertiser:
       type: object
       properties:
@@ -440,6 +408,38 @@ components:
       required:
       - name
       title: AdOfferAdvertiser
+    type__ErrorDetail:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+      required:
+      - message
+      - code
+      title: ErrorDetail
+    type_ad_network_offers_AdOfferCreateResponseData:
+      type: object
+      properties:
+        offer_id:
+          type: string
+          description: The ID of the accepted ad offer.
+        opportunity_id:
+          type: string
+          description: The ID of the drafted and accepted opportunity created from the offer.
+        advertisement_id:
+          type: string
+          description: The ID of the advertisement creative selected for the opportunity.
+        post_id:
+          type: string
+          description: The ID of the post where the opportunity was inserted.
+      required:
+      - offer_id
+      - opportunity_id
+      - advertisement_id
+      - post_id
+      title: AdOfferCreateResponseData
   securitySchemes:
     BearerAuthScheme:
       type: http

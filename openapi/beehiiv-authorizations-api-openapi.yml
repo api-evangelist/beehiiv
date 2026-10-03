@@ -79,6 +79,10 @@ paths:
                 $ref: '#/components/schemas/type__OAuthError'
 components:
   schemas:
+    type__EmptyResponse:
+      type: object
+      properties: {}
+      title: EmptyResponse
     type__CodeChallengeMethod:
       type: string
       enum:
@@ -86,10 +90,6 @@ components:
       - S256
       description: The PKCE code challenge method.
       title: CodeChallengeMethod
-    type__EmptyResponse:
-      type: object
-      properties: {}
-      title: EmptyResponse
     type__OAuthError:
       type: object
       properties:

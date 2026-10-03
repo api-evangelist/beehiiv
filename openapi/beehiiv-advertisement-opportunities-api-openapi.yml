@@ -119,17 +119,10 @@ components:
       - errors
       description: The top level error response.
       title: Error
-    type__ErrorDetail:
-      type: object
-      properties:
-        message:
-          type: string
-        code:
-          type: string
-      required:
-      - message
-      - code
-      title: ErrorDetail
+    type_ids_PublicationId:
+      type: string
+      description: The prefixed ID of the publication.
+      title: PublicationId
     type_advertisement_opportunities_AdvertisementOpportunitiesGetResponse:
       type: object
       properties:
@@ -145,10 +138,17 @@ components:
       - data
       - total_results
       title: AdvertisementOpportunitiesGetResponse
-    type_ids_PublicationId:
-      type: string
-      description: The prefixed ID of the publication.
-      title: PublicationId
+    type__ErrorDetail:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+      required:
+      - message
+      - code
+      title: ErrorDetail
   securitySchemes:
     BearerAuthScheme:
       type: http

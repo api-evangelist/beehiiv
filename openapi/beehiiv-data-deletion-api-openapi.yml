@@ -227,23 +227,6 @@ paths:
                 $ref: '#/components/schemas/type__Error'
 components:
   schemas:
-    type__Error:
-      type: object
-      properties:
-        status:
-          type: integer
-        statusText:
-          type: string
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/type__ErrorDetail'
-      required:
-      - status
-      - statusText
-      - errors
-      description: The top level error response.
-      title: Error
     type__ErrorDetail:
       type: object
       properties:
@@ -255,22 +238,6 @@ components:
       - message
       - code
       title: ErrorDetail
-    type_dataDeletion_DataDeletionRequestResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/type_dataDeletion_DataDeletionRequestInfo'
-      title: DataDeletionRequestResponse
-    type_dataDeletion_DataDeletionRequestStatus:
-      type: string
-      enum:
-      - pending
-      - processing
-      - completed
-      - failed
-      - canceled
-      description: The current status of the data deletion request.
-      title: DataDeletionRequestStatus
     type_dataDeletion_DataDeletionRequestInfo:
       type: object
       properties:
@@ -295,6 +262,22 @@ components:
       type: string
       description: The prefixed ID of the publication.
       title: PublicationId
+    type_dataDeletion_DataDeletionRequestStatus:
+      type: string
+      enum:
+      - pending
+      - processing
+      - completed
+      - failed
+      - canceled
+      description: The current status of the data deletion request.
+      title: DataDeletionRequestStatus
+    type_dataDeletion_DataDeletionRequestResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/type_dataDeletion_DataDeletionRequestInfo'
+      title: DataDeletionRequestResponse
     type_dataDeletion_DataDeletionRequestSource:
       type: string
       enum:
@@ -306,6 +289,23 @@ components:
       - other
       description: The source from which the deletion request was created.
       title: DataDeletionRequestSource
+    type__Error:
+      type: object
+      properties:
+        status:
+          type: integer
+        statusText:
+          type: string
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/type__ErrorDetail'
+      required:
+      - status
+      - statusText
+      - errors
+      description: The top level error response.
+      title: Error
     type_dataDeletion_DataDeletionRequestIndexResponse:
       type: object
       properties:

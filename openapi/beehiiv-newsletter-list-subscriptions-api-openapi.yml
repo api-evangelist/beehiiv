@@ -416,14 +416,57 @@ paths:
                   description: Set to true to unsubscribe the subscription from this newsletter list.
 components:
   schemas:
-    type_newsletterListSubscriptions_NewsletterListSubscriptionResponse:
+    type_ids_NewsletterListSubscriptionId:
+      type: string
+      description: The prefixed ID of the newsletter list subscription.
+      title: NewsletterListSubscriptionId
+    type_newsletterListSubscriptions_NewsletterListSubscriptionStatus:
+      type: string
+      enum:
+      - pending
+      - active
+      - inactive
+      - paused
+      description: The status of the newsletter list subscription.
+      title: NewsletterListSubscriptionStatus
+    type_ids_NewsletterListId:
+      type: string
+      description: The prefixed ID of the newsletter list.
+      title: NewsletterListId
+    type_ids_SubscriptionId:
+      type: string
+      description: The prefixed ID of the subscription.
+      title: SubscriptionId
+    type__RequestDirection:
+      type: string
+      enum:
+      - asc
+      - desc
+      default: asc
+      description: The direction of the request. Defaults to `asc`.
+      title: RequestDirection
+    type_newsletterListSubscriptions_NewsletterListSubscriptionIndexResponse:
       type: object
       properties:
         data:
-          $ref: '#/components/schemas/type_newsletterListSubscriptions_NewsletterListSubscriptionInfo'
+          type: array
+          items:
+            $ref: '#/components/schemas/type_newsletterListSubscriptions_NewsletterListSubscriptionInfo'
+        limit:
+          type: integer
+          description: The limit placed on the results. If no limit was specified in the request, this defaults to 10.
+        has_more:
+          type: boolean
+          description: '**Cursor pagination only**: Indicates whether there are more results available after the current page. Only present when using cursor-based pagination.'
+        next_cursor:
+          type: string
+          description: '**Cursor pagination only**: The cursor token to use for fetching the next page of results. This will be null if has_more is false. Only present when using cursor-based pagination.'
+        total_results:
+          type: integer
+          description: The total number of results from all pages.
       required:
       - data
-      title: NewsletterListSubscriptionResponse
+      title: NewsletterListSubscriptionIndexResponse
     type__Error:
       type: object
       properties:
@@ -441,50 +484,10 @@ components:
       - errors
       description: The top level error response.
       title: Error
-    type_ids_SubscriptionId:
-      type: string
-      description: The prefixed ID of the subscription.
-      title: SubscriptionId
-    type__ErrorDetail:
-      type: object
-      properties:
-        message:
-          type: string
-        code:
-          type: string
-      required:
-      - message
-      - code
-      title: ErrorDetail
-    type_ids_NewsletterListId:
-      type: string
-      description: The prefixed ID of the newsletter list.
-      title: NewsletterListId
-    type_ids_NewsletterListSubscriptionId:
-      type: string
-      description: The prefixed ID of the newsletter list subscription.
-      title: NewsletterListSubscriptionId
     type_ids_PublicationId:
       type: string
       description: The prefixed ID of the publication.
       title: PublicationId
-    type__RequestDirection:
-      type: string
-      enum:
-      - asc
-      - desc
-      default: asc
-      description: The direction of the request. Defaults to `asc`.
-      title: RequestDirection
-    type_newsletterListSubscriptions_NewsletterListSubscriptionStatus:
-      type: string
-      enum:
-      - pending
-      - active
-      - inactive
-      - paused
-      description: The status of the newsletter list subscription.
-      title: NewsletterListSubscriptionStatus
     type_newsletterListSubscriptions_NewsletterListSubscriptionInfo:
       type: object
       properties:
@@ -516,28 +519,25 @@ components:
       - status
       - created_at
       title: NewsletterListSubscriptionInfo
-    type_newsletterListSubscriptions_NewsletterListSubscriptionIndexResponse:
+    type_newsletterListSubscriptions_NewsletterListSubscriptionResponse:
       type: object
       properties:
         data:
-          type: array
-          items:
-            $ref: '#/components/schemas/type_newsletterListSubscriptions_NewsletterListSubscriptionInfo'
-        limit:
-          type: integer
-          description: The limit placed on the results. If no limit was specified in the request, this defaults to 10.
-        has_more:
-          type: boolean
-          description: '**Cursor pagination only**: Indicates whether there are more results available after the current page. Only present when using cursor-based pagination.'
-        next_cursor:
-          type: string
-          description: '**Cursor pagination only**: The cursor token to use for fetching the next page of results. This will be null if has_more is false. Only present when using cursor-based pagination.'
-        total_results:
-          type: integer
-          description: The total number of results from all pages.
+          $ref: '#/components/schemas/type_newsletterListSubscriptions_NewsletterListSubscriptionInfo'
       required:
       - data
-      title: NewsletterListSubscriptionIndexResponse
+      title: NewsletterListSubscriptionResponse
+    type__ErrorDetail:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+      required:
+      - message
+      - code
+      title: ErrorDetail
   securitySchemes:
     BearerAuthScheme:
       type: http

@@ -79,23 +79,16 @@ paths:
               - subscriptions
 components:
   schemas:
-    type__Error:
-      type: object
-      properties:
-        status:
-          type: integer
-        statusText:
+    type__CustomFieldDataType:
+      oneOf:
+      - type: string
+      - type: number
+        format: double
+      - type: boolean
+      - type: array
+        items:
           type: string
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/type__ErrorDetail'
-      required:
-      - status
-      - statusText
-      - errors
-      description: The top level error response.
-      title: Error
+      title: CustomFieldDataType
     type__ErrorDetail:
       type: object
       properties:
@@ -121,13 +114,29 @@ components:
       - import_id
       description: The response containing the import ID
       title: BulkSubscriptionCreateResponse
-    type__SubscriptionsCreateRequestTier:
+    type_ids_OptionalStripeCustomerId:
       type: string
-      enum:
-      - free
-      - premium
-      description: The tier for this subscription.
-      title: SubscriptionsCreateRequestTier
+      description: The prefixed ID of the Stripe customer.
+      title: OptionalStripeCustomerId
+    type__CustomFieldValue:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the existing custom field
+        value:
+          $ref: '#/components/schemas/type__CustomFieldDataType'
+          description: The value stored for the subscription
+      description: The object required for setting custom field values on a subscription
+      title: CustomFieldValue
+    type_ids_PublicationId:
+      type: string
+      description: The prefixed ID of the publication.
+      title: PublicationId
+    type_ids_ComplimentaryAccessId:
+      type: string
+      description: The prefixed ID of the complimentary access object.
+      title: ComplimentaryAccessId
     type__SubscriptionRequest:
       type: object
       properties:
@@ -211,39 +220,30 @@ components:
       required:
       - email
       title: SubscriptionRequest
-    type_ids_OptionalStripeCustomerId:
+    type__SubscriptionsCreateRequestTier:
       type: string
-      description: The prefixed ID of the Stripe customer.
-      title: OptionalStripeCustomerId
-    type__CustomFieldValue:
+      enum:
+      - free
+      - premium
+      description: The tier for this subscription.
+      title: SubscriptionsCreateRequestTier
+    type__Error:
       type: object
       properties:
-        name:
+        status:
+          type: integer
+        statusText:
           type: string
-          description: The name of the existing custom field
-        value:
-          $ref: '#/components/schemas/type__CustomFieldDataType'
-          description: The value stored for the subscription
-      description: The object required for setting custom field values on a subscription
-      title: CustomFieldValue
-    type__CustomFieldDataType:
-      oneOf:
-      - type: string
-      - type: number
-        format: double
-      - type: boolean
-      - type: array
-        items:
-          type: string
-      title: CustomFieldDataType
-    type_ids_PublicationId:
-      type: string
-      description: The prefixed ID of the publication.
-      title: PublicationId
-    type_ids_ComplimentaryAccessId:
-      type: string
-      description: The prefixed ID of the complimentary access object.
-      title: ComplimentaryAccessId
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/type__ErrorDetail'
+      required:
+      - status
+      - statusText
+      - errors
+      description: The top level error response.
+      title: Error
     type__DoubleOptOverride:
       type: string
       description: Override publication double-opt settings for this subscription.

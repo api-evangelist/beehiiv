@@ -371,6 +371,18 @@ paths:
                 $ref: '#/components/schemas/type__Error'
 components:
   schemas:
+    type_ids_NewsletterListId:
+      type: string
+      description: The prefixed ID of the newsletter list.
+      title: NewsletterListId
+    type__RequestDirection:
+      type: string
+      enum:
+      - asc
+      - desc
+      default: asc
+      description: The direction of the request. Defaults to `asc`.
+      title: RequestDirection
     type__Error:
       type: object
       properties:
@@ -388,17 +400,37 @@ components:
       - errors
       description: The top level error response.
       title: Error
-    type__ErrorDetail:
+    type_ids_PublicationId:
+      type: string
+      description: The prefixed ID of the publication.
+      title: PublicationId
+    type_newsletterLists_NewsletterListIndexResponse:
       type: object
       properties:
-        message:
-          type: string
-        code:
-          type: string
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/type_newsletterLists_NewsletterListInfo'
+        limit:
+          type: integer
+          description: The limit placed on the results. If no limit was specified in the request, this defaults to 10.
+        page:
+          type: integer
+          default: 1
+          description: The page number the results are from. If no page was specified in the request, this defaults to page 1.
+        total_results:
+          type: integer
+          description: The total number of results from all pages.
+        total_pages:
+          type: integer
+          description: The total number of pages.
       required:
-      - message
-      - code
-      title: ErrorDetail
+      - data
+      - limit
+      - page
+      - total_results
+      - total_pages
+      title: NewsletterListIndexResponse
     type_newsletterLists_NewsletterListResponse:
       type: object
       properties:
@@ -447,45 +479,13 @@ components:
       - created_at
       - updated_at
       title: NewsletterListInfo
-    type_newsletterLists_NewsletterListIndexResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/type_newsletterLists_NewsletterListInfo'
-        limit:
-          type: integer
-          description: The limit placed on the results. If no limit was specified in the request, this defaults to 10.
-        page:
-          type: integer
-          default: 1
-          description: The page number the results are from. If no page was specified in the request, this defaults to page 1.
-        total_results:
-          type: integer
-          description: The total number of results from all pages.
-        total_pages:
-          type: integer
-          description: The total number of pages.
-      required:
-      - data
-      - limit
-      - page
-      - total_results
-      - total_pages
-      title: NewsletterListIndexResponse
-    type_ids_PublicationId:
-      type: string
-      description: The prefixed ID of the publication.
-      title: PublicationId
-    type__RequestDirection:
+    type_newsletterLists_NewsletterListWritableStatus:
       type: string
       enum:
-      - asc
-      - desc
-      default: asc
-      description: The direction of the request. Defaults to `asc`.
-      title: RequestDirection
+      - active
+      - archived
+      description: Valid status values when updating a newsletter list. draft is not permitted.
+      title: NewsletterListWritableStatus
     type_newsletterLists_NewsletterListStatus:
       type: string
       enum:
@@ -494,17 +494,17 @@ components:
       - archived
       description: The status of the newsletter list.
       title: NewsletterListStatus
-    type_ids_NewsletterListId:
-      type: string
-      description: The prefixed ID of the newsletter list.
-      title: NewsletterListId
-    type_newsletterLists_NewsletterListWritableStatus:
-      type: string
-      enum:
-      - active
-      - archived
-      description: Valid status values when updating a newsletter list. draft is not permitted.
-      title: NewsletterListWritableStatus
+    type__ErrorDetail:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+      required:
+      - message
+      - code
+      title: ErrorDetail
   securitySchemes:
     BearerAuthScheme:
       type: http
