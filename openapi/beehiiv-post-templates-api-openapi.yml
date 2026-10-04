@@ -97,6 +97,52 @@ paths:
                 $ref: '#/components/schemas/type__Error'
 components:
   schemas:
+    type__Error:
+      type: object
+      properties:
+        status:
+          type: integer
+        statusText:
+          type: string
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/type__ErrorDetail'
+      required:
+      - status
+      - statusText
+      - errors
+      description: The top level error response.
+      title: Error
+    type__RequestDirection:
+      type: string
+      enum:
+      - asc
+      - desc
+      default: asc
+      description: The direction of the request. Defaults to `asc`.
+      title: RequestDirection
+    type_postTemplates_PostTemplate:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/type_ids_PostTemplateId'
+          description: The prefixed ID of the post template.
+        name:
+          type: string
+          description: The name of the post template.
+      required:
+      - id
+      - name
+      title: PostTemplate
+    type_ids_PublicationId:
+      type: string
+      description: The prefixed ID of the publication.
+      title: PublicationId
+    type_ids_PostTemplateId:
+      type: string
+      description: The prefixed ID of the post template.
+      title: PostTemplateId
     type_postTemplates_PostTemplatesGetResponse:
       type: object
       properties:
@@ -125,52 +171,6 @@ components:
       - total_results
       - total_pages
       title: PostTemplatesGetResponse
-    type__RequestDirection:
-      type: string
-      enum:
-      - asc
-      - desc
-      default: asc
-      description: The direction of the request. Defaults to `asc`.
-      title: RequestDirection
-    type__Error:
-      type: object
-      properties:
-        status:
-          type: integer
-        statusText:
-          type: string
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/type__ErrorDetail'
-      required:
-      - status
-      - statusText
-      - errors
-      description: The top level error response.
-      title: Error
-    type_ids_PostTemplateId:
-      type: string
-      description: The prefixed ID of the post template.
-      title: PostTemplateId
-    type_ids_PublicationId:
-      type: string
-      description: The prefixed ID of the publication.
-      title: PublicationId
-    type_postTemplates_PostTemplate:
-      type: object
-      properties:
-        id:
-          $ref: '#/components/schemas/type_ids_PostTemplateId'
-          description: The prefixed ID of the post template.
-        name:
-          type: string
-          description: The name of the post template.
-      required:
-      - id
-      - name
-      title: PostTemplate
     type__ErrorDetail:
       type: object
       properties:

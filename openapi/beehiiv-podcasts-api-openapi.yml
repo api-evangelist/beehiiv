@@ -334,31 +334,74 @@ paths:
                 $ref: '#/components/schemas/type__Error'
 components:
   schemas:
-    type_podcasts_PodcastEpisodesListResponse:
+    type_podcasts_PodcastEpisodeStatus:
+      type: string
+      enum:
+      - draft
+      - scheduled
+      - published
+      - archived
+      description: The status of the episode.<br>`draft` - Not yet published.<br>`scheduled` - Scheduled for future publication.<br>`published` - Available via web and RSS.<br>`archived` - No longer available via web or RSS.
+      title: PodcastEpisodeStatus
+    type_ids_PodcastShowId:
+      type: string
+      description: The prefixed ID of the podcast.
+      title: PodcastShowId
+    type__Error:
+      type: object
+      properties:
+        status:
+          type: integer
+        statusText:
+          type: string
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/type__ErrorDetail'
+      required:
+      - status
+      - statusText
+      - errors
+      description: The top level error response.
+      title: Error
+    type_podcasts_PodcastShowType:
+      type: string
+      enum:
+      - episodic
+      - serial
+      description: The type of the podcast.<br>`episodic` - Episodes can be consumed in any order.<br>`serial` - Episodes are intended to be consumed in order.
+      title: PodcastShowType
+    type__RequestDirection:
+      type: string
+      enum:
+      - asc
+      - desc
+      default: asc
+      description: The direction of the request. Defaults to `asc`.
+      title: RequestDirection
+    type_ids_PodcastEpisodeId:
+      type: string
+      description: The prefixed ID of the podcast episode.
+      title: PodcastEpisodeId
+    type_podcasts_PodcastEpisodeGetResponse:
       type: object
       properties:
         data:
-          type: array
-          items:
-            $ref: '#/components/schemas/type_podcasts_PodcastEpisode'
-          description: A list of episodes for this podcast.
-        limit:
-          type: integer
-          description: The limit placed on the results. If no limit was specified in the request, this defaults to 10.
-        has_more:
-          type: boolean
-          description: Indicates whether there are more results available after the current page.
-        next_cursor:
-          type: string
-          description: The cursor token to use for fetching the next page of results. Null when has_more is false.
-        total_results:
-          type: integer
-          description: The total number of results from all pages.
+          $ref: '#/components/schemas/type_podcasts_PodcastEpisode'
       required:
       - data
-      - limit
-      - has_more
-      title: PodcastEpisodesListResponse
+      title: PodcastEpisodeGetResponse
+    type__ErrorDetail:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+      required:
+      - message
+      - code
+      title: ErrorDetail
     type_podcasts_PodcastEpisode:
       type: object
       properties:
@@ -426,68 +469,20 @@ components:
       - status
       - show
       title: PodcastEpisode
-    type_podcasts_PodcastEpisodeGetResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/type_podcasts_PodcastEpisode'
-      required:
-      - data
-      title: PodcastEpisodeGetResponse
-    type_podcasts_PodcastEpisodeStatus:
+    type_podcasts_PodcastEpisodeOrderBy:
       type: string
       enum:
-      - draft
-      - scheduled
-      - published
-      - archived
-      description: The status of the episode.<br>`draft` - Not yet published.<br>`scheduled` - Scheduled for future publication.<br>`published` - Available via web and RSS.<br>`archived` - No longer available via web or RSS.
-      title: PodcastEpisodeStatus
-    type_ids_PodcastEpisodeId:
-      type: string
-      description: The prefixed ID of the podcast episode.
-      title: PodcastEpisodeId
-    type__RequestDirection:
-      type: string
-      enum:
-      - asc
-      - desc
-      default: asc
-      description: The direction of the request. Defaults to `asc`.
-      title: RequestDirection
-    type__Error:
-      type: object
-      properties:
-        status:
-          type: integer
-        statusText:
-          type: string
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/type__ErrorDetail'
-      required:
-      - status
-      - statusText
-      - errors
-      description: The top level error response.
-      title: Error
+      - created
+      - updated
+      - publish_date
+      - displayed_date
+      default: displayed_date
+      description: The field that episode list results are sorted by. Defaults to `displayed_date`<br>`created` - The time in which the episode was first created.<br>`updated` - The time the episode was last updated.<br>`publish_date` - The exact time the system published the episode (when it went live), not the scheduled time the user set.<br> `displayed_date` - The time displayed in place of the `publish_date`. Uses a custom display date if set, otherwise the scheduled time the user set for publication, otherwise the `publish_date`, otherwise the creation date. For imported episodes, the original feed's `pubDate` is stored as the custom display date. This is the same field used to order episodes in the podcast's RSS feed.
+      title: PodcastEpisodeOrderBy
     type_ids_PublicationId:
       type: string
       description: The prefixed ID of the publication.
       title: PublicationId
-    type_podcasts_PodcastShowStatus:
-      type: string
-      enum:
-      - draft
-      - live
-      - archived
-      description: The status of the podcast.<br>`draft` - No episodes have been published.<br> `live` - Published and active.<br>`archived` - The podcast is no longer active.
-      title: PodcastShowStatus
-    type_ids_PodcastShowId:
-      type: string
-      description: The prefixed ID of the podcast.
-      title: PodcastShowId
     type_podcasts_PodcastShowGetResponse:
       type: object
       properties:
@@ -496,14 +491,14 @@ components:
       required:
       - data
       title: PodcastShowGetResponse
-    type_podcasts_PodcastShowsListResponse:
+    type_podcasts_PodcastEpisodesListResponse:
       type: object
       properties:
         data:
           type: array
           items:
-            $ref: '#/components/schemas/type_podcasts_PodcastShow'
-          description: A list of podcasts for this publication.
+            $ref: '#/components/schemas/type_podcasts_PodcastEpisode'
+          description: A list of episodes for this podcast.
         limit:
           type: integer
           description: The limit placed on the results. If no limit was specified in the request, this defaults to 10.
@@ -520,7 +515,7 @@ components:
       - data
       - limit
       - has_more
-      title: PodcastShowsListResponse
+      title: PodcastEpisodesListResponse
     type_podcasts_PodcastShow:
       type: object
       properties:
@@ -595,34 +590,39 @@ components:
       - copyright
       - explicit
       title: PodcastShow
-    type_podcasts_PodcastEpisodeOrderBy:
-      type: string
-      enum:
-      - created
-      - updated
-      - publish_date
-      - displayed_date
-      default: displayed_date
-      description: The field that episode list results are sorted by. Defaults to `displayed_date`<br>`created` - The time in which the episode was first created.<br>`updated` - The time the episode was last updated.<br>`publish_date` - The exact time the system published the episode (when it went live), not the scheduled time the user set.<br> `displayed_date` - The time displayed in place of the `publish_date`. Uses a custom display date if set, otherwise the scheduled time the user set for publication, otherwise the `publish_date`, otherwise the creation date. For imported episodes, the original feed's `pubDate` is stored as the custom display date. This is the same field used to order episodes in the podcast's RSS feed.
-      title: PodcastEpisodeOrderBy
-    type_podcasts_PodcastShowType:
-      type: string
-      enum:
-      - episodic
-      - serial
-      description: The type of the podcast.<br>`episodic` - Episodes can be consumed in any order.<br>`serial` - Episodes are intended to be consumed in order.
-      title: PodcastShowType
-    type__ErrorDetail:
+    type_podcasts_PodcastShowsListResponse:
       type: object
       properties:
-        message:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/type_podcasts_PodcastShow'
+          description: A list of podcasts for this publication.
+        limit:
+          type: integer
+          description: The limit placed on the results. If no limit was specified in the request, this defaults to 10.
+        has_more:
+          type: boolean
+          description: Indicates whether there are more results available after the current page.
+        next_cursor:
           type: string
-        code:
-          type: string
+          description: The cursor token to use for fetching the next page of results. Null when has_more is false.
+        total_results:
+          type: integer
+          description: The total number of results from all pages.
       required:
-      - message
-      - code
-      title: ErrorDetail
+      - data
+      - limit
+      - has_more
+      title: PodcastShowsListResponse
+    type_podcasts_PodcastShowStatus:
+      type: string
+      enum:
+      - draft
+      - live
+      - archived
+      description: The status of the podcast.<br>`draft` - No episodes have been published.<br> `live` - Published and active.<br>`archived` - The podcast is no longer active.
+      title: PodcastShowStatus
   securitySchemes:
     BearerAuthScheme:
       type: http

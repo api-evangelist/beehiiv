@@ -235,15 +235,27 @@ paths:
                 $ref: '#/components/schemas/type__Error'
 components:
   schemas:
-    type__AutomationStatus:
-      type: string
-      enum:
-      - running
-      - finishing
-      - inactive
-      - live
-      - draft
-      title: AutomationStatus
+    type_automations_AutomationsListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/type__Automation'
+        limit:
+          type: integer
+          description: The limit placed on the results. If no limit was specified in the request,this defaults to 10.
+        page:
+          type: integer
+          default: 1
+          description: The page number the results are from. If no page was specified in the request, this defaults to page 1.
+        total_results:
+          type: integer
+          description: The total number of results from all pages.
+        total_pages:
+          type: integer
+          description: The total number of pages.
+      title: AutomationsListResponse
     type__Automation:
       type: object
       properties:
@@ -269,62 +281,77 @@ components:
       - name
       - trigger_events
       title: Automation
-    type__AutomationStats:
+    type__AutomationTriggerEvent:
+      type: string
+      enum:
+      - api
+      - downgrade
+      - email_submission
+      - form_submission
+      - manual
+      - poll_submission
+      - purchased_product
+      - referral_action
+      - segment_action
+      - signup
+      - unengaged
+      - upgrade
+      title: AutomationTriggerEvent
+    type_automations_AutomationEmailsListResponse:
       type: object
       properties:
-        journeys:
-          $ref: '#/components/schemas/type__AutomationStatsJourneys'
-          description: Journey counts for the automation
-        email:
-          $ref: '#/components/schemas/type__AutomationStatsEmail'
-          description: Aggregate email engagement statistics
-      description: 'Optional statistics for an automation. Retrievable by including `expand: [stats]` in the automation request.'
-      title: AutomationStats
-    type__AutomationStatsEmail:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/type_automations_AutomationEmail'
+        limit:
+          type: integer
+          description: The limit placed on the results. If no limit was specified in the request, this defaults to 10.
+        has_more:
+          type: boolean
+          description: '**Cursor pagination only**: Indicates whether there are more results available after the current page.'
+        next_cursor:
+          type: string
+          description: '**Cursor pagination only**: The cursor token to use for fetching the next page of results. This will be null if has_more is false.'
+        page:
+          type: integer
+          default: 1
+          description: '**Offset pagination only**: The page number the results are from. Only present when using deprecated offset-based pagination.'
+        total_results:
+          type: integer
+          description: The total number of results from all pages.
+        total_pages:
+          type: integer
+          description: The total number of pages.
+      required:
+      - data
+      title: AutomationEmailsListResponse
+    type__ErrorDetail:
       type: object
       properties:
-        recipients:
+        message:
+          type: string
+        code:
+          type: string
+      required:
+      - message
+      - code
+      title: ErrorDetail
+    type_automations_AutomationEmailStatsClicks:
+      type: object
+      properties:
+        url:
+          type: string
+          description: The URL the stats are for
+        total_clicks:
           type: integer
-          default: 0
-          description: Total number of email recipients across all emails
-        delivered:
+        total_unique_clicks:
           type: integer
-          default: 0
-          description: Total number of emails delivered
-        opens:
-          type: integer
-          default: 0
-          description: Total number of email opens
-        unique_opens:
-          type: integer
-          default: 0
-          description: Total number of unique email opens
-        open_rate:
+        total_click_through_rate:
           type: number
           format: double
-          description: The percentage of emails that have been opened
-        clicks:
-          type: integer
-          default: 0
-          description: Total number of email clicks
-        unique_clicks:
-          type: integer
-          default: 0
-          description: Unique number of email clicks
-        click_rate:
-          type: number
-          format: double
-          description: The percentage of emails that have been clicked
-        unsubscribes:
-          type: integer
-          default: 0
-          description: Total number of email unsubscribes
-        spam_reports:
-          type: integer
-          default: 0
-          description: The number of subscribers that reported emails as spam
-      description: Aggregate email engagement statistics for an automation.
-      title: AutomationStatsEmail
+          description: The percentage of clicks on the URL compared to the total number of unique opens
+      title: AutomationEmailStatsClicks
     type_automations_AutomationEmail:
       type: object
       properties:
@@ -363,23 +390,47 @@ components:
       - created_at
       description: An email message within an automation.
       title: AutomationEmail
-    type__Error:
+    type__AutomationStatus:
+      type: string
+      enum:
+      - running
+      - finishing
+      - inactive
+      - live
+      - draft
+      title: AutomationStatus
+    type__AutomationStats:
       type: object
       properties:
-        status:
-          type: integer
-        statusText:
-          type: string
-        errors:
+        journeys:
+          $ref: '#/components/schemas/type__AutomationStatsJourneys'
+          description: Journey counts for the automation
+        email:
+          $ref: '#/components/schemas/type__AutomationStatsEmail'
+          description: Aggregate email engagement statistics
+      description: 'Optional statistics for an automation. Retrievable by including `expand: [stats]` in the automation request.'
+      title: AutomationStats
+    type_automations_AutomationEmailStats:
+      type: object
+      properties:
+        email:
+          $ref: '#/components/schemas/type_automations_AutomationEmailStatsEmail'
+          description: Stats scoped to email recipients
+        clicks:
           type: array
           items:
-            $ref: '#/components/schemas/type__ErrorDetail'
-      required:
-      - status
-      - statusText
-      - errors
-      description: The top level error response.
-      title: Error
+            $ref: '#/components/schemas/type_automations_AutomationEmailStatsClicks'
+          description: An array of click statistics for each URL in the email
+      description: Statistics for an automation email message.
+      title: AutomationEmailStats
+    type_ids_PublicationId:
+      type: string
+      description: The prefixed ID of the publication.
+      title: PublicationId
+    type_ids_AutomationId:
+      type: string
+      description: The prefixed ID of the automation.
+      title: AutomationId
     type__AutomationStatsJourneys:
       type: object
       properties:
@@ -397,31 +448,34 @@ components:
           description: Total number of journeys
       description: Journey counts for an automation.
       title: AutomationStatsJourneys
-    type_ids_AutomationId:
-      type: string
-      description: The prefixed ID of the automation.
-      title: AutomationId
-    type_automations_AutomationsListResponse:
+    type_automations_AutomationsGetResponse:
       type: object
       properties:
         data:
+          $ref: '#/components/schemas/type__Automation'
+      title: AutomationsGetResponse
+    type__Error:
+      type: object
+      properties:
+        status:
+          type: integer
+        statusText:
+          type: string
+        errors:
           type: array
           items:
-            $ref: '#/components/schemas/type__Automation'
-        limit:
-          type: integer
-          description: The limit placed on the results. If no limit was specified in the request,this defaults to 10.
-        page:
-          type: integer
-          default: 1
-          description: The page number the results are from. If no page was specified in the request, this defaults to page 1.
-        total_results:
-          type: integer
-          description: The total number of results from all pages.
-        total_pages:
-          type: integer
-          description: The total number of pages.
-      title: AutomationsListResponse
+            $ref: '#/components/schemas/type__ErrorDetail'
+      required:
+      - status
+      - statusText
+      - errors
+      description: The top level error response.
+      title: Error
+    type_automations_AutomationsListRequestExpandItem:
+      type: string
+      enum:
+      - stats
+      title: AutomationsListRequestExpandItem
     type_automations_AutomationEmailStatsEmail:
       type: object
       properties:
@@ -467,110 +521,56 @@ components:
           description: The number of subscribers that reported this email as spam
       description: Email engagement statistics for an automation email.
       title: AutomationEmailStatsEmail
-    type_automations_AutomationEmailsListResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/type_automations_AutomationEmail'
-        limit:
-          type: integer
-          description: The limit placed on the results. If no limit was specified in the request, this defaults to 10.
-        has_more:
-          type: boolean
-          description: '**Cursor pagination only**: Indicates whether there are more results available after the current page.'
-        next_cursor:
-          type: string
-          description: '**Cursor pagination only**: The cursor token to use for fetching the next page of results. This will be null if has_more is false.'
-        page:
-          type: integer
-          default: 1
-          description: '**Offset pagination only**: The page number the results are from. Only present when using deprecated offset-based pagination.'
-        total_results:
-          type: integer
-          description: The total number of results from all pages.
-        total_pages:
-          type: integer
-          description: The total number of pages.
-      required:
-      - data
-      title: AutomationEmailsListResponse
-    type__AutomationTriggerEvent:
-      type: string
-      enum:
-      - api
-      - downgrade
-      - email_submission
-      - form_submission
-      - manual
-      - poll_submission
-      - purchased_product
-      - referral_action
-      - segment_action
-      - signup
-      - unengaged
-      - upgrade
-      title: AutomationTriggerEvent
-    type_automations_AutomationEmailStats:
-      type: object
-      properties:
-        email:
-          $ref: '#/components/schemas/type_automations_AutomationEmailStatsEmail'
-          description: Stats scoped to email recipients
-        clicks:
-          type: array
-          items:
-            $ref: '#/components/schemas/type_automations_AutomationEmailStatsClicks'
-          description: An array of click statistics for each URL in the email
-      description: Statistics for an automation email message.
-      title: AutomationEmailStats
-    type_automations_AutomationEmailStatsClicks:
-      type: object
-      properties:
-        url:
-          type: string
-          description: The URL the stats are for
-        total_clicks:
-          type: integer
-        total_unique_clicks:
-          type: integer
-        total_click_through_rate:
-          type: number
-          format: double
-          description: The percentage of clicks on the URL compared to the total number of unique opens
-      title: AutomationEmailStatsClicks
     type_automations_AutomationsGetRequestExpandItem:
       type: string
       enum:
       - stats
       title: AutomationsGetRequestExpandItem
-    type_automations_AutomationsGetResponse:
+    type__AutomationStatsEmail:
       type: object
       properties:
-        data:
-          $ref: '#/components/schemas/type__Automation'
-      title: AutomationsGetResponse
-    type_ids_PublicationId:
-      type: string
-      description: The prefixed ID of the publication.
-      title: PublicationId
-    type__ErrorDetail:
-      type: object
-      properties:
-        message:
-          type: string
-        code:
-          type: string
-      required:
-      - message
-      - code
-      title: ErrorDetail
-    type_automations_AutomationsListRequestExpandItem:
-      type: string
-      enum:
-      - stats
-      title: AutomationsListRequestExpandItem
+        recipients:
+          type: integer
+          default: 0
+          description: Total number of email recipients across all emails
+        delivered:
+          type: integer
+          default: 0
+          description: Total number of emails delivered
+        opens:
+          type: integer
+          default: 0
+          description: Total number of email opens
+        unique_opens:
+          type: integer
+          default: 0
+          description: Total number of unique email opens
+        open_rate:
+          type: number
+          format: double
+          description: The percentage of emails that have been opened
+        clicks:
+          type: integer
+          default: 0
+          description: Total number of email clicks
+        unique_clicks:
+          type: integer
+          default: 0
+          description: Unique number of email clicks
+        click_rate:
+          type: number
+          format: double
+          description: The percentage of emails that have been clicked
+        unsubscribes:
+          type: integer
+          default: 0
+          description: Total number of email unsubscribes
+        spam_reports:
+          type: integer
+          default: 0
+          description: The number of subscribers that reported emails as spam
+      description: Aggregate email engagement statistics for an automation.
+      title: AutomationStatsEmail
   securitySchemes:
     BearerAuthScheme:
       type: http

@@ -61,6 +61,23 @@ paths:
                 $ref: '#/components/schemas/type__Error'
 components:
   schemas:
+    type__Error:
+      type: object
+      properties:
+        status:
+          type: integer
+        statusText:
+          type: string
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/type__ErrorDetail'
+      required:
+      - status
+      - statusText
+      - errors
+      description: The top level error response.
+      title: Error
     type__ErrorDetail:
       type: object
       properties:
@@ -89,23 +106,6 @@ components:
           description: URL to the user's profile picture.
       description: Response containing information about the authenticated user.
       title: UserIdentifyResponse
-    type__Error:
-      type: object
-      properties:
-        status:
-          type: integer
-        statusText:
-          type: string
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/type__ErrorDetail'
-      required:
-      - status
-      - statusText
-      - errors
-      description: The top level error response.
-      title: Error
   securitySchemes:
     BearerAuthScheme:
       type: http

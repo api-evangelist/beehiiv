@@ -384,10 +384,92 @@ paths:
                     $ref: '#/components/schemas/type_tiers_UpdateTierPriceRequest'
 components:
   schemas:
-    type_ids_TierId:
+    type_tiers_TierPricesAttributesItem:
+      type: object
+      properties:
+        currency:
+          $ref: '#/components/schemas/type_tiers_TierPriceCurrency'
+        amount_cents:
+          type: integer
+        enabled:
+          type: boolean
+          default: true
+        interval:
+          $ref: '#/components/schemas/type_tiers_TierPriceInterval'
+        interval_display:
+          type: string
+        cta:
+          type: string
+        features:
+          type: array
+          items:
+            type: string
+      required:
+      - currency
+      - amount_cents
+      - interval
+      title: TierPricesAttributesItem
+    type__Error:
+      type: object
+      properties:
+        status:
+          type: integer
+        statusText:
+          type: string
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/type__ErrorDetail'
+      required:
+      - status
+      - statusText
+      - errors
+      description: The top level error response.
+      title: Error
+    type_tiers_UpdateTierPriceRequest:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/type_ids_PriceId'
+          description: ID of the existing price.
+        currency:
+          $ref: '#/components/schemas/type_tiers_TierPriceCurrency'
+        amount_cents:
+          type: integer
+        interval:
+          $ref: '#/components/schemas/type_tiers_TierPriceInterval'
+        interval_display:
+          type: string
+        cta:
+          type: string
+        features:
+          type: array
+          items:
+            type: string
+        delete:
+          type: boolean
+          default: false
+          description: Optionally delete the price when updating the tier.
+      required:
+      - id
+      - currency
+      - amount_cents
+      - interval
+      title: UpdateTierPriceRequest
+    type__RequestDirection:
       type: string
-      description: The prefixed ID of the tier.
-      title: TierId
+      enum:
+      - asc
+      - desc
+      default: asc
+      description: The direction of the request. Defaults to `asc`.
+      title: RequestDirection
+    type_tiers_TierResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/type_tiers_Tier'
+      title: TierResponse
     type_tiers_TierPrice:
       type: object
       properties:
@@ -413,6 +495,61 @@ components:
             type: string
       description: Price belonging to a Tier
       title: TierPrice
+    type_ids_PriceId:
+      type: string
+      description: The prefixed ID of the price.
+      title: PriceId
+    type_ids_PublicationId:
+      type: string
+      description: The prefixed ID of the publication.
+      title: PublicationId
+    type_tiers_TierStatus:
+      type: string
+      enum:
+      - active
+      - archived
+      description: Returns whether or not the tier has any active prices.
+      title: TierStatus
+    type_tiers_Tier:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/type_ids_TierId'
+        name:
+          type: string
+        status:
+          $ref: '#/components/schemas/type_tiers_TierStatus'
+          description: Returns whether or not the tier has any active prices.
+        description:
+          type: string
+          default: Super engaged readers
+        stats:
+          $ref: '#/components/schemas/type_tiers_TierStats'
+        prices:
+          type: array
+          items:
+            $ref: '#/components/schemas/type_tiers_TierPrice'
+          description: 'Optional list of prices for a tier. Retrievable by including `expand: [prices]` in the tier request body.'
+      required:
+      - id
+      - name
+      - status
+      description: The subscription tier object.
+      title: Tier
+    type_tiers_TierPriceCurrency:
+      type: string
+      enum:
+      - usd
+      - aud
+      - cad
+      - eur
+      - gbp
+      - inr
+      - brl
+      - mxn
+      - nzd
+      - dkk
+      title: TierPriceCurrency
     type_tiers_TierStats:
       type: object
       properties:
@@ -450,156 +587,10 @@ components:
       - total_results
       - total_pages
       title: IndexTiersResponse
-    type__RequestDirection:
+    type_ids_TierId:
       type: string
-      enum:
-      - asc
-      - desc
-      default: asc
-      description: The direction of the request. Defaults to `asc`.
-      title: RequestDirection
-    type__Error:
-      type: object
-      properties:
-        status:
-          type: integer
-        statusText:
-          type: string
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/type__ErrorDetail'
-      required:
-      - status
-      - statusText
-      - errors
-      description: The top level error response.
-      title: Error
-    type_ids_PriceId:
-      type: string
-      description: The prefixed ID of the price.
-      title: PriceId
-    type_ids_PublicationId:
-      type: string
-      description: The prefixed ID of the publication.
-      title: PublicationId
-    type_tiers_Tier:
-      type: object
-      properties:
-        id:
-          $ref: '#/components/schemas/type_ids_TierId'
-        name:
-          type: string
-        status:
-          $ref: '#/components/schemas/type_tiers_TierStatus'
-          description: Returns whether or not the tier has any active prices.
-        description:
-          type: string
-          default: Super engaged readers
-        stats:
-          $ref: '#/components/schemas/type_tiers_TierStats'
-        prices:
-          type: array
-          items:
-            $ref: '#/components/schemas/type_tiers_TierPrice'
-          description: 'Optional list of prices for a tier. Retrievable by including `expand: [prices]` in the tier request body.'
-      required:
-      - id
-      - name
-      - status
-      description: The subscription tier object.
-      title: Tier
-    type_tiers_UpdateTierPriceRequest:
-      type: object
-      properties:
-        id:
-          $ref: '#/components/schemas/type_ids_PriceId'
-          description: ID of the existing price.
-        currency:
-          $ref: '#/components/schemas/type_tiers_TierPriceCurrency'
-        amount_cents:
-          type: integer
-        interval:
-          $ref: '#/components/schemas/type_tiers_TierPriceInterval'
-        interval_display:
-          type: string
-        cta:
-          type: string
-        features:
-          type: array
-          items:
-            type: string
-        delete:
-          type: boolean
-          default: false
-          description: Optionally delete the price when updating the tier.
-      required:
-      - id
-      - currency
-      - amount_cents
-      - interval
-      title: UpdateTierPriceRequest
-    type_tiers_TierStatus:
-      type: string
-      enum:
-      - active
-      - archived
-      description: Returns whether or not the tier has any active prices.
-      title: TierStatus
-    type_tiers_TierResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/type_tiers_Tier'
-      title: TierResponse
-    type_tiers_TierPricesAttributesItem:
-      type: object
-      properties:
-        currency:
-          $ref: '#/components/schemas/type_tiers_TierPriceCurrency'
-        amount_cents:
-          type: integer
-        enabled:
-          type: boolean
-          default: true
-        interval:
-          $ref: '#/components/schemas/type_tiers_TierPriceInterval'
-        interval_display:
-          type: string
-        cta:
-          type: string
-        features:
-          type: array
-          items:
-            type: string
-      required:
-      - currency
-      - amount_cents
-      - interval
-      title: TierPricesAttributesItem
-    type_tiers_TierPriceCurrency:
-      type: string
-      enum:
-      - usd
-      - aud
-      - cad
-      - eur
-      - gbp
-      - inr
-      - brl
-      - mxn
-      - nzd
-      - dkk
-      title: TierPriceCurrency
-    type_tiers_TierPriceInterval:
-      type: string
-      enum:
-      - month
-      - quarter
-      - year
-      - one_time
-      - donation
-      title: TierPriceInterval
+      description: The prefixed ID of the tier.
+      title: TierId
     type__ErrorDetail:
       type: object
       properties:
@@ -611,6 +602,15 @@ components:
       - message
       - code
       title: ErrorDetail
+    type_tiers_TierPriceInterval:
+      type: string
+      enum:
+      - month
+      - quarter
+      - year
+      - one_time
+      - donation
+      title: TierPriceInterval
   securitySchemes:
     BearerAuthScheme:
       type: http

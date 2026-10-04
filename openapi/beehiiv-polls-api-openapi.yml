@@ -277,12 +277,6 @@ paths:
                 $ref: '#/components/schemas/type__Error'
 components:
   schemas:
-    type_polls_PollResponsesOrderBy:
-      type: string
-      enum:
-      - created
-      default: created
-      title: PollResponsesOrderBy
     type_polls_PollsListResponse:
       type: object
       properties:
@@ -319,29 +313,128 @@ components:
       - voting
       - trivia
       title: PollType
-    type__Error:
+    type_ids_SubscriptionId:
+      type: string
+      description: The prefixed ID of the subscription.
+      title: SubscriptionId
+    type_polls_PollShowResponse:
       type: object
       properties:
-        status:
-          type: integer
-        statusText:
-          type: string
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/type__ErrorDetail'
+        data:
+          $ref: '#/components/schemas/type_polls_Poll'
       required:
-      - status
-      - statusText
-      - errors
-      description: The top level error response.
-      title: Error
-    type_polls_PollStatus:
+      - data
+      title: PollShowResponse
+    type_polls_PollChoice:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier of the poll choice.
+        label:
+          type: string
+          description: The text label for this choice.
+      required:
+      - id
+      - label
+      title: PollChoice
+    type_polls_PollsExpandItems:
       type: string
       enum:
-      - draft
-      - published
-      title: PollStatus
+      - stats
+      - poll_responses
+      - trivia_answer
+      title: PollsExpandItems
+    type_polls_PollOrderBy:
+      type: string
+      enum:
+      - created
+      - name
+      default: created
+      title: PollOrderBy
+    type__ErrorDetail:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+      required:
+      - message
+      - code
+      title: ErrorDetail
+    type_polls_PollResponsesListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/type_polls_PollResponseItem'
+          description: An array of poll responses.
+        limit:
+          type: integer
+          description: The limit placed on the results. If no limit was specified in the request, this defaults to 10.
+        page:
+          type: integer
+          default: 1
+          description: '**Offset pagination only**: The page number the results are from. Only present when using deprecated offset-based pagination.'
+        total_pages:
+          type: integer
+          description: '**Offset pagination only**: The total number of pages. Only present when using deprecated offset-based pagination.'
+        has_more:
+          type: boolean
+          description: '**Cursor pagination only**: Indicates whether there are more results available after the current page.'
+        next_cursor:
+          type: string
+          description: '**Cursor pagination only**: The cursor token to use for fetching the next page of results.'
+        total_results:
+          type: integer
+          description: The total number of results from all pages.
+      required:
+      - data
+      title: PollResponsesListResponse
+    type_ids_PollId:
+      type: string
+      description: The prefixed ID of the poll.
+      title: PollId
+    type_ids_PublicationId:
+      type: string
+      description: The prefixed ID of the publication.
+      title: PublicationId
+    type_polls_PollResponsesOrderBy:
+      type: string
+      enum:
+      - created
+      default: created
+      title: PollResponsesOrderBy
+    type_polls_PollResponsesExpandItems:
+      type: string
+      enum:
+      - post
+      title: PollResponsesExpandItems
+    type__RequestDirection:
+      type: string
+      enum:
+      - asc
+      - desc
+      default: asc
+      description: The direction of the request. Defaults to `asc`.
+      title: RequestDirection
+    type_polls_PollStats:
+      type: object
+      properties:
+        completions:
+          type: integer
+          description: The total number of responses to this poll.
+        vote_counts:
+          type: object
+          additionalProperties:
+            type: integer
+          description: A map of poll choice labels to the number of votes each choice received.
+      required:
+      - completions
+      - vote_counts
+      title: PollStats
     type_polls_Poll:
       type: object
       properties:
@@ -394,100 +487,23 @@ components:
       - created_at
       - poll_choices
       title: Poll
-    type_polls_PollChoice:
+    type__Error:
       type: object
       properties:
-        id:
-          type: string
-          description: The unique identifier of the poll choice.
-        label:
-          type: string
-          description: The text label for this choice.
-      required:
-      - id
-      - label
-      title: PollChoice
-    type_polls_PollStats:
-      type: object
-      properties:
-        completions:
+        status:
           type: integer
-          description: The total number of responses to this poll.
-        vote_counts:
-          type: object
-          additionalProperties:
-            type: integer
-          description: A map of poll choice labels to the number of votes each choice received.
-      required:
-      - completions
-      - vote_counts
-      title: PollStats
-    type_polls_PollResponsesExpandItems:
-      type: string
-      enum:
-      - post
-      title: PollResponsesExpandItems
-    type_ids_PollId:
-      type: string
-      description: The prefixed ID of the poll.
-      title: PollId
-    type_polls_PollResponsesListResponse:
-      type: object
-      properties:
-        data:
+        statusText:
+          type: string
+        errors:
           type: array
           items:
-            $ref: '#/components/schemas/type_polls_PollResponseItem'
-          description: An array of poll responses.
-        limit:
-          type: integer
-          description: The limit placed on the results. If no limit was specified in the request, this defaults to 10.
-        page:
-          type: integer
-          default: 1
-          description: '**Offset pagination only**: The page number the results are from. Only present when using deprecated offset-based pagination.'
-        total_pages:
-          type: integer
-          description: '**Offset pagination only**: The total number of pages. Only present when using deprecated offset-based pagination.'
-        has_more:
-          type: boolean
-          description: '**Cursor pagination only**: Indicates whether there are more results available after the current page.'
-        next_cursor:
-          type: string
-          description: '**Cursor pagination only**: The cursor token to use for fetching the next page of results.'
-        total_results:
-          type: integer
-          description: The total number of results from all pages.
+            $ref: '#/components/schemas/type__ErrorDetail'
       required:
-      - data
-      title: PollResponsesListResponse
-    type_ids_SubscriptionId:
-      type: string
-      description: The prefixed ID of the subscription.
-      title: SubscriptionId
-    type_polls_PollShowResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/type_polls_Poll'
-      required:
-      - data
-      title: PollShowResponse
-    type_polls_PollOrderBy:
-      type: string
-      enum:
-      - created
-      - name
-      default: created
-      title: PollOrderBy
-    type__RequestDirection:
-      type: string
-      enum:
-      - asc
-      - desc
-      default: asc
-      description: The direction of the request. Defaults to `asc`.
-      title: RequestDirection
+      - status
+      - statusText
+      - errors
+      description: The top level error response.
+      title: Error
     type_polls_PollResponseItem:
       type: object
       properties:
@@ -527,28 +543,12 @@ components:
       - poll_choice_id
       - created_at
       title: PollResponseItem
-    type_ids_PublicationId:
-      type: string
-      description: The prefixed ID of the publication.
-      title: PublicationId
-    type_polls_PollsExpandItems:
+    type_polls_PollStatus:
       type: string
       enum:
-      - stats
-      - poll_responses
-      - trivia_answer
-      title: PollsExpandItems
-    type__ErrorDetail:
-      type: object
-      properties:
-        message:
-          type: string
-        code:
-          type: string
-      required:
-      - message
-      - code
-      title: ErrorDetail
+      - draft
+      - published
+      title: PollStatus
   securitySchemes:
     BearerAuthScheme:
       type: http

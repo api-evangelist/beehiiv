@@ -154,21 +154,76 @@ paths:
                 $ref: '#/components/schemas/type__Error'
 components:
   schemas:
-    type__ErrorDetail:
+    type__Error:
       type: object
       properties:
-        message:
+        status:
+          type: integer
+        statusText:
           type: string
-        code:
-          type: string
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/type__ErrorDetail'
       required:
-      - message
-      - code
-      title: ErrorDetail
-    type_ids_TierId:
+      - status
+      - statusText
+      - errors
+      description: The top level error response.
+      title: Error
+    type_ids_ComplimentaryAccessId:
       type: string
-      description: The prefixed ID of the tier.
-      title: TierId
+      description: The prefixed ID of the complimentary access object.
+      title: ComplimentaryAccessId
+    type_complimentaryAccess_ComplimentaryAccessResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/type_complimentaryAccess_ComplimentaryAccess'
+      title: ComplimentaryAccessResponse
+    type_tiers_TierPrice:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/type_ids_PriceId'
+        currency:
+          $ref: '#/components/schemas/type_tiers_TierPriceCurrency'
+        amount_cents:
+          type: integer
+        enabled:
+          type: boolean
+          default: true
+        interval:
+          $ref: '#/components/schemas/type_tiers_TierPriceInterval'
+        denominator:
+          type: string
+        cta:
+          type: string
+          description: When using the external Stripe checkout, this text will be displayed on the button
+        features:
+          type: array
+          items:
+            type: string
+      description: Price belonging to a Tier
+      title: TierPrice
+    type_ids_PriceId:
+      type: string
+      description: The prefixed ID of the price.
+      title: PriceId
+    type_complimentaryAccess_ComplimentaryAccessStats:
+      type: object
+      properties:
+        total_granted:
+          type: integer
+          description: Total number of subscriptions that have ever been granted this complimentary access.
+        active_granted:
+          type: integer
+          description: Number of subscriptions currently within an active complimentary access period.
+      required:
+      - total_granted
+      - active_granted
+      description: 'Optional stats for a complimentary access object. Retrievable by including `expand: [stats]` in the request.'
+      title: ComplimentaryAccessStats
     type_complimentaryAccess_ComplimentaryAccess:
       type: object
       properties:
@@ -199,80 +254,39 @@ components:
       - description
       description: The complimentary access object.
       title: ComplimentaryAccess
-    type_complimentaryAccess_ComplimentaryAccessStats:
+    type_complimentaryAccess_IndexComplimentaryAccessResponse:
       type: object
       properties:
-        total_granted:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/type_complimentaryAccess_ComplimentaryAccess'
+        limit:
           type: integer
-          description: Total number of subscriptions that have ever been granted this complimentary access.
-        active_granted:
-          type: integer
-          description: Number of subscriptions currently within an active complimentary access period.
-      required:
-      - total_granted
-      - active_granted
-      description: 'Optional stats for a complimentary access object. Retrievable by including `expand: [stats]` in the request.'
-      title: ComplimentaryAccessStats
-    type_tiers_TierPrice:
-      type: object
-      properties:
-        id:
-          $ref: '#/components/schemas/type_ids_PriceId'
-        currency:
-          $ref: '#/components/schemas/type_tiers_TierPriceCurrency'
-        amount_cents:
-          type: integer
-        enabled:
+          description: The limit placed on the results. Defaults to 10 if not specified.
+        has_more:
           type: boolean
-          default: true
-        interval:
-          $ref: '#/components/schemas/type_tiers_TierPriceInterval'
-        denominator:
+          description: Indicates whether there are more results available after the current page.
+        next_cursor:
           type: string
-        cta:
-          type: string
-          description: When using the external Stripe checkout, this text will be displayed on the button
-        features:
-          type: array
-          items:
-            type: string
-      description: Price belonging to a Tier
-      title: TierPrice
-    type_tiers_TierStats:
-      type: object
-      properties:
-        active_subscriptions:
+          description: The cursor token to use for fetching the next page of results. This will be null if has_more is false.
+        total_results:
           type: integer
-          description: Total number of active subscriptions belonging to this tier.
+          description: The total number of results from all pages.
       required:
-      - active_subscriptions
-      description: 'Optional list of stats for a tier. Retrievable by including `expand: [stats]` in the tier request body.'
-      title: TierStats
-    type__Error:
-      type: object
-      properties:
-        status:
-          type: integer
-        statusText:
-          type: string
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/type__ErrorDetail'
-      required:
-      - status
-      - statusText
-      - errors
-      description: The top level error response.
-      title: Error
-    type_ids_PriceId:
-      type: string
-      description: The prefixed ID of the price.
-      title: PriceId
+      - data
+      title: IndexComplimentaryAccessResponse
     type_ids_PublicationId:
       type: string
       description: The prefixed ID of the publication.
       title: PublicationId
+    type_tiers_TierStatus:
+      type: string
+      enum:
+      - active
+      - archived
+      description: Returns whether or not the tier has any active prices.
+      title: TierStatus
     type_tiers_Tier:
       type: object
       properties:
@@ -299,48 +313,6 @@ components:
       - status
       description: The subscription tier object.
       title: Tier
-    type_ids_ComplimentaryAccessId:
-      type: string
-      description: The prefixed ID of the complimentary access object.
-      title: ComplimentaryAccessId
-    type_complimentaryAccess_ComplimentaryAccessTimeUnit:
-      type: string
-      enum:
-      - days
-      - months
-      - years
-      - forever
-      description: The unit of time for the gift duration.<br>`days` - Duration in days.<br>`months` - Duration in months.<br>`years` - Duration in years.<br>`forever` - Lifetime access with no expiration.
-      title: ComplimentaryAccessTimeUnit
-    type_tiers_TierStatus:
-      type: string
-      enum:
-      - active
-      - archived
-      description: Returns whether or not the tier has any active prices.
-      title: TierStatus
-    type_complimentaryAccess_IndexComplimentaryAccessResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/type_complimentaryAccess_ComplimentaryAccess'
-        limit:
-          type: integer
-          description: The limit placed on the results. Defaults to 10 if not specified.
-        has_more:
-          type: boolean
-          description: Indicates whether there are more results available after the current page.
-        next_cursor:
-          type: string
-          description: The cursor token to use for fetching the next page of results. This will be null if has_more is false.
-        total_results:
-          type: integer
-          description: The total number of results from all pages.
-      required:
-      - data
-      title: IndexComplimentaryAccessResponse
     type_tiers_TierPriceCurrency:
       type: string
       enum:
@@ -355,6 +327,40 @@ components:
       - nzd
       - dkk
       title: TierPriceCurrency
+    type_complimentaryAccess_ComplimentaryAccessTimeUnit:
+      type: string
+      enum:
+      - days
+      - months
+      - years
+      - forever
+      description: The unit of time for the gift duration.<br>`days` - Duration in days.<br>`months` - Duration in months.<br>`years` - Duration in years.<br>`forever` - Lifetime access with no expiration.
+      title: ComplimentaryAccessTimeUnit
+    type_tiers_TierStats:
+      type: object
+      properties:
+        active_subscriptions:
+          type: integer
+          description: Total number of active subscriptions belonging to this tier.
+      required:
+      - active_subscriptions
+      description: 'Optional list of stats for a tier. Retrievable by including `expand: [stats]` in the tier request body.'
+      title: TierStats
+    type_ids_TierId:
+      type: string
+      description: The prefixed ID of the tier.
+      title: TierId
+    type__ErrorDetail:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+      required:
+      - message
+      - code
+      title: ErrorDetail
     type_tiers_TierPriceInterval:
       type: string
       enum:
@@ -364,12 +370,6 @@ components:
       - one_time
       - donation
       title: TierPriceInterval
-    type_complimentaryAccess_ComplimentaryAccessResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/type_complimentaryAccess_ComplimentaryAccess'
-      title: ComplimentaryAccessResponse
   securitySchemes:
     BearerAuthScheme:
       type: http

@@ -79,6 +79,57 @@ paths:
                 $ref: '#/components/schemas/type__Error'
 components:
   schemas:
+    type__Error:
+      type: object
+      properties:
+        status:
+          type: integer
+        statusText:
+          type: string
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/type__ErrorDetail'
+      required:
+      - status
+      - statusText
+      - errors
+      description: The top level error response.
+      title: Error
+    type__Milestone:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/type_ids_MilestoneId'
+          description: A unique prefixed id of the milestone.
+        auto_fulfill:
+          type: boolean
+          description: Only available with a promo code reward type. This indicates that an email will automatically be sent when the milestone is reached containing the reward promo code.
+        num_referrals:
+          type: integer
+          description: The number of referrals needed to reach this milestone.
+        reward:
+          $ref: '#/components/schemas/type__MilestoneReward'
+      required:
+      - id
+      - auto_fulfill
+      - num_referrals
+      - reward
+      description: The milestone object.
+      title: Milestone
+    type_ids_MilestoneId:
+      type: string
+      description: The prefixed ID of the milestone.
+      title: MilestoneId
+    type__MilestoneRewardType:
+      type: string
+      enum:
+      - physical
+      - promo_code
+      - digital
+      - premium_gift
+      description: What type of reward this is.<br>`physical` - A product which must be sent to the subscriber.<br>`promo_code` - A code that is redeemable for goods or services.
+      title: MilestoneRewardType
     type__ErrorDetail:
       type: object
       properties:
@@ -94,15 +145,10 @@ components:
       type: string
       description: The prefixed ID of the reward.
       title: RewardId
-    type__MilestoneRewardType:
+    type_ids_PublicationId:
       type: string
-      enum:
-      - physical
-      - promo_code
-      - digital
-      - premium_gift
-      description: What type of reward this is.<br>`physical` - A product which must be sent to the subscriber.<br>`promo_code` - A code that is redeemable for goods or services.
-      title: MilestoneRewardType
+      description: The prefixed ID of the publication.
+      title: PublicationId
     type_referralProgram_ReferralProgramGetResponse:
       type: object
       properties:
@@ -131,14 +177,6 @@ components:
       - total_results
       - total_pages
       title: ReferralProgramGetResponse
-    type_ids_MilestoneId:
-      type: string
-      description: The prefixed ID of the milestone.
-      title: MilestoneId
-    type_ids_PublicationId:
-      type: string
-      description: The prefixed ID of the publication.
-      title: PublicationId
     type__MilestoneReward:
       type: object
       properties:
@@ -165,44 +203,6 @@ components:
       - type
       description: The reward object.
       title: MilestoneReward
-    type__Milestone:
-      type: object
-      properties:
-        id:
-          $ref: '#/components/schemas/type_ids_MilestoneId'
-          description: A unique prefixed id of the milestone.
-        auto_fulfill:
-          type: boolean
-          description: Only available with a promo code reward type. This indicates that an email will automatically be sent when the milestone is reached containing the reward promo code.
-        num_referrals:
-          type: integer
-          description: The number of referrals needed to reach this milestone.
-        reward:
-          $ref: '#/components/schemas/type__MilestoneReward'
-      required:
-      - id
-      - auto_fulfill
-      - num_referrals
-      - reward
-      description: The milestone object.
-      title: Milestone
-    type__Error:
-      type: object
-      properties:
-        status:
-          type: integer
-        statusText:
-          type: string
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/type__ErrorDetail'
-      required:
-      - status
-      - statusText
-      - errors
-      description: The top level error response.
-      title: Error
   securitySchemes:
     BearerAuthScheme:
       type: http

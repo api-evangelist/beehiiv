@@ -401,24 +401,6 @@ paths:
                 $ref: '#/components/schemas/type__Error'
 components:
   schemas:
-    type__CustomFieldType:
-      type: string
-      enum:
-      - string
-      - integer
-      - boolean
-      - date
-      - datetime
-      - list
-      - double
-      description: The type of value being stored in the custom field.
-      title: CustomFieldType
-    type_customFields_CustomFieldsDeleteResponse:
-      type: object
-      properties:
-        message:
-          type: string
-      title: CustomFieldsDeleteResponse
     type__Error:
       type: object
       properties:
@@ -436,6 +418,18 @@ components:
       - errors
       description: The top level error response.
       title: Error
+    type_customFields_CustomFieldsDeleteResponse:
+      type: object
+      properties:
+        message:
+          type: string
+      title: CustomFieldsDeleteResponse
+    type_customFields_CustomFieldsPatchResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/type_customFields_CustomFieldInfo'
+      title: CustomFieldsPatchResponse
     type_ids_PublicationId:
       type: string
       description: The prefixed ID of the publication.
@@ -461,12 +455,35 @@ components:
           type: integer
           description: The total number of pages.
       title: CustomFieldIndexResponse
-    type_customFields_CustomFieldsPatchResponse:
+    type_customFields_CustomFieldResponse:
       type: object
       properties:
         data:
           $ref: '#/components/schemas/type_customFields_CustomFieldInfo'
-      title: CustomFieldsPatchResponse
+      title: CustomFieldResponse
+    type__CustomFieldType:
+      type: string
+      enum:
+      - string
+      - integer
+      - boolean
+      - date
+      - datetime
+      - list
+      - double
+      description: The type of value being stored in the custom field.
+      title: CustomFieldType
+    type__ErrorDetail:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+      required:
+      - message
+      - code
+      title: ErrorDetail
     type_customFields_CustomFieldInfo:
       type: object
       properties:
@@ -484,23 +501,6 @@ components:
             type: string
           description: Array of option values. Only included when kind is "list".
       title: CustomFieldInfo
-    type_customFields_CustomFieldResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/type_customFields_CustomFieldInfo'
-      title: CustomFieldResponse
-    type__ErrorDetail:
-      type: object
-      properties:
-        message:
-          type: string
-        code:
-          type: string
-      required:
-      - message
-      - code
-      title: ErrorDetail
   securitySchemes:
     BearerAuthScheme:
       type: http

@@ -156,37 +156,12 @@ paths:
                 $ref: '#/components/schemas/type__Error'
 components:
   schemas:
-    type_conditionSets_ConditionSetShowResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/type_conditionSets_ConditionSet'
-      required:
-      - data
-      title: ConditionSetShowResponse
-    type_conditionSets_ConditionSetsListResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/type_conditionSets_ConditionSetListItem'
-          description: An array of condition sets.
-        limit:
-          type: integer
-          description: The limit placed on the results. If no limit was specified in the request, this defaults to 10.
-        has_more:
-          type: boolean
-          description: '**Cursor pagination only**: Indicates whether there are more results available after the current page. Only present when using cursor-based pagination.'
-        next_cursor:
-          type: string
-          description: '**Cursor pagination only**: The cursor token to use for fetching the next page of results. This will be null if has_more is false. Only present when using cursor-based pagination.'
-        total_results:
-          type: integer
-          description: The total number of results from all pages.
-      required:
-      - data
-      title: ConditionSetsListResponse
+    type_conditionSets_ConditionSetPurpose:
+      type: string
+      enum:
+      - dynamic_content
+      description: The purpose of the condition set, indicating its intended use.
+      title: ConditionSetPurpose
     type__Error:
       type: object
       properties:
@@ -204,30 +179,14 @@ components:
       - errors
       description: The top level error response.
       title: Error
-    type_ids_PublicationId:
-      type: string
-      description: The prefixed ID of the publication.
-      title: PublicationId
-    type_conditionSets_ConditionSetShowExpandItems:
-      type: string
-      enum:
-      - stats
-      title: ConditionSetShowExpandItems
-    type_conditionSets_ConditionSetStatus:
-      type: string
-      enum:
-      - active
-      - archived
-      title: ConditionSetStatus
-    type_conditionSets_ConditionSetStats:
+    type_conditionSets_ConditionSetShowResponse:
       type: object
       properties:
-        active_subscriber_count:
-          type: integer
-          description: Count of active subscribers matching this condition set, calculated synchronously at request time.
+        data:
+          $ref: '#/components/schemas/type_conditionSets_ConditionSet'
       required:
-      - active_subscriber_count
-      title: ConditionSetStats
+      - data
+      title: ConditionSetShowResponse
     type_conditionSets_ConditionSet:
       type: object
       properties:
@@ -260,6 +219,21 @@ components:
       - updated
       - purpose
       title: ConditionSet
+    type_conditionSets_ConditionSetStatus:
+      type: string
+      enum:
+      - active
+      - archived
+      title: ConditionSetStatus
+    type_ids_PublicationId:
+      type: string
+      description: The prefixed ID of the publication.
+      title: PublicationId
+    type_conditionSets_ConditionSetShowExpandItems:
+      type: string
+      enum:
+      - stats
+      title: ConditionSetShowExpandItems
     type_conditionSets_ConditionSetListItem:
       type: object
       properties:
@@ -289,12 +263,38 @@ components:
       - updated
       - purpose
       title: ConditionSetListItem
-    type_conditionSets_ConditionSetPurpose:
-      type: string
-      enum:
-      - dynamic_content
-      description: The purpose of the condition set, indicating its intended use.
-      title: ConditionSetPurpose
+    type_conditionSets_ConditionSetsListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/type_conditionSets_ConditionSetListItem'
+          description: An array of condition sets.
+        limit:
+          type: integer
+          description: The limit placed on the results. If no limit was specified in the request, this defaults to 10.
+        has_more:
+          type: boolean
+          description: '**Cursor pagination only**: Indicates whether there are more results available after the current page. Only present when using cursor-based pagination.'
+        next_cursor:
+          type: string
+          description: '**Cursor pagination only**: The cursor token to use for fetching the next page of results. This will be null if has_more is false. Only present when using cursor-based pagination.'
+        total_results:
+          type: integer
+          description: The total number of results from all pages.
+      required:
+      - data
+      title: ConditionSetsListResponse
+    type_conditionSets_ConditionSetStats:
+      type: object
+      properties:
+        active_subscriber_count:
+          type: integer
+          description: Count of active subscribers matching this condition set, calculated synchronously at request time.
+      required:
+      - active_subscriber_count
+      title: ConditionSetStats
     type__ErrorDetail:
       type: object
       properties:

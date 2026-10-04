@@ -250,24 +250,6 @@ paths:
                 $ref: '#/components/schemas/type__Error'
 components:
   schemas:
-    type_ad_network_offers_AdOfferCampaign:
-      type: object
-      properties:
-        name:
-          type: string
-          description: The campaign name.
-        message_to_publisher:
-          type: string
-          description: The message from the advertiser to the publisher.
-        promoted_item:
-          type: string
-          description: The item promoted by the campaign.
-        promoted_item_other:
-          type: string
-          description: Additional promoted item details when applicable.
-      required:
-      - name
-      title: AdOfferCampaign
     type__Error:
       type: object
       properties:
@@ -285,53 +267,38 @@ components:
       - errors
       description: The top level error response.
       title: Error
-    type_ids_PublicationId:
-      type: string
-      description: The prefixed ID of the publication.
-      title: PublicationId
-    type_ad_network_offers_AdOffer:
+    type_ad_network_offers_AdOfferCreateResponseData:
       type: object
       properties:
-        id:
+        offer_id:
           type: string
-          description: The ID of the offer or pending opportunity.
-        payout_model:
+          description: The ID of the accepted ad offer.
+        opportunity_id:
           type: string
-          description: The payout model for the offer.
-        payout_per_click:
+          description: The ID of the drafted and accepted opportunity created from the offer.
+        advertisement_id:
           type: string
-          description: The formatted payout per eligible click.
-        payout_per_mille:
+          description: The ID of the advertisement creative selected for the opportunity.
+        post_id:
           type: string
-          description: The formatted payout per thousand eligible opens.
-        estimated_payout:
-          type: string
-          description: The formatted estimated payout.
-        send_by:
-          type: string
-          format: date-time
-          description: The date the advertisement should be sent by.
-        campaign:
-          $ref: '#/components/schemas/type_ad_network_offers_AdOfferCampaign'
-        advertiser:
-          $ref: '#/components/schemas/type_ad_network_offers_AdOfferAdvertiser'
+          description: The ID of the post where the opportunity was inserted.
       required:
-      - id
-      - payout_model
-      - payout_per_click
-      - payout_per_mille
-      - estimated_payout
-      - campaign
-      - advertiser
-      title: AdOffer
-    type_ad_network_offers_AdOfferCreateResponse:
+      - offer_id
+      - opportunity_id
+      - advertisement_id
+      - post_id
+      title: AdOfferCreateResponseData
+    type_ad_network_offers_AdOffersGetResponse:
       type: object
       properties:
-        data:
-          $ref: '#/components/schemas/type_ad_network_offers_AdOfferCreateResponseData'
+        offers:
+          type: array
+          items:
+            $ref: '#/components/schemas/type_ad_network_offers_AdOffer'
+          description: A list of ad offers available for this publication.
       required:
-      - data
-      title: AdOfferCreateResponse
+      - offers
+      title: AdOffersGetResponse
     type_ad_network_offers_AdOfferAdvertisement:
       type: object
       properties:
@@ -368,17 +335,28 @@ components:
       - sponsor_text
       - text
       title: AdOfferAdvertisement
-    type_ad_network_offers_AdOffersGetResponse:
+    type_ad_network_offers_AdOfferCampaign:
       type: object
       properties:
-        offers:
-          type: array
-          items:
-            $ref: '#/components/schemas/type_ad_network_offers_AdOffer'
-          description: A list of ad offers available for this publication.
+        name:
+          type: string
+          description: The campaign name.
+        message_to_publisher:
+          type: string
+          description: The message from the advertiser to the publisher.
+        promoted_item:
+          type: string
+          description: The item promoted by the campaign.
+        promoted_item_other:
+          type: string
+          description: Additional promoted item details when applicable.
       required:
-      - offers
-      title: AdOffersGetResponse
+      - name
+      title: AdOfferCampaign
+    type_ids_PublicationId:
+      type: string
+      description: The prefixed ID of the publication.
+      title: PublicationId
     type_ad_network_offers_AdOfferAdvertisementsGetResponse:
       type: object
       properties:
@@ -390,6 +368,14 @@ components:
       required:
       - advertisements
       title: AdOfferAdvertisementsGetResponse
+    type_ad_network_offers_AdOfferCreateResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/type_ad_network_offers_AdOfferCreateResponseData'
+      required:
+      - data
+      title: AdOfferCreateResponse
     type_ad_network_offers_AdOfferAdvertiser:
       type: object
       properties:
@@ -419,27 +405,41 @@ components:
       - message
       - code
       title: ErrorDetail
-    type_ad_network_offers_AdOfferCreateResponseData:
+    type_ad_network_offers_AdOffer:
       type: object
       properties:
-        offer_id:
+        id:
           type: string
-          description: The ID of the accepted ad offer.
-        opportunity_id:
+          description: The ID of the offer or pending opportunity.
+        payout_model:
           type: string
-          description: The ID of the drafted and accepted opportunity created from the offer.
-        advertisement_id:
+          description: The payout model for the offer.
+        payout_per_click:
           type: string
-          description: The ID of the advertisement creative selected for the opportunity.
-        post_id:
+          description: The formatted payout per eligible click.
+        payout_per_mille:
           type: string
-          description: The ID of the post where the opportunity was inserted.
+          description: The formatted payout per thousand eligible opens.
+        estimated_payout:
+          type: string
+          description: The formatted estimated payout.
+        send_by:
+          type: string
+          format: date-time
+          description: The date the advertisement should be sent by.
+        campaign:
+          $ref: '#/components/schemas/type_ad_network_offers_AdOfferCampaign'
+        advertiser:
+          $ref: '#/components/schemas/type_ad_network_offers_AdOfferAdvertiser'
       required:
-      - offer_id
-      - opportunity_id
-      - advertisement_id
-      - post_id
-      title: AdOfferCreateResponseData
+      - id
+      - payout_model
+      - payout_per_click
+      - payout_per_mille
+      - estimated_payout
+      - campaign
+      - advertiser
+      title: AdOffer
   securitySchemes:
     BearerAuthScheme:
       type: http

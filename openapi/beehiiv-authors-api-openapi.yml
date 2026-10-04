@@ -160,17 +160,45 @@ paths:
                 $ref: '#/components/schemas/type__Error'
 components:
   schemas:
-    type__ErrorDetail:
+    type_authors_AuthorSocialMediaLinks:
       type: object
       properties:
-        message:
+        twitter_handle:
           type: string
-        code:
+        facebook_url:
           type: string
+        instagram_url:
+          type: string
+        linkedin_url:
+          type: string
+        youtube_url:
+          type: string
+        tiktok_url:
+          type: string
+        discord_url:
+          type: string
+        bluesky_url:
+          type: string
+        rss_url:
+          type: string
+      title: AuthorSocialMediaLinks
+    type__Error:
+      type: object
+      properties:
+        status:
+          type: integer
+        statusText:
+          type: string
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/type__ErrorDetail'
       required:
-      - message
-      - code
-      title: ErrorDetail
+      - status
+      - statusText
+      - errors
+      description: The top level error response.
+      title: Error
     type_authors_Author:
       type: object
       properties:
@@ -197,6 +225,16 @@ components:
       - name
       - social_media_links
       title: Author
+    type_authors_AuthorType:
+      type: string
+      enum:
+      - user
+      - guest_author
+      title: AuthorType
+    type_ids_PublicationId:
+      type: string
+      description: The prefixed ID of the publication.
+      title: PublicationId
     type_authors_AuthorsGetResponse:
       type: object
       properties:
@@ -205,55 +243,17 @@ components:
       required:
       - data
       title: AuthorsGetResponse
-    type__Error:
+    type__ErrorDetail:
       type: object
       properties:
-        status:
-          type: integer
-        statusText:
+        message:
           type: string
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/type__ErrorDetail'
+        code:
+          type: string
       required:
-      - status
-      - statusText
-      - errors
-      description: The top level error response.
-      title: Error
-    type_ids_PublicationId:
-      type: string
-      description: The prefixed ID of the publication.
-      title: PublicationId
-    type_authors_AuthorSocialMediaLinks:
-      type: object
-      properties:
-        twitter_handle:
-          type: string
-        facebook_url:
-          type: string
-        instagram_url:
-          type: string
-        linkedin_url:
-          type: string
-        youtube_url:
-          type: string
-        tiktok_url:
-          type: string
-        discord_url:
-          type: string
-        bluesky_url:
-          type: string
-        rss_url:
-          type: string
-      title: AuthorSocialMediaLinks
-    type_authors_AuthorType:
-      type: string
-      enum:
-      - user
-      - guest_author
-      title: AuthorType
+      - message
+      - code
+      title: ErrorDetail
     type_authors_AuthorsListResponse:
       type: object
       properties:

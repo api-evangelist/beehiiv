@@ -250,38 +250,23 @@ paths:
                 $ref: '#/components/schemas/type__Error'
 components:
   schemas:
-    type__ErrorDetail:
+    type__Error:
       type: object
       properties:
-        message:
-          type: string
-        code:
-          type: string
-      required:
-      - message
-      - code
-      title: ErrorDetail
-    type_ids_PublicationId:
-      type: string
-      description: The prefixed ID of the publication.
-      title: PublicationId
-    type_ad_network_reports_AdNetworkReportSummaryMetrics:
-      type: object
-      properties:
-        opens:
+        status:
           type: integer
-          description: The approved number of unique opens.
-        verified_clicks:
-          type: integer
-          description: The approved number of verified clicks.
-        revenue:
+        statusText:
           type: string
-          description: The formatted revenue approved for payment.
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/type__ErrorDetail'
       required:
-      - opens
-      - verified_clicks
-      - revenue
-      title: AdNetworkReportSummaryMetrics
+      - status
+      - statusText
+      - errors
+      description: The top level error response.
+      title: Error
     type_ad_network_reports_AdNetworkReport:
       type: object
       properties:
@@ -343,27 +328,10 @@ components:
       - oda
       - programmatic
       title: AdNetworkReportSummary
-    type_ids_PostId:
+    type_ids_PublicationId:
       type: string
-      description: The prefixed ID of the post.
-      title: PostId
-    type__Error:
-      type: object
-      properties:
-        status:
-          type: integer
-        statusText:
-          type: string
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/type__ErrorDetail'
-      required:
-      - status
-      - statusText
-      - errors
-      description: The top level error response.
-      title: Error
+      description: The prefixed ID of the publication.
+      title: PublicationId
     type_ad_network_reports_AdNetworkReportsGetResponse:
       type: object
       properties:
@@ -391,6 +359,38 @@ components:
       - total_results
       - total_pages
       title: AdNetworkReportsGetResponse
+    type_ids_PostId:
+      type: string
+      description: The prefixed ID of the post.
+      title: PostId
+    type_ad_network_reports_AdNetworkReportSummaryMetrics:
+      type: object
+      properties:
+        opens:
+          type: integer
+          description: The approved number of unique opens.
+        verified_clicks:
+          type: integer
+          description: The approved number of verified clicks.
+        revenue:
+          type: string
+          description: The formatted revenue approved for payment.
+      required:
+      - opens
+      - verified_clicks
+      - revenue
+      title: AdNetworkReportSummaryMetrics
+    type__ErrorDetail:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+      required:
+      - message
+      - code
+      title: ErrorDetail
   securitySchemes:
     BearerAuthScheme:
       type: http

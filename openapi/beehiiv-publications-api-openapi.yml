@@ -158,6 +158,92 @@ paths:
                 $ref: '#/components/schemas/type__Error'
 components:
   schemas:
+    type__ActiveSubscriptionCount:
+      oneOf:
+      - type: integer
+      - type: boolean
+      description: Total number of active free and premium subscriptions
+      title: ActiveSubscriptionCount
+    type__ActiveFreeSubscriptionCount:
+      oneOf:
+      - type: integer
+      - type: boolean
+      description: Total number of active free subscriptions
+      title: ActiveFreeSubscriptionCount
+    type_publications_PublicationsListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/type__Publication'
+        limit:
+          type: integer
+          description: The limit placed on the results. If no limit was specified in the request,this defaults to 10.
+        page:
+          type: integer
+          default: 1
+          description: The page number the results are from. If no page was specified in the request, this defaults to page 1.
+        total_results:
+          type: integer
+          description: The total number of results from all pages.
+        total_pages:
+          type: integer
+          description: The total number of pages.
+      required:
+      - data
+      - limit
+      - page
+      - total_results
+      - total_pages
+      title: PublicationsListResponse
+    type__AverageOpenRate:
+      oneOf:
+      - type: number
+        format: double
+      - type: boolean
+      description: The publications historical average open rate
+      title: AverageOpenRate
+    type__PublicationStats:
+      type: object
+      properties:
+        active_subscriptions:
+          $ref: '#/components/schemas/type__ActiveSubscriptionCount'
+          description: Total number of active free and premium subscriptions
+        active_premium_subscriptions:
+          $ref: '#/components/schemas/type__ActivePremiumSubscriptionCount'
+          description: Total number of active premium/paid subscriptions
+        active_free_subscriptions:
+          $ref: '#/components/schemas/type__ActiveFreeSubscriptionCount'
+          description: Total number of active free subscriptions
+        average_open_rate:
+          $ref: '#/components/schemas/type__AverageOpenRate'
+          description: The publications historical average open rate
+        average_click_rate:
+          $ref: '#/components/schemas/type__AverageClickRate'
+          description: The publications historical average click through rate
+        total_sent:
+          $ref: '#/components/schemas/type__TotalEmailsSent'
+          description: Total number of emails sent
+        total_unique_opened:
+          $ref: '#/components/schemas/type__TotalUniqueOpens'
+          description: Total number of uniquely opened emails. Only counts the first open for each subscriber.
+        total_clicked:
+          $ref: '#/components/schemas/type__TotalClicks'
+          description: The total number of links clicked from emails.
+      description: "Optional list of stats for a publication. Retrievable by including an `expand` array in the publication request body. Add `\"stats\"` to the array to retrieve all, or add individual stats (prefaced with `stat_`) to only retrieve specific ones.\n\nExamples:\n{\n  \"expand\": [\"stats\"]\n}\n\n{\n  \"expand\": [\"stat_active_subscriptions\", \"stat_average_click_rate\"]\n}"
+      title: PublicationStats
+    type__ErrorDetail:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+      required:
+      - message
+      - code
+      title: ErrorDetail
     type__Publication:
       type: object
       properties:
@@ -199,6 +285,37 @@ components:
       - stat_total_unique_opened
       - stat_total_clicked
       title: PublicationsGetRequestExpandItem
+    type_publications_PublicationsListRequestOrderBy:
+      type: string
+      enum:
+      - created
+      - name
+      default: created
+      title: PublicationsListRequestOrderBy
+    type_ids_PublicationId:
+      type: string
+      description: The prefixed ID of the publication.
+      title: PublicationId
+    type__TotalEmailsSent:
+      oneOf:
+      - type: integer
+      - type: boolean
+      description: Total number of emails sent
+      title: TotalEmailsSent
+    type__RequestDirection:
+      type: string
+      enum:
+      - asc
+      - desc
+      default: asc
+      description: The direction of the request. Defaults to `asc`.
+      title: RequestDirection
+    type__ActivePremiumSubscriptionCount:
+      oneOf:
+      - type: integer
+      - type: boolean
+      description: Total number of active premium/paid subscriptions
+      title: ActivePremiumSubscriptionCount
     type__AverageClickRate:
       oneOf:
       - type: number
@@ -206,6 +323,26 @@ components:
       - type: boolean
       description: The publications historical average click through rate
       title: AverageClickRate
+    type__TotalUniqueOpens:
+      oneOf:
+      - type: integer
+      - type: boolean
+      description: Total number of uniquely opened emails. Only counts the first open for each subscriber.
+      title: TotalUniqueOpens
+    type_publications_PublicationsGetResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/type__Publication'
+      required:
+      - data
+      title: PublicationsGetResponse
+    type__TotalClicks:
+      oneOf:
+      - type: integer
+      - type: boolean
+      description: The total number of links clicked from emails.
+      title: TotalClicks
     type__Error:
       type: object
       properties:
@@ -223,19 +360,6 @@ components:
       - errors
       description: The top level error response.
       title: Error
-    type__AverageOpenRate:
-      oneOf:
-      - type: number
-        format: double
-      - type: boolean
-      description: The publications historical average open rate
-      title: AverageOpenRate
-    type__ActiveSubscriptionCount:
-      oneOf:
-      - type: integer
-      - type: boolean
-      description: Total number of active free and premium subscriptions
-      title: ActiveSubscriptionCount
     type_publications_PublicationsRequestExpandItem:
       type: string
       enum:
@@ -249,130 +373,6 @@ components:
       - stat_total_unique_opened
       - stat_total_clicked
       title: PublicationsRequestExpandItem
-    type__ActiveFreeSubscriptionCount:
-      oneOf:
-      - type: integer
-      - type: boolean
-      description: Total number of active free subscriptions
-      title: ActiveFreeSubscriptionCount
-    type_publications_PublicationsListRequestOrderBy:
-      type: string
-      enum:
-      - created
-      - name
-      default: created
-      title: PublicationsListRequestOrderBy
-    type__ActivePremiumSubscriptionCount:
-      oneOf:
-      - type: integer
-      - type: boolean
-      description: Total number of active premium/paid subscriptions
-      title: ActivePremiumSubscriptionCount
-    type__TotalClicks:
-      oneOf:
-      - type: integer
-      - type: boolean
-      description: The total number of links clicked from emails.
-      title: TotalClicks
-    type__RequestDirection:
-      type: string
-      enum:
-      - asc
-      - desc
-      default: asc
-      description: The direction of the request. Defaults to `asc`.
-      title: RequestDirection
-    type_ids_PublicationId:
-      type: string
-      description: The prefixed ID of the publication.
-      title: PublicationId
-    type__TotalUniqueOpens:
-      oneOf:
-      - type: integer
-      - type: boolean
-      description: Total number of uniquely opened emails. Only counts the first open for each subscriber.
-      title: TotalUniqueOpens
-    type__PublicationStats:
-      type: object
-      properties:
-        active_subscriptions:
-          $ref: '#/components/schemas/type__ActiveSubscriptionCount'
-          description: Total number of active free and premium subscriptions
-        active_premium_subscriptions:
-          $ref: '#/components/schemas/type__ActivePremiumSubscriptionCount'
-          description: Total number of active premium/paid subscriptions
-        active_free_subscriptions:
-          $ref: '#/components/schemas/type__ActiveFreeSubscriptionCount'
-          description: Total number of active free subscriptions
-        average_open_rate:
-          $ref: '#/components/schemas/type__AverageOpenRate'
-          description: The publications historical average open rate
-        average_click_rate:
-          $ref: '#/components/schemas/type__AverageClickRate'
-          description: The publications historical average click through rate
-        total_sent:
-          $ref: '#/components/schemas/type__TotalEmailsSent'
-          description: Total number of emails sent
-        total_unique_opened:
-          $ref: '#/components/schemas/type__TotalUniqueOpens'
-          description: Total number of uniquely opened emails. Only counts the first open for each subscriber.
-        total_clicked:
-          $ref: '#/components/schemas/type__TotalClicks'
-          description: The total number of links clicked from emails.
-      description: "Optional list of stats for a publication. Retrievable by including an `expand` array in the publication request body. Add `\"stats\"` to the array to retrieve all, or add individual stats (prefaced with `stat_`) to only retrieve specific ones.\n\nExamples:\n{\n  \"expand\": [\"stats\"]\n}\n\n{\n  \"expand\": [\"stat_active_subscriptions\", \"stat_average_click_rate\"]\n}"
-      title: PublicationStats
-    type__TotalEmailsSent:
-      oneOf:
-      - type: integer
-      - type: boolean
-      description: Total number of emails sent
-      title: TotalEmailsSent
-    type_publications_PublicationsListResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/type__Publication'
-        limit:
-          type: integer
-          description: The limit placed on the results. If no limit was specified in the request,this defaults to 10.
-        page:
-          type: integer
-          default: 1
-          description: The page number the results are from. If no page was specified in the request, this defaults to page 1.
-        total_results:
-          type: integer
-          description: The total number of results from all pages.
-        total_pages:
-          type: integer
-          description: The total number of pages.
-      required:
-      - data
-      - limit
-      - page
-      - total_results
-      - total_pages
-      title: PublicationsListResponse
-    type_publications_PublicationsGetResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/type__Publication'
-      required:
-      - data
-      title: PublicationsGetResponse
-    type__ErrorDetail:
-      type: object
-      properties:
-        message:
-          type: string
-        code:
-          type: string
-      required:
-      - message
-      - code
-      title: ErrorDetail
   securitySchemes:
     BearerAuthScheme:
       type: http
