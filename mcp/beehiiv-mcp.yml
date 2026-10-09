@@ -103,3 +103,19 @@ observations:
 - The product MCP is the only one that reaches account data, and it is the only one gated. Its scope vocabulary
   (read/write) is coarser than the OAuth2 scope vocabulary the REST API uses (posts:read, subscriptions:write,
   ...).
+rfc9728:
+  endpoint: https://mcp.beehiiv.com/mcp
+  metadata_url: https://mcp.beehiiv.com/.well-known/oauth-protected-resource/mcp
+  discovered_via: WWW-Authenticate resource_metadata on an anonymous POST initialize
+  fetched: '2026-09-25'
+  http_status: 200
+  content_type: application/json
+  document:
+    resource: https://mcp.beehiiv.com/mcp
+    authorization_servers:
+    - https://mcp.beehiiv.com
+    scopes_supported:
+    - read
+    - write
+    bearer_methods_supported:
+    - header

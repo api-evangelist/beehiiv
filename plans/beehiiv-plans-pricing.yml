@@ -308,3 +308,51 @@ apiEntitlements:
 agentNote: beehiiv publishes a Marketing MCP at https://www.beehiiv.com/api/mcp with get_pricing and pricing_faq
   tools, and directs agents to call it rather than scrape the price slider. That makes plan data a first-class agent
   surface here — see mcp/beehiiv-mcp.yml.
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - negotiated
+  - subscription
+  units:
+  - active-user
+  - period
+  plans:
+  - name: Launch
+    access: free
+    model: subscription
+    model_how: derived
+    units:
+    - active-user
+    - other
+    - period
+    periods:
+    - month
+  - name: Scale
+    access: paid
+    model: subscription
+    model_how: derived
+    units:
+    - active-user
+    - period
+    periods:
+    - month
+    - year
+  - name: Max
+    access: paid
+    model: subscription
+    model_how: derived
+    units:
+    - active-user
+    - period
+    periods:
+    - month
+    - year
+  - name: Enterprise
+    access: enterprise
+    model: negotiated
+    model_how: derived
+    units:
+    - period
+    periods:
+    - year
