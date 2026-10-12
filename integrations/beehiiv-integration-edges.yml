@@ -1,0 +1,30 @@
+generated: '2026-10-12'
+method: searched
+source:
+- https://composio.dev/toolkits/beehiiv
+checked:
+- https://composio.dev/toolkits/beehiiv
+- https://monid.ai/tools/beehiiv
+- https://n8n.io/integrations/beehiiv/
+- https://zapier.com/apps/beehiiv/integrations
+summary: null
+marketplace_apps:
+- marketplace: composio
+  channel: agent-gateway
+  app: beehiiv
+  url: https://composio.dev/toolkits/beehiiv
+  identity: action-prefix
+  actions:
+  - key: BEEHIIV_CREATE_DRAFT_POST
+  - key: BEEHIIV_CREATE_SEGMENT
+  - key: BEEHIIV_CREATE_SUBSCRIPTION
+  - key: BEEHIIV_LIST_CUSTOM_FIELDS
+  - key: BEEHIIV_LIST_POSTS
+  - key: BEEHIIV_LIST_PUBLICATIONS
+  - key: BEEHIIV_LIST_SEGMENTS
+  - key: BEEHIIV_LIST_SEGMENT_MEMBERS
+  - key: BEEHIIV_LIST_SUBSCRIPTIONS
+  - key: BEEHIIV_UPDATE_DRAFT_POST
+  - key: BEEHIIV_UPDATE_SUBSCRIPTION_CUSTOM_FIELDS
+edges: []
+templates: []
