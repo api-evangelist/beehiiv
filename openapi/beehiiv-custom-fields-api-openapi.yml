@@ -401,39 +401,57 @@ paths:
                 $ref: '#/components/schemas/type__Error'
 components:
   schemas:
-    type__Error:
+    type_customFields_CustomFieldResponse:
       type: object
       properties:
-        status:
-          type: integer
-        statusText:
+        data:
+          $ref: '#/components/schemas/type_customFields_CustomFieldInfo'
+      title: CustomFieldResponse
+    type_customFields_CustomFieldInfo:
+      type: object
+      properties:
+        id:
           type: string
-        errors:
+        kind:
+          $ref: '#/components/schemas/type__CustomFieldType'
+        display:
+          type: string
+        created:
+          type: integer
+        options:
           type: array
           items:
-            $ref: '#/components/schemas/type__ErrorDetail'
-      required:
-      - status
-      - statusText
-      - errors
-      description: The top level error response.
-      title: Error
-    type_customFields_CustomFieldsDeleteResponse:
-      type: object
-      properties:
-        message:
-          type: string
-      title: CustomFieldsDeleteResponse
+            type: string
+          description: Array of option values. Only included when kind is "list".
+      title: CustomFieldInfo
+    type_ids_PublicationId:
+      type: string
+      description: The prefixed ID of the publication.
+      title: PublicationId
     type_customFields_CustomFieldsPatchResponse:
       type: object
       properties:
         data:
           $ref: '#/components/schemas/type_customFields_CustomFieldInfo'
       title: CustomFieldsPatchResponse
-    type_ids_PublicationId:
+    type_customFields_CustomFieldsDeleteResponse:
+      type: object
+      properties:
+        message:
+          type: string
+      title: CustomFieldsDeleteResponse
+    type__CustomFieldType:
       type: string
-      description: The prefixed ID of the publication.
-      title: PublicationId
+      enum:
+      - string
+      - integer
+      - boolean
+      - date
+      - datetime
+      - list
+      - double
+      description: The type of value being stored in the custom field.
+      title: CustomFieldType
     type_customFields_CustomFieldIndexResponse:
       type: object
       properties:
@@ -455,24 +473,6 @@ components:
           type: integer
           description: The total number of pages.
       title: CustomFieldIndexResponse
-    type_customFields_CustomFieldResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/type_customFields_CustomFieldInfo'
-      title: CustomFieldResponse
-    type__CustomFieldType:
-      type: string
-      enum:
-      - string
-      - integer
-      - boolean
-      - date
-      - datetime
-      - list
-      - double
-      description: The type of value being stored in the custom field.
-      title: CustomFieldType
     type__ErrorDetail:
       type: object
       properties:
@@ -484,23 +484,23 @@ components:
       - message
       - code
       title: ErrorDetail
-    type_customFields_CustomFieldInfo:
+    type__Error:
       type: object
       properties:
-        id:
-          type: string
-        kind:
-          $ref: '#/components/schemas/type__CustomFieldType'
-        display:
-          type: string
-        created:
+        status:
           type: integer
-        options:
+        statusText:
+          type: string
+        errors:
           type: array
           items:
-            type: string
-          description: Array of option values. Only included when kind is "list".
-      title: CustomFieldInfo
+            $ref: '#/components/schemas/type__ErrorDetail'
+      required:
+      - status
+      - statusText
+      - errors
+      description: The top level error response.
+      title: Error
   securitySchemes:
     BearerAuthScheme:
       type: http

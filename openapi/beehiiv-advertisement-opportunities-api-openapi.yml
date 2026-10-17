@@ -73,23 +73,10 @@ paths:
                 $ref: '#/components/schemas/type__Error'
 components:
   schemas:
-    type__Error:
-      type: object
-      properties:
-        status:
-          type: integer
-        statusText:
-          type: string
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/type__ErrorDetail'
-      required:
-      - status
-      - statusText
-      - errors
-      description: The top level error response.
-      title: Error
+    type_ids_PublicationId:
+      type: string
+      description: The prefixed ID of the publication.
+      title: PublicationId
     type_advertisement_opportunities_AdvertisementOpportunity:
       type: object
       properties:
@@ -119,10 +106,34 @@ components:
       - send_by_window_start_at
       - send_by_window_end_at
       title: AdvertisementOpportunity
-    type_ids_PublicationId:
-      type: string
-      description: The prefixed ID of the publication.
-      title: PublicationId
+    type__ErrorDetail:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+      required:
+      - message
+      - code
+      title: ErrorDetail
+    type__Error:
+      type: object
+      properties:
+        status:
+          type: integer
+        statusText:
+          type: string
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/type__ErrorDetail'
+      required:
+      - status
+      - statusText
+      - errors
+      description: The top level error response.
+      title: Error
     type_advertisement_opportunities_AdvertisementOpportunitiesGetResponse:
       type: object
       properties:
@@ -138,17 +149,6 @@ components:
       - data
       - total_results
       title: AdvertisementOpportunitiesGetResponse
-    type__ErrorDetail:
-      type: object
-      properties:
-        message:
-          type: string
-        code:
-          type: string
-      required:
-      - message
-      - code
-      title: ErrorDetail
   securitySchemes:
     BearerAuthScheme:
       type: http

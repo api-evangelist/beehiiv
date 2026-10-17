@@ -160,6 +160,10 @@ paths:
                 $ref: '#/components/schemas/type__Error'
 components:
   schemas:
+    type_ids_PublicationId:
+      type: string
+      description: The prefixed ID of the publication.
+      title: PublicationId
     type_authors_AuthorSocialMediaLinks:
       type: object
       properties:
@@ -182,23 +186,14 @@ components:
         rss_url:
           type: string
       title: AuthorSocialMediaLinks
-    type__Error:
+    type_authors_AuthorsGetResponse:
       type: object
       properties:
-        status:
-          type: integer
-        statusText:
-          type: string
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/type__ErrorDetail'
+        data:
+          $ref: '#/components/schemas/type_authors_Author'
       required:
-      - status
-      - statusText
-      - errors
-      description: The top level error response.
-      title: Error
+      - data
+      title: AuthorsGetResponse
     type_authors_Author:
       type: object
       properties:
@@ -231,18 +226,6 @@ components:
       - user
       - guest_author
       title: AuthorType
-    type_ids_PublicationId:
-      type: string
-      description: The prefixed ID of the publication.
-      title: PublicationId
-    type_authors_AuthorsGetResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/type_authors_Author'
-      required:
-      - data
-      title: AuthorsGetResponse
     type__ErrorDetail:
       type: object
       properties:
@@ -254,6 +237,23 @@ components:
       - message
       - code
       title: ErrorDetail
+    type__Error:
+      type: object
+      properties:
+        status:
+          type: integer
+        statusText:
+          type: string
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/type__ErrorDetail'
+      required:
+      - status
+      - statusText
+      - errors
+      description: The top level error response.
+      title: Error
     type_authors_AuthorsListResponse:
       type: object
       properties:

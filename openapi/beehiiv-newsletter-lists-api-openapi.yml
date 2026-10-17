@@ -371,62 +371,14 @@ paths:
                 $ref: '#/components/schemas/type__Error'
 components:
   schemas:
-    type_newsletterLists_NewsletterListIndexResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/type_newsletterLists_NewsletterListInfo'
-        limit:
-          type: integer
-          description: The limit placed on the results. If no limit was specified in the request, this defaults to 10.
-        page:
-          type: integer
-          default: 1
-          description: The page number the results are from. If no page was specified in the request, this defaults to page 1.
-        total_results:
-          type: integer
-          description: The total number of results from all pages.
-        total_pages:
-          type: integer
-          description: The total number of pages.
-      required:
-      - data
-      - limit
-      - page
-      - total_results
-      - total_pages
-      title: NewsletterListIndexResponse
-    type__Error:
-      type: object
-      properties:
-        status:
-          type: integer
-        statusText:
-          type: string
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/type__ErrorDetail'
-      required:
-      - status
-      - statusText
-      - errors
-      description: The top level error response.
-      title: Error
     type_ids_NewsletterListId:
       type: string
       description: The prefixed ID of the newsletter list.
       title: NewsletterListId
-    type__RequestDirection:
+    type_ids_PublicationId:
       type: string
-      enum:
-      - asc
-      - desc
-      default: asc
-      description: The direction of the request. Defaults to `asc`.
-      title: RequestDirection
+      description: The prefixed ID of the publication.
+      title: PublicationId
     type_newsletterLists_NewsletterListInfo:
       type: object
       properties:
@@ -467,25 +419,6 @@ components:
       - created_at
       - updated_at
       title: NewsletterListInfo
-    type_newsletterLists_NewsletterListResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/type_newsletterLists_NewsletterListInfo'
-      required:
-      - data
-      title: NewsletterListResponse
-    type_newsletterLists_NewsletterListWritableStatus:
-      type: string
-      enum:
-      - active
-      - archived
-      description: Valid status values when updating a newsletter list. draft is not permitted.
-      title: NewsletterListWritableStatus
-    type_ids_PublicationId:
-      type: string
-      description: The prefixed ID of the publication.
-      title: PublicationId
     type_newsletterLists_NewsletterListStatus:
       type: string
       enum:
@@ -494,6 +427,38 @@ components:
       - archived
       description: The status of the newsletter list.
       title: NewsletterListStatus
+    type__RequestDirection:
+      type: string
+      enum:
+      - asc
+      - desc
+      default: asc
+      description: The direction of the request. Defaults to `asc`.
+      title: RequestDirection
+    type__Error:
+      type: object
+      properties:
+        status:
+          type: integer
+        statusText:
+          type: string
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/type__ErrorDetail'
+      required:
+      - status
+      - statusText
+      - errors
+      description: The top level error response.
+      title: Error
+    type_newsletterLists_NewsletterListWritableStatus:
+      type: string
+      enum:
+      - active
+      - archived
+      description: Valid status values when updating a newsletter list. draft is not permitted.
+      title: NewsletterListWritableStatus
     type__ErrorDetail:
       type: object
       properties:
@@ -505,6 +470,41 @@ components:
       - message
       - code
       title: ErrorDetail
+    type_newsletterLists_NewsletterListResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/type_newsletterLists_NewsletterListInfo'
+      required:
+      - data
+      title: NewsletterListResponse
+    type_newsletterLists_NewsletterListIndexResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/type_newsletterLists_NewsletterListInfo'
+        limit:
+          type: integer
+          description: The limit placed on the results. If no limit was specified in the request, this defaults to 10.
+        page:
+          type: integer
+          default: 1
+          description: The page number the results are from. If no page was specified in the request, this defaults to page 1.
+        total_results:
+          type: integer
+          description: The total number of results from all pages.
+        total_pages:
+          type: integer
+          description: The total number of pages.
+      required:
+      - data
+      - limit
+      - page
+      - total_results
+      - total_pages
+      title: NewsletterListIndexResponse
   securitySchemes:
     BearerAuthScheme:
       type: http

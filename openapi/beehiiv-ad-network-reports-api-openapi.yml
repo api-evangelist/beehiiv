@@ -250,23 +250,37 @@ paths:
                 $ref: '#/components/schemas/type__Error'
 components:
   schemas:
-    type__Error:
+    type_ad_network_reports_AdNetworkReportsGetResponse:
       type: object
       properties:
-        status:
-          type: integer
-        statusText:
-          type: string
-        errors:
+        data:
           type: array
           items:
-            $ref: '#/components/schemas/type__ErrorDetail'
+            $ref: '#/components/schemas/type_ad_network_reports_AdNetworkReport'
+          description: Advertisement performance and payment reports for the publication.
+        limit:
+          type: integer
+          description: The maximum number of reports returned.
+        page:
+          type: integer
+          description: The page number returned.
+        total_results:
+          type: integer
+          description: The total number of reports.
+        total_pages:
+          type: integer
+          description: The total number of pages.
       required:
-      - status
-      - statusText
-      - errors
-      description: The top level error response.
-      title: Error
+      - data
+      - limit
+      - page
+      - total_results
+      - total_pages
+      title: AdNetworkReportsGetResponse
+    type_ids_PublicationId:
+      type: string
+      description: The prefixed ID of the publication.
+      title: PublicationId
     type_ad_network_reports_AdNetworkReport:
       type: object
       properties:
@@ -300,69 +314,6 @@ components:
       - revenue
       - is_programmatic
       title: AdNetworkReport
-    type_ad_network_reports_AdNetworkReportSummary:
-      type: object
-      properties:
-        publication_id:
-          $ref: '#/components/schemas/type_ids_PublicationId'
-          description: The prefixed publication ID. Omitted from account-wide summaries.
-        opens:
-          type: integer
-          description: The total approved number of unique opens.
-        verified_clicks:
-          type: integer
-          description: The total approved number of verified clicks.
-        revenue:
-          type: string
-          description: The total formatted revenue approved for payment.
-        oda:
-          $ref: '#/components/schemas/type_ad_network_reports_AdNetworkReportSummaryMetrics'
-          description: Metrics for advertisements accepted as on-demand offers.
-        programmatic:
-          $ref: '#/components/schemas/type_ad_network_reports_AdNetworkReportSummaryMetrics'
-          description: Metrics for advertisements placed through programmatic ad slots.
-      required:
-      - opens
-      - verified_clicks
-      - revenue
-      - oda
-      - programmatic
-      title: AdNetworkReportSummary
-    type_ids_PublicationId:
-      type: string
-      description: The prefixed ID of the publication.
-      title: PublicationId
-    type_ad_network_reports_AdNetworkReportsGetResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/type_ad_network_reports_AdNetworkReport'
-          description: Advertisement performance and payment reports for the publication.
-        limit:
-          type: integer
-          description: The maximum number of reports returned.
-        page:
-          type: integer
-          description: The page number returned.
-        total_results:
-          type: integer
-          description: The total number of reports.
-        total_pages:
-          type: integer
-          description: The total number of pages.
-      required:
-      - data
-      - limit
-      - page
-      - total_results
-      - total_pages
-      title: AdNetworkReportsGetResponse
-    type_ids_PostId:
-      type: string
-      description: The prefixed ID of the post.
-      title: PostId
     type_ad_network_reports_AdNetworkReportSummaryMetrics:
       type: object
       properties:
@@ -391,6 +342,55 @@ components:
       - message
       - code
       title: ErrorDetail
+    type_ids_PostId:
+      type: string
+      description: The prefixed ID of the post.
+      title: PostId
+    type__Error:
+      type: object
+      properties:
+        status:
+          type: integer
+        statusText:
+          type: string
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/type__ErrorDetail'
+      required:
+      - status
+      - statusText
+      - errors
+      description: The top level error response.
+      title: Error
+    type_ad_network_reports_AdNetworkReportSummary:
+      type: object
+      properties:
+        publication_id:
+          $ref: '#/components/schemas/type_ids_PublicationId'
+          description: The prefixed publication ID. Omitted from account-wide summaries.
+        opens:
+          type: integer
+          description: The total approved number of unique opens.
+        verified_clicks:
+          type: integer
+          description: The total approved number of verified clicks.
+        revenue:
+          type: string
+          description: The total formatted revenue approved for payment.
+        oda:
+          $ref: '#/components/schemas/type_ad_network_reports_AdNetworkReportSummaryMetrics'
+          description: Metrics for advertisements accepted as on-demand offers.
+        programmatic:
+          $ref: '#/components/schemas/type_ad_network_reports_AdNetworkReportSummaryMetrics'
+          description: Metrics for advertisements placed through programmatic ad slots.
+      required:
+      - opens
+      - verified_clicks
+      - revenue
+      - oda
+      - programmatic
+      title: AdNetworkReportSummary
   securitySchemes:
     BearerAuthScheme:
       type: http

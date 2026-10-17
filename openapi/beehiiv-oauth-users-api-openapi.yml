@@ -61,6 +61,17 @@ paths:
                 $ref: '#/components/schemas/type__Error'
 components:
   schemas:
+    type__ErrorDetail:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+      required:
+      - message
+      - code
+      title: ErrorDetail
     type__Error:
       type: object
       properties:
@@ -78,17 +89,6 @@ components:
       - errors
       description: The top level error response.
       title: Error
-    type__ErrorDetail:
-      type: object
-      properties:
-        message:
-          type: string
-        code:
-          type: string
-      required:
-      - message
-      - code
-      title: ErrorDetail
     type_oauth_users_UserIdentifyResponse:
       type: object
       properties:

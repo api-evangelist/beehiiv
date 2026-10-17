@@ -97,23 +97,6 @@ paths:
                 $ref: '#/components/schemas/type__Error'
 components:
   schemas:
-    type__Error:
-      type: object
-      properties:
-        status:
-          type: integer
-        statusText:
-          type: string
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/type__ErrorDetail'
-      required:
-      - status
-      - statusText
-      - errors
-      description: The top level error response.
-      title: Error
     type__RequestDirection:
       type: string
       enum:
@@ -139,10 +122,6 @@ components:
       type: string
       description: The prefixed ID of the publication.
       title: PublicationId
-    type_ids_PostTemplateId:
-      type: string
-      description: The prefixed ID of the post template.
-      title: PostTemplateId
     type_postTemplates_PostTemplatesGetResponse:
       type: object
       properties:
@@ -171,6 +150,10 @@ components:
       - total_results
       - total_pages
       title: PostTemplatesGetResponse
+    type_ids_PostTemplateId:
+      type: string
+      description: The prefixed ID of the post template.
+      title: PostTemplateId
     type__ErrorDetail:
       type: object
       properties:
@@ -182,6 +165,23 @@ components:
       - message
       - code
       title: ErrorDetail
+    type__Error:
+      type: object
+      properties:
+        status:
+          type: integer
+        statusText:
+          type: string
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/type__ErrorDetail'
+      required:
+      - status
+      - statusText
+      - errors
+      description: The top level error response.
+      title: Error
   securitySchemes:
     BearerAuthScheme:
       type: http

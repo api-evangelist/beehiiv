@@ -156,29 +156,21 @@ paths:
                 $ref: '#/components/schemas/type__Error'
 components:
   schemas:
-    type_conditionSets_ConditionSetPurpose:
+    type_ids_PublicationId:
+      type: string
+      description: The prefixed ID of the publication.
+      title: PublicationId
+    type_conditionSets_ConditionSetStatus:
       type: string
       enum:
-      - dynamic_content
-      description: The purpose of the condition set, indicating its intended use.
-      title: ConditionSetPurpose
-    type__Error:
-      type: object
-      properties:
-        status:
-          type: integer
-        statusText:
-          type: string
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/type__ErrorDetail'
-      required:
-      - status
-      - statusText
-      - errors
-      description: The top level error response.
-      title: Error
+      - active
+      - archived
+      title: ConditionSetStatus
+    type_conditionSets_ConditionSetShowExpandItems:
+      type: string
+      enum:
+      - stats
+      title: ConditionSetShowExpandItems
     type_conditionSets_ConditionSetShowResponse:
       type: object
       properties:
@@ -187,53 +179,6 @@ components:
       required:
       - data
       title: ConditionSetShowResponse
-    type_conditionSets_ConditionSet:
-      type: object
-      properties:
-        id:
-          type: string
-          description: The UUID of the condition set.
-        name:
-          type: string
-          description: The display name of the condition set.
-        status:
-          $ref: '#/components/schemas/type_conditionSets_ConditionSetStatus'
-          description: Whether the condition set is currently active or has been archived.
-        created:
-          type: integer
-          description: The time the condition set was created. Measured in seconds since the Unix epoch.
-        updated:
-          type: integer
-          description: The time the condition set was last updated. Measured in seconds since the Unix epoch.
-        purpose:
-          $ref: '#/components/schemas/type_conditionSets_ConditionSetPurpose'
-          description: The purpose of the condition set, indicating its intended use.
-        stats:
-          $ref: '#/components/schemas/type_conditionSets_ConditionSetStats'
-          description: Subscriber count statistics for the condition set. Included when `expand[]=stats` is specified in the request.
-      required:
-      - id
-      - name
-      - status
-      - created
-      - updated
-      - purpose
-      title: ConditionSet
-    type_conditionSets_ConditionSetStatus:
-      type: string
-      enum:
-      - active
-      - archived
-      title: ConditionSetStatus
-    type_ids_PublicationId:
-      type: string
-      description: The prefixed ID of the publication.
-      title: PublicationId
-    type_conditionSets_ConditionSetShowExpandItems:
-      type: string
-      enum:
-      - stats
-      title: ConditionSetShowExpandItems
     type_conditionSets_ConditionSetListItem:
       type: object
       properties:
@@ -286,15 +231,44 @@ components:
       required:
       - data
       title: ConditionSetsListResponse
-    type_conditionSets_ConditionSetStats:
+    type_conditionSets_ConditionSetPurpose:
+      type: string
+      enum:
+      - dynamic_content
+      description: The purpose of the condition set, indicating its intended use.
+      title: ConditionSetPurpose
+    type_conditionSets_ConditionSet:
       type: object
       properties:
-        active_subscriber_count:
+        id:
+          type: string
+          description: The UUID of the condition set.
+        name:
+          type: string
+          description: The display name of the condition set.
+        status:
+          $ref: '#/components/schemas/type_conditionSets_ConditionSetStatus'
+          description: Whether the condition set is currently active or has been archived.
+        created:
           type: integer
-          description: Count of active subscribers matching this condition set, calculated synchronously at request time.
+          description: The time the condition set was created. Measured in seconds since the Unix epoch.
+        updated:
+          type: integer
+          description: The time the condition set was last updated. Measured in seconds since the Unix epoch.
+        purpose:
+          $ref: '#/components/schemas/type_conditionSets_ConditionSetPurpose'
+          description: The purpose of the condition set, indicating its intended use.
+        stats:
+          $ref: '#/components/schemas/type_conditionSets_ConditionSetStats'
+          description: Subscriber count statistics for the condition set. Included when `expand[]=stats` is specified in the request.
       required:
-      - active_subscriber_count
-      title: ConditionSetStats
+      - id
+      - name
+      - status
+      - created
+      - updated
+      - purpose
+      title: ConditionSet
     type__ErrorDetail:
       type: object
       properties:
@@ -306,6 +280,32 @@ components:
       - message
       - code
       title: ErrorDetail
+    type_conditionSets_ConditionSetStats:
+      type: object
+      properties:
+        active_subscriber_count:
+          type: integer
+          description: Count of active subscribers matching this condition set, calculated synchronously at request time.
+      required:
+      - active_subscriber_count
+      title: ConditionSetStats
+    type__Error:
+      type: object
+      properties:
+        status:
+          type: integer
+        statusText:
+          type: string
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/type__ErrorDetail'
+      required:
+      - status
+      - statusText
+      - errors
+      description: The top level error response.
+      title: Error
   securitySchemes:
     BearerAuthScheme:
       type: http

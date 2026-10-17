@@ -100,9 +100,10 @@ paths:
                 $ref: '#/components/schemas/type__Error'
 components:
   schemas:
-    type_engagements_NumberOfDays:
-      type: integer
-      title: NumberOfDays
+    type_ids_PublicationId:
+      type: string
+      description: The prefixed ID of the publication.
+      title: PublicationId
     type_engagements_PublicationEngagementEmailType:
       type: string
       enum:
@@ -110,23 +111,43 @@ components:
       - post
       - message
       title: PublicationEngagementEmailType
-    type__Error:
+    type_engagements_PublicationEngagementMetrics:
       type: object
       properties:
-        status:
-          type: integer
-        statusText:
+        date:
           type: string
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/type__ErrorDetail'
+          format: date
+          description: 'The starting date of the period for which the engagement metrics are reported based on the selected granularity.<br><br> `day` granularity: The specific day.<br> `week` granularity: The Monday of the week.<br> `month` granularity: The first day of the month.'
+        total_opens:
+          type: integer
+          description: The total number of times emails were opened during the period.
+        unique_opens:
+          type: integer
+          description: The number of unique subscribers who opened emails during the period.
+        total_clicks:
+          type: integer
+          description: The total number of times links were clicked during the period.
+        total_verified_clicks:
+          type: integer
+          description: The total number of times links were clicked, during the period, as <a href="https://www.beehiiv.com/support/article/28404633659159-introducing-verified-clicks-accurate-email-engagement-metrics?srsltid=AfmBOoregRzZ1N6bcwITVRA-Lo6NE06y6xNwb7WO85Gv0mrWMij-yFgb">verified by our system</a>.
+        unique_clicks:
+          type: integer
+          description: The number of unique subscribers who clicked links during the period.
+        unique_verified_clicks:
+          type: integer
+          description: The number of times links were clicked by unique subscribers, during the period, as <a href="https://www.beehiiv.com/support/article/28404633659159-introducing-verified-clicks-accurate-email-engagement-metrics?srsltid=AfmBOoregRzZ1N6bcwITVRA-Lo6NE06y6xNwb7WO85Gv0mrWMij-yFgb">verified by our system</a>.
       required:
-      - status
-      - statusText
-      - errors
-      description: The top level error response.
-      title: Error
+      - date
+      - total_opens
+      - unique_opens
+      - total_clicks
+      - total_verified_clicks
+      - unique_clicks
+      - unique_verified_clicks
+      title: PublicationEngagementMetrics
+    type_engagements_NumberOfDays:
+      type: integer
+      title: NumberOfDays
     type__RequestDirection:
       type: string
       enum:
@@ -167,51 +188,6 @@ components:
       - start_date
       - number_of_days
       title: PublicationEngagementsResponse
-    type_ids_PublicationId:
-      type: string
-      description: The prefixed ID of the publication.
-      title: PublicationId
-    type_engagements_PublicationEngagementGranularity:
-      type: string
-      enum:
-      - day
-      - week
-      - month
-      title: PublicationEngagementGranularity
-    type_engagements_PublicationEngagementMetrics:
-      type: object
-      properties:
-        date:
-          type: string
-          format: date
-          description: 'The starting date of the period for which the engagement metrics are reported based on the selected granularity.<br><br> `day` granularity: The specific day.<br> `week` granularity: The Monday of the week.<br> `month` granularity: The first day of the month.'
-        total_opens:
-          type: integer
-          description: The total number of times emails were opened during the period.
-        unique_opens:
-          type: integer
-          description: The number of unique subscribers who opened emails during the period.
-        total_clicks:
-          type: integer
-          description: The total number of times links were clicked during the period.
-        total_verified_clicks:
-          type: integer
-          description: The total number of times links were clicked, during the period, as <a href="https://www.beehiiv.com/support/article/28404633659159-introducing-verified-clicks-accurate-email-engagement-metrics?srsltid=AfmBOoregRzZ1N6bcwITVRA-Lo6NE06y6xNwb7WO85Gv0mrWMij-yFgb">verified by our system</a>.
-        unique_clicks:
-          type: integer
-          description: The number of unique subscribers who clicked links during the period.
-        unique_verified_clicks:
-          type: integer
-          description: The number of times links were clicked by unique subscribers, during the period, as <a href="https://www.beehiiv.com/support/article/28404633659159-introducing-verified-clicks-accurate-email-engagement-metrics?srsltid=AfmBOoregRzZ1N6bcwITVRA-Lo6NE06y6xNwb7WO85Gv0mrWMij-yFgb">verified by our system</a>.
-      required:
-      - date
-      - total_opens
-      - unique_opens
-      - total_clicks
-      - total_verified_clicks
-      - unique_clicks
-      - unique_verified_clicks
-      title: PublicationEngagementMetrics
     type__ErrorDetail:
       type: object
       properties:
@@ -223,6 +199,30 @@ components:
       - message
       - code
       title: ErrorDetail
+    type_engagements_PublicationEngagementGranularity:
+      type: string
+      enum:
+      - day
+      - week
+      - month
+      title: PublicationEngagementGranularity
+    type__Error:
+      type: object
+      properties:
+        status:
+          type: integer
+        statusText:
+          type: string
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/type__ErrorDetail'
+      required:
+      - status
+      - statusText
+      - errors
+      description: The top level error response.
+      title: Error
   securitySchemes:
     BearerAuthScheme:
       type: http
