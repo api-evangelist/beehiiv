@@ -298,3 +298,9 @@ components:
           type: string
       description: OAuth application metadata attached to token info responses.
       title: TokenApplication
+x-provenance:
+  method: harvested
+  publisher: beehiiv
+  source: https://developers.beehiiv.com/openapi/oauth2.yaml
+  note: split by refine-openapis from the provider's own published document, verified by fetch (openapi/_original/*.fetch.json);
+    stamped by stamp-openapi-provenance.py (roadmap#793)
